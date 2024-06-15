@@ -1,0 +1,14 @@
+show=drun
+width=600
+height=350
+always_parse_args=true
+show_all=false
+term=kitty
+hide_scroll=true
+print_command=true
+insensitive=true
+prompt=‌ Don't use your mouse! Keyboard is better
+columns=1
+allow_images=true
+image_size=23
+key_expand=Right

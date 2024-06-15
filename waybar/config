@@ -1,0 +1,191 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin-left": 7,
+  "margin-right": 7,
+  "margin-top": 3,
+  "modules-left": [
+    "custom/arch",
+    "hyprland/window",
+    "hyprland/workspaces",
+    "custom/pre_media",
+    "custom/toggle_media",
+    "custom/next_media",
+    "custom/media"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "hyprland/language",
+    "cpu",
+    "memory",
+    "custom/storage",
+    "network",
+    "pulseaudio",
+    "battery"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format-icons": {
+      "default": "",
+      "active": ""
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": []
+    }
+  },
+  "hyprland/window": {
+    "max-length": 15
+  },
+  "clock": {
+    "format": "{:%H:%M | %d-%m %a}",
+    "tooltip": true,
+    "tooltip-format": "{:%d %B %Y %A}",
+    "interval": 20
+  },
+  "battery": {
+    "format": "{capacity} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-charging": "{capacity}% 󰂄",
+    "interval": 3,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip": false
+  },
+  "network": {
+    "format": "{essid} {icon}",
+    "tooltip-format": "Interface: {ifname} | IP: {ipaddr}/{cidr} | Gateway: {gwaddr}",
+    "interval": 5,
+    "format-icons": {
+      "wifi": [
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "ethernet": [
+        "󰈁"
+      ],
+      "disconnected": [
+        ""
+      ]
+    },
+    "tooltip": true
+  },
+  "pulseaudio": {
+    "format": "{volume} {icon}",
+    "format-alt": "{volume} {icon}",
+    "format-alt-click": "click-right",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": [
+        " ",
+        " ",
+        " "
+      ],
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 5,
+    "tooltip": false
+  },
+  "custom/notif": {
+    "interval": 1,
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/notif.sh",
+    "exec-if": "ls ~/.config/dots | grep notification"
+  },
+  "custom/storage": {
+    "format": "{} ",
+    "format-alt": "{percentage}% ",
+    "format-alt-click": "click-right",
+    "return-type": "json",
+    "interval": 60,
+    "exec": "~/.config/waybar/modules/storage.sh"
+  },
+  "backlight": {
+    "format": "{icon}",
+    "format-alt": "{percent}% {icon}",
+    "format-alt-click": "click-right",
+    "format-icons": [
+      "",
+      ""
+    ],
+    "on-scroll-down": "light -A 1",
+    "on-scroll-up": "light -U 1"
+  },
+  "custom/arch": {
+    "exec": "echo '{\"text\": \"󰣛\", \"tooltip\": \"󰣛  Fedora is even better...\" }'",
+    "on-click": "$HOME/.config/wofi/wofi.sh",
+    "tooltip": true,
+    "return-type": "json"
+  },
+  "tray": {
+    "icon-size": 18
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-fa": "fa"
+  },
+  "cpu": {
+    "tooltip": true,
+    "format": "{} ",
+    "interval": 5
+  },
+  "memory": {
+    "tooltip": true,
+    "format": "{} ",
+    "tooltip-format": "RAM: {used}/{total} | Swap: {swapUsed}/{swapTotal}",
+    "interval": 5
+  },
+  "custom/media": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/media.sh --name",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "tooltip": true,
+    "interval": 1,
+    "escape": true
+  },
+  "custom/pre_media": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/media.sh --previous",
+    "on-click": "playerctl previous",
+    "interval": 1,
+    "tooltip": false
+  },
+  "custom/toggle_media": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/media.sh --toggle",
+    "on-click": "playerctl play-pause",
+    "interval": 1,
+    "tooltip": false
+  },
+  "custom/next_media": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/media.sh --next",
+    "on-click": "playerctl next",
+    "interval": 1,
+    "tooltip": false
+  }
+}

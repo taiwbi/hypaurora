@@ -1,0 +1,181 @@
+@keyframes low_battery {
+  0% {
+    color: #3584e4;
+  }
+
+  25% {
+    color: #e01b24;
+  }
+
+  75% {
+    color: #e01b24;
+  }
+
+  100% {
+    color: #3584e4;
+  }
+}
+
+@keyframes critical_battery {
+  0% {
+    color: #1e66f5;
+  }
+
+  25% {
+    color: #d20f39;
+  }
+
+  75% {
+    color: #d20f39;
+  }
+
+  100% {
+    color: #1e66f5;
+  }
+}
+
+* {
+  font-family: "Lotion";
+  font-size: 13px;
+  font-weight: 600;
+  color: #000000;
+}
+
+window {
+  color: white;
+  background: transparent;
+}
+
+window>box {
+  margin: 2px 2px 0 2px;
+}
+
+/* Grouping *** *** *** *** *** *** *** *** *** *** *** *** */
+#cpu,
+#custom-arch {
+  background: #dce0e8;
+  border-radius: 8px 0 0 8px;
+  padding: 0 8px 0 10px;
+}
+
+#window,
+#memory,
+#custom-storage,
+#network,
+#pulseaudio,
+#battery {
+  background: #dce0e8;
+  padding: 0 8px 0 8px;
+}
+
+#workspaces,
+#battery {
+  background: #dce0e8;
+  border-radius: 0 8px 8px 0;
+  padding: 0 10px 0 8px;
+}
+
+/* Single Module Group */
+#clock {
+  background: #ccd0da;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin: 0 4px;
+}
+
+/* Transparent Groups */
+#tray,
+#language,
+#custom-pre_media,
+#custom-toggle_media,
+#custom-next_media,
+#custom-media {
+  background: transparent;
+  text-shadow: black 0 0 2px;
+  padding: 0 5px;
+  color: white;
+  font-weight: 900;
+}
+
+/* Elements *** *** *** *** *** *** *** *** *** *** *** *** */
+
+/* Left */
+
+#custom-arch {
+  color: #072c61;
+  font-size: 20px;
+}
+
+#window {
+  padding-right: 0;
+}
+
+#workspaces button {
+  padding: 0 2px;
+  color: #4c4f69;
+}
+
+#workspaces button.active {
+  color: #6c6f85;
+}
+
+/* Center */
+
+/* Right */
+#tray widget image {
+  padding: 0 5px;
+}
+
+#tray widget:first-child image {
+  padding-left: 0;
+}
+
+#tray widget:last-child image {
+  padding-right: 0;
+}
+
+#custom-pre_media {
+  margin-left: 10px;
+}
+
+#custom-pre_media,
+#custom-toggle_media,
+#custom-next_media,
+#media {
+  padding: 0 2px;
+}
+
+#cpu {
+  color: #dd7878;
+}
+
+#memory {
+  color: #ea76cb;
+}
+
+#custom-storage {
+  color: #8839ef;
+}
+
+#network {
+  color: #d20f39;
+}
+
+#pulseaudio {
+  color: #fe640b;
+}
+
+#battery {
+  color: #40a02b;
+  padding-right: 15px;
+}
+
+#battery.warning {
+  animation: low_battery 2s infinite;
+  font-weight: 900;
+}
+
+#battery.critical {
+  animation: critical_battery 1s infinite;
+  font-weight: 900;
+}
