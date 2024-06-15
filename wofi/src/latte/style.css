@@ -62,7 +62,7 @@ window {
   padding: 10px;
   border: 0.16em solid @lavender;
   border-radius: 0.1em;
-  background-color: alpha(@base, 0.75);
+  background-color: @base;
   animation: slideIn 0.1s ease-in-out both;
   border-radius: 8px;
 }
