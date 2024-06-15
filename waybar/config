@@ -1,10 +1,10 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
-  "margin-left": 7,
-  "margin-right": 7,
-  "margin-top": 3,
+  "height": 28,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
   "modules-left": [
     "custom/arch",
     "hyprland/window",
@@ -31,10 +31,6 @@
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "format-icons": {
-      "default": "",
-      "active": ""
-    },
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -139,7 +135,7 @@
     "return-type": "json"
   },
   "tray": {
-    "icon-size": 18
+    "icon-size": 13
   },
   "hyprland/language": {
     "format": "{}",

@@ -36,24 +36,22 @@
 
 * {
   font-family: "Lotion";
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: #000000;
 }
 
 window {
   color: white;
-  background: transparent;
 }
 
 window>box {
-  margin: 2px 2px 0 2px;
+  background: #dce0e8;
 }
 
 /* Grouping *** *** *** *** *** *** *** *** *** *** *** *** */
 #cpu,
 #custom-arch {
-  background: #dce0e8;
   border-radius: 8px 0 0 8px;
   padding: 0 8px 0 10px;
 }
@@ -64,20 +62,17 @@ window>box {
 #network,
 #pulseaudio,
 #battery {
-  background: #dce0e8;
   padding: 0 8px 0 8px;
 }
 
 #workspaces,
 #battery {
-  background: #dce0e8;
   border-radius: 0 8px 8px 0;
   padding: 0 10px 0 8px;
 }
 
 /* Single Module Group */
 #clock {
-  background: #ccd0da;
   border-radius: 8px;
   padding: 0 10px;
   margin: 0 4px;
@@ -90,10 +85,8 @@ window>box {
 #custom-toggle_media,
 #custom-next_media,
 #custom-media {
-  background: transparent;
-  text-shadow: black 0 0 2px;
   padding: 0 5px;
-  color: white;
+  color: #6c6f85;
   font-weight: 900;
 }
 
@@ -103,7 +96,7 @@ window>box {
 
 #custom-arch {
   color: #072c61;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #window {
@@ -112,11 +105,20 @@ window>box {
 
 #workspaces button {
   padding: 0 2px;
+  border-radius: 0;
+}
+
+#workspaces button label {
   color: #4c4f69;
 }
 
 #workspaces button.active {
+  border-bottom: 3px solid #8839ef;
+}
+
+#workspaces button.active label {
   color: #6c6f85;
+  font-weight: 900;
 }
 
 /* Center */
