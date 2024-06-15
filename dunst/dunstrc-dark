@@ -1,6 +1,6 @@
 [global]
 separator_color= "#13273F"
-font = ComicShannsMono Nerd Font 12
+font = Monaspace Krypton Var, Vazir Code Hack 12
 icon_theme = candy-icons
 enable_recursive_icon_lookup = true
 class = dunst
