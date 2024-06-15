@@ -44,28 +44,27 @@ set_themes() {
 	## Change Hyprland assets colorscheme
 	if [[ "$mode" == "prefer-light" ]]; then
 		echo "Light Mode"
-		ln -s -f "$HOME/.config/dunst/dunstrc-light" "$HOME/.config/dunst/dunstrc"
-		ln -s -f "$HOME/.config/foot/foot-light.ini" "$HOME/.config/foot/foot.ini"
-		ln -s -f "$HOME/.config/kitty/kitty-light.conf" "$HOME/.config/kitty/kitty.conf"
-		ln -s -f "$HOME/.config/gtk-3.0/gtk-light.css" "$HOME/.config/gtk-3.0/gtk.css"
-		ln -s -f "$HOME/.config/gtk-4.0/gtk-light.css" "$HOME/.config/gtk-4.0/gtk.css"
-		ln -s -f "$HOME/.mozilla/firefox/Miti/chrome/firefox-gnome-theme/customChrome-light.css" "$HOME/.mozilla/firefox/Miti/chrome/firefox-gnome-theme/customChrome.css"
+		ln -s -f "dunstrc-light" "$HOME/.config/dunst/dunstrc"
+		ln -s -f "foot-light.ini" "$HOME/.config/foot/foot.ini"
+		ln -s -f "kitty-light.conf" "$HOME/.config/kitty/kitty.conf"
+		ln -s -f "gtk-light.css" "$HOME/.config/gtk-3.0/gtk.css"
+		ln -s -f "gtk-light.css" "$HOME/.config/gtk-4.0/gtk.css"
+		ln -s -f "customChrome-light.css" "$HOME/.mozilla/firefox/Miti/chrome/firefox-gnome-theme/customChrome.css"
 		sed -i 's/background-dark.png/background-light.png/g' "$HOME/.config/hypr/hyprpaper.conf"
 		sed -i "s/'mocha'/'latte'/g" "$HOME/.config/tmux/tmux.conf"
-		systemctl --user restart xdg-desktop-portal-gtk.service
 	elif [[ "$mode" == "prefer-dark" ]]; then
 		echo "Dark Mode"
-		ln -s -f "$HOME/.config/dunst/dunstrc-dark" "$HOME/.config/dunst/dunstrc"
-		ln -s -f "$HOME/.config/foot/foot-dark.ini" "$HOME/.config/foot/foot.ini"
-		ln -s -f "$HOME/.config/kitty/kitty-dark.conf" "$HOME/.config/kitty/kitty.conf"
-		ln -s -f "$HOME/.config/gtk-3.0/gtk-dark.css" "$HOME/.config/gtk-3.0/gtk.css"
-		ln -s -f "$HOME/.config/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/gtk.css"
-		ln -s -f "$HOME/.mozilla/firefox/Miti/chrome/firefox-gnome-theme/customChrome-dark.css" "$HOME/.mozilla/firefox/Miti/chrome/firefox-gnome-theme/customChrome.css"
+		ln -s -f "dunstrc-dark" "$HOME/.config/dunst/dunstrc"
+		ln -s -f "foot-dark.ini" "$HOME/.config/foot/foot.ini"
+		ln -s -f "kitty-dark.conf" "$HOME/.config/kitty/kitty.conf"
+		ln -s -f "gtk-dark.css" "$HOME/.config/gtk-3.0/gtk.css"
+		ln -s -f "gtk-dark.css" "$HOME/.config/gtk-4.0/gtk.css"
+		ln -s -f "customChrome-dark.css" "$HOME/.mozilla/firefox/Miti/chrome/firefox-gnome-theme/customChrome.css"
 		sed -i 's/background-light.png/background-dark.png/g' "$HOME/.config/hypr/hyprpaper.conf"
 		sed -i "s/'latte'/'mocha'/g" "$HOME/.config/tmux/tmux.conf"
-		systemctl --user restart xdg-desktop-portal-gtk.service
 	fi
 
+	systemctl --user restart xdg-desktop-portal-gtk.service
 	pkill dunst
 	pkill hyprpaper
 	sleep 0.2
