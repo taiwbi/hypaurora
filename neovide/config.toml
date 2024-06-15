@@ -1,5 +1,5 @@
 frame = "none"
 
 [font]
-normal = [{family = "Monaspace Radon Var", style = "SemiBold"}, "Vazir Code Hack"]
+normal = [{family = "Cartograph CF", style = "Regular"}, "Vazir Code Hack"]
 size = 11
