@@ -28,7 +28,7 @@ Follow these steps to set up your Hyprland environment with these dotfiles (on F
 1. **Clone this repository:**
 
    ```bash
-   git clone https://github.com/taiwbi/hypaurora.git
+   git clone --recursive https://github.com/taiwbi/hypaurora.git
    cd hypaurora
    ```
 
