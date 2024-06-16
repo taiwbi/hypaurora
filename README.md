@@ -34,8 +34,8 @@ Follow these steps to get your Hyprland environment up and running with these do
 1. **Clone this repository:**
 
    ```bash
-   git clone https://github.com/taiwbi/hyprland-dotfiles.git
-   cd hyprland-dotfiles
+   git clone --recursive https://github.com/taiwbi/hypaurora.git
+   cd hypaurora
    ```
 
 2. **Backup your existing dotfiles:**
