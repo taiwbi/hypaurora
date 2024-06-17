@@ -99,6 +99,8 @@ fi
 
 echo -e "$header_1 Linking configurations to your home folder."
 
+mkdir -p "$HOME/Pictures/background/"
+
 rm -rf "$HOME/.config/dunst" && ln -s "$PWD/dunst" "$HOME/.config/"
 rm -rf "$HOME/.config/fastfetch" && ln -s "$PWD/fastfetch" "$HOME/.config/"
 rm -rf "$HOME/.config/fontconfig" && ln -s "$PWD/fontconfig" "$HOME/.config/"
