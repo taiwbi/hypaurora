@@ -2,8 +2,8 @@
 
 switch (uname -a)
 case "*Android*" # Running on termux
-  set -x ALL_PROXY socks5://127.0.0.1:1081
-  set -x all_proxy socks5://127.0.0.1:1081
+  set -x ALL_PROXY socks5://127.0.0.1:1080
+  set -x all_proxy socks5://127.0.0.1:1080
 
   if test -n "$no_proxy"
     set -x NO_PROXY $no_proxy
