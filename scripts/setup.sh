@@ -111,7 +111,7 @@ rm -rf "$HOME/.config/neovide" && ln -s "$PWD/neovide" "$HOME/.config/"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
 rm -rf "$HOME/.config/waybar" && ln -s "$PWD/waybar" "$HOME/.config/"
 rm -rf "$HOME/.config/wofi" && ln -s "$PWD/wofi" "$HOME/.config/"
-rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/"
+rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
 
 rm -rf "$HOME/.local/share/hypr-scripts" && ln -s "$PWD"/hypr-scripts "$HOME/.local/share/"
 rm -rf "$HOME/.local/share/nautilus/scripts" && ln -s "$PWD"/nautilus-scripts "$HOME/.local/share/nautilus/scripts"
