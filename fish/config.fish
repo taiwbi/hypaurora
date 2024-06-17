@@ -1,7 +1,5 @@
-if status is-interactive
-  # Commands to run in interactive sessions can go here
-  set -U EDITOR nvim
-end
+set -U EDITOR '/usr/bin/nvim'
+set -U OPENAI_API_KEY '' # Nothing for now :)
 
 starship init fish | source
 source $HOME/.config/fish/proxy.fish
