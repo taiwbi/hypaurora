@@ -1,5 +1,5 @@
-set -U EDITOR '/usr/bin/nvim'
-set -U OPENAI_API_KEY '' # Nothing for now :)
+set -gx EDITOR '/usr/bin/nvim'
+set -gx OPENAI_API_KEY 'null' # Nothing for now :)
 
 starship init fish | source
 source $HOME/.config/fish/proxy.fish
