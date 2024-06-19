@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define your themes for light and dark mode
-LIGHT_ICON_THEME="candy-icons"
-DARK_ICON_THEME="candy-icons"
+LIGHT_ICON_THEME="Zafiro-Nord-Black"
+DARK_ICON_THEME="Zafiro-Nord-Black"
 
 LIGHT_GTK_THEME="adw-gtk3"
 DARK_GTK_THEME="adw-gtk3-dark"
