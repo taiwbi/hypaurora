@@ -8,4 +8,6 @@ for file in $HOME/.config/fish/functions/*.fish
   source "$file"
 end
 
+set PATH $HOME/.local/bin  $PATH
+
 set fish_greeting ''
