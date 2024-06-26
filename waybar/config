@@ -9,9 +9,6 @@
     "custom/arch",
     "hyprland/window",
     "hyprland/workspaces",
-    "custom/pre_media",
-    "custom/toggle_media",
-    "custom/next_media",
     "custom/media"
   ],
   "modules-center": [
