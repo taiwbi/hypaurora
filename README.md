@@ -1,83 +1,82 @@
-# 🌌 Hyprland Dotfiles
+# 🌌 Hypaurora Lite
 
-Welcome to my **Hyprland dotfiles** repository. 🎉 These are my personal configuration files for setting up and customizing the Hyprland window manager.
+Welcome to my **Hyprland dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the Hyprland window manager in a more compact and minimal design.
 
-## What's Included?? 🤔
+<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/lite/assets/dark-clean.png" alt="Dark Mode screenshot">
+<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/lite/assets/dark-apps.png" alt="Dark Mode with apps screenshot">
+<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/lite/assets/light-clean.png" alt="Light Mode screenshot">
+<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/lite/assets/light-apps.png" alt="Light Mode with apps screenshot">
 
-This repository includes configuration files for ✨:
+## What's Included? 🤔
+
+This repository includes configuration files for:
 
 - **Hyprland**: Dynamic tiling Wayland compositor
 - **Waybar**: Customizable status bar for Wayland
-- **Dunst**:
+- **Dunst**: Catppuccin minimal theme for Dunst
 - **Kitty**: Fast, cross-platform terminal emulator
 - **Wofi**: Application launcher
-- **Neovide**: Beautiful and feature-rich neovim GUI
-- **Fastfetch**:
-- **foot**:
+- **Neovide**: Beautiful and feature-rich Neovim GUI
+- **Fastfetch**: Stunning system information fetch tool
 - **adw-gtk3** & **LibAdwaita**: Catppuccin Mocha and Catppuccin Latte themes for dark and light mode
-- **tmux**:
-- **mpv**:
-
-## Dependencies 🛠️
-
-Make sure you have the following installed before using these dotfiles:
-
-- **Hyprland**: The star of the show.
-- **Waybar**: A highly customizable status bar for Wayland.
-- **wofi**: An application launcher, and dmenu replacement.
-<!--  TODO: add dependencies -->
+- **tmux**: Terminal multiplexer
 
 ## Installation 🚀
 
-Follow these steps to get your Hyprland environment up and running with these dotfiles:
+Follow these steps to set up your Hyprland environment with these dotfiles (on Fedora):
 
 1. **Clone this repository:**
 
-   ```bash
-   git clone --recursive https://github.com/taiwbi/hypaurora.git
-   cd hypaurora
+Clone the repository and checkout the lite branch
+
+```bash
+git clone --recursive https://github.com/taiwbi/hypaurora.git
+cd hypaurora
+```
+
+2. **Install dependencies:**
+
+   First, Add Hyprland copr:
+
+   ```sh
+   sudo dnf copr enable solopasha/hyprland
+   sudo dnf update -y
    ```
 
-2. **Backup your existing dotfiles:**
-
-   It's always a good idea to backup your existing configuration files:
+   Install the necessary packages for the configuration to work properly.
 
    ```bash
-   mkdir -p ~/dotfiles_backup
-   cp -r ~/.config/hyprland ~/.config/waybar ~/.config/alacritty ~/.config/rofi ~/.config/nvim ~/dotfiles_backup/
+   sudo dnf install fish gnome-keyring polkit-gnome git bc jq socat inotify-tools
+   sudo dnf install kitty icat wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle brightnessctl grim slurp wl-clipboard dunst fswebcam
+   ```
+
+   If you want per-window layout support:
+
+   ```bash
+   sudo dnf install cargo
+   cargo install hyprland-per-window-layout
    ```
 
 3. **Install the new dotfiles:**
 
-   Copy the new configuration files to your home directory:
+   Link the dotfiles to your configuration directories. **Be aware if you already have any configuration files in the specified directories, those all will be removed**
 
    ```bash
-   cp -r .config/* ~/.config/
+   ./scripts/link.sh
    ```
 
 4. **Start Hyprland:**
 
-   Now, start or restart Hyprland to see the magic happen!
+   Start or restart Hyprland to apply the new configuration.
 
    ```bash
    Hyprland
    ```
 
-## Customization 🎨
+---
 
-Feel free to tweak these configurations to your heart's content. Here are some tips:
-
-- **Hyprland**: Edit the `~/.config/hyprland/hyprland.conf` file to change keybindings, window rules, and more.
-- **Waybar**: Customize the `~/.config/waybar/config` and `~/.config/waybar/style.css` files for your status bar.
-
-## Contributing 🤝
-
-Got some cool tweaks or fixes? Contributions are welcome! Feel free to fork this repo, make your changes, and open a pull request.
-
-## License 📄
-
-Do what the hell you want with this.
+Happy customizing! If you run into any issues or have questions, don't hesitate to open an issue or reach out. May your Hyprland lite setup be ever in your favor! 🌟
 
 ---
 
-Happy customizing! If you run into any issues or have questions, don't hesitate to open an issue or reach out. May your Hyprland setup be ever in your favor! 🌟
+This dotfiles also a have a more beautiful and fancy design, checkout lite branch
