@@ -27,12 +27,13 @@ Follow these steps to set up your Hyprland environment with these dotfiles (on F
 
 1. **Clone this repository:**
 
-Clone the repository and checkout the lite branch
+  Clone the repository and checkout the lite branch
 
-```bash
-git clone --recursive https://github.com/taiwbi/hypaurora.git
-cd hypaurora
-```
+  ```bash
+  git clone --recursive https://github.com/taiwbi/hypaurora.git
+  cd hypaurora
+  git checkout lite # Checkout Lite Branch
+  ```
 
 2. **Install dependencies:**
 
@@ -79,4 +80,4 @@ Happy customizing! If you run into any issues or have questions, don't hesitate 
 
 ---
 
-This dotfiles also a have a more beautiful and fancy design, checkout lite branch
+This dotfiles also a have a more beautiful and fancy design, checkout main branch
