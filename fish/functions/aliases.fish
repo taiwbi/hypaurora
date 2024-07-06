@@ -3,7 +3,3 @@
 function vi
   nvim
 end
-
-function ssh
-  kitten ssh $argv
-end

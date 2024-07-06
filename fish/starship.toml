@@ -52,6 +52,7 @@ disabled = false # Disabled by default
 
 [os.symbols]
 Fedora = "  "
+Manjaro = " "
 
 [directory]
 style = "bg:pink fg:crust"
