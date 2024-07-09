@@ -2,6 +2,8 @@
 # VERSION: 3.0
 SETUVAR EDITOR:/usr/bin/nvim
 SETUVAR OPENAI_API_KEY:null
+SETUVAR --export SSH_AUTH_SOCK:/run/user/1000/ssh\x2dagent\x2esocket
+SETUVAR --export SSH_AUTH_SSH_AGENT_PID:5409
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
