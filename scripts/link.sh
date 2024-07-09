@@ -17,23 +17,13 @@ fi
 
 mkdir -p "$HOME/Pictures/background/"
 
-rm -rf "$HOME/.config/dunst" && ln -s "$PWD/dunst" "$HOME/.config/"
 rm -rf "$HOME/.config/fastfetch" && ln -s "$PWD/fastfetch" "$HOME/.config/"
 rm -rf "$HOME/.config/fontconfig" && ln -s "$PWD/fontconfig" "$HOME/.config/"
-rm -rf "$HOME/.config/gtk-3.0" && ln -s "$PWD/gtk-3.0" "$HOME/.config/"
-rm -rf "$HOME/.config/gtk-4.0" && ln -s "$PWD/gtk-4.0" "$HOME/.config/"
-rm -rf "$HOME/.config/hypr" && ln -s "$PWD/hypr" "$HOME/.config/"
-rm -rf "$HOME/.config/kitty" && ln -s "$PWD/kitty" "$HOME/.config/"
 rm -rf "$HOME/.config/mpv" && ln -s "$PWD/mpv" "$HOME/.config/"
 rm -rf "$HOME/.config/neovide" && ln -s "$PWD/neovide" "$HOME/.config/"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
-rm -rf "$HOME/.config/waybar" && ln -s "$PWD/waybar" "$HOME/.config/"
-rm -rf "$HOME/.config/wofi" && ln -s "$PWD/wofi" "$HOME/.config/"
 rm -rf "$HOME/.config/fish" && ln -s "$PWD/fish" "$HOME/.config/"
 rm -rf "$HOME/.config/starship.toml" && ln -s "./fish/starship.toml" "$HOME/.config/starship.toml"
 rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
-
-rm -rf "$HOME/.local/share/hypr-scripts" && ln -s "$PWD"/hypr-scripts "$HOME/.local/share/"
-rm -rf "$HOME/.local/share/nautilus/scripts" && ln -s "$PWD"/nautilus-scripts "$HOME/.local/share/nautilus/scripts"
 
 echo -e ""
