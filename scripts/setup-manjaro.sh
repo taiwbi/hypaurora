@@ -72,7 +72,7 @@ gsettings set org.gnome.shell enabled-extensions "['legacyschemeautoswitcher@jos
 # UI
 gsettings set org.gnome.desktop.interface font-name 'Lexend 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Noto Serif 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Cartograph CF 12'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Hurmit Nerd Font 12'
 gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 
 # Window management
