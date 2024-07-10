@@ -27,7 +27,7 @@ sudo pacman -Syu
 sudo pacman -Rns firefox
 # Libraries and ...
 sudo pacman -S ripgrep lazygit node npm # Development tools
-sudo pacman -S touchegg ttf-joypixels
+sudo pacman -S touchegg noto-fonts-emoji
 sudo pacman -S wl-clipboard xclip --asdeps mailcap
 sudo pacman -S switcheroo-control # Discrete gpu selection
 sudo pacman -S socat
@@ -99,6 +99,7 @@ gsettings set org.gnome.nautilus.preferences click-policy 'single'
 gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 gsettings set org.gnome.Epiphany search-engine-providers "[{'url': <'https://www.bing.com/search?q=%s'>, 'bang': <'\!bi'>, 'name': <'Bing'>}, {'url': <'https://duckduckgo.com/?q=%s&t=epiphany'>, 'bang': <'\!ddg'>, 'name': <'DuckDuckGo'>}, {'url': <'https://www.google.com/search?q=%s'>, 'bang': <'\!g'>, 'name': <'Google'>}, {'url': <'https://search.brave.com/search?q=%s&source=web&summary=1'>, 'bang': <'\!b'>, 'name': <'Brave'>}]"
 gsettings set org.gnome.Epiphany default-search-engine 'Brave'
+gsettings set org.gnome.Lollypop save-state 'true'
 
 # Keyboard Shortcuts
 gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Up']"
