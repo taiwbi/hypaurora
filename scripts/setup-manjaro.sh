@@ -29,6 +29,7 @@ sudo pacman -Rns firefox
 sudo pacman -S ripgrep lazygit node npm # Development tools
 sudo pacman -S touchegg ttf-joypixels
 sudo pacman -S wl-clipboard xclip --asdeps mailcap
+sudo pacman -S switcheroo-control # Discrete gpu selection
 sudo pacman -S socat
 sudo pacman -S --needed totem --asdeps gst-plugins-ugly gst-libav # totem should already be installed
 sudo pacman -S gst-plugin-pipewire gst-plugins-good
@@ -51,6 +52,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syu morewaita gnome-shell-extension-proxy-switcher
 
 sudo systemctl enable --now touchegg.service
+sudo systemctl enable --now switcheroo-control.service
 systemctl enable --user gnome-keyring-daemon
 systemctl enable --user ssh-agent.service
 systemctl enable --user gcr-ssh-agent.socket
