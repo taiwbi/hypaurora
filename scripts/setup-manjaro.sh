@@ -61,11 +61,15 @@ bash -c "$PWD/scripts/link.sh"
 # Settings
 # ==========================================
 
+# TODO: Install Proxy Switch Extensinon
+# TODO: Install User Style Sheet Exntesion
+
 # Extensions
-gsettings set org.gnome.shell enabled-extensions "['legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'light-style@gnome-shell-extensions.gcampax.github.com']"
+gsettings set org.gnome.shell enabled-extensions "['legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'light-style@gnome-shell-extensions.gcampax.github.com', 'ProxySwitcher@flannaghan.com', 'screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com', 'user-stylesheet@tomaszgasior.pl']"
 
 # UI
-gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
+gsettings set org.gnome.desktop.interface font-name 'Lexend 11'
+gsettings set org.gnome.desktop.interface document-font-name 'Noto Serif 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Cartograph CF 12'
 gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 
