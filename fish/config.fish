@@ -11,6 +11,7 @@ end
 
 starship init fish | source
 source $HOME/.config/fish/proxy.fish
+source $HOME/.config/fish/fishmarks/marks.fish
 
 for file in $HOME/.config/fish/functions/*.fish
   source "$file"
