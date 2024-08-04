@@ -1,0 +1,15 @@
+anthropic.com
+api.claude.ai
+auth.openai.com
+auth0.openai.com
+auth1.openai.com
+chat.openai.com
+chatgpt.com
+claude.ai
+download.nvidia.com
+gitlab.com
+imdb.com
+nvidia.com
+openai.com
+s-cdn.anthropic.com
+statisig.anthropic.com
