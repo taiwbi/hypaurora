@@ -79,3 +79,10 @@ gsettings set org.gnome.Epiphany default-search-engine 'Brave'
 
 gsettings set org.gnome.Lollypop save-state 'true'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-gnome-lollypop/ enable false
+
+gsettings set com.raggesilver.BlackBox remember-window-size true
+gsettings set com.raggesilver.BlackBox show-headerbar false
+gsettings set com.raggesilver.BlackBox floating-controls true
+gsettings set com.raggesilver.BlackBox floating-controls-hover-area 'uint32 20'
+gsettings set com.raggesilver.BlackBox delay-before-showing-floating-controls 'uint32 400'
+gsettings set com.raggesilver.BlackBox font "'Cartograph CF 11'"
