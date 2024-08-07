@@ -111,3 +111,8 @@ window>deck>box>leaflet>box:nth-child(1)>headerbar.titlebar.windowhandle {
   background: transparent;
   border-bottom: none;
 }
+
+/* BkackBox Terminal */
+#blackbox-main-window {
+  background-color: transparent; /* Unless transparency won't work */
+}
