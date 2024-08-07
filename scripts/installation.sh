@@ -93,3 +93,7 @@ sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-re
 sudo flatpak install flathub-beta app.drey.PaperPlane
 
 sudo dnf remove firefox gnome-terminal rhythmbox
+
+# Hyprland Installation ===============
+sudo dnf copr enable solopasha/hyprland
+sudo dnf install hyprland hyprlock hypridle hyprpaper dunst waybar wofi -x kitty
