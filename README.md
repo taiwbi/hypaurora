@@ -73,4 +73,8 @@ Follow these steps to set up your Hyprland environment with these dotfiles (on F
 
 ---
 
-Happy customizing! If you run into any issues or have questions, don't hesitate to open an issue or reach out. May your Hyprland setup be ever in your favor! 🌟
+Happy customizing! If you run into any issues or have questions, don't hesitate to open an issue or reach out. May your Hyprland lite setup be ever in your favor! 🌟
+
+---
+
+This dotfiles also a have a more beautiful and fancy design, checkout main branch
