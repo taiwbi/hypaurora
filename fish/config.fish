@@ -17,4 +17,6 @@ for file in $HOME/.config/fish/functions/*.fish
   source "$file"
 end
 
+alias 'idehelper' "php artisan ide-helper:models && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta"
+
 set fish_greeting ''
