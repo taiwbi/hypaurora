@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Destination directory
+destination_dir="$HOME/Pictures/background"
+destination_file="$destination_dir/lockscreen.png"
+
+# Check if ffmpeg is installed
+if ! command -v ffmpeg &>/dev/null; then
+	notify-send "Error" "ffmpeg is not installed. Please install ffmpeg."
+	exit 1
+fi
+
+# Check if the file is not in jpg format
+file_ext="${1##*.}"
+if [ "$file_ext" != "png" ]; then
+	# Convert it using ffmpeg
+	ffmpeg -i "$1" "$destination_file" -y
+else
+	# Copy the selected file to the destination directory
+	cp "$1" "$destination_file"
+fi
