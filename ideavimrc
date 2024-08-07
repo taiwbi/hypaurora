@@ -9,6 +9,8 @@ set scrolloff=14
 set incsearch
 set relativenumber
 set clipboard=unnamedplus
+set which-key
+set notimeout
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
@@ -32,13 +34,13 @@ let g:NERDTreeMapCloseDir = 'h'
 let g:NERDTreeMapCloseAllNodes = 'h'
 
 " General ------------------------------------------------------------
-" Resize up TODO:
+" Resize Up
 map <C-Up> <Action>(StretchSplitToTop)
-" Resize Down TODO:
+" Resize Down
 map <C-Down> <Action>(StretchSplitToBottom)
-" Resize Left TODO:
+" Resize Left
 map <C-Left> <Action>(StretchSplitToLeft)
-" Resize Right TODO:
+" Resize Right
 map <C-Right> <Action>(StretchSplitToRight)
 " Up Window
 noremap <C-k> <C-w>k
@@ -193,6 +195,9 @@ map <leader>tf <Action>(ActivateTerminalToolWindow)
 map <leader>th <Action>(ActivateTerminalToolWindow)
 map <leader>tv <Action>(ActivateTerminalToolWindow)
 
+map <leader>zz <Action>(ToggleZenMode)
+map <leader>zd <Action>(ToggleDistractionFreeMode)
+
 
 " General Mappings DONE
 " Buffers
@@ -208,3 +213,106 @@ map <leader>tv <Action>(ActivateTerminalToolWindow)
 " Telescope Mappings DONE
 " Terminal Mappings
 " UI/UX Mappings
+
+
+
+
+
+
+
+
+""" Which-Key ========================================================
+" NERDTree
+let g:WhichKeyDesc_NERDTreeDown = "j Move down in NERDTree"
+let g:WhichKeyDesc_NERDTreeUp = "k Move up in NERDTree"
+let g:WhichKeyDesc_NERDTreeOpen = "l Open in NERDTree"
+let g:WhichKeyDesc_NERDTreeClose = "h Close in NERDTree"
+
+" Window Navigation and Resizing
+let g:WhichKeyDesc_ResizeUp = "<C-Up> Resize Up"
+let g:WhichKeyDesc_ResizeDown = "<C-Down> Resize Down"
+let g:WhichKeyDesc_ResizeLeft = "<C-Left> Resize Left"
+let g:WhichKeyDesc_ResizeRight = "<C-Right> Resize Right"
+let g:WhichKeyDesc_WindowUp = "<C-k> Move to upper window"
+let g:WhichKeyDesc_WindowDown = "<C-j> Move to lower window"
+let g:WhichKeyDesc_WindowLeft = "<C-h> Move to left window"
+let g:WhichKeyDesc_WindowRight = "<C-l> Move to right window"
+
+" Buffer and Tab Management
+let g:WhichKeyDesc_CloseBuffer = "<leader>c Close buffer"
+let g:WhichKeyDesc_NextTab = "<Tab> Next Tab"
+let g:WhichKeyDesc_PreviousTab = "<S-Tab> Previous Tab"
+
+" Splitting
+let g:WhichKeyDesc_SplitVertical = "<Bar> Split vertically"
+let g:WhichKeyDesc_SplitHorizontal = "\ Split horizontally"
+
+" Commenting
+let g:WhichKeyDesc_Comment = "<leader>/ Comment line"
+
+" Debugger
+let g:WhichKeyDesc_DebuggerPrefix = "<leader>d +debugger"
+let g:WhichKeyDesc_DebuggerStart = "<leader>dc Start/Continue Debugger"
+let g:WhichKeyDesc_DebuggerPause = "<leader>dp Pause Debugger"
+let g:WhichKeyDesc_DebuggerRestart = "<leader>dr Restart Debugger"
+let g:WhichKeyDesc_DebuggerRunToCursor = "<leader>ds Run Debugger to Cursor"
+let g:WhichKeyDesc_DebuggerClose = "<leader>dq Close Debugger Session"
+let g:WhichKeyDesc_DebuggerTerminate = "<leader>dQ Terminate Debugger"
+let g:WhichKeyDesc_DebuggerToggleBreakpoint = "<leader>db Toggle Breakpoint"
+let g:WhichKeyDesc_DebuggerConditionalBreakpoint = "<leader>dC Conditional Breakpoint"
+let g:WhichKeyDesc_DebuggerClearBreakpoints = "<leader>dB Clear Breakpoints"
+let g:WhichKeyDesc_DebuggerStepOver = "<leader>do Step Over"
+let g:WhichKeyDesc_DebuggerStepInto = "<leader>di Step Into"
+let g:WhichKeyDesc_DebuggerStepOut = "<leader>dO Step Out"
+let g:WhichKeyDesc_DebuggerToggleUI = "<leader>du Toggle Debugger UI"
+
+" Telescope-like Mappings
+let g:WhichKeyDesc_TelescopePrefix = "<leader>f +find"
+let g:WhichKeyDesc_TelescopeBuffers = "<leader>fb Find buffers"
+let g:WhichKeyDesc_TelescopeCommands = "<leader>fC Find commands"
+let g:WhichKeyDesc_TelescopeFindFiles = "<leader>ff Find files"
+let g:WhichKeyDesc_TelescopeFindFilesHidden = "<leader>fF Find files (include hidden)"
+let g:WhichKeyDesc_TelescopeHelp = "<leader>fh Find help"
+let g:WhichKeyDesc_TelescopeNotifications = "<leader>fn Find notifications"
+let g:WhichKeyDesc_TelescopeColorschemes = "<leader>ft Find themes"
+let g:WhichKeyDesc_TelescopeLiveGrep = "<leader>fw Find text"
+let g:WhichKeyDesc_TelescopeLiveGrepHidden = "<leader>fW Find text (include hidden)"
+
+" Git
+let g:WhichKeyDesc_GitPrefix = "<leader>g +git"
+let g:WhichKeyDesc_GitBranches = "<leader>gb Git branches"
+let g:WhichKeyDesc_GitCommits = "<leader>gc Git commits (repository)"
+let g:WhichKeyDesc_GitCommitsFile = "<leader>gC Git commits (current file)"
+let g:WhichKeyDesc_GitStatus = "<leader>gt Git status"
+
+" LSP
+let g:WhichKeyDesc_LSPPrefix = "<leader>l +lsp"
+let g:WhichKeyDesc_LSPHover = "K Show hover info"
+let g:WhichKeyDesc_LSPReformat = "<leader>lf Reformat code"
+let g:WhichKeyDesc_LSPSymbolsOutline = "<leader>lS Symbols outline"
+let g:WhichKeyDesc_LSPDiagnostics = "<leader>lD Show all diagnostics"
+let g:WhichKeyDesc_LSPCodeActions = "<leader>la Show code actions"
+let g:WhichKeyDesc_LSPRename = "<leader>lr Rename symbol"
+let g:WhichKeyDesc_LSPDocumentSymbol = "<leader>ls Show document symbols"
+
+" Go to
+let g:WhichKeyDesc_GotoDeclaration = "gD Go to declaration"
+let g:WhichKeyDesc_GotoTypeDefinition = "gy Go to type definition"
+let g:WhichKeyDesc_GotoImplementation = "gI Go to implementation"
+
+" Other
+let g:WhichKeyDesc_ShowIntentionActions = "z= Show intention actions"
+let g:WhichKeyDesc_NavigateBack = "<C-h> Navigate back"
+let g:WhichKeyDesc_ToggleExplorer = "<leader>e Toggle explorer"
+let g:WhichKeyDesc_NewFile = "<leader>n New file"
+let g:WhichKeyDesc_Quit = "<leader>q Quit"
+let g:WhichKeyDesc_Save = "<leader>w Save all"
+let g:WhichKeyDesc_DatabaseUI = "<leader>Db Show Database UI"
+
+" Tool Windows
+let g:WhichKeyDesc_ToolWindowsPrefix = "<leader>t +tool windows"
+let g:WhichKeyDesc_TerminalToolWindow = "<leader>tf Open terminal"
+
+" Zen Mode
+let g:WhichKeyDesc_ToggleZenMode = "<leader>zz Toggle Zen Mode"
+let g:WhichKeyDesc_ToggleDistractionFreeMode = "<leader>zd Toggle Distraction Free Mode"
