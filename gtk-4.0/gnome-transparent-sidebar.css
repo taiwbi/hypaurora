@@ -27,12 +27,12 @@ window>deck>grid>headerbar.titlebar>widget>widget>box>image {
 }
 
 window>deck>grid>headerbar.titlebar>box> :nth-child(1) {
-  margin-right: -40px;
+  margin-right: -44px;
   opacity: 0;
 }
 
 window>deck>grid>headerbar.titlebar>box> :nth-child(2) {
-  margin-right: 27px;
+  margin-right: 34px;
 }
 
 window>deck>grid>headerbar.titlebar>box>.close {
@@ -42,8 +42,8 @@ window>deck>grid>headerbar.titlebar>box>.close {
 window>deck>grid>headerbar.titlebar {
   background: linear-gradient(90deg,
       transparent 0%,
-      transparent 197px,
-      @headerbar_shade_color 198px,
+      transparent 220px,
+      @headerbar_shade_color 221px,
       @headerbar_bg_color 198px,
       @headerbar_bg_color 100%);
   border-bottom: none;
