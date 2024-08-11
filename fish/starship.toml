@@ -157,10 +157,10 @@ style = "fg:text"
 format = '[ ♥ $time ]($style)'
 
 # Wait 150 milliseconds for starship to check files under the current directory.
-scan_timeout = 300
+scan_timeout = 20000
 
 # Wait 150 milliseconds for starship to execute a command under the current directory.
-command_timeout = 300
+command_timeout = 20000
 
 # Disable the blank line at the start of the prompt
 add_newline = false
