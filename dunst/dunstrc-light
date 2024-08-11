@@ -1,15 +1,16 @@
 [global]
 separator_color= "#13273F"
 font = Monaspace Krypton Var, Vazir Code Hack 12
-icon_theme = Adwaita
+icon_theme = MoreWaita
 enable_recursive_icon_lookup = true
 class = dunst
 title = dunst
-corner_radius = 0
+corner_radius = 8
 padding = 4
-offset = 5x5
+offset = 6x6
 notification_limit = 10
 progress_bar = true
+frame_width = 2
 
 [urgency_low]
 background = "#eff1f5"
