@@ -58,7 +58,7 @@ window>box {
   padding: 0 8px 0 10px;
 }
 
-#window,
+#workspaces,
 #memory,
 #custom-storage,
 #network,
@@ -68,7 +68,7 @@ window>box {
   padding: 0 8px 0 8px;
 }
 
-#workspaces,
+#window,
 #battery {
   background: #11111b;
   border-radius: 0 8px 8px 0;
@@ -106,17 +106,20 @@ window>box {
   font-size: 20px;
 }
 
-#window {
+#workspaces {
   padding-right: 0;
 }
 
 #workspaces button {
   padding: 0 2px;
-  color: #cdd6f4;
+  color: #a6adc8;
+  opacity: 0.3;
+  transition: opacity 0.15s ease;
 }
 
 #workspaces button.active {
   color: #a6adc8;
+  opacity: 1;
 }
 
 /* Center */

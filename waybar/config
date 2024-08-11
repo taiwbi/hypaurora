@@ -7,8 +7,8 @@
   "margin-top": 3,
   "modules-left": [
     "custom/arch",
-    "hyprland/window",
     "hyprland/workspaces",
+    "hyprland/window",
     "custom/media"
   ],
   "modules-center": [
@@ -29,8 +29,11 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format-icons": {
-      "default": "",
-      "active": ""
+      "1": " ",
+      "2": "󰖟",
+      "3": " ",
+      "4": "󰎁 ",
+      "8": " "
     },
     "persistent-workspaces": {
       "1": [],
