@@ -96,4 +96,4 @@ sudo dnf remove firefox gnome-terminal rhythmbox
 
 # Hyprland Installation ===============
 sudo dnf copr enable solopasha/hyprland
-sudo dnf install hyprland hyprlock hypridle hyprpaper dunst waybar wofi -x kitty
+sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins dunst waybar wofi -x kitty

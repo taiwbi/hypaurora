@@ -45,7 +45,7 @@ Follow these steps to set up your Hyprland environment with these dotfiles (on F
 
    ```bash
    sudo dnf install fish gnome-keyring polkit-gnome git bc jq socat inotify-tools
-   sudo dnf install kitty icat wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle brightnessctl grim slurp wl-clipboard dunst fswebcam
+   sudo dnf install kitty icat wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle hyprland-plugins brightnessctl grim slurp wl-clipboard dunst fswebcam
    ```
 
    If you want per-window layout support:
