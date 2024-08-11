@@ -6,6 +6,12 @@
  * Use blur my shell extension to add blur effect behind the transparent part of windows
 */
 
+/* Transparent Headerbar */
+revealer.raised.top-bar {
+  background: alpha(@window_bg_color, 0);
+  box-shadow: none;
+}
+
 /* Transparent Sidebar */
 window {
   background: alpha(@window_bg_color, 0.8);
@@ -22,30 +28,32 @@ window {
 }
 
 /* Lollypop */
-window>deck>grid>headerbar.titlebar>widget>widget>box>image {
+window > deck > grid > headerbar.titlebar > widget > widget > box > image {
   margin-top: -1px;
 }
 
-window>deck>grid>headerbar.titlebar>box> :nth-child(1) {
+window > deck > grid > headerbar.titlebar > box > :nth-child(1) {
   margin-right: -44px;
   opacity: 0;
 }
 
-window>deck>grid>headerbar.titlebar>box> :nth-child(2) {
+window > deck > grid > headerbar.titlebar > box > :nth-child(2) {
   margin-right: 34px;
 }
 
-window>deck>grid>headerbar.titlebar>box>.close {
+window > deck > grid > headerbar.titlebar > box > .close {
   margin-right: 0;
 }
 
-window>deck>grid>headerbar.titlebar {
-  background: linear-gradient(90deg,
-      transparent 0%,
-      transparent 220px,
-      @headerbar_shade_color 221px,
-      @headerbar_bg_color 198px,
-      @headerbar_bg_color 100%);
+window > deck > grid > headerbar.titlebar {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 220px,
+    @headerbar_shade_color 221px,
+    @headerbar_bg_color 198px,
+    @headerbar_bg_color 100%
+  );
   border-bottom: none;
 }
 
@@ -59,16 +67,16 @@ window>deck>grid>headerbar.titlebar {
 }
 
 /* Speedtest (xyz.ketok.Speedtest) */
-.horizontal>gauge.dl.horizontal>overlay>.background {
+.horizontal > gauge.dl.horizontal > overlay > .background {
   background: transparent;
 }
 
-.horizontal>gauge.up.horizontal>overlay>.background {
+.horizontal > gauge.up.horizontal > overlay > .background {
   background: transparent;
 }
 
 /* Gnome Tweaks */
-window>leaflet>box:last-child>scrolledwindow>viewport.frame {
+window > leaflet > box:last-child > scrolledwindow > viewport.frame {
   background: @window_bg_color;
 }
 
@@ -77,8 +85,8 @@ window>leaflet>box:last-child>scrolledwindow>viewport.frame {
 }
 
 /* Geary */
-.geary-main-layout>leaflet>leaflet>box:first-child,
-.geary-main-layout>leaflet>leaflet>box:first-child>headerbar {
+.geary-main-layout > leaflet > leaflet > box:first-child,
+.geary-main-layout > leaflet > leaflet > box:first-child > headerbar {
   background: transparent;
 }
 
@@ -87,8 +95,21 @@ window box:nth-child(2) paned:nth-child(3) paned:nth-child(3) box:nth-child(2) {
   background: @window_bg_color;
 }
 
-window box:nth-child(2) paned:nth-child(3) box:first-child paned grid .sidebar-toolbar,
-window box:nth-child(2) paned:nth-child(3) box:first-child paned grid .sidebar-toolbar button {
+window
+  box:nth-child(2)
+  paned:nth-child(3)
+  box:first-child
+  paned
+  grid
+  .sidebar-toolbar,
+window
+  box:nth-child(2)
+  paned:nth-child(3)
+  box:first-child
+  paned
+  grid
+  .sidebar-toolbar
+  button {
   background: transparent;
 }
 
@@ -98,21 +119,115 @@ window box toolbar {
 }
 
 /* Disks */
-window>deck>box>leaflet>box:nth-child(3)>stack>statuspage>scrolledwindow>viewport.frame,
-window>deck>box>leaflet>box:nth-child(3)>stack>scrolledwindow>viewport.frame {
+window
+  > deck
+  > box
+  > leaflet
+  > box:nth-child(3)
+  > stack
+  > statuspage
+  > scrolledwindow
+  > viewport.frame,
+window
+  > deck
+  > box
+  > leaflet
+  > box:nth-child(3)
+  > stack
+  > scrolledwindow
+  > viewport.frame {
   background: @window_bg_color;
 }
 
-window>deck>box>leaflet>box:nth-child(1)>scrolledwindow treeview.view {
+window
+  > deck
+  > box
+  > leaflet
+  > box:nth-child(1)
+  > scrolledwindow
+  treeview.view {
   background: transparent;
 }
 
-window>deck>box>leaflet>box:nth-child(1)>headerbar.titlebar.windowhandle {
+window
+  > deck
+  > box
+  > leaflet
+  > box:nth-child(1)
+  > headerbar.titlebar.windowhandle {
   background: transparent;
   border-bottom: none;
 }
 
 /* BkackBox Terminal */
 #blackbox-main-window {
-  background-color: transparent; /* Unless transparency won't work */
+  background-color: transparent;
+  /* Unless transparency won't work */
+}
+
+#blackbox-main-window headerbar {
+  background-color: rgba(20, 21, 35, 0.85);
+}
+
+/* GNOME Text Editor */
+dialog-host
+  > widget
+  > widget
+  > toolbarview
+  > stack
+  > tabview
+  > widget
+  > page
+  > box
+  > overlay
+  > box
+  > scrolledwindow
+  > textview.editor.view {
+  background: alpha(@window_bg_color, 0);
+}
+
+dialog-host
+  > widget
+  > widget
+  > toolbarview
+  > stack
+  > tabview
+  > widget
+  > page
+  > box
+  > overlay
+  > box
+  > scrolledwindow
+  > textview.editor.view
+  > border,
+dialog-host
+  > widget
+  > widget
+  > toolbarview
+  > stack
+  > tabview
+  > widget
+  > page
+  > box
+  > overlay
+  > box
+  > scrolledwindow
+  > textview.editor.view
+  > border
+  > gutter,
+dialog-host
+  > widget
+  > widget
+  > toolbarview
+  > stack
+  > tabview
+  > widget
+  > page
+  > box
+  > overlay
+  > box
+  > scrolledwindow
+  > textview.editor.view
+  > border {
+  background: transparent;
 }
