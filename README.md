@@ -48,12 +48,42 @@ Follow these steps to set up your Hyprland environment with these dotfiles (on F
    sudo dnf install kitty icat wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle hyprland-plugins brightnessctl grim slurp wl-clipboard dunst fswebcam
    ```
 
+   ##### Per Windows Keyboard Layout
+
    If you want per-window layout support:
 
    ```bash
    sudo dnf install cargo
    cargo install hyprland-per-window-layout
    ```
+
+   ##### Night Light (Blue Light Filter) Support
+
+   To enable night light support:
+
+   1. Install the required dependencies:
+
+      ```bash
+      sudo dnf install cargo
+      cargo install hyprland-per-window-layout
+      ```
+
+   2. Configure night light settings:
+
+      Edit the `hypr-scripts/night-light.sh` file to adjust the hours and temperature:
+
+      ```sh
+      if [ "$current_hour" -ge 20 ] || [ "$current_hour" -lt 5 ]; then
+        if ! pgrep -x "wl-gammarelay-rs" > /dev/null; then
+          wl-gammarelay-rs &
+          busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 2300
+      ```
+
+      - Start time: 8 PM (`-ge 20`)
+      - End time: 5 AM (`-lt 5`)
+      - Temperature: 2300 (lower values increase blue light filtering)
+
+      Modify these values to customize your night light schedule and intensity.
 
 3. **Install the new dotfiles:**
 
