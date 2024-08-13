@@ -1,13 +1,31 @@
 set -gx EDITOR '/usr/bin/nvim'
 set -gx OPENAI_API_KEY 'null' # Nothing for now :)
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gcr/ssh"
+
+set THEME_MODE $(gsettings get org.gnome.desktop.interface color-scheme)
+if [ "$THEME_MODE" = "'prefer-dark'" ]
+  export STARSHIP_CONFIG="$HOME/.config/fish/starship-dark.toml"
+else
+  export STARSHIP_CONFIG="$HOME/.config/fish/starship.toml"
+end
 
 starship init fish | source
 source $HOME/.config/fish/proxy.fish
+source $HOME/.config/fish/fishmarks/marks.fish
 
 for file in $HOME/.config/fish/functions/*.fish
   source "$file"
 end
 
-set PATH $HOME/.local/bin  $PATH
-
 set fish_greeting ''
+
+if status is-interactive
+  and not set -q argv[1]
+  and not set -q TMUX
+  and set -q NVIM
+  exec tmux
+else if status is-interactive
+  and not set -q TMUX
+  and not set -q argv[1]
+  cd
+end

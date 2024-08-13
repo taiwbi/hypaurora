@@ -1,5 +1,5 @@
 # Set 'foo' as custom color palette
-palette = 'catppuccin_latte'
+palette = 'catppuccin_mocha'
 
 format = """
 $os\

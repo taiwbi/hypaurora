@@ -1,9 +1,12 @@
 #!/usr/bin/fish
 
-function vi
-  nvim
-end
+alias 'idehelper' "php artisan ide-helper:models && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta"
+alias vi nvim
 
-function ssh
-  kitten ssh $argv
-end
+alias ls 'ls --color --group-directories-first'
+
+alias rm 'rm -i'
+alias mv 'mv -i'
+alias mkdir='mkdir -p'
+alias df='df -h'
+alias free='free -m'

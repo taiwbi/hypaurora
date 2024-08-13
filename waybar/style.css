@@ -36,43 +36,48 @@
 
 * {
   font-family: "Monaspace Radon Var";
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
   color: #000000;
 }
 
 window {
   color: white;
+  background: transparent;
 }
 
-window > box {
-  background: #dce0e8;
+window>box {
+  margin: 2px 2px 0 2px;
 }
 
 /* Grouping *** *** *** *** *** *** *** *** *** *** *** *** */
 #cpu,
 #custom-arch {
+  background: #dce0e8;
   border-radius: 8px 0 0 8px;
   padding: 0 8px 0 10px;
 }
 
-#window,
+#workspaces,
 #memory,
 #custom-storage,
 #network,
 #pulseaudio,
 #battery {
+  background: #dce0e8;
   padding: 0 8px 0 8px;
 }
 
-#workspaces,
+#window,
 #battery {
+  background: #dce0e8;
   border-radius: 0 8px 8px 0;
   padding: 0 10px 0 8px;
 }
 
 /* Single Module Group */
 #clock {
+  background: #ccd0da;
   border-radius: 8px;
   padding: 0 10px;
   margin: 0 4px;
@@ -85,8 +90,10 @@ window > box {
 #custom-toggle_media,
 #custom-next_media,
 #custom-media {
+  background: transparent;
+  text-shadow: black 0 0 2px;
   padding: 0 5px;
-  color: #6c6f85;
+  color: white;
   font-weight: 900;
 }
 
@@ -96,29 +103,23 @@ window > box {
 
 #custom-arch {
   color: #072c61;
-  font-size: 15px;
+  font-size: 20px;
 }
 
-#window {
+#workspaces {
   padding-right: 0;
 }
 
 #workspaces button {
   padding: 0 2px;
-  border-radius: 0;
-}
-
-#workspaces button label {
-  color: #4c4f69;
+  color: #6c6f85;
+  opacity: 0.3;
+  transition: opacity 0.15s ease;
 }
 
 #workspaces button.active {
-  border-bottom: 3px solid #8839ef;
-}
-
-#workspaces button.active label {
   color: #6c6f85;
-  font-weight: 900;
+  opacity: 1;
 }
 
 /* Center */

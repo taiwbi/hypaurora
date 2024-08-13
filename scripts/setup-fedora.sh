@@ -9,7 +9,7 @@ reset_fg="\033[0m"
 header_0="$red⦿  $green⦿  $yellow⦿ $reset_fg"
 header_1="\n$red◉ $green◉ $yellow◉$reset_fg"
 
-echo -e "$header_0 Fedora Fast Hyprland Setup"
+echo -e "$header_0 Fedora GNOME Setup"
 echo -e "$cyan"
 echo "  _    _                                             "
 echo " | |  | |                                            "
@@ -21,17 +21,22 @@ echo "          __/ | |                                    "
 echo "         |___/|_|                                    "
 echo -e "$reset_fg\n"
 
-read -rp "This script is still under development and not tested. Are you sure you want to continue? (y/n)" yn
+echo "$header_1 This script is created to setup a workable system on Fedora Workstation for myself, this script might not work as good as it works for me."
+read -p "Do you want to proceed? (Y/n): " answer
 
-if [ "$yn" = "y" ]; then
-  echo "Hope you know what you're doing..."
-elif [ "$yn" = "n" ]; then
-  echo "Right Choice (Just for now)."
-  exit
-fi
+case ${answer:0:1} in
+  y|Y )
+    echo "Proceeding..."
+  ;;
+  * )
+    echo "Aborting..."
+    exit
+  ;;
+esac
 
-echo -e "$header_1 Confuring DNF package manager..."
-read -rp "Do you want to use a proxy for DNF? (y/n) " yn
+bash -c "$PWD/scripts/installation.sh"
+bash -c "$PWD/scripts/link.sh"
+bash -c "$PWD/scripts/config.sh"
 
 if [ "$yn" = "y" ]; then
   read -rp "Please write the proxy url (http://HOST:PORT or socks5://HOTS:PORT): " dnf_proxy
