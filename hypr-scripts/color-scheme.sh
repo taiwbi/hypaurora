@@ -49,6 +49,7 @@ set_themes() {
 		ln -s -f "gtk-light.css" "$HOME/.config/gtk-4.0/gtk.css"
 		ln -s -f "settings-light.ini" "$HOME/.config/gtk-3.0/settings.ini"
 		ln -s -f "settings-dark.ini" "$HOME/.config/gtk-4.0/settings.ini"
+		ln -s -f "kitty-light.conf" "$HOME/.config/kitty/kitty.conf"
 		sed -i 's/background-dark.png/background-light.png/g' "$HOME/.config/hypr/hyprpaper.conf"
 		sed -i "s/'mocha'/'latte'/g" "$HOME/.config/tmux/tmux.conf"
 	elif [[ "$mode" == "prefer-dark" ]]; then
@@ -58,6 +59,7 @@ set_themes() {
 		ln -s -f "gtk-dark.css" "$HOME/.config/gtk-4.0/gtk.css"
 		ln -s -f "settings-dark.ini" "$HOME/.config/gtk-3.0/settings.ini"
 		ln -s -f "settings-dark.ini" "$HOME/.config/gtk-4.0/settings.ini"
+		ln -s -f "kitty-dark.conf" "$HOME/.config/kitty/kitty.conf"
 		sed -i 's/background-light.png/background-dark.png/g' "$HOME/.config/hypr/hyprpaper.conf"
 		sed -i "s/'latte'/'mocha'/g" "$HOME/.config/tmux/tmux.conf"
 	fi
