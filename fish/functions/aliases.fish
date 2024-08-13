@@ -3,6 +3,8 @@
 alias 'idehelper' "php artisan ide-helper:models && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta"
 alias vi nvim
 
+alias ls 'ls --color --group-directories-first'
+
 alias rm 'rm -i'
 alias mv 'mv -i'
 alias mkdir='mkdir -p'
