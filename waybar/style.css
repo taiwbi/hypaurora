@@ -43,17 +43,16 @@
 
 window {
   color: white;
-  background: transparent;
+  background: #dce0e8;
 }
 
-window>box {
+window > box {
   margin: 2px 2px 0 2px;
 }
 
 /* Grouping *** *** *** *** *** *** *** *** *** *** *** *** */
 #cpu,
 #custom-arch {
-  background: #dce0e8;
   border-radius: 8px 0 0 8px;
   padding: 0 8px 0 10px;
 }
@@ -64,20 +63,17 @@ window>box {
 #network,
 #pulseaudio,
 #battery {
-  background: #dce0e8;
   padding: 0 8px 0 8px;
 }
 
 #window,
 #battery {
-  background: #dce0e8;
   border-radius: 0 8px 8px 0;
   padding: 0 10px 0 8px;
 }
 
 /* Single Module Group */
 #clock {
-  background: #ccd0da;
   border-radius: 8px;
   padding: 0 10px;
   margin: 0 4px;
@@ -90,10 +86,8 @@ window>box {
 #custom-toggle_media,
 #custom-next_media,
 #custom-media {
-  background: transparent;
-  text-shadow: black 0 0 2px;
   padding: 0 5px;
-  color: white;
+  color: #99a7df;
   font-weight: 900;
 }
 
