@@ -18,6 +18,8 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-a1f7b'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
+gsettings set org.gnome.desktop.interface font-name 'Geist 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Geist Mono 11'
 
 # Keybindings
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"
@@ -85,4 +87,4 @@ gsettings set com.raggesilver.BlackBox show-headerbar false
 gsettings set com.raggesilver.BlackBox floating-controls true
 gsettings set com.raggesilver.BlackBox floating-controls-hover-area 'uint32 20'
 gsettings set com.raggesilver.BlackBox delay-before-showing-floating-controls 'uint32 400'
-gsettings set com.raggesilver.BlackBox font "'Cartograph CF 11'"
+gsettings set com.raggesilver.BlackBox font "'Geist Mono 11'"

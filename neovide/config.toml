@@ -1,5 +1,5 @@
 frame = "none"
 
 [font]
-normal = [{family = "Cartograph CF", style = "Regular"}, "Vazir Code Hack"]
+normal = [{family = "Geist Mono", style = "Regular"}, "Vazir Code Hack"]
 size = 11
