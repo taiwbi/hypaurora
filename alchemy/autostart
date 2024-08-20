@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python "$HOME/.local/share/alchemy/bg.py"
