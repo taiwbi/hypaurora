@@ -4,6 +4,7 @@ import time
 from PIL import Image
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from gi.repository import Gio, GLib
 
 HOME = os.path.expanduser("~")
 CONFIG_DIR = os.path.join(HOME, ".config")
@@ -11,7 +12,8 @@ BG_FILE = os.path.join(CONFIG_DIR, "background")
 BG_DARK_FILE = os.path.join(CONFIG_DIR, "background-dark")
 
 def get_gsettings_value(key):
-    return subprocess.check_output(["gsettings", "get", "org.gnome.desktop.background", key]).decode().strip().strip("'")
+    settings = Gio.Settings.new("org.gnome.desktop.background")
+    return settings.get_string(key)
 
 def set_gsettings_value(key, value):
     subprocess.run(["gsettings", "set", "org.gnome.desktop.background", key, value])
@@ -42,16 +44,22 @@ class BackgroundChangeHandler(FileSystemEventHandler):
             update_backgrounds()
 
 def monitor_gsettings():
-    prev_bg = get_gsettings_value("picture-uri")
-    prev_bg_dark = get_gsettings_value("picture-uri-dark")
-    while True:
-        current_bg = get_gsettings_value("picture-uri")
-        current_bg_dark = get_gsettings_value("picture-uri-dark")
-        if current_bg != prev_bg or current_bg_dark != prev_bg_dark:
-            update_backgrounds()
-            prev_bg = current_bg
-            prev_bg_dark = current_bg_dark
-        time.sleep(1)
+    settings = Gio.Settings.new("org.gnome.desktop.background")
+    prev_bg = settings.get_string("picture-uri")
+    prev_bg_dark = settings.get_string("picture-uri-dark")
+
+    def on_changed(settings, key):
+        nonlocal prev_bg, prev_bg_dark
+        if key in ["picture-uri", "picture-uri-dark"]:
+            current_bg = settings.get_string("picture-uri")
+            current_bg_dark = settings.get_string("picture-uri-dark")
+            if current_bg != prev_bg or current_bg_dark != prev_bg_dark:
+                update_backgrounds()
+                prev_bg = current_bg
+                prev_bg_dark = current_bg_dark
+
+    settings.connect("changed", on_changed)
+    GLib.MainLoop().run()
 
 if __name__ == "__main__":
     update_backgrounds()
