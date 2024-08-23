@@ -3,12 +3,16 @@ import subprocess
 import time
 from PIL import Image
 from statistics import mean
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 from gi.repository import Gio, GLib
 
 HOME = os.path.expanduser("~")
 CONFIG_DIR = os.path.join(HOME, ".config")
 BG_FILE = os.path.join(CONFIG_DIR, "background")
 BG_DARK_FILE = os.path.join(CONFIG_DIR, "background-dark")
+
+last_update_time = 0
 
 
 def calculate_brightness(image_path):
@@ -34,7 +38,8 @@ def get_gsettings_value(key):
 
 
 def set_gsettings_value(key, value):
-  subprocess.run(["gsettings", "set", "org.gnome.desktop.background", key, value])
+  settings = Gio.Settings.new("org.gnome.desktop.background")
+  settings.set_string(key, value)
 
 
 def copy_current_background(background: str):
@@ -58,17 +63,26 @@ def create_dark_background():
 def create_light_background():
   with Image.open(BG_DARK_FILE) as img:
     # TODO: Make image a little brighter instead of darker
-    dark_img = img.point(lambda p: min(p * 1.4, 255))
+    dark_img = img.point(lambda p: min(p * 1.3, 255))
     dark_img.save(BG_FILE, 'PNG')
 
 
 def update_backgrounds():
-  print("Updating background...")
+  global last_update_time
+
+  if time.time() - last_update_time < 5:
+    last_update_time = time.time()
+    return
+
+  last_update_time = time.time()
+
+  print(f"Updating background...")
+  time.sleep(2)
 
   background_brightness = calculate_brightness(BG_FILE)
   print("brightness: {}".format(background_brightness))
 
-  if background_brightness > 35:
+  if background_brightness > 40:
     print("Background Image is Light")
     copy_current_background('light')
     create_dark_background()
@@ -80,12 +94,19 @@ def update_backgrounds():
   time.sleep(0.3)
   set_gsettings_value("picture-uri", f"file://{BG_FILE}")
   set_gsettings_value("picture-uri-dark", f"file://{BG_DARK_FILE}")
-  time.sleep(2)
   print("Background Updated")
+  last_update_time = time.time()
+
+
+class BackgroundChangeHandler(FileSystemEventHandler):
+  def on_modified(self, event):
+    if event.src_path == BG_FILE:
+      update_backgrounds()
 
 
 def monitor_gsettings():
   settings = Gio.Settings.new("org.gnome.desktop.background")
+
   def on_changed(settings, key):
     if key in ["picture-uri", "picture-uri-dark"]:
       current_bg = settings.get_string("picture-uri")
@@ -95,9 +116,19 @@ def monitor_gsettings():
         return
       update_backgrounds()
 
-  handler_id = settings.connect("changed", on_changed)
+  settings.connect("changed", on_changed)
   GLib.MainLoop().run()
 
 
 if __name__ == "__main__":
-  monitor_gsettings()
+  update_backgrounds()
+
+  observer = Observer()
+  observer.schedule(BackgroundChangeHandler(), CONFIG_DIR, recursive=False)
+  observer.start()
+
+  try:
+    monitor_gsettings()
+  except KeyboardInterrupt:
+    observer.stop()
+  observer.join()
