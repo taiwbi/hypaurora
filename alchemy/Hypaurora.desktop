@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hypaurora Scripts
+Comment=autostart Hypaurora scripts when added to autostart applications on GNOME tweaks
+Version=1.0
+Keywords=script;customization
+Exec="/home/mahdi/.local/share/alchemy/autostart"
+Terminal=false
+Icon=org.gnome.BrowserConnector
+Type=Application
+StartupNotify=false
