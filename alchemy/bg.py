@@ -6,10 +6,13 @@ from statistics import mean
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from gi.repository import Gio, GLib
+import signal
+import threading
 
 HOME = os.path.expanduser("~")
 CONFIG_DIR = os.path.join(HOME, ".config")
 BG_FILE = os.path.join(CONFIG_DIR, "background")
+BG_LIGHT_FILE = os.path.join(CONFIG_DIR, "background-light")
 BG_DARK_FILE = os.path.join(CONFIG_DIR, "background-dark")
 
 last_update_time = 0
@@ -46,12 +49,14 @@ def copy_current_background(background: str):
   current_bg = get_gsettings_value("picture-uri")
   if current_bg.startswith("file://"):
     current_bg = current_bg[7:]
+
+  if not os.path.exists(BG_FILE) or os.path.realpath(current_bg) != os.path.realpath(BG_FILE):
+    subprocess.run(["cp", current_bg, BG_FILE])
+
   if background == 'light':
-    if not os.path.exists(BG_FILE) or os.path.realpath(current_bg) != os.path.realpath(BG_FILE):
-      subprocess.run(["cp", current_bg, BG_FILE])
+    subprocess.run(["cp", current_bg, BG_LIGHT_FILE])
   else:
-    if not os.path.exists(BG_DARK_FILE) or os.path.realpath(current_bg) != os.path.realpath(BG_DARK_FILE):
-      subprocess.run(["cp", current_bg, BG_DARK_FILE])
+    subprocess.run(["cp", current_bg, BG_DARK_FILE])
 
 
 def create_dark_background():
@@ -62,9 +67,8 @@ def create_dark_background():
 
 def create_light_background():
   with Image.open(BG_DARK_FILE) as img:
-    # TODO: Make image a little brighter instead of darker
     dark_img = img.point(lambda p: min(p * 1.3, 255))
-    dark_img.save(BG_FILE, 'PNG')
+    dark_img.save(BG_LIGHT_FILE, 'PNG')
 
 
 def update_backgrounds():
@@ -77,7 +81,6 @@ def update_backgrounds():
   last_update_time = time.time()
 
   print(f"Updating background...")
-  time.sleep(2)
 
   background_brightness = calculate_brightness(BG_FILE)
   print("brightness: {}".format(background_brightness))
@@ -91,8 +94,7 @@ def update_backgrounds():
     copy_current_background('dark')
     create_light_background()
 
-  time.sleep(0.3)
-  set_gsettings_value("picture-uri", f"file://{BG_FILE}")
+  set_gsettings_value("picture-uri", f"file://{BG_LIGHT_FILE}")
   set_gsettings_value("picture-uri-dark", f"file://{BG_DARK_FILE}")
   print("Background Updated")
   last_update_time = time.time()
@@ -101,23 +103,28 @@ def update_backgrounds():
 class BackgroundChangeHandler(FileSystemEventHandler):
   def on_modified(self, event):
     if event.src_path == BG_FILE:
+      time.sleep(1)
       update_backgrounds()
 
 
-def monitor_gsettings():
+def monitor_gsettings(mainloop):
   settings = Gio.Settings.new("org.gnome.desktop.background")
 
   def on_changed(settings, key):
+    time.sleep(1)
     if key in ["picture-uri", "picture-uri-dark"]:
       current_bg = settings.get_string("picture-uri")
       current_bg_dark = settings.get_string("picture-uri-dark")
       if (current_bg == "'file:///usr/share/backgrounds/gnome/adwaita-l.jxl'"
         or current_bg_dark == "'file:///usr/share/backgrounds/gnome/adwaita-d.jxl'"):
         return
+      if (current_bg == "'file:///home/mahdi/.config/background-light'"
+        and current_bg_dark == "'file:///home/mahdi/.config/background-dark'"):
+        return
       update_backgrounds()
 
   settings.connect("changed", on_changed)
-  GLib.MainLoop().run()
+  mainloop.run()
 
 
 if __name__ == "__main__":
@@ -127,8 +134,26 @@ if __name__ == "__main__":
   observer.schedule(BackgroundChangeHandler(), CONFIG_DIR, recursive=False)
   observer.start()
 
-  try:
-    monitor_gsettings()
-  except KeyboardInterrupt:
+  mainloop = GLib.MainLoop()
+
+  # Create a separate thread for monitoring gsettings
+  gsettings_thread = threading.Thread(target=monitor_gsettings, args=(mainloop,))
+  gsettings_thread.start()
+
+
+  def signal_handler(sig, frame):
+    print("Stopping...")
     observer.stop()
-  observer.join()
+    mainloop.quit()  # Stop the GLib main loop
+    gsettings_thread.join()  # Wait for the gsettings thread to terminate
+    observer.join()  # Ensure observer stops before exiting
+    print("Stopped successfully")
+
+
+  # Catch SIGINT (Ctrl+C)
+  signal.signal(signal.SIGINT, signal_handler)
+
+  try:
+    observer.join()
+  except KeyboardInterrupt:
+    pass
