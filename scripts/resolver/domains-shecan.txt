@@ -13,3 +13,9 @@ nvidia.com
 openai.com
 s-cdn.anthropic.com
 statisig.anthropic.com
+jetbrains.com
+jetbrains.net
+jetbrains.space
+jetbrains.team
+download.jetbrains.com
+plugins.jetbrains.com

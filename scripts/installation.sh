@@ -77,6 +77,8 @@ sudo dnf install adw-gtk3-theme epiphany chromium gnome-console telegram-desktop
   gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer blackbox-terminal
 sudo dnf install php php-pecl-xdebug3 composer
 
+sudo dnf install python-pillow python-watchdog python-numpy python-opencv
+
 sudo dnf copr enable dusansimic/themes
 sudo dnf install morewaita-icon-theme
 
