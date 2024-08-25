@@ -16,7 +16,7 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-a1f7b'
+gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
 gsettings set org.gnome.desktop.interface font-name 'Geist 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Geist Mono 11'
