@@ -1,14 +1,13 @@
-import subprocess
-import cv2
-import numpy as np
-import os
-import time
-from gi.repository import Gio
 import argparse
+import os
 import random
 import string
-from statistics import mean
-from PIL import Image
+import subprocess
+import time
+
+import cv2
+import numpy as np
+from gi.repository import Gio
 
 parser = argparse.ArgumentParser(description='Adjust screen brightness.')
 parser.add_argument('--once', action='store_true', help='Run the adjustment only once')
@@ -92,7 +91,11 @@ def map_brightness(room_brightness):
   if color == 'default':
     return int(3087726 + (20.65669 - 3087726) / (1 + (room_brightness / 7224040) ** 0.9656249))
   else:
-    return int(103.9079 + (30.1668 - 103.9079) / (1 + (room_brightness / 18.80933) ** 3.021715))
+    # Check if time is between 8 PM and 5 AM
+    current_hour = time.localtime().tm_hour
+    if current_hour >= 20 or current_hour <= 5:
+      return int(100.6467 + (60.25403 - 100.6467) / (1 + (room_brightness / 13.86403) ^ 3.734272))
+    return int(101.6415 + (40.47894 - 101.6415) / (1 + (room_brightness / 13.97202) ** 2.610635))
 
 
 def main():
