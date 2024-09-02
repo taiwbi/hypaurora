@@ -17,7 +17,7 @@ fi
 
 mkdir -p "$HOME/Pictures/background/"
 
-rm -rf "$HOME/.config/fastfetch" && ln -s "$PWD/fastfetch" "$HOME/.config/"
+rm -rf "$HOME/.config/starship.toml" && ln -s "$PWD/starship.toml" "$HOME/.config/starship.toml"
 rm -rf "$HOME/.config/fontconfig" && ln -s "$PWD/fontconfig" "$HOME/.config/"
 rm -rf "$HOME/.config/mpv" && ln -s "$PWD/mpv" "$HOME/.config/"
 rm -rf "$HOME/.config/neovide" && ln -s "$PWD/neovide" "$HOME/.config/"
