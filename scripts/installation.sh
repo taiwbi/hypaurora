@@ -74,10 +74,11 @@ sudo dnf install libva-nvidia-driver
 
 sudo dnf install ripgrep nodejs npm wl-clipboard socat fish neovim aria2c python-pip unrar
 sudo dnf install adw-gtk3-theme epiphany chromium gnome-console telegram-desktop celluloid lollypop gnome-tweaks \
-  gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer blackbox-terminal
+  gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer \
+  gnome-shell-extension-gsconnect
 sudo dnf install php php-pecl-xdebug3 composer
 
-sudo dnf install python-pillow python-watchdog python-numpy python-opencv
+sudo dnf install python-pillow python-watchdog python-numpy python-opencv libnotify
 
 sudo dnf copr enable dusansimic/themes
 sudo dnf install morewaita-icon-theme
