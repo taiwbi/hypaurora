@@ -1,5 +1,0 @@
-frame = "none"
-
-[font]
-normal = [{family = "Geist Mono", style = "Regular"}, "Vazir Code Hack"]
-size = 11
