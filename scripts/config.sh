@@ -18,8 +18,11 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Geist 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Geist Mono 11'
+gsettings set org.gnome.desktop.interface font-name 'Mazzard, Yekan Bakh 13'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Maple Mono, Vazir Code Hack 12'
+gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 12'
+gsettings set org.gnome.desktop.interface text-scaling-factor '1'
+
 
 # Keybindings
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"
@@ -78,6 +81,7 @@ gsettings set org.gnome.nautilus.preferences click-policy 'single'
 gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 gsettings set org.gnome.Epiphany search-engine-providers "[{'url': <'https://www.bing.com/search?q=%s'>, 'bang': <'\!bi'>, 'name': <'Bing'>}, {'url': <'https://duckduckgo.com/?q=%s&t=epiphany'>, 'bang': <'\!ddg'>, 'name': <'DuckDuckGo'>}, {'url': <'https://www.google.com/search?q=%s'>, 'bang': <'\!g'>, 'name': <'Google'>}, {'url': <'https://search.brave.com/search?q=%s&source=web&summary=1'>, 'bang': <'\!b'>, 'name': <'Brave'>}]"
 gsettings set org.gnome.Epiphany default-search-engine 'Brave'
+gsettings set org.gnome.Epiphany.web:/org/gnome/epiphany/web/ default-zoom-level 1.05
 
 gsettings set org.gnome.Lollypop save-state 'true'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-gnome-lollypop/ enable false
