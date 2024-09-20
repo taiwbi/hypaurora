@@ -20,7 +20,7 @@ $php\
 $nim\
 $rust\
 $scala\
-$docker_context
+$docker_context\
 [\\$](bold text) \
 """
 
