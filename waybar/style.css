@@ -46,7 +46,7 @@ window {
   background: transparent;
 }
 
-window>box {
+window > box {
   margin: 2px 2px 0 2px;
 }
 
@@ -91,7 +91,7 @@ window>box {
 #custom-next_media,
 #custom-media {
   background: transparent;
-  text-shadow: black 0 0 2px;
+  text-shadow: black 0 0 3px;
   padding: 0 5px;
   color: white;
   font-weight: 900;
