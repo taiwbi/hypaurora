@@ -7,8 +7,8 @@ DARK_ICON_THEME="Zafiro-Nord-Black"
 LIGHT_GTK_THEME="adw-gtk3"
 DARK_GTK_THEME="adw-gtk3-dark"
 
-LIGHT_CURSOR_THEME="Bibata-Modern-Ice"
-DARK_CURSOR_THEME="Bibata-Modern-Ice"
+LIGHT_CURSOR_THEME="Bibata-a1f7b"
+DARK_CURSOR_THEME="Bibata-a1f7b"
 
 # Function to set themes
 set_themes() {
