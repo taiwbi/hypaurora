@@ -72,10 +72,13 @@ sudo dnf install libva-nvidia-driver
 
 # Install software
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat fish neovim aria2c python-pip unrar
+sudo dnf install ripgrep nodejs npm wl-clipboard socat fish neovim aria2c python-pip unrar grc
 sudo dnf install adw-gtk3-theme epiphany chromium gnome-console telegram-desktop celluloid lollypop gnome-tweaks \
-  gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer blackbox-terminal
+  gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer \
+  gnome-shell-extension-gsconnect
 sudo dnf install php php-pecl-xdebug3 composer
+
+sudo dnf install python-pillow python-watchdog python-numpy python-opencv libnotify
 
 sudo dnf copr enable dusansimic/themes
 sudo dnf install morewaita-icon-theme
@@ -96,4 +99,4 @@ sudo dnf remove firefox gnome-terminal rhythmbox
 
 # Hyprland Installation ===============
 sudo dnf copr enable solopasha/hyprland
-sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins dunst waybar wofi -x kitty
+sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins dunst waybar wofi kitty polkit-gnome

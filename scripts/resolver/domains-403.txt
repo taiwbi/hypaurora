@@ -1,3 +1,0 @@
-codecs.fedoraproject.org
-mirrors.fedoraproject.org
-fedoraproject.org
