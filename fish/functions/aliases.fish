@@ -11,6 +11,9 @@ alias mkdir='mkdir -p'
 alias df='df -h'
 alias free='free -m'
 
+alias icat='kitty +kitten icat'
+alias ssh='kitty +kitten ssh'
+
 function ipinfo
   curl --silent "http://ipinfo.io/$argv[1]/json" | jq
 end
