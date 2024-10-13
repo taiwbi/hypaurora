@@ -1,147 +1,66 @@
 format = """
-$username\
-[@](fg:green)\
-$hostname\
-:\
+[](#a3aed2)\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[ ](#a3aed2)\
+[](#769ff0)\
 $directory\
+[](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
-$c\
-$elixir\
-$python\
-$elm\
-$golang\
-$gradle\
-$haskell\
-$java\
-$julia\
+[](fg:#394260 bg:#212736)\
 $nodejs\
-$php\
-$nim\
 $rust\
-$scala\
-$docker_context\
-[\\$](bold text) \
-"""
-
-
-scan_timeout = 300
-command_timeout = 300
-
-# Disable the blank line at the start of the prompt
-add_newline = false
-
-# An alternative to the username module which displays a symbol that
-# represents the current operating system
-[os]
-style = "fg:blue"
-disabled = false # Disabled by default
-
-[os.symbols]
-Fedora = "  "
-Manjaro = " "
-
-# You can also replace your username with a neat symbol like   or disable this
-# and use the os module below
-[username]
-show_always = true
-style_user = "fg:green"
-style_root = "fg:red"
-format = '[$user]($style)'
-disabled = false
-
-[hostname]
-ssh_only = false
-format = '[$ssh_symbol](fg:green)[$hostname](fg:green)'
-trim_at = '.companyname.com'
-disabled = false
+$pythopythonn\
+$php\
+[ ](fg:#212736)\
+[](#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+\n$character"""
 
 [directory]
-style = "fg:cyan"
-format = "[$path]($style)"
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-[c]
-symbol = ""
-style = "fg:blue"
-format = ' [](fg:cyan) [($version)]($style)'
-
-[docker_context]
-symbol = ""
-style = "fg:lavender"
-format = ' [](fg:cyan) [blue $context ]($style)'
-
-[elixir]
-symbol = ""
-style = "fg:green"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
-
-[python]
-symbol = ""
-style = "fg:yellow"
-format = ' [](fg:cyan) [$symbol ($virtualenv)]($style)'
-detect_folders = ['.venv']
-
-[elm]
-symbol = ""
-style = "fg:green"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [git_branch]
 symbol = ""
-style = "fg:green"
-format = ' [](fg:cyan) [$symbol]($style) $branch'
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-style = "fg:purple"
-format = ' [$all_status$ahead_behind]($style)'
-
-[golang]
-symbol = ""
-style = "fg:blue"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
-
-[gradle]
-style = "fg:blue"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
-
-[haskell]
-symbol = ""
-style = "fg:blue"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
-
-[java]
-symbol = ""
-style = "fg:red"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
-
-[julia]
-symbol = ""
-style = "fg:purple"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:green"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
-
-[php]
-symbol = ""
-style = "fg:purple"
-format = ' [](fg:cyan) [$symbol]($style)  ($version)'
-
-[nim]
-symbol = "󰆥"
-style = "fg:red"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
 symbol = ""
-style = "fg:red"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[scala]
-symbol = ""
-style = "fg:red"
-format = ' [](fg:cyan) [$symbol]($style) ($version)'
+[python]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
