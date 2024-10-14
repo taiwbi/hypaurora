@@ -10,5 +10,5 @@ insensitive=true
 prompt=‌ Don't use your mouse! Keyboard is better
 columns=1
 allow_images=true
-image_size=35
+image_size=40
 key_expand=Right
