@@ -9,7 +9,11 @@ alias rm 'rm -i'
 alias mv 'mv -i'
 alias mkdir='mkdir -p'
 alias df='df -h'
-alias free='free -m'
+alias free='free -h'
+alias aria='aria2c -x 16'
+
+alias icat='kitty +kitten icat'
+alias ssh='kitty +kitten ssh'
 
 function ipinfo
   curl --silent "http://ipinfo.io/$argv[1]/json" | jq

@@ -16,9 +16,9 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+gsettings set org.gnome.desktop.interface cursor-theme 'Hatter'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Mazzard, Yekan Bakh 13'
+gsettings set org.gnome.desktop.interface font-name 'Geist, Yekan Bakh 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Maple Mono, Vazir Code Hack 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 12'
 gsettings set org.gnome.desktop.interface text-scaling-factor '1'
@@ -91,4 +91,4 @@ gsettings set com.raggesilver.BlackBox show-headerbar false
 gsettings set com.raggesilver.BlackBox floating-controls true
 gsettings set com.raggesilver.BlackBox floating-controls-hover-area 'uint32 20'
 gsettings set com.raggesilver.BlackBox delay-before-showing-floating-controls 'uint32 400'
-gsettings set com.raggesilver.BlackBox font "'Geist Mono 11'"
+gsettings set com.raggesilver.BlackBox font 'Maple Mono 11'
