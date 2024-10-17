@@ -29,8 +29,5 @@ rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
 rm -rf "$HOME/.ideavimrc" && ln -s "$PWD/ideavimrc" "$HOME/.ideavimrc"
 rm -rf "$HOME/.local/bin/toggle-proxy" && ln -s "$PWD/bin/toggle-proxy" "$HOME/.local/bin/toggle-proxy"
 rm -rf "$HOME/.local/bin/toggle-background" && ln -s "$PWD/bin/toggle-background" "$HOME/.local/bin/toggle-background"
-rm -rf "$HOME/.local/share/alchemy" && ln -s "$PWD/alchemy" "$HOME/.local/share/alchemy/"
-mkdir -p ~/.config/autostart
-rm -f "$HOME/.local/share/applications/Hypaurora.desktop" && cp "$PWD/alchemy/Hypaurora.desktop" "$HOME/.config/autostart/Hypaurora.desktop"
 
 echo -e ""

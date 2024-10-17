@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# python "$HOME/.local/share/alchemy/bg.py" &
-# python "$HOME/.local/share/alchemy/brightness.py"
-# python "$HOME/.local/share/alchemy/eye-protector.py"
