@@ -18,7 +18,7 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface cursor-theme 'Hatter'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Geist, Yekan Bakh 11'
+gsettings set org.gnome.desktop.interface font-name 'Geist, Pelak 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Maple Mono, Vazir Code Hack 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 12'
 gsettings set org.gnome.desktop.interface text-scaling-factor '1'
