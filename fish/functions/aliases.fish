@@ -12,8 +12,10 @@ alias df='df -h'
 alias free='free -h'
 alias aria='aria2c -x 16'
 
-alias icat='kitty +kitten icat'
-alias ssh='kitty +kitten ssh'
+if test "$TERM" = "xterm-kitty"
+  alias icat='kitty +kitten icat'
+  alias ssh='kitty +kitten ssh'
+end
 
 function ipinfo
   curl --silent "http://ipinfo.io/$argv[1]/json" | jq
