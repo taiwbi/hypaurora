@@ -16,7 +16,7 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface cursor-theme 'Hatter'
+gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
 gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Maple Mono, Vazir Code Hack 12'
@@ -85,10 +85,3 @@ gsettings set org.gnome.Epiphany.web:/org/gnome/epiphany/web/ default-zoom-level
 
 gsettings set org.gnome.Lollypop save-state 'true'
 gsettings set org.gnome.desktop.notifications.application:/org/gnome/desktop/notifications/application/org-gnome-lollypop/ enable false
-
-gsettings set com.raggesilver.BlackBox remember-window-size true
-gsettings set com.raggesilver.BlackBox show-headerbar false
-gsettings set com.raggesilver.BlackBox floating-controls true
-gsettings set com.raggesilver.BlackBox floating-controls-hover-area 'uint32 20'
-gsettings set com.raggesilver.BlackBox delay-before-showing-floating-controls 'uint32 400'
-gsettings set com.raggesilver.BlackBox font 'Maple Mono 11'
