@@ -4,7 +4,7 @@ alias 'idehelper' "php artisan ide-helper:models && php artisan ide-helper:gener
 alias sens 'sensors && echo -e "\r\rNvidia GPU temp: "(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)"°C"'
 alias vi nvim
 
-alias ls 'ls --color --group-directories-first'
+alias ls 'lsd --group-directories-first'
 
 alias rm 'rm -i'
 alias mv 'mv -i'
