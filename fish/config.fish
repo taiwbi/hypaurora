@@ -20,8 +20,4 @@ if status is-interactive
   and not set -q TMUX
   and set -q NVIM
   exec tmux
-else if status is-interactive
-  and not set -q TMUX
-  and not set -q argv[1]
-  cd
 end
