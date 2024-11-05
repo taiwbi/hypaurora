@@ -72,7 +72,7 @@ sudo dnf install libva-nvidia-driver
 
 # Install software
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat fish neovim aria2c python-pip unrar grc
+sudo dnf install ripgrep nodejs npm wl-clipboard socat fish neovim aria2c python-pip unrar grc lsd
 sudo dnf install adw-gtk3-theme epiphany chromium gnome-console telegram-desktop celluloid lollypop gnome-tweaks \
   gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer \
   gnome-shell-extension-gsconnect
