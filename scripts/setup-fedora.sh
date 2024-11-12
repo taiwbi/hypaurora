@@ -57,7 +57,7 @@ sudo dnf update -y
 
 echo -e "$header_1 Installing basic packages"
 sudo dnf install fish gnome-keyring polkit-gnome git bc jq socat inotify-tools # absolute basic
-sudo dnf install kitty icat wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle brightnessctl grim slurp wl-clipboard dunst fswebcam # Hyprland Specific
+sudo dnf install kitty wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle brightnessctl grim slurp wl-clipboard dunst fswebcam # Hyprland Specific
 
 read -rp "Do you want to per window keyboard layout on Hyprland?? (y/n) " yn
 
