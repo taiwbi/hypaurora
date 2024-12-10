@@ -19,7 +19,7 @@ headerbar.titlebar {
 }
 
 /* Transparent Sidebar */
-window {
+window:not(.panel):not(.bar) {
   background: alpha(@window_bg_color, 0.8);
 }
 
