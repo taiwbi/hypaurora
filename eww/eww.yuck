@@ -175,7 +175,7 @@
 (defwindow cal
   :monitor '["<primary>", "eDP-1"]'
   :stacking "fg"
-  :geometry (geometry :x 5 :y 0 :width "400px" :height "400px" :anchor "bottom left")
+  :geometry (geometry :x 0 :y 0 :width "400px" :height "400px" :anchor "bottom left")
   :namespace "ewwpanel"
   :exclusive false
   :class "panel"
