@@ -1,5 +1,5 @@
 format = """
-[   ](fg:blue)\
+[  ](fg:blue)\
 $directory\
 $php\
 $nodejs\
