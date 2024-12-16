@@ -1,0 +1,183 @@
+(defpoll VOLUME :interval "100ms" :initial "0" "bash ~/.config/eww/scripts/get-volume")
+
+(defwidget bar_widget [screen]
+  (centerbox :orientation "v"
+    :class "bar_widget"
+    (box :class "segment-top"
+         :valign "start"
+      (top :screen screen))
+    (box :valign "center"
+         :class "middle"
+      (middle :screen screen))
+    (box :valign "end"
+         :class "segment-bottom"
+      (bottom :screen screen))))
+
+(defwidget top [screen]
+  (box :orientation "v"
+       :valign "start"
+       :halign "center"
+       :space-evenly false
+    (logo)
+    (workspaces)
+  )
+)
+
+(defwidget middle [] (time))
+
+(defwidget bottom [screen]
+  (box :orientation "v"
+       :valign "end"
+       :halign "center"
+       :space-evenly false
+       :spacing 1
+    (eventbox
+         :onhover "eww update statusHover=true"
+         :onhoverlost "eww update statusHover=false"
+         (box :orientation "v"
+             :class "clickable"
+             :valign "end"
+             :halign "center"
+             :space-evenly false
+             :spacing 8
+             :width 38
+             :class { statusHover ? "status clickable hover" : "status clickable" }
+             (status_network :strength {EWW_NET.wlo1.NET_DOWN} :offline "" :excellent "" :good "" :okay "" :slow "" :terrible "")
+             (status_volume :strength {VOLUME.volume} :mute "" :none "" :low "" :high "" :ultra "")
+             (status_battery :status {EWW_BATTERY.BAT0.status} :battery {EWW_BATTERY.BAT0.capacity} :charge "" :one "" :two "" :three "" :four "")
+         )
+    )
+    (box (date))
+    (power_buttons :shutdown "poweroff"
+                   :shutdown_icon "")
+  )
+)
+
+(defwidget logo []
+  (image :path "./assets/hyprland-logo.svg"
+         :class "logo"
+         :image-height 23)
+)
+
+(deflisten workspaces :initial "[]" "bash ~/.config/eww/scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash ~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces []
+  (eventbox :onscroll "bash ~/.config/eww/scripts/change-active-workspace {} ${current_workspace}"
+            :class "workspaces"
+    (box :space-evenly true
+         :orientation "v"
+      (label :text "${workspaces}${current_workspace}"
+             :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text {workspace.id > 4 && workspace.windows == 0 && workspace.id != current_workspace ? "" :
+                    workspace.id == current_workspace ? "" :
+                    workspace.windows > 0 ? "" : ""}
+                   :class "icon workspace-entry ${workspace.id == current_workspace ? "current" : ""}" )
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget time []
+  (box :orientation "v"
+       :class "time"
+    hour min sec))
+
+(defwidget status_battery [battery status one two three four charge]
+  (box :class "battery"
+       :space-evenly true
+       :orientation "v"
+       :spacing 2
+    (label :class "icon"
+      :text {status == 'Charging' ? charge :
+      battery < 26 ? one :
+        battery < 51 ? two :
+          battery < 76 ? three : four})
+  )
+)
+
+(defwidget status_volume [strength mute none low high ultra]
+  (box :class "volume"
+       :space-evenly false
+       :orientation "v"
+       :spacing 2
+    (label :class "icon"
+      :text {strength == 0 ? mute :
+      strength < 10 ? none :
+        strength < 51 ? low :
+        strength < 76 ? high : ultra})
+  )
+)
+
+(defwidget status_network [strength offline excellent good okay slow terrible]
+  (box :class "network"
+    :space-evenly false
+    :orientation "v"
+    :spacing 2
+    (label :class "icon"
+      :text {strength == 0 ? offline :
+        strength < 11 ? terrible :
+        strength < 31 ? slow :
+        strength < 61 ? okay :
+        strength < 86 ? good : excellent})
+  )
+)
+
+(defwidget date []
+  (eventbox :onclick "eww close cal || eww open cal"
+    :onhover "eww update dateHover=true"
+    :onhoverlost "eww update dateHover=false"
+    :halign "center"
+    (box :orientation "v"
+         :class { dateHover ? "date clickable hover" : "date clickable" } ;; Dynamically apply class
+         :halign "center"
+         :spacing 5
+         :width 38
+      day_word jday jmonth
+    )
+  )
+)
+
+(defwidget power_buttons [shutdown shutdown_icon]
+  (box :class "icon power-buttons"
+    (button :class "sm-icon shutdown" :onclick shutdown shutdown_icon)
+  )
+)
+
+(defvar dateHover false)  ;; Initial state: not hovered
+(defvar statusHover false)
+
+(defpoll hour :interval "1s" "date +%H")
+(defpoll min  :interval "1s" "date +%M")
+(defpoll sec  :interval "1s" "date +%S")
+
+(defpoll day_word :interval "10m" "date +%a")
+(defpoll day      :interval "10m" "date +%d")
+(defpoll month    :interval "1h"  "date +%m")
+(defpoll year     :interval "1h"  "date +%y")
+(defpoll jday     :interval "10m" "jdate +%d")
+(defpoll jmonth   :interval "1h"  "jdate +%m")
+(defpoll jyear    :interval "1h"  "jdate +%y")
+
+(defwindow bar
+  :monitor '["<primary>", "eDP-1"]'
+  :stacking "fg"
+  :geometry (geometry :x 4 :y 10 :width "47px" :height "1060px" :anchor "center left")
+  :namespace "ewwbar"
+  :exclusive true
+  :windowtype "desktop"
+  (bar_widget :screen 1))
+
+(defwindow cal
+  :monitor '["<primary>", "eDP-1"]'
+  :stacking "fg"
+  :geometry (geometry :x 6 :y 10 :width "400px" :height "400px" :anchor "bottom left")
+  :namespace "ewwpanel"
+  :exclusive false
+  :class "panel"
+  (label :text "Calendar will be here :)")
+)

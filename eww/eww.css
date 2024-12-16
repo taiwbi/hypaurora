@@ -1,0 +1,83 @@
+* {
+  all: unset;
+}
+
+window.bar {
+  background: rgba(30, 30, 46, 0.8);
+  color: #cdd6f4;
+  font-size: 12px;
+  border-radius: 10px;
+  border: 2px solid #74c7ec;
+  font-family: "MonaSpace Argon";
+}
+
+.sm-icon {
+  font-size: 1.2em;
+}
+
+.icon {
+  font-size: 1.3em;
+  font-family: Phosphor;
+}
+
+.clickable {
+  margin: 0 1px 0 2px;
+  padding: 10px 7px;
+  border-radius: 6px;
+  transition: background 250ms ease;
+}
+.clickable.hover {
+  background: rgba(69, 71, 90, 0.8);
+}
+
+.segment-top {
+  margin-top: 15px;
+}
+
+.segment-bottom {
+  margin-bottom: 15px;
+}
+
+.logo {
+  margin-bottom: 7px;
+}
+
+.workspaces box {
+  margin: 3px;
+  padding-left: 1px;
+  color: #7f849c;
+}
+.workspaces box.occupied {
+  color: #a6adc8;
+}
+.workspaces box .current {
+  color: #94e2d5;
+  font-size: 1.5em;
+}
+
+.systray {
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+.time {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #cba6f7;
+  font-family: "MonaSpace Radon ExtraBold";
+  font-size: 15;
+}
+
+.power-buttons .shutdown {
+  color: #f38ba8;
+  margin-top: 5px;
+}
+
+/* Panel */
+window.cal {
+  background: rgba(30, 30, 46, 0.8);
+  border-radius: 12px;
+  border: 2px solid #b4befe;
+}
+
+/*# sourceMappingURL=eww.css.map */

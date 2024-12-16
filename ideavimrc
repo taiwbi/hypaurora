@@ -175,6 +175,14 @@ map gy <Action>(GotoTypeDeclaration)
 map gI <Action>(GotoImplementation)
 " References WARN: Does not have an action
 
+" AI Actions ---------------------------------------------------------
+" New Contiue Chat
+map <leader>Pc <Action>(continue.newContinueSession)
+" Rewrite selected code
+vmap <leader>Pr <Action>(continue.inlineEdit)
+" Add content to chat
+vmap <leader>Pi <Action>(continue.focusContinueInput)
+
 " ----- --------------------------------------------------------------
 " Other --------------------------------------------------------------
 
