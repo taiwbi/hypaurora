@@ -3,7 +3,6 @@
 # Destination directory
 destination_dir="$HOME/Pictures/background"
 destination_file="$destination_dir/background.png"
-lockscreen_file="$destination_dir/lockscreen.png"
 
 # Check if image is dark or light itself:
 identify -verbose background-dark.png
@@ -18,7 +17,7 @@ ffmpeg -i "$1" -vf "scale='if(gt(a,16/9),-1,1920)':'if(gt(a,16/9),1080,-1)',crop
 ffmpeg -i "$destination_file" -filter_complex "curves=all=0.05/0 0.55/0.45 1/0.95" "$destination_dir/background-dark.png" -y
 ffmpeg -i "$destination_file" -filter_complex "curves=all=0/0.1 0.4/0.6 0.9/1" "$destination_dir/background-light.png" -y
 ffmpeg -i "$destination_file" -vf "crop=iw-64:ih-20:54:10,boxblur=20:20" -y "$destination_dir/background-dark-jb.png"
-# ffmpeg -i "$destination_file" -vf "boxblur=40:10" "$lockscreen_file" -y
+ffmpeg -i "$destination_file" -vf "crop=iw-64:ih-20:54:10" "$destination_dir/background-jb-solid.png" -y
 
 pkill hyprpaper
 hyprpaper
