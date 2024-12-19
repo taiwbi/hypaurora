@@ -8,11 +8,9 @@ $surface1-color: #45475a;
 }
 
 window.bar {
-  background: rgba($base-color, 0.8);
+  background: rgba($base-color, 1);
   color: $text-color;
   font-size: 12px;
-  border-radius: 10px;
-  border: 2px solid #74c7ec;
 
   font-family: "MonaSpace Argon";
 }
