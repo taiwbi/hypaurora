@@ -1,66 +1,38 @@
 format = """
-[](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
-[ ](#a3aed2)\
-[](#769ff0)\
+[  ](fg:blue)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
-$git_branch\
-$git_status\
-[](fg:#394260 bg:#212736)\
+$php\
 $nodejs\
 $rust\
 $python\
-$php\
-[ ](fg:#212736)\
-[](#1d2230)\
-$time\
-[ ](fg:#1d2230)\
+$git_branch\
+$git_status\
 \n$character"""
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
-format = "[ $path ]($style)"
+format = "[$path](fg:bright-black)"
 truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+truncation_symbol = "/"
 
 [git_branch]
-symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+symbol = " "
+format = ' [$symbol](fg:red) [$branch](fg:bright-black)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+format = ' [$all_status$ahead_behind](fg:yellow)'
 
 [nodejs]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+symbol = " "
+format = ' [$symbol](fg:red) [$version](fg:bright-black)'
 
 [rust]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+symbol = " "
+format = ' [$symbol](fg:purple) [$version](fg:bright-black)'
 
 [python]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) $virtualenv ](fg:#769ff0 bg:#212736)]($style)'
+symbol = " "
+format = ' [$symbol](fg:cyan) [$version $virtualenv](fg:bright-black)'
 
 [php]
-symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+symbol = " "
+format = ' [$symbol](fg:blue) [$version](fg:bright-black)'
