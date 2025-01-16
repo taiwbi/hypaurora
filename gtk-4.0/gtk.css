@@ -1,32 +1,38 @@
 .navigation-sidebar row:hover {
-  background: alpha(@accent_color, 0.08);
+  background: alpha(var(--accent-color), 0.08);
 }
 
 .navigation-sidebar row:selected {
-  background: alpha(@accent_color, 0.12);
+  background: alpha(var(--accent-color), 0.12);
 }
 
 .navigation-sidebar row:active {
-  background: alpha(@accent_color, 0.16);
+  background: alpha(var(--accent-color), 0.16);
 }
 
 .navigation-sidebar row:active:selected {
-  background: alpha(@accent_color, 0.2);
+  background: alpha(var(--accent-color), 0.2);
 }
 
 gridview > child:hover > widget {
-  background: alpha(@accent_color, 0.08);
+  background: alpha(var(--accent-color), 0.08);
 }
 
 gridview > child:selected > widget {
-  background: alpha(@accent_color, 0.12);
+  background: alpha(var(--accent-color), 0.12);
 }
 
 gridview > child:hover:selected > widget {
-  background: alpha(@accent_color, 0.16);
+  background: alpha(var(--accent-color), 0.16);
 }
 
 .navigation-sidebar row image,
 .sidebar-icon {
-  color: @accent_color;
+  color: var(--accent-color);
+}
+
+/* Fix very long lines caused by custom font */
+label {
+  margin-top: -2px;
+  margin-bottom: -1px;
 }
