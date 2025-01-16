@@ -18,10 +18,8 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Aftika 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Monaspace Krypton 11'
-gsettings set org.gnome.Console custom-font  "MonaspiceNe Nerd Font Mono 11"
-gsettings set org.gnome.Ptyxis font-name 'MonaspiceNe Nerd Font Mono 11'
+gsettings set org.gnome.desktop.interface font-name 'DIN Pro 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'PFDinMono-Regular 15'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 12'
 gsettings set org.gnome.desktop.interface text-scaling-factor '1'
 
