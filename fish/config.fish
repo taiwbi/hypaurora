@@ -28,11 +28,13 @@ if status is-interactive
     end
 end
 
-if [ $TERM = "xterm-ghostty" -o $TERM = "xterm-kitty" ];
-  kitten icat --align=center ~/Pictures/2B/main-2.png
-  echo ""
+if command -v tput &> /dev/null; and [ -t 1 ]; and [ -n "$TERM" ]; and [ $TERM != "dumb" ]
+    if [ $TERM = "xterm-ghostty" -o $TERM = "xterm-kitty" ];
+        kitten icat --align=center ~/Pictures/2B/main-2.png
+        echo ""
+    end
+    set text "Beneath her cold exterior lies a warmth that defies her programming,"
+    printf "%*s\n" (math "round(($(tput cols) + $(string length "$text")) / 2)") "$text"
+    set text "yearning to protect what she cherishes most."
+    printf "%*s\n" (math "round(($(tput cols) + $(string length "$text")) / 2)") "$text"
 end
-set text "Beneath her cold exterior lies a warmth that defies her programming,"
-printf "%*s\n" (math "round(($(tput cols) + $(string length "$text")) / 2)") "$text"
-set text "yearning to protect what she cherishes most."
-printf "%*s\n" (math "round(($(tput cols) + $(string length "$text")) / 2)") "$text"
