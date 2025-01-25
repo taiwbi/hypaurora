@@ -6,7 +6,9 @@ set -gx STARSHIP_CONFIG "$HOME/.config/starship.toml"
 
 starship init fish | source
 source $HOME/.config/fish/proxy.fish
-source /etc/grc.fish
+if test -f "/etc/grc.fish"
+    source /etc/grc.fish
+end
 
 for file in $HOME/.config/fish/functions/*.fish
   source "$file"
