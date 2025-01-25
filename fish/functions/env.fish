@@ -1,0 +1,6 @@
+export DEEPINFRA_API_KEY=$(cat ~/.keys/deepinfa-key)
+export XAI_API_KEY=$(cat ~/.keys/xai-api-key)
+export GROQ_API_KEY=$(cat ~/.keys/groq-api-key)
+export DEEPSEEK_API_KEY=$(cat ~/.keys/deepseek-api-key)
+export GOOGLE_AI_API_KEY=$(cat ~/.keys/googleai-api-key)
+export ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
