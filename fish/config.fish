@@ -30,11 +30,9 @@ end
 
 if command -v tput &> /dev/null; and [ -t 1 ]; and [ -n "$TERM" ]; and [ $TERM != "dumb" ]
   if [ $TERM = "xterm-ghostty" -o $TERM = "xterm-kitty" ];
-    kitten icat --align=center ~/Pictures/2B/main-2.png
+    kitten icat --place 25x18@85x0 $HOME/Documents/hypaurora/assets/2B.png
     echo ""
-    set text "Beneath her cold exterior lies a warmth that defies her programming,"
-    printf "%*s\n" (math "round(($(tput cols) + $(string length "$text")) / 2)") "$text"
-    set text "yearning to protect what she cherishes most."
-    printf "%*s\n" (math "round(($(tput cols) + $(string length "$text")) / 2)") "$text"
+    echo "      Beneath her cold exterior lies a warmth that defies her programming,"
+    echo "      yearning to protect what she cherishes most."
   end
 end
