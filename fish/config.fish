@@ -30,7 +30,9 @@ end
 
 if command -v tput &> /dev/null; and [ -t 1 ]; and [ -n "$TERM" ]; and [ $TERM != "dumb" ]
   if [ $TERM = "xterm-ghostty" -o $TERM = "xterm-kitty" ];
-    kitten icat --place 25x18@85x0 $HOME/Documents/hypaurora/assets/2B.png
+    if command -s kitten > /dev/null
+      kitten icat --place 25x18@105x0 $HOME/Documents/hypaurora/assets/2B.png
+    end
     echo ""
     echo "      Beneath her cold exterior lies a warmth that defies her programming,"
     echo "      yearning to protect what she cherishes most."
