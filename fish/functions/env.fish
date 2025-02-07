@@ -12,7 +12,11 @@ if test -f ~/.keys/deepseek-api-key
 end
 if test -f ~/.keys/googleai-api-key
     export GOOGLE_AI_API_KEY=$(cat ~/.keys/googleai-api-key)
+    export GEMINI_API_KEY=$(cat ~/.keys/googleai-api-key)
 end
 if test -f ~/.keys/anthropic-api-key
     export ANTHROPIC_API_KEY=$(cat ~/.keys/anthropic-api-key)
+end
+if test -f ~/.keys/openrouter-api-key
+    export OPENROUTER_API_KEY=$(cat ~/.keys/openrouter-api-key)
 end
