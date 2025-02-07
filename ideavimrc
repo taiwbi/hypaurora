@@ -17,9 +17,14 @@ map Q gq
 
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
-Plugin 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 
-" NerdTree Configuration ---------------------------------------------
+" INFO: VIM Mappings -------------------------------------------------------
+
+nnoremap Y y$
+
+" INFO: NerdTree Configuration ---------------------------------------------
+
 " Set j to move down in NERDTree
 let g:NERDTreeMapJumpDown = 'j'
 " Set k to move up in NERDTree
@@ -33,7 +38,8 @@ let g:NERDTreeMapPreview = 'l'
 let g:NERDTreeMapCloseDir = 'h'
 let g:NERDTreeMapCloseAllNodes = 'h'
 
-" General ------------------------------------------------------------
+" INFO: General ------------------------------------------------------------
+
 " Resize Up
 map <C-Up> <Action>(StretchSplitToTop)
 " Resize Down
@@ -66,13 +72,15 @@ map <Bar> <Action>(SplitVertically)
 " Vertical Split
 map \ <Action>(SplitHorizontally)
 
-" Completion ---------------------------------------------------------
+" INFO: Completion ---------------------------------------------------------
+
 " Open completion menu
-" Crtl + Space INFO: IDE mappings - default
+" Crtl + Space IDE mappings - default
 " Hide completion  WARN: Does not have an action
 " map  <Action>()
 
-" Debugger Manager ---------------------------------------------------
+" INFO: Debugger Manager ---------------------------------------------------
+
 " Start/Continue Debugger
 map <leader>dc <Action>(Debug)
 map <leader>dc <Action>(Resume)
@@ -105,7 +113,7 @@ map <leader>du <Action>(ActivateDebugToolWindow)
 " Debugger Hover
 " map  <Action>()
 
-" Telescope Mappings -------------------------------------------------
+" INFO: Telescope Mappings -------------------------------------------------
 
 " Resume previous search  WARN: Does not have an action
 " Marks  WARN: Does not have an action
@@ -145,7 +153,8 @@ map <leader>ls <Action>(ActivateStructureToolWindow)
 " LSP Workspace Symbols
 map <leader>lG <Action>(GotoSymbol)
 
-" LSP Actions --------------------------------------------------------
+" INFO: LSP Actions --------------------------------------------------------
+
 " Hover Document
 map K <Action>(ShowHoverInfo)
 " Reformat Code
@@ -175,8 +184,10 @@ map gy <Action>(GotoTypeDeclaration)
 map gI <Action>(GotoImplementation)
 " References WARN: Does not have an action
 
-" ----- --------------------------------------------------------------
-" Other --------------------------------------------------------------
+" INFO: AI Coding ----------------------------------------------------------
+map <leader>Pc <Action>(ActivateAICodingToolWindow)
+
+" WARN: Other --------------------------------------------------------------
 
 map z= <Action>(ShowIntentionActions)
 map <C-h> <Action>(Back)
