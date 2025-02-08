@@ -1,22 +1,19 @@
 # INFO: Font
 
-font-family = "PFDinMono-Regular"
-font-family-bold = "PFDinMono-Bold"
-font-family-italic = "PFDinMono-Italic"
-font-family-bold-italic = "PFDinMono-BoldItalic"
+font-family = "Geist Mono"
 font-family = "AzarMehrMonospaced"
-font-size = 13
+font-size = 12
 adjust-cell-height = 8
+adjust-cell-width = 0
 
 # INFO: Appearance
-
-window-decoration = true
 window-theme = ghostty
 
-window-width = 110
-window-height = 27
+window-width = 130
+window-height = 30
 window-padding-x = 0
 window-padding-y = 0
 
 # INFO: THEME
 theme = Horizon
+cursor-color = #E95678
