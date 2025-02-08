@@ -14,7 +14,7 @@ This repository includes configuration files for:
 - **Hyprland**: Dynamic tiling Wayland compositor
 - **Waybar**: Customizable status bar for Wayland
 - **Dunst**: Catppuccin minimal theme for Dunst
-- **Kitty**: Fast, cross-platform terminal emulator
+- **Ghostty**: Fast, cross-platform terminal emulator
 - **Wofi**: Application launcher
 - **Neovide**: Beautiful and feature-rich Neovim GUI
 - **Fastfetch**: Stunning system information fetch tool
@@ -45,8 +45,10 @@ Follow these steps to set up your Hyprland environment with these dotfiles (on F
 
    ```bash
    sudo dnf install fish gnome-keyring polkit-gnome git bc jq socat inotify-tools
-   sudo dnf install kitty wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle hyprland-plugins brightnessctl grim slurp wl-clipboard dunst fswebcam
+   sudo dnf install wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle hyprland-plugins brightnessctl grim slurp wl-clipboard dunst fswebcam
    ```
+
+   > Installing Ghostty is necessary but isn't provided here. Please refer to official documentation.
 
    ##### Per Windows Keyboard Layout
 

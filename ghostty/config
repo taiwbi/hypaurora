@@ -1,0 +1,21 @@
+# INFO: Font
+
+font-family = "Geist Mono"
+font-family = "AzarMehrMonospaced"
+font-size = 12
+adjust-cell-height = 9
+adjust-cell-width = 0
+
+# INFO: Appearance
+window-theme = ghostty
+
+window-width = 130
+window-height = 30
+window-padding-x = 0
+window-padding-y = 0
+
+background-opacity=0.85
+
+# INFO: THEME
+theme = Horizon
+cursor-color = #E95678
