@@ -15,7 +15,6 @@ alias aria='aria2c -x 16'
 
 if [ $TERM = "xterm-ghostty" -o $TERM = "xterm-kitty" ];
   alias icat='kitten icat'
-  alias ssh='kitten ssh'
 end
 
 function ipinfo
