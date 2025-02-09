@@ -57,7 +57,7 @@ sudo dnf update -y
 
 echo -e "$header_1 Installing basic packages"
 sudo dnf install fish gnome-keyring polkit-gnome git bc jq socat inotify-tools # absolute basic
-sudo dnf install kitty wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle brightnessctl grim slurp wl-clipboard dunst fswebcam # Hyprland Specific
+sudo dnf install wofi waybar hyprland xdg-desktop-portal-hyprland hyprpaper hyprlock hypridle brightnessctl grim slurp wl-clipboard dunst fswebcam # Hyprland Specific
 
 read -rp "Do you want to per window keyboard layout on Hyprland?? (y/n) " yn
 
@@ -112,7 +112,7 @@ rm -rf "$HOME/.config/fontconfig" && ln -s "$PWD/fontconfig" "$HOME/.config/"
 rm -rf "$HOME/.config/gtk-3.0" && ln -s "$PWD/gtk-3.0" "$HOME/.config/"
 rm -rf "$HOME/.config/gtk-4.0" && ln -s "$PWD/gtk-4.0" "$HOME/.config/"
 rm -rf "$HOME/.config/hypr" && ln -s "$PWD/hypr" "$HOME/.config/"
-rm -rf "$HOME/.config/kitty" && ln -s "$PWD/kitty" "$HOME/.config/"
+rm -rf "$HOME/.config/ghostty" && ln -s "$PWD/ghostty" "$HOME/.config/"
 rm -rf "$HOME/.config/mpv" && ln -s "$PWD/mpv" "$HOME/.config/"
 rm -rf "$HOME/.config/neovide" && ln -s "$PWD/neovide" "$HOME/.config/"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"

@@ -18,8 +18,8 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'FantasqueSansM Nerd Font, Vazir Code Hack 12'
+gsettings set org.gnome.desktop.interface font-name 'Geist 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Monaspace Neon, AzarMehrMonospaced 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 12'
 gsettings set org.gnome.desktop.interface text-scaling-factor '1'
 

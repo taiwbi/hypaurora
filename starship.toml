@@ -7,6 +7,10 @@ $rust\
 $python\
 $git_branch\
 $git_status\
+$php\
+$nodejs\
+$rust\
+$python\
 \n$character"""
 
 [directory]
@@ -19,7 +23,7 @@ symbol = " "
 format = ' [$symbol](fg:red) [$branch](fg:bright-black)'
 
 [git_status]
-format = ' [$all_status$ahead_behind](fg:yellow)'
+format = '[$all_status$ahead_behind](fg:bright-black)'
 
 [nodejs]
 symbol = " "
