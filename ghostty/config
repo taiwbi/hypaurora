@@ -1,6 +1,7 @@
 # INFO: Font
 
 font-family = "Monaspace Neon"
+font-family-italic = "Monaspace Radon"
 font-family = "AzarMehrMonospaced"
 font-size = 12
 adjust-cell-height = 9
