@@ -1,0 +1,222 @@
+@keyframes blink-warning {
+  to {
+    background: alpha(#f5c2e7, 0.8);
+    color: #181825;
+  }
+
+  from {
+    background: alpha(#f5c2e7, 0.3);
+    color: #ea76cb;
+  }
+}
+
+@keyframes blink-critical {
+  to {
+    background: #f53c3c;
+    color: #181825;
+  }
+
+  from {
+    background: #181825;
+    color: #f53c3c;
+  }
+}
+
+@keyframes workspace-urgent {
+  to {
+    color: #d20f39;
+    background: alpha(#f38ba8, 0.5);
+  }
+
+  from {
+    color: #dc8a78;
+    background: alpha(#f38ba8, 0);
+  }
+}
+
+/* INFO: Main Styles */
+
+* {
+  font-family: "Monaspace Xenon", "iconsax", "Symbols Nerd Font Mono";
+  font-size: 13;
+}
+
+window#waybar {
+  background-color: alpha(#1e1e2e, 1);
+}
+
+/* INFO: left */
+
+#custom-menu {
+  font-family: "Symbols Nerd Font";
+  color: #1e66f5;
+  padding: 2 5 2 9;
+  margin: 4 2 4 5;
+  border-radius: 9;
+  transition: all 0.3s ease;
+  background: alpha(#89b4fa, 0.3);
+}
+#custom-menu:hover {
+  color: #181825;
+  background: alpha(#89b4fa, 0.8);
+}
+
+#workspaces {
+  margin: 4 2;
+  border-radius: 9;
+  background: alpha(#f5e0dc, 0.3);
+}
+#workspaces button {
+  padding: 0 5;
+  color: alpha(#dc8a78, 0.5);
+  border-radius: 9;
+  transition: all 0.3s ease;
+}
+#workspaces button label {
+  font-family: "Symbols Nerd Font";
+}
+#workspaces button.active {
+  color: #dc8a78;
+}
+#workspaces button:hover {
+  color: #181825;
+  background: alpha(#f5e0dc, 0.8);
+}
+#workspaces button.urgent {
+  animation: workspace-urgent 1s linear infinite alternate;
+}
+#workspaces button.urgent label {
+  font-family: "iconsax";
+}
+
+.empty #window {
+  background: transparent;
+}
+#window {
+  padding: 2 8;
+  margin: 4 2;
+  border-radius: 9;
+  color: #dd7878;
+  transition: all 0.3s ease;
+  background: alpha(#f2cdcd, 0.3);
+}
+#window:hover {
+  color: #181825;
+  background: alpha(#f2cdcd, 0.9);
+}
+
+/* INFO: Center */
+
+.modules-center {
+  background: linear-gradient(
+    90deg,
+    alpha(#f5c2e7, 0.3) 0%,
+    alpha(#cba6f7, 0.3) 50%,
+    alpha(#f38ba8, 0.3) 100%
+  );
+  border-radius: 9px;
+  margin: 4 0 4 0;
+}
+
+#custom-playerctl {
+  padding: 2 8;
+  border-radius: 9 0 0 9;
+  color: #ea76cb;
+  transition: all 0.3s ease;
+}
+
+#custom-weather {
+  padding: 2 8;
+  border-radius: 9 0 0 9;
+  color: #8839ef;
+  transition: all 0.3s ease;
+}
+
+#clock {
+  padding: 2 8;
+  color: #d20f39;
+  border-radius: 0 9 9 0;
+  transition: all 0.3s ease;
+}
+
+/* INFO: Right */
+
+#tray {
+  padding: 2 8;
+  margin: 4 2;
+}
+
+#battery {
+  padding: 2 8;
+  margin: 4 2;
+  border-radius: 9;
+  color: #ea76cb;
+  transition: all 0.3s ease;
+  background: alpha(#f5c2e7, 0.3);
+}
+#battery:hover {
+  color: #181825;
+  background: alpha(#f5c2e7, 0.8);
+}
+#battery.warning:not(.charging) {
+  animation: blink-warning 1s linear infinite alternate;
+}
+#battery.critical:not(.charging) {
+  animation: blink-critical 1s linear infinite alternate;
+}
+
+#cpu {
+  padding: 2 8;
+  margin: 4 2;
+  border-radius: 9;
+  color: #8839ef;
+  transition: all 0.3s ease;
+  background: alpha(#cba6f7, 0.3);
+}
+#cpu:hover {
+  color: #181825;
+  background: alpha(#cba6f7, 0.8);
+}
+
+#memory {
+  padding: 2 8;
+  margin: 4 2;
+  border-radius: 9;
+  color: #d20f39;
+  transition: all 0.3s ease;
+  background: alpha(#f38ba8, 0.3);
+}
+#memory:hover {
+  color: #181825;
+  background: alpha(#f38ba8, 0.8);
+}
+
+#pulseaudio {
+  padding: 2 8;
+  margin: 4 2;
+  border-radius: 9;
+  color: #fe640b;
+  transition: all 0.3s ease;
+  background: alpha(#fab387, 0.3);
+}
+#pulseaudio.muted {
+  color: alpha(#f5a97f, 0.5);
+  background: alpha(#fab387, 0.15);
+}
+#pulseaudio:hover {
+  color: #181825;
+  background: alpha(#fab387, 0.8);
+}
+
+#network {
+  padding: 2 8;
+  margin: 4 5 4 2;
+  border-radius: 9;
+  color: #fe640b;
+  transition: all 0.3s ease;
+  background: alpha(#f9e2af, 0.3);
+}
+#network:hover {
+  color: #181825;
+  background: alpha(#f9e2af, 0.8);
+}
