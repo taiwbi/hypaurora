@@ -1,1 +1,32 @@
-dunstrc-dark
+[global]
+separator_color= "#13273F"
+font = Cartograph CF, Vazir Code Hack 12
+icon_theme = Hatter, Adwaita
+enable_recursive_icon_lookup = true
+class = dunst
+title = dunst
+corner_radius = 0
+padding = 6
+offset = 0x0
+notification_limit = 10
+progress_bar = true
+frame_width = 2
+text_icon_padding = 12
+min_icon_size = 24
+max_icon_size = 24
+
+[urgency_low]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#94e2d5"
+
+[urgency_normal]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#cba6f7"
+
+[urgency_critical]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#f38ba8"
+
