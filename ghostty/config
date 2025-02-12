@@ -18,5 +18,5 @@ window-padding-y = 0
 background-opacity = 1
 
 # INFO: THEME
-theme = Horizon
+theme = catppuccin-mocha
 cursor-color = #E95678
