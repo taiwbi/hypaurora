@@ -6,7 +6,7 @@ font-family-italic = "Monaspace Radon"
 font-family-bold-italic = "Monaspace Radon ExtraBold"
 font-family = "AzarMehrMonospaced"
 font-size = 12
-adjust-cell-height = 9
+adjust-cell-height = 8
 adjust-cell-width = 0
 
 # INFO: Appearance
@@ -17,7 +17,7 @@ window-height = 30
 window-padding-x = 0
 window-padding-y = 0
 
-background-opacity = 1
+background-opacity = 0.75
 
 # INFO: THEME
 theme = catppuccin-mocha

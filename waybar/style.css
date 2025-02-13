@@ -42,7 +42,7 @@
 }
 
 window#waybar {
-  background-color: alpha(#1e1e2e, 1);
+  background-color: transparent;
 }
 
 /* INFO: left */
@@ -51,24 +51,24 @@ window#waybar {
   font-family: "Symbols Nerd Font";
   color: #1e66f5;
   padding: 2 5 2 9;
-  margin: 4 2 4 5;
+  margin: 8 2 0 12;
   border-radius: 9;
   transition: all 0.3s ease;
-  background: alpha(#89b4fa, 0.3);
+  background: alpha(#89b4fa, 0.6);
 }
 #custom-menu:hover {
   color: #181825;
-  background: alpha(#89b4fa, 0.8);
+  background: alpha(#89b4fa, 0.95);
 }
 
 #workspaces {
-  margin: 4 2;
+  margin: 8 2 0 8;
   border-radius: 9;
-  background: alpha(#f5e0dc, 0.3);
+  background: alpha(#f5e0dc, 0.6);
 }
 #workspaces button {
   padding: 0 5;
-  color: alpha(#dc8a78, 0.5);
+  color: alpha(#dc8a78, 0.95);
   border-radius: 9;
   transition: all 0.3s ease;
 }
@@ -80,7 +80,7 @@ window#waybar {
 }
 #workspaces button:hover {
   color: #181825;
-  background: alpha(#f5e0dc, 0.8);
+  background: alpha(#f5e0dc, 0.95);
 }
 #workspaces button.urgent {
   animation: workspace-urgent 1s linear infinite alternate;
@@ -94,15 +94,15 @@ window#waybar {
 }
 #window {
   padding: 2 8;
-  margin: 4 2;
+  margin: 8 2 0 8;
   border-radius: 9;
   color: #dd7878;
   transition: all 0.3s ease;
-  background: alpha(#f2cdcd, 0.3);
+  background: alpha(#f2cdcd, 0.6);
 }
 #window:hover {
   color: #181825;
-  background: alpha(#f2cdcd, 0.9);
+  background: alpha(#f2cdcd, 0.95);
 }
 
 /* INFO: Center */
@@ -110,12 +110,12 @@ window#waybar {
 .modules-center {
   background: linear-gradient(
     90deg,
-    alpha(#f5c2e7, 0.3) 0%,
-    alpha(#cba6f7, 0.3) 50%,
-    alpha(#f38ba8, 0.3) 100%
+    alpha(#f5c2e7, 0.6) 0%,
+    alpha(#cba6f7, 0.6) 50%,
+    alpha(#f38ba8, 0.6) 100%
   );
   border-radius: 9px;
-  margin: 4 0 4 0;
+  margin: 8 0 0 0;
 }
 
 #custom-playerctl {
@@ -143,20 +143,20 @@ window#waybar {
 
 #tray {
   padding: 2 8;
-  margin: 4 2;
+  margin: 8 2 0 8;
 }
 
 #battery {
   padding: 2 8;
-  margin: 4 2;
+  margin: 8 2 0 8;
   border-radius: 9;
   color: #ea76cb;
   transition: all 0.3s ease;
-  background: alpha(#f5c2e7, 0.3);
+  background: alpha(#f5c2e7, 0.6);
 }
 #battery:hover {
   color: #181825;
-  background: alpha(#f5c2e7, 0.8);
+  background: alpha(#f5c2e7, 0.95);
 }
 #battery.warning:not(.charging) {
   animation: blink-warning 1s linear infinite alternate;
@@ -167,56 +167,56 @@ window#waybar {
 
 #cpu {
   padding: 2 8;
-  margin: 4 2;
+  margin: 8 2 0 8;
   border-radius: 9;
   color: #8839ef;
   transition: all 0.3s ease;
-  background: alpha(#cba6f7, 0.3);
+  background: alpha(#cba6f7, 0.6);
 }
 #cpu:hover {
   color: #181825;
-  background: alpha(#cba6f7, 0.8);
+  background: alpha(#cba6f7, 0.95);
 }
 
 #memory {
   padding: 2 8;
-  margin: 4 2;
+  margin: 8 2 0 8;
   border-radius: 9;
   color: #d20f39;
   transition: all 0.3s ease;
-  background: alpha(#f38ba8, 0.3);
+  background: alpha(#f38ba8, 0.6);
 }
 #memory:hover {
   color: #181825;
-  background: alpha(#f38ba8, 0.8);
+  background: alpha(#f38ba8, 0.95);
 }
 
 #pulseaudio {
   padding: 2 8;
-  margin: 4 2;
+  margin: 8 2 0 8;
   border-radius: 9;
   color: #fe640b;
   transition: all 0.3s ease;
-  background: alpha(#fab387, 0.3);
+  background: alpha(#fab387, 0.6);
 }
 #pulseaudio.muted {
   color: alpha(#f5a97f, 0.5);
-  background: alpha(#fab387, 0.15);
+  background: alpha(#fab387, 0.4);
 }
 #pulseaudio:hover {
   color: #181825;
-  background: alpha(#fab387, 0.8);
+  background: alpha(#fab387, 0.95);
 }
 
 #network {
   padding: 2 8;
-  margin: 4 5 4 2;
+  margin: 8 12 0 2;
   border-radius: 9;
   color: #fe640b;
   transition: all 0.3s ease;
-  background: alpha(#f9e2af, 0.3);
+  background: alpha(#f9e2af, 0.6);
 }
 #network:hover {
   color: #181825;
-  background: alpha(#f9e2af, 0.8);
+  background: alpha(#f9e2af, 0.95);
 }

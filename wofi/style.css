@@ -5,9 +5,9 @@
 
 /* Window */
 window {
-  border: 1px solid #b4befe;
-  border-radius: 0;
-  background-color: alpha(#1e1e2e, 1);
+  border: 3px solid #b4befe;
+  border-radius: 12px;
+  background-color: alpha(#1e1e2e, 0);
 }
 
 /* Slide In */
@@ -31,7 +31,8 @@ window {
 
 #scroll > .frame {
   margin-top: 80px;
-  background-color: #11111b;
+  border: 3px solid #eba0ac;
+  border-radius: 8px;
   padding: 20px;
 }
 
@@ -95,9 +96,10 @@ window {
 
 #entry {
   background-color: transparent;
-  border-radius: 0px;
+  border-radius: 6px;
   padding: 10px 15px;
   transition: all 0.5s ease;
+  border: 3px solid transparent;
 }
 
 #entry #text {
@@ -114,10 +116,10 @@ window {
 
 /* Selected Entry */
 #entry:selected {
-  background: #313244;
   font-size: 15px;
   padding: 10px 17px;
-  border: none;
+  border: 3px solid #cba6f7;
+  border-radius: 6px;
   outline: none;
 }
 
