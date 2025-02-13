@@ -1,6 +1,6 @@
 [global]
 separator_color= "#13273F"
-font = Monaspace Xenon, Vazir Code Hack 12
+font = Monaspace Xenon Medium, AzarMehrMonospaced 12
 icon_theme = WhiteSur, Adwaita
 enable_recursive_icon_lookup = true
 class = dunst
