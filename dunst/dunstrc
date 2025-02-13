@@ -1,7 +1,7 @@
 [global]
 separator_color= "#13273F"
-font = Cartograph CF, Vazir Code Hack 12
-icon_theme = Hatter, Adwaita
+font = Monaspace Xenon, Vazir Code Hack 12
+icon_theme = WhiteSur, Adwaita
 enable_recursive_icon_lookup = true
 class = dunst
 title = dunst
@@ -10,7 +10,7 @@ padding = 6
 offset = 0x0
 notification_limit = 10
 progress_bar = true
-frame_width = 2
+frame_width = 1
 text_icon_padding = 12
 min_icon_size = 24
 max_icon_size = 24
