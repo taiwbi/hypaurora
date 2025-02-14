@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default priority order of players
-players=("Lollypop" "io.bassi.Amberol" "brave.instance2")
+players=("Lollypop" "io.bassi.Amberol" "org.telegram.desktop" "brave.instance2")
 
 while true; do
   # Initialize variables
