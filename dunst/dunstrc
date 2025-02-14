@@ -1,5 +1,5 @@
 [global]
-separator_color= "#13273F"
+separator_color= "#1e1e2e70"
 font = Monaspace Xenon Medium, AzarMehrMonospaced 12
 line_height = 8
 icon_theme = WhiteSur, Adwaita
