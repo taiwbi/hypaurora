@@ -14,6 +14,7 @@ frame_width = 1
 text_icon_padding = 12
 min_icon_size = 24
 max_icon_size = 24
+line_height = 6
 
 [urgency_low]
 background = "#1e1e2e"
