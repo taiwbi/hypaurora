@@ -185,6 +185,14 @@ window.terminal-window {
   background: transparent;
 }
 
+window.terminal-window .top-bar {
+  background: alpha(#1e1e2e, 0.8);
+}
+
+window.terminal-window .top-bar windowhandle {
+  background: transparent;
+}
+
 /* GNOME Text Editor */
 dialog-host
   > widget
