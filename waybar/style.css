@@ -122,8 +122,16 @@ window#waybar {
   padding: 2 8;
   border-radius: 9 0 0 9;
   color: #dd7878;
-  text-shadow: 1px 1px 2px #4c4f69;
+  text-shadow:
+    1px 1px 2px rgba(49, 50, 68, 0.3),
+    -1px -1px 2px rgba(49, 50, 68, 0.3),
+    1px -1px 2px rgba(49, 50, 68, 0.3),
+    -1px 1px 2px rgba(49, 50, 68, 0.3);
   transition: all 0.3s ease;
+}
+
+#custom-playerctl:hover {
+  color: #181825;
 }
 
 #custom-weather {
@@ -133,11 +141,19 @@ window#waybar {
   transition: all 0.3s ease;
 }
 
+#custom-weather:hover {
+  color: #181825;
+}
+
 #clock {
   padding: 2 8;
   color: #d20f39;
   border-radius: 0 9 9 0;
   transition: all 0.3s ease;
+}
+
+#clock:hover {
+  color: #181825;
 }
 
 /* INFO: Right */
