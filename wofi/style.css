@@ -100,6 +100,7 @@ window {
   padding: 10px 15px;
   transition: all 0.5s ease;
   border: 3px solid transparent;
+  min-width: 414px;
 }
 
 #entry #text {
