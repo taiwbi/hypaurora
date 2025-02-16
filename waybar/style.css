@@ -36,8 +36,9 @@
 
 /* INFO: Main Styles */
 
-* {
-  font-family: "Monaspace Xenon Medium", "iconsax", "Symbols Nerd Font Mono";
+label {
+  font-family: "Geist", "iconsax";
+  font-weight: 500;
   font-size: 13;
 }
 
