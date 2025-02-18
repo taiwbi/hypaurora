@@ -1,6 +1,7 @@
 [global]
-separator_color= "#13273F"
-font = Monaspace Xenon Medium, AzarMehrMonospaced 12
+separator_color= "#1e1e2e"
+font = Geist, Vazirmatn 12
+line_height=4
 icon_theme = WhiteSur, Adwaita
 enable_recursive_icon_lookup = true
 class = dunst
@@ -14,7 +15,6 @@ frame_width = 1
 text_icon_padding = 12
 min_icon_size = 24
 max_icon_size = 24
-line_height = 6
 
 [urgency_low]
 background = "#1e1e2e"

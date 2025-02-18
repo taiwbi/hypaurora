@@ -1,5 +1,5 @@
 * {
-  font-family: "Cartograph CF", "Vazir Code Hack", monospace;
+  font-family: "Geist", monospace;
   font-size: 14px;
 }
 
@@ -7,7 +7,7 @@
 window {
   border: 1px solid #b4befe;
   border-radius: 0;
-  background-color: alpha(#1e1e2e, 1);
+  background-color: #1e1e2e;
 }
 
 /* Slide In */
@@ -98,6 +98,8 @@ window {
   border-radius: 0px;
   padding: 10px 15px;
   transition: all 0.5s ease;
+  border: 1px solid transparent;
+  min-width: 408px;
 }
 
 #entry #text {
@@ -114,10 +116,9 @@ window {
 
 /* Selected Entry */
 #entry:selected {
-  background: #313244;
   font-size: 15px;
   padding: 10px 17px;
-  border: none;
+  border: 1px solid #cba6f7;
   outline: none;
 }
 

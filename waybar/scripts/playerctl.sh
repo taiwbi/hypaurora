@@ -65,6 +65,13 @@ while true; do
     end_icon=""
   fi
     
-  echo "$icon$end_icon $title"
+  # Truncate the title to fit within 16 characters
+  max_length=32
+  output="$icon$end_icon $title"
+  if [[ ${#output} -gt $max_length ]]; then
+    output="${output:0:$((max_length-3))}..."
+  fi
+
+  echo "$output"
   sleep 0.15
 done

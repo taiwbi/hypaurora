@@ -1,11 +1,8 @@
 # INFO: Font
 
-font-family = "Monaspace Neon Medium"
-font-family-bold = "Monaspace Neon ExtraBold"
-font-family-italic = "Monaspace Radon"
-font-family-bold-italic = "Monaspace Radon ExtraBold"
+font-family = "Geist Mono Medium"
 font-family = "AzarMehrMonospaced"
-font-size = 12
+font-size = 11
 adjust-cell-height = 9
 adjust-cell-width = 0
 
