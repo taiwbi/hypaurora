@@ -91,7 +91,8 @@ window#waybar {
 }
 
 .empty #window {
-  background: transparent;
+  border: none;
+  opacity: 0;
 }
 #window {
   padding: 2 8;
