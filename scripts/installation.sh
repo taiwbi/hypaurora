@@ -86,6 +86,9 @@ sudo dnf install morewaita-icon-theme
 sudo dnf copr enable atim/lazygit
 sudo dnf install lazygit
 
+sudo dnf copr enable pgdev/ghostty
+sudo dnf install ghostty
+
 curl -sS https://starship.rs/install.sh | sh
 
 # Install Rust
