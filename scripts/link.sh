@@ -27,7 +27,6 @@ rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
 rm -rf "$HOME/.config/fish" && ln -s "$PWD/fish" "$HOME/.config/"
 rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
 rm -rf "$HOME/.ideavimrc" && ln -s "$PWD/ideavimrc" "$HOME/.ideavimrc"
-rm -rf "$HOME/.local/bin/toggle-proxy" && ln -s "$PWD/bin/toggle-proxy" "$HOME/.local/bin/toggle-proxy"
-rm -rf "$HOME/.local/bin/toggle-background" && ln -s "$PWD/bin/toggle-background" "$HOME/.local/bin/toggle-background"
+rm -rf "$HOME/.local/utils" && ln -s "$PWD/utils" "$HOME/.local/utils"
 
 echo -e ""
