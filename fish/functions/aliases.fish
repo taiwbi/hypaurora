@@ -13,9 +13,8 @@ alias df='df -h'
 alias free='free -h'
 alias aria='aria2c -x 16'
 
-if test "$TERM" = "xterm-kitty"
-  alias icat='kitty +kitten icat'
-  alias ssh='kitty +kitten ssh'
+if [ $TERM = "xterm-ghostty" -o $TERM = "xterm-kitty" ];
+  alias icat='kitten icat'
 end
 
 function ipinfo
