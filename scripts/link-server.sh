@@ -20,7 +20,6 @@ mkdir -p "$HOME/Pictures/background/"
 
 rm -rf "$HOME/.config/starship.toml" && ln -s "$PWD/starship.toml" "$HOME/.config/starship.toml"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
-rm -rf "$HOME/.config/fish" && ln -s "$PWD/fish" "$HOME/.config/"
 rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
 
 echo -e ""
