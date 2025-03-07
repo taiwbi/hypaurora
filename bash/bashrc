@@ -13,7 +13,7 @@ export PATH
 
 # User specific aliases and functions
 if [ -d ~/.bashrc.d ]; then
-  for rc in ~/.bashrc.d/*; do
+  for rc in ~/.bashrc.d/*.sh; do
     if [ -f "$rc" ]; then
       . "$rc"
     fi
@@ -40,8 +40,7 @@ if command -v tput &> /dev/null && [ -t 1 ] && [ "$TERM" != "" ] && [ "$TERM" !=
     fi
     if [ "$term_width" -gt 80 ]; then
       echo ""
-      echo "      Beneath her cold exterior lies a warmth that defies her programming,"
-      echo "      yearning to protect what she cherishes most."
+      ~/Documents/hypaurora/bash/praise.sh
     fi
   fi
 fi
