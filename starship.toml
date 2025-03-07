@@ -1,5 +1,5 @@
 format = """
-[  ](fg:blue)\
+[](fg:blue)[  ](fg:black bg:blue)\
 $directory\
 $git_branch\
 $git_status\
@@ -10,16 +10,16 @@ $python\
 \n$character"""
 
 [directory]
-format = "[$path](fg:bright-black)"
+format = "[$path ](fg:bright-black bg:blue)[](fg:blue)"
 truncation_length = 3
 truncation_symbol = "/"
 
 [git_branch]
 symbol = " "
-format = ' [$symbol](fg:red) [$branch](fg:bright-black)'
+format = ' [](fg:#E68A4F)[$symbol ](bg:#E68A4F fg:bright-red)[$branch](bg:#E68A4F fg:bright-black)'
 
 [git_status]
-format = '[$all_status$ahead_behind](fg:bright-black)'
+format = '[$all_status$ahead_behind](bg:#E68A4F fg:bright-black)[](fg:#E68A4F)'
 
 [nodejs]
 symbol = " "
