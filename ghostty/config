@@ -1,9 +1,9 @@
 # INFO: Font
 
-font-family = "Geist Mono"
+font-family = "Adwaita Mono"
 font-family = "AzarMehrMonospaced"
 font-size = 11
-adjust-cell-height = 9
+adjust-cell-height = 10
 adjust-cell-width = 0
 
 # INFO: Appearance
@@ -15,5 +15,5 @@ window-padding-x = 0
 window-padding-y = 0
 
 # INFO: THEME
-theme = Adwaita Dark
+theme = Kanagawa Wave
 cursor-color = #E95678
