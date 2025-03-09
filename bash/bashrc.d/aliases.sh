@@ -19,7 +19,7 @@ alias df='df -h'
 alias free='free -h'
 alias aria='aria2c -x 16'
 
-alias 'ide-helper' "php artisan ide-helper:models --nowrite && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta"
+alias ide-helper='php artisan ide-helper:models --nowrite && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta'
 alias artisan='php artisan'
 
 if [[ "$TERM" == "xterm-ghostty" || "$TERM" == "xterm-kitty" ]]; then
