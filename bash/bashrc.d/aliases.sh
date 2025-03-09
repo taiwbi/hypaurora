@@ -1,4 +1,3 @@
-alias artisan='php artisan'
 alias sens='sensors && echo -e "\r\rNvidia GPU temp: "(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)"°C"'
 alias vi=nvim
 
@@ -19,6 +18,9 @@ alias mkdir='mkdir -p'
 alias df='df -h'
 alias free='free -h'
 alias aria='aria2c -x 16'
+
+alias 'ide-helper' "php artisan ide-helper:models --nowrite && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta"
+alias artisan='php artisan'
 
 if [[ "$TERM" == "xterm-ghostty" || "$TERM" == "xterm-kitty" ]]; then
   alias icat='kitten icat'
