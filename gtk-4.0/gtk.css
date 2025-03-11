@@ -36,3 +36,10 @@ label {
   margin-top: -2px;
   margin-bottom: -1px;
 }
+
+/* Ghostty */
+
+.terminal-window .top-bar {
+  border-bottom: none;
+  box-shadow: none;
+}
