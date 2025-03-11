@@ -1,5 +1,5 @@
 format = """
-[](fg:blue)[  ](fg:black bg:blue)\
+[](fg:#3584e4)[  ](fg:#241f31 bg:#3584e4)\
 $directory\
 $git_branch\
 $git_status\
@@ -10,29 +10,29 @@ $python\
 \n$character"""
 
 [directory]
-format = "[$path ](fg:bright-black bg:blue)[](fg:blue)"
+format = "[$path ](fg:#3d3846 bg:#3584e4)[](fg:#3584e4)"
 truncation_length = 3
 truncation_symbol = "/"
 
 [git_branch]
-symbol = " "
-format = ' [](fg:#E68A4F)[$symbol ](bg:#E68A4F fg:bright-red)[$branch](bg:#E68A4F fg:bright-black)'
+symbol = ""
+format = ' [](fg:#c64600)[$symbol ](bg:#c64600 fg:#241f31)[$branch](bg:#c64600 fg:#3d3846)'
 
 [git_status]
-format = '[$all_status$ahead_behind](bg:#E68A4F fg:bright-black)[](fg:#E68A4F)'
+format = '[$all_status$ahead_behind](bg:#c64600 fg:#3d3846)[](fg:#c64600)'
 
 [nodejs]
-symbol = " "
-format = ' [$symbol](fg:red) [$version](fg:bright-black)'
+symbol = "  "
+format = ' [$symbol](fg:#f66151) [$version](fg:#9a9996)'
 
 [rust]
-symbol = " "
-format = ' [$symbol](fg:purple) [$version](fg:bright-black)'
+symbol = "  "
+format = ' [$symbol](fg:#c64600) [$version](fg:#9a9996)'
 
 [python]
-symbol = " "
-format = ' [$symbol](fg:cyan) [$version $virtualenv](fg:bright-black)'
+symbol = "  "
+format = ' [$symbol](fg:#62a0ea) [$version $virtualenv](fg:#9a9996)'
 
 [php]
-symbol = " "
-format = ' [$symbol](fg:blue) [$version](fg:bright-black)'
+symbol = "  "
+format = ' [$symbol](fg:#dc8add) [$version](fg:#9a9996)'
