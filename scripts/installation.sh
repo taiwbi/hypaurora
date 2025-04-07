@@ -10,14 +10,20 @@ header_2="\n$red◉ $reset_fg"
 header_3="\n$green◉ $reset_fg"
 
 echo "$header_1 Enabling needed repositories"
+
+## RPMFUSION
+
 sleep 5
 sudo dnf update -y
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm -y
-sudo dnf config-manager --enable fedora-cisco-openh264 -y
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
+sudo dnf update @core
 sudo dnf update -y
 
+## NVIDIA
+
 sudo dnf update -y # and reboot if you are not on the latest kernel
-sudo dnf install akmod-nvidia -y # rhel/centos users can use kmod-nvidia instead
+sudo dnf install akmod-nvidia -y
 sudo dnf install xorg-x11-drv-nvidia-cuda -y #optional for cuda/nvdec/nvenc support
 echo "$header_2 Waiting 5 minutes for NVIDIA to be build"
 sleep 300 # Wait 5 minutes for kmod get build
@@ -28,40 +34,21 @@ else
     echo "$header_2 Couldn't detect NVIDIA driver. Waiting another 5 minutes"
     sleep 300
 fi
-sudo dnf mark install akmod-nvidia -y # To prevent autoremove to consider akmod-nvidia as uneeded
+sudo dnf mark user akmod-nvidia # To prevent autoremove to consider akmod-nvidia as uneeded
 sudo dnf install xorg-x11-drv-nvidia-power -y
 sudo systemctl enable nvidia-{suspend,resume,hibernate}
 sudo dnf install vulkan -y
 sudo dnf install xorg-x11-drv-nvidia-cuda-libs -y
 sudo dnf install nvidia-vaapi-driver libva-utils vdpauinfo -y
 
-read -p "Do you want to role secure boot MOK now? (Y/n): " answer
+# TODO: xorg-x11-drv-nvidia-libs.i686
+# check vdpauinfo output and vainfo https://rpmfusion.org/Howto/NVIDIA?highlight=%28%5CbCategoryHowto%5Cb%29
+# lsmod |grep nouveau
+# INSTALL CUDA
 
-case ${answer:0:1} in
-  y|Y )
-    sudo dnf install kmodtool akmods mokutil openssl -y
-    sudo kmodgenca -a
-    echo "$header_1 IMPORTANT"
-    echo "$red Mokutil asks to generate a password to enroll the public key. You will need this after reboot $reset_fg"
-    sleep 10
-    echo "On the next boot MOK Management is launched and you have to choose 'Enroll MOK'"
-    sleeo 5
-    echo "Choose 'Continue' to enroll the key or 'View key 0' to show the keys already enrolled"
-    sleeo 5
-    echo "Confirm enrollment by selecting 'Yes'."
-    sleeo 5
-    echo "You will be invited to enter the password generated above"
-    sleep 20
-    sudo mokutil --import /etc/pki/akmods/certs/public_key.der
-  ;;
-  * )
-    echo "Aborting..."
-    exit
-  ;;
-esac
+echo -e "$header_2 This script does not install CUDA driver and does not enable Secure Boot. If you need it checkout https://rpmfusion.org/Howto/"
 
-echo -e "$header_2 This script does not install CUDA driver. If you need it checkout https://rpmfusion.org/Howto/CUDA"
-
+## Multimedia
 
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
@@ -72,24 +59,15 @@ sudo dnf install libva-nvidia-driver
 
 # Install software
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip unrar grc lsd
-sudo dnf install adw-gtk3-theme epiphany chromium gnome-console telegram-desktop celluloid lollypop gnome-tweaks \
-  gnome-extensions-app gnome-shell-extension-light-style gnome-shell-extension-screenshot-window-sizer \
-  gnome-shell-extension-gsconnect
+sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd
+sudo dnf install adw-gtk3-theme telegram-desktop celluloid gnome-tweaks
 sudo dnf install php php-pecl-xdebug3 composer
-
-sudo dnf install python-pillow python-watchdog python-numpy python-opencv libnotify
 
 sudo dnf copr enable dusansimic/themes
 sudo dnf install morewaita-icon-theme
 
-sudo dnf copr enable atim/lazygit
-sudo dnf install lazygit
-
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-sudo dnf install ghostty
-
-curl -sS https://starship.rs/install.sh | sh
+sudo dnf install ghostty lazygit starship neovide
 
 # Install Rust
 sudo dnf install rustup
@@ -98,4 +76,4 @@ rustup-init
 sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 sudo flatpak install flathub-beta app.drey.PaperPlane
 
-sudo dnf remove firefox gnome-terminal rhythmbox
+sudo dnf remove rhythmbox  gnome-shell-extension-*

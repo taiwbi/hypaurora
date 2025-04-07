@@ -25,8 +25,6 @@ rm -rf "$HOME/.config/gtk-4.0" && ln -s "$PWD/gtk-4.0" "$HOME/.config/"
 rm -rf "$HOME/.config/ghostty" && ln -s "$PWD/ghostty" "$HOME/.config/"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
 rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
-rm -rf "$HOME/.ideavimrc" && ln -s "$PWD/ideavimrc" "$HOME/.ideavimrc"
-rm -rf "$HOME/.local/utils" && ln -s "$PWD/utils" "$HOME/.local/utils"
 rm -rf "$HOME/.bashrc" && ln -s "$PWD/bash/bashrc" "$HOME/.bashrc"
 rm -rf "$HOME/.bashrc.d" && ln -s "$PWD/bash/bashrc.d" "$HOME/.bashrc.d"
 
