@@ -28,4 +28,6 @@ rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
 rm -rf "$HOME/.bashrc" && ln -s "$PWD/bash/bashrc" "$HOME/.bashrc"
 rm -rf "$HOME/.bashrc.d" && ln -s "$PWD/bash/bashrc.d" "$HOME/.bashrc.d"
 
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
 echo -e ""
