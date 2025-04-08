@@ -59,7 +59,7 @@ sudo dnf install libva-nvidia-driver
 
 # Install software
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd
+sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf
 sudo dnf install adw-gtk3-theme telegram-desktop celluloid gnome-tweaks
 sudo dnf install php php-pecl-xdebug3 composer
 
@@ -72,8 +72,5 @@ sudo dnf install ghostty lazygit starship neovide
 # Install Rust
 sudo dnf install rustup
 rustup-init
-
-sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-sudo flatpak install flathub-beta app.drey.PaperPlane
 
 sudo dnf remove rhythmbox  gnome-shell-extension-*
