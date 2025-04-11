@@ -65,7 +65,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad accel-profile 'flat'
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled 'true'
 gsettings set org.gnome.desktop.peripherals.touchpad speed '0.4'
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
-gsettings set org.gnome.desktop.peripherals.mouse speed '0.4'
+gsettings set org.gnome.desktop.peripherals.mouse speed '0.6'
 
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'ir')]"
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
