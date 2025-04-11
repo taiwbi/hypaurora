@@ -69,6 +69,19 @@ sudo dnf install morewaita-icon-theme
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 sudo dnf install ghostty lazygit starship neovide
 
+## Install Hyprland?
+
+read -p "Do you want to install hyprland now? (Y/n): " answer
+case ${answer:0:1} in
+  y|Y )
+    sudo dnf copr enable solopasha/hyprland
+    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins
+  ;;
+  * )
+    echo "I won't install hyprland :)"
+  ;;
+esac
+
 # Install Rust
 sudo dnf install rustup
 rustup-init
