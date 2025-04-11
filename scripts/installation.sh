@@ -73,4 +73,5 @@ sudo dnf install ghostty lazygit starship neovide
 sudo dnf install rustup
 rustup-init
 
-sudo dnf remove rhythmbox  gnome-shell-extension-*
+sudo dnf mark user totem-video-thumbnailer
+sudo dnf remove rhythmbox totem gnome-shell-extension-*
