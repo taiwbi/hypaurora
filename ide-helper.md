@@ -25,3 +25,17 @@ namespace {
     function view($view = null, $data = [], $mergeData = []) {}
 }
 ```
+
+#### Already existing
+
+These are classes that already exists and I only add a method to them
+
+```php
+<?
+// This might be a wrong approach
+    /*
+     * @method static void url(string $location): string
+     * @see \Illuminate\Filesystem\FilesystemManager
+     */
+    class Storage {
+```
