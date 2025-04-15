@@ -1,5 +1,5 @@
 format = """
-[](fg:#3584e4)[  ](fg:#241f31 bg:#3584e4)\
+[  ](fg:12)\
 $directory\
 $git_branch\
 $git_status\
@@ -10,29 +10,29 @@ $python\
 \n$character"""
 
 [directory]
-format = "[$path ](fg:#3d3846 bg:#3584e4)[](fg:#3584e4)"
+format = "[$path ](fg:7)"
 truncation_length = 3
 truncation_symbol = "/"
 
 [git_branch]
 symbol = ""
-format = ' [](fg:#c64600)[$symbol ](bg:#c64600 fg:#241f31)[$branch](bg:#c64600 fg:#3d3846)'
+format = '[$symbol ](fg:1)[$branch](fg:9)'
 
 [git_status]
-format = '[$all_status$ahead_behind](bg:#c64600 fg:#3d3846)[](fg:#c64600)'
+format = '[$all_status$ahead_behind](fg:1)'
 
 [nodejs]
 symbol = "  "
-format = ' [$symbol](fg:#f66151) [$version](fg:#9a9996)'
+format = '[$symbol](fg:3)[$version](fg:11)'
 
 [rust]
 symbol = "  "
-format = ' [$symbol](fg:#c64600) [$version](fg:#9a9996)'
+format = '[$symbol](fg:1)[$version](fg:9)'
 
 [python]
 symbol = "  "
-format = ' [$symbol](fg:#62a0ea) [$version $virtualenv](fg:#9a9996)'
+format = '[$symbol](fg:4)[$version $virtualenv](fg:12)'
 
 [php]
 symbol = "  "
-format = ' [$symbol](fg:#dc8add) [$version](fg:#9a9996)'
+format = '[$symbol](fg:5)[$version](fg:13)'
