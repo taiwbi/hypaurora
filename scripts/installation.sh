@@ -67,7 +67,7 @@ sudo dnf copr enable trixieua/morewaita-icon-theme
 sudo dnf install morewaita-icon-theme
 
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-sudo dnf install ghostty lazygit starship neovide nautilus-python
+sudo dnf install ghostty kitty-kitten lazygit starship neovide nautilus-python
 
 ## Install Hyprland?
 
