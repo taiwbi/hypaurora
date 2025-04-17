@@ -6,13 +6,13 @@ This is the IDE Helper snippets that I need but is not available in `` by defaul
 <?
 
 namespace {
-  /**
-  * Get the available auth instance.
-  *
-  * @param  string|null  $guard
-  * @return \Illuminate\Auth\AuthManager|\Illuminate\Contracts\Auth\Factory|\Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
-  */
-  function auth($guard = null) { }
+    /**
+    * Get the available auth instance.
+    *
+    * @param  string|null  $guard
+    * @return \Illuminate\Auth\AuthManager|\Illuminate\Contracts\Auth\Factory|\Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+    */
+    function auth($guard = null) { }
 
     /**
      * Get the evaluated view contents for the given view.
@@ -23,6 +23,12 @@ namespace {
      * @return Illuminate\View\View|($view is null ? \Illuminate\Contracts\View\Factory : \Illuminate\Contracts\View\View)
      */
     function view($view = null, $data = [], $mergeData = []) {}
+
+
+    /**
+    * @method \App\Models\User user()
+    */
+    class EmailVerificationRequest extends \Illuminate\Foundation\Auth\EmailVerificationRequest {}
 }
 ```
 
