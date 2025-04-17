@@ -1,12 +1,12 @@
 # INFO: Font
 
-font-family = "Geist Mono"
-font-family = "AzarMehrMonospaced"
+font-family = "Maple Mono"
+font-family = "Vazir Code Hack"
 
-font-size = 11
+font-size = 12
 font-feature = 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'calt', 'dlig', 'liga'
 
-adjust-cell-height = 6
+adjust-cell-height = 7
 adjust-cell-width = 0
 
 # INFO: Appearance
@@ -20,4 +20,4 @@ mouse-hide-while-typing = true
 
 # INFO: THEME
 window-theme = ghostty
-theme = "Kanagawa Wave"
+theme = "Kanagawa Dragon"
