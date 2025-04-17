@@ -1,0 +1,41 @@
+# --- Aliases (can also go in conf.d/aliases.fish) ---
+# Keep simple aliases here or move them to conf.d/
+
+alias vi nvim
+alias cl clear
+alias cd.. 'cd ..'
+alias .. 'cd ..'
+alias ... 'cd ../..'
+alias .... 'cd ../../..'
+alias ..... 'cd ../../../..'
+alias ...... 'cd ../../../../..'
+
+# Interactive aliases (safety)
+alias rm 'rm -i'
+alias mv 'mv -i'
+alias cp 'cp -i' # Added common one
+alias mkdir 'mkdir -p'
+
+# Utility Aliases
+alias ls 'lsd --group-directories-first' # Requires lsd
+alias df 'df -h'
+alias free 'free -m' # Use -m for megabytes (or -h for human) like original free='free -h'
+alias aria 'aria2c -x 16'
+alias sens 'sensors; and printf "\\r\\rNvidia GPU temp: %s°C\\n" (nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)' # Use printf and ;and
+
+# PHP/Laravel Aliases
+alias artisan 'php artisan'
+alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-helper:generate; and php artisan ide-helper:eloquent; and php artisan ide-helper:meta' # Use ;and
+
+# Proxy aliases
+alias disable-proxy 'set -e ALL_PROXY; set -e all_proxy' # Use set -e to erase env var
+
+# IP Aliases
+alias myip 'curl --silent http://ip-api.com/json/ | jq'
+
+# Conditional Aliases (Example: icat)
+if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
+    if command -v kitten >/dev/null
+        alias icat 'kitten icat'
+    end
+end
