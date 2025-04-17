@@ -7,7 +7,7 @@ $php\
 $nodejs\
 $rust\
 $python\
-\n$character"""
+\n """
 
 [directory]
 format = "[$path ](fg:7)"
