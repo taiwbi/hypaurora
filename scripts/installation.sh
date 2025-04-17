@@ -63,7 +63,7 @@ sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip 
 sudo dnf install adw-gtk3-theme telegram-desktop celluloid gnome-tweaks
 sudo dnf install php php-pecl-xdebug3 composer
 
-sudo dnf copr enable dusansimic/themes
+sudo dnf copr enable trixieua/morewaita-icon-theme
 sudo dnf install morewaita-icon-theme
 
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
