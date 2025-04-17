@@ -24,7 +24,6 @@ rm -rf "$HOME/.config/gtk-3.0" && ln -s "$PWD/gtk-3.0" "$HOME/.config/"
 rm -rf "$HOME/.config/gtk-4.0" && ln -s "$PWD/gtk-4.0" "$HOME/.config/"
 rm -rf "$HOME/.config/ghostty" && ln -s "$PWD/ghostty" "$HOME/.config/"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
-rm -rf "$HOME/.vimrc" && ln -s "$PWD/vimrc" "$HOME/.vimrc"
 rm -rf "$HOME/.config/fish" && ln -sf "$PWD/fish" "$HOME/.config/fish"
 
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
