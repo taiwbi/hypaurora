@@ -21,8 +21,3 @@ end
 
 # Starship prompt init
 starship init fish | source
-
-# Source Fish Vim bindings if you use them
-if status is-interactive
-    fish_vi_key_bindings
-end
