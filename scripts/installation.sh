@@ -59,6 +59,8 @@ sudo dnf install libva-nvidia-driver
 
 # Install software
 
+sudo dnf install dnf-plugins-core
+
 sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf
 sudo dnf install adw-gtk3-theme telegram-desktop celluloid gnome-tweaks
 sudo dnf install php php-pecl-xdebug3 composer
@@ -69,13 +71,21 @@ sudo dnf install morewaita-icon-theme
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 sudo dnf install ghostty kitty-kitten lazygit starship neovide nautilus-python
 
+
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
+sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+sudo dnf check-update
+sudo dnf install brave-browser
+
 ## Install Hyprland?
 
 read -p "Do you want to install hyprland now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf copr enable solopasha/hyprland
-    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins
+    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins aylurs-gtk-shell2 --exclude=astal-io-libs
   ;;
   * )
     echo "I won't install hyprland :)"
@@ -87,4 +97,6 @@ sudo dnf install rustup
 rustup-init
 
 sudo dnf mark user totem-video-thumbnailer
-sudo dnf remove rhythmbox totem gnome-shell-extension-*
+sudo dnf remove rhythmbox totem gnome-shell-extension-* firefox firefox-*
+
+rm -rf ~/.mozilla/
