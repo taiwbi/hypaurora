@@ -1,0 +1,117 @@
+{
+  "height": 20,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "modules-left": [
+    "custom/menu",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "custom/playerctl",
+    "custom/weather",
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "hyprland/language",
+    "battery",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "network",
+  ],
+  "custom/menu": {
+    "format": "{icon}",
+    "format-icons": " ",
+    "escape": true,
+    "tooltip": false,
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": "",
+    },
+    "tooltip": false,
+  },
+  "hyprland/window": {
+    "format": " {class}",
+    "separate-outputs": false,
+  },
+  "hyprland/language": {
+    "format": "{short} {variant}",
+  },
+  "custom/playerctl": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/playerctl.sh",
+    "tooltip": false,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+  },
+  "custom/weather": {
+    "format": "{}",
+    "interval": 30,
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "tooltip": false,
+  },
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "format-alt": " {:%Y-%m-%d}",
+    "tooltip": false,
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10,
+  },
+  "battery": {
+    "bat": "BAT0",
+    "interval": 5,
+    "tooltip": false,
+    "states": {
+      "warning": 25,
+      "critical": 15,
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰢜 {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "max-length": 25,
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {}%",
+    "max-length": 10,
+  },
+  "memory": {
+    "interval": 5,
+    "format": " {}%",
+    "max-length": 10,
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ],
+      "headphone": "",
+    },
+    "tooltip": false,
+  },
+  "network": {
+    "interval": 5,
+    "format": " {signalStrength} {essid} {ipaddr}",
+    "tooltip": false,
+  },
+}
