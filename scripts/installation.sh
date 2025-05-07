@@ -61,7 +61,7 @@ sudo dnf install libva-nvidia-driver
 
 sudo dnf install dnf-plugins-core
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf
+sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers
 sudo dnf install adw-gtk3-theme telegram-desktop celluloid gnome-tweaks
 sudo dnf install php php-pecl-xdebug3 composer
 
@@ -96,7 +96,7 @@ esac
 sudo dnf install rustup
 rustup-init
 
-sudo dnf mark user totem-video-thumbnailer
-sudo dnf remove rhythmbox totem gnome-shell-extension-* firefox firefox-*
+sudo dnf mark user totem-video-thumbnailer evince-previewer
+sudo dnf remove rhythmbox totem evinc installatione gnome-shell-extension-* firefox firefox-*
 
 rm -rf ~/.mozilla/
