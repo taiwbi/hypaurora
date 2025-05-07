@@ -92,6 +92,8 @@ case ${answer:0:1} in
   ;;
 esac
 
+flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager re.sonny.Tangram io.github.seadve.Kooha com.github.finefindus.eyedropper io.bassi.Amberol
+
 # Install Rust
 sudo dnf install rustup
 rustup-init
