@@ -1,6 +1,6 @@
 configuration {
     show-icons: true;
-    icon-theme: "MoreWaita";
+    icon-theme: "ColorFlow";
 }
 
 * {

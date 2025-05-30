@@ -18,9 +18,9 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
 gsettings set org.gnome.desktop.interface font-name 'Geist 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Monaspace Neon, Vazir Code Hack, Symbols Nerd Font 12'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Monaspace Neon, AzarMehrMonospaced, Symbols Nerd Font 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
-gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
+gsettings set org.gnome.desktop.interface icon-theme 'ColorFlow'
 
 # Keybindings
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"

@@ -7,6 +7,12 @@ Welcome to my **GNOME dotfiles** repository! 🎉 These are my personal configur
 <img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/light-clean.png" alt="Light Mode screenshot">
 <img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/light-apps.png" alt="Light Mode with apps screenshot">
 
+Icon Pack: [Color Flow](https://www.gnome-look.org/p/2239645)
+Font Family: [Geist](https://vercel.com/font)
+Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
+Monospace Family: [Monaspace](https://monaspace.githubnext.com/)
+Persian Monospace Family: [AzarMehrMonospace](https://befonts.com/azarmehr-monospaced-font-duo.html)
+
 ## Color pallet
 
 Basically catppuccin mocha with these colors modified for being easier on the eyes:
