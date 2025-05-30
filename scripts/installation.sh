@@ -85,7 +85,8 @@ read -p "Do you want to install hyprland now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf copr enable solopasha/hyprland
-    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins aylurs-gtk-shell2 --exclude=astal-io-libs
+    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprpanel hyprland-plugins hyprland-qtutils ghostty\
+     --exclude=swww-bash-completion,swww-fish-completion
   ;;
   * )
     echo "I won't install hyprland :)"

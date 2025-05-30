@@ -1,0 +1,283 @@
+{
+    // =============================================================================
+    // CORE SYSTEM SETTINGS
+    // =============================================================================
+    "hyprpanel.restartAgs": true,
+    "wallpaper.enable": false,
+    "theme.matugen": false,
+    // =============================================================================
+    // FONT CONFIGURATION
+    // =============================================================================
+    "theme.font.name": "Monaspace Argon",
+    "theme.font.label": "Monaspace Argon",
+    "theme.font.size": "0.85rem",
+    // =============================================================================
+    // BAR LAYOUT CONFIGURATIONS
+    // =============================================================================
+    "bar.layouts": {
+        "0": {
+            "left": [
+                "dashboard",
+                "workspaces",
+                "windowtitle"
+            ],
+            "middle": [
+                "media",
+                "clock"
+            ],
+            "right": [
+                "systray",
+                "volume",
+                "network",
+                "bluetooth",
+                "battery",
+                "notifications"
+            ]
+        },
+        "1": {
+            "left": [
+                "dashboard",
+                "workspaces",
+                "windowtitle"
+            ],
+            "middle": [
+                "media"
+            ],
+            "right": [
+                "volume",
+                "clock",
+                "notifications"
+            ]
+        },
+        "2": {
+            "left": [
+                "dashboard",
+                "workspaces",
+                "windowtitle"
+            ],
+            "middle": [
+                "media"
+            ],
+            "right": [
+                "volume",
+                "clock",
+                "notifications"
+            ]
+        }
+    },
+    // =============================================================================
+    // BAR GENERAL SETTINGS
+    // =============================================================================
+    "theme.bar.location": "top",
+    "theme.bar.layer": "top",
+    "theme.bar.floating": false,
+    "bar.autoHide": "never",
+    "theme.bar.scaling": 90,
+    "theme.bar.opacity": 100,
+    "theme.bar.transparent": true,
+    "theme.bar.background": "#1a1a1a",
+    "theme.bar.outer_spacing": "2px",
+    "theme.bar.border_radius": "0",
+    // =============================================================================
+    // BAR BORDER SETTINGS
+    // =============================================================================
+    "theme.bar.border.location": "none",
+    "theme.bar.border.color": "#b4befe",
+    // =============================================================================
+    // BAR BUTTON SETTINGS
+    // =============================================================================
+    "theme.bar.buttons.style": "default",
+    "theme.bar.buttons.enableBorders": true,
+    "theme.bar.buttons.borderSize": "0.08em",
+    "theme.bar.buttons.monochrome": false,
+    "theme.bar.buttons.background": "#1a1a1a",
+    "theme.bar.buttons.radius": "20px",
+    "theme.bar.buttons.opacity": 100,
+    "theme.bar.buttons.background_opacity": 60,
+    "theme.bar.buttons.background_hover_opacity": 100,
+    "theme.bar.buttons.y_margins": "2px",
+    // Dashboard Button
+    "theme.bar.buttons.dashboard.background": "#1a1a1a",
+    "theme.bar.buttons.dashboard.icon": "#f9e2af",
+    "theme.bar.buttons.dashboard.border": "#f9e2af",
+    "theme.bar.buttons.dashboard.enableBorder": false,
+    // Workspace Buttons
+    "theme.bar.buttons.workspaces.enableBorder": false,
+    "theme.bar.buttons.workspaces.hover": "#f5c2e7",
+    "theme.bar.buttons.workspaces.occupied": "#f2cdcd",
+    "theme.bar.buttons.workspaces.active": "#ea75ca",
+    "theme.bar.buttons.workspaces.available": "#89dceb",
+    "theme.bar.buttons.workspaces.background": "#1a1a1a",
+    // Window Title Button
+    "theme.bar.buttons.windowtitle.background": "#1a1a1a",
+    "theme.bar.buttons.windowtitle.text": "#f5c2e7",
+    "theme.bar.buttons.windowtitle.icon": "#f5c2e7",
+    "theme.bar.buttons.windowtitle.border": "#f5c2e7",
+    // Media Button
+    "theme.bar.buttons.media.background": "#1a1a1a",
+    // Volume Button
+    "theme.bar.buttons.volume.background": "#1a1a1a",
+    // Network Button
+    "theme.bar.buttons.network.background": "#1a1a1a",
+    // Bluetooth Button
+    "theme.bar.buttons.bluetooth.background": "#1a1a1a",
+    // Battery Button
+    "theme.bar.buttons.battery.background": "#1a1a1a",
+    // Clock Button
+    "theme.bar.buttons.clock.background": "#1a1a1a",
+    "theme.bar.buttons.clock.text": "#a6e3a1",
+    "theme.bar.buttons.clock.icon": "#a6e3a1",
+    // Notifications Button
+    "theme.bar.buttons.notifications.background": "#1a1a1a",
+    // Microphone Module Button
+    "theme.bar.buttons.modules.microphone.spacing": "0.45em",
+    // =============================================================================
+    // BAR WORKSPACES SETTINGS
+    // =============================================================================
+    "bar.workspaces.show_icons": false,
+    "bar.workspaces.show_numbered": false,
+    "bar.workspaces.workspaceMask": false,
+    "bar.workspaces.showWsIcons": true,
+    "bar.workspaces.showApplicationIcons": true,
+    "bar.workspaces.showAllActive": true,
+    "bar.workspaces.numbered_active_indicator": "color",
+    // =============================================================================
+    // BAR LAUNCHER SETTINGS
+    // =============================================================================
+    "bar.launcher.icon": "󱗿",
+    "bar.launcher.autoDetectIcon": false,
+    // =============================================================================
+    // MENU GENERAL SETTINGS
+    // =============================================================================
+    "menus.transition": "crossfade",
+    "theme.bar.menus.enableShadow": true,
+    "theme.bar.menus.background": "#1a1a1a",
+    "theme.bar.menus.opacity": 100,
+    "theme.bar.menus.card_radius": "20px",
+    "theme.bar.menus.cards": "#1a1a1a",
+    // =============================================================================
+    // MENU TEXT AND COLOR SETTINGS
+    // =============================================================================
+    "theme.bar.menus.text": "#cdd6f4",
+    "theme.bar.menus.dimtext": "#585b70",
+    "theme.bar.menus.feinttext": "#313244",
+    "theme.bar.menus.label": "#b4befe",
+    "theme.bar.menus.border.color": "#313244",
+    // =============================================================================
+    // MENU INTERACTIVE ELEMENTS
+    // =============================================================================
+    // List Items
+    "theme.bar.menus.listitems.active": "#b4befd",
+    "theme.bar.menus.listitems.passive": "#cdd6f4",
+    // Icons
+    "theme.bar.menus.icons.active": "#b4befe",
+    // Switches
+    "theme.bar.menus.switch.enabled": "#b4befe",
+    "theme.bar.menus.switch.disabled": "#313245",
+    "theme.bar.menus.switch.radius": "20px",
+    "theme.bar.menus.switch.slider_radius": "50%",
+    "theme.bar.menus.switch.puck": "#454759",
+    // Check/Radio Buttons
+    "theme.bar.menus.check_radio_button.background": "#181818",
+    "theme.bar.menus.check_radio_button.active": "#b4beff",
+    // Buttons
+    "theme.bar.menus.buttons.radius": "20px",
+    "theme.bar.menus.buttons.default": "#b4befe",
+    "theme.bar.menus.buttons.active": "#f5c2e6",
+    "theme.bar.menus.buttons.disabled": "#585b71",
+    "theme.bar.menus.buttons.text": "#181824",
+    // Progress Bars
+    "theme.bar.menus.progressbar.foreground": "#b4befe",
+    "theme.bar.menus.progressbar.background": "#45475a",
+    // Sliders
+    "theme.bar.menus.slider.primary": "#b4befe",
+    "theme.bar.menus.slider.background": "#585b71",
+    "theme.bar.menus.slider.backgroundhover": "#45475a",
+    "theme.bar.menus.slider.puck": "#6c7086",
+    // =============================================================================
+    // MENU POPOVER SETTINGS
+    // =============================================================================
+    "theme.bar.menus.popover.text": "#b4befe",
+    "theme.bar.menus.popover.background": "#1a1a1a",
+    "theme.bar.menus.popover.scaling": 65,
+    // =============================================================================
+    // MENU DROPDOWN SETTINGS
+    // =============================================================================
+    "theme.bar.menus.dropdownmenu.text": "#cdd6f4",
+    "theme.bar.menus.dropdownmenu.background": "#1a1a1a",
+    "theme.bar.menus.dropdownmenu.divider": "#1e1e2e",
+    // =============================================================================
+    // MENU TOOLTIP SETTINGS
+    // =============================================================================
+    "theme.bar.menus.tooltip.background": "#1a1a1a",
+    "theme.bar.menus.tooltip.text": "#b4beff",
+    // =============================================================================
+    // SPECIFIC MENU CONFIGURATIONS
+    // =============================================================================
+    // Dashboard Menu
+    "theme.bar.menus.menu.dashboard.card.color": "#0f0f0f",
+    "theme.bar.menus.menu.dashboard.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.dashboard.border.color": "#2a2b30",
+    // Battery Menu
+    "theme.bar.menus.menu.battery.card.color": "#0f0f0f",
+    "theme.bar.menus.menu.battery.background.color": "#1a1a1a",
+    // Bluetooth Menu
+    "theme.bar.menus.menu.bluetooth.card.color": "#0f0f0f",
+    "theme.bar.menus.menu.bluetooth.background.color": "#1a1a1a",
+    // Network Menu
+    "theme.bar.menus.menu.network.card.color": "#0f0f0f",
+    "theme.bar.menus.menu.network.background.color": "#1a1a1a",
+    // Volume Menu
+    "theme.bar.menus.menu.volume.card.color": "#0f0f0f",
+    "theme.bar.menus.menu.volume.background.color": "#1a1a1a",
+    // Clock Menu
+    "theme.bar.menus.menu.clock.card.color": "#0f0f0f",
+    "theme.bar.menus.menu.clock.background.color": "#1a1a1a",
+    // Media Menu
+    "theme.bar.menus.menu.media.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.media.card.color": "#0f0f0f",
+    // Notifications Menu
+    "theme.bar.menus.menu.notifications.card": "#0f0f0f",
+    "theme.bar.menus.menu.notifications.background": "#1a1a1a",
+    // System Tray Menu
+    "theme.bar.menus.menu.systray.dropdownmenu.background": "#1a1a1a",
+    // =============================================================================
+    // DASHBOARD SHORTCUTS
+    // =============================================================================
+    "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Brave Browser",
+    "menus.dashboard.shortcuts.left.shortcut1.command": "brave-browser",
+    "menus.dashboard.shortcuts.left.shortcut1.icon": "󰯊",
+    "menus.dashboard.shortcuts.left.shortcut2.command": "/home/mahdi/.local/bin/cursor",
+    "menus.dashboard.shortcuts.left.shortcut2.icon": "",
+    "menus.dashboard.shortcuts.left.shortcut2.tooltip": "Cursor",
+    "menus.dashboard.shortcuts.left.shortcut4.command": "rofi -show run",
+    // =============================================================================
+    // CLOCK AND WEATHER SETTINGS
+    // =============================================================================
+    "menus.clock.weather.location": "LOCATION_HERE",
+    "menus.clock.weather.unit": "metric",
+    "menus.clock.weather.key": "API_KEY_HERE",
+    // =============================================================================
+    // VOLUME SETTINGS
+    // =============================================================================
+    "menus.volume.raiseMaximumVolume": false,
+    // =============================================================================
+    // POWER SETTINGS
+    // =============================================================================
+    "menus.power.lowBatteryThreshold": 25,
+    "menus.power.lowBatteryNotificationTitle": "Low battery",
+    // =============================================================================
+    // NOTIFICATION SETTINGS
+    // =============================================================================
+    "theme.notification.scaling": 100,
+    "theme.notification.background": "#1a1a1a",
+    // =============================================================================
+    // OSD (ON-SCREEN DISPLAY) SETTINGS
+    // =============================================================================
+    "theme.osd.opacity": 100,
+    "theme.osd.bar_container": "#1a1a1a",
+    "theme.osd.location": "top left",
+    "theme.osd.margins": "7px 12px 12px 12px",
+    "theme.osd.radius": "20px",
+    "theme.osd.muted_zero": true
+}

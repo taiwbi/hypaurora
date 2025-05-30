@@ -1,0 +1,62 @@
+.bar-panel-container .bar-panel {
+  .box-center {
+    button.media {
+      border-right: none;
+      margin-right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    button.media,
+    button.media * {
+      /* Transition */
+      transition-property:
+        color, background-color, border-color, text-decoration-color, fill,
+        stroke;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.media:hover {
+      background: #b4befe;
+
+      * {
+        color: #0f0f0f;
+      }
+    }
+
+    button.clock {
+      border-left: none;
+      margin-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    button.clock,
+    button.clock * {
+      /* Transition */
+      transition-property:
+        color, background-color, border-color, text-decoration-color, fill,
+        stroke;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.clock:hover {
+      background: #a6e3a1;
+
+      * {
+        color: #0f0f0f;
+      }
+    }
+  }
+
+  .box-right {
+    eventbox {
+      box.systray {
+        background-color: transparent;
+        border: 1px solid transparent;
+      }
+    }
+  }
+}
