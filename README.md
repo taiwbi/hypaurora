@@ -8,6 +8,7 @@ Welcome to my **GNOME dotfiles** repository! 🎉 These are my personal configur
 <img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/light-apps.png" alt="Light Mode with apps screenshot">
 
 Icon Pack: [Color Flow](https://www.gnome-look.org/p/2239645)
+Cursor Theme: [Phinger HyprCursor Light](https://discord.com/channels/961691461554950145/1216066899729977435/1326665055844175892)
 Font Family: [Geist](https://vercel.com/font)
 Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
 Monospace Family: [Geist Mono](https://vercel.com/font)
