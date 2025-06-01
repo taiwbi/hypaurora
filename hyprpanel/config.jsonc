@@ -93,7 +93,7 @@
     "theme.bar.buttons.background": "#1a1a1a",
     "theme.bar.buttons.radius": "20px",
     "theme.bar.buttons.opacity": 100,
-    "theme.bar.buttons.background_opacity": 60,
+    "theme.bar.buttons.background_opacity": 85,
     "theme.bar.buttons.background_hover_opacity": 100,
     "theme.bar.buttons.y_margins": "2px",
     // Dashboard Button

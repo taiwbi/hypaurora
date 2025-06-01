@@ -13,7 +13,7 @@ window-width = 130
 window-height = 30
 window-padding-x = 2
 window-padding-y = 2
-background-opacity = 0.7
+background-opacity = 0.85
 
 mouse-hide-while-typing = true
 
