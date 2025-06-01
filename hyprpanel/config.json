@@ -27,6 +27,7 @@
             ],
             "right": [
                 "systray",
+                "kbinput",
                 "volume",
                 "network",
                 "bluetooth",
@@ -129,6 +130,9 @@
     "theme.bar.buttons.clock.icon": "#a6e3a1",
     
     "theme.bar.buttons.notifications.background": "#1a1a1a",
+    
+    "theme.bar.buttons.modules.kbinput.icon_background": "#1a1a1a",
+    "theme.bar.buttons.modules.kbinput.background": "#1a1a1a",
     
     "theme.bar.buttons.modules.microphone.spacing": "0.45em",
     
