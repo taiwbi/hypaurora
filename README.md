@@ -10,7 +10,7 @@ Welcome to my **GNOME dotfiles** repository! 🎉 These are my personal configur
 Icon Pack: [Color Flow](https://www.gnome-look.org/p/2239645)
 Font Family: [Geist](https://vercel.com/font)
 Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-Monospace Family: [Monaspace](https://monaspace.githubnext.com/)
+Monospace Family: [Geist Mono](https://vercel.com/font)
 Persian Monospace Family: [AzarMehrMonospace](https://befonts.com/azarmehr-monospaced-font-duo.html)
 
 ## Color pallet
