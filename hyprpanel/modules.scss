@@ -1,4 +1,8 @@
 .bar-panel-container .bar-panel {
+  .bar_item_box_visible {
+    background-color: rgba(26, 26, 26, 0.5);
+  }
+
   .box-center {
     button.media {
       border-right: none;
@@ -7,18 +11,28 @@
       border-bottom-right-radius: 0;
     }
 
-    button.media,
+    button.media {
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+      background: linear-gradient(
+        90deg,
+        rgb(180, 190, 254) 0%,
+        rgb(180, 190, 254) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-position: 100% 0;
+      background-size: 200% 100%;
+    }
+
     button.media * {
-      /* Transition */
-      transition-property:
-        color, background-color, border-color, text-decoration-color, fill,
-        stroke;
+      transition-property: color;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 350ms;
     }
 
     button.media:hover {
-      background: #b4befe;
+      background-position: 0 0;
 
       * {
         color: #0f0f0f;
@@ -32,18 +46,28 @@
       border-bottom-left-radius: 0;
     }
 
-    button.clock,
+    button.clock {
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+      background: linear-gradient(
+        90deg,
+        rgb(166, 227, 161) 0%,
+        rgb(166, 227, 161) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-position: -100% 0;
+      background-size: 200% 100%;
+    }
+
     button.clock * {
-      /* Transition */
-      transition-property:
-        color, background-color, border-color, text-decoration-color, fill,
-        stroke;
+      transition-property: color;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 350ms;
     }
 
     button.clock:hover {
-      background: #a6e3a1;
+      background-position: 0 0;
 
       * {
         color: #0f0f0f;
@@ -57,6 +81,146 @@
         background-color: transparent;
         border: 1px solid transparent;
       }
+    }
+
+    button.kblayout {
+      /* Transition */
+      background: linear-gradient(
+        90deg,
+        rgb(137, 220, 235) 0%,
+        rgb(137, 220, 235) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.kblayout:hover {
+      background-position: 51% 0;
+    }
+
+    button.kblayout .module-icon {
+      transition: color 0.2s ease-in-out;
+      margin-right: 2px;
+    }
+
+    button.kblayout:hover .module-icon {
+      color: #1a1a1a;
+    }
+
+    button.volume {
+      /* Transition */
+      background: linear-gradient(
+        90deg,
+        rgb(235, 160, 172) 0%,
+        rgb(235, 160, 172) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.volume:hover {
+      background-position: 56% 0;
+    }
+
+    button.volume .bar-button-icon {
+      transition: color 0.2s ease-in-out;
+      margin-right: 2px;
+    }
+
+    button.volume:hover .bar-button-icon {
+      color: #1a1a1a;
+    }
+
+    button.network {
+      /* Transition */
+      background: linear-gradient(
+        90deg,
+        rgb(203, 166, 247) 0%,
+        rgb(203, 166, 247) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.network:hover {
+      background-position: 62% 0;
+    }
+
+    button.network .bar-button-icon {
+      transition: color 0.2s ease-in-out;
+      margin-right: 2px;
+    }
+
+    button.network:hover .bar-button-icon {
+      color: #1a1a1a;
+    }
+
+    button.bluetooth {
+      /* Transition */
+      background: linear-gradient(
+        90deg,
+        rgb(137, 220, 235) 0%,
+        rgb(137, 220, 235) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.bluetooth:hover {
+      background-position: 60% 0;
+    }
+
+    button.bluetooth .bar-button-icon {
+      transition: color 0.2s ease-in-out;
+      margin-right: 2px;
+    }
+
+    button.bluetooth:hover .bar-button-icon {
+      color: #1a1a1a;
+    }
+
+    button.battery {
+      /* Transition */
+      background: linear-gradient(
+        90deg,
+        rgb(249, 226, 175) 0%,
+        rgb(249, 226, 175) 50%,
+        rgba(26, 26, 26, 0.5) 50%
+      );
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      transition-property: background-position;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 350ms;
+    }
+
+    button.battery:hover {
+      background-position: 62% 0;
+    }
+
+    button.battery .bar-button-icon {
+      transition: color 0.2s ease-in-out;
+      margin-right: 2px;
+    }
+
+    button.battery:hover .bar-button-icon {
+      color: #1a1a1a;
     }
   }
 }
