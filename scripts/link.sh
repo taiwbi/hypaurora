@@ -22,7 +22,7 @@ rm -rf "$HOME/.config/fontconfig" && ln -s "$PWD/fontconfig" "$HOME/.config/"
 rm -rf "$HOME/.config/mpv" && ln -s "$PWD/mpv" "$HOME/.config/"
 rm -rf "$HOME/.config/gtk-3.0" && ln -s "$PWD/gtk-3.0" "$HOME/.config/"
 rm -rf "$HOME/.config/gtk-4.0" && ln -s "$PWD/gtk-4.0" "$HOME/.config/"
-rm -rf "$HOME/.config/ghostty" && ln -s "$PWD/ghostty" "$HOME/.config/"
+rm -rf "$HOME/.config/kitty" && ln -s "$PWD/kitty" "$HOME/.config/"
 rm -rf "$HOME/.config/tmux" && ln -s "$PWD/tmux" "$HOME/.config/"
 rm -rf "$HOME/.config/fish" && ln -sf "$PWD/fish" "$HOME/.config/fish"
 
