@@ -1,6 +1,9 @@
 # --- Aliases (can also go in conf.d/aliases.fish) ---
 # Keep simple aliases here or move them to conf.d/
 
+alias fastfetch 'fastfetch --gpu-hide-type integrated'
+alias ff 'fastfetch'
+
 alias vi nvim
 alias cl clear
 alias cd.. 'cd ..'

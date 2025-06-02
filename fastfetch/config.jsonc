@@ -1,0 +1,166 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "kitty",
+    "source": "$HOME/Documents/hypaurora/assets/somesimple-2B.png",
+    "height": 16,
+    "padding": {
+      "top": 2,
+      "right": 3,
+      "left": 2
+    }
+  },
+  "display": {
+    "separator": "",
+    "color": {
+      "keys": "cyan",
+      "output": "white"
+    },
+    "key": {
+      "width": 20,
+      "type": "string"
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "╭─────────────────────────────────────────────────────────╮",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "│                     \u001b[1;36mSYSTEM OVERVIEW\u001b[0m                     │",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "├─────────────────────────────────────────────────────────┤",
+      "keyColor": "blue"
+    },
+    {
+      "type": "os",
+      "key": "    OS",
+      "keyColor": "cyan",
+      "format": "\u001b[1;97m{3}\u001b[0m"
+    },
+    {
+      "type": "kernel",
+      "key": "    Kernel",
+      "keyColor": "yellow",
+      "format": "\u001b[1;97m{1}\u001b[0m"
+    },
+    {
+      "type": "custom",
+      "format": "├─────────────────────────────────────────────────────────┤",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "│                      \u001b[1;35mHARDWARE INFO\u001b[0m                      │",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "├─────────────────────────────────────────────────────────┤",
+      "keyColor": "blue"
+    },
+    {
+      "type": "cpu",
+      "key": "    CPU",
+      "keyColor": "red",
+      "format": "\u001b[1;97m{1}\u001b[0m \u001b[38;5;8m@ {3}\u001b[0m"
+    },
+    {
+      "type": "gpu",
+      "key": "  󰍛  GPU",
+      "keyColor": "green",
+      "format": "\u001b[1;97m{2}\u001b[0m",
+      "driverSpecific": true,
+      "detectionMethod": "vulkan"
+    },
+    {
+      "type": "memory",
+      "key": "    Memory",
+      "keyColor": "blue",
+      "format": "\u001b[1;97m{1}\u001b[0m \u001b[38;5;8m/\u001b[0m \u001b[1;97m{2}\u001b[0m \u001b[38;5;244m({3}%)\u001b[0m"
+    },
+    {
+      "type": "disk",
+      "key": "  󰋊  Storage",
+      "keyColor": "magenta",
+      "format": "\u001b[1;97m{1}\u001b[0m \u001b[38;5;8m/\u001b[0m \u001b[1;97m{2}\u001b[0m \u001b[38;5;244m({3}%)\u001b[0m"
+    },
+    {
+      "type": "custom",
+      "format": "├─────────────────────────────────────────────────────────┤",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "│                     \u001b[1;33mENVIRONMENT INFO\u001b[0m                    │",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "├─────────────────────────────────────────────────────────┤",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "key": "  󱂬  WM",
+      "keyColor": "cyan",
+      "format": "\u001b[1;97m{1}\u001b[0m"
+    },
+    {
+      "type": "de",
+      "key": "    DE",
+      "keyColor": "yellow",
+      "format": "\u001b[1;97m{1}\u001b[0m"
+    },
+    {
+      "type": "terminal",
+      "key": "    Terminal",
+      "keyColor": "green",
+      "format": "\u001b[1;97m{1}\u001b[0m"
+    },
+    {
+      "type": "shell",
+      "key": "    Shell",
+      "keyColor": "blue",
+      "format": "\u001b[1;97m{1}\u001b[0m"
+    },
+    {
+      "type": "packages",
+      "key": "  󰏖  Packages",
+      "keyColor": "magenta",
+      "format": "\u001b[1;97m{1}\u001b[0m"
+    },
+    {
+      "type": "custom",
+      "format": "├─────────────────────────────────────────────────────────┤",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "│                       \u001b[1;32mCOLOR PALETTE\u001b[0m                     │",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "╰─────────────────────────────────────────────────────────╯",
+      "keyColor": "blue"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 4,
+      "symbol": "circle",
+      "block": {
+        "width": 3
+      }
+    },
+    {
+      "type": "custom",
+      "format": "    \u001b[38;2;255;105;180m●\u001b[0m \u001b[38;2;135;206;235m●\u001b[0m \u001b[38;2;144;238;144m●\u001b[0m \u001b[38;2;255;215;0m●\u001b[0m \u001b[38;2;255;99;71m●\u001b[0m \u001b[38;2;221;160;221m●\u001b[0m \u001b[38;2;173;216;230m●\u001b[0m \u001b[38;2;240;230;140m●\u001b[0m"
+    }
+  ]
+}
