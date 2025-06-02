@@ -224,3 +224,34 @@
     }
   }
 }
+
+.dropdown-menu {
+  .dropdown-content {
+    box-shadow: none;
+    border: none;
+    > box > .vertical {
+      background: rgba(26, 26, 26, 0.5);
+      border-radius: 20px;
+      border: none;
+    }
+
+    .menu-items .menu-items-container .menu-section-container {
+      .menu-label-container,
+      .menu-items-section {
+        background: transparent;
+      }
+    }
+  }
+
+  .vertical box {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  &.calendarmenu {
+    .dropdown-content {
+      background: rgba(26, 26, 26, 0.5);
+    }
+  }
+}
