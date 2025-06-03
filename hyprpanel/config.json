@@ -250,9 +250,9 @@
     
     "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Brave Browser",
     "menus.dashboard.shortcuts.left.shortcut1.command": "brave-browser",
-    "menus.dashboard.shortcuts.left.shortcut1.icon": "󰯊",
+    "menus.dashboard.shortcuts.left.shortcut1.icon": "",
     "menus.dashboard.shortcuts.left.shortcut2.command": "/home/mahdi/.local/bin/cursor",
-    "menus.dashboard.shortcuts.left.shortcut2.icon": "",
+    "menus.dashboard.shortcuts.left.shortcut2.icon": "󰨞",
     "menus.dashboard.shortcuts.left.shortcut2.tooltip": "Cursor",
     "menus.dashboard.shortcuts.left.shortcut4.command": "rofi -show run",
     
