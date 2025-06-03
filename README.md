@@ -1,11 +1,10 @@
-# 🌌 Hypaurora GNOME
+# 🌌 Hypaurora
 
-Welcome to my **GNOME dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the GNOME Desktop (Not so much).
+Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the GNOME and Hyprland.
 
-<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/dark-clean.png" alt="Dark Mode screenshot">
-<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/dark-apps.png" alt="Dark Mode with apps screenshot">
-<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/light-clean.png" alt="Light Mode screenshot">
-<img src="https://raw.githubusercontent.com/taiwbi/hypaurora/GNOME/assets/light-apps.png" alt="Light Mode with apps screenshot">
+> If you want to use this make sure you clone it in `~/Documents/hypaurora`
+
+![HyprShot](./assets/Hypaurora.gif)
 
 Icon Pack: [Color Flow](https://www.gnome-look.org/p/2239645)
 Cursor Theme: [Phinger HyprCursor Light](https://discord.com/channels/961691461554950145/1216066899729977435/1326665055844175892)
