@@ -53,7 +53,7 @@ function fish_prompt
         set -l branch_name (git symbolic-ref --short HEAD 2>/dev/null; or git describe --tags --exact-match 2>/dev/null; or git rev-parse --short HEAD 2>/dev/null)
         
         if test -n "$branch_name"
-            set git_branch "$fg1 $color_reset$fg9$branch_name$color_reset"
+            set git_branch "$fg1$color_reset$fg9$branch_name$color_reset"
         end
         
         # Git status information
@@ -65,7 +65,6 @@ function fish_prompt
         # Check for various git statuses
         if test -n "$git_status_output"
             set -l has_staged false
-            set status_symbols "$status_symbols‌ " 
             
             # Working tree changes (look at second character)
             if string match -q "*M" $git_status_output
