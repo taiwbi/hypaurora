@@ -155,6 +155,7 @@
     
     "menus.transition": "crossfade",
     "theme.bar.menus.enableShadow": true,
+    "menus.dashboard.stats.enable_gpu": false,
     "theme.bar.menus.background": "#1a1a1a",
     "theme.bar.menus.opacity": 100,
     "theme.bar.menus.card_radius": "20px",
