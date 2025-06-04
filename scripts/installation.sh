@@ -68,8 +68,8 @@ sudo dnf install php php-pecl-xdebug3 composer
 sudo dnf copr enable trixieua/morewaita-icon-theme
 sudo dnf install morewaita-icon-theme
 
-sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-sudo dnf install lazygit starship neovide nautilus-python
+sudo dnf install nautilus-python
+# TODO: Install lazygit
 
 
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
