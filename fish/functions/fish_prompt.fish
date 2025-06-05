@@ -123,28 +123,38 @@ function fish_prompt
         end
     end
     
-    # Build the complete prompt
-    set -l prompt_parts
-    
-    # [hostname@username directory]
+    # Build the first line of the prompt
     set -l hostname_part "$blue$ssh_symbol$color_reset$green$hostname_display$color_reset"
     set -l username_part "$username_color"(whoami)"$color_reset"
     set -l directory_part "$black$current_dir$color_reset"
     
-    set prompt_parts "[$hostname_part@$username_part $directory_part]"
+    set -l first_line "[$hostname_part@$username_part $directory_part]"
     
     # Add git information if available
     if test -n "$git_branch"
-        set prompt_parts "$prompt_parts $git_branch"
+        set first_line "$first_line $git_branch"
     end
     
     if test -n "$git_status_info"
-        set prompt_parts "$prompt_parts$git_status_info"
+        set first_line "$first_line$git_status_info"
     end
     
-    # Add final red # 
-    set prompt_parts "$prompt_parts $red#$color_reset "
+    # Get terminal width
+    set -l term_width (tput cols 2>/dev/null; or echo 80)
     
-    # Output the complete prompt
-    echo -n $prompt_parts
+    # Calculate the visible length of the first line (strip color codes for length calculation)
+    set -l first_line_visible (string replace -ra '\e\[[0-9;]*m' '' $first_line)
+    set -l first_line_length (string length $first_line_visible)
+    
+    # Define threshold for line breaking (leave some margin for the # and input)
+    set -l threshold (math $term_width - 90)
+    
+    # Output the prompt
+    if test $first_line_length -gt $threshold
+        # Two-line prompt for narrow terminals
+        printf "%s\n%s#%s " $first_line $red $color_reset
+    else
+        # Single-line prompt for wide terminals
+        printf "%s %s#%s " $first_line $red $color_reset
+    end
 end
