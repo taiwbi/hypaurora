@@ -67,39 +67,39 @@ function fish_prompt
             set -l has_staged false
             
             # Working tree changes (look at second character)
-            if string match -q "*M" $git_status_output
+            if string match -q "* M *" $git_status_output
                 set status_symbols "$status_symbols‌&" # Modified
             end
-            if string match -q "*D" $git_status_output
+            if string match -q "* D *" $git_status_output
                 set status_symbols "$status_symbols‌D" # Deleted
             end
             
             # Staging area changes (look at first character)  
-            if string match -q "M*" $git_status_output
+            if string match -q "M *" $git_status_output
                 set status_symbols "$status_symbols‌S" # Staged
                 set has_staged true
             end
-            if string match -q "A*" $git_status_output
+            if string match -q "A *" $git_status_output
                 set status_symbols "$status_symbols‌N" # New Files
                 set status_symbols "$status_symbols‌S" # Staged
                 set has_staged true
             end
-            if string match -q "D*" $git_status_output
+            if string match -q "D *" $git_status_output
                 set status_symbols "$status_symbols‌N" # Staged
                 set has_staged true
             end
-            if string match -q "R*" $git_status_output
+            if string match -q "R *" $git_status_output
                 set status_symbols "$status_symbols‌R" # Renamed
                 set status_symbols "$status_symbols‌S" # Staged
                 set has_staged true
             end
-            if string match -q "C*" $git_status_output
+            if string match -q "C *" $git_status_output
                 set status_symbols "$status_symbols‌S" # Staged
                 set has_staged true
             end
             
             # Untracked files
-            if string match -q "??*" $git_status_output
+            if string match -q "?? *" $git_status_output
                 set status_symbols "$status_symbols‌U"
             end
         end
