@@ -38,6 +38,11 @@ widget.background.overview {
   background: transparent;
 }
 
+/* Nautilus File Chooser */
+#NautilusFileChooser overlay-split-view.view {
+  background: transparent;
+}
+
 /* Lollypop */
 window>deck>grid>headerbar.titlebar>widget>widget>box>image {
   margin-top: -1px;
