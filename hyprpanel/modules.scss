@@ -249,12 +249,32 @@
     border: none;
   }
 
+  // Calendar menu
   &.calendarmenu {
     .dropdown-content {
       background: rgba(26, 26, 26, 0.5);
       .calendar-menu-item-container .calendar-menu-widget * {
         box-shadow: none;
       }
+    }
+  }
+
+  // Notification menu
+  .notification-card-container.menu {
+    .notification-card.menu {
+      background-color: rgba(26, 26, 26, 0.5);
+      border: none;
+    }
+  }
+}
+#verification {
+  background: transparent;
+
+  .verification-window .verification {
+    background: rgba(26, 26, 26, 0.5);
+    border: none;
+    .verification-content {
+      background: transparent;
     }
   }
 }
