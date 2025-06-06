@@ -20,4 +20,4 @@ mouse-hide-while-typing = true
 # THEME
 window-theme = ghostty
 theme = catppuccin-mocha
-background = #1a1a1a
+background = #222226

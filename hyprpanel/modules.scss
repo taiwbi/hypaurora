@@ -1,6 +1,6 @@
 .bar-panel-container .bar-panel {
   .bar_item_box_visible {
-    background-color: rgba(26, 26, 26, 0.5);
+    background-color: rgba(34, 34, 38, 0.5);
   }
 
   .box-center {
@@ -19,7 +19,7 @@
         90deg,
         rgb(180, 190, 254) 0%,
         rgb(180, 190, 254) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-position: 100% 0;
       background-size: 200% 100%;
@@ -54,7 +54,7 @@
         90deg,
         rgb(166, 227, 161) 0%,
         rgb(166, 227, 161) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-position: -100% 0;
       background-size: 200% 100%;
@@ -89,7 +89,7 @@
         90deg,
         rgb(137, 220, 235) 0%,
         rgb(137, 220, 235) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-size: 200% 100%;
       background-position: 100% 0;
@@ -108,7 +108,7 @@
     }
 
     button.kblayout:hover .module-icon {
-      color: #1a1a1a;
+      color: #222226;
     }
 
     button.volume {
@@ -117,7 +117,7 @@
         90deg,
         rgb(235, 160, 172) 0%,
         rgb(235, 160, 172) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-size: 200% 100%;
       background-position: 100% 0;
@@ -136,7 +136,7 @@
     }
 
     button.volume:hover .bar-button-icon {
-      color: #1a1a1a;
+      color: #222226;
     }
 
     button.network {
@@ -145,7 +145,7 @@
         90deg,
         rgb(203, 166, 247) 0%,
         rgb(203, 166, 247) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-size: 200% 100%;
       background-position: 100% 0;
@@ -164,7 +164,7 @@
     }
 
     button.network:hover .bar-button-icon {
-      color: #1a1a1a;
+      color: #222226;
     }
 
     button.bluetooth {
@@ -173,7 +173,7 @@
         90deg,
         rgb(137, 220, 235) 0%,
         rgb(137, 220, 235) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-size: 200% 100%;
       background-position: 100% 0;
@@ -192,7 +192,7 @@
     }
 
     button.bluetooth:hover .bar-button-icon {
-      color: #1a1a1a;
+      color: #222226;
     }
 
     button.battery {
@@ -201,7 +201,7 @@
         90deg,
         rgb(249, 226, 175) 0%,
         rgb(249, 226, 175) 50%,
-        rgba(26, 26, 26, 0.5) 50%
+        rgba(34, 34, 38, 0.5) 50%
       );
       background-size: 200% 100%;
       background-position: 100% 0;
@@ -220,7 +220,7 @@
     }
 
     button.battery:hover .bar-button-icon {
-      color: #1a1a1a;
+      color: #222226;
     }
   }
 }
@@ -230,7 +230,7 @@
     box-shadow: none;
     border: none;
     > box > .vertical {
-      background: rgba(26, 26, 26, 0.5);
+      background: rgba(34, 34, 38, 0.5);
       border-radius: 20px;
       border: none;
     }
@@ -252,7 +252,7 @@
   // Calendar menu
   &.calendarmenu {
     .dropdown-content {
-      background: rgba(26, 26, 26, 0.5);
+      background: rgba(34, 34, 38, 0.5);
       .calendar-menu-item-container .calendar-menu-widget * {
         box-shadow: none;
       }
@@ -262,7 +262,7 @@
   // Notification menu
   .notification-card-container.menu {
     .notification-card.menu {
-      background-color: rgba(26, 26, 26, 0.5);
+      background-color: rgba(34, 34, 38, 0.5);
       border: none;
     }
   }
@@ -271,7 +271,7 @@
   background: transparent;
 
   .verification-window .verification {
-    background: rgba(26, 26, 26, 0.5);
+    background: rgba(34, 34, 38, 0.5);
     border: none;
     .verification-content {
       background: transparent;

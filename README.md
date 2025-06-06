@@ -15,15 +15,15 @@ Welcome to my **dotfiles** repository! 🎉 These are my personal configuration 
 
 ## Color pallet
 
-Basically catppuccin mocha with these colors modified for being easier on the eyes:
+Basically catppuccin mocha with these colors modified for being easier on the eyes and match GNOME apps background:
 
 ```
 Base
- #1a1a1a     rgb(26, 26, 26)
+ #222226     rgb(34, 34, 38)
 Mantle
- #161616     rgb(22, 22, 22)
+ #1e1e22     rgb(30, 30, 34)
 Crust
- #0f0f0f     rgb(15, 15, 15)
+ #17171b     rgb(23, 23, 27)
 ```
 
 ## What's Included? 🤔

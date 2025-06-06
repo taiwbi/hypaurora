@@ -76,7 +76,7 @@
     "theme.bar.scaling": 90,
     "theme.bar.opacity": 100,
     "theme.bar.transparent": true,
-    "theme.bar.background": "#1a1a1a",
+    "theme.bar.background": "#222226",
     "theme.bar.outer_spacing": "2px",
     "theme.bar.border_radius": "0",
     
@@ -91,14 +91,14 @@
     "theme.bar.buttons.enableBorders": true,
     "theme.bar.buttons.borderSize": "0.08em",
     "theme.bar.buttons.monochrome": false,
-    "theme.bar.buttons.background": "#1a1a1a",
+    "theme.bar.buttons.background": "#222226",
     "theme.bar.buttons.radius": "20px",
     "theme.bar.buttons.opacity": 100,
     "theme.bar.buttons.background_opacity": 85,
     "theme.bar.buttons.background_hover_opacity": 100,
     "theme.bar.buttons.y_margins": "2px",
     
-    "theme.bar.buttons.dashboard.background": "#1a1a1a",
+    "theme.bar.buttons.dashboard.background": "#222226",
     "theme.bar.buttons.dashboard.icon": "#f9e2af",
     "theme.bar.buttons.dashboard.border": "#f9e2af",
     "theme.bar.buttons.dashboard.enableBorder": false,
@@ -108,31 +108,31 @@
     "theme.bar.buttons.workspaces.occupied": "#f2cdcd",
     "theme.bar.buttons.workspaces.active": "#ea75ca",
     "theme.bar.buttons.workspaces.available": "#89dceb",
-    "theme.bar.buttons.workspaces.background": "#1a1a1a",
+    "theme.bar.buttons.workspaces.background": "#222226",
     
-    "theme.bar.buttons.windowtitle.background": "#1a1a1a",
+    "theme.bar.buttons.windowtitle.background": "#222226",
     "theme.bar.buttons.windowtitle.text": "#f5c2e7",
     "theme.bar.buttons.windowtitle.icon": "#f5c2e7",
     "theme.bar.buttons.windowtitle.border": "#f5c2e7",
     
-    "theme.bar.buttons.media.background": "#1a1a1a",
+    "theme.bar.buttons.media.background": "#222226",
     
-    "theme.bar.buttons.volume.background": "#1a1a1a",
+    "theme.bar.buttons.volume.background": "#222226",
     
-    "theme.bar.buttons.network.background": "#1a1a1a",
+    "theme.bar.buttons.network.background": "#222226",
     
-    "theme.bar.buttons.bluetooth.background": "#1a1a1a",
+    "theme.bar.buttons.bluetooth.background": "#222226",
     
-    "theme.bar.buttons.battery.background": "#1a1a1a",
+    "theme.bar.buttons.battery.background": "#222226",
     
-    "theme.bar.buttons.clock.background": "#1a1a1a",
+    "theme.bar.buttons.clock.background": "#222226",
     "theme.bar.buttons.clock.text": "#a6e3a1",
     "theme.bar.buttons.clock.icon": "#a6e3a1",
     
-    "theme.bar.buttons.notifications.background": "#1a1a1a",
+    "theme.bar.buttons.notifications.background": "#222226",
     
-    "theme.bar.buttons.modules.kbinput.icon_background": "#1a1a1a",
-    "theme.bar.buttons.modules.kbinput.background": "#1a1a1a",
+    "theme.bar.buttons.modules.kbinput.icon_background": "#222226",
+    "theme.bar.buttons.modules.kbinput.background": "#222226",
     
     "theme.bar.buttons.modules.microphone.spacing": "0.45em",
     
@@ -156,10 +156,10 @@
     "menus.transition": "crossfade",
     "theme.bar.menus.enableShadow": true,
     "menus.dashboard.stats.enable_gpu": false,
-    "theme.bar.menus.background": "#1a1a1a",
+    "theme.bar.menus.background": "#222226",
     "theme.bar.menus.opacity": 100,
     "theme.bar.menus.card_radius": "20px",
-    "theme.bar.menus.cards": "#1a1a1a",
+    "theme.bar.menus.cards": "#222226",
     
     
     
@@ -203,49 +203,49 @@
     
     
     "theme.bar.menus.popover.text": "#b4befe",
-    "theme.bar.menus.popover.background": "#1a1a1a",
+    "theme.bar.menus.popover.background": "#222226",
     "theme.bar.menus.popover.scaling": 65,
     
     
     
     "theme.bar.menus.dropdownmenu.text": "#cdd6f4",
-    "theme.bar.menus.dropdownmenu.background": "#1a1a1a",
+    "theme.bar.menus.dropdownmenu.background": "#222226",
     "theme.bar.menus.dropdownmenu.divider": "#1e1e2e",
     
     
     
-    "theme.bar.menus.tooltip.background": "#1a1a1a",
+    "theme.bar.menus.tooltip.background": "#222226",
     "theme.bar.menus.tooltip.text": "#b4beff",
     
     
     
     
     "theme.bar.menus.menu.dashboard.card.color": "#0f0f0f",
-    "theme.bar.menus.menu.dashboard.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.dashboard.background.color": "#222226",
     "theme.bar.menus.menu.dashboard.border.color": "#2a2b30",
     
     "theme.bar.menus.menu.battery.card.color": "#0f0f0f",
-    "theme.bar.menus.menu.battery.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.battery.background.color": "#222226",
     
     "theme.bar.menus.menu.bluetooth.card.color": "#0f0f0f",
-    "theme.bar.menus.menu.bluetooth.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.bluetooth.background.color": "#222226",
     
     "theme.bar.menus.menu.network.card.color": "#0f0f0f",
-    "theme.bar.menus.menu.network.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.network.background.color": "#222226",
     
     "theme.bar.menus.menu.volume.card.color": "#0f0f0f",
-    "theme.bar.menus.menu.volume.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.volume.background.color": "#222226",
     
     "theme.bar.menus.menu.clock.card.color": "#0f0f0f",
-    "theme.bar.menus.menu.clock.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.clock.background.color": "#222226",
     
-    "theme.bar.menus.menu.media.background.color": "#1a1a1a",
+    "theme.bar.menus.menu.media.background.color": "#222226",
     "theme.bar.menus.menu.media.card.color": "#0f0f0f",
     
     "theme.bar.menus.menu.notifications.card": "#0f0f0f",
-    "theme.bar.menus.menu.notifications.background": "#1a1a1a",
+    "theme.bar.menus.menu.notifications.background": "#222226",
     
-    "theme.bar.menus.menu.systray.dropdownmenu.background": "#1a1a1a",
+    "theme.bar.menus.menu.systray.dropdownmenu.background": "#222226",
     
     
     
@@ -275,12 +275,12 @@
     
     
     "theme.notification.scaling": 100,
-    "theme.notification.background": "#1a1a1a",
+    "theme.notification.background": "#222226",
     
     
     
     "theme.osd.opacity": 100,
-    "theme.osd.bar_container": "#1a1a1a",
+    "theme.osd.bar_container": "#222226",
     "theme.osd.location": "top left",
     "theme.osd.margins": "7px 12px 12px 12px",
     "theme.osd.radius": "20px",

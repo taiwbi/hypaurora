@@ -4,10 +4,10 @@ configuration {
 }
 
 * {
-    bg0:    rgba(26, 26, 26, 0.5);
-    bg1:    rgba(26, 26, 26, 0.5);
-    bg2:    #1a1a1a;
-    bg3:    #1a1a1a;
+    bg0:    rgba(34, 34, 38, 0.5);
+    bg1:    rgba(34, 34, 38, 0.5);
+    bg2:    #222226;
+    bg3:    #222226;
     fg0:    #cdd6f4;
     fg1:    #bac2de;
     fg2:    #a6adc8;

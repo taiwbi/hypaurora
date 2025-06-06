@@ -18,10 +18,10 @@
 @define-color error_fg_color #cdd6f4;
 @define-color error_color #eba0ac;
 
-@define-color window_bg_color #1a1a1a;
+@define-color window_bg_color #222226;
 @define-color window_fg_color #cdd6f4;
 
-@define-color view_bg_color #1a1a1a;
+@define-color view_bg_color #222226;
 @define-color view_fg_color #cdd6f4;
 
 @define-color headerbar_bg_color #0f0f0f;
@@ -33,11 +33,11 @@
 @define-color card_fg_color #cdd6f4;
 @define-color card_shade_color #161616;
 
-@define-color popover_bg_color #1a1a1a;
+@define-color popover_bg_color #222226;
 @define-color popover_fg_color #bac2de;
 
-@define-color sidebar_backdrop_color #1a1a1a;
-@define-color sidebar_bg_color #1a1a1a;
+@define-color sidebar_backdrop_color #222226;
+@define-color sidebar_bg_color #222226;
 @define-color sidebar_fg_color #bac2de;
 
 /* Target the specific row in the sidebar that's selected */
