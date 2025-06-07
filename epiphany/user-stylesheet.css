@@ -1,0 +1,90 @@
+/* Apply system UI font to all text elements while preserving icons */
+html,
+body,
+input,
+textarea,
+select,
+button,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div,
+li,
+td,
+th,
+label,
+a,
+blockquote,
+pre,
+code {
+  font-family:
+    "Geist",
+    "Vazirmatn",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+/* Preserve icon fonts - exclude common icon font classes */
+[class*="icon"]:before,
+[class*="icon"]:after,
+[data-icon],
+.iconify,
+.anticon,
+.feather {
+  font-family: inherit !important;
+}
+
+mat-icon,
+.material-icons,
+.material-icons-outlined,
+.material-icons-round,
+.material-icons-sharp,
+.material-icons-two-tone {
+  font-family: "Material Symbols Rounded Filled" !important;
+}
+
+[class^="fa-"]:before,
+[class*=" fa-"]:before,
+.fa,
+.fas,
+.far,
+.fal,
+.fab,
+.fad {
+  font-family: "Font Awesome 5 Pro" !important;
+}
+
+/* Ensure form elements inherit the system font */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+/* Preserve monospace for code elements */
+code,
+pre,
+kbd,
+samp,
+.code,
+.monospace {
+  font-family:
+    "Geist Mono", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New",
+    monospace;
+}

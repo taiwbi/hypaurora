@@ -31,6 +31,12 @@ rm -rf "$HOME/.config/hypr" && ln -sf "$PWD/hypr" "$HOME/.config/hypr"
 rm -rf "$HOME/.config/hyprpanel" && ln -sf "$PWD/hyprpanel" "$HOME/.config/hyprpanel"
 rm -rf "$HOME/.config/rofi" && ln -sf "$PWD/rofi" "$HOME/.config/rofi"
 
+if [ -d "$HOME/.local/share/epiphany" ]; then
+  rm -f "$HOME/.local/share/epiphany/user-*";
+  ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 
+  ln -sf "$PWD/epiphany/user-stylesheet.css" "$HOME/.local/share/epiphany/user-stylesheet.css"
+fi
+
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 echo -e ""
