@@ -85,6 +85,41 @@ samp,
 .code,
 .monospace {
   font-family:
-    "Geist Mono", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New",
-    monospace;
+    "Geist Mono", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code",
+    "Roboto Mono", Consolas, "Courier New", monospace;
 }
+
+/* === === === === === Wallhaven === === === === === */
+
+.wallhaven figure.thumb,
+.wallhaven figure.thumb img {
+  width: 30vw !important;
+  height: 17.875vw !important;
+}
+
+.wallhaven figure.thumb-seen {
+  opacity: 0.3;
+  transition: 0.3s ease all;
+}
+
+.wallhaven figure.thumb-seen:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+
+  .wallhaven figure.thumb,
+  .wallhaven figure.thumb img {
+    width: 90vw !important;
+    height: 50.625vw !important;
+  }
+}
+
+/* Hide Seen Wallpapers */
+/*.wallhaven figure.thumb-seen {
+  display: none !important;
+}
+
+.thumb-listing-page ul {
+  min-height: 10000px;
+}*/
