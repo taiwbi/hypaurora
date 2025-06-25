@@ -17,7 +17,6 @@ function fish_greeting
 
         # Display praise if terminal is wide enough
         if test $term_width -gt 80
-            echo "" # Print a newline
             if test -x "$HOME/.config/fish/functions/praise.fish" # Check execute permission
                 $HOME/.config/fish/functions/praise.fish
             else
