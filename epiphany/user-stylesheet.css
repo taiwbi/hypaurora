@@ -19,12 +19,10 @@ td,
 th,
 label,
 a,
-blockquote,
-pre,
-code {
+blockquote {
   font-family:
-    "Geist",
-    "Vazirmatn",
+    "BreezeSans",
+    "Peyda",
     system-ui,
     -apple-system,
     "Segoe UI",
@@ -36,7 +34,7 @@ code {
     "Apple Color Emoji",
     "Segoe UI Emoji",
     "Segoe UI Symbol",
-    "Noto Color Emoji";
+    "Noto Color Emoji" !important;
 }
 
 /* Preserve icon fonts - exclude common icon font classes */
@@ -54,7 +52,8 @@ mat-icon,
 .material-icons-outlined,
 .material-icons-round,
 .material-icons-sharp,
-.material-icons-two-tone {
+.material-icons-two-tone,
+.material-symbols-outlined {
   font-family: "Material Symbols Rounded Filled" !important;
 }
 
@@ -79,22 +78,31 @@ button {
 
 /* Preserve monospace for code elements */
 code,
+code *,
 pre,
+pre *,
 kbd,
+kdb *,
 samp,
+samp *,
 .code,
-.monospace {
+.code *,
+.monospace,
+.monospace *,
+pre,
+code,
+.ace_editor,
+.ace_editor * {
   font-family:
     "Geist Mono", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code",
     "Roboto Mono", Consolas, "Courier New", monospace;
 }
 
 /* === === === === === Wallhaven === === === === === */
-
 .wallhaven figure.thumb,
 .wallhaven figure.thumb img {
   width: 30vw !important;
-  height: 17.875vw !important;
+  height: 16.875vw !important;
 }
 
 .wallhaven figure.thumb-seen {
@@ -106,20 +114,65 @@ samp,
   opacity: 0.8;
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 639px) {
+  html,
+  body.wallhaven #main,
+  body.wallhaven .overlay,
+  body.wallhaven,
+  section.thumb-listing-page,
+  #overlay {
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+  }
 
-  .wallhaven figure.thumb,
-  .wallhaven figure.thumb img {
-    width: 90vw !important;
+  body.wallhaven > * {
+    overflow-x: hidden !important;
+  }
+
+  .wallhaven header {
+    position: static !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    max-width: 100px !important;
+    min-width: 100vw !important;
+  }
+
+  .wallhaven header #logo {
+    display: none !important;
+  }
+
+  .wallhaven header #header-search {
+    max-width: 200px !important;
+  }
+
+  .wallhaven header #header-search-text {
+    max-width: 150px !important;
+  }
+
+  .wallhaven #searchbar {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    height: 200px !important;
+  }
+
+  .wallhaven #searchbar:not(.collapsed) ~ #main {
+    border-top-width: 200px !important;
+  }
+
+  body.wallhaven #thumbs figure.thumb,
+  body.wallhaven #thumbs figure.thumb img {
+    width: 80vw !important;
     height: 50.625vw !important;
   }
 }
 
-/* Hide Seen Wallpapers */
-/*.wallhaven figure.thumb-seen {
+/* Hide Seen Wallpapers 
+.wallhaven figure.thumb-seen {
   display: none !important;
 }
 
 .thumb-listing-page ul {
   min-height: 10000px;
-}*/
+} */
