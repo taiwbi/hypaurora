@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+# Script to control the Eww volume OSD visibility
+
+OSD_WINDOW="sound_osd"
+TIMEOUT=2 # Seconds to wait before closing the OSD
+LOCKFILE="/tmp/eww_osd_timer.lock"
+VOLUME_FILE="/tmp/eww_osd_volume.state"
+
+# Clean up the lockfiles when the script exits
+trap 'rm -f "$LOCKFILE" "$VOLUME_FILE"' EXIT
+
+# Function to get current volume level
+get_volume() {
+    pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%'
+}
+
+# Function to show the OSD
+show_osd() {
+    # Check if the window is already active before trying to open it.
+    if ! eww active-windows | grep -q "^${OSD_WINDOW}:"; then
+        eww open "$OSD_WINDOW"
+    fi
+}
+
+# Function to hide the OSD
+hide_osd() {
+    eww close "$OSD_WINDOW"
+}
+
+# Function to check if OSD should be shown
+should_show_osd() {
+    local current_volume="$1"
+    local osd_active="$2"
+    
+    # Condition 1: If it's not already being shown
+    if [ "$osd_active" = "false" ]; then
+        return 0
+    fi
+    
+    # Condition 2: If the volume level has changed from the previous time it was shown
+    if [ -f "$VOLUME_FILE" ]; then
+        local previous_volume
+        previous_volume=$(cat "$VOLUME_FILE")
+        if [ "$current_volume" != "$previous_volume" ]; then
+            return 0
+        fi
+    else
+        # No previous volume recorded, so show OSD
+        return 0
+    fi
+    
+    # Don't show OSD
+    return 1
+}
+
+# Listen for volume changes from PulseAudio
+pactl subscribe | grep --line-buffered "on sink" | while read -r EVENT; do
+    current_volume=$(get_volume)
+    
+    # Check if OSD is currently active
+    if eww active-windows | grep -q "^${OSD_WINDOW}:"; then
+        osd_active="true"
+    else
+        osd_active="false"
+    fi
+    
+    # Check if we should show the OSD based on our conditions
+    if should_show_osd "$current_volume" "$osd_active"; then
+        show_osd
+        
+        # Store the current volume level
+        echo "$current_volume" > "$VOLUME_FILE"
+        
+        # If a timer is already running, kill it to reset the countdown
+        if [ -f "$LOCKFILE" ]; then
+            kill "$(cat "$LOCKFILE")" &>/dev/null
+        fi
+
+        # Start a new timer in the background to hide the OSD after the timeout
+        (
+            sleep "$TIMEOUT"
+            hide_osd
+            rm -f "$LOCKFILE" # Remove the lockfile once done
+        ) &
+
+        # Store the process ID (PID) of the new timer in the lockfile
+        echo $! > "$LOCKFILE"
+    fi
+done

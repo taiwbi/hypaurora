@@ -2,11 +2,13 @@
 (defwidget volume_osd []
   (box :class "osd-container" :orientation "h" :space-evenly false :spacing 20 :halign "center"
     ;; Icon (using Nerd Font icons)
-    (label :class "osd-icon" :text {volume.status == "Muted" || volume.percentage == 0 ? "󰝟" :
-                                    volume.percentage > 66 ? "󰕾" :
-                                    volume.percentage > 33 ? "󰖀" : "󰕿"})
+    (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
+                 volume.percentage > 66 ? "./icons/volume-high.svg" :
+                 volume.percentage > 33 ? "./icons/volume-low-1.svg" :
+                 volume.percentage > 0  ? "./icons/volume-mute.svg" :
+                 "./icons/volume-cross.svg"})
     ;; Slider
-    (scale :class "volume-slider"
+    (scale :class "osd-slider"
            :orientation "h"
            :value {volume.percentage}
            :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
@@ -18,7 +20,8 @@
 ;; --- OSD Window Definition ---
 (defwindow sound_osd
   :monitor 0
-  :geometry (geometry :anchor "bottom center" :y "-50px")
+  ;;:geometry (geometry :anchor "bottom center" :y "-50px")
+  :geometry (geometry :x "815px" :y "960px" :width "270px" :height "50px")
   :stacking "fg"
   :wm-ignore true
   (volume_osd))

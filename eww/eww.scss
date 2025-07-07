@@ -37,15 +37,15 @@
 }
 
 /* --- Workspaces --- */
-.workspaces-widget > box {
+.workspaces-widget>box {
   padding: 15px 5px;
 }
 
-box > label.workspace-entry {
+box>label.workspace-entry {
   padding: 15px;
 }
 
-box > label.workspace-entry.current {
+box>label.workspace-entry.current {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
@@ -98,27 +98,20 @@ box > label.workspace-entry.current {
 
 /* --- OSD --- */
 .osd-container {
-  background-color: #1e1e2e;
-  border-radius: 15px;
   padding: 10px 20px;
-  border: 1px solid #cdd6f4;
 }
 
-.osd-icon {
-  font-size: 24px;
-  color: #cdd6f4;
-}
-
-.volume-slider trough {
+.osd-slider trough {
   all: unset;
-  background-color: #45475a;
+  background-color: #1e1e2e;
   border-radius: 10px;
   min-height: 10px;
   min-width: 200px;
 }
 
-.volume-slider highlight {
+.osd-slider highlight {
   all: unset;
   background-color: #89b4fa;
   border-radius: 10px;
+  transition: all 0.3s ease;
 }
