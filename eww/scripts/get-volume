@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Function to get and format the current volume status as JSON
+get_volume_status() {
+    if command -v pactl &> /dev/null; then
+        muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+        if [ "$muted" == "yes" ]; then
+            echo '{"status": "Muted", "percentage": 0}'
+        else
+            volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -n1 | sed 's/%//')
+            echo "{\"status\": \"Unmuted\", \"percentage\": $volume}"
+        fi
+    else
+        echo '{"status": "Unknown", "percentage": -1}'
+    fi
+}
+
+# Initial output
+get_volume_status
+
+# Listen for changes and update
+pactl subscribe | stdbuf -oL grep --line-buffered 'on sink' | while read -r; do
+    get_volume_status
+done

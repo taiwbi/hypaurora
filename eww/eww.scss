@@ -1,0 +1,124 @@
+/* --- Global --- */
+* {
+  all: unset;
+  font-family: "Cartograph CF";
+}
+
+.background.bg_widget {
+  border: none;
+}
+
+/* --- Main Widget Container --- */
+.widget-container {
+  border-radius: 20px;
+  padding: 20px;
+}
+
+/* --- Icons --- */
+// .icon-image {}
+
+/* --- Time --- */
+.time-box {
+  color: #ffffff;
+  /* This will color the clock icon */
+}
+
+.time-label {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/* --- System Stats --- */
+.sys_stats {
+  font-size: 16px;
+  color: #e0e0e0;
+  margin-left: 5px;
+  margin-top: 15px;
+}
+
+/* --- Workspaces --- */
+.workspaces-widget > box {
+  padding: 15px 5px;
+}
+
+box > label.workspace-entry {
+  padding: 15px;
+}
+
+box > label.workspace-entry.current {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Media Player --- */
+.media-player-widget {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.song-title {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.media-controls {
+  color: #e0e0e0;
+}
+
+.media-button {
+  transition: all 0.3s ease;
+  padding: 5px;
+  margin: 0 2px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 20px;
+}
+
+.media-button:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Style for active shuffle/repeat buttons */
+.media-button.shuffle.active,
+.media-button.repeat.Track,
+.media-button.repeat.Playlist {
+  color: #82aaff;
+}
+
+/* --- OSD --- */
+.osd-container {
+  background-color: #1e1e2e;
+  border-radius: 15px;
+  padding: 10px 20px;
+  border: 1px solid #cdd6f4;
+}
+
+.osd-icon {
+  font-size: 24px;
+  color: #cdd6f4;
+}
+
+.volume-slider trough {
+  all: unset;
+  background-color: #45475a;
+  border-radius: 10px;
+  min-height: 10px;
+  min-width: 200px;
+}
+
+.volume-slider highlight {
+  all: unset;
+  background-color: #89b4fa;
+  border-radius: 10px;
+}

@@ -1,0 +1,119 @@
+;; --- Variables ---
+(defpoll time :interval "30s" `scripts/get-time`)
+(defpoll battery :interval "60s" `scripts/get-battery`)
+(defpoll wifi :interval "20s" `scripts/get-wifi`)
+(deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
+(deflisten workspaces :initial "[]" "scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "scripts/get-active-workspace")
+(deflisten media :initial "{}" "scripts/get-media")
+
+
+;; --- Reusable Icon Widget ---
+(defwidget icon [path]
+  (image :path path 
+         :class "icon-image"
+         :image-width 24 
+         :image-height 24))
+
+(defwidget big-icon [path]
+  (image :path path 
+         :class "icon-image big-icon"
+         :image-width 56
+         :image-height 56))
+
+;; --- Widgets ---
+(defwidget sys_stats []
+  (box :orientation "h" :space-evenly false :spacing 30 :class "sys_stats"
+    ;; Battery
+    (box :orientation "h" :spacing 5 :space-evenly false
+      (icon :path {battery.status == "Charging" ? "./icons/battery-charging.svg" :
+                   battery.capacity > 80 ? "./icons/battery-full.svg" :
+                   battery.capacity > 40 ? "./icons/battery-2bars.svg" :
+                   battery.capacity > 30 ? "./icons/battery-empty-1.svg" :
+                   battery.capacity > 10 ? "./icons/battery-empty.svg" :
+                   "./icons/battery-disable.svg"})
+      (label :text "${battery.capacity}%"))
+    ;; Wifi
+    (box :orientation "h" :spacing 5 :space-evenly false
+      (icon :path "./icons/wifi-square.svg")
+      (label :text wifi))
+    ;; Volume
+    (box :orientation "h" :spacing 5 :space-evenly false
+      (icon :path {volume.status == "Muted" ? "./icons/volume-mute.svg" : "./icons/volume-high.svg"})
+      (label :text {volume.status == "Muted" ? "Muted" : "${volume.percentage}%"}))
+  ))
+
+(defwidget main_widget []
+  (box :class "widget-container" :orientation "v" :space-evenly false :spacing 10
+    (box :class "time-box" :spacing 25 :space-evenly false 
+      (big-icon :path "./icons/clock.svg")
+      (label :class "time-label" :text time))
+    (sys_stats)))
+
+(defwidget workspaces []
+  (eventbox :onscroll "scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly true :orientation "vertical"
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.id}" :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""}" ))
+          )
+        )
+      )
+    )
+  )
+
+(defwidget media_player []
+  (box :class "media-player-widget" :orientation "v" :space-evenly false :spacing 10
+    (label :class "song-title" :halign "start" :limit-width 25 :wrap true :text {media.title ?: "Nothing Playing"})
+    (label :class "song-artist" :halign "start" :limit-width 25 :wrap true :text {media.artist ?: "N/A"})
+    (box :class "media-controls" :orientation "h" :space-evenly true :spacing 5
+      ;; Shuffle Button
+      (button :class "media-button shuffle ${media.shuffle ? 'active' : ''}"
+              :onclick "playerctl shuffle toggle" 
+        (icon :path {media.shuffle ? "./icons/shuffle.svg" : "./icons/arrow-transfer.svg"}))
+      ;; Previous Button
+      (button :class "media-button" :onclick "playerctl previous" 
+        (icon :path "./icons/previous.svg"))
+      ;; Play/Pause Button
+      (button :class "media-button play-pause" :onclick "playerctl play-pause"
+        (icon :path {media.status == "Playing" ? "./icons/pause.svg" : "./icons/play.svg"}))
+      ;; Next Button
+      (button :class "media-button" :onclick "playerctl next" 
+        (icon :path "./icons/next.svg"))
+      ;; Repeat Button
+      (button :class "media-button repeat ${media.loop}"
+              :onclick "scripts/cycle-loop"
+        (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" : 
+                    media.loop == "Playlist" ? "./icons/repeat-music.svg" : 
+                    "./icons/direct-right.svg"}))
+    )
+  ))
+
+
+;; --- Window Definition ---
+(defwindow status_widget
+  :monitor 0
+  :geometry (geometry :x "20px" :y "20px" :width "330px" :height "140px")
+  :stacking "bottom"
+  :wm-ignore true
+  (main_widget))
+
+;; --- Workspaces Definition ---
+(defwindow workspaces_widget
+  :monitor 0
+  :geometry (geometry :x "20px" :y "180px" :width "50px" :height "140px")
+  :stacking "bottom"
+  :wm-ignore true
+  (workspaces))
+  
+;; --- Media Player Window ---
+(defwindow media_player
+  :monitor 0
+  :geometry (geometry :x "90px" :y "180px" :width "260px" :height "105px")
+  :stacking "bottom"
+  :wm-ignore true
+  (media_player))
+
+(include "osd.yuck")

@@ -42,3 +42,7 @@ if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
         alias icat 'kitten icat'
     end
 end
+
+if test "$TERM" = "xterm-kitty"
+    alias ssh 'kitten ssh'
+end

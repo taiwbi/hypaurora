@@ -18,6 +18,7 @@ function fish_greeting
         # Display praise if terminal is wide enough
         if test $term_width -gt 80
             if test -x "$HOME/.config/fish/functions/praise.fish" # Check execute permission
+                echo ""
                 $HOME/.config/fish/functions/praise.fish
             else
                 echo "Warning: Could not find executable praise.fish, check path/permissions."
