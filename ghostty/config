@@ -1,23 +1,23 @@
+command = /bin/fish
+
 # Font
 font-family = "Cartograph CF"
 font-family = "AzarMehrMonospaced"
 
 font-size = 11
-font-feature = 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'calt', 'dlig', 'liga'
 
 adjust-cell-height = 4
 adjust-cell-width = 0
 
 # Appearance
 window-width = 130
-window-height = 30
+window-height = 33
 window-padding-x = 2
 window-padding-y = 2
-background-opacity = 0.85
+background-opacity = 1
 
 mouse-hide-while-typing = true
 
 # THEME
 window-theme = ghostty
-theme = catppuccin-mocha
-background = #222226
+theme = tokyonight_night
