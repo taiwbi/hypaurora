@@ -36,16 +36,16 @@
 @define-color popover_bg_color #222226;
 @define-color popover_fg_color #bac2de;
 
-@define-color sidebar_backdrop_color #222226;
-@define-color sidebar_bg_color #222226;
+@define-color sidebar_backdrop_color #18181B;
+@define-color sidebar_bg_color #18181B;
 @define-color sidebar_fg_color #bac2de;
 
 /* Target the specific row in the sidebar that's selected */
 .navigation-sidebar row:selected {
-  background-color: #313244;
+  background-color: #2d2d31;
 }
 
 /* Hover effect for non-selected rows */
 .navigation-sidebar row:hover:not(:selected) {
-  background-color: #45475a;
+  background-color: #202024;
 }
