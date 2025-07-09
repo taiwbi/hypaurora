@@ -13,19 +13,6 @@ Welcome to my **dotfiles** repository! 🎉 These are my personal configuration 
 - <img src="https://cdn-icons-png.flaticon.com/512/17379/17379046.png" width="16" height="16"> Monospace Family: [Cartograph CF](https://connary.com/fonts/cartograph/)
 - <img src="https://cdn-icons-png.flaticon.com/512/3680/3680225.png" width="16" height="16"> Persian Monospace Family: [AzarMehrMonospace](https://befonts.com/azarmehr-monospaced-font-duo.html)
 
-## Color pallet
-
-Basically catppuccin mocha with these colors modified for being easier on the eyes and match GNOME apps background:
-
-```
-Base
- #222226     rgb(34, 34, 38)
-Mantle
- #1e1e22     rgb(30, 30, 34)
-Crust
- #17171b     rgb(23, 23, 27)
-```
-
 ## What's Included? 🤔
 
 > Many things!
