@@ -15,11 +15,6 @@ if [ "$yn" != "y" ]; then
   exit
 fi
 
-mkdir -p "$HOME/Pictures/background/"
-
-
-rm -rf "$HOME/.config/starship.toml";
-ln -s "$PWD/starship.toml" "$HOME/.config/starship.toml"
 
 rm -rf "$HOME/.config/fontconfig";
 ln -s "$PWD/fontconfig" "$HOME/.config/"

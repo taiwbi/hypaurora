@@ -69,8 +69,6 @@ sudo dnf copr enable trixieua/morewaita-icon-theme
 sudo dnf install morewaita-icon-theme
 
 sudo dnf install nautilus-python
-# TODO: Install lazygit
-
 
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
@@ -79,14 +77,16 @@ sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browse
 sudo dnf check-update
 sudo dnf install brave-browser
 
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+sudo dnf install ghostty golang-github-jesseduffield-lazygit
+
 ## Install Hyprland?
 
 read -p "Do you want to install hyprland now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf copr enable solopasha/hyprland
-    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins hyprland-qtutils kitty rofi-wayland eww-git mpv \
-     --exclude=swww-bash-completion,swww-fish-completion
+    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins hyprland-qtutils rofi-wayland eww-git mpv blackbox-terminal
   ;;
   * )
     echo "I won't install hyprland :)"
