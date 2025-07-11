@@ -1,90 +1,83 @@
 #!/usr/bin/env bash
 
-# Script to control the Eww volume OSD visibility
+# Alternative polling-based approach for Eww volume OSD
 
 OSD_WINDOW="sound_osd"
-TIMEOUT=2 # Seconds to wait before closing the OSD
-LOCKFILE="/tmp/eww_osd_timer.lock"
+TIMEOUT=2
+POLL_INTERVAL=0.2
 VOLUME_FILE="/tmp/eww_osd_volume.state"
+TIMER_FILE="/tmp/eww_osd_timer.state"
+MUTE_FILE="/tmp/eww_osd_mute.state"
 
-# Clean up the lockfiles when the script exits
-trap 'rm -f "$LOCKFILE" "$VOLUME_FILE"' EXIT
+# Clean up when script exits
+trap 'rm -f "$VOLUME_FILE" "$TIMER_FILE" "$MUTE_FILE"; eww close "$OSD_WINDOW" 2>/dev/null' EXIT
 
 # Function to get current volume level
 get_volume() {
     pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%'
 }
 
-# Function to show the OSD
+# Function to get current mute state
+get_mute_state() {
+    pactl get-sink-mute @DEFAULT_SINK@ | grep -o 'yes\|no'
+}
+
+# Function to show OSD
 show_osd() {
-    # Check if the window is already active before trying to open it.
     if ! eww active-windows | grep -q "^${OSD_WINDOW}:"; then
         eww open "$OSD_WINDOW"
     fi
 }
 
-# Function to hide the OSD
+# Function to hide OSD
 hide_osd() {
-    eww close "$OSD_WINDOW"
+    eww close "$OSD_WINDOW" 2>/dev/null
 }
 
-# Function to check if OSD should be shown
-should_show_osd() {
-    local current_volume="$1"
-    local osd_active="$2"
-    
-    # Condition 1: If it's not already being shown
-    if [ "$osd_active" = "false" ]; then
-        return 0
-    fi
-    
-    # Condition 2: If the volume level has changed from the previous time it was shown
-    if [ -f "$VOLUME_FILE" ]; then
-        local previous_volume
-        previous_volume=$(cat "$VOLUME_FILE")
-        if [ "$current_volume" != "$previous_volume" ]; then
-            return 0
-        fi
-    else
-        # No previous volume recorded, so show OSD
-        return 0
-    fi
-    
-    # Don't show OSD
-    return 1
+# Function to check if OSD is active
+is_osd_active() {
+    eww active-windows | grep -q "^${OSD_WINDOW}:"
 }
 
-# Listen for volume changes from PulseAudio
-pactl subscribe | grep --line-buffered "on sink" | while read -r EVENT; do
+# Initialize
+previous_volume=$(get_volume)
+previous_mute=$(get_mute_state)
+echo "$previous_volume" > "$VOLUME_FILE"
+echo "$previous_mute" > "$MUTE_FILE"
+
+# Main polling loop
+while true; do
     current_volume=$(get_volume)
+    current_mute=$(get_mute_state)
     
-    # Check if OSD is currently active
-    if eww active-windows | grep -q "^${OSD_WINDOW}:"; then
-        osd_active="true"
-    else
-        osd_active="false"
-    fi
-    
-    # Check if we should show the OSD based on our conditions
-    if should_show_osd "$current_volume" "$osd_active"; then
+    # Check if volume changed or mute state changed
+    if ([ "$current_volume" != "$previous_volume" ] || [ "$current_mute" != "$previous_mute" ]) && [ -n "$current_volume" ] && [ -n "$current_mute" ]; then
+        # Volume or mute state changed, show OSD
         show_osd
+
+        echo "Displaying Sound OSD"
         
-        # Store the current volume level
+        # Update stored volume and mute state
+        previous_volume="$current_volume"
+        previous_mute="$current_mute"
         echo "$current_volume" > "$VOLUME_FILE"
+        echo "$current_mute" > "$MUTE_FILE"
         
-        # If a timer is already running, kill it to reset the countdown
-        if [ -f "$LOCKFILE" ]; then
-            kill "$(cat "$LOCKFILE")" &>/dev/null
-        fi
-
-        # Start a new timer in the background to hide the OSD after the timeout
-        (
-            sleep "$TIMEOUT"
-            hide_osd
-            rm -f "$LOCKFILE" # Remove the lockfile once done
-        ) &
-
-        # Store the process ID (PID) of the new timer in the lockfile
-        echo $! > "$LOCKFILE"
+        # Set timer
+        echo "$(date +%s)" > "$TIMER_FILE"
     fi
+    
+    # Check if we should hide the OSD
+    if is_osd_active && [ -f "$TIMER_FILE" ]; then
+        timer_start=$(cat "$TIMER_FILE")
+        current_time=$(date +%s)
+        elapsed=$((current_time - timer_start))
+
+        if [ "$elapsed" -ge "$TIMEOUT" ]; then
+            hide_osd
+            rm -f "$TIMER_FILE"
+        fi
+    fi
+    
+    sleep "$POLL_INTERVAL"
 done

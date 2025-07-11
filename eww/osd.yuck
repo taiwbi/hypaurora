@@ -22,6 +22,6 @@
   :monitor 0
   ;;:geometry (geometry :anchor "bottom center" :y "-50px")
   :geometry (geometry :x "815px" :y "960px" :width "270px" :height "50px")
-  :stacking "fg"
+  :stacking "overlay"
   :wm-ignore true
   (volume_osd))
