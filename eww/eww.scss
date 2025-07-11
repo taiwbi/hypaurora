@@ -42,16 +42,15 @@
 }
 
 box>label.workspace-entry {
+  transition: all 0.3s ease;
   padding: 15px;
+  border: 2px solid transparent;
+  border-radius: 20px;
 }
 
 box>label.workspace-entry.current {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(22, 22, 22, 0.5);
   border-radius: 20px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 /* --- Media Player --- */
@@ -75,18 +74,13 @@ box>label.workspace-entry.current {
   transition: all 0.3s ease;
   padding: 5px;
   margin: 0 2px;
-  border: 1px solid rgba(255, 255, 255, 0);
+  border: 2px solid transparent;
   border-radius: 20px;
 }
 
 .media-button:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(22, 22, 22, 0.5);
   border-radius: 20px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 /* Style for active shuffle/repeat buttons */
