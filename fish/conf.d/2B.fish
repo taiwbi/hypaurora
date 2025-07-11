@@ -9,9 +9,9 @@ function fish_greeting
         if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
             # Display image with kitten icat if conditions met
             if command -v kitten > /dev/null 2>&1; and test $term_width -gt 40
-                set -l position (math $term_width - 26)
+                set -l position (math $term_width - 21)
                 # Fixed: Removed curly braces around the position variable
-                kitten icat -n --place "25x18@$position"x0 "$HOME/Documents/hypaurora/assets/2B.png"
+                kitten icat -n --place "20x14@$position"x0 "$HOME/Documents/hypaurora/assets/2B.png"
             end
         end
 
