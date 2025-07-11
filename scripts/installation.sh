@@ -78,7 +78,7 @@ sudo dnf check-update
 sudo dnf install brave-browser
 
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-sudo dnf install ghostty golang-github-jesseduffield-lazygit
+sudo dnf install ghostty kitten golang-github-jesseduffield-lazygit
 
 ## Install Hyprland?
 
