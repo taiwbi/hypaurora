@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+
+# Event-driven volume OSD script for Hyprland + eww
+
+OSD_WINDOW="sound_osd"
+TIMEOUT=2
+VOLUME_FILE="/tmp/eww_osd_volume.state"
+MUTE_FILE="/tmp/eww_osd_mute.state"
+LOCK_FILE="/tmp/eww_osd.lock"
+PID_FILE="/tmp/eww_osd.pid"
+
+# Function to show usage
+show_usage() {
+    echo "Usage: $0 [--raise PERCENT] [--lower PERCENT] [--toggle-mute]"
+    echo "  --raise PERCENT    Increase volume by PERCENT"
+    echo "  --lower PERCENT    Decrease volume by PERCENT"
+    echo "  --toggle-mute      Toggle mute state"
+    exit 1
+}
+
+# Function to get current volume level
+get_volume() {
+    pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]*%' | head -1 | tr -d '%'
+}
+
+# Function to get current mute state
+get_mute_state() {
+    pactl get-sink-mute @DEFAULT_SINK@ | grep -o 'yes\|no'
+}
+
+# Function to set volume (with bounds checking)
+set_volume() {
+    local change="$1"
+    local current_volume=$(get_volume)
+    
+    if [[ "$change" =~ ^\+[0-9]+$ ]]; then
+        # Increase volume
+        local increase=${change#+}
+        local new_volume=$((current_volume + increase))
+        if [ "$new_volume" -gt 100 ]; then
+            new_volume=100
+        fi
+        pactl set-sink-volume @DEFAULT_SINK@ "${new_volume}%"
+    elif [[ "$change" =~ ^-[0-9]+$ ]]; then
+        # Decrease volume
+        local decrease=${change#-}
+        local new_volume=$((current_volume - decrease))
+        if [ "$new_volume" -lt 0 ]; then
+            new_volume=0
+        fi
+        pactl set-sink-volume @DEFAULT_SINK@ "${new_volume}%"
+    fi
+}
+
+# Function to toggle mute
+toggle_mute() {
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+}
+
+# Function to show OSD
+show_osd() {
+    if ! eww active-windows | grep -q "^${OSD_WINDOW}:"; then
+        eww open "$OSD_WINDOW"
+    fi
+}
+
+# Function to hide OSD
+hide_osd() {
+    eww close "$OSD_WINDOW" 2>/dev/null
+}
+
+# Function to update state files
+update_state() {
+    local volume=$(get_volume)
+    local mute=$(get_mute_state)
+    echo "$volume" > "$VOLUME_FILE"
+    echo "$mute" > "$MUTE_FILE"
+}
+
+# Function to start hide timer
+start_hide_timer() {
+    # Kill any existing timer process
+    if [ -f "$PID_FILE" ]; then
+        local old_pid=$(cat "$PID_FILE")
+        if kill -0 "$old_pid" 2>/dev/null; then
+            kill "$old_pid" 2>/dev/null
+        fi
+    fi
+    
+    # Update timestamp for when OSD should hide
+    local hide_time=$(($(date +%s) + TIMEOUT))
+    echo "$hide_time" > "/tmp/eww_osd_hide_time.state"
+    
+    # Start new timer in background
+    (
+        while true; do
+            sleep 0.1
+            local current_time=$(date +%s)
+            local target_time=$(cat "/tmp/eww_osd_hide_time.state" 2>/dev/null || echo "0")
+            
+            if [ "$current_time" -ge "$target_time" ]; then
+                # Check if we still own the lock
+                if [ -f "$LOCK_FILE" ] && [ $$ = "$(cat "$LOCK_FILE")" ]; then
+                    hide_osd
+                    rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_osd_hide_time.state"
+                fi
+                break
+            fi
+        done
+    ) &
+    
+    # Store the timer PID
+    echo $! > "$PID_FILE"
+}
+
+# Function to acquire lock
+acquire_lock() {
+    # Check if lock exists and if the process is still running
+    if [ -f "$LOCK_FILE" ]; then
+        local lock_pid=$(cat "$LOCK_FILE")
+        if kill -0 "$lock_pid" 2>/dev/null; then
+            # Another instance is running, just extend its timer
+            return 1
+        else
+            # Stale lock file, remove it
+            rm -f "$LOCK_FILE" "$PID_FILE"
+        fi
+    fi
+    
+    # Acquire the lock
+    echo $$ > "$LOCK_FILE"
+    return 0
+}
+
+# Function to cleanup
+cleanup() {
+    if [ -f "$LOCK_FILE" ] && [ "$" = "$(cat "$LOCK_FILE")" ]; then
+        hide_osd
+        rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_osd_hide_time.state"
+    fi
+}
+
+# Set up cleanup trap
+trap cleanup EXIT
+
+# Parse command line arguments
+if [ $# -eq 0 ]; then
+    show_usage
+fi
+
+action=""
+percent=""
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --raise)
+            if [ -n "$2" ] && [[ "$2" =~ ^[0-9]+$ ]]; then
+                action="raise"
+                percent="$2"
+                shift 2
+            else
+                echo "Error: --raise requires a numeric percentage"
+                show_usage
+            fi
+            ;;
+        --lower)
+            if [ -n "$2" ] && [[ "$2" =~ ^[0-9]+$ ]]; then
+                action="lower"
+                percent="$2"
+                shift 2
+            else
+                echo "Error: --lower requires a numeric percentage"
+                show_usage
+            fi
+            ;;
+        --toggle-mute)
+            action="toggle-mute"
+            shift
+            ;;
+        *)
+            echo "Error: Unknown option $1"
+            show_usage
+            ;;
+    esac
+done
+
+# Perform the requested action
+case "$action" in
+    raise)
+        set_volume "+$percent"
+        ;;
+    lower)
+        set_volume "-$percent"
+        ;;
+    toggle-mute)
+        toggle_mute
+        ;;
+    *)
+        show_usage
+        ;;
+esac
+
+# Try to acquire lock for OSD management
+if acquire_lock; then
+    # We own the lock, manage the OSD
+    show_osd
+    update_state
+    start_hide_timer
+    
+    # Wait for the timer process to complete
+    if [ -f "$PID_FILE" ]; then
+        wait $(cat "$PID_FILE") 2>/dev/null
+    fi
+else
+    # Another instance is managing the OSD, just update state and extend timer
+    update_state
+    # Update the hide timestamp to extend the display time
+    hide_time=$(($(date +%s) + TIMEOUT))
+    echo "$hide_time" > "/tmp/eww_osd_hide_time.state"
+fi

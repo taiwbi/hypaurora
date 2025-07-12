@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Function to get and format the current brightness status as JSON
+get_brightness_status() {
+    if command -v brightnessctl &> /dev/null; then
+        # Get current and max brightness values
+        current=$(brightnessctl get)
+        max=$(brightnessctl max)
+
+        # Calculate the percentage using integer arithmetic
+        if [ "$max" -gt 0 ]; then
+            percentage=$((current * 100 / max))
+        else
+            percentage=0
+        fi
+
+        echo "{\"percentage\": $percentage}"
+    else
+        echo '{"status": "brightnessctl not found", "percentage": -1}'
+    fi
+}
+
+# Initial output
+get_brightness_status
+
+# Listen for brightness changes using udevadm and update
+udevadm monitor --property --subsystem-match=backlight | stdbuf -oL -- grep --line-buffered "ACTION=change" | while read -r; do
+    get_brightness_status
+done

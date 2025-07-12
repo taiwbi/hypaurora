@@ -3,6 +3,7 @@
 (defpoll battery :interval "60s" `scripts/get-battery`)
 (defpoll wifi :interval "20s" `scripts/get-wifi`)
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
+(deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
 (deflisten workspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspace")
 (deflisten media :initial "{}" "scripts/get-media")

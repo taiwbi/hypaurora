@@ -25,3 +25,25 @@
   :stacking "overlay"
   :wm-ignore true
   (volume_osd))
+
+;; --- Brightness OSD Widget ---
+(defwidget brightness_osd []
+  (box :class "osd-container" :orientation "h" :space-evenly false :spacing 20 :halign "center"
+    ;; Icon (using monitor icon)
+    (icon :path "./icons/monitor.svg")
+    ;; Slider
+    (scale :class "osd-slider"
+           :orientation "h"
+           :value {brightness.percentage}
+           :onchange "brightnessctl set {}%"
+           :min 1
+           :max 100
+           :width 200)))
+
+;; --- Brightness OSD Window Definition ---
+(defwindow brightness_osd
+  :monitor 0
+  :geometry (geometry :x "815px" :y "960px" :width "270px" :height "50px")
+  :stacking "overlay"
+  :wm-ignore true
+  (brightness_osd))
