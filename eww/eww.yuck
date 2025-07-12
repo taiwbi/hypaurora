@@ -73,7 +73,7 @@
       ;; Shuffle Button
       (button :class "media-button shuffle ${media.shuffle == true ? 'active' : ''}"
               :onclick "playerctl shuffle toggle" 
-        (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer.svg"}))
+        (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer-01.svg"}))
       ;; Previous Button
       (button :class "media-button" :onclick "playerctl previous" 
         (icon :path "./icons/previous.svg"))
@@ -88,7 +88,7 @@
               :onclick "scripts/cycle-loop"
         (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" : 
                      media.loop == "Playlist" ? "./icons/repeat-music.svg" : 
-                     "./icons/direct-right.svg"}))
+                     "./icons/arrow-right-04.svg"}))
     )
   ))
 
