@@ -71,9 +71,9 @@
     (label :class "song-artist" :halign "start" :limit-width 25 :wrap true :text {media.artist ?: "N/A"})
     (box :class "media-controls" :orientation "h" :space-evenly true :spacing 5
       ;; Shuffle Button
-      (button :class "media-button shuffle ${media.shuffle ? 'active' : ''}"
+      (button :class "media-button shuffle ${media.shuffle == true ? 'active' : ''}"
               :onclick "playerctl shuffle toggle" 
-        (icon :path {media.shuffle ? "./icons/shuffle.svg" : "./icons/arrow-transfer.svg"}))
+        (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer.svg"}))
       ;; Previous Button
       (button :class "media-button" :onclick "playerctl previous" 
         (icon :path "./icons/previous.svg"))
@@ -87,8 +87,8 @@
       (button :class "media-button repeat ${media.loop}"
               :onclick "scripts/cycle-loop"
         (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" : 
-                    media.loop == "Playlist" ? "./icons/repeat-music.svg" : 
-                    "./icons/direct-right.svg"}))
+                     media.loop == "Playlist" ? "./icons/repeat-music.svg" : 
+                     "./icons/direct-right.svg"}))
     )
   ))
 
