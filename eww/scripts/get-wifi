@@ -1,8 +1,29 @@
 #!/usr/bin/env bash
 
-ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
-if [ -n "$ssid" ]; then
-    echo "$ssid"
-else
-    echo "Disconnected"
-fi
+# Function to get current SSID
+get_current_ssid() {
+    local ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
+    if [ -n "$ssid" ]; then
+        echo "$ssid"
+    else
+        echo "Disconnected"
+    fi
+}
+
+# Print current SSID
+echo "$(get_current_ssid)"
+
+# Monitor using nmcli monitor
+last_ssid=$(get_current_ssid)
+
+nmcli monitor 2>/dev/null | while read -r line; do
+    if [[ "$line" == *"connectivity"* ]] || [[ "$line" == *"state changed"* ]] || [[ "$line" == *"wifi"* ]]; then
+        sleep 0.5
+        current_ssid=$(get_current_ssid)
+        
+        if [ "$current_ssid" != "$last_ssid" ]; then
+            echo "$current_ssid"
+            last_ssid="$current_ssid"
+        fi
+    fi
+done

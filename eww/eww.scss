@@ -1,14 +1,14 @@
 /* --- Global --- */
 * {
   all: unset;
-  font-family: "Cartograph CF";
+  font-family: "Monaspace Krypton";
 }
 
 .background.bg_widget {
   border: none;
 }
 
-/* --- Main Widget Container --- */
+/* --- Widget Containers --- */
 .widget-container {
   border-radius: 20px;
   padding: 20px;
@@ -23,6 +23,10 @@
   /* This will color the clock icon */
 }
 
+.time-box image {
+  margin-right: 20px;
+}
+
 .time-label {
   font-size: 48px;
   font-weight: bold;
@@ -34,6 +38,20 @@
   color: #e0e0e0;
   margin-left: 5px;
   margin-top: 15px;
+}
+
+.sys_stats box,
+.sys_stats button {
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.sys_stats button {
+  transition: all 0.2s ease;
+}
+
+.sys_stats button:hover {
+  background-color: rgba(22, 22, 22, 0.5);
 }
 
 /* --- Workspaces --- */
@@ -67,10 +85,15 @@ box.occupied > label.workspace-entry:not(.current) {
 }
 
 .song-title {
+  font-family: "Monaspace Xenon";
   color: #ffffff;
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 10px;
+}
+
+.song-artist {
+  font-family: "Monaspace Xenon";
 }
 
 .media-controls {
@@ -95,6 +118,85 @@ box.occupied > label.workspace-entry:not(.current) {
 .media-button.repeat.Track,
 .media-button.repeat.Playlist {
   color: #82aaff;
+}
+
+/* --- Wi-Fi List --- */
+.wifi-list-container {
+  // background-color: rgba(22, 22, 22, 0.5);
+  padding: 15px;
+  border-radius: 20px;
+  color: #f1f1f1;
+}
+
+.wifi-entry {
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+
+.wifi-entry:hover {
+  background-color: rgba(22, 22, 22, 0.5);
+}
+
+.wifi-ssid.active {
+  color: #82aaff;
+  font-weight: bold;
+}
+
+.wifi-lock {
+  margin-right: 5px;
+}
+
+/* --- Wi-Fi Password Prompt --- */
+.password-window {
+  background-color: rgba(30, 30, 30, 0.9);
+  color: #f1f1f1;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.password-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.password-input {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 300px;
+}
+
+.password-input:focus {
+  border: 1px solid #82aaff;
+}
+
+.password-buttons {
+  margin-top: 10px;
+}
+
+.password-button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.password-button.cancel {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.password-button.cancel:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.password-button.connect {
+  background-color: #82aaff;
+  color: #1e1e1e;
+}
+
+.password-button.connect:hover {
+  background-color: #92baff;
 }
 
 /* --- OSD --- */

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Toggle eww wifi_list_window
+# Opens if closed, closes if open
+
+WINDOW_NAME="wifi_list_window"
+
+# Check if the window is currently open
+if eww active-windows | grep -q "$WINDOW_NAME"; then
+    # Window is open, close it
+    eww close "$WINDOW_NAME"
+else
+    # Window is closed, open it
+    eww open "$WINDOW_NAME"
+fi

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+SSID="$1"
+
+# Check if the network is secure by looking at the SECURITY field
+IS_SECURE=$(nmcli -t -f SSID,SECURITY dev wifi list | grep "^${SSID}:" | cut -d: -f2)
+
+# Check if a connection profile already exists for this SSID
+if nmcli connection show | grep -q "^${SSID}\s"; then
+    # Known network, just connect and close the list
+    nmcli connection up "$SSID" && eww close "wifi_list_window"
+else
+    # Unknown network
+    if [[ -n "$IS_SECURE" && "$IS_SECURE" != "--" ]]; then
+        # It's a new, secure network, so ask for a password
+        eww update ssid_for_prompt="$SSID" && eww open password_window
+    else
+        # It's an open network, connect directly
+        nmcli dev wifi connect "$SSID" && eww close "wifi_list_window"
+    fi
+fi

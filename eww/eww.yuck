@@ -1,12 +1,17 @@
 ;; --- Variables ---
 (defpoll time :interval "30s" `scripts/get-time`)
 (defpoll battery :interval "60s" `scripts/get-battery`)
-(defpoll wifi :interval "20s" `scripts/get-wifi`)
+(deflisten wifi :initial "Disconnected" "scripts/get-wifi")
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
 (deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
 (deflisten workspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspace")
 (deflisten media :initial "{}" "scripts/get-media")
+
+;; Wifi List Variables
+(defpoll wifi_list :interval "20s" "scripts/get-wifi-list")
+(defvar ssid_for_prompt "")
+(defvar password_input "")
 
 
 ;; --- Reusable Icon Widget ---
@@ -24,7 +29,12 @@
 
 ;; --- Widgets ---
 (defwidget sys_stats []
-  (box :orientation "h" :space-evenly false :spacing 30 :class "sys_stats"
+  (box :orientation "h" :space-evenly false :spacing 20 :class "sys_stats"
+    ;; Wifi
+    (button :onclick "scripts/toggle-wifi-list"
+        (box :orientation "h" :spacing 5 :space-evenly false
+          (icon :path "./icons/wifi-square.svg")
+          (label :text wifi)))
     ;; Battery
     (box :orientation "h" :spacing 5 :space-evenly false
       (icon :path {battery.status == "Charging" ? "./icons/battery-charging.svg" :
@@ -34,10 +44,6 @@
                    battery.capacity > 10 ? "./icons/battery-empty.svg" :
                    "./icons/battery-disable.svg"})
       (label :text "${battery.capacity}%"))
-    ;; Wifi
-    (box :orientation "h" :spacing 5 :space-evenly false
-      (icon :path "./icons/wifi-square.svg")
-      (label :text wifi))
     ;; Volume
     (box :orientation "h" :spacing 5 :space-evenly false
       (icon :path {volume.status == "Muted" ? "./icons/volume-mute.svg" : "./icons/volume-high.svg"})
@@ -46,13 +52,13 @@
 
 (defwidget main_widget []
   (box :class "widget-container" :orientation "v" :space-evenly false :spacing 10
-    (box :class "time-box" :spacing 25 :space-evenly false 
+    (box :class "time-box" :spacing 5 :space-evenly false 
       (big-icon :path "./icons/clock.svg")
       (label :class "time-label" :text time))
     (sys_stats)))
 
 (defwidget workspaces []
-  (eventbox :onscroll "scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+  (eventbox :onscroll "scripts/change-active-workspace {} ${current_workspace}" :class "widget-container workspaces-widget"
     (box :space-evenly true :orientation "vertical"
       (label :text "${workspaces}${current_workspace}" :visible false)
       (for workspace in workspaces
@@ -66,7 +72,7 @@
   )
 
 (defwidget media_player []
-  (box :class "media-player-widget" :orientation "v" :space-evenly false :spacing 10
+  (box :class "widget-container media-player-widget" :orientation "v" :space-evenly false :spacing 10
     (label :class "song-title" :halign "start" :limit-width 25 :wrap true :text {media.title ?: "Nothing Playing"})
     (label :class "song-artist" :halign "start" :limit-width 25 :wrap true :text {media.artist ?: "N/A"})
     (box :class "media-controls" :orientation "h" :space-evenly true :spacing 5
@@ -92,6 +98,16 @@
     )
   ))
 
+;; --- WIFI WIDGETS ---
+(defwidget wifi_network_entry [network]
+  (button :class "wifi-entry" :onclick "scripts/handle-wifi-click '${network.ssid}'"
+    (box :orientation "h" :space-evenly false :spacing 10
+      (icon :path "./icons/radar.svg")
+      (label :class "wifi-ssid ${wifi == network.ssid ? 'active' : ''}" :text "${network.ssid}" :limit-width 20 :halign "start")
+      (box :orientation "h" :space-evenly false :spacing 5 :halign "end"
+        (image :class "wifi-lock" :path "./icons/lock.svg" :image-width 18 :image-height 18 :visible {network.secure})
+      )
+    )))
 
 ;; --- Window Definition ---
 (defwindow status_widget
@@ -116,5 +132,32 @@
   :stacking "bottom"
   :wm-ignore true
   (media_player))
+  
+;; --- WIFI LIST WINDOW ---
+(defwindow wifi_list_window
+    :monitor 0
+    :geometry (geometry :x "90px" :y "340px" :width "330px")
+    :stacking "bottom"
+    :wm-ignore true
+      (box :class "wifi-list-container widget-container" :orientation "v" :spacing 10
+          (for network in wifi_list
+              (wifi_network_entry :network {network}))))
+
+;; --- WIFI PASSWORD WINDOW ---
+(defwindow password_window
+    :monitor 0
+    :geometry (geometry :anchor "center center")
+    :stacking "overlay"
+    :exclusive true
+    :focusable true
+    (box :class "password-window" :orientation "v" :spacing 15
+        (label :class "password-label" :text "Connect to ${ssid_for_prompt}")
+        (input :class "password-input" 
+               :password true 
+               :onchange "eww update password_input='{}'"
+               :onaccept "scripts/connect-with-password")
+        (box :class "password-buttons" :orientation "h" :spacing 10 :halign "end"
+            (button :class "password-button cancel" :onclick "eww close password_window" "Cancel")
+            (button :class "password-button connect" :onclick "scripts/connect-wifi-password" "Connect"))))
 
 (include "osd.yuck")
