@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Toggle eww window with exclusive behavior
+# Opens the specified window and closes all others in the managed list
+# Usage: ./toggle-window <window_name>
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <window_name>"
+    echo "Example: $0 power_window"
+    exit 1
+fi
+
+WINDOW_NAME="$1"
+
+# Define the list of windows to manage
+windows=("power_window" "wifi_list_window")
+
+# Check if the window is currently open
+if eww active-windows | grep -q "$WINDOW_NAME"; then
+    # Window is open, close it
+    eww close "$WINDOW_NAME"
+else
+    # Close all managed windows
+    for window in "${windows[@]}"; do
+        eww close "$window"
+    done
+    
+    # Open the specified window
+    eww open "$WINDOW_NAME"
+fi

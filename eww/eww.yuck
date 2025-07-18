@@ -31,19 +31,20 @@
 (defwidget sys_stats []
   (box :orientation "h" :space-evenly false :spacing 20 :class "sys_stats"
     ;; Wifi
-    (button :onclick "scripts/toggle-wifi-list"
+    (button :onclick "scripts/toggle-window wifi_list_window"
         (box :orientation "h" :spacing 5 :space-evenly false
           (icon :path "./icons/wifi-square.svg")
           (label :text wifi)))
     ;; Battery
-    (box :orientation "h" :spacing 5 :space-evenly false
-      (icon :path {battery.status == "Charging" ? "./icons/battery-charging.svg" :
-                   battery.capacity > 80 ? "./icons/battery-full.svg" :
-                   battery.capacity > 40 ? "./icons/battery-2bars.svg" :
-                   battery.capacity > 30 ? "./icons/battery-empty-1.svg" :
-                   battery.capacity > 10 ? "./icons/battery-empty.svg" :
-                   "./icons/battery-disable.svg"})
-      (label :text "${battery.capacity}%"))
+    (button :onclick "scripts/toggle-window power_window"
+      (box :orientation "h" :spacing 5 :space-evenly false
+        (icon :path {battery.status == "Charging" ? "./icons/battery-charging.svg" :
+                     battery.capacity > 80 ? "./icons/battery-full.svg" :
+                     battery.capacity > 40 ? "./icons/battery-2bars.svg" :
+                     battery.capacity > 30 ? "./icons/battery-empty-1.svg" :
+                     battery.capacity > 10 ? "./icons/battery-empty.svg" :
+                     "./icons/battery-disable.svg"})
+        (label :text "${battery.capacity}%")))
     ;; Volume
     (box :orientation "h" :spacing 5 :space-evenly false
       (icon :path {volume.status == "Muted" ? "./icons/volume-mute.svg" : "./icons/volume-high.svg"})
@@ -120,7 +121,7 @@
 ;; --- Workspaces Definition ---
 (defwindow workspaces_widget
   :monitor 0
-  :geometry (geometry :x "20px" :y "180px" :width "50px" :height "140px")
+  :geometry (geometry :x "20px" :y "220px" :width "50px" :height "140px")
   :stacking "bottom"
   :wm-ignore true
   (workspaces))
@@ -128,7 +129,7 @@
 ;; --- Media Player Window ---
 (defwindow media_player
   :monitor 0
-  :geometry (geometry :x "90px" :y "180px" :width "260px" :height "105px")
+  :geometry (geometry :x "120px" :y "220px" :width "260px" :height "105px")
   :stacking "bottom"
   :wm-ignore true
   (media_player))
@@ -136,12 +137,31 @@
 ;; --- WIFI LIST WINDOW ---
 (defwindow wifi_list_window
     :monitor 0
-    :geometry (geometry :x "90px" :y "340px" :width "330px")
+    :geometry (geometry :x "120px" :y "400px" :width "270px")
     :stacking "bottom"
     :wm-ignore true
       (box :class "wifi-list-container widget-container" :orientation "v" :spacing 10
           (for network in wifi_list
               (wifi_network_entry :network {network}))))
+
+;; --- POWER WINDOW ---
+(defwindow power_window
+  :monitor 0
+  :geometry (geometry :x "120px" :y "400px" :width "270px" :height "50px")
+  :stacking "bottom"
+  :wm-ignore true
+  (box :class "power-window-container widget-container" :orientation "v" :spacing 0
+    (box :class "power-buttons-container" :orientation "h" :valign "start" :halign "fill" :spacing 10
+      (button :onclick "systemctl poweroff" 
+        (icon :path "./icons/stop-circle.svg"))
+      (button :onclick "systemctl suspend" 
+        (icon :path "./icons/pause-circle.svg"))
+      (button :onclick "hyprctl dispatch exit" 
+        (icon :path "./icons/export-circle-01.svg")))
+    (box :class "power-profiles-container" :orientation "v" :spacing 10
+      (button (label :halign "start" :text "Performance"))
+      (button (label :halign "start" :text "Balance"))
+      (button (label :halign "start" :text "Power Saver")))))
 
 ;; --- WIFI PASSWORD WINDOW ---
 (defwindow password_window

@@ -1,7 +1,7 @@
 /* --- Global --- */
 * {
   all: unset;
-  font-family: "Geist";
+  font-family: "Geist Mono";
 }
 
 .background.bg_widget {
@@ -139,6 +139,28 @@ box.occupied > label.workspace-entry:not(.current) {
 
 .wifi-lock {
   margin-right: 5px;
+}
+
+/* --- Power Window --- */
+.power-window-container button {
+  border-radius: 12px;
+}
+
+.power-window-container button:hover {
+  background-color: rgba(22, 22, 22, 0.5);
+  transition: all 0.4s ease;
+}
+
+.power-buttons-container button {
+  padding: 12px 10px;
+}
+
+.power-profiles-container {
+  margin-top: -20px;
+}
+
+.power-profiles-container button {
+  padding: 5px 12px;
 }
 
 /* --- Wi-Fi Password Prompt --- */

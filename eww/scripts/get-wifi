@@ -1,12 +1,26 @@
 #!/usr/bin/env bash
 
+# Function to format SSID to exactly 9 characters
+format_ssid() {
+    local ssid="$1"
+    local length=${#ssid}
+    
+    if [ $length -gt 6 ]; then
+        # Truncate to 6 characters and add "..."
+        echo "${ssid:0:6}..."
+    else
+        # Pad with spaces to reach 9 characters
+        printf "%-9s" "$ssid"
+    fi
+}
+
 # Function to get current SSID
 get_current_ssid() {
     local ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
     if [ -n "$ssid" ]; then
-        echo "$ssid"
+        format_ssid "$ssid"
     else
-        echo "Disconnected"
+        format_ssid "Discon..."
     fi
 }
 
