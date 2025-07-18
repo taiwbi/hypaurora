@@ -14,18 +14,25 @@ DBUS_PATH="/run/user/$USER_ID/bus"
 DNF_CONF="/etc/dnf/dnf.conf"
 PROXYCHAINS_CONF="/etc/proxychains.conf"
 CONTINUE_CONF="$USER_HOME/.continue/config.yaml"
-VSCODE_SETTINGS="$USER_HOME/.config/Code/User/settings.json"
+VSCODE_SETTINGS="$USER_HOME/.config/Cursor/User/settings.json"
+
+# Function to strip ANSI escape sequences
+strip_ansi() {
+    # Remove all ANSI escape sequences
+    sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' | sed 's/\x1b\[?[0-9]*[hl]//g'
+}
 
 # Function to run commands as the specific user
 run_as_user() {
     local cmd="$1"
     
+    # Set TERM to dumb to avoid terminal control sequences
     if [ "$(id -u)" -eq 0 ]; then
         # We're root, so use su without -l (login) to avoid PAM issues
-        su "$USER_NAME" -c "$cmd"
+        TERM=dumb su "$USER_NAME" -c "$cmd" 2>/dev/null
     else
         # Not root, probably running with sudo
-        sudo -u "$USER_NAME" bash -c "$cmd"
+        TERM=dumb sudo -u "$USER_NAME" bash -c "$cmd" 2>/dev/null
     fi
 }
 
@@ -36,7 +43,8 @@ get_gsettings_value() {
     
     # Set up environment to access user's dbus session
     local cmd="DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_PATH gsettings get $schema $key"
-    run_as_user "$cmd"
+    # Run command and strip ANSI sequences
+    run_as_user "$cmd" | strip_ansi
 }
 
 # Function to update proxy settings
@@ -51,9 +59,19 @@ update_proxy_settings() {
     PROXY_HOST=$(get_gsettings_value org.gnome.system.proxy.socks host | tr -d "'")
     PROXY_PORT=$(get_gsettings_value org.gnome.system.proxy.socks port)
 
+    # Additional cleanup - remove any remaining control characters
+    PROXY_HOST=$(echo "$PROXY_HOST" | tr -cd '[:alnum:].-')
+    PROXY_PORT=$(echo "$PROXY_PORT" | tr -cd '[:digit:]')
+
     # Skip if proxy settings are empty
     if [ -z "$PROXY_HOST" ] || [ "$PROXY_HOST" = "''" ]; then
         echo "Proxy host is not set, skipping update"
+        return
+    fi
+    
+    # Validate port number
+    if ! [[ "$PROXY_PORT" =~ ^[0-9]+$ ]] || [ "$PROXY_PORT" -lt 1 ] || [ "$PROXY_PORT" -gt 65535 ]; then
+        echo "Invalid proxy port: $PROXY_PORT"
         return
     fi
     
@@ -142,6 +160,10 @@ monitor_settings() {
             # Get current proxy settings
             local current_host=$(get_gsettings_value org.gnome.system.proxy.socks host 2>/dev/null | tr -d "'" || echo "")
             local current_port=$(get_gsettings_value org.gnome.system.proxy.socks port 2>/dev/null || echo "")
+            
+            # Additional cleanup for monitoring values
+            current_host=$(echo "$current_host" | tr -cd '[:alnum:].-')
+            current_port=$(echo "$current_port" | tr -cd '[:digit:]')
             
             # Check if settings changed
             if [ "$current_host" != "$prev_host" ] || [ "$current_port" != "$prev_port" ]; then
