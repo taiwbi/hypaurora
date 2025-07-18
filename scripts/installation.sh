@@ -77,6 +77,9 @@ sudo dnf config-manager addrepo --overwrite --from-repofile=https://brave-browse
 sudo dnf check-update
 sudo dnf install brave-browser
 
+sudo dnf copr enable sneexy/zen-browser
+sudo dnf install zen-browser
+
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 sudo dnf install ghostty kitten golang-github-jesseduffield-lazygit
 
