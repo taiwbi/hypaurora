@@ -10,7 +10,7 @@ Welcome to my **dotfiles** repository! 🎉 These are my personal configuration 
 - <img src="https://cdn-icons-png.flaticon.com/512/8373/8373711.png" width="16" height="16"> Cursor Theme: [Phinger HyprCursor Light](https://discord.com/channels/961691461554950145/1216066899729977435/1326665055844175892)
 - <img src="https://cdn-icons-png.flaticon.com/512/18469/18469504.png" width="16" height="16"> Font Family: [Geist](https://vercel.com/font)
 - <img src="https://cdn-icons-png.flaticon.com/512/11145/11145039.png" width="16" height="16"> Persian Font Family: [Yekan Bakh](https://fontiran.com/fonts/yekan-bakh)
-- <img src="https://cdn-icons-png.flaticon.com/512/17379/17379046.png" width="16" height="16"> Monospace Family: [Cartograph CF](https://connary.com/fonts/cartograph/)
+- <img src="https://cdn-icons-png.flaticon.com/512/17379/17379046.png" width="16" height="16"> Monospace Family: [Geist Mono](https://vercel.com/font)
 - <img src="https://cdn-icons-png.flaticon.com/512/3680/3680225.png" width="16" height="16"> Persian Monospace Family: [AzarMehrMonospace](https://befonts.com/azarmehr-monospaced-font-duo.html)
 
 ## What's Included? 🤔

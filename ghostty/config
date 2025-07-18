@@ -1,12 +1,14 @@
 command = /bin/fish
 
 # Font
-font-family = "Cartograph CF"
+font-family = "Geist Mono"
 font-family = "AzarMehrMonospaced"
+font-style = "Medium"
+font-style-bold = "ExtraBold"
 
 font-size = 11
 
-adjust-cell-height = 4
+adjust-cell-height = 6
 adjust-cell-width = 0
 
 # Appearance
