@@ -52,6 +52,12 @@ ln -sf "$PWD/hyprpanel" "$HOME/.config/hyprpanel"
 rm -rf "$HOME/.config/rofi";
 ln -sf "$PWD/rofi" "$HOME/.config/rofi"
 
+rm -rf "$HOME/.config/Kvantum";
+ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
+
+rm -rf "$HOME/.config/qt6ct";
+ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
+
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 
