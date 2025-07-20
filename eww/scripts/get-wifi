@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Check for --complete argument
+COMPLETE_MODE=false
+if [[ "$1" == "--complete" ]]; then
+    COMPLETE_MODE=true
+fi
+
 # Function to format SSID to exactly 9 characters
 format_ssid() {
     local ssid="$1"
@@ -18,9 +24,17 @@ format_ssid() {
 get_current_ssid() {
     local ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
     if [ -n "$ssid" ]; then
-        format_ssid "$ssid"
+        if [ "$COMPLETE_MODE" = true ]; then
+            echo "$ssid"
+        else
+            format_ssid "$ssid"
+        fi
     else
-        format_ssid "Discon..."
+        if [ "$COMPLETE_MODE" = true ]; then
+            echo "Disconnected"
+        else
+            format_ssid "Discon..."
+        fi
     fi
 }
 

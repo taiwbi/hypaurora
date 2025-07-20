@@ -3,6 +3,7 @@
 (defpoll battery :interval "60s" `scripts/get-battery`)
 (deflisten power_profile :initial "balanced" "scripts/get-power-profile")
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi")
+(deflisten complete_wifi :initial "Disconnected" "scripts/get-wifi --complete")
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
 (deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
 (deflisten workspaces :initial "[]" "scripts/get-workspaces")
@@ -105,7 +106,7 @@
   (button :class "wifi-entry" :onclick "scripts/handle-wifi-click '${network.ssid}'"
     (box :orientation "h" :space-evenly false :spacing 10
       (icon :path "./icons/radar.svg")
-      (label :class "wifi-ssid ${wifi == network.ssid ? 'active' : ''}" :text "${network.ssid}" :limit-width 20 :halign "start")
+      (label :class "wifi-ssid ${complete_wifi == network.ssid ? 'active' : ''}" :text "${network.ssid}" :limit-width 20 :halign "start")
       (box :orientation "h" :space-evenly false :spacing 5 :halign "end"
         (image :class "wifi-lock" :path "./icons/lock.svg" :image-width 18 :image-height 18 :visible {network.secure})
       )
