@@ -1,6 +1,7 @@
 ;; --- Variables ---
 (defpoll time :interval "30s" `scripts/get-time`)
 (defpoll battery :interval "60s" `scripts/get-battery`)
+(deflisten power_profile :initial "balanced" "scripts/get-power-profile")
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi")
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
 (deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
@@ -159,9 +160,12 @@
       (button :onclick "hyprctl dispatch exit" 
         (icon :path "./icons/export-circle-01.svg")))
     (box :class "power-profiles-container" :orientation "v" :spacing 10
-      (button (label :halign "start" :text "Performance"))
-      (button (label :halign "start" :text "Balance"))
-      (button (label :halign "start" :text "Power Saver")))))
+      (button :class "${power_profile == 'performance' ? 'active' : ''}" :onclick "scripts/set-power-profile performance"
+        (label :halign "start" :text "Performance"))
+      (button :class "${power_profile == 'balanced' ? 'active' : ''}" :onclick "scripts/set-power-profile balanced"
+        (label :halign "start" :text "Balance"))
+      (button :class "${power_profile == 'power-saver' ? 'active' : ''}" :onclick "scripts/set-power-profile power-saver"
+        (label :halign "start" :text "Power Saver")))))
 
 ;; --- WIFI PASSWORD WINDOW ---
 (defwindow password_window

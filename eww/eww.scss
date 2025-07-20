@@ -156,11 +156,17 @@ box.occupied > label.workspace-entry:not(.current) {
 }
 
 .power-profiles-container {
-  margin-top: -20px;
+  margin-top: -15px;
 }
 
 .power-profiles-container button {
-  padding: 5px 12px;
+  padding: 8px 12px;
+  margin: -4px 0;
+}
+
+.power-profiles-container button.active {
+  color: #82aaff;
+  font-weight: bold;
 }
 
 /* --- Wi-Fi Password Prompt --- */
