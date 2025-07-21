@@ -141,17 +141,3 @@ function fish_prompt
         printf "%s %s❯%s " $prompt_line $color_prompt $color_reset
     end
 end
-
-# Optional: Add a right prompt for additional info
-function fish_right_prompt
-    # Command duration
-    if test $CMD_DURATION
-        set -l duration (math -s0 $CMD_DURATION / 1000)
-        if test $duration -gt 3
-            echo -n (set_color brblack)"$duration""s "(set_color normal)
-        end
-    end
-    
-    # Current time
-    echo -n (set_color brblack)(date +"%H:%M")(set_color normal)
-end
