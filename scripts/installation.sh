@@ -77,7 +77,7 @@ sudo dnf copr enable sneexy/zen-browser
 sudo dnf install zen-browser
 
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-sudo dnf install ghostty kitten golang-github-jesseduffield-lazygit
+sudo dnf install ghostty kitten neovide golang-github-jesseduffield-lazygit
 
 ## Install Hyprland?
 
