@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+hyprctl devices -j | jq -r '.keyboards[] | select(.name == "at-translated-set-2-keyboard") | .active_keymap'
+
+socat -U - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
+  # We are only interested in active layout changes
+  if [[ $line == "activelayout>>"* ]]; then
+    # The event format is "activelayout>>keyboard,layout"
+    # We extract the layout name after the comma.
+    layout=$(echo "$line" | cut -d ',' -f 2)
+    echo "$layout"
+  fi
+done
