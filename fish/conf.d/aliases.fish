@@ -26,6 +26,14 @@ alias free 'free -m' # Use -m for megabytes (or -h for human) like original free
 alias aria 'aria2c -x 16'
 alias sens 'sensors; and printf "\\r\\rNvidia GPU temp: %s°C\\n" (nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)' # Use printf and ;and
 
+function ariap
+    # Strip the protocol prefix (e.g., "socks5://") from the variable
+    set -l proxy_host (string replace -r '.*//' '' -- "$ALL_PROXY")
+
+    # Run aria2c with the cleaned proxy and forward all other arguments
+    aria --all-proxy="$proxy_host" $argv
+end
+
 # PHP/Laravel Aliases
 alias artisan 'php artisan'
 alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-helper:generate; and php artisan ide-helper:eloquent; and php artisan ide-helper:meta' # Use ;and
