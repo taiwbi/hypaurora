@@ -9,6 +9,7 @@
 (deflisten workspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspace")
 (deflisten media :initial "{}" "scripts/get-media")
+(deflisten touchpad_state :initial "true" "scripts/get-touchpad")
 
 ;; Wifi List Variables
 (defpoll wifi_list :interval "20s" "scripts/get-wifi-list")
