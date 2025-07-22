@@ -28,8 +28,8 @@
 }
 
 .time-label {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 56px;
+  font-weight: 900;
 }
 
 /* --- System Stats --- */
@@ -56,7 +56,7 @@
 
 /* --- Workspaces --- */
 .workspaces-widget > box {
-  padding: 15px 5px;
+  padding: 4px 5px;
 }
 
 box > label.workspace-entry {
@@ -64,17 +64,16 @@ box > label.workspace-entry {
   padding: 12px 15px;
   margin: 3px 0;
   border: 2px solid transparent;
-  border-radius: 20px;
+  border-radius: 15px;
   border: 2px solid rgba(22, 22, 22, 0);
 }
 
 box > label.workspace-entry.current {
   background-color: rgba(22, 22, 22, 0.5);
-  border: 2px solid rgba(22, 22, 22, 0.5);
 }
 
 box.occupied > label.workspace-entry:not(.current) {
-  border: 2px solid rgba(22, 22, 22, 0.5);
+  opacity: 0.3;
 }
 
 /* --- Media Player --- */
