@@ -85,7 +85,7 @@ read -p "Do you want to install hyprland now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf copr enable solopasha/hyprland
-    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprland-plugins hyprland-qtutils \
+    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils \
       rofi-wayland eww-git mpv \
       qt6ct kvantum
   ;;
