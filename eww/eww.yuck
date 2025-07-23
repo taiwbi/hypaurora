@@ -51,8 +51,12 @@
         (label :text "${battery.capacity}%")))
     ;; Volume
     (box :orientation "h" :spacing 5 :space-evenly false
-      (icon :path {volume.status == "Muted" ? "./icons/volume-mute.svg" : "./icons/volume-high.svg"})
-      (label :text {volume.status == "Muted" ? "Muted" : "${volume.percentage}%"}))
+      (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
+                 volume.percentage > 66 ? "./icons/volume-high.svg" :
+                 volume.percentage > 33 ? "./icons/volume-low-1.svg" :
+                 volume.percentage > 0  ? "./icons/volume-mute.svg" :
+                 "./icons/volume-cross.svg"})
+      (label :text {volume.status == "Muted" ? "Mut" : "${volume.percentage}%"}))
   ))
 
 (defwidget main_widget []
