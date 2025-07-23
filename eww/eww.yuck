@@ -162,7 +162,7 @@
     (box :class "power-buttons-container" :orientation "h" :valign "start" :halign "fill" :spacing 10
       (button :onclick "systemctl poweroff" 
         (icon :path "./icons/stop-circle.svg"))
-      (button :onclick "systemctl suspend" 
+      (button :onclick "pidof hyprlock || ($HOME/Documents/hypaurora/code/lock.sh & sleep 5 && systemctl suspend)"
         (icon :path "./icons/pause-circle.svg"))
       (button :onclick "hyprctl dispatch exit" 
         (icon :path "./icons/export-circle-01.svg")))
