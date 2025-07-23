@@ -68,22 +68,22 @@ function fish_prompt
             # Check for untracked files
             if test (git ls-files --others --exclude-standard | wc -l) -gt 0
                 set is_dirty true
-                set status_symbols "$status_symbols"  # Untracked files icon
+                set status_symbols "$status_symbols󰛑"  # Untracked files icon
             end
             
             # Check for staged changes
             if not git diff --cached --quiet 2>/dev/null
-                set status_symbols "$status_symbols"  # Staged changes icon
+                set status_symbols "$status_symbols"  # Staged changes icon
             end
             
             # Check for unstaged changes
             if not git diff --quiet 2>/dev/null
-                set status_symbols "$status_symbols"  # Modified files icon
+                set status_symbols "$status_symbols󰙏"  # Modified files icon
             end
             
             # Check for stashes
             if test (git stash list | wc -l) -gt 0
-                set status_symbols "$status_symbols"  # Stash icon
+                set status_symbols "$status_symbols"  # Stash icon
             end
             
             # Check ahead/behind status
@@ -94,12 +94,14 @@ function fish_prompt
                     set -l ahead (echo $ahead_behind | cut -f1)
                     set -l behind (echo $ahead_behind | cut -f2)
                     
+                    set status_symbols "$status_symbols "
+                    
                     if test $ahead -gt 0
-                        set status_symbols "$status_symbols$ahead"  # Ahead icon
+                        set status_symbols "$status_symbols$ahead"  # Ahead icon
                     end
                     
                     if test $behind -gt 0
-                        set status_symbols "$status_symbols$behind"  # Behind icon
+                        set status_symbols "$status_symbols$behind"  # Behind icon
                     end
                 end
             end
@@ -135,9 +137,9 @@ function fish_prompt
     # Output the prompt with responsive line breaking
     if test $prompt_length -gt $threshold
         # Two-line prompt for narrow terminals
-        printf "%s\n%s❯%s " $prompt_line $color_prompt $color_reset
+        printf "%s\n%s\$%s " $prompt_line $color_prompt $color_reset
     else
         # Single-line prompt for wide terminals
-        printf "%s %s❯%s " $prompt_line $color_prompt $color_reset
+        printf "%s %s\$%s " $prompt_line $color_prompt $color_reset
     end
 end
