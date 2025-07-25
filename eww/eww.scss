@@ -70,10 +70,12 @@ box > label.workspace-entry {
 
 box > label.workspace-entry.current {
   background-color: rgba(22, 22, 22, 0.5);
+  border: 2px #61afef solid;
 }
 
 box.occupied > label.workspace-entry:not(.current) {
   opacity: 0.3;
+  border: 1px #61afef solid;
 }
 
 /* --- Media Player --- */
