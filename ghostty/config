@@ -22,4 +22,5 @@ mouse-hide-while-typing = true
 
 # THEME
 window-theme = ghostty
-theme = bearded-bear-vivid-dark
+theme = rose-pine
+#theme = rose-pine-dawn
