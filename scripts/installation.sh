@@ -97,8 +97,7 @@ esac
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager re.sonny.Tangram io.github.seadve.Kooha com.github.finefindus.eyedropper io.bassi.Amberol
 
 # Install Rust
-sudo dnf install rustup
-rustup-init
+sudo dnf install cargo rust rust-src rustfmt
 
 sudo dnf mark user totem-video-thumbnailer evince-previewer
 sudo dnf remove rhythmbox totem evinc installatione gnome-shell-extension-* firefox firefox-*
