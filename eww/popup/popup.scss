@@ -1,0 +1,90 @@
+/* --- Wi-Fi List --- */
+.wifi-list-container {
+  padding: 15px;
+  border-radius: 20px;
+  color: #f1f1f1;
+}
+
+.wifi-entry {
+  padding: 5px 8px;
+  border-radius: 12px;
+}
+
+.wifi-entry:hover {
+  background-color: rgba(22, 22, 22, 0.5);
+}
+
+.wifi-ssid.active {
+  color: #82aaff;
+  font-weight: bold;
+}
+
+/* --- Power Window --- */
+.power-buttons-container button {
+  padding: 5px 8px;
+}
+
+.power-profiles-container {
+  margin-top: -20;
+}
+
+.power-profiles-container button {
+  padding: 8px 12px;
+  margin: -5px 0;
+}
+
+.power-profiles-container button.active {
+  color: #82aaff;
+  font-weight: bold;
+}
+
+/* --- Wi-Fi Password Prompt --- */
+.password-window {
+  color: #f1f1f1;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.password-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.password-input {
+  background-color: rgba(22, 22, 22, 0.5);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 300px;
+}
+
+.password-input:focus {
+  border: 1px solid #82aaff;
+}
+
+.password-buttons {
+  margin-top: 10px;
+}
+
+.password-button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.password-button.cancel {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.password-button.cancel:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.password-button.connect {
+  background-color: #82aaff;
+  color: #1e1e1e;
+}
+
+.password-button.connect:hover {
+  background-color: #92baff;
+}

@@ -8,105 +8,78 @@
   border: none;
 }
 
-/* --- Widget Containers --- */
+.vertical-bar {
+  border-radius: 20px;
+  padding: 15px 10px;
+}
+
 .widget-container {
+  background-color: rgba(30, 30, 30, 0.3);
   border-radius: 20px;
   padding: 20px;
 }
 
-/* --- Icons --- */
-// .icon-image {}
-
-/* --- Time --- */
-.time-box {
-  color: #ffffff;
-  /* This will color the clock icon */
+.logo {
+  font-family: "Symbols Nerd Font";
+  font-size: 20px;
+  color: #61afef;
+  margin-bottom: 10px;
 }
 
-.time-box image {
-  margin-right: 20px;
-}
-
-.time-label {
-  font-size: 56px;
-  font-weight: 900;
-}
-
-/* --- System Stats --- */
-.sys_stats {
-  font-size: 16px;
-  color: #e0e0e0;
-  margin-left: 5px;
-  margin-top: 15px;
-}
-
-.sys_stats box,
-.sys_stats button {
-  padding: 5px;
+button {
   border-radius: 12px;
+  transition: all 0.4s ease;
 }
 
-.sys_stats button {
-  transition: all 0.2s ease;
+button:hover {
+  background-color: rgba(22, 22, 22, 0.7);
 }
 
-.sys_stats button:hover {
-  background-color: rgba(22, 22, 22, 0.5);
+/* --- System Stats in Vertical Bar --- */
+.stat-item {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(22, 22, 22, 0.2);
+  transition: all 0.3s ease;
 }
 
 /* --- Workspaces --- */
-.workspaces-widget > box {
-  padding: 4px 5px;
+.workspaces-container {
+  margin: 3px 0;
 }
 
-box > label.workspace-entry {
+box>label.workspace-entry {
   transition: all 0.3s ease;
-  padding: 12px 15px;
-  margin: 3px 0;
+  padding: 4px;
+  margin: 3px 2px;
   border: 2px solid transparent;
-  border-radius: 15px;
+  border-radius: 12px;
   border: 2px solid rgba(22, 22, 22, 0);
 }
 
-box > label.workspace-entry.current {
-  background-color: rgba(22, 22, 22, 0.5);
+box>label.workspace-entry.current {
+  background-color: rgba(22, 22, 22, 0.3);
   border: 2px #61afef solid;
 }
 
-box.occupied > label.workspace-entry:not(.current) {
+box.occupied>label.workspace-entry:not(.current) {
   opacity: 0.3;
   border: 1px #61afef solid;
 }
 
-/* --- Media Player --- */
-.media-player-widget {
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.song-title {
-  font-family: "Geist Mono";
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.media-controls {
-  color: #e0e0e0;
+/* --- Media Controls --- */
+.media-controls-container {
+  margin: 15px 0;
+  padding: 10px 0;
 }
 
 .media-button {
   transition: all 0.3s ease;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background-color: rgba(22, 22, 22, 0.3);
   padding: 5px;
   margin: 0 2px;
-  border: 2px solid transparent;
-  border-radius: 20px;
-}
-
-.media-button:hover {
-  background-color: rgba(22, 22, 22, 0.5);
-  border-radius: 20px;
 }
 
 /* Style for active shuffle/repeat buttons */
@@ -114,133 +87,8 @@ box.occupied > label.workspace-entry:not(.current) {
 .media-button.repeat.Track,
 .media-button.repeat.Playlist {
   color: #82aaff;
+  background-color: rgba(130, 170, 255, 0.2);
 }
 
-/* --- Wi-Fi List --- */
-.wifi-list-container {
-  // background-color: rgba(22, 22, 22, 0.5);
-  padding: 15px;
-  border-radius: 20px;
-  color: #f1f1f1;
-}
-
-.wifi-entry {
-  padding: 5px 10px;
-  border-radius: 12px;
-}
-
-.wifi-entry:hover {
-  background-color: rgba(22, 22, 22, 0.5);
-}
-
-.wifi-ssid.active {
-  color: #82aaff;
-  font-weight: bold;
-}
-
-.wifi-lock {
-  margin-right: 5px;
-}
-
-/* --- Power Window --- */
-.power-window-container button {
-  border-radius: 12px;
-}
-
-.power-window-container button:hover {
-  background-color: rgba(22, 22, 22, 0.5);
-  transition: all 0.4s ease;
-}
-
-.power-buttons-container button {
-  padding: 12px 10px;
-}
-
-.power-profiles-container {
-  margin-top: -15px;
-}
-
-.power-profiles-container button {
-  padding: 8px 12px;
-  margin: -4px 0;
-}
-
-.power-profiles-container button.active {
-  color: #82aaff;
-  font-weight: bold;
-}
-
-/* --- Wi-Fi Password Prompt --- */
-.password-window {
-  background-color: rgba(30, 30, 30, 0.9);
-  color: #f1f1f1;
-  padding: 25px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.password-label {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.password-input {
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  padding: 10px;
-  min-width: 300px;
-}
-
-.password-input:focus {
-  border: 1px solid #82aaff;
-}
-
-.password-buttons {
-  margin-top: 10px;
-}
-
-.password-button {
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.password-button.cancel {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.password-button.cancel:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.password-button.connect {
-  background-color: #82aaff;
-  color: #1e1e1e;
-}
-
-.password-button.connect:hover {
-  background-color: #92baff;
-}
-
-/* --- OSD --- */
-.osd-container {
-  padding: 10px 20px;
-  background-color: rgba(22, 22, 22, 0.8);
-  border-radius: 16px;
-}
-
-.osd-slider trough {
-  all: unset;
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  min-height: 10px;
-  min-width: 200px;
-}
-
-.osd-slider highlight {
-  all: unset;
-  background-color: #f1f1f1;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
+@import "./osd/osd.scss";
+@import "./popup/popup.scss";
