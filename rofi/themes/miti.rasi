@@ -1,13 +1,13 @@
 configuration {
     show-icons: true;
-    icon-theme: "ColorFlow";
+    icon-theme: "ColorFlow.Agresive.Color";
 }
 
 * {
-    bg0:    #161616;
-    bg1:    #161616;
-    bg2:    #222226;
-    bg3:    #222226;
+    bg0:    #0000004D;
+    bg1:    #1616164D;
+    bg2:    #2222264D;
+    bg3:    #2222264D;
     fg0:    #cdd6f4;
     fg1:    #bac2de;
     fg2:    #a6adc8;
