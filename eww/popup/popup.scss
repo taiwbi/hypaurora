@@ -6,12 +6,13 @@
 }
 
 .wifi-entry {
-  padding: 5px 8px;
+  padding: 8px 8px;
   border-radius: 12px;
 }
 
-.wifi-entry:hover {
-  background-color: rgba(22, 22, 22, 0.5);
+.wifi-entry:not(.active):not(:hover) {
+  box-shadow: none;
+  background: none;
 }
 
 .wifi-ssid.active {
@@ -21,7 +22,8 @@
 
 /* --- Power Window --- */
 .power-buttons-container button {
-  padding: 5px 8px;
+  padding:8px 8px;
+  margin-top: 10px;
 }
 
 .power-profiles-container {
@@ -29,13 +31,13 @@
 }
 
 .power-profiles-container button {
-  padding: 8px 12px;
-  margin: -5px 0;
+  padding: 9px 20px;
+  margin: -3px 0;
 }
 
-.power-profiles-container button.active {
-  color: #82aaff;
-  font-weight: bold;
+.power-profiles-container button:not(.active):not(:hover) {
+  box-shadow: none;
+  background: none;
 }
 
 /* --- Wi-Fi Password Prompt --- */

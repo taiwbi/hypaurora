@@ -1,7 +1,7 @@
 ;; --- WIFI LIST WINDOW ---
 (defwindow wifi_list_window
     :monitor 0
-  :geometry (geometry :x "66px" :y "10px" :width "270px" :height "50px" :anchor "bottom left")
+  :geometry (geometry :x "66px" :y "15px" :width "270px" :height "50px" :anchor "bottom left")
     :stacking "overlay"
     :wm-ignore true
       (box :class "wifi-list-container widget-container" :orientation "v" :spacing 10

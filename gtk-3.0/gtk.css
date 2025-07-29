@@ -1,1 +1,36 @@
 @import url("../gtk-4.0/gtk.css");
+
+paned>box>box>stack>scrolledwindow>viewport>stack>widget.content-view {
+    background: transparent;
+}
+
+toolbar.horizontal {
+    margin: 10px;
+    padding-right: 20px;
+    background: rgba(256, 256, 256, 0.1);
+}
+
+treeview.view {
+    background: transparent;
+}
+
+frame {
+    margin: 10px;
+    border-radius: 20px;
+    background: rgba(256, 256, 256, 0.1);
+    border: 1px solid rgba(256, 256, 256, 0.2);
+    box-shadow:
+        0 8px 32px rgba(31, 38, 135, 0.2),
+        inset 0 4px 20px rgba(256, 256, 256, 0.1);
+}
+
+frame>border {
+    border: none;
+    outline: none;
+}
+
+menubar {
+    background: 0;
+    border: none;
+    box-shadow: none;
+}
