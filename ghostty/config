@@ -22,5 +22,5 @@ mouse-hide-while-typing = true
 
 # THEME
 window-theme = ghostty
-theme = GruvboxDark
+theme = palenightfall
 #theme = rose-pine-dawn
