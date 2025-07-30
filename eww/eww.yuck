@@ -1,5 +1,7 @@
 ;; --- Variables ---
 (defpoll time :interval "30s" `scripts/get-time`)
+(defpoll hour :interval "2m" `date +"%H"`)
+(defpoll minuet :interval "30s" `date +"%M"`)
 (defpoll battery :interval "60s" `scripts/get-battery`)
 (deflisten power_profile :initial "balanced" "scripts/get-power-profile")
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi --complete")
@@ -44,7 +46,7 @@
 
 ;; --- WIFI WIDGETS ---
 (defwidget wifi_network_entry [network]
-  (button :class "wifi-entry" :onclick "scripts/handle-wifi-click '${network.ssid}'"
+  (button :class "button wifi-entry" :onclick "scripts/handle-wifi-click '${network.ssid}'"
     (box :orientation "h" :space-evenly false :spacing 10
       (icon :path "./icons/radar.svg")
       (label :class "wifi-ssid ${wifi == network.ssid ? 'active' : ''}" :text "${network.ssid}" :limit-width 20 :halign "start")
@@ -76,20 +78,20 @@
     
     ;; Media player controls at the center
     (box :class "media-controls-container" :orientation "v" :spacing 5
-      (button :class "media-button" :onclick "playerctl previous" 
+      (button :class "button media-button" :onclick "playerctl previous" 
         (icon :path "./icons/previous.svg")
       )
-      (button :class "media-button" :onclick "playerctl play-pause"
+      (button :class "button media-button" :onclick "playerctl play-pause"
         (icon :path {media.status == "Playing" ? "./icons/pause.svg" : "./icons/play.svg"})
       )
-      (button :class "media-button" :onclick "playerctl next" 
+      (button :class "button media-button" :onclick "playerctl next" 
         (icon :path "./icons/next.svg")
       )
-      (button :class "media-button shuffle ${media.shuffle == true ? 'active' : ''}"
+      (button :class "button media-button shuffle ${media.shuffle == true ? 'active' : ''}"
               :onclick "playerctl shuffle toggle" 
         (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer-01.svg"})
       )
-      (button :class "media-button repeat ${media.loop}"
+      (button :class "button media-button repeat ${media.loop}"
               :onclick "scripts/cycle-loop"
         (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" : 
                      media.loop == "Playlist" ? "./icons/repeat-music.svg" : 
@@ -98,7 +100,7 @@
     )
     
     ;; System stats at the bottom
-    (box :class "system-stats" :orientation "v" :spacing 10
+    (box :class "system-stats" :orientation "v" :spacing 10 :space-evenly false
       ;; Volume
       (box :class "stat-item"
         (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
@@ -109,23 +111,29 @@
       )
       
       ;; Wifi
-      (button :class "stat-item" :onclick "scripts/toggle-window wifi_list_window"
+      (button :class "button stat-item" :onclick "scripts/toggle-window wifi_list_window"
         (icon :path "./icons/wifi-square.svg")
       )
       
       ;; Battery
-      (button :class "stat-item" :onclick "scripts/toggle-window power_window"
-        (icon :path {battery.status == "Charging" ? "./icons/battery-charging.svg" :
-                     battery.capacity > 80 ? "./icons/battery-full.svg" :
-                     battery.capacity > 40 ? "./icons/battery-2bars.svg" :
-                     battery.capacity > 30 ? "./icons/battery-empty-1.svg" :
-                     battery.capacity > 10 ? "./icons/battery-empty.svg" :
-                     "./icons/battery-disable.svg"})
+      (button :onclick "scripts/toggle-window power_window" :class "button stat-item"
+        (box :orientation "v"
+          (icon :path {battery.status == "Charging" ? "./icons/battery-charging.svg" :
+            battery.capacity > 80 ? "./icons/battery-full.svg" :
+            battery.capacity > 40 ? "./icons/battery-2bars.svg" :
+            battery.capacity > 30 ? "./icons/battery-empty-1.svg" :
+            battery.capacity > 10 ? "./icons/battery-empty.svg" :
+            "./icons/battery-disable.svg"})
+          ; Show battery capacity
+          (label :text "${battery.capacity}")
+        )
       )
       
       ;; Time
-      (box :class "stat-item"
+      (box :class "stat-item" :orientation "v"
         (icon :path "./icons/clock.svg")
+        (label :text "${hour}")
+        (label :text "${minuet}")
       )
     )
   )
