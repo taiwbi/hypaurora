@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
-hyprctl devices -j | jq -r '.keyboards[] | select(.name == "at-translated-set-2-keyboard") | .active_keymap'
+# Function to get current keyboard layout name
+get_current_layout() {
+    niri msg keyboard-layouts | grep '^\s*\*' | sed 's/^\s*\*\s*[0-9]\+\s*//'
+}
 
-socat -U - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
-  # We are only interested in active layout changes
-  if [[ $line == "activelayout>>"* ]]; then
-    # The event format is "activelayout>>keyboard,layout"
-    # We extract the layout name after the comma.
-    layout=$(echo "$line" | cut -d ',' -f 2)
-    echo "$layout"
-  fi
+# Print initial layout
+echo "$(get_current_layout)"
+
+# Monitor niri socket for keyboard layout changes
+niri msg event-stream | while read -r event; do
+    # Check if the event is related to keyboard layout changes
+    if echo "$event" | grep -q "Keyboard layout switched"; then
+        current_layout=$(get_current_layout)
+        echo "$current_layout"
+    fi
 done

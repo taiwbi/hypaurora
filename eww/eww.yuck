@@ -60,13 +60,17 @@
 ;; --- Vertical Bar Window ---
 (defwindow vertical_bar
   :monitor 0
-  :geometry (geometry :x "0px" :y "8px" :width "30px" :height "1064px")
-  :stacking "fg"
-  :reserve (struts :distance "40px" :side "left")
-  :windowtype "dock"
-  :wm-ignore false
-  :anchor "left center"
   :exclusive true
+  :windowtype "dock"
+  :geometry (geometry :x "6px" 
+                      :y "0px" 
+                      :width "48px" 
+                      :height "1066px"
+                      :anchor "left center")
+  :stacking "fg"
+  :focusable false
+  :exclusive true
+  :namespace "bar"
   (box :class "vertical-bar" :orientation "v" :space-evenly false
     ;; Logo at the top
     (label :class "logo" :text "") ; Nerd Font logo

@@ -1,7 +1,7 @@
 ;; --- WIFI LIST WINDOW ---
 (defwindow wifi_list_window
     :monitor 0
-  :geometry (geometry :x "62px" :y "16px" :width "270px" :height "50px" :anchor "bottom left")
+  :geometry (geometry :x "18px" :y "18px" :width "270px" :height "50px" :anchor "bottom left")
     :stacking "overlay"
     :wm-ignore true
       (box :class "wifi-list-container widget-container" :orientation "v" :spacing 10
@@ -11,7 +11,7 @@
 ;; --- POWER WINDOW ---
 (defwindow power_window
   :monitor 0
-  :geometry (geometry :x "62px" :y "16px" :width "270px" :height "50px" :anchor "bottom left")
+  :geometry (geometry :x "18px" :y "18px" :width "270px" :height "50px" :anchor "bottom left")
   :stacking "overlay"
   :anchor "bottom left"
   :wm-ignore true
@@ -21,7 +21,7 @@
         (icon :path "./icons/stop-circle.svg"))
       (button :onclick "pidof hyprlock || ($HOME/Documents/hypaurora/code/lock.sh & sleep 5 && systemctl suspend)"
         (icon :path "./icons/pause-circle.svg"))
-      (button :onclick "hyprctl dispatch exit" 
+      (button :onclick "niri msg action quit" 
         (icon :path "./icons/export-circle-01.svg")))
     (box :class "power-profiles-container" :orientation "v" :spacing 10
       (button :class "${power_profile == 'performance' ? 'active' : ''}" :onclick "scripts/set-power-profile performance"
