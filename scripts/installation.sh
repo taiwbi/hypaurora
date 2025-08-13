@@ -95,6 +95,19 @@ case ${answer:0:1} in
   ;;
 esac
 
+read -p "Do you want to install niri now? (Y/n): " answer
+case ${answer:0:1} in
+  y|Y )
+    sudo dnf copr enable solopasha/hyprland
+    sudo dnf install niri xwayland-satellite \ 
+      hyprlock hypridle hyprpaper \
+      rofi-wayland eww-git
+  ;;
+  * )
+    echo "I won't install hyprland :)"
+  ;;
+esac
+
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager re.sonny.Tangram io.github.seadve.Kooha com.github.finefindus.eyedropper io.bassi.Amberol
 
 # Install Rust
