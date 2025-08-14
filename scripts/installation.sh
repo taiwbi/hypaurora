@@ -101,7 +101,8 @@ case ${answer:0:1} in
     sudo dnf copr enable solopasha/hyprland
     sudo dnf install niri xwayland-satellite \ 
       hyprlock hypridle hyprpaper \
-      rofi-wayland eww-git
+      rofi-wayland eww-git \
+      pactl brightnessctl
   ;;
   * )
     echo "I won't install hyprland :)"

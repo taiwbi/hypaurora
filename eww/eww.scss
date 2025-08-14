@@ -9,20 +9,13 @@
 }
 
 .vertical-bar {
-  border-radius: 20px;
+  border-radius: 14px;
   padding: 15px 5px 10px 5px;
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow:
-    inset -1px 1px 1px rgba(255, 255, 255, 0.2),
-    inset -1px -1px 1px rgba(255, 255, 255, 0.05);
-  // background: transparent;
+  background-color: rgb(34, 34, 38);
 }
 
 .widget-container {
-  background-color: rgba(0, 0, 0, 0.2);
-  box-shadow:
-    inset 1px 1px 2px rgba(255, 255, 255, 0.2),
-    inset 1px -1px 2px rgba(255, 255, 255, 0.05);
+  background-color: rgb(34, 34, 38);
   border-radius: 20px;
   padding: 20px;
 }
@@ -37,10 +30,6 @@
 button {
   border-radius: 12px;
   transition: all 0.4s ease;
-  background-color: rgba(0, 0, 0, 0.2);
-  box-shadow:
-    inset 1px 1px 2px rgba(255, 255, 255, 0.2),
-    inset 1px -1px 2px rgba(255, 255, 255, 0.05);
 }
 
 button:hover {
@@ -49,9 +38,7 @@ button:hover {
 
 /* --- System Stats in Vertical Bar --- */
 .stat-item {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.2);
+  padding: 8px;
   transition: all 0.3s ease;
 }
 
@@ -60,21 +47,21 @@ button:hover {
   margin: 3px 0;
 }
 
-box>label.workspace-entry {
+box > label.workspace-entry {
   transition: all 0.3s ease;
   padding: 6px 5px;
   margin: 3px 2px;
   border-radius: 12px;
 }
 
-box>label.workspace-entry.current {
+box > label.workspace-entry.current {
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow:
     inset 1px 1px 2px rgba(255, 255, 255, 0.2),
     inset 1px -1px 2px rgba(255, 255, 255, 0.05);
 }
 
-box.occupied>label.workspace-entry:not(.current) {
+box.occupied > label.workspace-entry:not(.current) {
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow:
     inset 1px 1px 2px rgba(255, 255, 255, 0.2),
@@ -90,7 +77,6 @@ box.occupied>label.workspace-entry:not(.current) {
 .media-button {
   transition: all 0.3s ease;
   border-radius: 12px;
-  background-color: rgba(0, 0, 0, 0.3);
   padding: 7px 5px;
   margin: 0 2px;
 }
@@ -100,7 +86,6 @@ box.occupied>label.workspace-entry:not(.current) {
 .media-button.repeat.Track,
 .media-button.repeat.Playlist {
   color: #82aaff;
-  background-color: rgba(130, 170, 255, 0.2);
 }
 
 @import "./osd/osd.scss";

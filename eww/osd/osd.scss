@@ -1,8 +1,8 @@
 /* --- OSD --- */
 .osd-container {
   padding: 10px 20px;
-  // background-color: rgba(22, 22, 22, 0.3);
-  // border-radius: 16px;
+  background-color: rgb(34, 34, 38);
+  border-radius: 16px;
 }
 
 .osd-slider trough {
@@ -15,7 +15,7 @@
 
 .osd-slider highlight {
   all: unset;
-  background-color: rgba(130, 170, 255, 0.5);
+  background-color: rgba(130, 170, 255, 1);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
