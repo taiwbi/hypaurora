@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-pkill hyprpaper;
+pkill swaybg;
 niri msg action focus-workspace 255 &
 pactl set-sink-mute @DEFAULT_SINK@ true &
 

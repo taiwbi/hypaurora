@@ -1,5 +1,5 @@
 spawn-at-startup "sh" "-c" "eww daemon && eww open vertical_bar"
-spawn-at-startup "sh" "-c" "hyprpaper"
+spawn-at-startup "sh" "-c" "swaybg -i ~/.config/background --mode fill"
 
 
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
@@ -97,7 +97,7 @@ binds {
 
     Mod+M { spawn "rofi" "-show" "drun"; }
 
-    // Hyprpaper controls
+    // Swaybg controls
     Mod+grave { spawn "~/Documents/hypaurora/code/stupid/rescue.sh"; }
     Mod+Alt+grave { spawn "~/Documents/hypaurora/code/stupid/comeback.sh"; }
 
