@@ -100,7 +100,7 @@ case ${answer:0:1} in
   y|Y )
     sudo dnf copr enable solopasha/hyprland
     sudo dnf install niri xwayland-satellite \ 
-      hyprlock hypridle swaybg \
+      swaylock hypridle swaybg \
       rofi-wayland eww-git \
       pactl brightnessctl
   ;;
