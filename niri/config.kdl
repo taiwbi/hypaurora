@@ -2,8 +2,9 @@ spawn-at-startup "sh" "-c" "eww daemon && eww open vertical_bar"
 spawn-at-startup "sh" "-c" "swaybg -i ~/.config/background --mode fill"
 spawn-at-startup "~/Documents/hypaurora/code/idle.sh"
 
-
+spawn-at-startup "sh" "-c" "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
+spawn-at-startup "sh" "-c" "eval \"$(ssh-agent -s)\""
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -14,6 +15,8 @@ environment {
     GDMSESSION "GNOME"
     XDG_SESSION_DESKTOP "GNOME"
     XDG_CURRENT_DESKTOP "GNOME"
+
+    SSH_AUTH_SOCK "/run/user/1000/keyring/ssh"
 
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 
@@ -175,7 +178,7 @@ binds {
     // Change window states
     Mod+V { toggle-window-floating; }
     Mod+C { close-window; }
-    // Mod+F { fullscreen-window; }
+    Mod+P { fullscreen-window; }
     Mod+Y { center-column; }
     // Note: Niri doesn't have togglesplit equivalent
 
@@ -300,15 +303,8 @@ window-rule {
     min-height 400
 }
 
-// Make fuzzel FLOAT.
-layer-rule {
-    match namespace="^rofi$"
-
-    baba-is-float true
-}
-
 animations {
-    slowdown 2.0
+    slowdown 0.3
 }
 
 // Animations
