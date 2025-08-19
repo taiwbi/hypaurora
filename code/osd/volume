@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Event-driven volume OSD script for Hyprland + eww
-
 OSD_WINDOW="sound_osd"
 TIMEOUT=2
 VOLUME_FILE="/tmp/eww_osd_volume.state"

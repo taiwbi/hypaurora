@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Event-driven brightness OSD script for Hyprland + eww
-
 OSD_WINDOW="brightness_osd"
 TIMEOUT=2
 BRIGHTNESS_FILE="/tmp/eww_osd_brightness.state"

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Event-driven keyboard layout OSD script for niri + eww
-
 OSD_WINDOW="keyboard_osd"
 TIMEOUT=2
 LOCK_FILE="/tmp/eww_keyboard_osd.lock"
