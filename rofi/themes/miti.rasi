@@ -4,14 +4,14 @@ configuration {
 }
 
 * {
-    bg0:    #0000004D;
-    bg1:    #1616164D;
-    bg2:    #2222264D;
-    bg3:    #2222264D;
-    fg0:    #cdd6f4;
-    fg1:    #bac2de;
-    fg2:    #a6adc8;
-    fg3:    #9399b2;
+    bg0:    #12121FF2;
+    bg1:    #1e1e2aF2;
+    bg2:    #2a2a35F2;
+    bg3:    #363641F2;
+    fg0:    #f3f3f4;
+    fg1:    #e7e7e9;
+    fg2:    #dbdbdd;
+    fg3:    #d0d0d2;
 
     font:   "Geist Mono 11";
 
