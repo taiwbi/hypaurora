@@ -1,9 +1,9 @@
 spawn-at-startup "sh" "-c" "eww daemon && eww open vertical_bar"
 spawn-at-startup "sh" "-c" "swaybg -i ~/.config/background --mode fill"
+spawn-at-startup "~/Documents/hypaurora/code/idle.sh"
 
 
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
-spawn-at-startup "hypridle"
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
