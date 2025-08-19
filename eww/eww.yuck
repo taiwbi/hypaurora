@@ -7,8 +7,6 @@
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi --complete")
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
 (deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
-(deflisten workspaces :initial "[]" "scripts/get-workspaces")
-(deflisten current_workspace :initial "1" "scripts/get-active-workspace")
 (deflisten media :initial "{}" "scripts/get-media")
 (deflisten touchpad_state :initial "true" "scripts/get-touchpad")
 (deflisten keyboard_layout :initial "English (US)" "scripts/get-keyboard")
@@ -27,22 +25,6 @@
          :image-height 18)
 )
 
-
-;; --- Widgets ---
-(defwidget workspaces []
-  (eventbox :onscroll "scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
-    (box :space-evenly true :orientation "vertical"
-      (label :text "${workspaces}${current_workspace}" :visible false)
-      (for workspace in workspaces
-        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-          (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"}"
-            (label :text "${workspace.id}" :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""}" )
-          )
-          )
-        )
-      )
-    )
-  )
 
 ;; --- WIFI WIDGETS ---
 (defwidget wifi_network_entry [network]
@@ -75,11 +57,6 @@
     ;; Logo at the top
     (label :class "logo" :text "") ; Nerd Font logo
     
-    ;; Workspaces in the middle
-    (box :class "workspaces-container" :orientation "v" :vexpand true :valign "start"
-      (workspaces)
-    )
-    
     ;; Media player controls at the center
     (box :class "media-controls-container" :orientation "v" :spacing 5
       (button :class "button media-button" :onclick "playerctl previous" 
@@ -102,6 +79,9 @@
                      "./icons/arrow-right-04.svg"})
       )
     )
+    
+    ;; Empty in the middle
+    (box :orientation "v" :vexpand true :valign "start")
     
     ;; System stats at the bottom
     (box :class "system-stats" :orientation "v" :spacing 10 :space-evenly false
