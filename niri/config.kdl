@@ -193,7 +193,7 @@ binds {
     // Take screenshots
     Print { screenshot show-pointer=false; }
     Shift+Print { screenshot-screen show-pointer=false; }
-    Ctrl+Print { spawn "sh" "-c" "hyprpicker 2>/dev/null | grep -Eo '[0-9a-fA-F]{6}' | head -n1 | awk '{printf \"\\x23%s\", $0}' | tr -d '\n' | wl-copy"; }
+    Ctrl+Print { spawn "sh" "-c" "flatpak run com.github.finefindus.eyedropper"; }
 
     // TODO:
     // Accessibility (Note: Niri doesn't have built-in zoom like pypr)
@@ -292,12 +292,33 @@ layout {
     }
 }
 
+
+// Global Window Rule
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
     draw-border-with-background false
 }
 
+// App Window Rules
+window-rule {
+    match app-id="com.github.finefindus.eyedropper"
+
+    open-floating true
+    open-focused false
+
+    default-column-width { fixed 350; }
+    default-window-height { fixed 500; }
+
+    opacity 0.5
+
+    min-width 250
+    max-width 450
+    min-height 500
+    max-height 600
+}
+
+// Window Specific Window Rule
 window-rule {
     match app-id="org.gnome.Shotwell" title="Modify Tags"
     min-height 400
