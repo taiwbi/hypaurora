@@ -43,11 +43,8 @@ ln -sf "$PWD/fish" "$HOME/.config/fish"
 rm -rf "$HOME/.config/fastfetch";
 ln -sf "$PWD/fastfetch" "$HOME/.config/fastfetch"
 
-rm -rf "$HOME/.config/hypr";
-ln -sf "$PWD/hypr" "$HOME/.config/hypr"
-
-rm -rf "$HOME/.config/hyprpanel";
-ln -sf "$PWD/hyprpanel" "$HOME/.config/hyprpanel"
+rm -rf "$HOME/.config/niri";
+ln -sf "$PWD/nir" "$HOME/.config/niri"
 
 rm -rf "$HOME/.config/rofi";
 ln -sf "$PWD/rofi" "$HOME/.config/rofi"
