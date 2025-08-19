@@ -1,13 +1,11 @@
 # 🌌 Hypaurora
 
-Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the GNOME and Hyprland.
+Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the Niri.
 
 > If you want to use this make sure you clone it in `~/Documents/hypaurora`
 
-![HyprShot](./assets/Hypaurora.gif)
-
 - <img src="https://cdn-icons-png.flaticon.com/512/8377/8377415.png " width="16" height="16"> Icon Pack: [Color Flow](https://www.gnome-look.org/p/2239645)
-- <img src="https://cdn-icons-png.flaticon.com/512/8373/8373711.png" width="16" height="16"> Cursor Theme: [Rose Pine HyprCursor](https://github.com/ndom91/rose-pine-hyprcursor)
+- <img src="https://cdn-icons-png.flaticon.com/512/8373/8373711.png" width="16" height="16"> Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
 - <img src="https://cdn-icons-png.flaticon.com/512/18469/18469504.png" width="16" height="16"> Font Family: [Geist](https://vercel.com/font)
 - <img src="https://cdn-icons-png.flaticon.com/512/11145/11145039.png" width="16" height="16"> Persian Font Family: [Yekan Bakh](https://fontiran.com/fonts/yekan-bakh)
 - <img src="https://cdn-icons-png.flaticon.com/512/17379/17379046.png" width="16" height="16"> Monospace Family: [Geist Mono](https://vercel.com/font)
@@ -16,11 +14,3 @@ Welcome to my **dotfiles** repository! 🎉 These are my personal configuration 
 ## What's Included? 🤔
 
 > Many things!
-
----
-
-Happy customizing! If you run into any issues or have questions, don't hesitate to open an issue or reach out. May your Hyprland lite setup be ever in your favor! 🌟
-
----
-
-This dotfiles also a have a more beautiful and fancy design, checkout main branch
