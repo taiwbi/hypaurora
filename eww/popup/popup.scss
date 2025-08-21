@@ -51,14 +51,14 @@
 }
 
 .password-input {
-  background-color: rgb(34, 34, 38);
+  background-color: $background-color;
   border-radius: 10px;
   padding: 10px;
   min-width: 300px;
 }
 
 .password-input:focus {
-  border: 1px solid #82aaff;
+  border: 1px solid $accent-color;
 }
 
 .password-buttons {
@@ -72,18 +72,18 @@
 }
 
 .password-button.cancel {
-  background-color: rgb(34, 34, 38);
+  background-color: $background-color;
 }
 
 .password-button.cancel:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: $background-hover-color;
 }
 
 .password-button.connect {
-  background-color: #82aaff;
-  color: #1e1e1e;
+  background-color: $accent-color;
+  color: $background-color;
 }
 
 .password-button.connect:hover {
-  background-color: #92baff;
+  background-color: darken($color: $accent-color, $amount: 20%);
 }

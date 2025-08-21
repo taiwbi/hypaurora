@@ -1,3 +1,7 @@
+$background-color: #191724;
+$background-hover-color: rgba(0, 0, 0, 0.6);
+$accent-color: #61afef;
+
 /* --- Global --- */
 * {
   all: unset;
@@ -11,11 +15,11 @@
 .vertical-bar {
   border-radius: 14px;
   padding: 15px 5px 10px 5px;
-  background-color: rgba(18, 18, 31, 0.8);
+  background-color: $background-color;
 }
 
 .widget-container {
-  background-color: rgb(18, 18, 31, 0.95);
+  background-color: $background-color;
   border-radius: 20px;
   padding: 20px;
 }
@@ -23,7 +27,7 @@
 .logo {
   font-family: "Symbols Nerd Font";
   font-size: 20px;
-  color: #61afef;
+  color: $accent-color;
   margin-bottom: 10px;
 }
 
@@ -33,7 +37,7 @@ button {
 }
 
 button:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $background-hover-color;
 }
 
 /* --- System Stats in Vertical Bar --- */
@@ -59,7 +63,7 @@ button:hover {
 .media-button.shuffle.active,
 .media-button.repeat.Track,
 .media-button.repeat.Playlist {
-  color: #82aaff;
+  color: $accent-color;
 }
 
 @import "./osd/osd.scss";
