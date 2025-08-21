@@ -18,7 +18,7 @@ environment {
 
     SSH_AUTH_SOCK "/run/user/1000/keyring/ssh"
 
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
     DISPLAY null
 }
@@ -96,7 +96,7 @@ binds {
     Mod+Return { spawn "ghostty" "--gtk-titlebar=false"; }
     Mod+backslash { spawn "~/Documents/hypaurora/code/nvim.sh"; }
     Mod+X { spawn "nautilus"; }
-    Mod+B { spawn "zen-browser" "--new-window"; }
+    Mod+B { spawn "flatpak" "run" "com.brave.Browser" "--new-window"; }
 
     Mod+M { spawn "rofi" "-show" "drun"; }
 
