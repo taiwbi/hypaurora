@@ -47,7 +47,7 @@
   :geometry (geometry :x "6px" 
                       :y "0px" 
                       :width "48px" 
-                      :height "1066px"
+                      :height "1070px"
                       :anchor "left center")
   :stacking "fg"
   :focusable false
