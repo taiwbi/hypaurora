@@ -1,38 +1,59 @@
 #!/usr/bin/env bash
 
-# Script to get current touchpad status for eww bar
+CONFIG_FILE="$HOME/.config/niri/config.kdl"
+CONFIG_DIR="$(dirname "$CONFIG_FILE")"
 
-# Set up XDG_RUNTIME_DIR if not set
-if [ "$XDG_RUNTIME_DIR" = "" ]; then
-    export XDG_RUNTIME_DIR=/run/user/$(id -u)
-fi
-
-STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
-
-# Function to get touchpad status
-get_touchpad_status() {
-    if [ -f "$STATUS_FILE" ]; then
-        cat "$STATUS_FILE"
-    else
-        echo "false"
-    fi
-    echo ""
-}
-
-# Print initial status
-get_touchpad_status
-
-# Watch for changes to the status file
-while true; do
-    # Use inotifywait to monitor the status file for changes
-    if command -v inotifywait >/dev/null 2>&1; then
-        # Wait for file to be modified or created
-        inotifywait -e modify,create,moved_to "$STATUS_FILE" >/dev/null 2>&1
-    else
-        # Fallback: poll every 0.5 seconds if inotifywait is not available
-        sleep 0.5
+# Function to check touchpad state
+get_touchpad_state() {
+    if [ ! -f "$CONFIG_FILE" ]; then
+        echo "false"  # Config file doesn't exist, assume disabled
+        return
     fi
     
-    # Print the new status
-    get_touchpad_status
+    if grep -A 1 "touchpad {" "$CONFIG_FILE" | grep -q "off"; then
+        echo "false"  # Touchpad is disabled
+    else
+        echo "true"   # Touchpad is enabled
+    fi
+}
+
+# Function to check if inotify-tools is available
+check_dependencies() {
+    if ! command -v inotifywait &> /dev/null; then
+        echo "Error: inotify-tools is not installed." >&2
+        echo "Please install it with: sudo pacman -S inotify-tools" >&2
+        echo "or your distribution's equivalent package manager." >&2
+        exit 1
+    fi
+}
+
+# Check dependencies
+check_dependencies
+
+# Create config directory if it doesn't exist
+mkdir -p "$CONFIG_DIR"
+
+# Store initial state
+previous_state=$(get_touchpad_state)
+echo "$previous_state"
+
+# Watch for changes - monitor both the file and its directory
+# Many editors create temp files and rename them, so we watch the directory too
+inotifywait -m -e modify,move,create,delete,close_write,moved_to "$CONFIG_DIR" 2>/dev/null | while read -r directory events filename; do
+    # Only process events related to our config file
+    if [[ "$filename" == "config.kdl" || "$filename" == *"config.kdl"* ]]; then
+        # Small delay to ensure file operations are complete
+        sleep 0.2
+        
+        # Check if the file still exists and get new state
+        if [ -f "$CONFIG_FILE" ]; then
+            current_state=$(get_touchpad_state)
+            
+            # Only print if state actually changed
+            if [ "$current_state" != "$previous_state" ]; then
+                echo "$current_state"
+                previous_state="$current_state"
+            fi
+        fi
+    fi
 done
