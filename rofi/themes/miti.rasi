@@ -4,14 +4,15 @@ configuration {
 }
 
 * {
-    bg0:    #12121FF2;
-    bg1:    #1e1e2aF2;
-    bg2:    #2a2a35F2;
-    bg3:    #363641F2;
-    fg0:    #f3f3f4;
-    fg1:    #e7e7e9;
-    fg2:    #dbdbdd;
-    fg3:    #d0d0d2;
+    bg0:    #191724;
+    bg1:    #1f1d2e;
+    bg2:    #26233a;
+    bg3:    #21202e;
+    fg0:    #e0def4;
+    fg1:    #908caa;
+    fg2:    #6e6a86;
+    fg3:    #524f67;
+    accent: #31748f;
 
     font:   "Geist Mono 11";
 
@@ -28,6 +29,8 @@ window {
     y-offset:       calc(50% - 176px);
     width:          480;
     border-radius:  24px;
+    border: 2px;
+    border-color: @accent;
 
     background-color:   @bg0;
 }
@@ -38,9 +41,9 @@ mainbox {
 
 inputbar {
     background-color:   @bg1;
-    border-color:       @bg3;
+    border-color:       @accent;
 
-    border:         2px;
+    border:         1px;
     border-radius:  16px;
 
     padding:    8px 16px;
@@ -49,7 +52,7 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg2;
+    text-color: @accent;
 }
 
 entry {
