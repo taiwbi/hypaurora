@@ -301,7 +301,7 @@ window-rule {
 }
 
 // App Window Rules
-window-rule {
+window-rule { // float, secondary
     match app-id="com.github.finefindus.eyedropper"
 
     open-floating true
@@ -317,13 +317,21 @@ window-rule {
     min-height 500
     max-height 600
 }
-window-rule {
+window-rule { // float, main, horizontal
     match app-id="org.gnome.Settings.GlobalShortcutsProvider"
 
     open-floating true
 
     default-column-width { fixed 850; }
     default-window-height { fixed 500; }
+}
+window-rule { // float, main, vertical
+    match app-id="io.github.nozwock.Packet"
+
+    open-floating true
+
+    default-column-width { fixed 400; }
+    default-window-height { fixed 650; }
 }
 
 // Window Specific Window Rule
