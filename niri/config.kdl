@@ -33,7 +33,7 @@ cursor {
 
 overview {
     zoom 0.5
-    backdrop-color "#1F212B"
+    backdrop-color "#232136"
 
     workspace-shadow {
         // off
@@ -87,8 +87,8 @@ output "eDP-1" {
     position x=0 y=0
     variable-refresh-rate // on-demand=true
     focus-at-startup
-    background-color "#1e1e1e"
-    backdrop-color "#1e1e1e"
+    background-color "#191724"
+    backdrop-color "#191724"
     // variable-refresh-rate
 }
 
@@ -216,7 +216,7 @@ layout {
     center-focused-column "on-overflow"
     always-center-single-column
     default-column-display "normal"
-    background-color "#003300"
+    background-color "#191724"
 
     preset-column-widths {
         proportion 0.33333
@@ -237,17 +237,17 @@ layout {
     focus-ring {
         // off
         width 2
-        active-gradient from="#80c8ff" to="#bbddff" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-        urgent-gradient from="#800" to="#a33" angle=45 relative-to="workspace-view"
+        active-gradient from="#31748f" to="#c4a7e7" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#21202e" to="#524f67" angle=45 relative-to="workspace-view"
+        urgent-gradient from="#eb6f92" to="#ebbcba" angle=45 relative-to="workspace-view"
     }
 
     border {
         off
         width 4
-        active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view" in="srgb-linear"
-        urgent-gradient from="#800" to="#a33" angle=45
+        active-gradient from="#31748f" to="#c4a7e7" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#21202e" to="#524f67" angle=45 relative-to="workspace-view"
+        urgent-gradient from="#eb6f92" to="#ebbcba" angle=45 relative-to="workspace-view"
     }
 
     shadow {
@@ -273,9 +273,9 @@ layout {
         active-color "red"
         inactive-color "gray"
         urgent-color "blue"
-        // active-gradient from="#80c8ff" to="#bbddff" angle=45
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-        // urgent-gradient from="#800" to="#a33" angle=45
+        active-gradient from="#31748f" to="#c4a7e7" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#21202e" to="#524f67" angle=45 relative-to="workspace-view"
+        urgent-gradient from="#eb6f92" to="#ebbcba" angle=45 relative-to="workspace-view"
     }
 
     insert-hint {
@@ -316,6 +316,14 @@ window-rule {
     max-width 450
     min-height 500
     max-height 600
+}
+window-rule {
+    match app-id="org.gnome.Settings.GlobalShortcutsProvider"
+
+    open-floating true
+
+    default-column-width { fixed 850; }
+    default-window-height { fixed 500; }
 }
 
 // Window Specific Window Rule
