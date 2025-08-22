@@ -84,7 +84,7 @@
     (box :orientation "v" :vexpand true :valign "start")
     
     ;; System stats at the bottom
-    (box :class "system-stats" :orientation "v" :spacing 10 :space-evenly false
+    (box :class "system-stats" :orientation "v" :spacing 0 :space-evenly false
       ;; Volume
       (box :class "stat-item"
         (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
@@ -96,7 +96,10 @@
       
       ;; Wifi
       (button :class "button stat-item" :onclick "scripts/toggle-window wifi_list_window"
-        (icon :path "./icons/wifi-square.svg")
+        (box :orientation "v"
+          (icon :path "./icons/wifi-square.svg")
+          (label :text "${substring(wifi, 0, 2)}")
+        )
       )
       
       ;; Battery

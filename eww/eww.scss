@@ -1,5 +1,5 @@
 $background-color: #191724;
-$background-hover-color: rgba(0, 0, 0, 0.6);
+$background-hover-color: #524f67;
 $accent-color: #61afef;
 
 /* --- Global --- */
@@ -33,7 +33,7 @@ $accent-color: #61afef;
 }
 
 button {
-  border-radius: 12px;
+  border-radius: 6px;
   transition: all 0.4s ease;
 }
 
@@ -55,7 +55,7 @@ button:hover {
 
 .media-button {
   transition: all 0.3s ease;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 7px 5px;
   margin: 0 2px;
 }
