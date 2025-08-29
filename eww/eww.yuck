@@ -86,12 +86,13 @@
     ;; System stats at the bottom
     (box :class "system-stats" :orientation "v" :spacing 0 :space-evenly false
       ;; Volume
-      (box :class "stat-item"
+      (box :class "stat-item" :orientation "v"
         (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
                    volume.percentage > 66 ? "./icons/volume-high.svg" :
                    volume.percentage > 33 ? "./icons/volume-low-1.svg" :
                    volume.percentage > 0  ? "./icons/volume-mute.svg" :
                    "./icons/volume-cross.svg"})
+        (label :text "${volume.percentage == 100 ? "Fu" : volume.percentage}")
       )
       
       ;; Wifi
