@@ -37,6 +37,8 @@ end
 # PHP/Laravel Aliases
 alias artisan 'php artisan'
 alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-helper:generate; and php artisan ide-helper:eloquent; and php artisan ide-helper:meta' # Use ;and
+alias sail 'sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+
 
 # Proxy aliases
 alias disable-proxy 'set -e ALL_PROXY; set -e all_proxy' # Use set -e to erase env var
