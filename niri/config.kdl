@@ -23,6 +23,11 @@ environment {
     DISPLAY null
 }
 
+hotkey-overlay {
+    // hide-not-bound
+    skip-at-startup
+}
+
 cursor {
     xcursor-theme "MacOS-Tahoe-Cursor"
     xcursor-size 32
