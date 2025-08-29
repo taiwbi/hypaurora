@@ -3,6 +3,7 @@
   padding: 15px;
   border-radius: 20px;
   color: #f1f1f1;
+  border: 2px solid $accent-color;
 }
 
 .wifi-entry {
@@ -16,6 +17,10 @@
 }
 
 /* --- Power Window --- */
+.power-window-container {
+  border: 2px solid $accent-color;
+}
+
 .power-buttons-container button {
   padding: 8px 8px;
   margin-top: 10px;
