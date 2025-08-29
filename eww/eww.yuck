@@ -55,7 +55,10 @@
   :namespace "bar"
   (box :class "vertical-bar" :orientation "v" :space-evenly false
     ;; Logo at the top
-    (label :class "logo" :text "") ; Nerd Font logo
+    (image :path  "./icons/2B.png" 
+          :class "icon-image"
+          :image-width 32
+          :image-height 32)
     
     ;; Media player controls at the center
     (box :class "media-controls-container" :orientation "v" :spacing 5
