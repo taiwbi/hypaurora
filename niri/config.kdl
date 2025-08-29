@@ -169,6 +169,9 @@ binds {
     Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
 
+    Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+    Mod+Shift+WheelScrollUp cooldown-ms=150 { focus-column-left; }
+
     // Window grouping (Note: Niri uses tabs instead of groups)
     Mod+A { toggle-column-tabbed-display; }
     Mod+Shift+A { consume-window-into-column; }
