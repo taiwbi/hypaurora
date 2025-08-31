@@ -1,0 +1,47 @@
+@define-color accent_bg_color #86bdbe;
+@define-color accent_fg_color #000000;
+@define-color accent_color #86bdbe;
+@define-color destructive_bg_color #d24545;
+@define-color destructive_fg_color #edeeee;
+@define-color destructive_color #d24545;
+@define-color success_bg_color #2aa54d;
+@define-color success_fg_color #000000;
+@define-color success_color #2aa54d;
+@define-color warning_bg_color #b48806;
+@define-color warning_fg_color #000000;
+@define-color warning_color #b48806;
+@define-color error_bg_color #d24545;
+@define-color error_fg_color #000000;
+@define-color error_color #d24545;
+@define-color window_bg_color #edeeee;
+@define-color window_fg_color #000000;
+@define-color view_bg_color #edeeee;
+@define-color view_fg_color #000000;
+@define-color headerbar_bg_color #cacccc;
+@define-color headerbar_fg_color #5e5f5f;
+@define-color headerbar_backdrop_color #cacccc;
+@define-color headerbar_shade_color #cacccc;
+@define-color card_bg_color #e4e5e5;
+@define-color card_fg_color #000000;
+@define-color card_shade_color #e4e5e5;
+@define-color popover_bg_color #f2f3f3;
+@define-color popover_fg_color #000000;
+@define-color sidebar_backdrop_color #e4e5e5;
+@define-color sidebar_bg_color #e4e5e5;
+@define-color sidebar_fg_color #2f2f2f;
+
+/* Target the specific row in the sidebar that's selected */
+.navigation-sidebar row:selected {
+    background-color: #86bdbe;
+    color: #000000;
+}
+
+/* Target the label in the selected row */
+.navigation-sidebar row:selected .sidebar-label {
+    color: #000000;
+}
+
+/* Hover effect for non-selected rows */
+.navigation-sidebar row:hover:not(:selected) {
+    background-color: #86bdbe33;
+}
