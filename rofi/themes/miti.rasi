@@ -14,7 +14,7 @@ configuration {
     fg3:    #524f67;
     accent: #31748f;
 
-    font:   "Geist Mono 11";
+    font:   "Dank Mono 11";
 
     background-color:   transparent;
     text-color:         @fg0;
