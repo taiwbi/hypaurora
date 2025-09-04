@@ -37,7 +37,7 @@ cursor {
 }
 
 overview {
-    zoom 0.5
+    zoom 0.8
     backdrop-color "#232136"
 
     workspace-shadow {
@@ -349,7 +349,7 @@ window-rule {
 }
 
 animations {
-    slowdown 0.3
+    slowdown 0.8
 }
 
 // Animations
