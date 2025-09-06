@@ -12,7 +12,7 @@
 }
 
 .wifi-ssid.active {
-  color: #82aaff;
+  color: $accent-color;
   font-weight: bold;
 }
 
@@ -33,13 +33,11 @@
 .power-profiles-container button {
   padding: 9px 20px;
   margin: -3px 0;
-  color: #82aaff;
-  font-weight: bold;
+  color: $accent-color;
 }
 
 .power-profiles-container button:not(.active):not(:hover) {
   color: #f1f1f1;
-  font-weight: bold;
 }
 
 /* --- Wi-Fi Password Prompt --- */
