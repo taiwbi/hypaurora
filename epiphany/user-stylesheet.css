@@ -21,7 +21,7 @@ label,
 a,
 blockquote {
   font-family:
-    "Geist",
+    "DM Sans",
     "Yekan Bakh",
     system-ui,
     -apple-system,
@@ -94,7 +94,7 @@ code,
 .ace_editor,
 .ace_editor * {
   font-family:
-    "Dank Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+    "DM Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
     "Roboto Mono", Consolas, "Courier New", monospace;
 }
 

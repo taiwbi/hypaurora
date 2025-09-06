@@ -14,4 +14,4 @@ swaylock \
   --text-color e2e8f0 \
   --ring-ver-color 4299e1 \
   --inside-ver-color 2b6cb0 \
-  --font "Dank Mono" &
+  --font "DM Mono" &
