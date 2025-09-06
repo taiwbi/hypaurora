@@ -88,7 +88,7 @@ case ${answer:0:1} in
     sudo dnf install niri xwayland-satellite \ 
       swaylock swayidle swaybg \
       rofi-wayland eww-git \
-      pactl brightnessctl
+      pactl brightnessctl jcal
   ;;
   * )
     echo "I won't install Niri :)"

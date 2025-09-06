@@ -31,6 +31,17 @@
       (button :class "${power_profile == 'power-saver' ? 'active' : ''}" :onclick "scripts/set-power-profile power-saver"
         (label :halign "start" :text "Power Saver")))))
 
+;; --- DATE WINDOW ---
+(defwindow date_window
+  :monitor 0
+  :geometry (geometry :x "18px" :y "18px" :width "270px" :height "80px" :anchor "bottom left")
+  :stacking "overlay"
+  :anchor "bottom left"
+  :wm-ignore true
+  (box :class "date-window-container widget-container" :orientation "v" :spacing 10
+    (label :class "date-label english-date" :text "${date.english}")
+    (label :class "date-label persian-date" :text "${date.persian}")))
+
 ;; --- WIFI PASSWORD WINDOW ---
 (defwindow password_window
     :monitor 0

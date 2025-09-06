@@ -40,6 +40,19 @@
   color: #f1f1f1;
 }
 
+/* --- Date Window --- */
+.date-window-container {
+  border: 2px solid $accent-color;
+  padding: 15px 25px;
+  color: #f1f1f1;
+}
+
+.persian-date {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
 /* --- Wi-Fi Password Prompt --- */
 .password-window {
   color: #f1f1f1;

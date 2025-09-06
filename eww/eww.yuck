@@ -2,6 +2,7 @@
 (defpoll time :interval "30s" `scripts/get-time`)
 (defpoll hour :interval "2m" `date +"%H"`)
 (defpoll minuet :interval "30s" `date +"%M"`)
+(defpoll date :interval "1h" `scripts/get-date`)
 (defpoll battery :interval "60s" `scripts/get-battery`)
 (deflisten power_profile :initial "balanced" "scripts/get-power-profile")
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi --complete")
@@ -121,10 +122,12 @@
       )
       
       ;; Time
-      (box :class "stat-item" :orientation "v"
-        (icon :path "./icons/clock.svg")
-        (label :text "${hour}")
-        (label :text "${minuet}")
+      (button :class "button stat-item" :onclick "scripts/toggle-window date_window"
+        (box :orientation "v"
+          (icon :path "./icons/clock.svg")
+          (label :text "${hour}")
+          (label :text "${minuet}")
+        )
       )
     )
   )
