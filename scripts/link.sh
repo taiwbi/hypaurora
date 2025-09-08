@@ -55,6 +55,11 @@ ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
 rm -rf "$HOME/.config/qt6ct";
 ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
 
+rm -rf "$HOME/.bashrc"
+ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
+rm -rf "$HOME/.bashrc.d"
+ln -sf "$PWD/bash/bashrc.d" "$HOME/.bashrc.d"
+
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 

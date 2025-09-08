@@ -1,0 +1,53 @@
+# Basic aliases
+alias fastfetch='fastfetch --gpu-hide-type integrated'
+alias ff='fastfetch'
+
+alias vi='nvim'
+alias v='nvim'
+alias cl='clear'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+# Interactive aliases (safety)
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias mkdir='mkdir -p'
+
+# Utility Aliases
+alias ls='ls --group-directories-first'
+alias df='df -h'
+alias free='free -h'
+alias aria='aria2c -x 16'
+alias sens='sensors; printf "\n\nNvidia GPU temp: %s°C\n" $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)'
+
+# Function equivalent of fish function
+ariap() {
+    local proxy_host="${ALL_PROXY#*//}"
+    aria --all-proxy="$proxy_host" "$@"
+}
+
+# PHP/Laravel Aliases
+alias lide-helper='php artisan ide-helper:models --nowrite && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta'
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+
+# Proxy aliases
+alias disable-proxy='unset ALL_PROXY all_proxy'
+
+# IP Aliases
+alias myip='curl --silent http://ip-api.com/json/ | jq'
+
+# Conditional Aliases (Example: icat)
+if [[ "$TERM" == "xterm-ghostty" || "$TERM" == "xterm-kitty" ]]; then
+    if command -v kitten >/dev/null 2>&1; then
+        alias icat='kitten icat'
+    fi
+fi
+
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    alias ssh='kitten ssh'
+fi

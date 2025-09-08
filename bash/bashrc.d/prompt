@@ -1,0 +1,25 @@
+get_git_branch() {
+    local branch
+    branch=$(git branch 2>/dev/null | grep '^*' | cut -d' ' -f2-)
+    if [ -n "$branch" ]; then
+        echo " $branch"
+    fi
+}
+
+# Check if running in Termux
+if [ -n "$TERMUX_VERSION" ]; then
+    # Termux-specific prompt: only show current directory and git branch
+    PS1="\W\$(get_git_branch)\$ "
+else
+    # Standard prompt for other Linux systems
+    PS1="[\u@\h \W]\$(get_git_branch)\$ "
+fi
+
+# Add colors for better visibility (optional)
+# if [ -n "$TERMUX_VERSION" ]; then
+#     # Termux colored prompt
+#     PS1="\[\033[01;34m\]\W\[\033[01;32m\]\$(get_git_branch)\[\033[00m\]\$ "
+# else
+#     # Standard colored prompt for other Linux systems
+#     PS1="\[\033[01;32m\][\u@\h \W]\[\033[01;34m\]\$(get_git_branch)\[\033[00m\]\$ "
+# fi
