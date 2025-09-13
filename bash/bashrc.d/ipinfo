@@ -1,0 +1,11 @@
+ipinfo() {
+    # Get IP info from ip-api.com
+    
+    # Check if an argument (IP address) is provided
+    if [[ -z "$1" ]]; then
+        echo "Usage: ipinfo <IP_ADDRESS>" >&2
+        return 1
+    fi
+    
+    curl --silent --fail "http://ip-api.com/json/$1" | jq
+}
