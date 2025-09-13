@@ -36,7 +36,7 @@ alias lide-helper='php artisan ide-helper:models --nowrite && php artisan ide-he
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Proxy aliases
-alias disable-proxy='unset ALL_PROXY all_proxy'
+alias disable-proxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY ftp_proxy FTP_PROXY all_proxy ALL_PROXY no_proxy NO_PROXY'
 
 # IP Aliases
 alias myip='curl --silent http://ip-api.com/json/ | jq'
