@@ -348,6 +348,11 @@ window-rule {
     min-height 400
 }
 
+window-rule {
+    match app-id="org.telegram.desktop"
+    default-column-width { proportion 0.25; }
+}
+
 animations {
     slowdown 0.8
 }
