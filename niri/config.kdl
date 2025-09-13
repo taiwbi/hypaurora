@@ -20,7 +20,7 @@ environment {
 
     ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
-    DISPLAY null
+    DISPLAY ":0"
 }
 
 hotkey-overlay {
