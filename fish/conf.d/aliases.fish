@@ -41,7 +41,7 @@ alias sail 'sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 
 # Proxy aliases
-alias disable-proxy 'set -e ALL_PROXY; set -e all_proxy' # Use set -e to erase env var
+alias disable-proxy 'set -e http_proxy; set -e HTTP_PROXY; set -e https_proxy; set -e HTTPS_PROXY; set -e ftp_proxy; set -e FTP_PROXY; set -e all_proxy; set -e ALL_PROXY; set -e no_proxy; set -e NO_PROXY'
 
 # IP Aliases
 alias myip 'curl --silent http://ip-api.com/json/ | jq'
