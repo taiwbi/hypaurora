@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
+# Event-driven keyboard layout OSD script for Hyprland + eww
+
 OSD_WINDOW="keyboard_osd"
 TIMEOUT=2
 LOCK_FILE="/tmp/eww_keyboard_osd.lock"
 PID_FILE="/tmp/eww_keyboard_osd.pid"
+
+KEYBOARD_DEVICE="at-translated-set-2-keyboard"
+
+# Function to get current keyboard layout
+get_keyboard_layout() {
+    hyprctl devices -j | jq -r ".keyboards[] | select(.name == \"$KEYBOARD_DEVICE\") | .active_keymap" 2>/dev/null || echo "Unknown"
+}
 
 # Function to show OSD
 show_osd() {
@@ -15,6 +24,11 @@ show_osd() {
 # Function to hide OSD
 hide_osd() {
     eww close "$OSD_WINDOW" 2>/dev/null
+}
+
+# Function to update state files
+update_state() {
+    hyprctl switchxkblayout at-translated-set-2-keyboard next
 }
 
 # Function to start hide timer
@@ -86,8 +100,8 @@ trap cleanup EXIT
 # Try to acquire lock for OSD management
 if acquire_lock; then
     # We own the lock, manage the OSD
-    niri msg action switch-layout "next"
     show_osd
+    update_state
     start_hide_timer
     
     # Wait for the timer process to complete
@@ -96,7 +110,7 @@ if acquire_lock; then
     fi
 else
     # Another instance is managing the OSD, just update state and extend timer
-    niri msg action switch-layout "next"
+    update_state
     # Update the hide timestamp to extend the display time
     hide_time=$(($(date +%s) + TIMEOUT))
     echo "$hide_time" > "/tmp/eww_keyboard_osd_hide_time.state"

@@ -1,6 +1,6 @@
 # 🌌 Hypaurora
 
-Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the Niri.
+Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the Hyprland.
 
 > If you want to use this make sure you clone it in `~/Documents/hypaurora`
 

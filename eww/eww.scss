@@ -15,12 +15,12 @@ $accent-color: #5d626a;
 .vertical-bar {
   border-radius: 14px;
   padding: 15px 5px 10px 5px;
-  background-color: $background-color;
-  border: 2px solid $accent-color;
+  background-color: transparentize($color: $background-color, $amount: 0.5);
+  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
 }
 
 .widget-container {
-  background-color: $background-color;
+  background-color: transparentize($color: $background-color, $amount: 0.5);
   border-radius: 20px;
   padding: 20px;
 }
@@ -58,6 +58,26 @@ button:hover {
   border-radius: 6px;
   padding: 7px 5px;
   margin: 0 2px;
+}
+
+/* --- Workspaces --- */
+.workspaces-container {
+  margin: 3px 0;
+}
+
+box > label.workspace-entry {
+  padding: 5px;
+  margin: 2px 1px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+box > label.workspace-entry.current {
+  background-color: darken($color: $accent-color, $amount: 20%);
+}
+
+box.occupied > label.workspace-entry:not(.current) {
+  border: 1px solid darken($color: $accent-color, $amount: 20%);
 }
 
 /* Style for active shuffle/repeat buttons */

@@ -3,7 +3,7 @@
   padding: 15px;
   border-radius: 20px;
   color: #f1f1f1;
-  border: 2px solid $accent-color;
+  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
 }
 
 .wifi-entry {
@@ -18,7 +18,7 @@
 
 /* --- Power Window --- */
 .power-window-container {
-  border: 2px solid $accent-color;
+  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
 }
 
 .power-buttons-container button {
@@ -42,12 +42,13 @@
 
 /* --- Date Window --- */
 .date-window-container {
-  border: 2px solid $accent-color;
+  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
   padding: 15px 25px;
   color: #f1f1f1;
 }
 
 .persian-date {
+  font-family: "Vazirmatn FD";
   font-size: 14px;
   color: #a0a0a0;
 }
@@ -66,14 +67,14 @@
 }
 
 .password-input {
-  background-color: $background-color;
+  background-color: transparentize($color: $background-color, $amount: 0.3);
   border-radius: 10px;
   padding: 10px;
   min-width: 300px;
 }
 
 .password-input:focus {
-  border: 1px solid $accent-color;
+  border: 1px solid transparentize($color: $accent-color, $amount: 0.3);
 }
 
 .password-buttons {
@@ -87,15 +88,18 @@
 }
 
 .password-button.cancel {
-  background-color: $background-color;
+  background-color: transparentize($color: $background-color, $amount: 0.3);
 }
 
 .password-button.cancel:hover {
-  background-color: $background-hover-color;
+  background-color: transparentize(
+    $color: $background-hover-color,
+    $amount: 0.3
+  );
 }
 
 .password-button.connect {
-  background-color: $accent-color;
+  background-color: transparentize($color: $accent-color, $amount: 0.3);
   color: $background-color;
 }
 

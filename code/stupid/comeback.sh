@@ -1,6 +1,6 @@
 #!/bin/bash
 
-niri msg action close-window
-niri msg action focus-workspace-previous
+hyprctl dispatch killactives
+hyprctl dispatch movetoworkspace previous
 pactl set-sink-mute @DEFAULT_SINK@ false
-swaybg -i ~/.config/background --mode fill
+hyprpaper

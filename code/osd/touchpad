@@ -3,12 +3,52 @@
 # OSD Configuration (matching volume script)
 OSD_WINDOW="touchpad_osd"
 TIMEOUT=2
-TOUCHPAD_STATE_FILE="/tmp/eww_osd_touchpad.state"
-LOCK_FILE="/tmp/eww_osd.lock"
-PID_FILE="/tmp/eww_osd.pid"
+TOUCHPAD_FILE="/tmp/eww_osd_touchpad.state"
+LOCK_FILE="/tmp/eww_touchpad_osd.lock"
+PID_FILE="/tmp/eww_touchpad_osd.pid"
 
-# Niri configuration
-CONFIG_FILE="$HOME/.config/niri/config.kdl"
+HYPRLAND_DEVICE="elan1300:00-04f3:3087-touchpad"
+
+# Set up XDG_RUNTIME_DIR if not set
+if [ "$XDG_RUNTIME_DIR" = "" ]; then
+    export XDG_RUNTIME_DIR=/run/user/$(id -u)
+fi
+
+STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
+
+# Function to get current touchpad status
+get_touchpad_status() {
+    if [ -f "$STATUS_FILE" ]; then
+        cat "$STATUS_FILE"
+    else
+        echo "false"
+    fi
+}
+
+# Function to enable touchpad
+enable_touchpad() {
+    printf "true" > "$STATUS_FILE"
+    hyprctl keyword "device[$HYPRLAND_DEVICE]:enabled" true
+}
+
+# Function to disable touchpad
+disable_touchpad() {
+    printf "false" > "$STATUS_FILE"
+    hyprctl keyword "device[$HYPRLAND_DEVICE]:enabled" false
+}
+
+# Function to toggle touchpad
+toggle_touchpad() {
+    if ! [ -f "$STATUS_FILE" ]; then
+        disable_touchpad
+    else
+        if [ "$(cat "$STATUS_FILE")" = "true" ]; then
+            disable_touchpad
+        elif [ "$(cat "$STATUS_FILE")" = "false" ]; then
+            enable_touchpad
+        fi
+    fi
+}
 
 # Function to show OSD
 show_osd() {
@@ -22,19 +62,10 @@ hide_osd() {
     eww close "$OSD_WINDOW" 2>/dev/null
 }
 
-# Function to get current touchpad state
-get_touchpad_state() {
-    if grep -A 1 "touchpad {" "$CONFIG_FILE" | grep -q "off"; then
-        echo "disabled"
-    else
-        echo "enabled"
-    fi
-}
-
-# Function to update state file
+# Function to update state files
 update_state() {
-    local state=$(get_touchpad_state)
-    echo "$state" > "$TOUCHPAD_STATE_FILE"
+    local status=$(get_touchpad_status)
+    echo "$status" > "$TOUCHPAD_FILE"
 }
 
 # Function to start hide timer
@@ -49,20 +80,20 @@ start_hide_timer() {
     
     # Update timestamp for when OSD should hide
     local hide_time=$(($(date +%s) + TIMEOUT))
-    echo "$hide_time" > "/tmp/eww_osd_hide_time.state"
+    echo "$hide_time" > "/tmp/eww_touchpad_osd_hide_time.state"
     
     # Start new timer in background
     (
         while true; do
             sleep 0.1
             local current_time=$(date +%s)
-            local target_time=$(cat "/tmp/eww_osd_hide_time.state" 2>/dev/null || echo "0")
+            local target_time=$(cat "/tmp/eww_touchpad_osd_hide_time.state" 2>/dev/null || echo "0")
             
             if [ "$current_time" -ge "$target_time" ]; then
                 # Check if we still own the lock
                 if [ -f "$LOCK_FILE" ] && [ $$ = "$(cat "$LOCK_FILE")" ]; then
                     hide_osd
-                    rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_osd_hide_time.state"
+                    rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_touchpad_osd_hide_time.state"
                 fi
                 break
             fi
@@ -96,47 +127,14 @@ acquire_lock() {
 cleanup() {
     if [ -f "$LOCK_FILE" ] && [ $$ = "$(cat "$LOCK_FILE")" ]; then
         hide_osd
-        rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_osd_hide_time.state"
-    fi
-}
-
-# Function to toggle touchpad
-toggle_touchpad() {
-    # Check if config file exists
-    if [ ! -f "$CONFIG_FILE" ]; then
-        echo "Error: Configuration file $CONFIG_FILE not found."
-        exit 1
-    fi
-
-    # Check if touchpad section exists, create it if it doesn't
-    if ! grep -q "input {" "$CONFIG_FILE"; then
-        echo -e "input {\n    touchpad {\n    }\n}" >> "$CONFIG_FILE"
-    elif ! grep -q "touchpad {" "$CONFIG_FILE"; then
-        # Add touchpad section inside input
-        sed -i '/input {/a\    touchpad {\n    }' "$CONFIG_FILE"
-    fi
-
-    # Create temp file for modifications
-    local TEMP_FILE=$(mktemp)
-
-    # Check if 'off' keyword is present in touchpad section
-    if grep -A 1 "touchpad {" "$CONFIG_FILE" | grep -q "off"; then
-        # Remove 'off' to enable touchpad
-        sed '/touchpad {/,/}/ {/^\s*off\s*$/d}' "$CONFIG_FILE" > "$TEMP_FILE"
-        mv "$TEMP_FILE" "$CONFIG_FILE"
-        echo "Touchpad enabled."
-    else
-        # Add 'off' to disable touchpad
-        sed '/touchpad {/a\        off' "$CONFIG_FILE" > "$TEMP_FILE"
-        mv "$TEMP_FILE" "$CONFIG_FILE"
-        echo "Touchpad disabled."
+        rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_touchpad_osd_hide_time.state"
     fi
 }
 
 # Set up cleanup trap
 trap cleanup EXIT
 
-# Perform touchpad toggle
+# Main logic: toggle touchpad
 toggle_touchpad
 
 # Try to acquire lock for OSD management
@@ -155,5 +153,5 @@ else
     update_state
     # Update the hide timestamp to extend the display time
     hide_time=$(($(date +%s) + TIMEOUT))
-    echo "$hide_time" > "/tmp/eww_osd_hide_time.state"
+    echo "$hide_time" > "/tmp/eww_touchpad_osd_hide_time.state"
 fi

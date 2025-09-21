@@ -8,6 +8,8 @@
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi --complete")
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
 (deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
+(deflisten workspaces :initial "[]" "scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "scripts/get-active-workspace")
 (deflisten media :initial "{}" "scripts/get-media")
 (deflisten touchpad_state :initial "true" "scripts/get-touchpad")
 (deflisten keyboard_layout :initial "English (US)" "scripts/get-keyboard")
@@ -20,12 +22,28 @@
 
 ;; --- Reusable Icon Widget ---
 (defwidget icon [path]
-  (image :path path 
-         :class "icon-image"
-         :image-width 18
-         :image-height 18)
+  (image :path path
+    :class "icon-image"
+    :image-width 18
+  :image-height 18)
 )
 
+
+;; --- Widgets ---
+(defwidget workspaces []
+  (eventbox :onscroll "scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly true :orientation "vertical"
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.id}" :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""}" )
+          )
+        )
+      )
+    )
+  )
+)
 
 ;; --- WIFI WIDGETS ---
 (defwidget wifi_network_entry [network]
@@ -45,66 +63,61 @@
   :monitor 0
   :exclusive true
   :windowtype "dock"
-  :geometry (geometry :x "6px" 
-                      :y "0px" 
-                      :width "48px" 
-                      :height "1070px"
-                      :anchor "left center")
+  :geometry (geometry :x "3px"
+    :y "0px"
+    :width "48px"
+    :height "1066px"
+  :anchor "left center")
   :stacking "fg"
   :focusable false
   :exclusive true
   :namespace "bar"
   (box :class "vertical-bar" :orientation "v" :space-evenly false
     ;; Logo at the top
-    (image :path  "./icons/2B.png" 
-          :class "icon-image"
-          :image-width 32
-          :image-height 32)
+    (label :class "logo" :text "") ; Nerd Font logo
+    
+    ;; Workspaces in the middle
+    (box :class "workspaces-container" :orientation "v" :vexpand true :valign "start"
+      (workspaces)
+    )
     
     ;; Media player controls at the center
     (box :class "media-controls-container" :orientation "v" :spacing 5
-      (button :class "button media-button" :onclick "playerctl previous" 
+      (button :class "button media-button" :onclick "playerctl previous"
         (icon :path "./icons/previous.svg")
       )
       (button :class "button media-button" :onclick "playerctl play-pause"
         (icon :path {media.status == "Playing" ? "./icons/pause.svg" : "./icons/play.svg"})
       )
-      (button :class "button media-button" :onclick "playerctl next" 
+      (button :class "button media-button" :onclick "playerctl next"
         (icon :path "./icons/next.svg")
       )
       (button :class "button media-button shuffle ${media.shuffle == true ? 'active' : ''}"
-              :onclick "playerctl shuffle toggle" 
+        :onclick "playerctl shuffle toggle"
         (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer-01.svg"})
       )
       (button :class "button media-button repeat ${media.loop}"
-              :onclick "scripts/cycle-loop"
-        (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" : 
-                     media.loop == "Playlist" ? "./icons/repeat-music.svg" : 
-                     "./icons/arrow-right-04.svg"})
+        :onclick "scripts/cycle-loop"
+        (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" :
+          media.loop == "Playlist" ? "./icons/repeat-music.svg" :
+        "./icons/arrow-right-04.svg"})
       )
     )
     
-    ;; Empty in the middle
-    (box :orientation "v" :vexpand true :valign "start")
-    
     ;; System stats at the bottom
-    (box :class "system-stats" :orientation "v" :spacing 0 :space-evenly false
+    (box :class "system-stats" :orientation "v" :spacing 10 :space-evenly false
       ;; Volume
-      (box :class "stat-item" :orientation "v"
+      (box :class "stat-item"
         (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
-                   volume.percentage > 66 ? "./icons/volume-high.svg" :
-                   volume.percentage > 33 ? "./icons/volume-low-1.svg" :
-                   volume.percentage > 0  ? "./icons/volume-mute.svg" :
-                   "./icons/volume-cross.svg"})
-        (label :text "${volume.percentage == 100 ? "Fu" : volume.percentage}")
+          volume.percentage > 66 ? "./icons/volume-high.svg" :
+          volume.percentage > 33 ? "./icons/volume-low-1.svg" :
+          volume.percentage > 0  ? "./icons/volume-mute.svg" :
+        "./icons/volume-cross.svg"})
       )
       
       ;; Wifi
       (button :class "button stat-item" :onclick "scripts/toggle-window wifi_list_window"
-        (box :orientation "v"
-          (icon :path "./icons/wifi-square.svg")
-          (label :text "${substring(wifi, 0, 2)}")
-        )
+        (icon :path "./icons/wifi-square.svg")
       )
       
       ;; Battery
@@ -115,7 +128,7 @@
             battery.capacity > 40 ? "./icons/battery-2bars.svg" :
             battery.capacity > 30 ? "./icons/battery-empty-1.svg" :
             battery.capacity > 10 ? "./icons/battery-empty.svg" :
-            "./icons/battery-disable.svg"})
+          "./icons/battery-disable.svg"})
           ; Show battery capacity
           (label :text "${battery.capacity}")
         )

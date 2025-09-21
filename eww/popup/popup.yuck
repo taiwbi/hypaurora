@@ -1,12 +1,14 @@
 ;; --- WIFI LIST WINDOW ---
 (defwindow wifi_list_window
-    :monitor 0
+  :monitor 0
   :geometry (geometry :x "18px" :y "18px" :width "270px" :height "50px" :anchor "bottom left")
-    :stacking "overlay"
-    :wm-ignore true
-      (box :class "wifi-list-container widget-container" :orientation "v" :spacing 10
-          (for network in wifi_list
-              (wifi_network_entry :network {network}))))
+  :stacking "overlay"
+  :wm-ignore true
+  (box :class "wifi-list-container widget-container" :orientation "v" :spacing 10
+    (for network in wifi_list
+      (wifi_network_entry :network {network})
+    )
+))
 
 ;; --- POWER WINDOW ---
 (defwindow power_window
@@ -17,19 +19,27 @@
   :wm-ignore true
   (box :class "power-window-container widget-container" :orientation "v" :spacing 0
     (box :class "power-buttons-container" :orientation "h" :valign "start" :halign "fill" :spacing 10
-      (button :onclick "systemctl poweroff" 
-        (icon :path "./icons/stop-circle.svg"))
-      (button :onclick "pidof swaylock || ($HOME/Documents/hypaurora/code/lock.sh & sleep 5 && systemctl suspend)"
-        (icon :path "./icons/pause-circle.svg"))
-      (button :onclick "niri msg action quit" 
-        (icon :path "./icons/export-circle-01.svg")))
+      (button :onclick "systemctl poweroff"
+        (icon :path "./icons/stop-circle.svg")
+      )
+      (button :onclick "pidof hyprlock || ($HOME/Documents/hypaurora/code/lock.sh & sleep 5 && systemctl suspend)"
+        (icon :path "./icons/pause-circle.svg")
+      )
+      (button :onclick "hyprctl dispatch exit"
+        (icon :path "./icons/export-circle-01.svg")
+      )
+)
     (box :class "power-profiles-container" :orientation "v" :spacing 10
       (button :class "${power_profile == 'performance' ? 'active' : ''}" :onclick "scripts/set-power-profile performance"
-        (label :halign "start" :text "Performance"))
+        (label :halign "start" :text "Performance")
+      )
       (button :class "${power_profile == 'balanced' ? 'active' : ''}" :onclick "scripts/set-power-profile balanced"
-        (label :halign "start" :text "Balance"))
+        (label :halign "start" :text "Balance")
+      )
       (button :class "${power_profile == 'power-saver' ? 'active' : ''}" :onclick "scripts/set-power-profile power-saver"
-        (label :halign "start" :text "Power Saver")))))
+        (label :halign "start" :text "Power Saver")
+      )
+)))
 
 ;; --- DATE WINDOW ---
 (defwindow date_window
@@ -40,21 +50,25 @@
   :wm-ignore true
   (box :class "date-window-container widget-container" :orientation "v" :spacing 10
     (label :class "date-label english-date" :text "${date.english}")
-    (label :class "date-label persian-date" :text "${date.persian}")))
+    (label :class "date-label persian-date" :text "${date.persian}")
+  )
+)
 
 ;; --- WIFI PASSWORD WINDOW ---
 (defwindow password_window
-    :monitor 0
-    :geometry (geometry :anchor "center center")
-    :stacking "overlay"
-    :exclusive true
-    :focusable true
-    (box :class "password-window widget-container" :orientation "v" :spacing 15
-        (label :class "password-label" :text "Connect to ${ssid_for_prompt}")
-        (input :class "password-input" 
-               :password true 
-               :onchange "eww update password_input='{}'"
-               :onaccept "scripts/connect-with-password")
-        (box :class "password-buttons" :orientation "h" :spacing 10 :halign "end"
-            (button :class "password-button cancel" :onclick "eww close password_window" "Cancel")
-            (button :class "password-button connect" :onclick "scripts/connect-wifi-password" "Connect"))))
+  :monitor 0
+  :geometry (geometry :anchor "center center")
+  :stacking "overlay"
+  :exclusive true
+  :focusable true
+  (box :class "password-window widget-container" :orientation "v" :spacing 15
+    (label :class "password-label" :text "Connect to ${ssid_for_prompt}")
+    (input :class "password-input"
+      :password true
+      :onchange "eww update password_input='{}'"
+    :onaccept "scripts/connect-with-password")
+    (box :class "password-buttons" :orientation "h" :spacing 10 :halign "end"
+      (button :class "password-button cancel" :onclick "eww close password_window" "Cancel")
+      (button :class "password-button connect" :onclick "scripts/connect-wifi-password" "Connect")
+    )
+))
