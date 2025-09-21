@@ -1,6 +1,7 @@
 # --- 2B Picture and Praise ---
 
 function fish_greeting
+    sleep 0.15
     # Check if tput exists, stdout is a terminal, TERM is set and not 'dumb'
     if command -v tput > /dev/null; and set -q TERM; and test "$TERM" != "dumb"
         set -l term_width (tput cols) # -l for local scope
