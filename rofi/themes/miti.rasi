@@ -14,7 +14,7 @@ configuration {
     fg3:    #524f67;
     accent: #31748f;
 
-    font:   "DM Sans 11";
+    font:   "BreezeSans";
 
     background-color:   transparent;
     text-color:         @fg0;
