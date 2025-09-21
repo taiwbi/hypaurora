@@ -28,9 +28,6 @@ ln -s "$PWD/gtk-3.0" "$HOME/.config/"
 rm -rf "$HOME/.config/gtk-4.0";
 ln -s "$PWD/gtk-4.0" "$HOME/.config/"
 
-rm -rf "$HOME/.config/kitty";
-ln -s "$PWD/kitty" "$HOME/.config/"
-
 rm -rf "$HOME/.config/ghostty";
 ln -s "$PWD/ghostty" "$HOME/.config/"
 

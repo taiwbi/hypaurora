@@ -48,4 +48,3 @@ export OPENROUTER_KEY=$(cat "$HOME/.keys/OPENROUTER")
 export PHP_CS_FIXER_IGNORE_ENV=true
 
 ghostty --gtk-titlebar=false --class="org.nvim.neovide" -e nvim "$@"
-# neovide --wayland_app_id org.nvim.neovide --frame none "$@"
