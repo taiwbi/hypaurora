@@ -23,6 +23,12 @@ window {
   background: alpha(@window_bg_color, 0.8);
 }
 
+/* For EWW bar */
+window.background.vertical_bar {
+  background: transparent;
+  background-color: transparent;
+}
+
 .sidebar-pane,
 .sidebar,
 .navigation-sidebar {
