@@ -1,6 +1,5 @@
 #!/bin/bash
 
-hyprctl dispatch killactives
-hyprctl dispatch movetoworkspace previous
+hyprctl dispatch workspace previous
 pactl set-sink-mute @DEFAULT_SINK@ false
 hyprpaper
