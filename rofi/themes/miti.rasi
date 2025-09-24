@@ -4,17 +4,17 @@ configuration {
 }
 
 * {
-    bg0:    #191724;
-    bg1:    #1f1d2e;
-    bg2:    #26233a;
-    bg3:    #21202e;
+    bg0:    #191724D4;
+    bg1:    #1f1d2eD4;
+    bg2:    #26233aD4;
+    bg3:    #21202eD4;
     fg0:    #e0def4;
     fg1:    #908caa;
     fg2:    #6e6a86;
     fg3:    #524f67;
     accent: #31748f;
 
-    font:   "BreezeSans";
+    font:   "BreezeSans 11";
 
     background-color:   transparent;
     text-color:         @fg0;
