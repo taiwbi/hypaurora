@@ -33,12 +33,12 @@ $accent-color: #5d626a;
 }
 
 button {
-  border-radius: 6px;
+  border-radius: 12px;
   transition: all 0.4s ease;
 }
 
 button:hover {
-  background-color: $background-hover-color;
+  background-color: transparentize($background-hover-color, 0.5);
 }
 
 /* --- System Stats in Vertical Bar --- */
@@ -73,7 +73,10 @@ box > label.workspace-entry {
 }
 
 box > label.workspace-entry.current {
-  background-color: darken($color: $accent-color, $amount: 20%);
+  background-color: transparentize(
+    darken($color: $accent-color, $amount: 20%),
+    0.35
+  );
 }
 
 box.occupied > label.workspace-entry:not(.current) {

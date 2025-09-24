@@ -1,7 +1,7 @@
 /* --- OSD --- */
 .osd-container {
   padding: 10px 20px;
-  background-color: $background-color;
+  background-color: transparentize($color: $background-color, $amount: 0.5);
   border: 2px solid $accent-color;
   border-radius: 16px;
 }

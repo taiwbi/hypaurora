@@ -1,1 +1,19 @@
 @import "./themes/beardedbear/bearded_classics_anthracite.css";
+@import "./tweaks/sidebar.css";
+
+@define-color popover_bg_color alpha(#23262d, 0.56);
+
+/* Disable transparent sidebar For EWW bar */
+window.background.vertical_bar,
+window.background.volume_osd,
+window.background.brightness_osd,
+window.background.touchpad_osd,
+window.background.keyboard_osd,
+window.background.sound_osd,
+window.background.wifi_list_window,
+window.background.power_window,
+window.background.date_window,
+window.background.password_window {
+  background: transparent;
+  background-color: transparent;
+}
