@@ -7,12 +7,12 @@ font-style="Medium"
 
 font-size = 12
 
-adjust-cell-height = 7
+adjust-cell-height = 17
 adjust-cell-width = 0
 
 # Appearance
-window-width = 130
-window-height = 30
+window-width = 140
+window-height = 23
 window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
