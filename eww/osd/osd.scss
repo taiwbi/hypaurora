@@ -2,7 +2,7 @@
 .osd-container {
   padding: 10px 20px;
   background-color: transparentize($color: $background-color, $amount: 0.5);
-  border: 2px solid $accent-color;
+  border: 2px solid $border-color-osd;
   border-radius: 16px;
 }
 

@@ -3,7 +3,7 @@
   padding: 15px;
   border-radius: 20px;
   color: #f1f1f1;
-  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
+  border: 2px solid $border-color-popup;
 }
 
 .wifi-entry {
@@ -18,7 +18,7 @@
 
 /* --- Power Window --- */
 .power-window-container {
-  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
+  border: 2px solid $border-color-popup;
 }
 
 .power-buttons-container button {
@@ -42,7 +42,7 @@
 
 /* --- Date Window --- */
 .date-window-container {
-  border: 1px solid transparentize($color: $accent-color, $amount: 0.5);
+  border: 2px solid $border-color-popup;
   padding: 15px 25px;
   color: #f1f1f1;
 }
@@ -74,7 +74,7 @@
 }
 
 .password-input:focus {
-  border: 1px solid transparentize($color: $accent-color, $amount: 0.3);
+  border: 2px solid $border-color-popup;
 }
 
 .password-buttons {
