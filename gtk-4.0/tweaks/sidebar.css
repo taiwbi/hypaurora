@@ -151,15 +151,16 @@ window>deck>box>leaflet>box:nth-child(1)>headerbar.titlebar.windowhandle {
 }
 
 /* Ghostty terminal */
-window.terminal-window {
+window.ssd.window {
   background: transparent;
 }
 
-window.terminal-window .top-bar {
-  background: alpha(#1e1e2e, 0.8);
+window.ssd.window .top-bar {
+  background: alpha(@window_bg_color, 0.8);
+  box-shadow: none;
 }
 
-window.terminal-window .top-bar windowhandle {
+window.ssd.window .top-bar windowhandle {
   background: transparent;
 }
 
