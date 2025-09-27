@@ -12,7 +12,8 @@ configuration {
     fg1:    #908caa;
     fg2:    #6e6a86;
     fg3:    #524f67;
-    accent: #31748f;
+    border:   #cc71bc;
+    accent: #5d626a;
 
     font:   "BreezeSans 11";
 
@@ -28,9 +29,8 @@ window {
     location:       north;
     y-offset:       calc(50% - 176px);
     width:          480;
-    border-radius:  24px;
-    border: 2px;
-    border-color: @accent;
+    height:         348;
+    border-radius:  8px;
 
     background-color:   @bg0;
 }
@@ -41,10 +41,10 @@ mainbox {
 
 inputbar {
     background-color:   @bg1;
-    border-color:       @accent;
+    border-color:       @border;
 
-    border:         1px;
-    border-radius:  16px;
+    border:         2px;
+    border-radius:  6px;
 
     padding:    8px 16px;
     spacing:    8px;
@@ -84,7 +84,7 @@ listview {
 element {
     padding:        8px 16px;
     spacing:        8px;
-    border-radius:  16px;
+    border-radius:  6px;
 }
 
 element normal active {
@@ -96,7 +96,8 @@ element alternate active {
 }
 
 element selected normal, element selected active {
-    background-color:   @bg3;
+    border-color:       @accent;
+    border:         2px;
 }
 
 element-icon {
