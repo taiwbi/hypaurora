@@ -32,7 +32,7 @@ local user_opts = {
     iamaprogrammer = false,     -- use native mpv values and disable OSC
                                 -- internal track list management (and some
                                 -- functions that depend on it)
-    font = 'BreezeSans',
+    font = 'Geist',
     seekbarhandlesize = 1.0,	-- size ratio of the slider handle, range 0 ~ 1
     seekrange = true,			-- show seekrange overlay
     seekrangealpha = 64,      	-- transparency of seekranges
