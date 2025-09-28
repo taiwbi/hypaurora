@@ -1,12 +1,3 @@
-$background-color: #181a1f;
-$background-active-color: #0f9fff;
-$background-active-color-fg: #181a1f;
-$background-hover-color: #121315;
-$border-color: #37ae6f;
-$border-color-popup: #cc71bc;
-$border-color-osd: #3398db;
-$accent-color: #5d626a;
-
 /* --- Global --- */
 * {
   all: unset;
@@ -20,7 +11,7 @@ $accent-color: #5d626a;
 .vertical-bar {
   border-radius: 10px;
   padding: 15px 5px 10px 5px;
-  background-color: transparentize($color: $background-color, $amount: 0.5);
+  background-color: transparentize($color: $background-color, $amount: 0.3);
   border: 2px solid $border-color;
 }
 

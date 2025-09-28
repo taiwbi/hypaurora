@@ -1,21 +1,21 @@
 configuration {
     show-icons: true;
-    icon-theme: "ColorFlow.Agresive.Color";
+    icon-theme: "Reversal-orange-dark";
 }
 
 * {
     bg0:    #191724D4;
-    bg1:    #1f1d2eD4;
+    bg1:    #1e2025D4;
     bg2:    #26233aD4;
-    bg3:    #21202eD4;
-    fg0:    #e0def4;
-    fg1:    #908caa;
-    fg2:    #6e6a86;
-    fg3:    #524f67;
-    border:   #cc71bc;
-    accent: #5d626a;
+    bg3:    #36373cD4;
+    fg0:    #c6cad7;
+    fg1:    #bcc0cc;
+    fg2:    #b2b6c2;
+    fg3:    #a8acb7;
+    border: #fc6a67;
+    accent: #c6cad7;
 
-    font:   "BreezeSans 11";
+    font:   "Geist Medium 11";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -29,8 +29,11 @@ window {
     location:       north;
     y-offset:       calc(50% - 176px);
     width:          480;
-    height:         348;
+    height:         416;
+
     border-radius:  8px;
+    border-color: @accent;
+    border: 2px;
 
     background-color:   @bg0;
 }
@@ -96,15 +99,15 @@ element alternate active {
 }
 
 element selected normal, element selected active {
-    border-color:       @accent;
-    border:         2px;
+    background-color:       @bg2;
 }
 
 element-icon {
-    size:           1em;
+    size:           2em;
     vertical-align: 0.5;
 }
 
 element-text {
     text-color: inherit;
+    margin: 9px 0 0;
 }

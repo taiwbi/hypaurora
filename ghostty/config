@@ -15,10 +15,10 @@ window-width = 140
 window-height = 23
 window-padding-x = 0
 window-padding-y = 0
-background-opacity = 1
+background-opacity = 0.8
 
 mouse-hide-while-typing = true
 
 # THEME
 window-theme = ghostty
-theme = bearded_classics_anthracite
+theme = bearded_monokai_reversed
