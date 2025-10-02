@@ -1,7 +1,7 @@
-@import "./themes/beardedbear/bearded_monokai_reversed.css";
+@import "./themes/beardedbear/bearded_monokai_stone.css";
 @import "./tweaks/sidebar.css";
 
-@define-color popover_bg_color alpha(#12141a, 0.56);
+@define-color popover_bg_color alpha(#363941, 0.56);
 
 /* Disable transparent sidebar For EWW bar */
 window.background.vertical_bar,

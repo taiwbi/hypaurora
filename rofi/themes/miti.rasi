@@ -4,16 +4,16 @@ configuration {
 }
 
 * {
-    bg0:    #191724D4;
-    bg1:    #1e2025D4;
-    bg2:    #26233aD4;
-    bg3:    #36373cD4;
-    fg0:    #c6cad7;
-    fg1:    #bcc0cc;
-    fg2:    #b2b6c2;
-    fg3:    #a8acb7;
-    border: #fc6a67;
-    accent: #c6cad7;
+    bg0:    #2a2d33D4;
+    bg1:    #282b30D4;
+    bg2:    #26292eD4;
+    bg3:    #24262bD4;
+    fg0:    #dee0e4;
+    fg1:    #d3d5d9;
+    fg2:    #c8cacd;
+    fg3:    #bdbec2;
+    border: #fd7df4;
+    accent: #62676c;
 
     font:   "Geist Medium 11";
 

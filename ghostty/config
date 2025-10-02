@@ -21,4 +21,4 @@ mouse-hide-while-typing = true
 
 # THEME
 window-theme = ghostty
-theme = bearded_monokai_reversed
+theme = bearded_monokai_stone
