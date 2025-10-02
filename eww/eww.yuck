@@ -74,7 +74,14 @@
   :namespace "bar"
   (box :class "vertical-bar" :orientation "v" :space-evenly false
     ;; Logo at the top
-    (label :class "logo" :text "") ; Nerd Font logo
+    (box :class "logo-box" :orientation "v" :vexpand false :valign "start"
+      (button :onclick "rofi -show drun; sleep .1;"
+        (image :path "./icons/logo.png"
+          :class "icon-image logo"
+          :image-width 32
+          :image-height 32)
+      )
+    )
     
     ;; Workspaces in the middle
     (box :class "workspaces-container" :orientation "v" :vexpand true :valign "start"

@@ -12,7 +12,7 @@
 
 .vertical-bar {
   border-radius: 10px;
-  padding: 15px 5px 10px 5px;
+  padding: 5px;
   background-color: transparentize($color: $background-color, $amount: 0.3);
   border: 2px solid $border-color;
 }
@@ -27,7 +27,7 @@
   font-family: "Symbols Nerd Font";
   font-size: 20px;
   color: $logo-color;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 button {
