@@ -1,0 +1,78 @@
+[global]
+    monitor = 0
+    follow = mouse
+
+    # Geometry
+    width = (300, 400)
+    height = (0, 200)
+    origin = top-right
+    offset = (20, 20)
+    notification_limit = 5
+
+    # Appearance
+    transparency = 0
+    frame_width = 2
+    frame_color = "#ff6764"  # $border-color
+    corner_radius = 8
+    corners = all
+    gap_size = 8
+
+    # Padding
+    padding = 12
+    horizontal_padding = 14
+    text_icon_padding = 10
+
+    # Text & Font
+    font = Geist 11
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+
+    # Icons
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    icon_corner_radius = 10
+
+    # Progress bar (styled like your sliders)
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_min_width = 200
+    progress_bar_max_width = 400
+    progress_bar_frame_width = 0
+    progress_bar_corner_radius = 6
+    highlight = "#ffd866"    # $slider-color
+
+    # Behavior
+    indicate_hidden = true
+    sticky_history = true
+    history_length = 20
+    show_age_threshold = 60
+    sort = urgency_descending
+    idle_threshold = 0
+    layer = overlay
+
+    # Mouse actions
+    mouse_left_click = close_current
+    mouse_middle_click = close_all
+    mouse_right_click = do_action, close_current
+
+# --- Urgency Colors ---
+
+[urgency_low]
+    background = "#2a2d3380"   # $background-color with transparency
+    foreground = "#eceff4"     # light text
+    frame_color = "#78e8c6"    # $border-color-popup
+    timeout = 5
+
+[urgency_normal]
+    background = "#2a2d3380"
+    foreground = "#eceff4"
+    frame_color = "#ffd866"    # $slider-color
+    timeout = 8
+
+[urgency_critical]
+    background = "#2a2d3380"
+    foreground = "#ffffff"
+    frame_color = "#e991e3"    # $border-color-osd
+    timeout = 0   # stay until dismissed
