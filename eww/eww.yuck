@@ -63,10 +63,10 @@
   :monitor 0
   :exclusive true
   :windowtype "dock"
-  :geometry (geometry :x "3px"
+  :geometry (geometry :x "5px"
     :y "0px"
     :width "48px"
-    :height "1068px"
+    :height "1070px"
   :anchor "left center")
   :stacking "fg"
   :focusable false
