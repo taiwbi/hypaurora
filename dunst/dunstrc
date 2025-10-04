@@ -12,7 +12,7 @@
     # Appearance
     transparency = 0
     frame_width = 2
-    frame_color = "#ff6764"  # $border-color
+    frame_color = "#78dce8"  # $border-color
     corner_radius = 8
     corners = all
     gap_size = 8
@@ -60,19 +60,19 @@
 # --- Urgency Colors ---
 
 [urgency_low]
-    background = "#2a2d3380"   # $background-color with transparency
+    background = "#2A2D3380"   # $background-color with transparency
     foreground = "#eceff4"     # light text
-    frame_color = "#78e8c6"    # $border-color-popup
+    frame_color = "#78dce8"    # $border-color-popup
     timeout = 5
 
 [urgency_normal]
-    background = "#2a2d3380"
+    background = "#2A2D3380"
     foreground = "#eceff4"
-    frame_color = "#ffd866"    # $slider-color
+    frame_color = "#78dce8"    # $slider-color
     timeout = 8
 
 [urgency_critical]
-    background = "#2a2d3380"
+    background = "#2A2D3380"
     foreground = "#ffffff"
-    frame_color = "#e991e3"    # $border-color-osd
+    frame_color = "#78dce8"    # $border-color-osd
     timeout = 0   # stay until dismissed

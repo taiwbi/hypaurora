@@ -332,6 +332,94 @@ class ThemeManager:
             "groupbar_inactive": f"rgba({palette[0][1:]}80)",
         }
     
+    def update_dunst_config(self, theme: Dict[str, Any], dry_run: bool = False) -> str:
+        """Update the existing dunstrc file with theme colors."""
+        import re
+        
+        dunstrc_file = self.base_dir / "dunst/dunstrc"
+        colors = theme["colors"]
+        base = colors["base"]
+        semantic = colors["semantic"]
+        palette = colors["palette"]
+        ui = colors["ui"]
+        
+        if not dunstrc_file.exists():
+            print(f"  ⚠ Dunst config not found: {dunstrc_file}")
+            return ""
+        
+        with open(dunstrc_file, 'r') as f:
+            content = f.read()
+        
+        # Replace color values in the configuration
+        # Global section colors
+        content = re.sub(
+            r'(frame_color\s*=\s*)"[^"]+"',
+            f'\\1"{semantic["border"]}"',
+            content
+        )
+        content = re.sub(
+            r'(highlight\s*=\s*)"[^"]+"',
+            f'\\1"{semantic["warning"]}"',
+            content
+        )
+        
+        # Urgency low colors
+        content = re.sub(
+            r'(\[urgency_low\]\s*\n\s*background\s*=\s*)"[^"]+"',
+            f'\\1"{base["background"]}80"',
+            content
+        )
+        content = re.sub(
+            r'(\[urgency_low\]\s*\n\s*foreground\s*=\s*)"[^"]+"',
+            f'\\1"{base["foreground"]}"',
+            content
+        )
+        content = re.sub(
+            r'(\[urgency_low\]\s*\n\s*frame_color\s*=\s*)"[^"]+"',
+            f'\\1"{semantic["success"]}"',
+            content
+        )
+        
+        # Urgency normal colors
+        content = re.sub(
+            r'(\[urgency_normal\]\s*\n\s*background\s*=\s*)"[^"]+"',
+            f'\\1"{base["background"]}80"',
+            content
+        )
+        content = re.sub(
+            r'(\[urgency_normal\]\s*\n\s*foreground\s*=\s*)"[^"]+"',
+            f'\\1"{base["foreground"]}"',
+            content
+        )
+        content = re.sub(
+            r'(\[urgency_normal\]\s*\n\s*frame_color\s*=\s*)"[^"]+"',
+            f'\\1"{semantic["warning"]}"',
+            content
+        )
+        
+        # Urgency critical colors
+        content = re.sub(
+            r'(\[urgency_critical\]\s*\n\s*background\s*=\s*)"[^"]+"',
+            f'\\1"{base["background"]}80"',
+            content
+        )
+        content = re.sub(
+            r'(\[urgency_critical\]\s*\n\s*foreground\s*=\s*)"[^"]+"',
+            f'\\1"{base["foreground"]}"',
+            content
+        )
+        content = re.sub(
+            r'(\[urgency_critical\]\s*\n\s*frame_color\s*=\s*)"[^"]+"',
+            f'\\1"{semantic["error"]}"',
+            content
+        )
+        
+        if not dry_run:
+            with open(dunstrc_file, 'w') as f:
+                f.write(content)
+        
+        return content
+    
     def update_svg_colors(self, theme: Dict[str, Any], dry_run: bool = False):
         """Update fill colors in SVG icon files."""
         colors = theme["colors"]
@@ -473,16 +561,28 @@ class ThemeManager:
                 self.base_dir / "eww/themes/hypaurora.scss",
                 self.generate_eww(theme)
             ),
+            "Dunst": (
+                self.base_dir / "dunst/dunstrc",
+                self.update_dunst_config(theme)
+            ),
         }
         
         for app_name, (file_path, content) in generators.items():
-            if dry_run:
-                print(f"  [DRY RUN] Would write {app_name}: {file_path}")
+            if app_name == "Dunst":
+                # Special handling for Dunst since it modifies existing file
+                if dry_run:
+                    print(f"  [DRY RUN] Would update {app_name}: {file_path}")
+                else:
+                    # update_dunst_config already writes the file when not dry_run
+                    print(f"  ✓ Updated {app_name}: {file_path}")
             else:
-                file_path.parent.mkdir(parents=True, exist_ok=True)
-                with open(file_path, 'w') as f:
-                    f.write(content)
-                print(f"  ✓ Generated {app_name}: {file_path}")
+                if dry_run:
+                    print(f"  [DRY RUN] Would write {app_name}: {file_path}")
+                else:
+                    file_path.parent.mkdir(parents=True, exist_ok=True)
+                    with open(file_path, 'w') as f:
+                        f.write(content)
+                    print(f"  ✓ Generated {app_name}: {file_path}")
         
         # Handle Hyprland separately (updates look.conf directly)
         if dry_run:
@@ -510,6 +610,14 @@ class ThemeManager:
             config["current_theme"] = theme_name
             self.save_config(config)
             
+            # Kill dunst to apply the new theme
+            import subprocess
+            try:
+                subprocess.run(["pkill", "dunst"], check=False)
+                print("  ✓ Killed dunst to apply new theme")
+            except Exception as e:
+                print(f"  ⚠ Could not kill dunst: {e}")
+        
             print()
             print(f"✓ Theme '{theme_name}' applied successfully!")
             print()
@@ -519,6 +627,7 @@ class ThemeManager:
             print("  • Rofi: Next launch will use new theme")
             print("  • EWW: Run 'eww reload'")
             print("  • Hyprland: Run 'hyprctl reload'")
+            print("  • Dunst: Automatically restarted with new theme")
         else:
             print()
             print("Dry run complete. No files were modified.")
