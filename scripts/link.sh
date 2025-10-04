@@ -57,6 +57,11 @@ ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
 rm -rf "$HOME/.bashrc.d"
 ln -sf "$PWD/bash/bashrc.d" "$HOME/.bashrc.d"
 
+mkdir -p $HOME/.local/binary/
+
+rm -rf "$HOME/.local/binary/polarify"
+ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
+
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 
