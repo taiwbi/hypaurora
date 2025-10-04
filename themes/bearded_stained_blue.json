@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Stained Blue",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#121726",
+      "foreground": "#bec6df",
+      "cursor": "#c9a022",
+      "cursor_text": "#3A7FFF",
+      "selection_bg": "#1e3667",
+      "selection_fg": "#bec6df"
+    },
+    "palette": [
+      "#121726",
+      "#C13838",
+      "#37ae6f",
+      "#c9a022",
+      "#3398DB",
+      "#CC71BC",
+      "#24B5A8",
+      "#bec6df",
+      "#314067",
+      "#e61313",
+      "#15d06d",
+      "#ebb100",
+      "#0f9fff",
+      "#e954cf",
+      "#03d6c3",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#264b92",
+      "accent_fg": "#aac8ff",
+      "border": "#3398DB",
+      "success": "#37ae6f",
+      "warning": "#c9a022",
+      "error": "#C13838"
+    },
+    "ui": {
+      "card": "#0e121e",
+      "card_fg": "#bec6df",
+      "popover": "#1a2137",
+      "popover_fg": "#bec6df",
+      "sidebar": "#0e121e",
+      "sidebar_fg": "#7f8bad",
+      "headerbar": "#090c14",
+      "headerbar_fg": "#565d70"
+    }
+  }
+}

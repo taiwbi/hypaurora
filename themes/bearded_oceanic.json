@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Oceanic",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1a2b34",
+      "foreground": "#cddde6",
+      "cursor": "#f6cc73",
+      "cursor_text": "#97c892",
+      "selection_bg": "#3f5a50",
+      "selection_fg": "#cddde6"
+    },
+    "palette": [
+      "#1a2b34",
+      "#ee5d75",
+      "#97c892",
+      "#f6cc73",
+      "#5fb2df",
+      "#d194cd",
+      "#59c6c8",
+      "#cddde6",
+      "#3a6174",
+      "#ff4c6a",
+      "#83e179",
+      "#ffcf6a",
+      "#42bbfc",
+      "#e87de1",
+      "#38e6e9",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#587963",
+      "accent_fg": "#deeedd",
+      "border": "#5fb2df",
+      "success": "#97c892",
+      "warning": "#f6cc73",
+      "error": "#ee5d75"
+    },
+    "ui": {
+      "card": "#16252d",
+      "card_fg": "#cddde6",
+      "popover": "#284450",
+      "popover_fg": "#cddde6",
+      "sidebar": "#16252d",
+      "sidebar_fg": "#8ea7b4",
+      "headerbar": "#111d23",
+      "headerbar_fg": "#61727b"
+    }
+  }
+}

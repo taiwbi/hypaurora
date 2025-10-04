@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Flurry",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#f5f8fc",
+      "foreground": "#272d34",
+      "cursor": "#e39c03",
+      "cursor_text": "#444c54",
+      "selection_bg": "#bfc4c9",
+      "selection_fg": "#272d34"
+    },
+    "palette": [
+      "#f5f8fc",
+      "#ee5f50",
+      "#41ad4e",
+      "#e39c03",
+      "#0aa3d6",
+      "#f08ad9",
+      "#00b696",
+      "#272d34",
+      "#b3bdcc",
+      "#ff513f",
+      "#1dd133",
+      "#e69d00",
+      "#00a8e0",
+      "#ff7be1",
+      "#00b696",
+      "#535f6e"
+    ],
+    "semantic": {
+      "accent": "#9ca1a7",
+      "accent_fg": "#000000",
+      "border": "#0aa3d6",
+      "success": "#41ad4e",
+      "warning": "#e39c03",
+      "error": "#ee5f50"
+    },
+    "ui": {
+      "card": "#EAECEE",
+      "card_fg": "#272d34",
+      "popover": "#f9fbfe",
+      "popover_fg": "#272d34",
+      "sidebar": "#EAECEE",
+      "sidebar_fg": "#636a72",
+      "headerbar": "#ced3d7",
+      "headerbar_fg": "#797e84"
+    }
+  }
+}

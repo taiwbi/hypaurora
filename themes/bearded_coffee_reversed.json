@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Coffee Reversed",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1a1716",
+      "foreground": "#c8aca5",
+      "cursor": "#f7d979",
+      "cursor_text": "#F09177",
+      "selection_bg": "#5a3b33",
+      "selection_fg": "#c8aca5"
+    },
+    "palette": [
+      "#1a1716",
+      "#f24343",
+      "#94D652",
+      "#f7d979",
+      "#6EDDD6",
+      "#E480AD",
+      "#3ceaa8",
+      "#c8aca5",
+      "#544848",
+      "#ff3636",
+      "#94f632",
+      "#ffdd71",
+      "#53f8ed",
+      "#fb69ab",
+      "#27ffad",
+      "#efe6e4"
+    ],
+    "semantic": {
+      "accent": "#855446",
+      "accent_fg": "#fbe3dc",
+      "border": "#6EDDD6",
+      "success": "#94D652",
+      "warning": "#f7d979",
+      "error": "#f24343"
+    },
+    "ui": {
+      "card": "#201c1b",
+      "card_fg": "#c8aca5",
+      "popover": "#51403b",
+      "popover_fg": "#c8aca5",
+      "sidebar": "#201c1b",
+      "sidebar_fg": "#978682",
+      "headerbar": "#181514",
+      "headerbar_fg": "#5f524f"
+    }
+  }
+}

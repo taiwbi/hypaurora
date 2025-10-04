@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Aquerelle Hydrangea",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#23293b",
+      "foreground": "#dddfe6",
+      "cursor": "#feeebe",
+      "cursor_text": "#4c86f1",
+      "selection_bg": "#2f4571",
+      "selection_fg": "#dddfe6"
+    },
+    "palette": [
+      "#23293b",
+      "#f4aca5",
+      "#d0f4ac",
+      "#feeebe",
+      "#bbe4f7",
+      "#f3d0f0",
+      "#bcf7e5",
+      "#dddfe6",
+      "#000000",
+      "#ffa39a",
+      "#d0ffa1",
+      "#ffefbd",
+      "#b3e7ff",
+      "#fcc7f7",
+      "#b4ffe8",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#35538e",
+      "accent_fg": "#dddfe6",
+      "border": "#bbe4f7",
+      "success": "#d0f4ac",
+      "warning": "#feeebe",
+      "error": "#f4aca5"
+    },
+    "ui": {
+      "card": "#1f2434",
+      "card_fg": "#4c86f1",
+      "popover": "#2c344b",
+      "popover_fg": "#dddfe6",
+      "sidebar": "#1f2434",
+      "sidebar_fg": "#9fa5b3",
+      "headerbar": "#1f2434",
+      "headerbar_fg": "#5e6680"
+    }
+  }
+}

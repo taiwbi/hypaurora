@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Arc Eggplant",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#181421",
+      "foreground": "#c8c1d9",
+      "cursor": "#EACD61",
+      "cursor_text": "#9698d8",
+      "selection_bg": "#3e3b58",
+      "selection_fg": "#c8c1d9"
+    },
+    "palette": [
+      "#181421",
+      "#E35535",
+      "#3CEC85",
+      "#EACD61",
+      "#69C3FF",
+      "#F38CEC",
+      "#22ECDB",
+      "#c8c1d9",
+      "#46395c",
+      "#ff4319",
+      "#29ff82",
+      "#ffd94c",
+      "#69c3ff",
+      "#ff80f6",
+      "#0fffeb",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#57567c",
+      "accent_fg": "#e8e8f6",
+      "border": "#69C3FF",
+      "success": "#3CEC85",
+      "warning": "#EACD61",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#13101a",
+      "card_fg": "#c8c1d9",
+      "popover": "#241e31",
+      "popover_fg": "#c8c1d9",
+      "sidebar": "#13101a",
+      "sidebar_fg": "#8f85a4",
+      "headerbar": "#0c0a11",
+      "headerbar_fg": "#5e596a"
+    }
+  }
+}

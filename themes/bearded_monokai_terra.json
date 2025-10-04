@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Monokai Terra",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#262329",
+      "foreground": "#d9d6db",
+      "cursor": "#ffd866",
+      "cursor_text": "#b0a2a6",
+      "selection_bg": "#4f494e",
+      "selection_fg": "#d9d6db"
+    },
+    "palette": [
+      "#262329",
+      "#fc6a67",
+      "#a9dc76",
+      "#ffd866",
+      "#78dce8",
+      "#e991e3",
+      "#78e8c6",
+      "#d9d6db",
+      "#564f5d",
+      "#ff6764",
+      "#a9f65c",
+      "#ffd866",
+      "#61eeff",
+      "#fd7df4",
+      "#61ffcf",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#6b6267",
+      "accent_fg": "#e4dfe0",
+      "border": "#78dce8",
+      "success": "#a9dc76",
+      "warning": "#ffd866",
+      "error": "#fc6a67"
+    },
+    "ui": {
+      "card": "#201e23",
+      "card_fg": "#d9d6db",
+      "popover": "#332f37",
+      "popover_fg": "#d9d6db",
+      "sidebar": "#201e23",
+      "sidebar_fg": "#a09ca4",
+      "headerbar": "#18171b",
+      "headerbar_fg": "#6d6a70"
+    }
+  }
+}

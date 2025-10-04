@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Surprising Watermelon",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#142326",
+      "foreground": "#c1d9de",
+      "cursor": "#da6c62",
+      "cursor_text": "#da6c62",
+      "selection_bg": "#4f3938",
+      "selection_fg": "#c1d9de"
+    },
+    "palette": [
+      "#142326",
+      "#E35535",
+      "#a9dc76",
+      "#da6c62",
+      "#00B3BD",
+      "#c47cbf",
+      "#da6c62",
+      "#c1d9de",
+      "#355c65",
+      "#ff4319",
+      "#a9f65c",
+      "#f75445",
+      "#00b3bd",
+      "#e15fd8",
+      "#f75445",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#774744",
+      "accent_fg": "#efc1bd",
+      "border": "#00B3BD",
+      "success": "#a9dc76",
+      "warning": "#da6c62",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#101c1f",
+      "card_fg": "#c1d9de",
+      "popover": "#5f3333",
+      "popover_fg": "#c1d9de",
+      "sidebar": "#101c1f",
+      "sidebar_fg": "#84a4aa",
+      "headerbar": "#0b1315",
+      "headerbar_fg": "#596b6f"
+    }
+  }
+}

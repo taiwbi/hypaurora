@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Brewing Storm",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#0c2a42",
+      "foreground": "#c0dcf3",
+      "cursor": "#fff0a6",
+      "cursor_text": "#9dffd9",
+      "selection_bg": "#376a6f",
+      "selection_fg": "#c0dcf3"
+    },
+    "palette": [
+      "#0c2a42",
+      "#ff5e4c",
+      "#84ffad",
+      "#fff0a6",
+      "#3391e3",
+      "#f1c6ee",
+      "#22D3B1",
+      "#c0dcf3",
+      "#1b5e93",
+      "#ff5e4c",
+      "#84ffad",
+      "#fff0a6",
+      "#1793ff",
+      "#fcbbf7",
+      "#00f5c6",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#54948d",
+      "accent_fg": "#ffffff",
+      "border": "#3391e3",
+      "success": "#84ffad",
+      "warning": "#fff0a6",
+      "error": "#ff5e4c"
+    },
+    "ui": {
+      "card": "#0a2439",
+      "card_fg": "#c0dcf3",
+      "popover": "#2a5a5c",
+      "popover_fg": "#c0dcf3",
+      "sidebar": "#0a2439",
+      "sidebar_fg": "#79a6c9",
+      "headerbar": "#081c2c",
+      "headerbar_fg": "#547188"
+    }
+  }
+}

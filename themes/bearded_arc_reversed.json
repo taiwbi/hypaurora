@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Arc Reversed",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#121721",
+      "foreground": "#c5cdde",
+      "cursor": "#EACD61",
+      "cursor_text": "#8196b5",
+      "selection_bg": "#333d4d",
+      "selection_fg": "#c5cdde"
+    },
+    "palette": [
+      "#121721",
+      "#E35535",
+      "#3CEC85",
+      "#EACD61",
+      "#69C3FF",
+      "#F38CEC",
+      "#22ECDB",
+      "#c5cdde",
+      "#384766",
+      "#ff4319",
+      "#29ff82",
+      "#ffd94c",
+      "#69c3ff",
+      "#ff80f6",
+      "#0fffeb",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#49566b",
+      "accent_fg": "#c8d1df",
+      "border": "#69C3FF",
+      "success": "#3CEC85",
+      "warning": "#EACD61",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#161c28",
+      "card_fg": "#c5cdde",
+      "popover": "#1f2838",
+      "popover_fg": "#c5cdde",
+      "sidebar": "#161c28",
+      "sidebar_fg": "#8692a9",
+      "headerbar": "#11151e",
+      "headerbar_fg": "#595f6c"
+    }
+  }
+}

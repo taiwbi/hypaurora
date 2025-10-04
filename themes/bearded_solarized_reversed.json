@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Solarized Reversed",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#0d1a20",
+      "foreground": "#bad7e3",
+      "cursor": "#e2ae10",
+      "cursor_text": "#47cfc4",
+      "selection_bg": "#1e5051",
+      "selection_fg": "#bad7e3"
+    },
+    "palette": [
+      "#0d1a20",
+      "#f45645",
+      "#a5b82e",
+      "#e2ae10",
+      "#4db0f7",
+      "#df96d9",
+      "#26bbae",
+      "#bad7e3",
+      "#2d576c",
+      "#ff4d3a",
+      "#bedb0c",
+      "#f2b600",
+      "#45b1ff",
+      "#f481ea",
+      "#04ddca",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#2a7472",
+      "accent_fg": "#a0e6e1",
+      "border": "#4db0f7",
+      "success": "#a5b82e",
+      "warning": "#e2ae10",
+      "error": "#f45645"
+    },
+    "ui": {
+      "card": "#102128",
+      "card_fg": "#bad7e3",
+      "popover": "#17303a",
+      "popover_fg": "#bad7e3",
+      "sidebar": "#102128",
+      "sidebar_fg": "#7aa0b0",
+      "headerbar": "#0c181d",
+      "headerbar_fg": "#52656e"
+    }
+  }
+}

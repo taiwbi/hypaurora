@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Solarized Light",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#fdf6e3",
+      "foreground": "#000000",
+      "cursor": "#cf9c01",
+      "cursor_text": "#2aa198",
+      "selection_bg": "#bddccc",
+      "selection_fg": "#000000"
+    },
+    "palette": [
+      "#fdf6e3",
+      "#f45645",
+      "#a5b82e",
+      "#cf9c01",
+      "#4db0f7",
+      "#c64fbc",
+      "#1aaca0",
+      "#000000",
+      "#e6cc8b",
+      "#ff4d3a",
+      "#bedb0c",
+      "#d09d00",
+      "#45b1ff",
+      "#e92cd9",
+      "#00c6b6",
+      "#333333"
+    ],
+    "semantic": {
+      "accent": "#93cbbd",
+      "accent_fg": "#000000",
+      "border": "#4db0f7",
+      "success": "#a5b82e",
+      "warning": "#cf9c01",
+      "error": "#f45645"
+    },
+    "ui": {
+      "card": "#f4edda",
+      "card_fg": "#000000",
+      "popover": "#fef9ed",
+      "popover_fg": "#000000",
+      "sidebar": "#f4edda",
+      "sidebar_fg": "#32312d",
+      "headerbar": "#e8dab3",
+      "headerbar_fg": "#65625a"
+    }
+  }
+}

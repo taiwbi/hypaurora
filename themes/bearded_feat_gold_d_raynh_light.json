@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Feat Gold D Raynh Light",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#f5f5f5",
+      "foreground": "#0f212d",
+      "cursor": "#d0a00f",
+      "cursor_text": "#2397e5",
+      "selection_bg": "#b5d8f0",
+      "selection_fg": "#0f212d"
+    },
+    "palette": [
+      "#f5f5f5",
+      "#f7775a",
+      "#03810d",
+      "#d0a00f",
+      "#037ed1",
+      "#002e74",
+      "#009c8f",
+      "#0f212d",
+      "#bdbdbd",
+      "#ff7252",
+      "#00840a",
+      "#dfa800",
+      "#007fd4",
+      "#002e74",
+      "#009c8f",
+      "#295979"
+    ],
+    "semantic": {
+      "accent": "#8bc5ec",
+      "accent_fg": "#010508",
+      "border": "#037ed1",
+      "success": "#03810d",
+      "warning": "#d0a00f",
+      "error": "#f7775a"
+    },
+    "ui": {
+      "card": "#ececec",
+      "card_fg": "#0f212d",
+      "popover": "#fafafa",
+      "popover_fg": "#0f212d",
+      "sidebar": "#ececec",
+      "sidebar_fg": "#303030",
+      "headerbar": "#d3d3d3",
+      "headerbar_fg": "#6b757d"
+    }
+  }
+}

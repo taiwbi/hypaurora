@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Vivid Black",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#141417",
+      "foreground": "#c5c5cb",
+      "cursor": "#FFB638",
+      "cursor_text": "#AAAAAA",
+      "selection_bg": "#414143",
+      "selection_fg": "#c5c5cb"
+    },
+    "palette": [
+      "#141417",
+      "#D62C2C",
+      "#42DD76",
+      "#FFB638",
+      "#28A9FF",
+      "#E66DFF",
+      "#14E5D4",
+      "#c5c5cb",
+      "#42424a",
+      "#fc0606",
+      "#21fe6b",
+      "#ffb638",
+      "#28a9ff",
+      "#e66dff",
+      "#00f9e5",
+      "#fbfbfb"
+    ],
+    "semantic": {
+      "accent": "#5f5f60",
+      "accent_fg": "#e2e2e2",
+      "border": "#28A9FF",
+      "success": "#42DD76",
+      "warning": "#FFB638",
+      "error": "#D62C2C"
+    },
+    "ui": {
+      "card": "#0f0f11",
+      "card_fg": "#c5c5cb",
+      "popover": "#202025",
+      "popover_fg": "#c5c5cb",
+      "sidebar": "#0f0f11",
+      "sidebar_fg": "#8c8c93",
+      "headerbar": "#080809",
+      "headerbar_fg": "#5a5a5f"
+    }
+  }
+}

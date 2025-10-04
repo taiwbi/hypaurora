@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Milkshake Raspberry",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#f1e8eb",
+      "foreground": "#15070b",
+      "cursor": "#c08403",
+      "cursor_text": "#d1174f",
+      "selection_bg": "#e7a8bb",
+      "selection_fg": "#15070b"
+    },
+    "palette": [
+      "#f1e8eb",
+      "#d12525",
+      "#008b17",
+      "#c08403",
+      "#0076c5",
+      "#c121a4",
+      "#008f8f",
+      "#15070b",
+      "#c8a2af",
+      "#f60000",
+      "#008b17",
+      "#c38500",
+      "#0076c5",
+      "#e200b9",
+      "#008f8f",
+      "#622133"
+    ],
+    "semantic": {
+      "accent": "#e07f9c",
+      "accent_fg": "#000000",
+      "border": "#0076c5",
+      "success": "#008b17",
+      "warning": "#c08403",
+      "error": "#d12525"
+    },
+    "ui": {
+      "card": "#eadde1",
+      "card_fg": "#15070b",
+      "popover": "#f6eff1",
+      "popover_fg": "#15070b",
+      "sidebar": "#eadde1",
+      "sidebar_fg": "#302e2e",
+      "headerbar": "#d7bdc5",
+      "headerbar_fg": "#6d6164"
+    }
+  }
+}

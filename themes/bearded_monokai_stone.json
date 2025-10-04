@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Monokai Stone",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#2A2D33",
+      "foreground": "#dee0e4",
+      "cursor": "#ffd866",
+      "cursor_text": "#9AA2A6",
+      "selection_bg": "#4b5055",
+      "selection_fg": "#dee0e4"
+    },
+    "palette": [
+      "#2A2D33",
+      "#fc6a67",
+      "#a9dc76",
+      "#ffd866",
+      "#78dce8",
+      "#e991e3",
+      "#78e8c6",
+      "#dee0e4",
+      "#555b68",
+      "#ff6764",
+      "#a9f65c",
+      "#ffd866",
+      "#61eeff",
+      "#fd7df4",
+      "#61ffcf",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#62676c",
+      "accent_fg": "#d6d9db",
+      "border": "#78dce8",
+      "success": "#a9dc76",
+      "warning": "#ffd866",
+      "error": "#fc6a67"
+    },
+    "ui": {
+      "card": "#25282d",
+      "card_fg": "#dee0e4",
+      "popover": "#363941",
+      "popover_fg": "#dee0e4",
+      "sidebar": "#25282d",
+      "sidebar_fg": "#a4a7ad",
+      "headerbar": "#1e2125",
+      "headerbar_fg": "#727479"
+    }
+  }
+}

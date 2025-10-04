@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Arc Eolstorm",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#222A38",
+      "foreground": "#d8dde7",
+      "cursor": "#EACD61",
+      "cursor_text": "#9DACC3",
+      "selection_bg": "#475161",
+      "selection_fg": "#d8dde7"
+    },
+    "palette": [
+      "#222A38",
+      "#E35535",
+      "#3CEC85",
+      "#EACD61",
+      "#69C3FF",
+      "#F38CEC",
+      "#22ECDB",
+      "#d8dde7",
+      "#475673",
+      "#ff4319",
+      "#29ff82",
+      "#ffd94c",
+      "#69c3ff",
+      "#ff80f6",
+      "#0fffeb",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5f6b7d",
+      "accent_fg": "#e3e7ee",
+      "border": "#69C3FF",
+      "success": "#3CEC85",
+      "warning": "#EACD61",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#1e2531",
+      "card_fg": "#d8dde7",
+      "popover": "#2c3648",
+      "popover_fg": "#d8dde7",
+      "sidebar": "#1e2531",
+      "sidebar_fg": "#9aa3b4",
+      "headerbar": "#181e28",
+      "headerbar_fg": "#6a717e"
+    }
+  }
+}

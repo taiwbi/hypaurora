@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Chocolate Espresso",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#2e2424",
+      "foreground": "#d3b1b1",
+      "cursor": "#edbc7f",
+      "cursor_text": "#f69c95",
+      "selection_bg": "#6a4846",
+      "selection_fg": "#d3b1b1"
+    },
+    "palette": [
+      "#2e2424",
+      "#fb7a6c",
+      "#74be7d",
+      "#edbc7f",
+      "#4fc1e8",
+      "#d995c9",
+      "#17d7c4",
+      "#d3b1b1",
+      "#654d4d",
+      "#ff7768",
+      "#55dd66",
+      "#ffbe6d",
+      "#38ccff",
+      "#ef7fd4",
+      "#00eed6",
+      "#f8f2f2"
+    ],
+    "semantic": {
+      "accent": "#92605c",
+      "accent_fg": "#fffdfc",
+      "border": "#4fc1e8",
+      "success": "#74be7d",
+      "warning": "#edbc7f",
+      "error": "#fb7a6c"
+    },
+    "ui": {
+      "card": "#281f1f",
+      "card_fg": "#d3b1b1",
+      "popover": "#5d423d",
+      "popover_fg": "#d3b1b1",
+      "sidebar": "#281f1f",
+      "sidebar_fg": "#a58c8c",
+      "headerbar": "#1f1818",
+      "headerbar_fg": "#705c5c"
+    }
+  }
+}

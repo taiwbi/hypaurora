@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Black & Amethyst Soft",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#171626",
+      "foreground": "#c6c5dc",
+      "cursor": "#c7910c",
+      "cursor_text": "#a85ff1",
+      "selection_bg": "#422c63",
+      "selection_fg": "#c6c5dc"
+    },
+    "palette": [
+      "#171626",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c6c5dc",
+      "#3d3a62",
+      "#ff4319",
+      "#00a884",
+      "#d39600",
+      "#00c3e5",
+      "#f052d1",
+      "#12edde",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5f3a8b",
+      "accent_fg": "#e0c6fa",
+      "border": "#11B7D4",
+      "success": "#00a884",
+      "warning": "#c7910c",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#13121f",
+      "card_fg": "#c6c5dc",
+      "popover": "#211f36",
+      "popover_fg": "#c6c5dc",
+      "sidebar": "#13121f",
+      "sidebar_fg": "#8a88a8",
+      "headerbar": "#0d0c15",
+      "headerbar_fg": "#5d5c6e"
+    }
+  }
+}

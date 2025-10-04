@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Classics Anthracite",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#181a1f",
+      "foreground": "#c8ccd4",
+      "cursor": "#c9a022",
+      "cursor_text": "#a2abb6",
+      "selection_bg": "#41454c",
+      "selection_fg": "#c8ccd4"
+    },
+    "palette": [
+      "#181a1f",
+      "#C13838",
+      "#37ae6f",
+      "#c9a022",
+      "#3398DB",
+      "#CC71BC",
+      "#24B5A8",
+      "#c8ccd4",
+      "#434955",
+      "#e61313",
+      "#15d06d",
+      "#ebb100",
+      "#0f9fff",
+      "#e954cf",
+      "#03d6c3",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5d626a",
+      "accent_fg": "#e1e4e7",
+      "border": "#3398DB",
+      "success": "#37ae6f",
+      "warning": "#c9a022",
+      "error": "#C13838"
+    },
+    "ui": {
+      "card": "#131519",
+      "card_fg": "#c8ccd4",
+      "popover": "#23262d",
+      "popover_fg": "#c8ccd4",
+      "sidebar": "#131519",
+      "sidebar_fg": "#8e929d",
+      "headerbar": "#0c0e10",
+      "headerbar_fg": "#5e6167"
+    }
+  }
+}

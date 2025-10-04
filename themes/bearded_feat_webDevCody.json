@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Feat Webdevcody",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#00171a",
+      "foreground": "#81f0fe",
+      "cursor": "#f1d868",
+      "cursor_text": "#e95d74",
+      "selection_bg": "#005a66",
+      "selection_fg": "#81f0fe"
+    },
+    "palette": [
+      "#00171a",
+      "#e61e3f",
+      "#60e66f",
+      "#f1d868",
+      "#f1d868",
+      "#f75f94",
+      "#f1d868",
+      "#81f0fe",
+      "#006f7b",
+      "#ff052e",
+      "#47ff5c",
+      "#ffe15a",
+      "#ffe15a",
+      "#ff5792",
+      "#ffe15a",
+      "#e6fcff"
+    ],
+    "semantic": {
+      "accent": "#743a47",
+      "accent_fg": "#f6c0c9",
+      "border": "#f1d868",
+      "success": "#60e66f",
+      "warning": "#f1d868",
+      "error": "#e61e3f"
+    },
+    "ui": {
+      "card": "#000d0f",
+      "card_fg": "#81f0fe",
+      "popover": "#104c52",
+      "popover_fg": "#81f0fe",
+      "sidebar": "#000d0f",
+      "sidebar_fg": "#3ebfd0",
+      "headerbar": "#000000",
+      "headerbar_fg": "#336d75"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Monokai Reversed",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#12141a",
+      "foreground": "#c6cad7",
+      "cursor": "#ffd866",
+      "cursor_text": "#98a2b5",
+      "selection_bg": "#3a3e48",
+      "selection_fg": "#c6cad7"
+    },
+    "palette": [
+      "#12141a",
+      "#fc6a67",
+      "#a9dc76",
+      "#ffd866",
+      "#78dce8",
+      "#e991e3",
+      "#78e8c6",
+      "#c6cad7",
+      "#404658",
+      "#ff6764",
+      "#a9f65c",
+      "#ffd866",
+      "#61eeff",
+      "#fd7df4",
+      "#61ffcf",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#555b67",
+      "accent_fg": "#d9dde4",
+      "border": "#78dce8",
+      "success": "#a9dc76",
+      "warning": "#ffd866",
+      "error": "#fc6a67"
+    },
+    "ui": {
+      "card": "#171921",
+      "card_fg": "#c6cad7",
+      "popover": "#212430",
+      "popover_fg": "#c6cad7",
+      "sidebar": "#171921",
+      "sidebar_fg": "#8a8f9f",
+      "headerbar": "#111218",
+      "headerbar_fg": "#5a5c65"
+    }
+  }
+}

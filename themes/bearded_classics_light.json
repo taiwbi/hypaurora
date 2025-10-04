@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Classics Light",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#f3f4f5",
+      "foreground": "#091316",
+      "cursor": "#bb9600",
+      "cursor_text": "#22a5c9",
+      "selection_bg": "#b3dce7",
+      "selection_fg": "#091316"
+    },
+    "palette": [
+      "#f3f4f5",
+      "#ac2121",
+      "#14852a",
+      "#bb9600",
+      "#0468bf",
+      "#e022b4",
+      "#009999",
+      "#091316",
+      "#b6bac3",
+      "#cb0202",
+      "#00991e",
+      "#bb9600",
+      "#0068c3",
+      "#ff03c5",
+      "#009999",
+      "#27525e"
+    ],
+    "semantic": {
+      "accent": "#8accde",
+      "accent_fg": "#000000",
+      "border": "#0468bf",
+      "success": "#14852a",
+      "warning": "#bb9600",
+      "error": "#ac2121"
+    },
+    "ui": {
+      "card": "#e9ebed",
+      "card_fg": "#091316",
+      "popover": "#f9f9fa",
+      "popover_fg": "#091316",
+      "sidebar": "#e9ebed",
+      "sidebar_fg": "#303030",
+      "headerbar": "#cdd2d6",
+      "headerbar_fg": "#666d6f"
+    }
+  }
+}

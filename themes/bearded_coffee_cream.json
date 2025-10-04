@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Coffee Cream",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#EAE4E1",
+      "foreground": "#36221d",
+      "cursor": "#ad8200",
+      "cursor_text": "#D3694C",
+      "selection_bg": "#e3beb4",
+      "selection_fg": "#36221d"
+    },
+    "palette": [
+      "#EAE4E1",
+      "#FF3A3A",
+      "#51A200",
+      "#ad8200",
+      "#009DB5",
+      "#CE4985",
+      "#009b74",
+      "#36221d",
+      "#bca9a1",
+      "#ff3a3a",
+      "#51a200",
+      "#ad8200",
+      "#009db5",
+      "#f12682",
+      "#009b74",
+      "#784c41"
+    ],
+    "semantic": {
+      "accent": "#dea696",
+      "accent_fg": "#1a0a06",
+      "border": "#009DB5",
+      "success": "#51A200",
+      "warning": "#ad8200",
+      "error": "#FF3A3A"
+    },
+    "ui": {
+      "card": "#e3dbd7",
+      "card_fg": "#36221d",
+      "popover": "#eee9e7",
+      "popover_fg": "#36221d",
+      "sidebar": "#e3dbd7",
+      "sidebar_fg": "#2e2d2c",
+      "headerbar": "#cec0b9",
+      "headerbar_fg": "#7e6f6b"
+    }
+  }
+}

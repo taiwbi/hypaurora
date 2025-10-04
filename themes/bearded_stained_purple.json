@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Stained Purple",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#20192b",
+      "foreground": "#d2cadf",
+      "cursor": "#c9a022",
+      "cursor_text": "#a948ef",
+      "selection_bg": "#492766",
+      "selection_fg": "#d2cadf"
+    },
+    "palette": [
+      "#20192b",
+      "#C13838",
+      "#37ae6f",
+      "#c9a022",
+      "#3398DB",
+      "#CC71BC",
+      "#24B5A8",
+      "#d2cadf",
+      "#4d3d67",
+      "#e61313",
+      "#15d06d",
+      "#ebb100",
+      "#0f9fff",
+      "#e954cf",
+      "#03d6c3",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#64308d",
+      "accent_fg": "#d9aff8",
+      "border": "#3398DB",
+      "success": "#37ae6f",
+      "warning": "#c9a022",
+      "error": "#C13838"
+    },
+    "ui": {
+      "card": "#1b1524",
+      "card_fg": "#d2cadf",
+      "popover": "#2c223b",
+      "popover_fg": "#d2cadf",
+      "sidebar": "#1b1524",
+      "sidebar_fg": "#988dab",
+      "headerbar": "#140f1a",
+      "headerbar_fg": "#675f73"
+    }
+  }
+}

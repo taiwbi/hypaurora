@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Vivid Purple",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#171131",
+      "foreground": "#c7bfe8",
+      "cursor": "#FFB638",
+      "cursor_text": "#A680FF",
+      "selection_bg": "#42326f",
+      "selection_fg": "#c7bfe8"
+    },
+    "palette": [
+      "#171131",
+      "#D62C2C",
+      "#42DD76",
+      "#FFB638",
+      "#28A9FF",
+      "#E66DFF",
+      "#14E5D4",
+      "#c7bfe8",
+      "#382b78",
+      "#fc0606",
+      "#21fe6b",
+      "#ffb638",
+      "#28a9ff",
+      "#e66dff",
+      "#00f9e5",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5e4898",
+      "accent_fg": "#f5f0ff",
+      "border": "#28A9FF",
+      "success": "#42DD76",
+      "warning": "#FFB638",
+      "error": "#D62C2C"
+    },
+    "ui": {
+      "card": "#130e29",
+      "card_fg": "#c7bfe8",
+      "popover": "#201844",
+      "popover_fg": "#c7bfe8",
+      "sidebar": "#130e29",
+      "sidebar_fg": "#897db9",
+      "headerbar": "#0e0a1e",
+      "headerbar_fg": "#5d567a"
+    }
+  }
+}

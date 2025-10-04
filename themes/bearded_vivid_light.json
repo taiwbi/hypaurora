@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Vivid Light",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#f4f4f4",
+      "foreground": "#181818",
+      "cursor": "#d48700",
+      "cursor_text": "#7e7e7e",
+      "selection_bg": "#d0d0d0",
+      "selection_fg": "#181818"
+    },
+    "palette": [
+      "#f4f4f4",
+      "#D62C2C",
+      "#42DD76",
+      "#d48700",
+      "#28A9FF",
+      "#E66DFF",
+      "#00b8a9",
+      "#181818",
+      "#bcbcbc",
+      "#fc0606",
+      "#21fe6b",
+      "#d48700",
+      "#28a9ff",
+      "#e66dff",
+      "#00b8a9",
+      "#4b4b4b"
+    ],
+    "semantic": {
+      "accent": "#b8b8b8",
+      "accent_fg": "#000000",
+      "border": "#28A9FF",
+      "success": "#42DD76",
+      "warning": "#d48700",
+      "error": "#D62C2C"
+    },
+    "ui": {
+      "card": "#ebebeb",
+      "card_fg": "#181818",
+      "popover": "#f9f9f9",
+      "popover_fg": "#181818",
+      "sidebar": "#ebebeb",
+      "sidebar_fg": "#303030",
+      "headerbar": "#d2d2d2",
+      "headerbar_fg": "#707070"
+    }
+  }
+}

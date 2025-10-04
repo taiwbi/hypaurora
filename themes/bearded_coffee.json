@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Coffee",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#292423",
+      "foreground": "#ceb5b0",
+      "cursor": "#f7d979",
+      "cursor_text": "#F09177",
+      "selection_bg": "#65443c",
+      "selection_fg": "#ceb5b0"
+    },
+    "palette": [
+      "#292423",
+      "#f24343",
+      "#94D652",
+      "#f7d979",
+      "#6EDDD6",
+      "#E480AD",
+      "#3ceaa8",
+      "#ceb5b0",
+      "#5d514f",
+      "#ff3636",
+      "#94f632",
+      "#ffdd71",
+      "#53f8ed",
+      "#fb69ab",
+      "#27ffad",
+      "#f5f0ef"
+    ],
+    "semantic": {
+      "accent": "#8c5a4d",
+      "accent_fg": "#fbe3dc",
+      "border": "#6EDDD6",
+      "success": "#94D652",
+      "warning": "#f7d979",
+      "error": "#f24343"
+    },
+    "ui": {
+      "card": "#231f1e",
+      "card_fg": "#ceb5b0",
+      "popover": "#51403b",
+      "popover_fg": "#ceb5b0",
+      "sidebar": "#231f1e",
+      "sidebar_fg": "#a0908c",
+      "headerbar": "#1b1817",
+      "headerbar_fg": "#6b5e5b"
+    }
+  }
+}

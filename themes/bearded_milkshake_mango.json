@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Milkshake Mango",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#f3eae3",
+      "foreground": "#100a08",
+      "cursor": "#c08403",
+      "cursor_text": "#bd4f27",
+      "selection_bg": "#e2bbaa",
+      "selection_fg": "#100a08"
+    },
+    "palette": [
+      "#f3eae3",
+      "#d12525",
+      "#008b17",
+      "#c08403",
+      "#0076c5",
+      "#c121a4",
+      "#008f8f",
+      "#100a08",
+      "#d3ae95",
+      "#f60000",
+      "#008b17",
+      "#c38500",
+      "#0076c5",
+      "#e200b9",
+      "#008f8f",
+      "#54352a"
+    ],
+    "semantic": {
+      "accent": "#d79c84",
+      "accent_fg": "#000000",
+      "border": "#0076c5",
+      "success": "#008b17",
+      "warning": "#c08403",
+      "error": "#d12525"
+    },
+    "ui": {
+      "card": "#eee1d7",
+      "card_fg": "#100a08",
+      "popover": "#f6efea",
+      "popover_fg": "#100a08",
+      "sidebar": "#eee1d7",
+      "sidebar_fg": "#302e2d",
+      "headerbar": "#dfc6b3",
+      "headerbar_fg": "#6a635f"
+    }
+  }
+}

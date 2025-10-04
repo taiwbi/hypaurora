@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Earth",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#221b1b",
+      "foreground": "#caa5a5",
+      "cursor": "#C48519",
+      "cursor_text": "#d35386",
+      "selection_bg": "#572b3b",
+      "selection_fg": "#caa5a5"
+    },
+    "palette": [
+      "#221b1b",
+      "#C13838",
+      "#14b871",
+      "#C48519",
+      "#04c4d9",
+      "#A8547A",
+      "#4EAAA4",
+      "#caa5a5",
+      "#584547",
+      "#e61313",
+      "#00cc74",
+      "#dd8c00",
+      "#00c7dd",
+      "#ce2e76",
+      "#29cfc4",
+      "#f0e5e5"
+    ],
+    "semantic": {
+      "accent": "#7a3750",
+      "accent_fg": "#eaacc5",
+      "border": "#04c4d9",
+      "success": "#14b871",
+      "warning": "#C48519",
+      "error": "#C13838"
+    },
+    "ui": {
+      "card": "#1c1616",
+      "card_fg": "#caa5a5",
+      "popover": "#40222e",
+      "popover_fg": "#caa5a5",
+      "sidebar": "#1c1616",
+      "sidebar_fg": "#9b8181",
+      "headerbar": "#130f0f",
+      "headerbar_fg": "#655252"
+    }
+  }
+}

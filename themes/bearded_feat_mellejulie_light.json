@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Feat Mellejulie Light",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#edeeee",
+      "foreground": "#000000",
+      "cursor": "#b48806",
+      "cursor_text": "#218d8f",
+      "selection_bg": "#afd0d1",
+      "selection_fg": "#000000"
+    },
+    "palette": [
+      "#edeeee",
+      "#d24545",
+      "#2aa54d",
+      "#b48806",
+      "#1f89cf",
+      "#ae6cbe",
+      "#23716d",
+      "#000000",
+      "#b4b7b7",
+      "#f52222",
+      "#0bc440",
+      "#ba8b00",
+      "#008fee",
+      "#c14cde",
+      "#0d8781",
+      "#333333"
+    ],
+    "semantic": {
+      "accent": "#86bdbe",
+      "accent_fg": "#000000",
+      "border": "#1f89cf",
+      "success": "#2aa54d",
+      "warning": "#b48806",
+      "error": "#d24545"
+    },
+    "ui": {
+      "card": "#e4e5e5",
+      "card_fg": "#000000",
+      "popover": "#f2f3f3",
+      "popover_fg": "#000000",
+      "sidebar": "#e4e5e5",
+      "sidebar_fg": "#2f2f2f",
+      "headerbar": "#cacccc",
+      "headerbar_fg": "#5e5f5f"
+    }
+  }
+}

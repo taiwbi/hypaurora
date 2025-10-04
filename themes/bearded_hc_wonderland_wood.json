@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Wonderland Wood",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1F1D36",
+      "foreground": "#d3d2e6",
+      "cursor": "#fbe7c3",
+      "cursor_text": "#fbe7c3",
+      "selection_bg": "#615960",
+      "selection_fg": "#d3d2e6"
+    },
+    "palette": [
+      "#1F1D36",
+      "#ff7e70",
+      "#91d6a7",
+      "#fbe7c3",
+      "#92b4ff",
+      "#de98ae",
+      "#7ddcbf",
+      "#d3d2e6",
+      "#433f74",
+      "#ff7e70",
+      "#7aed9f",
+      "#ffe8bf",
+      "#92b4ff",
+      "#f284a6",
+      "#64f5c9",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#8d827c",
+      "accent_fg": "#ffffff",
+      "border": "#92b4ff",
+      "success": "#91d6a7",
+      "warning": "#fbe7c3",
+      "error": "#ff7e70"
+    },
+    "ui": {
+      "card": "#1b192f",
+      "card_fg": "#d3d2e6",
+      "popover": "#52426a",
+      "popover_fg": "#d3d2e6",
+      "sidebar": "#1b192f",
+      "sidebar_fg": "#9693b4",
+      "headerbar": "#151425",
+      "headerbar_fg": "#67657c"
+    }
+  }
+}

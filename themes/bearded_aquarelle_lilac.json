@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Aquarelle Lilac",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#252433",
+      "foreground": "#d9d9e3",
+      "cursor": "#f3e1ac",
+      "cursor_text": "#9587ff",
+      "selection_bg": "#464170",
+      "selection_fg": "#d9d9e3"
+    },
+    "palette": [
+      "#252433",
+      "#e87a70",
+      "#aada77",
+      "#f3e1ac",
+      "#73bee9",
+      "#edc1ea",
+      "#a9edd9",
+      "#d9d9e3",
+      "#4d4b6b",
+      "#ff6759",
+      "#abf45d",
+      "#ffe7a0",
+      "#5dc4ff",
+      "#f9b5f4",
+      "#99fddf",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5d5599",
+      "accent_fg": "#f8f7ff",
+      "border": "#73bee9",
+      "success": "#aada77",
+      "warning": "#f3e1ac",
+      "error": "#e87a70"
+    },
+    "ui": {
+      "card": "#201f2c",
+      "card_fg": "#d9d9e3",
+      "popover": "#302f42",
+      "popover_fg": "#d9d9e3",
+      "sidebar": "#201f2c",
+      "sidebar_fg": "#9d9caf",
+      "headerbar": "#191923",
+      "headerbar_fg": "#6d6c79"
+    }
+  }
+}

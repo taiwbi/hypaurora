@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Feat Gold D Raynh",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#0f1628",
+      "foreground": "#b8c4e4",
+      "cursor": "#ffd000",
+      "cursor_text": "#e39000",
+      "selection_bg": "#24345f",
+      "selection_fg": "#b8c4e4"
+    },
+    "palette": [
+      "#0f1628",
+      "#f7775a",
+      "#21ff7d",
+      "#ffd000",
+      "#3eb2ff",
+      "#e4ac73",
+      "#44f8e9",
+      "#b8c4e4",
+      "#2b3d6d",
+      "#ff7252",
+      "#21ff7d",
+      "#ffd000",
+      "#3eb2ff",
+      "#fdac5a",
+      "#3dffef",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#795313",
+      "accent_fg": "#ffc154",
+      "border": "#3eb2ff",
+      "success": "#21ff7d",
+      "warning": "#ffd000",
+      "error": "#f7775a"
+    },
+    "ui": {
+      "card": "#0c1220",
+      "card_fg": "#b8c4e4",
+      "popover": "#16203b",
+      "popover_fg": "#b8c4e4",
+      "sidebar": "#0c1220",
+      "sidebar_fg": "#7889b3",
+      "headerbar": "#080c15",
+      "headerbar_fg": "#525b73"
+    }
+  }
+}

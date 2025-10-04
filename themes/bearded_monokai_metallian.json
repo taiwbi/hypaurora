@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Monokai Metallian",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1e212b",
+      "foreground": "#d0d3de",
+      "cursor": "#ffd866",
+      "cursor_text": "#98a2b5",
+      "selection_bg": "#424754",
+      "selection_fg": "#d0d3de"
+    },
+    "palette": [
+      "#1e212b",
+      "#fc6a67",
+      "#a9dc76",
+      "#ffd866",
+      "#78dce8",
+      "#e991e3",
+      "#78e8c6",
+      "#d0d3de",
+      "#454c63",
+      "#ff6764",
+      "#a9f65c",
+      "#ffd866",
+      "#61eeff",
+      "#fd7df4",
+      "#61ffcf",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5b6170",
+      "accent_fg": "#d9dde4",
+      "border": "#78dce8",
+      "success": "#a9dc76",
+      "warning": "#ffd866",
+      "error": "#fc6a67"
+    },
+    "ui": {
+      "card": "#191c24",
+      "card_fg": "#d0d3de",
+      "popover": "#282d3a",
+      "popover_fg": "#d0d3de",
+      "sidebar": "#191c24",
+      "sidebar_fg": "#9499a9",
+      "headerbar": "#13151b",
+      "headerbar_fg": "#656872"
+    }
+  }
+}

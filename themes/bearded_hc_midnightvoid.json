@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Midnightvoid",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#151f27",
+      "foreground": "#c3d2de",
+      "cursor": "#F5DF76",
+      "cursor_text": "#dbefff",
+      "selection_bg": "#505d68",
+      "selection_fg": "#c3d2de"
+    },
+    "palette": [
+      "#151f27",
+      "#fd604f",
+      "#AFEA7B",
+      "#F5DF76",
+      "#7fd7f5",
+      "#e4a3df",
+      "#22D3B1",
+      "#c3d2de",
+      "#375165",
+      "#ff5e4d",
+      "#aeff66",
+      "#ffe66c",
+      "#75dcff",
+      "#f691ee",
+      "#00f5c6",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#788793",
+      "accent_fg": "#ffffff",
+      "border": "#7fd7f5",
+      "success": "#AFEA7B",
+      "warning": "#F5DF76",
+      "error": "#fd604f"
+    },
+    "ui": {
+      "card": "#111920",
+      "card_fg": "#c3d2de",
+      "popover": "#1e2c38",
+      "popover_fg": "#c3d2de",
+      "sidebar": "#111920",
+      "sidebar_fg": "#859aab",
+      "headerbar": "#0c1116",
+      "headerbar_fg": "#5a6670"
+    }
+  }
+}

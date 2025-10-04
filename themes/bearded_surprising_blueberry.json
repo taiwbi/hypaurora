@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Surprising Blueberry",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#101a29",
+      "foreground": "#bacbe4",
+      "cursor": "#c93e71",
+      "cursor_text": "#c93e71",
+      "selection_bg": "#47243e",
+      "selection_fg": "#bacbe4"
+    },
+    "palette": [
+      "#101a29",
+      "#E35535",
+      "#a9dc76",
+      "#c93e71",
+      "#00B3BD",
+      "#c47cbf",
+      "#c93e71",
+      "#bacbe4",
+      "#2c476e",
+      "#ff4319",
+      "#a9f65c",
+      "#ee1967",
+      "#00b3bd",
+      "#e15fd8",
+      "#ee1967",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#6c2c4d",
+      "accent_fg": "#e296b2",
+      "border": "#00B3BD",
+      "success": "#a9dc76",
+      "warning": "#c93e71",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#0d1521",
+      "card_fg": "#bacbe4",
+      "popover": "#441f30",
+      "popover_fg": "#bacbe4",
+      "sidebar": "#0d1521",
+      "sidebar_fg": "#7b91b2",
+      "headerbar": "#090e16",
+      "headerbar_fg": "#546073"
+    }
+  }
+}

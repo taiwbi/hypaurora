@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Arc Blueberry",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#111422",
+      "foreground": "#bcc1dc",
+      "cursor": "#EACD61",
+      "cursor_text": "#8eb0e6",
+      "selection_bg": "#36435d",
+      "selection_fg": "#bcc1dc"
+    },
+    "palette": [
+      "#111422",
+      "#E35535",
+      "#3CEC85",
+      "#EACD61",
+      "#69C3FF",
+      "#F38CEC",
+      "#22ECDB",
+      "#bcc1dc",
+      "#313b62",
+      "#ff4319",
+      "#29ff82",
+      "#ffd94c",
+      "#69c3ff",
+      "#ff80f6",
+      "#0fffeb",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#4f6284",
+      "accent_fg": "#eaf0fa",
+      "border": "#69C3FF",
+      "success": "#3CEC85",
+      "warning": "#EACD61",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#0d101b",
+      "card_fg": "#bcc1dc",
+      "popover": "#1a1e33",
+      "popover_fg": "#bcc1dc",
+      "sidebar": "#0d101b",
+      "sidebar_fg": "#7e85a9",
+      "headerbar": "#080a11",
+      "headerbar_fg": "#55596c"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Ebony",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#181820",
+      "foreground": "#c8c8d5",
+      "cursor": "#F5DF76",
+      "cursor_text": "#dbdeea",
+      "selection_bg": "#52535c",
+      "selection_fg": "#c8c8d5"
+    },
+    "palette": [
+      "#181820",
+      "#fd604f",
+      "#AFEA7B",
+      "#F5DF76",
+      "#7fd7f5",
+      "#e4a3df",
+      "#22D3B1",
+      "#c8c8d5",
+      "#424257",
+      "#ff5e4d",
+      "#aeff66",
+      "#ffe66c",
+      "#75dcff",
+      "#f691ee",
+      "#00f5c6",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#797b85",
+      "accent_fg": "#ffffff",
+      "border": "#7fd7f5",
+      "success": "#AFEA7B",
+      "warning": "#F5DF76",
+      "error": "#fd604f"
+    },
+    "ui": {
+      "card": "#13131a",
+      "card_fg": "#c8c8d5",
+      "popover": "#23232f",
+      "popover_fg": "#c8c8d5",
+      "sidebar": "#13131a",
+      "sidebar_fg": "#8d8d9f",
+      "headerbar": "#0d0d11",
+      "headerbar_fg": "#5e5e68"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Monokai Black",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#141414",
+      "foreground": "#c7c7c7",
+      "cursor": "#ffd866",
+      "cursor_text": "#8f8f8f",
+      "selection_bg": "#393939",
+      "selection_fg": "#c7c7c7"
+    },
+    "palette": [
+      "#141414",
+      "#fc6a67",
+      "#a9dc76",
+      "#ffd866",
+      "#78dce8",
+      "#e991e3",
+      "#78e8c6",
+      "#c7c7c7",
+      "#444444",
+      "#ff6764",
+      "#a9f65c",
+      "#ffd866",
+      "#61eeff",
+      "#fd7df4",
+      "#61ffcf",
+      "#fafafa"
+    ],
+    "semantic": {
+      "accent": "#515151",
+      "accent_fg": "#c7c7c7",
+      "border": "#78dce8",
+      "success": "#a9dc76",
+      "warning": "#ffd866",
+      "error": "#fc6a67"
+    },
+    "ui": {
+      "card": "#0e0e0e",
+      "card_fg": "#c7c7c7",
+      "popover": "#212121",
+      "popover_fg": "#c7c7c7",
+      "sidebar": "#0e0e0e",
+      "sidebar_fg": "#8e8e8e",
+      "headerbar": "#060606",
+      "headerbar_fg": "#5b5b5b"
+    }
+  }
+}

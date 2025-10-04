@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Themanopia",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1b1e28",
+      "foreground": "#ccd0dc",
+      "cursor": "#F5DEC1",
+      "cursor_text": "#9887eb",
+      "selection_bg": "#403d62",
+      "selection_fg": "#ccd0dc"
+    },
+    "palette": [
+      "#1b1e28",
+      "#FF5B82",
+      "#38FFA1",
+      "#F5DEC1",
+      "#32A7FF",
+      "#FF97BF",
+      "#4AE0D1",
+      "#ccd0dc",
+      "#414961",
+      "#ff5b82",
+      "#38ffa1",
+      "#ffdfb7",
+      "#32a7ff",
+      "#ff97bf",
+      "#2bffea",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#595289",
+      "accent_fg": "#ebe7fb",
+      "border": "#32A7FF",
+      "success": "#38FFA1",
+      "warning": "#F5DEC1",
+      "error": "#FF5B82"
+    },
+    "ui": {
+      "card": "#161921",
+      "card_fg": "#ccd0dc",
+      "popover": "#252937",
+      "popover_fg": "#ccd0dc",
+      "sidebar": "#161921",
+      "sidebar_fg": "#9096a7",
+      "headerbar": "#101218",
+      "headerbar_fg": "#616570"
+    }
+  }
+}

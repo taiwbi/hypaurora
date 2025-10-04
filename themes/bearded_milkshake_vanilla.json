@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Milkshake Vanilla",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#ece7da",
+      "foreground": "#000000",
+      "cursor": "#c08403",
+      "cursor_text": "#937416",
+      "selection_bg": "#d1c49e",
+      "selection_fg": "#000000"
+    },
+    "palette": [
+      "#ece7da",
+      "#d12525",
+      "#008b17",
+      "#c08403",
+      "#0076c5",
+      "#c121a4",
+      "#008f8f",
+      "#000000",
+      "#c6b791",
+      "#f60000",
+      "#008b17",
+      "#c38500",
+      "#0076c5",
+      "#e200b9",
+      "#008f8f",
+      "#333333"
+    ],
+    "semantic": {
+      "accent": "#bfad77",
+      "accent_fg": "#000000",
+      "border": "#0076c5",
+      "success": "#008b17",
+      "warning": "#c08403",
+      "error": "#d12525"
+    },
+    "ui": {
+      "card": "#e6dfce",
+      "card_fg": "#000000",
+      "popover": "#efebe1",
+      "popover_fg": "#000000",
+      "sidebar": "#e6dfce",
+      "sidebar_fg": "#2f2e2b",
+      "headerbar": "#d5c9ac",
+      "headerbar_fg": "#5e5c57"
+    }
+  }
+}

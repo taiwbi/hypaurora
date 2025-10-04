@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Feat Will",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#14111f",
+      "foreground": "#bdb6d3",
+      "cursor": "#fce38a",
+      "cursor_text": "#b498f5",
+      "selection_bg": "#342c50",
+      "selection_fg": "#bdb6d3"
+    },
+    "palette": [
+      "#14111f",
+      "#f7775a",
+      "#5fee9b",
+      "#fce38a",
+      "#8ad0ff",
+      "#fda7f7",
+      "#44f8e9",
+      "#bdb6d3",
+      "#39325c",
+      "#ff7252",
+      "#4eff98",
+      "#ffe587",
+      "#8ad0ff",
+      "#ffa5f9",
+      "#3dffef",
+      "#f7f6f9"
+    ],
+    "semantic": {
+      "accent": "#64548a",
+      "accent_fg": "#fefeff",
+      "border": "#8ad0ff",
+      "success": "#5fee9b",
+      "warning": "#fce38a",
+      "error": "#f7775a"
+    },
+    "ui": {
+      "card": "#0d0a14",
+      "card_fg": "#bdb6d3",
+      "popover": "#231e36",
+      "popover_fg": "#bdb6d3",
+      "sidebar": "#0d0a14",
+      "sidebar_fg": "#9c97b4",
+      "headerbar": "#06050a",
+      "headerbar_fg": "#575367"
+    }
+  }
+}

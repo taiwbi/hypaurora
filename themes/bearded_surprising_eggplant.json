@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Surprising Eggplant",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1d1426",
+      "foreground": "#d0c1de",
+      "cursor": "#d24e4e",
+      "cursor_text": "#d24e4e",
+      "selection_bg": "#532532",
+      "selection_fg": "#d0c1de"
+    },
+    "palette": [
+      "#1d1426",
+      "#E35535",
+      "#a9dc76",
+      "#d24e4e",
+      "#00B3BD",
+      "#c47cbf",
+      "#d24e4e",
+      "#d0c1de",
+      "#4d3565",
+      "#ff4319",
+      "#a9f65c",
+      "#f32d2d",
+      "#00b3bd",
+      "#e15fd8",
+      "#f32d2d",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#77313a",
+      "accent_fg": "#e9a7a7",
+      "border": "#00B3BD",
+      "success": "#a9dc76",
+      "warning": "#d24e4e",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#17101f",
+      "card_fg": "#d0c1de",
+      "popover": "#441f30",
+      "popover_fg": "#d0c1de",
+      "sidebar": "#17101f",
+      "sidebar_fg": "#9784aa",
+      "headerbar": "#100b15",
+      "headerbar_fg": "#64596f"
+    }
+  }
+}

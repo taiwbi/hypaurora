@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Solarized Dark",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#132c34",
+      "foreground": "#c3e0e9",
+      "cursor": "#e2ae10",
+      "cursor_text": "#47cfc4",
+      "selection_bg": "#225d5f",
+      "selection_fg": "#c3e0e9"
+    },
+    "palette": [
+      "#132c34",
+      "#f45645",
+      "#a5b82e",
+      "#e2ae10",
+      "#4db0f7",
+      "#df96d9",
+      "#26bbae",
+      "#c3e0e9",
+      "#2c677b",
+      "#ff4d3a",
+      "#bedb0c",
+      "#f2b600",
+      "#45b1ff",
+      "#f481ea",
+      "#04ddca",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#2d7d7c",
+      "accent_fg": "#a0e6e1",
+      "border": "#4db0f7",
+      "success": "#a5b82e",
+      "warning": "#e2ae10",
+      "error": "#f45645"
+    },
+    "ui": {
+      "card": "#10252c",
+      "card_fg": "#c3e0e9",
+      "popover": "#1a3c47",
+      "popover_fg": "#c3e0e9",
+      "sidebar": "#10252c",
+      "sidebar_fg": "#82acb9",
+      "headerbar": "#0c1c21",
+      "headerbar_fg": "#59747c"
+    }
+  }
+}

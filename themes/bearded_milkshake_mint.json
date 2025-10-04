@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Milkshake Mint",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#edf3ee",
+      "foreground": "#000000",
+      "cursor": "#c08403",
+      "cursor_text": "#2a9b7d",
+      "selection_bg": "#b2d8cb",
+      "selection_fg": "#000000"
+    },
+    "palette": [
+      "#edf3ee",
+      "#d12525",
+      "#008b17",
+      "#c08403",
+      "#0076c5",
+      "#c121a4",
+      "#008f8f",
+      "#000000",
+      "#aac6b1",
+      "#f60000",
+      "#008b17",
+      "#c38500",
+      "#0076c5",
+      "#e200b9",
+      "#008f8f",
+      "#333333"
+    ],
+    "semantic": {
+      "accent": "#8bc6b5",
+      "accent_fg": "#000000",
+      "border": "#0076c5",
+      "success": "#008b17",
+      "warning": "#c08403",
+      "error": "#d12525"
+    },
+    "ui": {
+      "card": "#e2ece4",
+      "card_fg": "#000000",
+      "popover": "#f3f7f4",
+      "popover_fg": "#000000",
+      "sidebar": "#e2ece4",
+      "sidebar_fg": "#2f302f",
+      "headerbar": "#c3d8c7",
+      "headerbar_fg": "#5e615f"
+    }
+  }
+}

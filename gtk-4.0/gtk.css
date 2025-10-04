@@ -1,4 +1,4 @@
-@import "./themes/beardedbear/bearded_monokai_stone.css";
+@import "./themes/hypaurora.css";
 @import "./tweaks/sidebar.css";
 
 @define-color popover_bg_color alpha(#363941, 0.56);

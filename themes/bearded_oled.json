@@ -1,0 +1,51 @@
+{
+  "name": "Bearded OLED",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#000000",
+      "foreground": "#b3b3b3",
+      "cursor": "#E0CF77",
+      "cursor_text": "#688eff",
+      "selection_bg": "#1f2a4d",
+      "selection_fg": "#b3b3b3"
+    },
+    "palette": [
+      "#000000",
+      "#E87474",
+      "#5CD4C3",
+      "#E0CF77",
+      "#63BBE5",
+      "#E48CC5",
+      "#6AD3CD",
+      "#b3b3b3",
+      "#333333",
+      "#ff5d5d",
+      "#3df3d9",
+      "#f9e05e",
+      "#49c4ff",
+      "#f977cb",
+      "#4df0e7",
+      "#e6e6e6"
+    ],
+    "semantic": {
+      "accent": "#344780",
+      "accent_fg": "#d8e2ff",
+      "border": "#63BBE5",
+      "success": "#5CD4C3",
+      "warning": "#E0CF77",
+      "error": "#E87474"
+    },
+    "ui": {
+      "card": "#000000",
+      "card_fg": "#b3b3b3",
+      "popover": "#151515",
+      "popover_fg": "#b3b3b3",
+      "sidebar": "#000000",
+      "sidebar_fg": "#7a7a7a",
+      "headerbar": "#000000",
+      "headerbar_fg": "#474747"
+    }
+  }
+}

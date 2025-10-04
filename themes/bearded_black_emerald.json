@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Black Emerald",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#111418",
+      "foreground": "#c3c6cb",
+      "cursor": "#c7910c",
+      "cursor_text": "#38c7bd",
+      "selection_bg": "#1a4041",
+      "selection_fg": "#c3c6cb"
+    },
+    "palette": [
+      "#111418",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c3c6cb",
+      "#11B7D4",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c3c6cb"
+    ],
+    "semantic": {
+      "accent": "#226663",
+      "accent_fg": "#c3c6cb",
+      "border": "#11B7D4",
+      "success": "#00a884",
+      "warning": "#c7910c",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#0c0f11",
+      "card_fg": "#38c7bd",
+      "popover": "#1c2027",
+      "popover_fg": "#c3c6cb",
+      "sidebar": "#0c0f11",
+      "sidebar_fg": "#898e94",
+      "headerbar": "#0c0f11",
+      "headerbar_fg": "#8a9eb7"
+    }
+  }
+}

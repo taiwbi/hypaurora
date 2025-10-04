@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Milkshake Blueberry",
+  "author": "BeardedBear",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#dad9eb",
+      "foreground": "#07060c",
+      "cursor": "#c08403",
+      "cursor_text": "#422eb0",
+      "selection_bg": "#aca5d9",
+      "selection_fg": "#07060c"
+    },
+    "palette": [
+      "#dad9eb",
+      "#d12525",
+      "#008b17",
+      "#c08403",
+      "#0076c5",
+      "#c121a4",
+      "#008f8f",
+      "#07060c",
+      "#9390c5",
+      "#f60000",
+      "#008b17",
+      "#c38500",
+      "#0076c5",
+      "#e200b9",
+      "#008f8f",
+      "#2f2850"
+    ],
+    "semantic": {
+      "accent": "#8d83cd",
+      "accent_fg": "#000000",
+      "border": "#0076c5",
+      "success": "#008b17",
+      "warning": "#c08403",
+      "error": "#d12525"
+    },
+    "ui": {
+      "card": "#cfcde5",
+      "card_fg": "#07060c",
+      "popover": "#e1e0ef",
+      "popover_fg": "#07060c",
+      "sidebar": "#cfcde5",
+      "sidebar_fg": "#2b2b2e",
+      "headerbar": "#afabd4",
+      "headerbar_fg": "#5b5a65"
+    }
+  }
+}

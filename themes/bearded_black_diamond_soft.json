@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Black Diamond Soft",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#161d26",
+      "foreground": "#c9d0d8",
+      "cursor": "#c7910c",
+      "cursor_text": "#11B7D4",
+      "selection_bg": "#144351",
+      "selection_fg": "#c9d0d8"
+    },
+    "palette": [
+      "#161d26",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c9d0d8",
+      "#11B7D4",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c9d0d8"
+    ],
+    "semantic": {
+      "accent": "#136375",
+      "accent_fg": "#c9d0d8",
+      "border": "#11B7D4",
+      "success": "#00a884",
+      "warning": "#c7910c",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#12181f",
+      "card_fg": "#11B7D4",
+      "popover": "#1f2936",
+      "popover_fg": "#c9d0d8",
+      "sidebar": "#12181f",
+      "sidebar_fg": "#8d97a3",
+      "headerbar": "#12181f",
+      "headerbar_fg": "#8ea7c7"
+    }
+  }
+}

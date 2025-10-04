@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Black Ruby Soft",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#281a21",
+      "foreground": "#d8cfd3",
+      "cursor": "#c7910c",
+      "cursor_text": "#c62f52",
+      "selection_bg": "#4f1f2d",
+      "selection_fg": "#d8cfd3"
+    },
+    "palette": [
+      "#281a21",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#d8cfd3",
+      "#11B7D4",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#d8cfd3"
+    ],
+    "semantic": {
+      "accent": "#702337",
+      "accent_fg": "#d8cfd3",
+      "border": "#11B7D4",
+      "success": "#00a884",
+      "warning": "#c7910c",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#21161b",
+      "card_fg": "#c62f52",
+      "popover": "#37242e",
+      "popover_fg": "#d8cfd3",
+      "sidebar": "#21161b",
+      "sidebar_fg": "#a3939b",
+      "headerbar": "#21161b",
+      "headerbar_fg": "#c496ad"
+    }
+  }
+}

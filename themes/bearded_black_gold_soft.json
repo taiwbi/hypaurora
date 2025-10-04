@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Black Gold Soft",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#221f1d",
+      "foreground": "#d2d2d2",
+      "cursor": "#c7910c",
+      "cursor_text": "#c7910c",
+      "selection_bg": "#4b3b18",
+      "selection_fg": "#d2d2d2"
+    },
+    "palette": [
+      "#221f1d",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#d2d2d2",
+      "#11B7D4",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#d2d2d2"
+    ],
+    "semantic": {
+      "accent": "#6d5315",
+      "accent_fg": "#d2d2d2",
+      "border": "#11B7D4",
+      "success": "#00a884",
+      "warning": "#c7910c",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#1c1918",
+      "card_fg": "#c7910c",
+      "popover": "#302c29",
+      "popover_fg": "#d2d2d2",
+      "sidebar": "#1c1918",
+      "sidebar_fg": "#9a9999",
+      "headerbar": "#1c1918",
+      "headerbar_fg": "#b8a99f"
+    }
+  }
+}

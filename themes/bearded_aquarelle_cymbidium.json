@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Aquarelle Cymbidium",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#2c252a",
+      "foreground": "#ded8dc",
+      "cursor": "#f3e1ac",
+      "cursor_text": "#da6e6c",
+      "selection_bg": "#603b3d",
+      "selection_fg": "#ded8dc"
+    },
+    "palette": [
+      "#2c252a",
+      "#e87a70",
+      "#aada77",
+      "#f3e1ac",
+      "#73bee9",
+      "#edc1ea",
+      "#a9edd9",
+      "#ded8dc",
+      "#61505c",
+      "#ff6759",
+      "#abf45d",
+      "#ffe7a0",
+      "#5dc4ff",
+      "#f9b5f4",
+      "#99fddf",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#83494b",
+      "accent_fg": "#f1c6c6",
+      "border": "#73bee9",
+      "success": "#aada77",
+      "warning": "#f3e1ac",
+      "error": "#e87a70"
+    },
+    "ui": {
+      "card": "#262024",
+      "card_fg": "#ded8dc",
+      "popover": "#3a3137",
+      "popover_fg": "#ded8dc",
+      "sidebar": "#262024",
+      "sidebar_fg": "#a79ea5",
+      "headerbar": "#1e191c",
+      "headerbar_fg": "#736c71"
+    }
+  }
+}

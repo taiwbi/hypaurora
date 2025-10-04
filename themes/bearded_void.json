@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Void",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#171322",
+      "foreground": "#c7bfdb",
+      "cursor": "#585785",
+      "cursor_text": "#7A63ED",
+      "selection_bg": "#342b5f",
+      "selection_fg": "#c7bfdb"
+    },
+    "palette": [
+      "#171322",
+      "#C13838",
+      "#14b871",
+      "#585785",
+      "#04c4d9",
+      "#A8547A",
+      "#89C4FF",
+      "#c7bfdb",
+      "#43365f",
+      "#e61313",
+      "#00cc74",
+      "#3836a6",
+      "#00c7dd",
+      "#ce2e76",
+      "#89c4ff",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#483b87",
+      "accent_fg": "#d0c8f9",
+      "border": "#04c4d9",
+      "success": "#14b871",
+      "warning": "#585785",
+      "error": "#C13838"
+    },
+    "ui": {
+      "card": "#120f1b",
+      "card_fg": "#c7bfdb",
+      "popover": "#221c32",
+      "popover_fg": "#c7bfdb",
+      "sidebar": "#120f1b",
+      "sidebar_fg": "#8c83a6",
+      "headerbar": "#0b0a11",
+      "headerbar_fg": "#5d576c"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Bearded HC Minuit",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1C1827",
+      "foreground": "#cdc8dc",
+      "cursor": "#dbc2a3",
+      "cursor_text": "#ecc48c",
+      "selection_bg": "#5a4b45",
+      "selection_fg": "#cdc8dc"
+    },
+    "palette": [
+      "#1C1827",
+      "#fb7a6c",
+      "#74be7d",
+      "#dbc2a3",
+      "#4fc1e8",
+      "#d995c9",
+      "#17d7b4",
+      "#cdc8dc",
+      "#463d62",
+      "#ff7768",
+      "#55dd66",
+      "#eec490",
+      "#38ccff",
+      "#ef7fd4",
+      "#00eec3",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#846e59",
+      "accent_fg": "#fcf5ec",
+      "border": "#4fc1e8",
+      "success": "#74be7d",
+      "warning": "#dbc2a3",
+      "error": "#fb7a6c"
+    },
+    "ui": {
+      "card": "#171420",
+      "card_fg": "#cdc8dc",
+      "popover": "#635345",
+      "popover_fg": "#cdc8dc",
+      "sidebar": "#171420",
+      "sidebar_fg": "#938ba8",
+      "headerbar": "#100e17",
+      "headerbar_fg": "#625e6f"
+    }
+  }
+}

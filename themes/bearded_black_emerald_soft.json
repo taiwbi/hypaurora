@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Black Emerald Soft",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#162226",
+      "foreground": "#c9d4d8",
+      "cursor": "#c7910c",
+      "cursor_text": "#38c7bd",
+      "selection_bg": "#1e4b4b",
+      "selection_fg": "#c9d4d8"
+    },
+    "palette": [
+      "#162226",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c9d4d8",
+      "#11B7D4",
+      "#E35535",
+      "#00a884",
+      "#c7910c",
+      "#11B7D4",
+      "#d46ec0",
+      "#38c7bd",
+      "#c9d4d8"
+    ],
+    "semantic": {
+      "accent": "#256d6b",
+      "accent_fg": "#c9d4d8",
+      "border": "#11B7D4",
+      "success": "#00a884",
+      "warning": "#c7910c",
+      "error": "#E35535"
+    },
+    "ui": {
+      "card": "#121c1f",
+      "card_fg": "#38c7bd",
+      "popover": "#1f3036",
+      "popover_fg": "#c9d4d8",
+      "sidebar": "#121c1f",
+      "sidebar_fg": "#8d9ea3",
+      "headerbar": "#121c1f",
+      "headerbar_fg": "#8eb9c7"
+    }
+  }
+}

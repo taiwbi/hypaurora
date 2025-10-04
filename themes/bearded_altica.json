@@ -1,0 +1,51 @@
+{
+  "name": "Bearded Altica",
+  "author": "BeardedBear",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#0f1c21",
+      "foreground": "#c2ced1",
+      "cursor": "#d6ac63",
+      "cursor_text": "#0187a6",
+      "selection_bg": "#0a3c49",
+      "selection_fg": "#c2ced1"
+    },
+    "palette": [
+      "#0f1c21",
+      "#C13838",
+      "#14b871",
+      "#d6ac63",
+      "#04c4d9",
+      "#A8547A",
+      "#0187a6",
+      "#c2ced1",
+      "#305464",
+      "#e61313",
+      "#00cc74",
+      "#f4b445",
+      "#00c7dd",
+      "#ce2e76",
+      "#0088a7",
+      "#fcfdfd"
+    ],
+    "semantic": {
+      "accent": "#075163",
+      "accent_fg": "#1ad3fe",
+      "border": "#04c4d9",
+      "success": "#14b871",
+      "warning": "#d6ac63",
+      "error": "#C13838"
+    },
+    "ui": {
+      "card": "#0e171c",
+      "card_fg": "#c2ced1",
+      "popover": "#15262e",
+      "popover_fg": "#c2ced1",
+      "sidebar": "#0e171c",
+      "sidebar_fg": "#829094",
+      "headerbar": "#090f12",
+      "headerbar_fg": "#566367"
+    }
+  }
+}
