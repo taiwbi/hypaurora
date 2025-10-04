@@ -2,13 +2,15 @@
 .wifi-list-container {
   padding: 15px;
   border-radius: 20px;
-  color: #f1f1f1;
-  border: 2px solid $border-color-popup;
+  color: $fg-popover;
+  background-color: $bg-popover;
+  border: 2px solid $border-popup;
 }
 
 .wifi-entry {
   padding: 8px 8px;
   border-radius: 12px;
+  color: $fg-popover;
 }
 
 .wifi-ssid.active {
@@ -18,12 +20,15 @@
 
 /* --- Power Window --- */
 .power-window-container {
-  border: 2px solid $border-color-popup;
+  border: 2px solid $border-popup;
+  background-color: $bg-popover;
+  color: $fg-popover;
 }
 
 .power-buttons-container button {
   padding: 8px 8px;
   margin-top: 10px;
+  color: $fg-popover;
 }
 
 .power-profiles-container {
@@ -37,25 +42,27 @@
 }
 
 .power-profiles-container button:not(.active):not(:hover) {
-  color: #f1f1f1;
+  color: $fg-popover;
 }
 
 /* --- Date Window --- */
 .date-window-container {
-  border: 2px solid $border-color-popup;
+  border: 2px solid $border-popup;
   padding: 15px 25px;
-  color: #f1f1f1;
+  color: $fg-popover;
+  background-color: $bg-popover;
 }
 
 .persian-date {
   font-family: "Vazirmatn FD";
   font-size: 14px;
-  color: #a0a0a0;
+  color: $fg-sidebar;
 }
 
 /* --- Wi-Fi Password Prompt --- */
 .password-window {
-  color: #f1f1f1;
+  color: $fg-popover;
+  background-color: $bg-popover;
   padding: 25px;
   border-radius: 20px;
 }
@@ -67,14 +74,15 @@
 }
 
 .password-input {
-  background-color: transparentize($color: $background-color, $amount: 0.3);
+  background-color: transparentize($color: $bg-base, $amount: 0.3);
   border-radius: 10px;
   padding: 10px;
   min-width: 300px;
+  color: $fg-base;
 }
 
 .password-input:focus {
-  border: 2px solid $border-color-popup;
+  border: 2px solid $border-popup;
 }
 
 .password-buttons {
@@ -85,22 +93,23 @@
   padding: 8px 16px;
   border-radius: 10px;
   font-weight: bold;
+  color: $fg-popover;
 }
 
 .password-button.cancel {
-  background-color: transparentize($color: $background-color, $amount: 0.3);
+  background-color: transparentize($color: $bg-base, $amount: 0.3);
 }
 
 .password-button.cancel:hover {
   background-color: transparentize(
-    $color: $background-hover-color,
+    $color: $bg-hover,
     $amount: 0.3
   );
 }
 
 .password-button.connect {
   background-color: transparentize($color: $accent-color, $amount: 0.3);
-  color: $background-color;
+  color: $fg-base;
 }
 
 .password-button.connect:hover {

@@ -1,14 +1,15 @@
 /* --- OSD --- */
 .osd-container {
   padding: 10px 20px;
-  background-color: transparentize($color: $background-color, $amount: 0.5);
-  border: 2px solid $border-color-osd;
+  background-color: transparentize($color: $bg-base, $amount: 0.5);
+  border: 2px solid $border-osd;
   border-radius: 16px;
+  color: $fg-base;
 }
 
 .osd-slider trough {
   all: unset;
-  background-color: $background-hover-color;
+  background-color: $bg-hover;
   border-radius: 10px;
   min-height: 10px;
   min-width: 200px;
@@ -16,7 +17,7 @@
 
 .osd-slider highlight {
   all: unset;
-  background-color: $slider-color;
+  background-color: $accent-slider;
   border-radius: 10px;
   transition: all 0.3s ease;
 }

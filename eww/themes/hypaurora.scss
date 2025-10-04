@@ -1,10 +1,21 @@
-$background-color: #2A2D33;
-$background-active-color: #a9f65c;
-$background-active-color-fg: #2A2D33;
-$background-hover-color: #555b68;
-$border-color: #78dce8;
-$border-color-popup: #78e8c6;
-$border-color-osd: #e991e3;
-$accent-color: #62676c;
-$logo-color: #78e8c6;
-$slider-color: #ffd866;
+// Background colors
+$bg-base: #2A2D33;          // Base background from theme
+$bg-popover: #363941;       // Popover background from theme
+$bg-active: #a9f65c;        // Active/highlighted background
+$bg-hover: #555b68;         // Hover state background
+
+// Foreground/text colors
+$fg-base: #dee0e4;          // Base foreground text
+$fg-popover: #dee0e4;       // Popover text from theme
+$fg-sidebar: #a4a7ad;       // Sidebar text from theme
+$fg-active: #2A2D33;        // Text on active background
+
+// Border colors
+$border-base: #78dce8;      // Main border color
+$border-popup: #78e8c6;     // Popup window borders
+$border-osd: #e991e3;       // On-screen display borders
+
+// Accent and functional colors
+$accent-color: #62676c;     // General accent color
+$accent-logo: #78e8c6;      // Logo/brand color
+$accent-slider: #ffd866;    // Slider/progress color

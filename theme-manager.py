@@ -288,18 +288,31 @@ class ThemeManager:
         colors = theme["colors"]
         palette = colors["palette"]
         semantic = colors["semantic"]
+        ui = colors["ui"]
+        base = colors["base"]
         
         lines = [
-            f"$background-color: {colors['base']['background']};",
-            f"$background-active-color: {palette[10]};",
-            f"$background-active-color-fg: {colors['base']['background']};",
-            f"$background-hover-color: {palette[8]};",
-            f"$border-color: {palette[4]};",
-            f"$border-color-popup: {palette[6]};",
-            f"$border-color-osd: {palette[5]};",
-            f"$accent-color: {semantic['accent']};",
-            f"$logo-color: {palette[6]};",
-            f"$slider-color: {palette[3]};",
+            "// Background colors",
+            f"$bg-base: {base['background']};          // Base background from theme",
+            f"$bg-popover: {ui['popover']};       // Popover background from theme",
+            f"$bg-active: {palette[10]};        // Active/highlighted background",
+            f"$bg-hover: {palette[8]};         // Hover state background",
+            "",
+            "// Foreground/text colors",
+            f"$fg-base: {base['foreground']};          // Base foreground text",
+            f"$fg-popover: {ui['popover_fg']};       // Popover text from theme",
+            f"$fg-sidebar: {ui['sidebar_fg']};       // Sidebar text from theme",
+            f"$fg-active: {base['background']};        // Text on active background",
+            "",
+            "// Border colors",
+            f"$border-base: {semantic['border']};      // Main border color",
+            f"$border-popup: {palette[6]};     // Popup window borders",
+            f"$border-osd: {palette[5]};       // On-screen display borders",
+            "",
+            "// Accent and functional colors",
+            f"$accent-color: {semantic['accent']};     // General accent color",
+            f"$accent-logo: {palette[6]};      // Logo/brand color",
+            f"$accent-slider: {semantic['warning']};    // Slider/progress color",
         ]
         
         return "\n".join(lines)
@@ -318,6 +331,35 @@ class ThemeManager:
             "groupbar_active": f"rgb({palette[1][1:]})",
             "groupbar_inactive": f"rgba({palette[0][1:]}80)",
         }
+    
+    def update_svg_colors(self, theme: Dict[str, Any], dry_run: bool = False):
+        """Update fill colors in SVG icon files."""
+        colors = theme["colors"]
+        fg_color = colors["base"]["foreground"]  # Use base foreground as default icon color
+        
+        # Find all SVG files in the eww icons directory
+        icons_dir = self.base_dir / "eww/icons"
+        if not icons_dir.exists():
+            print(f"  ⚠ Icons directory not found: {icons_dir}")
+            return
+        
+        svg_files = list(icons_dir.glob("*.svg"))
+        
+        for svg_file in svg_files:
+            with open(svg_file, 'r') as f:
+                content = f.read()
+            
+            import re
+            updated_content = re.sub(
+                r'fill="#[A-Fa-f0-9]{3,6}"',
+                f'fill="{fg_color}"',
+                content
+            )
+            
+            if updated_content != content:
+                if not dry_run:
+                    with open(svg_file, 'w') as f:
+                        f.write(updated_content)
     
     def apply_hyprland_theme(self, theme: Dict[str, Any], dry_run: bool = False):
         """Update Hyprland colors directly in look.conf."""
@@ -417,6 +459,13 @@ class ThemeManager:
         else:
             self.apply_hyprland_theme(theme, dry_run)
             print(f"  ✓ Updated Hyprland: hypr/hyprland/look.conf")
+        
+        # Update SVG icon colors
+        if dry_run:
+            print(f"  [DRY RUN] Would update SVG icon colors")
+        else:
+            self.update_svg_colors(theme, dry_run)
+            print(f"  ✓ Updated SVG icon colors in eww/icons/")
         
         if not dry_run:
             # Save current theme to config

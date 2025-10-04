@@ -4,6 +4,7 @@
 * {
   all: unset;
   font-family: "Geist";
+  color: $fg-base;
 }
 
 .background.bg_widget {
@@ -13,12 +14,12 @@
 .vertical-bar {
   border-radius: 10px;
   padding: 5px;
-  background-color: transparentize($color: $background-color, $amount: 0.3);
-  border: 2.5px solid $border-color;
+  background-color: transparentize($color: $bg-base, $amount: 0.3);
+  border: 2.5px solid $border-base;
 }
 
 .widget-container {
-  background-color: transparentize($color: $background-color, $amount: 0.5);
+  background-color: transparentize($color: $bg-base, $amount: 0.5);
   border-radius: 20px;
   padding: 20px;
 }
@@ -26,17 +27,18 @@
 .logo {
   font-family: "Symbols Nerd Font";
   font-size: 20px;
-  color: $logo-color;
+  color: $accent-logo;
   margin: 10px 0;
 }
 
 button {
   border-radius: 8px;
   transition: all 0.4s ease;
+  color: $fg-base;
 }
 
 button:hover {
-  background-color: transparentize($background-hover-color, 0.5);
+  background-color: transparentize($bg-hover, 0.5);
 }
 
 /* --- System Stats in Vertical Bar --- */
@@ -68,15 +70,16 @@ box > label.workspace-entry {
   margin: 2px 1px;
   border-radius: 10px;
   border: 1px solid transparent;
+  color: $fg-base;
 }
 
 box > label.workspace-entry.current {
-  background-color: $background-active-color;
-  color: $background-active-color-fg;
+  background-color: $bg-active;
+  color: $fg-active;
 }
 
 box.occupied > label.workspace-entry:not(.current) {
-  border: 1px solid $background-active-color;
+  border: 1px solid $bg-active;
 }
 
 /* Style for active shuffle/repeat buttons */
