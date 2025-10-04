@@ -1,0 +1,51 @@
+{
+  "name": "Catppuccin Latte",
+  "author": "Catppuccin",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#eff1f5",
+      "foreground": "#4c4f69",
+      "cursor": "#dc8a78",
+      "cursor_text": "#eff1f5",
+      "selection_bg": "#bcc0cc",
+      "selection_fg": "#4c4f69"
+    },
+    "palette": [
+      "#ccd0da",
+      "#d20f39",
+      "#40a02b",
+      "#df8e1d",
+      "#1e66f5",
+      "#8839ef",
+      "#179299",
+      "#5c5f77",
+      "#bcc0cc",
+      "#e64553",
+      "#40a02b",
+      "#fe640b",
+      "#1e66f5",
+      "#8839ef",
+      "#179299",
+      "#4c4f69"
+    ],
+    "semantic": {
+      "accent": "#8839ef",
+      "accent_fg": "#4c4f69",
+      "border": "#9ca0b0",
+      "success": "#40a02b",
+      "warning": "#fe640b",
+      "error": "#d20f39"
+    },
+    "ui": {
+      "card": "#e6e9ef",
+      "card_fg": "#8c8fa1",
+      "popover": "#bcc0cc",
+      "popover_fg": "#8c8fa1",
+      "sidebar": "#e6e9ef",
+      "sidebar_fg": "#6c6f85",
+      "headerbar": "#dce0e8",
+      "headerbar_fg": "#5c5f77"
+    }
+  }
+}

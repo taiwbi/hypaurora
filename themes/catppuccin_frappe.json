@@ -1,0 +1,51 @@
+{
+  "name": "Catppuccin Frappé",
+  "author": "Catppuccin",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#303446",
+      "foreground": "#c6d0f5",
+      "cursor": "#f2d5cf",
+      "cursor_text": "#303446",
+      "selection_bg": "#414559",
+      "selection_fg": "#c6d0f5"
+    },
+    "palette": [
+      "#51576d",
+      "#e78284",
+      "#a6d189",
+      "#e5c890",
+      "#8caaee",
+      "#ca9ee6",
+      "#81c8be",
+      "#b5bfe2",
+      "#626880",
+      "#eebebe",
+      "#a6d189",
+      "#e5c890",
+      "#8caaee",
+      "#ca9ee6",
+      "#81c8be",
+      "#c6d0f5"
+    ],
+    "semantic": {
+      "accent": "#ca9ee6",
+      "accent_fg": "#c6d0f5",
+      "border": "#737994",
+      "success": "#a6d189",
+      "warning": "#ef9f76",
+      "error": "#e78284"
+    },
+    "ui": {
+      "card": "#414559",
+      "card_fg": "#b5bfe2",
+      "popover": "#51576d",
+      "popover_fg": "#b5bfe2",
+      "sidebar": "#414559",
+      "sidebar_fg": "#838ba7",
+      "headerbar": "#232634",
+      "headerbar_fg": "#737994"
+    }
+  }
+}

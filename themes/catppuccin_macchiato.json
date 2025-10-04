@@ -1,0 +1,51 @@
+{
+  "name": "Catppuccin Macchiato",
+  "author": "Catppuccin",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#24273a",
+      "foreground": "#cad3f5",
+      "cursor": "#f4dbd6",
+      "cursor_text": "#24273a",
+      "selection_bg": "#363a4f",
+      "selection_fg": "#cad3f5"
+    },
+    "palette": [
+      "#494d64",
+      "#ed8796",
+      "#a6da95",
+      "#eed49f",
+      "#8aadf4",
+      "#c6a0f6",
+      "#8bd5ca",
+      "#b8c0e0",
+      "#5b6078",
+      "#f0c6c6",
+      "#a6da95",
+      "#eed49f",
+      "#8aadf4",
+      "#c6a0f6",
+      "#8bd5ca",
+      "#cad3f5"
+    ],
+    "semantic": {
+      "accent": "#c6a0f6",
+      "accent_fg": "#cad3f5",
+      "border": "#6e738d",
+      "success": "#a6da95",
+      "warning": "#f5a97f",
+      "error": "#ed8796"
+    },
+    "ui": {
+      "card": "#363a4f",
+      "card_fg": "#b8c0e0",
+      "popover": "#494d64",
+      "popover_fg": "#b8c0e0",
+      "sidebar": "#363a4f",
+      "sidebar_fg": "#8087a2",
+      "headerbar": "#181926",
+      "headerbar_fg": "#6e738d"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Catppuccin Mocha",
+  "author": "Catppuccin",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1e1e2e",
+      "foreground": "#cdd6f4",
+      "cursor": "#f5e0dc",
+      "cursor_text": "#1e1e2e",
+      "selection_bg": "#313244",
+      "selection_fg": "#cdd6f4"
+    },
+    "palette": [
+      "#45475a",
+      "#f38ba8",
+      "#a6e3a1",
+      "#f9e2af",
+      "#89b4fa",
+      "#cba6f7",
+      "#94e2d5",
+      "#bac2de",
+      "#585b70",
+      "#f2cdcd",
+      "#a6e3a1",
+      "#f9e2af",
+      "#89b4fa",
+      "#cba6f7",
+      "#94e2d5",
+      "#cdd6f4"
+    ],
+    "semantic": {
+      "accent": "#cba6f7",
+      "accent_fg": "#cdd6f4",
+      "border": "#6c7086",
+      "success": "#a6e3a1",
+      "warning": "#fab387",
+      "error": "#f38ba8"
+    },
+    "ui": {
+      "card": "#313244",
+      "card_fg": "#bac2de",
+      "popover": "#45475a",
+      "popover_fg": "#bac2de",
+      "sidebar": "#313244",
+      "sidebar_fg": "#7f849c",
+      "headerbar": "#11111b",
+      "headerbar_fg": "#6c7086"
+    }
+  }
+}
