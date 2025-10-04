@@ -136,21 +136,6 @@ class ThemeManager:
             f"@define-color sidebar_bg_color {ui['sidebar']};",
             f"@define-color sidebar_fg_color {ui['sidebar_fg']};",
             "",
-            "/* Target the specific row in the sidebar that's selected */",
-            ".navigation-sidebar row:selected {",
-            f"    background-color: {semantic['accent']};",
-            f"    color: {semantic['accent_fg']};",
-            "}",
-            "",
-            "/* Target the label in the selected row */",
-            ".navigation-sidebar row:selected .sidebar-label {",
-            f"    color: {semantic['accent_fg']};",
-            "}",
-            "",
-            "/* Hover effect for non-selected rows */",
-            ".navigation-sidebar row:hover:not(:selected) {",
-            f"    background-color: {semantic['accent']}33;",
-            "}",
         ]
         
         return "\n".join(lines)

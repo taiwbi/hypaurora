@@ -29,19 +29,3 @@
 @define-color sidebar_backdrop_color #25282d;
 @define-color sidebar_bg_color #25282d;
 @define-color sidebar_fg_color #a4a7ad;
-
-/* Target the specific row in the sidebar that's selected */
-.navigation-sidebar row:selected {
-    background-color: #62676c;
-    color: #d6d9db;
-}
-
-/* Target the label in the selected row */
-.navigation-sidebar row:selected .sidebar-label {
-    color: #d6d9db;
-}
-
-/* Hover effect for non-selected rows */
-.navigation-sidebar row:hover:not(:selected) {
-    background-color: #62676c33;
-}
