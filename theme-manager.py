@@ -417,6 +417,37 @@ class ThemeManager:
             with open(look_conf, 'w') as f:
                 f.write(content)
     
+    def update_gtk_main_css(self, theme: Dict[str, Any], dry_run: bool = False):
+        """Update the main gtk.css file to use the theme's popover color with alpha."""
+        import re
+        
+        gtk_css_file = self.base_dir / "gtk-4.0/gtk.css"
+        colors = theme["colors"]
+        popover_color = colors["ui"]["popover"]
+        
+        if not gtk_css_file.exists():
+            print(f"  ⚠ Main GTK CSS file not found: {gtk_css_file}")
+            return
+        
+        with open(gtk_css_file, 'r') as f:
+            content = f.read()
+        
+        # Replace the popover_bg_color line with the new color and alpha
+        new_line = f'@define-color popover_bg_color alpha({popover_color}, 0.6);'
+        updated_content = re.sub(
+            r'@define-color popover_bg_color alpha\([^)]+\);',
+            new_line,
+            content
+        )
+        
+        if updated_content != content:
+            if not dry_run:
+                with open(gtk_css_file, 'w') as f:
+                    f.write(updated_content)
+            print(f"  ✓ Updated main GTK CSS: {gtk_css_file}")
+        else:
+            print(f"  ! No changes needed in main GTK CSS: {gtk_css_file}")
+
     def apply_theme(self, theme_name: str, dry_run: bool = False):
         """Apply theme across all applications."""
         theme = self.load_theme(theme_name)
@@ -459,6 +490,12 @@ class ThemeManager:
         else:
             self.apply_hyprland_theme(theme, dry_run)
             print(f"  ✓ Updated Hyprland: hypr/hyprland/look.conf")
+        
+        # Update main GTK CSS file to use theme's popover color with alpha
+        if dry_run:
+            print(f"  [DRY RUN] Would update main GTK CSS: gtk-4.0/gtk.css")
+        else:
+            self.update_gtk_main_css(theme, dry_run=False)
         
         # Update SVG icon colors
         if dry_run:
