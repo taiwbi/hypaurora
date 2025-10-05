@@ -62,6 +62,11 @@ mkdir -p $HOME/.local/binary/
 rm -rf "$HOME/.local/binary/polarify"
 ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 
+mkdir -p $HOME/.local/share/nautilus/
+
+rm -rf "$HOME/.local/share/nautilus/scripts"
+ln -sf "$PWD/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
+
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 
