@@ -63,13 +63,13 @@
     background = "#2A2D3380"   # $background-color with transparency
     foreground = "#eceff4"     # light text
     frame_color = "#78dce8"    # $border-color-popup
-    timeout = 5
+    timeout = 30
 
 [urgency_normal]
     background = "#2A2D3380"
     foreground = "#eceff4"
     frame_color = "#78dce8"    # $slider-color
-    timeout = 8
+    timeout = 45
 
 [urgency_critical]
     background = "#2A2D3380"
