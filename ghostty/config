@@ -5,9 +5,9 @@ font-family = "Geist Mono"
 font-family = "Vazir Code Hack"
 font-style="SemiBold"
 
-font-size = 12
+font-size = 14
 
-adjust-cell-height = 7
+adjust-cell-height = 13
 adjust-cell-width = 0
 
 # Appearance
@@ -15,7 +15,7 @@ window-width = 140
 window-height = 23
 window-padding-x = 0
 window-padding-y = 0
-background-opacity = 0.8
+background-opacity = 1
 
 mouse-hide-while-typing = true
 
