@@ -53,9 +53,9 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Su
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>8']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>9']"
 
-gsettings set org.gnome.desktop.wm.keybindings close "['<Super>q']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super>c']"
 
-gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>c']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>y']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 'true'
 gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
