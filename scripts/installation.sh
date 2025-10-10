@@ -62,7 +62,7 @@ sudo dnf install libva-nvidia-driver
 sudo dnf install dnf-plugins-core
 
 sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers
-sudo dnf install adw-gtk3-theme telegram-desktop celluloid gnome-tweaks
+sudo dnf install adw-gtk3-theme celluloid gnome-tweaks
 
 sudo dnf install php php-pecl-xdebug3 composer
 sudo dnf -y install dnf-plugins-core
@@ -79,7 +79,8 @@ sudo dnf install ghostty kitty-kitten
 
 # TODO: Install lazygit
 
-flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager re.sonny.Tangram io.github.seadve.Kooha com.github.finefindus.eyedropper io.bassi.Amberol com.brave.Browser
+flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager org.telegram.desktop \
+  com.github.finefindus.eyedropper io.bassi.Amberol com.brave.Browser
 
 # Install Rust
 sudo dnf install cargo rust rust-src rustfmt
