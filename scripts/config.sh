@@ -61,6 +61,9 @@ gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 'true'
 gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
 gsettings set org.gnome.mutter center-new-windows 'true'
 
+gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts '[]'
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>Escape']"
+
 # Inputs
 gsettings set org.gnome.desktop.peripherals.touchpad accel-profile 'flat'
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled 'true'
