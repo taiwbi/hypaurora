@@ -4,6 +4,8 @@
 * {
   all: unset;
   font-family: "Geist";
+  font-weight: 500;
+  font-size: 13px;
   color: $fg-base;
 }
 
@@ -21,7 +23,7 @@
 .widget-container {
   background-color: transparentize($color: $bg-base, $amount: 0.5);
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .logo {

@@ -1,6 +1,5 @@
 /* --- Wi-Fi List --- */
 .wifi-list-container {
-  padding: 15px;
   border-radius: 20px;
   color: $fg-popover;
   background-color: transparentize($bg-popover, 0.3);
@@ -53,7 +52,6 @@
 /* --- Date Window --- */
 .date-window-container {
   border: 2px solid $border-popup;
-  padding: 15px 25px;
   color: $fg-popover;
   background-color: transparentize($bg-popover, 0.3);
 }
@@ -121,7 +119,6 @@
 /* --- Sound Window --- */
 .sound-window {
   border: 2px solid $border-popup;
-  padding: 15px;
   color: $fg-popover;
   background-color: transparentize($bg-popover, 0.3);
 }
@@ -207,8 +204,7 @@
   color: $fg-sidebar;
   font-weight: 500;
 }
-
-.media-control-btn {
+f .media-control-btn {
   padding: 12px;
   border-radius: 14px;
   color: $fg-popover;
@@ -237,6 +233,7 @@
 .media-control-btn.active:hover {
   background-color: transparentize($accent-color, 0.4);
 }
+
 .media-additional-controls .media-control-btn {
   padding: 8px;
 }
