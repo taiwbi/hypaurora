@@ -95,7 +95,7 @@
     (box :class "media-controls-container" :orientation "v" :spacing 5
       :visible {media.status == "Playing" || media.status == "Paused"}
       (button :class "button media-button" :onclick "scripts/toggle-window media_window"
-        (icon :path "./icons/musical-note-ai.svg")
+        (icon :path "./icons/music.svg")
       )
     )
     
