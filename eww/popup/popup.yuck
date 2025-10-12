@@ -143,3 +143,73 @@
     )
   )
 )
+
+;; --- MEDIA WINDOW ---
+(defwindow media_window
+  :monitor 0
+  :geometry (geometry :x "18px" :y "18px" :width "320px" :anchor "bottom left")
+  :stacking "overlay"
+  :anchor "bottom left"
+  :wm-ignore true
+  (box :class "media-window widget-container" :orientation "v" :spacing 20 :space-evenly false
+    ;; Album Art & Info Section
+    (box :class "media-info-section" :orientation "v" :spacing 15 :space-evenly false
+      ;; Album Art (only show if artUrl exists and is not empty)
+      (box :class "media-art-container"
+        :visible {media.artUrl != "" && media.artUrl != jq(media, ".artUrl")}
+        (image :path {media.artUrl ?: ""}
+          :class "media-album-art"
+          :image-width 280
+          :image-height 280
+        )
+      )
+      
+      ;; Track Info
+      (box :class "media-track-info" :orientation "v" :spacing 4
+        (label :class "media-title"
+          :text {media.title ?: "No Media Playing"}
+          :limit-width 35
+          :wrap true
+        )
+        (label :class "media-artist"
+          :text {media.artist ?: ""}
+          :limit-width 35
+          :wrap true
+        )
+      )
+    )
+    
+    ;; Playback Controls
+    (box :class "media-controls-section" :orientation "v" :spacing 15 :space-evenly false
+      ;; Main Controls Row
+      (box :class "media-main-controls" :orientation "h" :spacing 8 :halign "center"
+        (button :class "media-control-btn"
+          :onclick "playerctl previous"
+          (icon :path "./icons/previous.svg")
+        )
+        (button :class "media-control-btn play-pause-btn"
+          :onclick "playerctl play-pause"
+          (icon :path {media.status == "Playing" ? "./icons/pause.svg" : "./icons/play.svg"})
+        )
+        (button :class "media-control-btn"
+          :onclick "playerctl next"
+          (icon :path "./icons/next.svg")
+        )
+      )
+      
+      ;; Additional Controls Row
+      (box :class "media-additional-controls" :orientation "h" :spacing 8 :halign "center"
+        (button :class "media-control-btn ${media.shuffle == true ? 'active' : ''}"
+          :onclick "playerctl shuffle toggle"
+          (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer-01.svg"})
+        )
+        (button :class "media-control-btn ${media.loop != 'None' ? 'active' : ''}"
+          :onclick "scripts/cycle-loop"
+          (icon :path {media.loop == "Track" ? "./icons/repeat-one.svg" :
+            media.loop == "Playlist" ? "./icons/repeat-music.svg" :
+          "./icons/arrow-right-04.svg"})
+        )
+      )
+    )
+  )
+)

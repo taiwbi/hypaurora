@@ -183,3 +183,60 @@
   border-radius: 8px;
   color: $fg-popover;
 }
+
+/* --- Media Window --- */
+.media-window {
+  border: 2px solid $border-popup;
+  color: $fg-popover;
+  background-color: transparentize($bg-popover, 0.3);
+  border-radius: 20px;
+}
+
+.media-art-container {
+  border-radius: 16px;
+}
+
+.media-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: $fg-base;
+}
+
+.media-artist {
+  font-size: 13px;
+  color: $fg-sidebar;
+  font-weight: 500;
+}
+
+.media-control-btn {
+  padding: 12px;
+  border-radius: 14px;
+  color: $fg-popover;
+  background-color: transparentize($bg-base, 0.5);
+  transition: all 0.2s ease;
+}
+
+.media-control-btn:hover {
+  background-color: transparentize($bg-hover, 0.3);
+}
+
+.media-control-btn.play-pause-btn {
+  padding: 14px;
+  background-color: transparentize($accent-color, 0.3);
+}
+
+.media-control-btn.play-pause-btn:hover {
+  background-color: transparentize($accent-color, 0.1);
+}
+
+.media-control-btn.active {
+  background-color: transparentize($accent-color, 0.6);
+  color: $fg-base;
+}
+
+.media-control-btn.active:hover {
+  background-color: transparentize($accent-color, 0.4);
+}
+.media-additional-controls .media-control-btn {
+  padding: 8px;
+}

@@ -91,26 +91,11 @@
       (workspaces)
     )
     
-    ;; Media player controls at the center
+    ;; Media player button
     (box :class "media-controls-container" :orientation "v" :spacing 5
-      (button :class "button media-button" :onclick "playerctl previous"
-        (icon :path "./icons/previous.svg")
-      )
-      (button :class "button media-button" :onclick "playerctl play-pause"
-        (icon :path {media.status == "Playing" ? "./icons/pause.svg" : "./icons/play.svg"})
-      )
-      (button :class "button media-button" :onclick "playerctl next"
-        (icon :path "./icons/next.svg")
-      )
-      (button :class "button media-button shuffle ${media.shuffle == true ? 'active' : ''}"
-        :onclick "playerctl shuffle toggle"
-        (icon :path {media.shuffle == true ? "./icons/shuffle.svg" : "./icons/arrow-transfer-01.svg"})
-      )
-      (button :class "button media-button repeat ${media.loop}"
-        :onclick "scripts/cycle-loop"
-        (icon :path {media.loop == "Track" ? "./icons/repeat-one.svg" :
-          media.loop == "Playlist" ? "./icons/repeat-music.svg" :
-        "./icons/arrow-right-04.svg"})
+      :visible {media.status == "Playing" || media.status == "Paused"}
+      (button :class "button media-button" :onclick "scripts/toggle-window media_window"
+        (icon :path "./icons/musical-note-ai.svg")
       )
     )
     

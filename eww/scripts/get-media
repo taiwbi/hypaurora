@@ -11,8 +11,13 @@ get_metadata() {
             shuffle_bool="false"
         fi
         
-        # Get other metadata and combine with shuffle status
-        playerctl metadata --format '{"title": "{{xesam:title}}","artist": "{{xesam:artist}}","status": "{{status}}","loop": "{{loop}}","shuffle": '"$shuffle_bool"'}'
+        # Get metadata
+        metadata_json=$(playerctl metadata --format '{"title": "{{xesam:title}}","artist": "{{xesam:artist}}","status": "{{status}}","loop": "{{loop}}","shuffle": '"$shuffle_bool"',"artUrl": "{{mpris:artUrl}}"}')
+
+        # Remove first occurrence of file:// from artUrl if present
+        metadata_json=$(echo "$metadata_json" | sed 's|"artUrl": "file://|"artUrl": "|')
+
+        echo "$metadata_json"
     else
         # Output an empty JSON object if no player is active
         echo '{}'

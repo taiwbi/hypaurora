@@ -14,6 +14,7 @@ window.background.wifi_list_window,
 window.background.power_window,
 window.background.date_window,
 window.background.sound_window,
+window.background.media_window,
 window.background.password_window {
   background: transparent;
   background-color: transparent;
