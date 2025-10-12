@@ -105,7 +105,7 @@
       )
       (button :class "button media-button repeat ${media.loop}"
         :onclick "scripts/cycle-loop"
-        (icon :path {media.loop == "Track" ? "./icons/repeate-one.svg" :
+        (icon :path {media.loop == "Track" ? "./icons/repeat-one.svg" :
           media.loop == "Playlist" ? "./icons/repeat-music.svg" :
         "./icons/arrow-right-04.svg"})
       )
