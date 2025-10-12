@@ -126,6 +126,40 @@
   background-color: transparentize($bg-popover, 0.3);
 }
 
+/* Volume Sliders Section */
+.volume-sliders-section {
+  padding: 10px 5px;
+}
+
+.volume-slider-container {
+  padding: 8px 12px;
+  border-radius: 14px;
+  background-color: transparentize($bg-base, 0.5);
+}
+
+.volume-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $fg-popover;
+}
+
+.volume-percentage {
+  font-size: 12px;
+  font-weight: bold;
+  color: $accent-color;
+  min-width: 40px;
+}
+
+.volume-slider scale trough highlight {
+  background: linear-gradient(
+    90deg,
+    $accent-color,
+    lighten($accent-color, 10%)
+  );
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
 .section-label {
   font-size: 14px;
   font-weight: bold;
@@ -147,11 +181,6 @@
 .volume-controls {
   padding-left: 20px;
   padding-right: 5px;
-}
-
-.volume-slider {
-  min-width: 150px;
-  margin-right: 10px;
 }
 
 .mute-button {

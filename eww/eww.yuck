@@ -7,6 +7,7 @@
 (deflisten power_profile :initial "balanced" "scripts/get-power-profile")
 (deflisten wifi :initial "Disconnected" "scripts/get-wifi --complete")
 (deflisten volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-volume")
+(deflisten input_volume :initial '{"status": "Unknown", "percentage": -1}' "scripts/get-input-volume")
 (deflisten brightness :initial '{"percentage": "Unknown"}' "scripts/get-brightness")
 (deflisten workspaces :initial "[]" "scripts/get-workspaces")
 (deflisten current_workspace :initial "1" "scripts/get-active-workspace")

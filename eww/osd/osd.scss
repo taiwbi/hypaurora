@@ -10,14 +10,14 @@
 .osd-slider trough {
   all: unset;
   background-color: $bg-hover;
-  border-radius: 10px;
-  min-height: 10px;
+  border-radius: 6px;
+  min-height: 15px;
   min-width: 200px;
 }
 
 .osd-slider highlight {
   all: unset;
   background-color: $accent-slider;
-  border-radius: 10px;
+  border-radius: 6px;
   transition: all 0.3s ease;
 }

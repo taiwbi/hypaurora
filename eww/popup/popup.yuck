@@ -84,7 +84,39 @@
   :stacking "overlay"
   :anchor "bottom left"
   :wm-ignore true
-  (box :class "sound-window widget-container" :orientation "v" :spacing 10
+  (box :class "sound-window widget-container" :orientation "v" :spacing 5
+    ;; Volume Sliders Section
+    (box :class "volume-sliders-section" :orientation "v" :spacing 12
+      ;; Output Volume Slider
+      (box :class "volume-slider-container" :orientation "v" :spacing 6
+        (box :orientation "h" :space-evenly false :spacing 8
+          (icon :path "./icons/volume-high.svg")
+          (label :text "Output Volume" :class "volume-label" :halign "start")
+          (label :text "${volume.percentage}%" :class "volume-percentage" :halign "end" :hexpand true)
+        )
+        (scale :class "osd-slider"
+          :value {volume.percentage}
+          :min 0
+          :max 101
+          :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+        )
+      )
+      ;; Input Volume Slider
+      (box :class "volume-slider-container" :orientation "v" :spacing 6
+        (box :orientation "h" :space-evenly false :spacing 8
+          (icon :path "./icons/microphone-2.svg")
+          (label :text "Input Volume" :class "volume-label" :halign "start")
+          (label :text "${input_volume.percentage}%" :class "volume-percentage" :halign "end" :hexpand true)
+        )
+        (scale :class "osd-slider"
+          :value {input_volume.percentage}
+          :min 0
+          :max 101
+          :onchange "pactl set-source-volume @DEFAULT_SOURCE@ {}%"
+        )
+      )
+    )
+    
     (box :orientation "v" :spacing 5 :valign "start"
       ;; Input Devices
       (label :text "Input Devices" :class "section-label")
@@ -103,7 +135,7 @@
       (for device in output_devices
         (button :class "button device-entry ${device.active ? 'active' : ''}" :onclick "scripts/set-default-sink '${device.name}'"
           (box :space-evenly false :spacing 10
-            (icon :path "./icons/musical-note-ai.svg")
+            (icon :path "./icons/volume-high.svg")
             (label :text "output ${device.description}" :limit-width 25 :halign "start")
           )
         )
