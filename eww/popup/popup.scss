@@ -121,14 +121,9 @@
 /* --- Sound Window --- */
 .sound-window {
   border: 2px solid $border-popup;
-  padding: 5px 15px;
+  padding: 15px;
   color: $fg-popover;
   background-color: transparentize($bg-popover, 0.3);
-}
-
-/* Volume Sliders Section */
-.volume-sliders-section {
-  padding: 10px 5px;
 }
 
 .volume-slider-container {

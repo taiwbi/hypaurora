@@ -84,7 +84,7 @@
   :stacking "overlay"
   :anchor "bottom left"
   :wm-ignore true
-  (box :class "sound-window widget-container" :orientation "v" :spacing 5
+  (box :class "sound-window widget-container" :orientation "v" :spacing 5 :space-evenly false :valign "start"
     ;; Volume Sliders Section
     (box :class "volume-sliders-section" :orientation "v" :spacing 12
       ;; Output Volume Slider
