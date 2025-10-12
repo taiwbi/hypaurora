@@ -63,23 +63,28 @@ button:hover {
 /* --- Workspaces --- */
 .workspaces-container {
   margin: 3px 0;
+  padding: 3px;
+  border-radius: 8px;
+  background-color: $bg-base;
 }
 
 box > label.workspace-entry {
-  padding: 5px;
-  margin: 2px 1px;
-  border-radius: 10px;
+  padding: 4px 1px;
+  margin: 2px 0;
+  border-radius: 8px;
   border: 1px solid transparent;
   color: $fg-base;
+  font-size: 11px;
+  transition: all 0.3s ease;
 }
 
 box > label.workspace-entry.current {
-  background-color: $bg-active;
+  background-color: transparentize($bg-active, 0.2);
   color: $fg-active;
 }
 
 box.occupied > label.workspace-entry:not(.current) {
-  border: 1px solid $bg-active;
+  background-color: transparentize($bg-active, 0.7);
 }
 
 /* Style for active shuffle/repeat buttons */
