@@ -12,17 +12,22 @@ fi
 
 WINDOW_NAME="$1"
 
+# Get the current active windows
+active=$(eww active-windows)
+
 # Define the list of windows to manage
-windows=("power_window" "wifi_list_window" "date_window" "sound_window")
+windows=("power_window" "wifi_list_window" "date_window" "sound_window" "media_window")
 
 # Check if the window is currently open
-if eww active-windows | grep -q "$WINDOW_NAME"; then
+if echo "$active" | grep -q "$WINDOW_NAME"; then
     # Window is open, close it
     eww close "$WINDOW_NAME"
 else
-    # Close all managed windows
+    # Close all managed windows that are open
     for window in "${windows[@]}"; do
-        eww close "$window"
+        if echo "$active" | grep -q "$window"; then
+            eww close "$window"
+        fi
     done
     
     # Open the specified window
