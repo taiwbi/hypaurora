@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# Function to get list of input devices (sources) as JSON
+get_input_devices() {
+    if command -v pactl &> /dev/null; then
+        default_source=$(pactl get-default-source)
+        pactl list sources | awk -v default_source="$default_source" '
+        BEGIN {
+            json = "["
+            first=1
+            source_count=0
+        }
+        /^Source #[0-9]+$/ {
+            if (source_count > 0) {
+                active = (name == default_source) ? "true" : "false"
+                if (!first) json = json ","
+                first=0
+                json = json sprintf("{\"id\": \"%s\", \"name\": \"%s\", \"description\": \"%s\", \"volume\": %d, \"muted\": \"%s\", \"active\": \"%s\"}", id, name, description, volume, muted, active)
+            }
+            source_count++
+            id = $2
+            name = ""
+            description = ""
+            volume = 0
+            muted = "false"
+            getline
+            getline
+        }
+        /^	Name:/ { name = $2 }
+        /^	Description:/ {
+            $1 = ""
+            description = substr($0, 2)
+        }
+        /^	Volume:/ {
+            split($5, vol, "%")
+            volume = vol[1]
+        }
+        /^	Mute:/ { muted = ($2 == "yes") ? "true" : "false" }
+        END {
+            if (source_count > 0) {
+                active = (name == default_source) ? "true" : "false"
+                if (!first) json = json ","
+                json = json sprintf("{\"id\": \"%s\", \"name\": \"%s\", \"description\": \"%s\", \"volume\": %d, \"muted\": \"%s\", \"active\": \"%s\"}", id, name, description, volume, muted, active)
+            }
+            json = json "]"
+            print json
+        }
+        '
+    else
+        echo '[{"id": "unknown", "name": "unknown", "description": "PulseAudio not available", "volume": 0, "muted": "false", "active": "false"}]'
+    fi
+}
+
+# Initial output
+get_input_devices
+
+# Listen for changes and update
+pactl subscribe | stdbuf -oL grep --line-buffered -E 'on (source|server)' | while read -r; do
+    get_input_devices
+done

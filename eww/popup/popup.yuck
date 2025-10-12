@@ -8,7 +8,8 @@
     (for network in wifi_list
       (wifi_network_entry :network {network})
     )
-))
+  )
+)
 
 ;; --- POWER WINDOW ---
 (defwindow power_window
@@ -28,7 +29,7 @@
       (button :onclick "hyprctl dispatch exit"
         (icon :path "./icons/export-circle-01.svg")
       )
-)
+    )
     (box :class "power-profiles-container" :orientation "v" :spacing 10
       (button :class "${power_profile == 'performance' ? 'active' : ''}" :onclick "scripts/set-power-profile performance"
         (label :halign "start" :text "Performance")
@@ -39,7 +40,9 @@
       (button :class "${power_profile == 'power-saver' ? 'active' : ''}" :onclick "scripts/set-power-profile power-saver"
         (label :halign "start" :text "Power Saver")
       )
-)))
+    )
+  )
+)
 
 ;; --- DATE WINDOW ---
 (defwindow date_window
@@ -71,4 +74,40 @@
       (button :class "password-button cancel" :onclick "eww close password_window" "Cancel")
       (button :class "password-button connect" :onclick "scripts/connect-wifi-password" "Connect")
     )
-))
+  )
+)
+
+;; --- SOUND WINDOW ---
+(defwindow sound_window
+  :monitor 0
+  :geometry (geometry :x "18px" :y "18px" :width "270px" :anchor "bottom left")
+  :stacking "overlay"
+  :anchor "bottom left"
+  :wm-ignore true
+  (box :class "sound-window widget-container" :orientation "v" :spacing 10
+    (box :orientation "v" :spacing 5 :valign "start"
+      ;; Input Devices
+      (label :text "Input Devices" :class "section-label")
+      (for device in input_devices
+        (button :class "button device-entry ${device.active ? 'active' : ''}" :onclick "scripts/set-default-source '${device.name}'"
+          (box :space-evenly false :spacing 10
+            (icon :path "./icons/microphone-2.svg")
+            (label :text "input ${device.description}" :limit-width 25 :halign "start")
+          )
+        )
+      )
+    )
+    (box :orientation "v" :spacing 5 :valign "start"
+      ;; Output Devices
+      (label :text "Output Devices" :class "section-label")
+      (for device in output_devices
+        (button :class "button device-entry ${device.active ? 'active' : ''}" :onclick "scripts/set-default-sink '${device.name}'"
+          (box :space-evenly false :spacing 10
+            (icon :path "./icons/musical-note-ai.svg")
+            (label :text "output ${device.description}" :limit-width 25 :halign "start")
+          )
+        )
+      )
+    )
+  )
+)

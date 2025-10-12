@@ -13,7 +13,7 @@ fi
 WINDOW_NAME="$1"
 
 # Define the list of windows to manage
-windows=("power_window" "wifi_list_window" "date_window")
+windows=("power_window" "wifi_list_window" "date_window" "sound_window")
 
 # Check if the window is currently open
 if eww active-windows | grep -q "$WINDOW_NAME"; then

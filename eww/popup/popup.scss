@@ -41,6 +41,11 @@
   color: $accent-color;
 }
 
+.power-profiles-container button.active {
+  background-color: transparentize($color: $accent-color, $amount: 0.7);
+  color: $fg-base;
+}
+
 .power-profiles-container button:not(.active):not(:hover) {
   color: $fg-popover;
 }
@@ -101,10 +106,7 @@
 }
 
 .password-button.cancel:hover {
-  background-color: transparentize(
-    $color: $bg-hover,
-    $amount: 0.3
-  );
+  background-color: transparentize($color: $bg-hover, $amount: 0.3);
 }
 
 .password-button.connect {
@@ -114,4 +116,46 @@
 
 .password-button.connect:hover {
   background-color: darken($color: $accent-color, $amount: 20%);
+}
+
+/* --- Sound Window --- */
+.sound-window {
+  border: 2px solid $border-popup;
+  padding: 5px 15px;
+  color: $fg-popover;
+  background-color: $bg-popover;
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: $accent-color;
+  margin-bottom: 5px;
+}
+
+.device-entry {
+  padding: 8px 8px;
+  border-radius: 12px;
+  color: $fg-popover;
+}
+
+.device-entry.active {
+  background-color: transparentize($color: $accent-color, $amount: 0.7);
+  color: $fg-base;
+}
+
+.volume-controls {
+  padding-left: 20px;
+  padding-right: 5px;
+}
+
+.volume-slider {
+  min-width: 150px;
+  margin-right: 10px;
+}
+
+.mute-button {
+  padding: 5px;
+  border-radius: 8px;
+  color: $fg-popover;
 }

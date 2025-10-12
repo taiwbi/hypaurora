@@ -13,6 +13,8 @@
 (deflisten media :initial "{}" "scripts/get-media")
 (deflisten touchpad_state :initial "true" "scripts/get-touchpad")
 (deflisten keyboard_layout :initial "English (US)" "scripts/get-keyboard")
+(deflisten output_devices :initial "[]" "scripts/get-output-devices")
+(deflisten input_devices :initial "[]" "scripts/get-input-devices")
 
 ;; Wifi List Variables
 (defpoll wifi_list :interval "20s" "scripts/get-wifi-list")
@@ -79,7 +81,7 @@
         (image :path "./icons/logo.png"
           :class "icon-image logo"
           :image-width 32
-          :image-height 32)
+        :image-height 32)
       )
     )
     
@@ -114,7 +116,7 @@
     ;; System stats at the bottom
     (box :class "system-stats" :orientation "v" :spacing 10 :space-evenly false
       ;; Volume
-      (box :class "stat-item"
+      (button :class "button stat-item" :onclick "scripts/toggle-window sound_window"
         (icon :path {volume.status == "Muted" ? "./icons/volume-cross.svg" :
           volume.percentage > 66 ? "./icons/volume-high.svg" :
           volume.percentage > 33 ? "./icons/volume-low-1.svg" :

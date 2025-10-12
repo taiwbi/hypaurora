@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# Function to get list of output devices (sinks) as JSON
+get_output_devices() {
+    if command -v pactl &> /dev/null; then
+        default_sink=$(pactl get-default-sink)
+        pactl list sinks | awk -v default_sink="$default_sink" '
+        BEGIN {
+            json = "["
+            first=1
+            sink_count=0
+        }
+        /^Sink #[0-9]+$/ {
+            if (sink_count > 0) {
+                active = (name == default_sink) ? "true" : "false"
+                if (!first) json = json ","
+                first=0
+                json = json sprintf("{\"id\": \"%s\", \"name\": \"%s\", \"description\": \"%s\", \"volume\": %d, \"muted\": \"%s\", \"active\": \"%s\"}", id, name, description, volume, muted, active)
+            }
+            sink_count++
+            id = $2
+            name = ""
+            description = ""
+            volume = 0
+            muted = "false"
+            getline
+            getline
+        }
+        /^	Name:/ { name = $2 }
+        /^	Description:/ {
+            $1 = ""
+            description = substr($0, 2)
+        }
+        /^	Volume:/ {
+            split($5, vol, "%")
+            volume = vol[1]
+        }
+        /^	Mute:/ { muted = ($2 == "yes") ? "true" : "false" }
+        END {
+            if (sink_count > 0) {
+                active = (name == default_sink) ? "true" : "false"
+                if (!first) json = json ","
+                json = json sprintf("{\"id\": \"%s\", \"name\": \"%s\", \"description\": \"%s\", \"volume\": %d, \"muted\": \"%s\", \"active\": \"%s\"}", id, name, description, volume, muted, active)
+            }
+            json = json "]"
+            print json
+        }
+        '
+    else
+        echo '[{"id": "unknown", "name": "unknown", "description": "PulseAudio not available", "volume": 0, "muted": "false", "active": "false"}]'
+    fi
+}
+
+# Initial output
+get_output_devices
+
+# Listen for changes and update
+pactl subscribe | stdbuf -oL grep --line-buffered -E 'on (sink|server)' | while read -r; do
+    get_output_devices
+done
