@@ -371,7 +371,7 @@ class ThemeManager:
         colors = theme["colors"]
         base = colors["base"]
         semantic = colors["semantic"]
-        palette = colors["palette"]
+        ui = colors["ui"]
         
         bg = base["background"]
         
@@ -383,17 +383,17 @@ class ThemeManager:
             "",
             "* {",
             f"    bg0:    {bg}D4;",
-            f"    bg1:    {palette[8]}D4;",
-            f"    bg2:    {palette[0]}D4;",
-            f"    bg3:    {palette[8]}D4;",
+            f"    bg1:    {base['background']}D4;",
+            f"    bg2:    {ui['card']}D4;",
+            f"    bg3:    {ui['card']}D4;",
             f"    fg0:    {base['foreground']};",
             f"    fg1:    {base['foreground']}E6;",
             f"    fg2:    {base['foreground']}CC;",
             f"    fg3:    {base['foreground']}B3;",
-            f"    border: {palette[13]};",
+            f"    border: {semantic['border']};",
             f"    accent: {semantic['accent']};",
             "",
-            '    font:   "Geist Medium 11";',
+            '    font:   "Geist Mono SemiBold 11";',
             "",
             "    background-color:   transparent;",
             "    text-color:         @fg0;",
@@ -481,13 +481,13 @@ class ThemeManager:
             "}",
             "",
             "element-icon {",
-            "    size:           2em;",
-            "    vertical-align: 0.5;",
+            "    size:           1.5em;",
+            "    margin: 0 8px 0 0;",
             "}",
             "",
             "element-text {",
             "    text-color: inherit;",
-            "    margin: 9px 0 0;",
+            "    margin: 7px 0 0;",
             "}",
         ]
         

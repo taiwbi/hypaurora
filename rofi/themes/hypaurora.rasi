@@ -5,17 +5,17 @@ configuration {
 
 * {
     bg0:    #2A2D33D4;
-    bg1:    #555b68D4;
-    bg2:    #2A2D33D4;
-    bg3:    #555b68D4;
+    bg1:    #2A2D33D4;
+    bg2:    #25282dD4;
+    bg3:    #25282dD4;
     fg0:    #dee0e4;
     fg1:    #dee0e4E6;
     fg2:    #dee0e4CC;
     fg3:    #dee0e4B3;
-    border: #fd7df4;
+    border: #78dce8;
     accent: #62676c;
 
-    font:   "Geist Medium 11";
+    font:   "Geist Mono SemiBold 11";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -103,11 +103,11 @@ element selected normal, element selected active {
 }
 
 element-icon {
-    size:           2em;
-    vertical-align: 0.5;
+    size:           1.5em;
+    margin: 0 8px 0 0;
 }
 
 element-text {
     text-color: inherit;
-    margin: 9px 0 0;
+    margin: 7px 0 0;
 }
