@@ -2,7 +2,7 @@
 .wifi-list-container {
   border-radius: 20px;
   color: $fg-popover;
-  background-color: transparentize($bg-popover, 0.3);
+  background-color: transparentize($bg-base, 0.3);
   border: 2px solid $border-popup;
 }
 
@@ -20,7 +20,7 @@
 /* --- Power Window --- */
 .power-window-container {
   border: 2px solid $border-popup;
-  background-color: transparentize($bg-popover, 0.3);
+  background-color: transparentize($bg-base, 0.3);
   color: $fg-popover;
 }
 
@@ -53,11 +53,10 @@
 .date-window-container {
   border: 2px solid $border-popup;
   color: $fg-popover;
-  background-color: transparentize($bg-popover, 0.3);
+  background-color: transparentize($bg-base, 0.3);
 }
 
 .persian-date {
-  font-family: "Vazirmatn FD";
   font-size: 14px;
   color: $fg-sidebar;
 }
@@ -65,7 +64,7 @@
 /* --- Wi-Fi Password Prompt --- */
 .password-window {
   color: $fg-popover;
-  background-color: transparentize($bg-popover, 0.3);
+  background-color: transparentize($bg-base, 0.3);
   padding: 25px;
   border-radius: 20px;
 }
@@ -120,7 +119,7 @@
 .sound-window {
   border: 2px solid $border-popup;
   color: $fg-popover;
-  background-color: transparentize($bg-popover, 0.3);
+  background-color: transparentize($bg-base, 0.3);
 }
 
 .volume-slider-container {
@@ -185,7 +184,7 @@
 .media-window {
   border: 2px solid $border-popup;
   color: $fg-popover;
-  background-color: transparentize($bg-popover, 0.3);
+  background-color: transparentize($bg-base, 0.3);
   border-radius: 20px;
 }
 
@@ -204,6 +203,7 @@
   color: $fg-sidebar;
   font-weight: 500;
 }
+
 f .media-control-btn {
   padding: 12px;
   border-radius: 14px;
