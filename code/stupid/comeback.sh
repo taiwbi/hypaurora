@@ -2,4 +2,5 @@
 
 hyprctl dispatch workspace previous
 pactl set-sink-mute @DEFAULT_SINK@ false
-hyprpaper
+hyprctl hyprpaper wallpaper "eDP-1,~/.config/background"
+hyprctl hyprpaper wallpaper "HDMI-A-1,~/.config/background"
