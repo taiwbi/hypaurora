@@ -332,9 +332,6 @@ class ThemeManager:
         ui = colors["ui"]
         
         lines = [
-            f"@define-color accent_bg_color {semantic['accent']};",
-            f"@define-color accent_fg_color {semantic['accent_fg']};",
-            f"@define-color accent_color {semantic['accent']};",
             f"@define-color destructive_bg_color {semantic['error']};",
             f"@define-color destructive_fg_color {base['background']};",
             f"@define-color destructive_color {semantic['error']};",
