@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hypaurora Theme Manager
-Manages themes across Ghostty, GTK, Rofi, EWW, and Hyprland from a central theme registry.
+Manages themes across Ghostty, GTK, Rofi, EWW, Hyprland, and GNOME Shell from a central theme registry.
 Supports generating themes from wallpaper images.
 """
 
@@ -9,6 +9,8 @@ import json
 import sys
 import time
 import hashlib
+import subprocess
+import shutil
 from pathlib import Path
 from typing import Dict, Any, List, Tuple
 from collections import Counter
@@ -541,6 +543,66 @@ class ThemeManager:
             "groupbar_inactive": f"rgba({palette[0][1:]}80)",
         }
     
+    def generate_gnome_shell_colors(self, theme: Dict[str, Any]) -> str:
+        """Generate GNOME Shell color SCSS variables."""
+        colors = theme["colors"]
+        base = colors["base"]
+        semantic = colors["semantic"]
+        ui = colors["ui"]
+        
+        lines = [
+            "// Hypaurora Theme - Auto-generated color overrides",
+            "// This file overrides the default GNOME Shell colors",
+            "",
+            f"$_base_color_dark: {base['background']};",
+            f"$_base_color_light: {base['foreground']};",
+            "",
+            "// global colors",
+            f"$base_color: {base['background']};",
+            f"$bg_color: {base['background']};",
+            f"$fg_color: {base['foreground']};",
+            "",
+            "// OSD elements",
+            f"$osd_bg_color: {base['background']};",
+            f"$osd_fg_color: {base['foreground']};",
+            "",
+            "// system elements (e.g. the overview) that are always dark",
+            "$osd_bg_color: $_base_color_dark;",
+            "$osd_fg_color: $_base_color_light;",
+            "",
+            "// panel colors",
+            f"$panel_bg_color: {ui['headerbar']};",
+            f"$panel_fg_color: {base['foreground']};",
+            "",
+            "// card elements",
+            f"$card_bg_color: {ui['card']};",
+            "",
+            "// system colors",
+            f"$system_base_color: {base['background']};",
+            f"$system_bg_color: $system_base_color;",
+            f"$system_fg_color: {base['foreground']};",
+            f"$system_insensitive_fg_color: mix($system_bg_color, $system_fg_color, 37%);",
+            f"$system_overlay_bg_color: mix($system_base_color, $system_fg_color, 90%);",
+            "",
+            "// insensitive state",
+            f"$insensitive_fg_color: if($variant == 'light', mix($fg_color, $bg_color, 60%),  mix($fg_color, $bg_color, 50%));",
+            f"$insensitive_bg_color: mix($bg_color, $base_color, 60%);",
+            f"$insensitive_borders_color: mix($borders_color, $base_color, 60%);",
+            "",
+            "// State colors",
+            f"$success_color: {semantic['success']};",
+            f"$warning_color: {semantic['warning']};",
+            f"$error_color: {semantic['error']};",
+            f"$destructive_color: {semantic['error']};",
+            "",
+            "// Selection colors",
+            f"$selected_bg_color: {base['selection_bg']};",
+            f"$selected_fg_color: {base['selection_fg']};",
+            "",
+        ]
+        
+        return "\n".join(lines)
+    
     def update_dunst_config(self, theme: Dict[str, Any], dry_run: bool = False) -> str:
         """Update the existing dunstrc file with theme colors."""
         import re
@@ -732,6 +794,89 @@ class ThemeManager:
             print(f"  ✓ Updated main GTK CSS: {gtk_css_file}")
         else:
             print(f"  ! No changes needed in main GTK CSS: {gtk_css_file}")
+    
+    def apply_gnome_shell_theme(self, dry_run: bool = False):
+        """Apply GNOME Shell theme by resetting to default and then applying hypaurora."""
+        if dry_run:
+            print("  [DRY RUN] Would apply GNOME Shell theme: hypaurora")
+            return
+        
+        try:
+            # Reset to default theme first
+            subprocess.run(["dconf", "reset", "/org/gnome/shell/extensions/user-theme/name"], check=True)
+            
+            # Apply hypaurora theme
+            print("  ✓ Applying GNOME Shell theme: hypaurora")
+            subprocess.run(["dconf", "write", "/org/gnome/shell/extensions/user-theme/name", '"hypaurora"'], check=True)
+            
+        except subprocess.CalledProcessError as e:
+            print(f"  ✗ Error applying GNOME Shell theme: {e}")
+        except FileNotFoundError:
+            print("  ✗ dconf command not found. Please ensure dconf is installed.")
+    
+    def build_gnome_shell_theme(self, theme: Dict[str, Any], dry_run: bool = False):
+        """Build GNOME Shell theme and install to ~/.local/share/themes/hypaurora."""
+        gnome_shell_dir = self.base_dir / "gnome-shell-theme"
+        
+        if not gnome_shell_dir.exists():
+            print(f"  ⚠ GNOME Shell theme directory not found: {gnome_shell_dir}")
+            return
+        
+        # Check if sassc is available
+        if not shutil.which("sassc"):
+            print(f"  ⚠ sassc not found. Install it to build GNOME Shell theme:")
+            print(f"     sudo dnf install sassc")
+            return
+        
+        if dry_run:
+            print(f"  [DRY RUN] Would build GNOME Shell theme")
+            return
+        
+        # Generate color overrides
+        color_overrides = self.generate_gnome_shell_colors(theme)
+        colors_override_file = gnome_shell_dir / "gnome-shell-sass/_colors-override.scss"
+        
+        # Write color overrides
+        with open(colors_override_file, 'w') as f:
+            f.write(color_overrides)
+        
+        # Create a custom SCSS file that imports the overrides
+        custom_scss = gnome_shell_dir / "gnome-shell-hypaurora.scss"
+        with open(custom_scss, 'w') as f:
+            f.write("$variant: 'dark';\n")
+            f.write("$contrast: 'normal';\n")
+            f.write("\n")
+            f.write("@import \"gnome-shell-sass/_colors\"; // Use gtk colors\n")
+            f.write("@import \"gnome-shell-sass/_colors-override\"; // Custom color overrides\n")
+            f.write("@import \"gnome-shell-sass/_drawing\";\n")
+            f.write("@import \"gnome-shell-sass/_common\";\n")
+            f.write("@import \"gnome-shell-sass/_widgets\";\n")
+        
+        # Build CSS using sassc
+        output_css = gnome_shell_dir / "gnome-shell.css"
+        try:
+            subprocess.run(
+                ["sassc", "-a", str(custom_scss), str(output_css)],
+                check=True,
+                capture_output=True,
+                text=True
+            )
+        except subprocess.CalledProcessError as e:
+            print(f"  ✗ Failed to build GNOME Shell CSS:")
+            print(f"    {e.stderr}")
+            return
+        
+        # Install to ~/.local/share/themes/hypaurora
+        theme_install_dir = Path.home() / ".local/share/themes/hypaurora"
+        gnome_shell_install_dir = theme_install_dir / "gnome-shell"
+        
+        # Create directories
+        gnome_shell_install_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Copy CSS file
+        shutil.copy2(output_css, gnome_shell_install_dir / "gnome-shell.css")
+        
+        print(f"  ✓ Built and installed GNOME Shell theme: {gnome_shell_install_dir}")
 
     def generate_wallpaper_theme(self, variant: str = "dark") -> Dict[str, Any]:
         """Generate theme from wallpaper image."""
@@ -829,6 +974,12 @@ class ThemeManager:
             self.update_svg_colors(theme, dry_run)
             print(f"  ✓ Updated SVG icon colors in eww/icons/")
         
+        # Build and install GNOME Shell theme
+        self.build_gnome_shell_theme(theme, dry_run)
+        
+        # Apply GNOME Shell theme by resetting to default and then applying hypaurora
+        self.apply_gnome_shell_theme(dry_run)
+        
         if not dry_run:
             config = self.load_config()
             config["current_theme"] = theme_name
@@ -851,6 +1002,7 @@ class ThemeManager:
             print("  • EWW: Run 'eww reload'")
             print("  • Hyprland: Run 'hyprctl reload'")
             print("  • Dunst: Automatically restarted with new theme")
+            print("  • GNOME Shell: Theme reset to default and reapplied as 'hypaurora'")
         else:
             print()
             print("Dry run complete. No files were modified.")
