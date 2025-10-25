@@ -1,13 +1,13 @@
 command = /bin/fish
 
-font-family = "Geist Mono"
+font-family = "Dank Mono"
 # -> <- => <= == === !=
 font-family = "Vazir Code Hack"
 font-style="SemiBold"
 
-font-size = 12
+font-size = 14
 
-adjust-cell-height = 12
+adjust-cell-height = 17
 adjust-cell-width = 0
 
 # Appearance

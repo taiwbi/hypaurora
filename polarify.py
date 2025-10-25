@@ -392,7 +392,7 @@ class ThemeManager:
             f"    border: {semantic['border']};",
             f"    accent: {semantic['accent']};",
             "",
-            '    font:   "Geist Mono SemiBold 11";',
+            '    font:   "Dank Mono SemiBold 11";',
             "",
             "    background-color:   transparent;",
             "    text-color:         @fg0;",

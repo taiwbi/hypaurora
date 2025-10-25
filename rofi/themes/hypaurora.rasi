@@ -15,7 +15,7 @@ configuration {
     border: #78dce8;
     accent: #62676c;
 
-    font:   "Geist Mono SemiBold 11";
+    font:   "Dank Mono SemiBold 11";
 
     background-color:   transparent;
     text-color:         @fg0;
