@@ -52,17 +52,20 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Su
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>7']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>8']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>9']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Shift><Super>0']"
 
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super>c']"
 
 gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>y']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 'true'
-gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
-gsettings set org.gnome.mutter center-new-windows 'true'
 
 gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts '[]'
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>Escape']"
+
+# Window Management
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button 'true'
+gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
+gsettings set org.gnome.mutter center-new-windows 'true'
 
 # Inputs
 gsettings set org.gnome.desktop.peripherals.touchpad accel-profile 'flat'
