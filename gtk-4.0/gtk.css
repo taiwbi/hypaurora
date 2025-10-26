@@ -1,7 +1,4 @@
 @import "./themes/hypaurora.css";
-@import "./tweaks/sidebar.css";
-
-@define-color popover_bg_color alpha(#363941, 0.6);
 
 /* Disable transparent sidebar For EWW bar */
 window.background.vertical_bar,

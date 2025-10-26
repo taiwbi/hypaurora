@@ -26,3 +26,6 @@
 @define-color sidebar_backdrop_color #25282d;
 @define-color sidebar_bg_color #25282d;
 @define-color sidebar_fg_color #a4a7ad;
+
+/* Only apply for transparent popovers */
+/* @define-color popover_bg_color alpha(#363941, 0.6); */
