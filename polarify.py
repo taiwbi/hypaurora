@@ -792,6 +792,27 @@ class ThemeManager:
         else:
             print(f"  ! No changes needed in main GTK CSS: {gtk_css_file}")
     
+    def apply_gtk_theme(self, theme: Dict[str, Any], dry_run: bool = False):
+        """Apply GTK theme by turning on hig-contrast and turning it off."""
+        if dry_run:
+            print("  [DRY RUN] Would reload gtk.css to apply theme")
+            return
+        
+        try:
+            print("  ✓ Applying GTK CSS changes")
+            variant = theme["variant"]
+
+            if variant == "dark":
+                subprocess.run(["dconf", "write", "/org/gnome/desktop/interface/color-scheme", "'prefer-dark'"], check=True)
+            elif variant == "light":
+                subprocess.run(["dconf", "write", "/org/gnome/desktop/interface/color-scheme", "'default'"], check=True)
+
+            # Reset to default theme first
+            subprocess.run(["dconf", "write", "/org/gnome/desktop/a11y/interface/high-contrast", "true"], check=True)
+            subprocess.run(["dconf", "write", "/org/gnome/desktop/a11y/interface/high-contrast", "false"], check=True)
+        except Exception as e:
+            print(f"  ⚠ Could not apply GTK CSS changes: {e}")
+    
     def apply_gnome_shell_theme(self, dry_run: bool = False):
         """Apply GNOME Shell theme by resetting to default and then applying hypaurora."""
         if dry_run:
@@ -964,6 +985,11 @@ class ThemeManager:
             print(f"  [DRY RUN] Would update main GTK CSS: gtk-4.0/gtk.css")
         else:
             self.update_gtk_main_css(theme, dry_run=False)
+        
+        if dry_run:
+            print(f"  [DRY RUN] Would reload gtk.css to apply theme")
+        else:
+            self.apply_gtk_theme(theme, dry_run=False)
         
         if dry_run:
             print(f"  [DRY RUN] Would update SVG icon colors")
