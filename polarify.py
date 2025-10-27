@@ -104,7 +104,7 @@ class ImageThemeGenerator:
             for color in dominant[1:]:
                 if len(sorted_colors) >= n_colors:
                     break
-                if all(sum(abs(c1 - c2) for c1, c2 in zip(color, s)) > 60 for s in sorted_colors):
+                if all(sum(abs(int(c1) - int(c2)) for c1, c2 in zip(color, s)) > 60 for s in sorted_colors):
                     sorted_colors.append(color)
         
         return [ImageThemeGenerator.rgb_to_hex(c) for c in sorted_colors]
