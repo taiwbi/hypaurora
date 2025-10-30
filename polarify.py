@@ -3,6 +3,7 @@
 Hypaurora Theme Manager
 Manages themes across Ghostty, GTK, Rofi, EWW, Hyprland, and GNOME Shell from a central theme registry.
 Supports generating themes from wallpaper images.
+Integrates with GNOME settings for dark mode and wallpaper changes.
 """
 
 import json
@@ -12,6 +13,7 @@ import hashlib
 import subprocess
 import shutil
 import re
+import os
 from pathlib import Path
 from typing import Dict, Any, List, Tuple, Optional
 from collections import Counter
@@ -23,6 +25,12 @@ try:
     IMAGING_AVAILABLE = True
 except ImportError:
     IMAGING_AVAILABLE = False
+
+try:
+    from gi.repository import Gio, GLib
+    GNOME_AVAILABLE = True
+except ImportError:
+    GNOME_AVAILABLE = False
 
 
 class ImageThemeGenerator:
@@ -226,7 +234,16 @@ class ThemeManager:
         self.base_dir = base_dir or Path(__file__).parent
         self.themes_dir = self.base_dir / "themes"
         self.config_file = self.base_dir / "theme-config.json"
-        
+        self._is_gnome = None
+    
+    @property
+    def is_gnome(self) -> bool:
+        """Check if running in GNOME desktop environment."""
+        if self._is_gnome is None:
+            desktop = os.environ.get('XDG_CURRENT_DESKTOP', '').lower()
+            self._is_gnome = 'gnome' in desktop
+        return self._is_gnome
+    
     def load_theme(self, theme_name: str) -> Dict[str, Any]:
         """Load theme JSON file."""
         theme_file = self.themes_dir / f"{theme_name}.json"
@@ -241,7 +258,11 @@ class ThemeManager:
         if self.config_file.exists():
             with open(self.config_file, 'r') as f:
                 return json.load(f)
-        return {"current_theme": "bearded_monokai_stone"}
+        return {
+            "current_theme": "bearded_monokai_stone",
+            "preferred_dark_theme": "bearded_monokai_stone",
+            "preferred_light_theme": "bearded_milkshake_blueberry"
+        }
     
     def save_config(self, config: Dict[str, Any]):
         """Save theme configuration."""
@@ -283,6 +304,89 @@ class ThemeManager:
         for i, color in enumerate(colors["palette"]):
             print(f"  color{i:2d}              {color}")
         print()
+    
+    def get_gnome_dark_mode(self) -> bool:
+        """Check if GNOME is in dark mode."""
+        if not GNOME_AVAILABLE:
+            return True  # Default to dark if GNOME is not available
+        
+        try:
+            settings = Gio.Settings.new('org.gnome.desktop.interface')
+            color_scheme = settings.get_string('color-scheme')
+            return color_scheme == 'prefer-dark'
+        except Exception:
+            return True
+    
+    def get_gnome_wallpaper_uri(self, dark_mode: bool = None) -> Optional[str]:
+        """Get current GNOME wallpaper URI."""
+        if not self.is_gnome or not GNOME_AVAILABLE:
+            return None
+        
+        if dark_mode is None:
+            dark_mode = self.get_gnome_dark_mode()
+        
+        try:
+            settings = Gio.Settings.new('org.gnome.desktop.background')
+            key = 'picture-uri-dark' if dark_mode else 'picture-uri'
+            uri = settings.get_string(key)
+            
+            # Handle both 'file:///path' and '/path' formats
+            if uri.startswith('file://'):
+                return uri[7:]  # Remove 'file://' prefix
+            elif uri.startswith("'file://") and uri.endswith("'"):
+                return uri[8:-1]  # Remove 'file://' prefix and quotes
+            elif uri.startswith("'") and uri.endswith("'"):
+                return uri[1:-1]  # Remove quotes
+            return uri
+        except Exception as e:
+            print(f"  ⚠ Could not get GNOME wallpaper: {e}")
+            return None
+    
+    def watch_gnome_dark_mode(self):
+        """Watch for GNOME dark mode changes and apply appropriate theme."""
+        if not GNOME_AVAILABLE:
+            print("Error: This feature requires GNOME python library")
+            sys.exit(1)
+        
+        print("👁️  Watching GNOME dark mode for changes...")
+        print("Press Ctrl+C to stop\n")
+        
+        last_dark_mode = self.get_gnome_dark_mode()
+        
+        def on_settings_changed(settings, key):
+            nonlocal last_dark_mode
+            if key == 'color-scheme':
+                current_dark_mode = self.get_gnome_dark_mode()
+                if current_dark_mode != last_dark_mode:
+                    last_dark_mode = current_dark_mode
+                    mode = "dark" if current_dark_mode else "light"
+                    print(f"🌓 GNOME switched to {mode} mode")
+                    
+                    config = self.load_config()
+                    target_theme = config.get('preferred_dark_theme' if current_dark_mode 
+                                            else 'preferred_light_theme')
+                    current_theme = config.get('current_theme')
+                    
+                    if target_theme and target_theme != current_theme:
+                        print(f"   Applying {target_theme}...\n")
+                        try:
+                            self.apply_theme(target_theme)
+                        except Exception as e:
+                            print(f"✗ Error applying theme: {e}\n")
+                    else:
+                        print(f"   Already using {current_theme}\n")
+        
+        try:
+            settings = Gio.Settings.new('org.gnome.desktop.interface')
+            settings.connect('changed', on_settings_changed)
+            
+            loop = GLib.MainLoop()
+            loop.run()
+        except KeyboardInterrupt:
+            print("\nStopped watching dark mode")
+        except Exception as e:
+            print(f"Error: {e}")
+            sys.exit(1)
     
     def update_ghostty(self, theme: Dict[str, Any]) -> bool:
         """Updates Ghostty theme file."""
@@ -390,7 +494,6 @@ class ThemeManager:
         semantic = colors["semantic"]
         ui = colors["ui"]
 
-        # The new colors block we want to inject (the '*' selector block).
         new_colors = """* {{
     bg0:    {bg}D4;
     bg1:    {bg}D4;
@@ -486,8 +589,7 @@ class ThemeManager:
         }
     
     def update_gnome_shell(self, theme: Dict[str, Any]) -> bool:
-        """Update only the variable color assignments in the existing
-        _colors-override.scss using regex. Does NOT write a full template."""
+        """Update GNOME Shell color variables."""
         colors = theme["colors"]
         base = colors["base"]
         semantic = colors["semantic"]
@@ -496,7 +598,6 @@ class ThemeManager:
         colors_file = (self.base_dir / "gnome-shell-theme" /
                     "gnome-shell-sass" / "_colors-override.scss")
 
-        # Only replace the explicit assignment lines (leave computed lines like mix(...) untouched).
         replacements = [
             (r'(?m)^\s*\$_base_color_dark\s*:\s*[^;]+;',
             f'$_base_color_dark: {base["background"]};'),
@@ -536,10 +637,7 @@ class ThemeManager:
             f'$selected_fg_color: {base["selection_fg"]};'),
         ]
 
-        # Apply replacements in-place (file existence is guaranteed per your note).
         self.update_file_with_regex(colors_file, replacements)
-
-        # No template returned — this function updates the file directly.
         return True
     
     def update_file_with_regex(self, file_path: Path, replacements: List[Tuple[str, str]]) -> bool:
@@ -617,32 +715,61 @@ class ThemeManager:
 
     def apply_gtk_theme(self, theme: Dict[str, Any]):
         """Apply GTK theme by setting color scheme and toggling high-contrast."""
+        if not GNOME_AVAILABLE:
+            print("Error: Applying GTK theme requires GNOME python library")
+            return
+        
         try:
             variant = theme["variant"]
-            color_scheme = "'prefer-dark'" if variant == "dark" else "'default'"
+            color_scheme = "prefer-dark" if variant == "dark" else "default"
             
-            subprocess.run(["dconf", "write", "/org/gnome/desktop/interface/color-scheme", 
-                          color_scheme], check=True)
+            # Set color scheme
+            settings = Gio.Settings.new('org.gnome.desktop.interface')
+            settings.set_string('color-scheme', color_scheme)
             
             # Toggle high-contrast to force reload
-            subprocess.run(["dconf", "write", "/org/gnome/desktop/a11y/interface/high-contrast", 
-                          "true"], check=True)
-            subprocess.run(["dconf", "write", "/org/gnome/desktop/a11y/interface/high-contrast", 
-                          "false"], check=True)
+            a11y_settings = Gio.Settings.new('org.gnome.desktop.a11y.interface')
+            a11y_settings.set_boolean('high-contrast', True)
+            a11y_settings.sync()
+            time.sleep(0.1)
+            a11y_settings.set_boolean('high-contrast', False)
+            a11y_settings.sync()
         except Exception as e:
             print(f"  ⚠ Could not apply GTK CSS changes: {e}")
     
     def apply_gnome_shell_theme(self):
         """Apply GNOME Shell theme by resetting to default and then applying hypaurora."""
+        if not self.is_gnome or not GNOME_AVAILABLE:
+            print("Error: Applying GNOME Shell theme requires GNOME Desktop and GNOME python library")
+            return
+        
+        schema_dir = os.path.expanduser(
+            "~/.local/share/gnome-shell/extensions/"
+            "user-theme@gnome-shell-extensions.gcampax.github.com/schemas"
+        )
+
+        if not os.path.exists(schema_dir):
+            print("  ⚠ User Themes extension directory not found. Install it to apply GNOME Shell themes.")
+            return
+
         try:
-            subprocess.run(["dconf", "reset", "/org/gnome/shell/extensions/user-theme/name"], 
-                         check=True)
-            subprocess.run(["dconf", "write", "/org/gnome/shell/extensions/user-theme/name", 
-                          '"hypaurora"'], check=True)
-        except subprocess.CalledProcessError as e:
+            # Check if user-theme extension schema exists
+            schema_source = Gio.SettingsSchemaSource.new_from_directory(
+                schema_dir,
+                Gio.SettingsSchemaSource.get_default(),
+                False
+            )
+            schema = schema_source.lookup('org.gnome.shell.extensions.user-theme', False)
+            if schema:
+                settings = Gio.Settings.new_full(schema, None, None)
+                # Reset to default (empty string)
+                settings.reset('name')
+                # Set to hypaurora
+                settings.set_string('name', 'hypaurora')
+            else:
+                print("  ⚠ User Themes extension not found. Install it to apply GNOME Shell themes.")
+        except Exception as e:
             print(f"  ✗ Error applying GNOME Shell theme: {e}")
-        except FileNotFoundError:
-            print("  ✗ dconf command not found. Please ensure dconf is installed.")
     
     def install_gnome_shell(self, theme: Dict[str, Any]) -> bool:
         """Build GNOME Shell theme and install to ~/.local/share/themes/hypaurora."""
@@ -653,12 +780,10 @@ class ThemeManager:
             print(f"     sudo dnf install sassc")
             return
         
-        # Generate and write color overrides
         if not self.update_gnome_shell(theme):
             print(f"  ⚠ Could not update GNOME Shell theme colors")
             return
         
-        # Build CSS using sassc
         custom_scss = gnome_shell_dir / "gnome-shell-hypaurora.scss"
         output_css = gnome_shell_dir / "gnome-shell.css"
         try:
@@ -669,7 +794,6 @@ class ThemeManager:
             print(f"    {e.stderr}")
             return
         
-        # Install to theme directory
         theme_install_dir = Path.home() / ".local/share/themes/hypaurora/gnome-shell"
         theme_install_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy2(output_css, theme_install_dir / "gnome-shell.css")
@@ -678,23 +802,35 @@ class ThemeManager:
         
         return True
     
-    def generate_wallpaper_theme(self, variant: str = "dark") -> Dict[str, Any]:
+    def generate_wallpaper_theme(self, variant: str = None, wallpaper_path: str = None) -> Dict[str, Any]:
         """Generate theme from wallpaper image."""
         if not IMAGING_AVAILABLE:
             print("Error: PIL (Pillow) and numpy are required for wallpaper theme generation")
             print("Install with: pip install Pillow numpy scikit-learn")
             sys.exit(1)
         
-        wallpaper_path = Path.home() / ".config/background"
-        if not wallpaper_path.exists():
+        # Auto-detect variant from GNOME if not specified
+        if variant is None and self.is_gnome:
+            variant = "dark" if self.get_gnome_dark_mode() else "light"
+        elif variant is None:
+            variant = "dark"
+        
+        # Get wallpaper path from GNOME if not specified
+        if wallpaper_path is None:
+            if self.is_gnome:
+                dark_mode = variant == "dark"
+                wallpaper_path = self.get_gnome_wallpaper_uri(dark_mode)
+            else:
+                wallpaper_path = str(Path.home() / ".config/background")
+        
+        if not wallpaper_path or not Path(wallpaper_path).exists():
             raise FileNotFoundError(f"Wallpaper not found at {wallpaper_path}")
         
-        print(f"Generating theme from wallpaper: {wallpaper_path}")
+        print(f"Generating {variant} theme from wallpaper: {wallpaper_path}")
         theme = ImageThemeGenerator.generate_theme_from_image(
             str(wallpaper_path), theme_name="wallpaper", variant=variant
         )
         
-        # Save theme to themes directory
         self.themes_dir.mkdir(parents=True, exist_ok=True)
         theme_file = self.themes_dir / "wallpaper.json"
         with open(theme_file, 'w') as f:
@@ -703,16 +839,16 @@ class ThemeManager:
         print(f"  ✓ Saved wallpaper theme to {theme_file}")
         return theme
 
-    def apply_theme(self, theme_name: str, variant: str = "dark"):
+    def apply_theme(self, theme_name: str, variant: str = None):
         """Apply theme across all applications."""
-        # Handle wallpaper theme specially
-        theme = (self.generate_wallpaper_theme(variant=variant) 
-                if theme_name == "wallpaper" else self.load_theme(theme_name))
+        if theme_name == "wallpaper":
+            theme = self.generate_wallpaper_theme(variant=variant)
+        else:
+            theme = self.load_theme(theme_name)
         
         print(f"Applying theme: {theme['name']}")
         print("=" * 50)
 
-        # Update configuration files
         config_updates = [
             ("Ghostty", lambda: self.update_ghostty(theme)),
             ("GTK", lambda: self.update_gtk(theme)),
@@ -728,13 +864,11 @@ class ThemeManager:
             update_fn()
             print(f"  ✓ Updated {name}")
         
-        # Kill dunst to apply new theme
         try:
             subprocess.run(["pkill", "dunst"], check=False)
         except Exception as e:
             print(f"  ⚠ Could not kill dunst: {e}")
         
-        # Save current theme
         config = self.load_config()
         config["current_theme"] = theme_name
         self.save_config(config)
@@ -744,25 +878,148 @@ class ThemeManager:
         print("  • Ghostty: Use Ctrl+Shift+,")
         print("  • GTK: Adwaita applications will reload automatically, Restart GTK3 applications")
 
-    def watch_wallpaper(self, variant: str = "dark", check_interval: float = 2.0):
-        """Watch wallpaper file for changes and auto-apply theme."""
+    def watch_wallpaper(self, variant: str = None, check_interval: float = 2.0):
+        """Watch wallpaper for changes and auto-apply theme."""
         if not IMAGING_AVAILABLE:
             print("Error: PIL (Pillow) and numpy are required for wallpaper theme generation")
             print("Install with: pip install Pillow numpy scikit-learn")
             sys.exit(1)
         
+        if self.is_gnome and GNOME_AVAILABLE:
+            self._watch_wallpaper_gnome()
+            return
+        
+        self._watch_wallpaper_file(variant, check_interval)
+    
+    def _watch_wallpaper_gnome(self):
+        """Watch GNOME wallpaper settings for changes."""
+        print("👁️  Watching GNOME wallpaper for changes...")
+        print("Press Ctrl+C to stop\n")
+        
+        last_uri_light = None
+        last_uri_dark = None
+        last_hash_light = None
+        last_hash_dark = None
+        file_stable_time = {}
+        
+        def get_file_hash(path: str) -> Optional[str]:
+            """Get MD5 hash of file."""
+            if not path or not Path(path).exists():
+                return None
+            try:
+                with open(path, 'rb') as f:
+                    return hashlib.md5(f.read()).hexdigest()
+            except (IOError, PermissionError):
+                return None
+        
+        def check_and_apply_theme(uri: str, is_dark: bool):
+            """Check if wallpaper changed and apply theme if needed."""
+            nonlocal last_hash_light, last_hash_dark
+            
+            if not uri or uri == 'none':
+                return
+            
+            current_time = time.time()
+            try:
+                mtime = Path(uri).stat().st_mtime
+                last_change = file_stable_time.get(uri, 0)
+                
+                if current_time - mtime < 2.0:
+                    file_stable_time[uri] = current_time
+                    return
+                
+                if current_time - last_change < 2.0:
+                    return
+                
+            except (FileNotFoundError, OSError):
+                return
+            
+            current_hash = get_file_hash(uri)
+            if not current_hash:
+                return
+            
+            last_hash = last_hash_dark if is_dark else last_hash_light
+            
+            if current_hash != last_hash:
+                mode = "dark" if is_dark else "light"
+                print(f"🎨 Wallpaper changed ({mode} mode) at {time.strftime('%H:%M:%S')}")
+                print(f"   Path: {uri}")
+                print("   Generating and applying new theme...\n")
+                
+                try:
+                    self.apply_theme("wallpaper", variant=mode)
+                    if is_dark:
+                        last_hash_dark = current_hash
+                    else:
+                        last_hash_light = current_hash
+                    print("\n✓ Theme applied successfully!\n")
+                except Exception as e:
+                    print(f"✗ Error applying theme: {e}\n")
+        
+        def on_background_changed(settings, key):
+            nonlocal last_uri_light, last_uri_dark
+            
+            if key in ['picture-uri', 'picture-uri-dark']:
+                is_dark = key == 'picture-uri-dark'
+                uri = self.get_gnome_wallpaper_uri(is_dark)
+                
+                last_uri = last_uri_dark if is_dark else last_uri_light
+                
+                if uri != last_uri:
+                    mode = "dark" if is_dark else "light"
+                    print(f"🖼️  GNOME wallpaper URI changed ({mode} mode)")
+                    if is_dark:
+                        last_uri_dark = uri
+                    else:
+                        last_uri_light = uri
+                    check_and_apply_theme(uri, is_dark)
+        
+        def periodic_check():
+            """Periodically check file hashes for current mode."""
+            dark_mode = self.get_gnome_dark_mode()
+            uri = self.get_gnome_wallpaper_uri(dark_mode)
+            check_and_apply_theme(uri, dark_mode)
+            return True
+        
+        try:
+            settings = Gio.Settings.new('org.gnome.desktop.background')
+            
+            last_uri_light = self.get_gnome_wallpaper_uri(False)
+            last_uri_dark = self.get_gnome_wallpaper_uri(True)
+            dark_mode = self.get_gnome_dark_mode()
+            current_uri = last_uri_dark if dark_mode else last_uri_light
+            
+            if current_uri:
+                if dark_mode:
+                    last_hash_dark = get_file_hash(current_uri)
+                else:
+                    last_hash_light = get_file_hash(current_uri)
+            
+            settings.connect('changed', on_background_changed)
+            GLib.timeout_add_seconds(2, periodic_check)
+            
+            loop = GLib.MainLoop()
+            loop.run()
+        except KeyboardInterrupt:
+            print("\nStopped watching wallpaper")
+        except Exception as e:
+            print(f"Error: {e}")
+            sys.exit(1)
+    
+    def _watch_wallpaper_file(self, variant: str = "dark", check_interval: float = 2.0):
+        """Watch wallpaper file for changes (non-GNOME fallback)."""
         wallpaper_path = Path.home() / ".config/background"
         
         if not wallpaper_path.exists():
             print(f"Waiting for wallpaper at {wallpaper_path}...")
         
-        print("👁️  Watching wallpaper for changes...")
+        print("👁️  Watching wallpaper file for changes...")
         print("Press Ctrl+C to stop\n")
         
         last_hash = None
         last_mtime = None
         stable_count = 0
-        required_stable_checks = 3  # File must be stable for 3 consecutive checks
+        required_stable_checks = 3
         
         def get_file_hash(path: Path) -> Optional[str]:
             """Get MD5 hash of file."""
@@ -783,17 +1040,14 @@ class ThemeManager:
                 try:
                     current_mtime = wallpaper_path.stat().st_mtime
                     
-                    # If mtime changed, reset stability counter
                     if last_mtime is None or current_mtime != last_mtime:
                         last_mtime = current_mtime
                         stable_count = 0
                         time.sleep(check_interval)
                         continue
                     
-                    # File hasn't been modified, increment stability counter
                     stable_count += 1
                     
-                    # Only check hash once file is stable
                     if stable_count >= required_stable_checks:
                         current_hash = get_file_hash(wallpaper_path)
                         
@@ -808,11 +1062,9 @@ class ThemeManager:
                             except Exception as e:
                                 print(f"✗ Error applying theme: {e}\n")
                         
-                        # Reset counter after checking
                         stable_count = required_stable_checks
                 
                 except (IOError, PermissionError):
-                    # File might be in the process of being written
                     stable_count = 0
                 
                 time.sleep(check_interval)
@@ -833,25 +1085,26 @@ Examples:
   %(prog)s apply wallpaper                     Generate and apply theme from wallpaper
   %(prog)s apply wallpaper --variant light     Generate light theme from wallpaper
   %(prog)s apply wallpaper --listen            Watch wallpaper and auto-apply theme
+  %(prog)s watch-dark-mode                     Watch GNOME dark mode and auto-switch themes
         """
     )
     
     subparsers = parser.add_subparsers(dest='command', help='Commands')
     
-    # List command
     subparsers.add_parser('list', help='List all available themes')
     
-    # Preview command
     preview_parser = subparsers.add_parser('preview', help='Preview theme colors')
     preview_parser.add_argument('theme', help='Theme name to preview')
     
-    # Apply command
     apply_parser = subparsers.add_parser('apply', help='Apply theme')
     apply_parser.add_argument('theme', help='Theme name to apply (use "wallpaper" for auto-generation)')
-    apply_parser.add_argument('--variant', choices=['dark', 'light'], default='dark',
-                             help='Theme variant (for wallpaper theme generation)')
+    apply_parser.add_argument('--variant', choices=['dark', 'light'], default=None,
+                             help='Theme variant (for wallpaper theme generation, auto-detected on GNOME)')
     apply_parser.add_argument('--listen', action='store_true',
                              help='Watch wallpaper file for changes (only for wallpaper theme)')
+    
+    subparsers.add_parser('watch-dark-mode', 
+                         help='Watch GNOME dark mode and auto-switch themes (GNOME only)')
     
     args = parser.parse_args()
     
@@ -874,6 +1127,8 @@ Examples:
                 manager.watch_wallpaper(variant=args.variant)
             else:
                 manager.apply_theme(args.theme, variant=args.variant)
+        elif args.command == 'watch-dark-mode':
+            manager.watch_gnome_dark_mode()
     except FileNotFoundError as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

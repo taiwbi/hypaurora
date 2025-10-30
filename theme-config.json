@@ -1,3 +1,5 @@
 {
-  "current_theme": "bearded_monokai_stone"
+  "current_theme": "bearded_monokai_stone",
+  "preferred_dark_theme": "bearded_monokai_stone",
+  "preferred_light_theme": "bearded_milkshake_blueberry"
 }
