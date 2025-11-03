@@ -1,0 +1,51 @@
+{
+  "name": "NieR: Automata - YoRHa Light",
+  "author": "Inspired by Yoko Taro",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#CDC8B0",
+      "foreground": "#4B483F",
+      "cursor": "#4B483F",
+      "cursor_text": "#DAD4BB",
+      "selection_bg": "#4B483F",
+      "selection_fg": "#DAD4BB"
+    },
+    "palette": [
+      "#3F352F",
+      "#D64545",
+      "#7A8C6F",
+      "#C8984B",
+      "#6B7C8C",
+      "#8B6B9D",
+      "#5A9B9B",
+      "#C1AFA0",
+      "#766d6d",
+      "#E65555",
+      "#8AA17D",
+      "#D6A85E",
+      "#7D8FA0",
+      "#A67FB5",
+      "#6DB3B3",
+      "#EEEEEE"
+    ],
+    "semantic": {
+      "accent": "#4B483F",
+      "accent_fg": "#DAD4BB",
+      "border": "#BAB59F",
+      "success": "#7A8C6F",
+      "warning": "#C8984B",
+      "error": "#D64545"
+    },
+    "ui": {
+      "card": "#DAD4BB",
+      "card_fg": "#4B483F",
+      "popover": "#DAD4BB",
+      "popover_fg": "#4B483F",
+      "sidebar": "#B4AF9A",
+      "sidebar_fg": "#4B483F",
+      "headerbar": "#CDC8B0",
+      "headerbar_fg": "#4B483F"
+    }
+  }
+}

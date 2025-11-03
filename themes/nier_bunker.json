@@ -1,0 +1,51 @@
+{
+  "name": "NieR: Automata - Bunker",
+  "author": "Inspired by Yoko Taro",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#F5F5F5",
+      "foreground": "#232323",
+      "cursor": "#232323",
+      "cursor_text": "#F5F5F5",
+      "selection_bg": "#232323",
+      "selection_fg": "#F5F5F5"
+    },
+    "palette": [
+      "#3F352F",
+      "#D64545",
+      "#7A8C6F",
+      "#C8984B",
+      "#6B7C8C",
+      "#8B6B9D",
+      "#5A9B9B",
+      "#C1AFA0",
+      "#544848",
+      "#E65555",
+      "#8AA17D",
+      "#D6A85E",
+      "#7D8FA0",
+      "#A67FB5",
+      "#6DB3B3",
+      "#EEEEEE"
+    ],
+    "semantic": {
+      "accent": "#232323",
+      "accent_fg": "#F5F5F5",
+      "border": "#D0D0D0",
+      "success": "#7A8C6F",
+      "warning": "#C8984B",
+      "error": "#D64545"
+    },
+    "ui": {
+      "card": "#FFFFFF",
+      "card_fg": "#232323",
+      "popover": "#FFFFFF",
+      "popover_fg": "#232323",
+      "sidebar": "#E8E8E8",
+      "sidebar_fg": "#232323",
+      "headerbar": "#F5F5F5",
+      "headerbar_fg": "#232323"
+    }
+  }
+}

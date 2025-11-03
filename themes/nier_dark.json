@@ -1,0 +1,51 @@
+{
+  "name": "NieR: Automata - YoRHa Dark",
+  "author": "Inspired by Yoko Taro",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#2B2720",
+      "foreground": "#D4CEBB",
+      "cursor": "#D4CEBB",
+      "cursor_text": "#2B2720",
+      "selection_bg": "#D4CEBB",
+      "selection_fg": "#2B2720"
+    },
+    "palette": [
+      "#3F352F",
+      "#D64545",
+      "#7A8C6F",
+      "#C8984B",
+      "#6B7C8C",
+      "#8B6B9D",
+      "#5A9B9B",
+      "#C1AFA0",
+      "#544848",
+      "#E65555",
+      "#8AA17D",
+      "#D6A85E",
+      "#7D8FA0",
+      "#A67FB5",
+      "#6DB3B3",
+      "#EEEEEE"
+    ],
+    "semantic": {
+      "accent": "#D4CEBB",
+      "accent_fg": "#2B2720",
+      "border": "#4B453A",
+      "success": "#7A8C6F",
+      "warning": "#C8984B",
+      "error": "#D64545"
+    },
+    "ui": {
+      "card": "#3A3328",
+      "card_fg": "#D4CEBB",
+      "popover": "#3A3328",
+      "popover_fg": "#D4CEBB",
+      "sidebar": "#322D24",
+      "sidebar_fg": "#D4CEBB",
+      "headerbar": "#2B2720",
+      "headerbar_fg": "#D4CEBB"
+    }
+  }
+}

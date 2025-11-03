@@ -1,0 +1,51 @@
+{
+  "name": "NieR: Automata - Friedrich",
+  "author": "Inspired by Yoko Taro",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1e2226",
+      "foreground": "#C8D4E0",
+      "cursor": "#6DB3B3",
+      "cursor_text": "#1e2226",
+      "selection_bg": "#5A9B9B",
+      "selection_fg": "#E8F0F8"
+    },
+    "palette": [
+      "#3F352F",
+      "#D64545",
+      "#7A8C6F",
+      "#C8984B",
+      "#6B7C8C",
+      "#8B6B9D",
+      "#5A9B9B",
+      "#C1AFA0",
+      "#544848",
+      "#E65555",
+      "#8AA17D",
+      "#D6A85E",
+      "#7D8FA0",
+      "#A67FB5",
+      "#6DB3B3",
+      "#EEEEEE"
+    ],
+    "semantic": {
+      "accent": "#6DB3B3",
+      "accent_fg": "#1e2226",
+      "border": "#3A4248",
+      "success": "#5A9B9B",
+      "warning": "#7D8FA0",
+      "error": "#D64545"
+    },
+    "ui": {
+      "card": "#252A2F",
+      "card_fg": "#C8D4E0",
+      "popover": "#252A2F",
+      "popover_fg": "#C8D4E0",
+      "sidebar": "#1A1E22",
+      "sidebar_fg": "#B8C8D8",
+      "headerbar": "#1e2226",
+      "headerbar_fg": "#C8D4E0"
+    }
+  }
+}
