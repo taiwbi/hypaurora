@@ -21,8 +21,8 @@ label,
 a,
 blockquote {
   font-family:
-    "Geist",
-    "Vazirmatn",
+    "Iosevka Aile",
+    "Dana",
     system-ui,
     -apple-system,
     "Segoe UI",
@@ -94,7 +94,7 @@ code,
 .ace_editor,
 .ace_editor * {
   font-family:
-    "DM Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+    "Iosevka", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code",
     "Roboto Mono", Consolas, "Courier New", monospace;
 }
 

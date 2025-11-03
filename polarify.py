@@ -506,7 +506,7 @@ class ThemeManager:
     border: {border};
     accent: {accent};
 
-    font:   "Dank Mono SemiBold 11";
+    font:   "Iosevka 11";
 
     background-color:   transparent;
     text-color:         @fg0;

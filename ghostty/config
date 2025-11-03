@@ -1,20 +1,19 @@
 command = /bin/fish
 
-font-family = "Dank Mono"
-# -> <- => <= == === !=
-font-family = "Vazir Code Hack"
-font-style="SemiBold"
+font-family = "Iosevka Term"
+font-family = "AzarMehrMonospaced"
+font-feature=calt,dlig,ss03
 
-font-size = 14
+font-size = 12
 
-adjust-cell-height = 17
+adjust-cell-height = 15
 adjust-cell-width = 0
 
 # Appearance
-window-width = 120
+window-width = 130
 window-height = 23
-window-padding-x = 0
-window-padding-y = 0
+window-padding-x = 3
+window-padding-y = 5
 background-opacity = 1
 
 mouse-hide-while-typing = true

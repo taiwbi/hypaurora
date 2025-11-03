@@ -20,7 +20,7 @@ See [THEMES.md](docs/THEMES.md) for complete documentation.
 
 - ✨ Icon Pack: [Reversal](https://github.com/yeyushengfan258/Reversal-icon-theme)
 - 🖱️ Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
-- 🅰️ Font Family: [Geist](https://vercel.com/font)
-- ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Dank Mono](https://dank.sh/)
-- 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
+- 🅰️ Font Family: [Iosevka Aile](https://github.com/be5invis/Iosevka)
+- ✍️ Persian Font Family: [Dana](https://fontiran.com/fonts/dana)
+- 💻 Monospace Family: [Iosevka](https://github.com/be5invis/Iosevka)
+- 📜 Persian Monospace Family: [AzarMehrMonospaced](https://github.com/aminabedi68/AzarMehrMonospaced)

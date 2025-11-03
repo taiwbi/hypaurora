@@ -23,7 +23,7 @@
     text_icon_padding = 10
 
     # Text & Font
-    font = Geist 11
+    font = Iosevka Aile 11
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
