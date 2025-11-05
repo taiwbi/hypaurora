@@ -1,0 +1,51 @@
+{
+  "name": "NieR: Automata - YoRHa No.2 Type B",
+  "author": "Inspired by Yoko Taro",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#181a1b",
+      "foreground": "#edf3ee",
+      "cursor": "#759DB0",
+      "cursor_text": "#181a1b",
+      "selection_bg": "#242526",
+      "selection_fg": "#EDF3EE"
+    },
+    "palette": [
+      "#1A1A1A",
+      "#CD533B",
+      "#7A8C6F",
+      "#D4C5A0",
+      "#759DB0",
+      "#8B6B9D",
+      "#6DB3B3",
+      "#D4D4D4",
+      "#3A3A3A",
+      "#d4664f",
+      "#8AA17D",
+      "#E8DCC0",
+      "#9DB0C0",
+      "#A67FB5",
+      "#83a7b8",
+      "#F5F5F5"
+    ],
+    "semantic": {
+      "accent": "#759DB0",
+      "accent_fg": "#181a1b",
+      "border": "#759DB0",
+      "success": "#7A8C6F",
+      "warning": "#D4C5A0",
+      "error": "#CD533B"
+    },
+    "ui": {
+      "card": "#242526",
+      "card_fg": "#EDF3EE",
+      "popover": "#0d0e0f",
+      "popover_fg": "#EDF3EE",
+      "sidebar": "#080809",
+      "sidebar_fg": "#EDF3EE",
+      "headerbar": "#080809",
+      "headerbar_fg": "#EDF3EE"
+    }
+  }
+}
