@@ -1,4 +1,9 @@
-function fish_prompt
+# Custom transient prompt setup
+function __prompt_compact --description "Minimal prompt form for scrollback"
+    printf "%s " (set_color red)\$ (set_color normal)
+end
+
+function __prompt_rich --description "Extended prompt form for the current command"
     # Colors
     set -l reset (set_color normal)
     set -l white (set_color white)
@@ -36,7 +41,7 @@ function fish_prompt
             if not git diff --quiet 2>/dev/null; or not git diff --cached --quiet 2>/dev/null
                 set dirty "*"
             end
-            set git_info "$green_fg$sep_left$reset$green_bg$red_fg $black$branch$dirty$reset$green_fg$sep_right$reset"
+            set git_info "$red_fg $green_fg$branch$dirty$reset"
         end
     end
 
@@ -47,27 +52,78 @@ function fish_prompt
     set -l term_width (tput cols 2>/dev/null; or echo 80)
 
     # Build prompt segments
-    set -l cat_segment "$red_fg$sep_left$red_bg$white🐱$reset$red_fg$sep_right$reset"
-    set -l user_segment "$blue_fg$sep_left$blue_bg$black$user_host$reset$magenta_bg$blue_fg$sep_right$reset"
-    set -l dir_segment "$magenta_bg$black $dir$reset$magenta_fg$sep_right$reset"
+    set -l user_segment "$blue_fg$user_host$reset"
+    set -l dir_segment "$magenta_fg$dir$reset"
 
     # Calculate total length for responsiveness
-    set -l prompt_len (string length -- "$cat_segment$user_segment$dir_segment")
+    set -l prompt_len (string length -- "$user_segment$dir_segment")
     if test -n "$git_info"
         set prompt_len (math $prompt_len + (string length -- $git_info))
     end
 
-    printf "%s %s%s " \
-        $cat_segment \
+    printf "%s %s " \
         $user_segment  \
         $dir_segment
     if test -n "$git_info"
         printf $git_info
     end
     # If screen is too narrow, put command on new line
-    if test $term_width -lt 50
-        printf "\n󱞩 "
+    if test $term_width -lt 85
+        printf "\n$red_fg\$ $reset"
     else
-        printf "  "
+        printf " $red_fg\$ $reset"
     end
 end
+
+function fish_prompt --description 'Write out the prompt'
+    if test "$TRANSIENT" = transient
+        __prompt_compact
+        echo -en \e\[0J # Clear from cursor to end of screen (handles multi-line prompts)
+        set --global TRANSIENT normal
+        return 0
+    else
+        __prompt_rich
+    end
+end
+
+# Key binding handlers for transient behavior
+function __transient_execute
+    commandline --function expand-abbr suppress-autosuggestion
+    if commandline --is-valid || test -z "$(commandline)"
+        if commandline --paging-mode && test -n "$(commandline)"
+            commandline -f accept-autosuggestion
+            return 0
+        end
+        set --global TRANSIENT transient
+        commandline --function repaint execute
+        return 0
+    end
+    commandline -f execute
+end
+
+function __transient_ctrl_c_execute
+    if test "$(commandline --current-buffer)" = ""
+        commandline --function cancel-commandline
+        return 0
+    end
+    set --global TRANSIENT transient
+    commandline --function repaint cancel-commandline kill-inner-line repaint-mode repaint
+end
+
+function __transient_ctrl_d_execute
+    if test "$(commandline --current-buffer)" != ""
+        return 0
+    end
+    set --global TRANSIENT transient
+    commandline --function repaint exit
+end
+
+# Bindings
+bind --user --mode default \r __transient_execute
+bind --user --mode insert \r __transient_execute
+bind --user --mode default \cj __transient_execute
+bind --user --mode insert \cj __transient_execute
+bind --user --mode default \cd __transient_ctrl_d_execute
+bind --user --mode insert \cd __transient_ctrl_d_execute
+bind --user --mode default \cc __transient_ctrl_c_execute
+bind --user --mode insert \cc __transient_ctrl_c_execute
