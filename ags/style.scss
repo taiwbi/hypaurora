@@ -1,20 +1,116 @@
 // https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
 $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
+$accent-color: #{"@accent_bg_color"};
 
-window.Bar {
+Bar#bar {
   background: transparent;
   color: $fg-color;
-  font-weight: bold;
+  font-family: "Geist", monospace;
+  font-size: 14px;
 
-  > centerbox {
-    background: $bg-color;
-    border-radius: 10px;
-    margin: 8px;
+  bar-content {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    margin: 5px 5px 0 5px;
+    padding: 4px 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
-  button {
+  // Workspaces
+  workspaces {
+    padding: 6px 0px 6px 4px;
+
+    workspace {
+      background: transparent;
+      transition: all 200ms ease;
+
+      workspace-dot {
+        padding: 0 4px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.3);
+        transition: all 200ms ease;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+
+      &:hover workspace-dot {
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      &.focused,
+      &.occupied.focused {
+        min-width: 24px;
+
+        workspace-dot {
+          min-width: 32px;
+          border-radius: 8px;
+          background: $accent-color;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      &.occupied {
+        workspace-dot {
+          background: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+  }
+
+  // Clock
+  clock {
+    padding: 4px 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  // Media
+  media {
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
-    margin: 2px;
+
+    media-icon {
+      font-size: 16px;
+      color: $accent-color;
+    }
+
+    media-title {
+      font-weight: 500;
+    }
+  }
+
+  // System Tray
+  system-tray {
+    padding: 4px 8px;
+
+    button,
+    box {
+      background: transparent;
+      border: none;
+      padding: 4px 8px;
+      min-width: 24px;
+      min-height: 24px;
+      border-radius: 6px;
+      transition: all 200ms ease;
+
+      label {
+        font-size: 16px;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  volume,
+  battery,
+  network {
+    label {
+      color: $fg-color;
+    }
   }
 }
