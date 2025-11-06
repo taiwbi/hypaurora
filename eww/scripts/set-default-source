@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# Usage: set-default-source <device_name>
-
-device=$1
-pactl set-default-source "$device"

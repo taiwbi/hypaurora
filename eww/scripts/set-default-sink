@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# Usage: set-default-sink <device_name>
-
-device=$1
-pactl set-default-sink "$device"

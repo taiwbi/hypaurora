@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-export LC_TIME=en_US.UTF-8
-
-english_date=$(date +"%A, %d %B %Y")
-persian_date=$(jdate +"%G, %d %V %Y")
-
-# JSON output
-echo "{\"english\": \"$english_date\", \"persian\": \"$persian_date\"}"
