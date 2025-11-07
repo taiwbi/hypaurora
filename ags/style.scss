@@ -19,19 +19,18 @@ Bar#bar {
 
   // Workspaces
   workspaces {
-    padding: 6px 0px 6px 4px;
-
+    padding: 0;
+    padding-left: 4px;
     workspace {
       background: transparent;
       transition: all 200ms ease;
-
+      margin: 0;
       workspace-dot {
-        padding: 0 4px;
-        border-radius: 4px;
+        padding-right: 4px;
+        border-radius: 12px;
         background: rgba(255, 255, 255, 0.3);
         transition: all 200ms ease;
-        margin-top: 3px;
-        margin-bottom: 3px;
+        min-width: 11px;
       }
 
       &:hover workspace-dot {
@@ -40,14 +39,24 @@ Bar#bar {
 
       &.focused,
       &.occupied.focused {
-        min-width: 24px;
-
         workspace-dot {
           min-width: 32px;
-          border-radius: 8px;
+          border-radius: 16px;
           background: $accent-color;
-          margin-top: 0;
-          margin-bottom: 0;
+          padding: 0 6px 0 1px;
+          .workspace-icon-frame {
+            border-radius: 50%;
+            border: none;
+            padding: 0;
+            background: transparent;
+            .workspace-icon {
+              filter: grayscale(100%);
+            }
+          }
+          .workspace-name {
+            font-size: 12px;
+            font-weight: 600;
+          }
         }
       }
 

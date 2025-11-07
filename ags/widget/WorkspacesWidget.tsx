@@ -1,17 +1,19 @@
 import Hyprland from "gi://AstalHyprland"
 import { createBinding } from "ags"
 import { Gtk } from "ags/gtk4"
+import { getSymbolicIcon, getAppIcon } from "../lib/apps"
 
 export default function WorkspacesWidget() {
     const hyprland = Hyprland.get_default()
     const focusedWorkspace = createBinding(hyprland, "focusedWorkspace")
     const clients = createBinding(hyprland, "clients")
+    const focusedClient = createBinding(hyprland, "focusedClient")
 
     return (
-        <box cssName="workspaces" spacing={8}>
+        <box cssName="workspaces" spacing={4}>
             {Array.from({ length: 10 }, (_, i) => i + 1).map((id) => (
                 <button
-                    cssName="workspace"
+                    cssName="workspace" valign={Gtk.Align.CENTER} heightRequest={15}
                     $={(self: Gtk.Button) => {
                         focusedWorkspace.subscribe(() => {
                             const focused = focusedWorkspace.get()
@@ -37,7 +39,56 @@ export default function WorkspacesWidget() {
                     }}
                     onClicked={() => hyprland.dispatch("workspace", id.toString())}
                 >
-                    <box cssName="workspace-dot" />
+                    <box cssName="workspace-dot" spacing={4}
+                        $={(workspaceDot: Gtk.Box) => {
+                            let iconFrame: Gtk.Frame | null = null
+                            let iconImage: Gtk.Image | null = null
+                            let nameWidget: Gtk.Label | null = null
+
+                            const updateIcon = () => {
+                                const focused = focusedWorkspace.get()
+                                const client = focusedClient.get()
+
+                                if (nameWidget) {
+                                    workspaceDot.remove(nameWidget)
+                                    nameWidget = null
+                                }
+                                if (iconFrame) {
+                                    workspaceDot.remove(iconFrame)
+                                    iconFrame = null
+                                }
+
+                                // Add new icon if this is the focused workspace and there's a focused client
+                                if (focused?.id === id && client) {
+                                    iconImage = new Gtk.Image({
+                                        iconName: getSymbolicIcon(client.class) ?? getAppIcon(client.class) ??
+                                            "application-x-executable-symbolic",
+                                        valign: Gtk.Align.CENTER,
+                                        pixelSize: 22,
+                                    })
+                                    iconImage.add_css_class("workspace-icon")
+                                    iconFrame = new Gtk.Frame({
+                                        valign: Gtk.Align.CENTER,
+                                        child: iconImage
+                                    })
+                                    iconFrame.add_css_class("workspace-icon-frame")
+
+                                    nameWidget = new Gtk.Label({
+                                        label: client.initialTitle || "NaN"
+                                    })
+                                    nameWidget.add_css_class("workspace-name")
+
+                                    workspaceDot.append(iconFrame)
+                                    workspaceDot.append(nameWidget)
+                                }
+                            }
+                            // Subscribe to changes
+                            focusedWorkspace.subscribe(updateIcon)
+                            focusedClient.subscribe(updateIcon)
+                            // Initial render
+                            updateIcon()
+                        }}
+                    />
                 </button>
             ))}
         </box>
