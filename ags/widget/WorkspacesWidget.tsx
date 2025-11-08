@@ -2,6 +2,7 @@ import Hyprland from "gi://AstalHyprland"
 import { createBinding } from "ags"
 import { Gtk } from "ags/gtk4"
 import { getSymbolicIcon, getAppIcon } from "../lib/apps"
+import GLib from "gi://GLib"
 
 export default function WorkspacesWidget() {
     const hyprland = Hyprland.get_default()
@@ -23,7 +24,7 @@ export default function WorkspacesWidget() {
                                 self.remove_css_class("focused")
                             }
                         })
-                        clients.subscribe(() => {
+                        const updateOccupied = () => {
                             const allWorkspaces = Hyprland.get_default().get_workspaces()
 
                             for (const workspace of allWorkspaces) {
@@ -35,7 +36,10 @@ export default function WorkspacesWidget() {
                                     }
                                 }
                             }
-                        })
+                        }
+
+                        clients.subscribe(updateOccupied)
+                        focusedWorkspace.subscribe(updateOccupied)
                     }}
                     onClicked={() => hyprland.dispatch("workspace", id.toString())}
                 >
@@ -44,8 +48,14 @@ export default function WorkspacesWidget() {
                             let iconFrame: Gtk.Frame | null = null
                             let iconImage: Gtk.Image | null = null
                             let nameWidget: Gtk.Label | null = null
+                            let updateTimeout: GLib.Source | null = null
 
                             const updateIcon = () => {
+                                // Clear any pending timeout
+                                if (updateTimeout) {
+                                    clearTimeout(updateTimeout)
+                                }
+
                                 const focused = focusedWorkspace.get()
                                 const client = focusedClient.get()
 
@@ -60,6 +70,14 @@ export default function WorkspacesWidget() {
 
                                 // Add new icon if this is the focused workspace and there's a focused client
                                 if (focused?.id === id && client) {
+                                    // Wait a bit for client to initialize if title/class is missing
+                                    if (!client.initialTitle || !client.class) {
+                                        updateTimeout = setTimeout(() => {
+                                            updateIcon()
+                                        }, 100)
+                                        return
+                                    }
+
                                     iconImage = new Gtk.Image({
                                         iconName: getSymbolicIcon(client.class) ?? getAppIcon(client.class) ??
                                             "application-x-executable-symbolic",
@@ -74,7 +92,7 @@ export default function WorkspacesWidget() {
                                     iconFrame.add_css_class("workspace-icon-frame")
 
                                     nameWidget = new Gtk.Label({
-                                        label: client.initialTitle || "NaN"
+                                        label: client.initialTitle || client.title || "Unknown"
                                     })
                                     nameWidget.add_css_class("workspace-name")
 
