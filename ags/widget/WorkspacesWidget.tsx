@@ -92,7 +92,10 @@ export default function WorkspacesWidget() {
                                     iconFrame.add_css_class("workspace-icon-frame")
 
                                     nameWidget = new Gtk.Label({
-                                        label: client.initialTitle || client.title || "Unknown"
+                                        label: ((t) =>
+                                            Array.from(t).length > 10
+                                                ? Array.from(t).slice(0, 10).join("") + "..."
+                                                : t)(client.title || client.initialTitle || "Unknown"),
                                     })
                                     nameWidget.add_css_class("workspace-name")
 
