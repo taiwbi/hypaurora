@@ -40,6 +40,9 @@ ln -sf "$PWD/fish" "$HOME/.config/fish"
 rm -rf "$HOME/.config/fastfetch";
 ln -sf "$PWD/fastfetch" "$HOME/.config/fastfetch"
 
+rm -rf "$HOME/.config/ags";
+ln -sf "$PWD/ags" "$HOME/.config/ags"
+
 rm -rf "$HOME/.config/hypr";
 ln -sf "$PWD/hypr" "$HOME/.config/hypr"
 
