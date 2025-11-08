@@ -17,8 +17,8 @@ fi
 
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Iosevka Aile, Dana 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Iosevka, AzarMehrMonospaced 11'
+gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'FantasqueSansMono Nerd Font, AzarMehrMonospaced 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'ColorFlow'
 

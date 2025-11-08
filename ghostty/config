@@ -1,12 +1,12 @@
 command = /bin/fish
 
-font-family = "Iosevka Term"
+font-family = "FantasqueSansMono Nerd Font"
 font-family = "AzarMehrMonospaced"
 font-feature=calt,dlig,ss03
 
-font-size = 12
+font-size = 13
 
-adjust-cell-height = 9
+adjust-cell-height = 10
 adjust-cell-width = 0
 
 # Appearance

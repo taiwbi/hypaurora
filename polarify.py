@@ -506,7 +506,7 @@ class ThemeManager:
     border: {border};
     accent: {accent};
 
-    font:   "Iosevka 11";
+    font:   "Geist 11";
 
     background-color:   transparent;
     text-color:         @fg0;
