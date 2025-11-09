@@ -34,7 +34,7 @@ else
     echo "$header_2 Couldn't detect NVIDIA driver. Waiting another 5 minutes"
     sleep 300
 fi
-sudo dnf mark user akmod-nvidia # To prevent autoremove to consider akmod-nvidia as uneeded
+sudo dnf mark user akmod-nvidia # To prevent autoremove to consider akmod-nvidia as unneeded
 sudo dnf install xorg-x11-drv-nvidia-power -y
 sudo systemctl enable nvidia-{suspend,resume,hibernate}
 sudo dnf install vulkan -y
@@ -99,6 +99,6 @@ esac
 
 
 sudo dnf mark user totem-video-thumbnailer evince-previewer
-sudo dnf remove rhythmbox totem evinc installatione gnome-shell-extension-* firefox firefox-*
+sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* firefox firefox-*
 
 rm -rf ~/.mozilla/
