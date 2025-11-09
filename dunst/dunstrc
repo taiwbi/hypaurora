@@ -12,7 +12,7 @@
     # Appearance
     transparency = 0
     frame_width = 2
-    frame_color = "#759DB0"  # $border-color
+    frame_color = "#78dce8"  # $border-color
     corner_radius = 8
     corners = all
     gap_size = 8
@@ -41,7 +41,7 @@
     progress_bar_max_width = 400
     progress_bar_frame_width = 0
     progress_bar_corner_radius = 6
-    highlight = "#D4C5A0"    # $slider-color
+    highlight = "#ffd866"    # $slider-color
 
     # Behavior
     indicate_hidden = true
@@ -60,19 +60,19 @@
 # --- Urgency Colors ---
 
 [urgency_low]
-    background = "#181a1b80"   # $background-color with transparency
+    background = "#2A2D3380"   # $background-color with transparency
     foreground = "#eceff4"     # light text
-    frame_color = "#759DB0"    # $border-color-popup
+    frame_color = "#78dce8"    # $border-color-popup
     timeout = 30
 
 [urgency_normal]
-    background = "#181a1b80"
+    background = "#2A2D3380"
     foreground = "#eceff4"
-    frame_color = "#759DB0"    # $slider-color
+    frame_color = "#78dce8"    # $slider-color
     timeout = 45
 
 [urgency_critical]
-    background = "#181a1b80"
+    background = "#2A2D3380"
     foreground = "#ffffff"
-    frame_color = "#759DB0"    # $border-color-osd
+    frame_color = "#78dce8"    # $border-color-osd
     timeout = 0   # stay until dismissed
