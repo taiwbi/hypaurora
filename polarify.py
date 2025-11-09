@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hypaurora Theme Manager
-Manages themes across Ghostty, GTK, Rofi, EWW, Hyprland, and GNOME Shell from a central theme registry.
+Manages themes across Ghostty, GTK, Rofi, Hyprland, and GNOME Shell from a central theme registry.
 Supports generating themes from wallpaper images.
 Integrates with GNOME settings for dark mode and wallpaper changes.
 """
@@ -529,52 +529,6 @@ class ThemeManager:
         if self.update_file_with_regex(rofi_file, [(pattern, new_colors)]):
             return True
     
-    def update_eww(self, theme: Dict[str, Any]) -> bool:
-        """Updates EWW theme SCSS content."""
-        colors = theme["colors"]
-        palette = colors["palette"]
-        semantic = colors["semantic"]
-        ui = colors["ui"]
-        base = colors["base"]
-        
-        scss_vars = [
-            ("// Background colors", "", ""),
-            ("bg-base", base['background'], "Base background from theme"),
-            ("bg-popover", ui['popover'], "Popover background from theme"),
-            ("bg-active", palette[10], "Active/highlighted background"),
-            ("bg-hover", palette[8], "Hover state background"),
-            ("", "", ""),
-            ("// Foreground/text colors", "", ""),
-            ("fg-base", base['foreground'], "Base foreground text"),
-            ("fg-popover", ui['popover_fg'], "Popover text from theme"),
-            ("fg-sidebar", ui['sidebar_fg'], "Sidebar text from theme"),
-            ("fg-active", base['background'], "Text on active background"),
-            ("", "", ""),
-            ("// Border colors", "", ""),
-            ("border-base", semantic['border'], "Main border color"),
-            ("border-popup", palette[6], "Popup window borders"),
-            ("border-osd", palette[5], "On-screen display borders"),
-            ("", "", ""),
-            ("// Accent and functional colors", "", ""),
-            ("accent-color", semantic['accent'], "General accent color"),
-            ("accent-logo", palette[6], "Logo/brand color"),
-            ("accent-slider", semantic['warning'], "Slider/progress color"),
-        ]
-        
-        lines = []
-        for name, value, comment in scss_vars:
-            if not name:
-                lines.append("")
-            elif name.startswith("//"):
-                lines.append(name)
-            else:
-                lines.append(f"${name}: {value};{' ' * (max(0, 20 - len(name)))}// {comment}")
-        
-        eww_file = self.base_dir / "eww/themes/hypaurora.scss"
-        with open(eww_file, "w") as f:
-            f.write("\n".join(lines))
-        return True
-    
     def generate_hyprland(self, theme: Dict[str, Any]) -> Dict[str, str]:
         """Generate Hyprland theme colors to inject into look.conf."""
         palette = theme["colors"]["palette"]
@@ -682,20 +636,6 @@ class ThemeManager:
         ]
         
         self.update_file_with_regex(dunstrc_file, replacements)
-    
-    def update_svg_colors(self, theme: Dict[str, Any]):
-        """Update fill colors in SVG icon files."""
-        fg_color = theme["colors"]["base"]["foreground"]
-        icons_dir = self.base_dir / "eww/icons"
-        
-        if not icons_dir.exists():
-            print(f"  ⚠ Icons directory not found: {icons_dir}")
-            return
-        
-        svg_files = list(icons_dir.glob("*.svg"))
-        for svg_file in svg_files:
-            replacements = [(r'fill="#[A-Fa-f0-9]{3,6}"', f'fill="{fg_color}"')]
-            self.update_file_with_regex(svg_file, replacements)
     
     def apply_hyprland_theme(self, theme: Dict[str, Any]):
         """Update Hyprland colors directly in look.conf."""
@@ -853,10 +793,8 @@ class ThemeManager:
             ("Ghostty", lambda: self.update_ghostty(theme)),
             ("GTK", lambda: self.update_gtk(theme)),
             ("Rofi", lambda: self.update_rofi(theme)),
-            ("EWW", lambda: self.update_eww(theme)),
             ("Dunst", lambda: self.update_dunst_config(theme)),
             ("Hyprland", lambda: self.apply_hyprland_theme(theme)),
-            ("SVG icons", lambda: self.update_svg_colors(theme)),
             ("GNOME Shell", lambda: self.install_gnome_shell(theme)),
         ]
         
