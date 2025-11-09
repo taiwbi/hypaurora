@@ -10,7 +10,7 @@ function PlayerWidget({ player }: { player: any }) {
     const iconName = playbackStatus((status) =>
         status === Mpris.PlaybackStatus.PLAYING
             ? "folder-music-symbolic"
-            : "media-playback-paused-symbolic",
+            : "media-playback-pause-symbolic",
     )
 
     return (
