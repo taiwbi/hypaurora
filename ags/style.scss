@@ -1,7 +1,7 @@
 // https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@theme_fg_color"};
-$bg-color: #{"@theme_bg_color"};
-$accent-color: #{"@accent_bg_color"};
+$fg-color: #{"@window_fg_color"};
+$bg-color: #{"@window_bg_color"};
+$accent-color: #{"@accent_color"};
 
 Bar#bar {
   background: transparent;
@@ -10,7 +10,7 @@ Bar#bar {
   font-size: 14px;
 
   bar-content {
-    background: rgba(0, 0, 0, 0.8);
+    background: $bg-color;
     border-radius: 12px;
     margin: 5px 5px 0 5px;
     padding: 4px 8px;
