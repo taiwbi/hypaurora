@@ -7,7 +7,7 @@ reset_fg="\033[0m"
 
 header_0="$red⦿  $green⦿  $yellow⦿ $reset_fg"
 
-echo -e "$header_0 Are you sure? $red THIS WILL REMOVE ALL OF YOUR PREVIOUS CONFIGUTAIONS.$reset_fg"
+echo -e "$header_0 Are you sure? $red THIS WILL REMOVE ALL OF YOUR PREVIOUS CONFIGURATIONS.$reset_fg"
 read -rp "(y/n)" yn
 
 if [ "$yn" != "y" ]; then
