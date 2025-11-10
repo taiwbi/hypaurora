@@ -1,4 +1,4 @@
-import scss from "./style.scss";
+import scss from "../style.scss";
 import app from "ags/gtk4/app"
 import { Astal, Gtk, Gdk } from "ags/gtk4"
 import Workspaces from "./WorkspacesWidget"

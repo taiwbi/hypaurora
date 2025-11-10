@@ -8,11 +8,17 @@ Bar#bar {
   color: $fg-color;
   font-family: "Geist", monospace;
   font-size: 14px;
+  background: $bg-color;
+  padding: 0;
+
+  &.floating {
+    padding: 5px 5px 0 5px;
+    background: transparent;
+  }
 
   bar-content {
     background: $bg-color;
     border-radius: 12px;
-    margin: 5px 5px 0 5px;
     padding: 4px 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
