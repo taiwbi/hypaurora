@@ -1,6 +1,6 @@
 configuration {
     show-icons: true;
-    icon-theme: "Reversal-orange-dark";
+    icon-theme: "Neuwaita";
 }
 
 * {
@@ -29,7 +29,7 @@ window {
     location:       north;
     y-offset:       calc(50% - 176px);
     width:          480;
-    height:         431;
+    height:         448;
 
     border-radius:  8px;
     border-color: @accent;
