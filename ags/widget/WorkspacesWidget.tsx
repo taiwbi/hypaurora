@@ -26,15 +26,12 @@ export default function WorkspacesWidget() {
                         })
                         const updateOccupied = () => {
                             const allWorkspaces = Hyprland.get_default().get_workspaces()
+                            const workspace = allWorkspaces.find(ws => ws.id === id)
 
-                            for (const workspace of allWorkspaces) {
-                                if (workspace.id === id) {
-                                    if (workspace.clients.length > 0) {
-                                        self.add_css_class("occupied")
-                                    } else {
-                                        self.remove_css_class("occupied")
-                                    }
-                                }
+                            if (workspace && workspace.clients.length > 0) {
+                                self.add_css_class("occupied")
+                            } else {
+                                self.remove_css_class("occupied")
                             }
                         }
 
