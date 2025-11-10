@@ -11,6 +11,6 @@ then
 fi
 
 echo "Starting AGS shell."
-nohup ags run ~/.config/ags/app.ts & disown > /dev/null 2>&1 &
+nohup ags run ~/.config/ags/app.ts > /dev/null 2>&1 &
 
 echo "AGS started."
