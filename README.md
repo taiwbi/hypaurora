@@ -28,7 +28,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [FantasqueSansMono Nerd Font](https://github.com/be5invis/Iosevka)
+- 💻 Monospace Family: [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 - 📜 Persian Monospace Family: [AzarMehrMonospaced](https://github.com/aminabedi68/AzarMehrMonospaced)
 
 ## Installation
