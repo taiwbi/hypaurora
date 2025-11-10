@@ -89,12 +89,12 @@ ldconfig -p | grep astal
 
 After installing astal and ags, you need to install these astal libraries as well:
 
-- https://aylur.github.io/astal/guide/libraries/hyprland
-- https://aylur.github.io/astal/guide/libraries/battery
-- https://aylur.github.io/astal/guide/libraries/network
-- https://aylur.github.io/astal/guide/libraries/wireplumber
-- https://aylur.github.io/astal/guide/libraries/mpris
-- https://aylur.github.io/astal/guide/libraries/apps
+- [Hyprland](https://aylur.github.io/astal/guide/libraries/hyprland)
+- [Battery](https://aylur.github.io/astal/guide/libraries/battery)
+- [Network](https://aylur.github.io/astal/guide/libraries/network)
+- [Wireplumber](https://aylur.github.io/astal/guide/libraries/wireplumber)
+- [Mpris](https://aylur.github.io/astal/guide/libraries/mpris)
+- [Apps](https://aylur.github.io/astal/guide/libraries/apps)
 
 To add type definitions for Astal and GNOME libraries for better development experience, run this command inside the ags directory:
 
