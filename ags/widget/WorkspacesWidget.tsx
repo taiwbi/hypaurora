@@ -40,6 +40,36 @@ export default function WorkspacesWidget() {
                         updateOccupied()
                         clients.subscribe(updateOccupied)
                         focusedWorkspace.subscribe(updateOccupied)
+
+                        const updateVisibility = () => {
+                            const allWorkspaces = Hyprland.get_default().get_workspaces()
+                            const focused = focusedWorkspace.get()
+
+                            // Find the highest workspace ID that is either occupied or focused
+                            let maxVisibleId = 0
+
+                            // Check focused workspace
+                            if (focused) {
+                                maxVisibleId = Math.max(maxVisibleId, focused.id)
+                            }
+
+                            // Check occupied workspaces
+                            for (const ws of allWorkspaces) {
+                                if (ws.clients.length > 0) {
+                                    maxVisibleId = Math.max(maxVisibleId, ws.id)
+                                }
+                            }
+
+                            // Show workspace if it's at or before the last occupied/focused workspace
+                            if (id <= maxVisibleId) {
+                                self.set_visible(true)
+                            } else {
+                                self.set_visible(false)
+                            }
+                        }
+                        updateVisibility()
+                        clients.subscribe(updateVisibility)
+                        focusedWorkspace.subscribe(updateVisibility)
                     }}
                     onClicked={() => hyprland.dispatch("workspace", id.toString())}
                 >
