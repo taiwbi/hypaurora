@@ -35,6 +35,15 @@ export default function MediaWidget() {
     function updateCurrent() {
         const playerList = mpris.players || []
 
+        // Keep the last playing player as current if all players stopped
+        if (
+            currentPlayer.get() &&
+            !playerList.some((p) => p.playbackStatus === Mpris.PlaybackStatus.PLAYING) &&
+            playerList.includes(currentPlayer.get() as Mpris.Player)
+        ) {
+            return
+        }
+
         for (const [p, c] of playerConns.entries()) {
             if (!playerList.includes(p)) {
                 try {
