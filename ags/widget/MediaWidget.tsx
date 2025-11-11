@@ -2,6 +2,7 @@ import { createBinding, createState } from "ags"
 import { Gtk } from "ags/gtk4"
 import Mpris from "gi://AstalMpris"
 import { With } from "ags"
+import { setMediaPopupVisible } from "../window/MediaPopup"
 
 function PlayerWidget({ player }: { player: Mpris.Player }) {
     const title = createBinding(player, "title")
@@ -15,14 +16,14 @@ function PlayerWidget({ player }: { player: Mpris.Player }) {
             : "media-playback-pause-symbolic",
     )
 
-    const labelText = title((t) =>
+    const displayTitle = title((t) =>
         t || identity.get() || busName.get() || "No media"
     )
 
     return (
         <box spacing={8}>
             <Gtk.Image cssName="media-icon" iconName={iconName} />
-            <label cssName="media-title" label={labelText} />
+            <label cssName="media-title" label={displayTitle} />
         </box>
     )
 }
@@ -104,9 +105,15 @@ export default function MediaWidget() {
     return (
         <With value={currentPlayer}>
             {(player) => (
-                <box cssName="media" visible={Boolean(player)} spacing={8}>
-                    {player ? <PlayerWidget player={player} /> : null}
-                </box>
+                <button
+                    cssName="media"
+                    visible={Boolean(player)}
+                    onClicked={() => setMediaPopupVisible((prev) => !prev)}
+                >
+                    <box spacing={8}>
+                        {player ? <PlayerWidget player={player} /> : null}
+                    </box>
+                </button>
             )}
         </With>
     )

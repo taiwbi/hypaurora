@@ -86,6 +86,16 @@ Bar#bar {
     padding: 4px 12px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
+    transition: all 200ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
 
     media-icon {
       font-size: 16px;
@@ -127,5 +137,114 @@ Bar#bar {
     label {
       color: $fg-color;
     }
+  }
+}
+
+// Media Popup
+media-popup {
+  background: transparent;
+
+  media-popup-content {
+    background: $bg-color;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 8px;
+    min-width: 320px;
+  }
+
+  media-info {
+    media-art-container {
+      padding: 8px;
+    }
+
+    media-art-frame {
+      border-radius: 12px;
+    }
+
+    media-art {
+      min-width: 150px;
+      min-height: 150px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      // border: 10px solid rgba(255, 255, 255, 0.05);
+    }
+
+    media-text {
+      media-title-large {
+        font-size: 18px;
+        font-weight: 700;
+        color: $fg-color;
+      }
+
+      media-artist {
+        font-size: 14px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+
+  media-controls {
+    padding-top: 8px;
+
+    control-button {
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      border-radius: 50%;
+      min-width: 54px;
+      min-height: 42px;
+      padding: 0;
+      transition: all 200ms ease;
+
+      image {
+        font-size: 20px;
+        color: $fg-color;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &.play-pause {
+        min-width: 56px;
+        min-height: 56px;
+        background: $accent-color;
+
+        image {
+          font-size: 24px;
+          color: $bg-color;
+        }
+
+        &:hover {
+          background: $accent-color;
+          opacity: 0.9;
+        }
+      }
+
+      &.active {
+        background: rgba(255, 255, 255, 0.2);
+
+        image {
+          color: $accent-color;
+        }
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        background: transparent;
+      }
+    }
+  }
+
+  no-media {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 32px;
   }
 }
