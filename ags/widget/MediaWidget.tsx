@@ -32,8 +32,24 @@ export default function MediaWidget() {
     const [currentPlayer, setCurrentPlayer] = createState<Mpris.Player | null>(null)
     const playerConns = new Map<Mpris.Player, number>()
 
+    function isPlayerValid(player: Mpris.Player) {
+        return player.canPause ||
+            player.canGoNext ||
+            player.canGoPrevious ||
+            player.canPlay
+    }
+
     function updateCurrent() {
         const playerList = mpris.players || []
+
+        // Filter out invalid players
+        const validPlayers = playerList.filter(p => isPlayerValid(p))
+
+        // If no valid players, set current player to null
+        if (validPlayers.length === 0) {
+            setCurrentPlayer(null)
+            return
+        }
 
         // Keep the last playing player as current if all players stopped
         if (
@@ -53,7 +69,7 @@ export default function MediaWidget() {
             }
         }
 
-        const sorted = [...playerList].sort((a, b) => {
+        const sorted = [...validPlayers].sort((a, b) => {
             const statusA = a.playbackStatus
             const statusB = b.playbackStatus
 
