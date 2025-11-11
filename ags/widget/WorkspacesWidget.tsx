@@ -16,14 +16,17 @@ export default function WorkspacesWidget() {
                 <button
                     cssName="workspace" valign={Gtk.Align.CENTER} heightRequest={15}
                     $={(self: Gtk.Button) => {
-                        focusedWorkspace.subscribe(() => {
+                        const updateFocused = () => {
                             const focused = focusedWorkspace.get()
                             if (focused?.id === id) {
                                 self.add_css_class("focused")
                             } else {
                                 self.remove_css_class("focused")
                             }
-                        })
+                        }
+                        updateFocused()
+                        focusedWorkspace.subscribe(updateFocused)
+
                         const updateOccupied = () => {
                             const allWorkspaces = Hyprland.get_default().get_workspaces()
                             const workspace = allWorkspaces.find(ws => ws.id === id)
@@ -34,7 +37,7 @@ export default function WorkspacesWidget() {
                                 self.remove_css_class("occupied")
                             }
                         }
-
+                        updateOccupied()
                         clients.subscribe(updateOccupied)
                         focusedWorkspace.subscribe(updateOccupied)
                     }}
