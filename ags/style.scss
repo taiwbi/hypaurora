@@ -33,12 +33,12 @@ Bar#bar {
       workspace-dot {
         padding-right: 4px;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
         transition: all 200ms ease;
         min-width: 11px;
 
         &:hover {
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.2);
           transform: scale(1.05);
         }
 
