@@ -42,9 +42,9 @@
       "card_fg": "#bac2de",
       "popover": "#45475a",
       "popover_fg": "#bac2de",
-      "sidebar": "#313244",
+      "sidebar": "#11111b",
       "sidebar_fg": "#7f849c",
-      "headerbar": "#11111b",
+      "headerbar": "#313244",
       "headerbar_fg": "#6c7086"
     }
   }
