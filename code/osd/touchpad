@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 
-# OSD Configuration (matching volume script)
-OSD_WINDOW="touchpad_osd"
-TIMEOUT=2
-TOUCHPAD_FILE="/tmp/eww_osd_touchpad.state"
-LOCK_FILE="/tmp/eww_touchpad_osd.lock"
-PID_FILE="/tmp/eww_touchpad_osd.pid"
-
-HYPRLAND_DEVICE="elan1300:00-04f3:3087-touchpad"
+TOUCHPAD_DEVICE="elan1300:00-04f3:3087-touchpad"
 
 # Set up XDG_RUNTIME_DIR if not set
 if [ "$XDG_RUNTIME_DIR" = "" ]; then
@@ -16,25 +9,16 @@ fi
 
 STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
 
-# Function to get current touchpad status
-get_touchpad_status() {
-    if [ -f "$STATUS_FILE" ]; then
-        cat "$STATUS_FILE"
-    else
-        echo "false"
-    fi
-}
-
 # Function to enable touchpad
 enable_touchpad() {
     printf "true" > "$STATUS_FILE"
-    hyprctl keyword "device[$HYPRLAND_DEVICE]:enabled" true
+    hyprctl keyword "device[$TOUCHPAD_DEVICE]:enabled" true
 }
 
 # Function to disable touchpad
 disable_touchpad() {
     printf "false" > "$STATUS_FILE"
-    hyprctl keyword "device[$HYPRLAND_DEVICE]:enabled" false
+    hyprctl keyword "device[$TOUCHPAD_DEVICE]:enabled" false
 }
 
 # Function to toggle touchpad
@@ -50,108 +34,11 @@ toggle_touchpad() {
     fi
 }
 
-# Function to show OSD
-show_osd() {
-    if ! eww active-windows | grep -q "^${OSD_WINDOW}:"; then
-        eww open "$OSD_WINDOW"
-    fi
-}
-
-# Function to hide OSD
-hide_osd() {
-    eww close "$OSD_WINDOW" 2>/dev/null
-}
-
-# Function to update state files
-update_state() {
-    local status=$(get_touchpad_status)
-    echo "$status" > "$TOUCHPAD_FILE"
-}
-
-# Function to start hide timer
-start_hide_timer() {
-    # Kill any existing timer process
-    if [ -f "$PID_FILE" ]; then
-        local old_pid=$(cat "$PID_FILE")
-        if kill -0 "$old_pid" 2>/dev/null; then
-            kill "$old_pid" 2>/dev/null
-        fi
-    fi
-    
-    # Update timestamp for when OSD should hide
-    local hide_time=$(($(date +%s) + TIMEOUT))
-    echo "$hide_time" > "/tmp/eww_touchpad_osd_hide_time.state"
-    
-    # Start new timer in background
-    (
-        while true; do
-            sleep 0.1
-            local current_time=$(date +%s)
-            local target_time=$(cat "/tmp/eww_touchpad_osd_hide_time.state" 2>/dev/null || echo "0")
-            
-            if [ "$current_time" -ge "$target_time" ]; then
-                # Check if we still own the lock
-                if [ -f "$LOCK_FILE" ] && [ $$ = "$(cat "$LOCK_FILE")" ]; then
-                    hide_osd
-                    rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_touchpad_osd_hide_time.state"
-                fi
-                break
-            fi
-        done
-    ) &
-    
-    # Store the timer PID
-    echo $! > "$PID_FILE"
-}
-
-# Function to acquire lock
-acquire_lock() {
-    # Check if lock exists and if the process is still running
-    if [ -f "$LOCK_FILE" ]; then
-        local lock_pid=$(cat "$LOCK_FILE")
-        if kill -0 "$lock_pid" 2>/dev/null; then
-            # Another instance is running, just extend its timer
-            return 1
-        else
-            # Stale lock file, remove it
-            rm -f "$LOCK_FILE" "$PID_FILE"
-        fi
-    fi
-    
-    # Acquire the lock
-    echo $$ > "$LOCK_FILE"
-    return 0
-}
-
-# Function to cleanup
-cleanup() {
-    if [ -f "$LOCK_FILE" ] && [ $$ = "$(cat "$LOCK_FILE")" ]; then
-        hide_osd
-        rm -f "$LOCK_FILE" "$PID_FILE" "/tmp/eww_touchpad_osd_hide_time.state"
-    fi
-}
-
-# Set up cleanup trap
-trap cleanup EXIT
-
-# Main logic: toggle touchpad
+# Main logic: toggle touchpad and show OSD via AGS
 toggle_touchpad
 
-# Try to acquire lock for OSD management
-if acquire_lock; then
-    # We own the lock, manage the OSD
-    show_osd
-    update_state
-    start_hide_timer
-    
-    # Wait for the timer process to complete
-    if [ -f "$PID_FILE" ]; then
-        wait $(cat "$PID_FILE") 2>/dev/null
-    fi
+if [ -f "$STATUS_FILE" ] && [ "$(cat "$STATUS_FILE")" = "true" ]; then
+    ags request osd touchpad on >/dev/null 2>&1 || true
 else
-    # Another instance is managing the OSD, just update state and extend timer
-    update_state
-    # Update the hide timestamp to extend the display time
-    hide_time=$(($(date +%s) + TIMEOUT))
-    echo "$hide_time" > "/tmp/eww_touchpad_osd_hide_time.state"
+    ags request osd touchpad off >/dev/null 2>&1 || true
 fi
