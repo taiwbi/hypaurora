@@ -42,7 +42,7 @@ export default function BatteryWidget() {
             visible={isPresent((v) => v)}
             spacing={4}
         >
-            <Gtk.Image iconName={iconName} />
+            <Gtk.Image pixelSize={14} iconName={iconName} />
         </box>
     )
 }

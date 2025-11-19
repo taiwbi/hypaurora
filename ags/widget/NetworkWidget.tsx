@@ -10,7 +10,7 @@ export default function NetworkWidget() {
     if (!wifi && !wired) {
         return (
             <box cssName="network">
-                <Gtk.Image iconName="network-wireless-disabled-symbolic" />
+                <Gtk.Image pixelSize={14} iconName="network-wireless-disabled-symbolic" />
             </box>
         )
     }
@@ -28,7 +28,7 @@ export default function NetworkWidget() {
 
         return (
             <box cssName="network">
-                <Gtk.Image iconName={iconName} />
+                <Gtk.Image pixelSize={14} iconName={iconName} />
             </box>
         )
     }
@@ -50,14 +50,14 @@ export default function NetworkWidget() {
 
         return (
             <box cssName="network">
-                <Gtk.Image iconName={iconName} />
+                <Gtk.Image pixelSize={14} iconName={iconName} />
             </box>
         )
     }
 
     return (
         <box cssName="network">
-            <Gtk.Image iconName="network-wireless-disabled-symbolic" />
+            <Gtk.Image pixelSize={14} iconName="network-wireless-disabled-symbolic" />
         </box>
     )
 }

@@ -11,7 +11,7 @@ export default function VolumeWidget() {
     if (!speaker) {
         return (
             <box cssName="volume">
-                <Gtk.Image iconName="audio-volume-muted-symbolic" />
+                <Gtk.Image pixelSize={14} iconName="audio-volume-muted-symbolic" />
             </box>
         )
     }
@@ -40,7 +40,7 @@ export default function VolumeWidget() {
                 if (speaker) speaker.mute = !speaker.mute
             }}
         >
-            <Gtk.Image iconName={iconName} />
+            <Gtk.Image pixelSize={14} iconName={iconName} />
         </button>
     )
 }

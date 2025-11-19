@@ -6,7 +6,7 @@ $accent-color: #{"@accent_color"};
 Bar#bar {
   background: transparent;
   color: $fg-color;
-  font-size: 14px;
+  font-size: 13px;
   background: $bg-color;
   padding: 0;
 
@@ -18,7 +18,7 @@ Bar#bar {
   bar-content {
     background: $bg-color;
     border-radius: 12px;
-    padding: 4px 8px;
+    padding: 2px 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
@@ -26,10 +26,12 @@ Bar#bar {
   workspaces {
     padding: 0;
     padding-left: 4px;
+
     workspace {
       background: transparent;
       transition: all 200ms ease;
       margin: 0;
+
       workspace-dot {
         padding-right: 4px;
         border-radius: 12px;
@@ -55,17 +57,20 @@ Bar#bar {
           background: $accent-color;
           padding: 0 6px 0 1px;
           color: $bg-color;
+
           .workspace-icon-frame {
             border-radius: 50%;
             border: none;
             padding: 0;
             background: transparent;
+
             .workspace-icon {
               filter: grayscale(100%);
             }
           }
+
           .workspace-name {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
           }
         }
@@ -103,7 +108,7 @@ Bar#bar {
     }
 
     media-icon {
-      font-size: 16px;
+      font-size: 14px;
       color: $accent-color;
     }
 
