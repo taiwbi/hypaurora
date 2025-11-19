@@ -73,7 +73,7 @@ export default function WorkspacesWidget() {
                     }}
                     onClicked={() => hyprland.dispatch("workspace", id.toString())}
                 >
-                    <box cssName="workspace-dot" spacing={4}
+                    <box cssName="workspace-dot" spacing={4} valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER} widthRequest={10} heightRequest={10}
                         $={(workspaceDot: Gtk.Box) => {
                             let iconFrame: Gtk.Frame | null = null
                             let iconImage: Gtk.Image | null = null
@@ -112,7 +112,7 @@ export default function WorkspacesWidget() {
                                         iconName: getSymbolicIcon(client.class) ?? getAppIcon(client.class) ??
                                             "application-x-executable-symbolic",
                                         valign: Gtk.Align.CENTER,
-                                        pixelSize: 22,
+                                        pixelSize: 16,
                                     })
                                     iconImage.add_css_class("workspace-icon")
                                     iconFrame = new Gtk.Frame({

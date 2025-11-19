@@ -37,7 +37,6 @@ Bar#bar {
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.05);
         transition: all 200ms ease;
-        min-width: 11px;
 
         &:hover {
           background: rgba(255, 255, 255, 0.2);
@@ -52,7 +51,7 @@ Bar#bar {
       &.focused,
       &.occupied.focused {
         workspace-dot {
-          min-width: 32px;
+          min-width: 16px;
           border-radius: 16px;
           background: $accent-color;
           padding: 0 6px 0 1px;
