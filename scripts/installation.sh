@@ -89,8 +89,8 @@ read -p "Do you want to install hyprland now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf copr enable solopasha/hyprland
-    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils dunst rofi \
-    rofi-wayland eww-git pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
+    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils dunst \
+    eww-git pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
     cargo install hyprland-per-window-layout
   ;;
   * )

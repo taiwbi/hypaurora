@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hypaurora Theme Manager
-Manages themes across Ghostty, GTK, Rofi, Hyprland, and GNOME Shell from a central theme registry.
+Manages themes across Ghostty, GTK, Hyprland, and GNOME Shell from a central theme registry.
 Supports generating themes from wallpaper images.
 Integrates with GNOME settings for dark mode and wallpaper changes.
 """
@@ -487,48 +487,6 @@ class ThemeManager:
         
         return True
     
-    def update_rofi(self, theme: Dict[str, Any]) -> bool:
-        """Updates Rofi theme content."""
-        colors = theme["colors"]
-        base = colors["base"]
-        semantic = colors["semantic"]
-        ui = colors["ui"]
-
-        new_colors = """* {{
-    bg0:    {bg}D4;
-    bg1:    {bg}D4;
-    bg2:    {card}D4;
-    bg3:    {card}D4;
-    fg0:    {fg};
-    fg1:    {fg}E6;
-    fg2:    {fg}CC;
-    fg3:    {fg}B3;
-    border: {border};
-    accent: {accent};
-
-    font:   "Geist 11";
-
-    background-color:   transparent;
-    text-color:         @fg0;
-
-    margin:     0px;
-    padding:    0px;
-    spacing:    0px;
-}}""".format(
-            bg=base["background"],
-            fg=base["foreground"],
-            card=ui["card"],
-            border=semantic["border"],
-            accent=semantic["accent"],
-        )
-
-        rofi_file = self.base_dir / "rofi/themes/hypaurora.rasi"
-        rofi_file.parent.mkdir(parents=True, exist_ok=True)
-
-        pattern = r'(?m)^\*\s*\{.*?^\}'
-        if self.update_file_with_regex(rofi_file, [(pattern, new_colors)]):
-            return True
-    
     def generate_hyprland(self, theme: Dict[str, Any]) -> Dict[str, str]:
         """Generate Hyprland theme colors to inject into look.conf."""
         palette = theme["colors"]["palette"]
@@ -792,7 +750,6 @@ class ThemeManager:
         config_updates = [
             ("Ghostty", lambda: self.update_ghostty(theme)),
             ("GTK", lambda: self.update_gtk(theme)),
-            ("Rofi", lambda: self.update_rofi(theme)),
             ("Dunst", lambda: self.update_dunst_config(theme)),
             ("Hyprland", lambda: self.apply_hyprland_theme(theme)),
             ("GNOME Shell", lambda: self.install_gnome_shell(theme)),

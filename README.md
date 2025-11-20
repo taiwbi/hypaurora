@@ -40,8 +40,8 @@ Install hyprland and necessary package from Fedora repo:
 sudo dnf copr enable solopasha/hyprland
 
 # Install hyprland and necessary packages
-sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils dunst rofi \
-rofi-wayland pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
+sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils dunst \
+  pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
 ```
 
 If you want to have per window keyboard layout install [Hyprland per window layout](https://github.com/coffebar/hyprland-per-window-layout) package.

@@ -46,9 +46,6 @@ ln -sf "$PWD/ags" "$HOME/.config/ags"
 rm -rf "$HOME/.config/hypr";
 ln -sf "$PWD/hypr" "$HOME/.config/hypr"
 
-rm -rf "$HOME/.config/rofi";
-ln -sf "$PWD/rofi" "$HOME/.config/rofi"
-
 rm -rf "$HOME/.config/Kvantum";
 ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
 
