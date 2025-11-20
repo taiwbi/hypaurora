@@ -3,12 +3,39 @@ import style from "./style.scss"
 import Bar from "./widget/Bar"
 import MediaPopup from "./window/MediaPopup"
 import Osd from "./window/Osd"
+import Launcher from "./window/Launcher"
 import { showBrightness, showKeyboardBrightness, showKeyboardLayout, showTouchpad, showVolume } from "./lib/osd"
+import { toggleLauncher, showLauncher, hideLauncher } from "./lib/launcher"
 
 app.start({
   css: style,
   requestHandler(argv, response) {
     const [cmd, ...rest] = argv
+
+    if (cmd === "launcher") {
+      const action = (rest[0] ?? "toggle").toLowerCase()
+
+      if (action === "toggle") {
+        toggleLauncher()
+        response("ok")
+        return
+      }
+
+      if (action === "show" || action === "open") {
+        showLauncher()
+        response("ok")
+        return
+      }
+
+      if (action === "hide" || action === "close") {
+        hideLauncher()
+        response("ok")
+        return
+      }
+
+      response("unknown launcher action")
+      return
+    }
 
     if (cmd === "osd") {
       const [kind, ...args] = rest
@@ -58,5 +85,6 @@ app.start({
     app.get_monitors().map(Bar)
     MediaPopup()
     Osd()
+    Launcher()
   },
 })

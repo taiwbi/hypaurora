@@ -1,6 +1,7 @@
 import { Gtk } from "ags/gtk4"
 import Gdk from "gi://Gdk"
 import AstalApps from "gi://AstalApps";
+import { fuzzyScore } from "./core"
 
 const astalApps: AstalApps.Apps = new AstalApps.Apps();
 let appsList: Array<AstalApps.Application> = astalApps.get_list();
@@ -30,6 +31,38 @@ export function getAppsByName(appName: string): (Array<AstalApps.Application>|un
     });
 
     return (found.length > 0 ? found : undefined);
+}
+
+/**
+ * Returns apps fuzzy matching a given query (case-insensitive) from the installed AstalApps list.
+ * 
+ * @param query The query to look up (e.g., "firefox", "folder")
+ * @returns The list of installed applications matching the query
+ */
+export function getAppsByQuery(query: string): (Array<AstalApps.Application>) {
+    let allApps = getApps();
+    const q = query.trim().toLowerCase()
+    if (!q) return allApps
+
+    return allApps
+        .map((app) => {
+            const name = app.get_name()?.toLowerCase?.() ?? ""
+            const description = app.get_description?.()?.toLowerCase?.() ?? ""
+            const entry = app.get_entry?.()?.toLowerCase?.() ?? ""
+            const keywords = app.keywords ?? []
+
+            const score = Math.max(
+                fuzzyScore(name, q) * 3,
+                fuzzyScore(description, q),
+                fuzzyScore(entry, q),
+                ...keywords.map((keyword) => fuzzyScore(keyword, q) * 0.7)
+            )
+
+            return { app, score }
+        })
+        .filter(({ score }) => score > 0)
+        .sort((a, b) => b.score - a.score)
+        .map(({ app }) => app)
 }
 
 /**

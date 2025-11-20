@@ -99,11 +99,11 @@ Bar#bar {
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
 
     &:active {
-      transform: scale(0.95);
+      transform: scale(0.98);
     }
 
     media-icon {
@@ -310,5 +310,69 @@ osd {
       background: transparent;
       border: none;
     }
+  }
+}
+
+launcher {
+  background: transparent;
+
+  launcher-overlay {
+    padding: 15px;
+  }
+
+  launcher-container {
+    background: $bg-color;
+    border-radius: 16px;
+    padding: 12px 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+    min-width: 420px;
+  }
+
+  launcher-entry {
+    background: transparent;
+    border-radius: 10px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+  }
+
+  launcher-scroller {
+    margin-top: 4px;
+  }
+
+  launcher-list {
+    padding: 4px 0;
+  }
+
+  launcher-row {
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    padding: 6px 8px;
+    transition: all 150ms ease;
+    color: $fg-color;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    &.selected {
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  launcher-icon {
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  launcher-title {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  launcher-description {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
   }
 }
