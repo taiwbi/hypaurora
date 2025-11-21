@@ -4,6 +4,9 @@ import { Astal, Gtk } from "ags/gtk4"
 import Gdk from "gi://Gdk"
 import { launcherVisible, hideLauncher } from "../lib/launcher"
 import { getAppsByQuery, getAppIcon } from "../lib/apps"
+import { evaluateMathExpression } from "../lib/math"
+import { execAsync } from "ags/process"
+
 
 export default function Launcher() {
     const [query, setQuery] = createState("")
@@ -12,7 +15,22 @@ export default function Launcher() {
     let entry: Gtk.Entry | null = null
 
     const filteredApps = query((text) => {
-        return getAppsByQuery(text)
+        const apps = getAppsByQuery(text)
+        const result = evaluateMathExpression(text)
+        if (result === null) {
+            return apps
+        }
+        const expression = text.trim()
+        const resultApp = {
+            isCalculatorResult: true,
+            name: String(result),
+            description: "Enter to open in calculator",
+            iconName: "org.gnome.Calculator",
+            launch: () => {
+                execAsync(["gnome-calculator", "--equation=" + expression])
+            },
+        }
+        return [resultApp, ...apps]
     })
 
     launcherVisible.subscribe(() => {
