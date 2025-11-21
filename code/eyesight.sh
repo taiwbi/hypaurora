@@ -4,7 +4,7 @@
 # waits RESTORE_AFTER seconds, then fades back to the original brightness.
 
 # ---- CONFIG ----
-INTERVAL=3         # seconds between reminders (20 min)
+INTERVAL=1200         # seconds between reminders (20 min)
 STEPS=25              # number of steps for fade (higher = smoother)
 DELAY=0.025           # delay (seconds) between steps
 MIN_TARGET=10         # don't go below this percent
@@ -62,13 +62,12 @@ while true; do
 
     action=$(notify-send \
                --urgency=normal \
-               --action="Dim Screen" \
+               --action="dim=Dim Screen" \
                --icon="org.gnome.Settings-wellbeing-symbolic" \
                --app-name="Well Being" \
                "Eyesight Reminder" "Rest your eyes!\nMiddle-click to dim the screen gradually." | tail -n 1)
 
-    if [ "$action" = "0" ]; then
-        sleep 2
+    if [ "$action" = "dim" ]; then
         original=$(get_current_pct)
 
         # if already at or below MAX_TARGET, skip dimming
