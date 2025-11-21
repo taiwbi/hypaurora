@@ -572,29 +572,6 @@ class ThemeManager:
         
         return updated_content != content
     
-    def update_dunst_config(self, theme: Dict[str, Any]):
-        """Update the existing dunstrc file with theme colors."""
-        dunstrc_file = self.base_dir / "dunst/dunstrc"
-        colors = theme["colors"]
-        base = colors["base"]
-        semantic = colors["semantic"]
-        
-        replacements = [
-            (r'(frame_color\s*=\s*)"[^"]+"', f'\\1"{semantic["border"]}"'),
-            (r'(highlight\s*=\s*)"[^"]+"', f'\\1"{semantic["warning"]}"'),
-            (r'(\[urgency_low\]\s*\n\s*background\s*=\s*)"[^"]+"', f'\\1"{base["background"]}80"'),
-            (r'(\[urgency_low\]\s*\n\s*foreground\s*=\s*)"[^"]+"', f'\\1"{base["foreground"]}"'),
-            (r'(\[urgency_low\]\s*\n\s*frame_color\s*=\s*)"[^"]+"', f'\\1"{semantic["success"]}"'),
-            (r'(\[urgency_normal\]\s*\n\s*background\s*=\s*)"[^"]+"', f'\\1"{base["background"]}80"'),
-            (r'(\[urgency_normal\]\s*\n\s*foreground\s*=\s*)"[^"]+"', f'\\1"{base["foreground"]}"'),
-            (r'(\[urgency_normal\]\s*\n\s*frame_color\s*=\s*)"[^"]+"', f'\\1"{semantic["warning"]}"'),
-            (r'(\[urgency_critical\]\s*\n\s*background\s*=\s*)"[^"]+"', f'\\1"{base["background"]}80"'),
-            (r'(\[urgency_critical\]\s*\n\s*foreground\s*=\s*)"[^"]+"', f'\\1"{base["foreground"]}"'),
-            (r'(\[urgency_critical\]\s*\n\s*frame_color\s*=\s*)"[^"]+"', f'\\1"{semantic["error"]}"'),
-        ]
-        
-        self.update_file_with_regex(dunstrc_file, replacements)
-    
     def apply_hyprland_theme(self, theme: Dict[str, Any]):
         """Update Hyprland colors directly in look.conf."""
         look_conf = self.base_dir / "hypr/hyprland/look.conf"
@@ -750,7 +727,6 @@ class ThemeManager:
         config_updates = [
             ("Ghostty", lambda: self.update_ghostty(theme)),
             ("GTK", lambda: self.update_gtk(theme)),
-            ("Dunst", lambda: self.update_dunst_config(theme)),
             ("Hyprland", lambda: self.apply_hyprland_theme(theme)),
             ("GNOME Shell", lambda: self.install_gnome_shell(theme)),
         ]
@@ -758,11 +734,6 @@ class ThemeManager:
         for name, update_fn in config_updates:
             update_fn()
             print(f"  ✓ Updated {name}")
-        
-        try:
-            subprocess.run(["pkill", "dunst"], check=False)
-        except Exception as e:
-            print(f"  ⚠ Could not kill dunst: {e}")
         
         config = self.load_config()
         config["current_theme"] = theme_name

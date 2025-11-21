@@ -40,7 +40,7 @@ Install hyprland and necessary package from Fedora repo:
 sudo dnf copr enable solopasha/hyprland
 
 # Install hyprland and necessary packages
-sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils dunst \
+sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils \
   pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
 ```
 

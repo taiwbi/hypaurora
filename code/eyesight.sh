@@ -4,11 +4,11 @@
 # waits RESTORE_AFTER seconds, then fades back to the original brightness.
 
 # ---- CONFIG ----
-INTERVAL=1200         # seconds between reminders (20 min)
+INTERVAL=3         # seconds between reminders (20 min)
 STEPS=25              # number of steps for fade (higher = smoother)
 DELAY=0.025           # delay (seconds) between steps
 MIN_TARGET=10         # don't go below this percent
-MAX_TARGET=25         # don't go above this percent
+MAX_TARGET=15         # don't go above this percent
 RESTORE_AFTER=20      # seconds to wait before restoring (20 secs)
 # -----------------
 
@@ -60,13 +60,14 @@ fade_to() {
 while true; do
     sleep "$INTERVAL"
 
-    # send notification and capture dunstify's output
-    # output format: line1 = notification id, line2 = action (if any)
-    action=$(dunstify \
-        -A "dim,Dim Screen" \
-        "⏰ Eye Reminder" "Rest your eyes!\nMiddle-click to dim the screen gradually." -p | tail -n 1)
+    action=$(notify-send \
+               --urgency=normal \
+               --action="Dim Screen" \
+               --icon="org.gnome.Settings-wellbeing-symbolic" \
+               --app-name="Well Being" \
+               "Eyesight Reminder" "Rest your eyes!\nMiddle-click to dim the screen gradually." | tail -n 1)
 
-    if [ "$action" = "dim" ]; then
+    if [ "$action" = "0" ]; then
         sleep 2
         original=$(get_current_pct)
 
