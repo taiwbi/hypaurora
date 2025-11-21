@@ -3,6 +3,30 @@ $fg-color: #{"@window_fg_color"};
 $bg-color: #{"@window_bg_color"};
 $accent-color: #{"@accent_color"};
 
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(25px) scale(0.95);
+  }
+}
+
 Bar#bar {
   background: transparent;
   color: $fg-color;
@@ -374,5 +398,109 @@ launcher {
   launcher-description {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+notifications {
+  background: transparent;
+
+  notifications-container {
+    padding: 12px;
+    padding-top: 24px;
+    min-width: 320px;
+    margin-right: 20px;
+  }
+
+  notification {
+    background: $bg-color;
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+    color: $fg-color;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    opacity: 1;
+    transform: translateX(0);
+
+    &.entering {
+      animation: toast-in 850ms ease forwards;
+    }
+
+    &.closing {
+      animation: toast-out 850ms ease forwards;
+    }
+
+    & + notification {
+      margin-top: 8px;
+    }
+
+    &:hover {
+      notification-close {
+        opacity: 1;
+      }
+
+      notification-actions {
+        margin-bottom: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  notification-icon {
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  notification-text {
+    label {
+      color: inherit;
+    }
+  }
+
+  notification-title {
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  notification-body {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  notification-app {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  notification-close {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    border: none;
+    padding: 4px;
+    opacity: 0;
+    transition: opacity 150ms ease, background 150ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+  }
+
+  notification-actions {
+    padding-top: 6px;
+    margin-bottom: -40px;
+    min-height: 0;
+    opacity: 0;
+    transition: margin-bottom 250ms ease, opacity 250ms ease;
+  }
+
+  .notification-action {
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px 8px;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
   }
 }
