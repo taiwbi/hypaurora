@@ -91,9 +91,7 @@ export default function Launcher() {
         hideLauncher()
     }
 
-    function AppRow({ app, index }: { app: any; index: number }) {
-        const isSelected = selectedIndex((i) => i === index)
-
+    function AppRow({ app, index }: { app: any; index: any }) {
         const iconName = getAppIcon(app) ?? app.get_icon_name?.() ?? "application-x-executable-symbolic"
         const name = app.get_name?.() ?? app.name ?? "Unknown"
         const description = app.get_description?.() ?? ""
@@ -101,7 +99,19 @@ export default function Launcher() {
         return (
             <button
                 cssName="launcher-row"
-                class={isSelected((sel) => (sel ? "selected" : ""))}
+                $={(self) => {
+                    const updateSelected = () => {
+                        const selected = selectedIndex.get() === index.get()
+                        if (selected) {
+                            self.add_css_class("selected")
+                        } else {
+                            self.remove_css_class("selected")
+                        }
+                    }
+                    selectedIndex.subscribe(updateSelected)
+                    index.subscribe(updateSelected)
+                    updateSelected()
+                }}
                 hexpand
                 onClicked={() => onRowActivate(app)}
             >
@@ -174,6 +184,7 @@ export default function Launcher() {
                             entry = self
                             self.connect("changed", () => {
                                 setQuery(self.text ?? "")
+                                setSelectedIndex(0)
                             })
                         }}
                     />
@@ -187,7 +198,7 @@ export default function Launcher() {
                         <box orientation={Gtk.Orientation.VERTICAL} cssName="launcher-list" spacing={4}>
                             <For each={filteredApps}>
                                 {(app, index) => (
-                                    <AppRow app={app} index={index.get()} />
+                                    <AppRow app={app} index={index} />
                                 )}
                             </For>
                         </box>
