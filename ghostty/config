@@ -2,7 +2,7 @@ command = /bin/fish
 
 font-family = "JetBrains Mono"
 font-family = "AzarMehrMonospaced"
-font-style = SemiBold
+font-style = Medium
 font-feature=calt,dlig,ss03
 
 font-size = 12
