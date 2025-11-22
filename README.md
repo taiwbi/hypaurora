@@ -107,3 +107,16 @@ npx @ts-for-gir/cli generate 'GLib-2.0' 'Gio-2.0' 'GObject-2.0' 'Gdk-4.0' 'Gtk-4
 ```
 
 _This only generate type definitions for **needed** Astal and GNOME libraries, this is not necessary if you're not planning to develop ags or don't need type definitions for better development experience._
+
+### Make OSDs works
+
+In order to have functional OSDs, touchpad switches, and keyboard layout switcher, you need to change these:
+
+- Set the name of your touchpad device in `code/osd/touchpad` script:
+  ```sh
+  HYPRLAND_DEVICE="elan1300:00-04f3:3087-touchpad"
+  ```
+- Set your keyboard device name in `code/osd/keyboard` script:
+  ```sh
+  TOUCHPAD_DEVICE="at-translated-set-2-keyboard"
+  ```
