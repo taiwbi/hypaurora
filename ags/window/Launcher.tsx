@@ -6,6 +6,9 @@ import { launcherVisible, hideLauncher } from "../lib/launcher"
 import { getAppsByQuery, getAppIcon } from "../lib/apps"
 import { evaluateMathExpression } from "../lib/math"
 import { execAsync } from "ags/process"
+import { ai } from "../lib/ai"
+import { ReactiveMarkdown } from "../lib/markdown"
+import GLib from "gi://GLib"
 
 
 export default function Launcher() {
@@ -14,29 +17,89 @@ export default function Launcher() {
 
     let entry: Gtk.Entry | null = null
 
-    const filteredApps = query((text) => {
-        const apps = getAppsByQuery(text)
-        const result = evaluateMathExpression(text)
-        if (result === null) {
-            return apps
+    const [aiResponse, setAiResponse] = createState("")
+    const [isThinking, setIsThinking] = createState(false)
+    const [filteredApps, setFilteredApps] = createState<any[]>(getAppsByQuery(""))
+
+    const [showThinking, setShowThinking] = createState(false)
+    const [showResponse, setShowResponse] = createState(false)
+    const [showList, setShowList] = createState(true)
+
+    let searchTimeout: number | null = null
+
+    function updateState() {
+        const text = query.get()
+        const thinking = isThinking.get()
+        const response = aiResponse.get()
+
+        // Update visibility
+        setShowThinking(thinking)
+        setShowResponse(!thinking && !!response)
+        setShowList(!thinking && !response)
+
+        // Update apps if list is shown
+        if (!thinking && !response) {
+            const apps = getAppsByQuery(text)
+            const result = evaluateMathExpression(text)
+
+            let list = apps
+            if (result !== null) {
+                const expression = text.trim()
+                const resultApp: any = {
+                    name: expression,
+                    iconName: "org.gnome.Calculator",
+                    launch: () => {
+                        execAsync(["gnome-calculator", "--equation=" + expression])
+                    },
+                    get_description: () => {
+                        return `= ${String(result)}`
+                    }
+                }
+                list = [resultApp, ...apps]
+            }
+            setFilteredApps(list)
         }
-        const expression = text.trim()
-        const resultApp = {
-            isCalculatorResult: true,
-            name: String(result),
-            description: "Enter to open in calculator",
-            iconName: "org.gnome.Calculator",
-            launch: () => {
-                execAsync(["gnome-calculator", "--equation=" + expression])
-            },
+    }
+
+    query.subscribe(() => {
+        const text = query.get()
+        if (searchTimeout) {
+            GLib.source_remove(searchTimeout)
+            searchTimeout = null
         }
-        return [resultApp, ...apps]
+
+        if (text.length < 10) {
+            setAiResponse("")
+            setIsThinking(false)
+        }
+
+        updateState()
+
+        if (text.length > 10 && text.includes(" ")) {
+            searchTimeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1500, () => {
+                searchTimeout = null
+                setIsThinking(true)
+                updateState()
+                ai.query(text).then(resp => {
+                    setAiResponse(resp)
+                    setIsThinking(false)
+                    updateState()
+                })
+                return GLib.SOURCE_REMOVE
+            })
+        }
     })
+
+    aiResponse.subscribe(updateState)
+    isThinking.subscribe(updateState)
 
     launcherVisible.subscribe(() => {
         if (launcherVisible.get()) {
             setQuery("")
             setSelectedIndex(0)
+            setAiResponse("")
+            setIsThinking(false)
+            updateState()
             if (entry) {
                 entry.grab_focus()
                 entry.set_position(-1)
@@ -45,6 +108,14 @@ export default function Launcher() {
     })
 
     function launchSelected() {
+        if (showResponse.get()) {
+            execAsync(["wl-copy", aiResponse.get()])
+            hideLauncher()
+            return
+        }
+
+        if (showThinking.get()) return
+
         const apps = filteredApps.get()
         if (!apps.length) return
         const index = Math.max(0, Math.min(selectedIndex.get(), apps.length - 1))
@@ -68,17 +139,21 @@ export default function Launcher() {
         }
 
         if (keyval === Gdk.KEY_Down) {
-            const apps = filteredApps.get()
-            if (!apps.length) return false
-            setSelectedIndex((i) => (i + 1) % apps.length)
-            return false
+            if (showList.get()) {
+                const apps = filteredApps.get()
+                if (!apps.length) return false
+                setSelectedIndex((i) => (i + 1) % apps.length)
+                return false
+            }
         }
 
         if (keyval === Gdk.KEY_Up) {
-            const apps = filteredApps.get()
-            if (!apps.length) return false
-            setSelectedIndex((i) => (i - 1 + apps.length) % apps.length)
-            return false
+            if (showList.get()) {
+                const apps = filteredApps.get()
+                if (!apps.length) return false
+                setSelectedIndex((i) => (i - 1 + apps.length) % apps.length)
+                return false
+            }
         }
 
         return false
@@ -145,7 +220,7 @@ export default function Launcher() {
 
     return (
         <window
-            name="launcher"
+            namespace="hypaurora-launcher"
             cssName="launcher"
             visible={launcherVisible}
             anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT | Astal.WindowAnchor.RIGHT}
@@ -188,21 +263,64 @@ export default function Launcher() {
                             })
                         }}
                     />
-                    {/* <Gtk.Separator orientation={Gtk.Orientation.HORIZONTAL} /> */}
-                    <Gtk.ScrolledWindow
-                        cssName="launcher-scroller"
-                        hexpand
-                        vexpand
-                        heightRequest={460}
-                    >
-                        <box orientation={Gtk.Orientation.VERTICAL} cssName="launcher-list" spacing={4}>
-                            <For each={filteredApps}>
-                                {(app, index) => (
-                                    <AppRow app={app} index={index} />
-                                )}
-                            </For>
+
+                    <box orientation={Gtk.Orientation.VERTICAL} hexpand vexpand>
+                        <box
+                            cssName="ai-thinking-container"
+                            halign={Gtk.Align.CENTER}
+                            valign={Gtk.Align.CENTER}
+                            orientation={Gtk.Orientation.VERTICAL}
+                            spacing={16}
+                            heightRequest={460}
+                            visible={showThinking}
+                        >
+                            <Gtk.Spinner spinning={true} widthRequest={32} heightRequest={32} vexpand />
                         </box>
-                    </Gtk.ScrolledWindow>
+
+                        <Gtk.ScrolledWindow
+                            cssName="ai-response-scroller"
+                            hexpand
+                            vexpand
+                            heightRequest={460}
+                            visible={showResponse}
+                        >
+                            <box
+                                cssName="ai-response-container"
+                                orientation={Gtk.Orientation.VERTICAL}
+                                spacing={12}
+                                css="margin: 16px;"
+                            >
+                                <label
+                                    label="AI Response"
+                                    cssName="ai-response-header"
+                                    xalign={0}
+                                />
+                                <ReactiveMarkdown content={aiResponse} />
+                                <label
+                                    label="Press Enter to copy"
+                                    cssName="ai-response-hint"
+                                    xalign={1}
+                                    opacity={0.6}
+                                />
+                            </box>
+                        </Gtk.ScrolledWindow>
+
+                        <Gtk.ScrolledWindow
+                            cssName="launcher-scroller"
+                            hexpand
+                            vexpand
+                            heightRequest={460}
+                            visible={showList}
+                        >
+                            <box orientation={Gtk.Orientation.VERTICAL} cssName="launcher-list" spacing={4}>
+                                <For each={filteredApps}>
+                                    {(app, index) => (
+                                        <AppRow app={app} index={index} />
+                                    )}
+                                </For>
+                            </box>
+                        </Gtk.ScrolledWindow>
+                    </box>
                 </box>
             </box>
         </window>

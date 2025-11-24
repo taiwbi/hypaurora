@@ -21,12 +21,12 @@ export function getApps(): Array<AstalApps.Application> {
  * @param appName The name of the application to look up (e.g., "firefox", "folder")
  * @returns The icon name for the application, or undefined if not found
  */
-export function getAppsByName(appName: string): (Array<AstalApps.Application>|undefined) {
+export function getAppsByName(appName: string): (Array<AstalApps.Application> | undefined) {
     let found: Array<AstalApps.Application> = [];
 
     getApps().map((app: AstalApps.Application) => {
-        if(app.get_name().trim().toLowerCase() === appName.trim().toLowerCase()
-          || (app?.wmClass && app.wmClass.trim().toLowerCase() === appName.trim().toLowerCase()))
+        if (app.get_name().trim().toLowerCase() === appName.trim().toLowerCase()
+            || (app?.wmClass && app.wmClass.trim().toLowerCase() === appName.trim().toLowerCase()))
             found.push(app);
     });
 
@@ -81,15 +81,15 @@ export function lookupIcon(name: string): boolean {
  * @param appName The name of the application to look up (e.g., "firefox", "folder")
  * @returns The icon name for the application, or undefined if not found
  */
-export function getIconByAppName(appName: string): (string|undefined) {
-    if(!appName) return undefined;
+export function getIconByAppName(appName: string): (string | undefined) {
+    if (!appName) return undefined;
 
-    if(lookupIcon(appName))
-       return appName;
+    if (lookupIcon(appName))
+        return appName;
 
-    if(lookupIcon(appName.toLowerCase()))
-       return appName.toLowerCase();
-   
+    if (lookupIcon(appName.toLowerCase()))
+        return appName.toLowerCase();
+
     const nameReverseDNS = appName.split('.');
     const lastItem = nameReverseDNS[nameReverseDNS.length - 1];
     const lastPretty = `${lastItem.charAt(0).toUpperCase()}${lastItem.substring(1, lastItem.length)}`; // Capitalizes the last segment
@@ -97,14 +97,14 @@ export function getIconByAppName(appName: string): (string|undefined) {
     const uppercaseRDNS = nameReverseDNS.slice(0, nameReverseDNS.length - 1)
         .concat(lastPretty).join('.');
 
-    if(lookupIcon(uppercaseRDNS))
+    if (lookupIcon(uppercaseRDNS))
         return uppercaseRDNS;
 
-    if(lookupIcon(nameReverseDNS[nameReverseDNS.length - 1]))
-       return nameReverseDNS[nameReverseDNS.length - 1];
+    if (lookupIcon(nameReverseDNS[nameReverseDNS.length - 1]))
+        return nameReverseDNS[nameReverseDNS.length - 1];
 
-    const found: (AstalApps.Application|undefined) = getAppsByName(appName)?.[0];
-    if(Boolean(found))
+    const found: (AstalApps.Application | undefined) = getAppsByName(appName)?.[0];
+    if (Boolean(found))
         return found?.iconName;
 
     return undefined;
@@ -117,16 +117,16 @@ export function getIconByAppName(appName: string): (string|undefined) {
  * @param app The application to look up (e.g., "firefox", "folder")
  * @returns The icon name for the application, or undefined if not found
  */
-export function getAppIcon(app: (string|AstalApps.Application)): (string|undefined) {
-    if(!app) return undefined;
+export function getAppIcon(app: (string | AstalApps.Application)): (string | undefined) {
+    if (!app) return undefined;
 
-    if(typeof app === "string")
+    if (typeof app === "string")
         return getIconByAppName(app);
 
-    if(app.iconName && lookupIcon(app.iconName))
+    if (app.iconName && lookupIcon(app.iconName))
         return app.iconName;
 
-    if(app.wmClass)
+    if (app.wmClass)
         return getIconByAppName(app.wmClass);
 
     return getIconByAppName(app.name);
@@ -138,10 +138,10 @@ export function getAppIcon(app: (string|AstalApps.Application)): (string|undefin
  * @param app The application to look up (e.g., "firefox", "folder")
  * @returns The symbolic icon name for the application, or undefined if not found
  */
-export function getSymbolicIcon(app: (string|AstalApps.Application)): (string|undefined) {
+export function getSymbolicIcon(app: (string | AstalApps.Application)): (string | undefined) {
     const icon = getAppIcon(app);
 
     return (icon && lookupIcon(`${icon}-symbolic`)) ?
         `${icon}-symbolic`
-    : undefined;
+        : undefined;
 }
