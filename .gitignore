@@ -7,3 +7,4 @@ alchemy/.idea
 fish/fish_variables
 tmux/plugins/
 ags/.sass-cache/
+ags/schemas/gschemas.compiled
