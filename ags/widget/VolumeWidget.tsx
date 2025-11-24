@@ -19,19 +19,19 @@ export default function VolumeWidget() {
     const volume = createBinding(speaker, "volume")
     const muted = createBinding(speaker, "mute")
 
-    const iconName = muted((m) => {
+    // Update the icon when volume changes
+    const getIconName = (v: number, m: boolean) => {
         if (m) return "audio-volume-muted-symbolic"
-        const v = volume.get()
         return v > 1.0
             ? "audio-volume-overamplified-symbolic"
-            : v > 0.75
+            : v > 0.66
                 ? "audio-volume-high-symbolic"
-                : v > 0.50
+                : v > 0.33
                     ? "audio-volume-medium-symbolic"
-                    : v > 0.25
+                    : v > 0
                         ? "audio-volume-low-symbolic"
                         : "audio-volume-muted-symbolic"
-    })
+    }
 
     return (
         <button
@@ -40,7 +40,17 @@ export default function VolumeWidget() {
                 if (speaker) speaker.mute = !speaker.mute
             }}
         >
-            <Gtk.Image pixelSize={14} iconName={iconName} />
+            <Gtk.Image
+                pixelSize={14}
+                $={(self) => {
+                    const update = () => {
+                        self.iconName = getIconName(volume.get(), muted.get())
+                    }
+                    update()
+                    volume.subscribe(update)
+                    muted.subscribe(update)
+                }}
+            />
         </button>
     )
 }

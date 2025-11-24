@@ -38,9 +38,9 @@ export function showVolume(level: number, muted: boolean) {
     let iconName: string
     if (muted || value <= 0) iconName = "audio-volume-muted-symbolic"
     else if (value > 1.0) iconName = "audio-volume-overamplified-symbolic"
-    else if (value > 0.75) iconName = "audio-volume-high-symbolic"
-    else if (value > 0.5) iconName = "audio-volume-medium-symbolic"
-    else if (value > 0.25) iconName = "audio-volume-low-symbolic"
+    else if (value > 0.66) iconName = "audio-volume-high-symbolic"
+    else if (value > 0.33) iconName = "audio-volume-medium-symbolic"
+    else if (value > 0) iconName = "audio-volume-low-symbolic"
     else iconName = "audio-volume-muted-symbolic"
 
     const label = muted || value <= 0 ? "Muted" : `${percentage}%`
@@ -72,7 +72,7 @@ export function showTouchpad(enabled: boolean) {
     show("touchpad", "Touchpad", label, icon, 0, false)
 }
 
-;(globalThis as any).Osd = {
+; (globalThis as any).Osd = {
     showVolume,
     showBrightness,
     showKeyboardLayout,

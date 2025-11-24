@@ -8,7 +8,7 @@ export default function BatteryWidget() {
     const charging = createBinding(battery, "charging")
     const isPresent = createBinding(battery, "isPresent")
 
-    const iconName = charging((ch) => {
+    const geticonName = (ch: boolean) => {
         const p = percentage.get()
         if (ch) {
             if (p > 0.99) return "battery-full-charging-symbolic"
@@ -34,7 +34,7 @@ export default function BatteryWidget() {
         if (p > 0.2) return "battery-level-20-symbolic"
         if (p > 0.1) return "battery-level-10-symbolic"
         return "battery-caution-symbolic"
-    })
+    }
 
     return (
         <box
@@ -42,7 +42,14 @@ export default function BatteryWidget() {
             visible={isPresent((v) => v)}
             spacing={4}
         >
-            <Gtk.Image pixelSize={14} iconName={iconName} />
+            <Gtk.Image pixelSize={14}
+                $={(self) => {
+                    const update = () => {
+                        self.iconName = geticonName(charging.get())
+                    }
+                    update()
+                    charging.subscribe(update)
+                }} />
         </box>
     )
 }
