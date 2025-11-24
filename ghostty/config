@@ -1,13 +1,13 @@
 command = /bin/fish
 
-font-family = "JetBrains Mono"
+font-family = "Geist Mono"
 font-family = "AzarMehrMonospaced"
 font-style = Medium
-font-feature=calt,dlig,ss03
+font-feature=dlig
 
 font-size = 12
 
-adjust-cell-height = 13
+adjust-cell-height = 9
 adjust-cell-width = 0
 
 # Appearance

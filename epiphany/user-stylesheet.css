@@ -94,7 +94,7 @@ code,
 .ace_editor,
 .ace_editor * {
   font-family:
-    "JetBrains Mono", "AzarMehrMonospaced", "SF Mono", Monaco,
+    "Geist Mono", "AzarMehrMonospaced", "SF Mono", Monaco,
     "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 }
 
