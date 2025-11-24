@@ -1,0 +1,51 @@
+{
+  "name": "Rosé Pine Moon",
+  "author": "Rosé Pine",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#232136",
+      "foreground": "#e0def4",
+      "cursor": "#e0def4",
+      "cursor_text": "#232136",
+      "selection_bg": "#44415a",
+      "selection_fg": "#e0def4"
+    },
+    "palette": [
+      "#393552",
+      "#eb6f92",
+      "#3e8fb0",
+      "#f6c177",
+      "#9ccfd8",
+      "#c4a7e7",
+      "#ea9a97",
+      "#e0def4",
+      "#6e6a86",
+      "#eb6f92",
+      "#3e8fb0",
+      "#f6c177",
+      "#9ccfd8",
+      "#c4a7e7",
+      "#ea9a97",
+      "#e0def4"
+    ],
+    "semantic": {
+      "accent": "#56526e",
+      "accent_fg": "#e0def4",
+      "border": "#56526e",
+      "success": "#3e8fb0",
+      "warning": "#f6c177",
+      "error": "#eb6f92"
+    },
+    "ui": {
+      "card": "#2a273f",
+      "card_fg": "#e0def4",
+      "popover": "#393552",
+      "popover_fg": "#e0def4",
+      "sidebar": "#2a273f",
+      "sidebar_fg": "#908caa",
+      "headerbar": "#232136",
+      "headerbar_fg": "#908caa"
+    }
+  }
+}

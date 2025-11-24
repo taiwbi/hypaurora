@@ -1,0 +1,51 @@
+{
+  "name": "Rosé Pine Dawn",
+  "author": "Rosé Pine",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#faf4ed",
+      "foreground": "#575279",
+      "cursor": "#575279",
+      "cursor_text": "#faf4ed",
+      "selection_bg": "#dfdad9",
+      "selection_fg": "#575279"
+    },
+    "palette": [
+      "#f2e9e1",
+      "#b4637a",
+      "#286983",
+      "#ea9d34",
+      "#56949f",
+      "#907aa9",
+      "#d7827e",
+      "#575279",
+      "#9893a5",
+      "#b4637a",
+      "#286983",
+      "#ea9d34",
+      "#56949f",
+      "#907aa9",
+      "#d7827e",
+      "#575279"
+    ],
+    "semantic": {
+      "accent": "#cecacd",
+      "accent_fg": "#575279",
+      "border": "#cecacd",
+      "success": "#286983",
+      "warning": "#ea9d34",
+      "error": "#b4637a"
+    },
+    "ui": {
+      "card": "#fffaf3",
+      "card_fg": "#575279",
+      "popover": "#f2e9e1",
+      "popover_fg": "#575279",
+      "sidebar": "#fffaf3",
+      "sidebar_fg": "#797593",
+      "headerbar": "#faf4ed",
+      "headerbar_fg": "#797593"
+    }
+  }
+}

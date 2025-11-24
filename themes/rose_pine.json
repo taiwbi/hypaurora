@@ -1,0 +1,51 @@
+{
+  "name": "Rosé Pine",
+  "author": "Rosé Pine",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#191724",
+      "foreground": "#e0def4",
+      "cursor": "#e0def4",
+      "cursor_text": "#191724",
+      "selection_bg": "#403d52",
+      "selection_fg": "#e0def4"
+    },
+    "palette": [
+      "#26233a",
+      "#eb6f92",
+      "#31748f",
+      "#f6c177",
+      "#9ccfd8",
+      "#c4a7e7",
+      "#ebbcba",
+      "#e0def4",
+      "#6e6a86",
+      "#eb6f92",
+      "#31748f",
+      "#f6c177",
+      "#9ccfd8",
+      "#c4a7e7",
+      "#ebbcba",
+      "#e0def4"
+    ],
+    "semantic": {
+      "accent": "#524f67",
+      "accent_fg": "#e0def4",
+      "border": "#524f67",
+      "success": "#31748f",
+      "warning": "#f6c177",
+      "error": "#eb6f92"
+    },
+    "ui": {
+      "card": "#1f1d2e",
+      "card_fg": "#e0def4",
+      "popover": "#26233a",
+      "popover_fg": "#e0def4",
+      "sidebar": "#1f1d2e",
+      "sidebar_fg": "#908caa",
+      "headerbar": "#191724",
+      "headerbar_fg": "#908caa"
+    }
+  }
+}
