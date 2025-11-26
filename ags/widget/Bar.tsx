@@ -7,15 +7,21 @@ import MediaWidget from "./MediaWidget";
 import VolumeWidget from "./VolumeWidget";
 import BatteryWidget from "./BatteryWidget";
 import NetworkWidget from "./NetworkWidget";
+import { toggleControlCenter } from "../lib/controlcenter";
 
 
 function SystemTray() {
   return (
-    <box cssName="system-tray" spacing={8}>
-      <VolumeWidget />
-      <BatteryWidget />
-      <NetworkWidget />
-    </box>
+    <button
+      cssName="system-tray"
+      onClicked={toggleControlCenter}
+    >
+      <box spacing={8}>
+        <VolumeWidget />
+        <BatteryWidget />
+        <NetworkWidget />
+      </box>
+    </button>
   )
 }
 

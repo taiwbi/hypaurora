@@ -5,6 +5,7 @@ import MediaPopup from "./window/MediaPopup"
 import Osd from "./window/Osd"
 import Launcher from "./window/Launcher"
 import Notifications from "./window/Notifications"
+import ControlCenterPopup from "./window/ControlCenterPopup"
 import { showBrightness, showKeyboardBrightness, showKeyboardLayout, showTouchpad, showVolume } from "./lib/osd"
 import { toggleLauncher, showLauncher, hideLauncher } from "./lib/launcher"
 
@@ -88,5 +89,6 @@ app.start({
     Osd()
     Launcher()
     Notifications()
+    ControlCenterPopup()
   },
 })

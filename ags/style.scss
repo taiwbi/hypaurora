@@ -142,17 +142,17 @@ Bar#bar {
 
   // System Tray
   system-tray {
-    padding: 4px 8px;
+    padding: 0;
 
     button,
     box {
       background: transparent;
       border: none;
-      padding: 4px 8px;
       min-width: 24px;
       min-height: 24px;
       border-radius: 6px;
       transition: all 200ms ease;
+      padding: 0 8px;
 
       label {
         font-size: 16px;
@@ -160,6 +160,11 @@ Bar#bar {
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
       }
     }
   }
@@ -502,5 +507,168 @@ notifications {
     &:hover {
       background: rgba(255, 255, 255, 0.16);
     }
+  }
+}
+
+// Control Center Popup
+control-center {
+  background: transparent;
+
+  control-center-overlay {
+    padding: 15px 15px 24px 24px;
+  }
+
+  control-center-content {
+    background: $bg-color;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    min-width: 380px;
+  }
+
+  // Power Buttons
+  power-controls {
+    padding-bottom: 8px;
+  }
+
+  power-button {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 50%;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    transition: all 200ms ease;
+
+    image {
+      color: $fg-color;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Sliders Section
+  sliders-section {
+    padding: 8px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  slider-row {
+    padding: 8px 0;
+  }
+
+  slider-container {
+    padding: 0 8px;
+  }
+
+  audio-slider {
+    min-height: 8px;
+
+    trough {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      min-height: 8px;
+    }
+
+    highlight {
+      background: $accent-color;
+      border-radius: 4px;
+      min-height: 8px;
+    }
+
+    slider {
+      background: $fg-color;
+      border: none;
+      border-radius: 50%;
+      min-width: 16px;
+      min-height: 16px;
+      margin: -4px;
+    }
+  }
+
+  slider-value {
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 45px;
+  }
+
+  // Toggle Buttons
+  toggle-buttons {
+    padding-top: 8px;
+  }
+
+  toggle-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 200ms ease;
+    min-height: 30px;
+    min-width: 140px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background: $accent-color;
+
+      toggle-name,
+      toggle-description,
+      image {
+        color: $bg-color;
+      }
+    }
+  }
+
+  toggle-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  toggle-description {
+    font-size: 11px;
+    opacity: 0.8;
+  }
+
+  // Dropdown Menu
+  dropdown-menu {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 4px;
+  }
+
+  dropdown-item {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    transition: all 150ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background: $accent-color;
+
+      label {
+        color: $bg-color;
+      }
+    }
+  }
+
+  signal-strength {
+    font-size: 11px;
+    opacity: 0.7;
   }
 }
