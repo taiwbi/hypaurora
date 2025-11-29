@@ -135,7 +135,7 @@ function WiFiToggle() {
     const activeAP = createBinding(wifi, "activeAccessPoint")
     const [isLoading, setIsLoading] = createState(false)
 
-    const isConnected = wifiState((state: Network.DeviceState) => state === Network.DeviceState.ACTIVATED)
+    const isConnected = wifiState((state: Network.DeviceState) => state === Network.DeviceState.ACTIVATED || state === Network.DeviceState.DISCONNECTED)
     const ssid = activeAP((ap) => ap?.ssid || "Disconnected")
 
     const toggleWifi = async () => {
@@ -183,11 +183,11 @@ function ProxyToggle() {
 
     // Initialize proxy state
     const updateProxyState = async () => {
-        const mode = await getProxyMode()
+        const mode = getProxyMode()
         setProxyEnabled(mode === "manual")
 
         if (mode === "manual") {
-            const address = await getProxyAddress()
+            const address = getProxyAddress()
             setProxyAddress(address)
         } else {
             setProxyAddress("Not configured")
