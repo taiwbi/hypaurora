@@ -37,15 +37,6 @@ ln -s "$PWD/tmux" "$HOME/.config/"
 rm -rf "$HOME/.config/fish";
 ln -sf "$PWD/fish" "$HOME/.config/fish"
 
-rm -rf "$HOME/.config/fastfetch";
-ln -sf "$PWD/fastfetch" "$HOME/.config/fastfetch"
-
-rm -rf "$HOME/.config/ags";
-ln -sf "$PWD/ags" "$HOME/.config/ags"
-
-rm -rf "$HOME/.config/hypr";
-ln -sf "$PWD/hypr" "$HOME/.config/hypr"
-
 rm -rf "$HOME/.config/Kvantum";
 ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
 
@@ -61,11 +52,6 @@ mkdir -p $HOME/.local/binary/
 
 rm -rf "$HOME/.local/binary/polarify"
 ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
-
-mkdir -p $HOME/.local/share/nautilus/
-
-rm -rf "$HOME/.local/share/nautilus/scripts"
-ln -sf "$PWD/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
 
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
