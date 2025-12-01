@@ -1,8 +1,10 @@
 # 🌌 Hypaurora
 
-Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the Hyprland.
+Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the GNOME.
 
-> If you want to use this make sure you clone it in `~/Documents/hypaurora`
+> Hyprland version is in `hypr` branch.
+
+**If you want to use this make sure you clone it in `~/Documents/hypaurora`**
 
 ## 🎨 Theme Management
 
@@ -33,90 +35,5 @@ positional arguments:
 
 ## Installation
 
-Install hyprland and necessary package from Fedora repo:
-
-```sh
-# Enable hyprland copr repo
-sudo dnf copr enable solopasha/hyprland
-
-# Install hyprland and necessary packages
-sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils \
-  pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
-```
-
-If you want to have per window keyboard layout install [Hyprland per window layout](https://github.com/coffebar/hyprland-per-window-layout) package.
-
-```sh
-# Install cargo and rust
-sudo dnf install cargo rust rust-src rustfmt
-
-# Install hyprland per window layout
-cargo install hyprland-per-window-layout
-```
-
-### AGS Shell
-
-I haven't found any good copr for installing AGS shell so you need to manually compile and install astal and aylur shell, but fortunately it's not that hard and there is a good documentation for it:
-
-- First install [Astal](https://aylur.github.io/ags/guide/install.html)
-- Then install [Aylur's GTK Shell](https://aylur.github.io/ags/guide/install.html)
-
-You also have to install sass compiler:
-
-```sh
-sudo dnf install sass
-```
-
-After installation, you need to create a configuration file for loading libraries:
-
-```sh
-# Create the configuration file
-echo "/usr/local/lib64" | sudo tee /etc/ld.so.conf.d/usr-local.conf
-
-# Update the cache
-sudo ldconfig
-
-# Verify the libraries are now in the cache
-ldconfig -p | grep astal
-```
-
-> Default fish configuration adds two env variables that lets ags find astal libraries, if you're planning for using another terminal shell, you might want to add these two variables to your shell configuration.
->
-> ```sh
-> set -gx GI_TYPELIB_PATH "/usr/local/lib64/girepository-1.0"
-> set -gx LD_LIBRARY_PATH "/usr/local/lib64:$LD_LIBRARY_PATH"
-> ```
-
-After installing astal and ags, you need to install these astal libraries as well:
-
-- [Hyprland](https://aylur.github.io/astal/guide/libraries/hyprland)
-- [Battery](https://aylur.github.io/astal/guide/libraries/battery)
-- [Network](https://aylur.github.io/astal/guide/libraries/network)
-- [Wireplumber](https://aylur.github.io/astal/guide/libraries/wireplumber)
-- [Mpris](https://aylur.github.io/astal/guide/libraries/mpris)
-- [Apps](https://aylur.github.io/astal/guide/libraries/apps)
-
-To add type definitions for Astal and GNOME libraries for better development experience, run this command inside the ags directory:
-
-```sh
-npx @ts-for-gir/cli generate 'GLib-2.0' 'Gio-2.0' 'GObject-2.0' 'Gdk-4.0' 'Gtk-4.0' \
-  'Astal-4.0' 'AstalApps-0.1' 'AstalBattery-0.1' 'AstalHyprland-0.1' 'AstalIO-0.1' 'AstalMpris-0.1' 'AstalNetwork-0.1' \
-  --girDirectories /usr/local/share/gir-1.0 /usr/share/gir-1.0 '/usr/share/*/gir-1.0' \
-  --outdir ~/hypaurora/ags/@girs \
-  --ignoreVersionConflicts --reporter
-```
-
-_This only generate type definitions for **needed** Astal and GNOME libraries, this is not necessary if you're not planning to develop ags or don't need type definitions for better development experience._
-
-### Make OSDs works
-
-In order to have functional OSDs, touchpad switches, and keyboard layout switcher, you need to change these:
-
-- Set the name of your touchpad device in `code/osd/touchpad` script:
-  ```sh
-  HYPRLAND_DEVICE="elan1300:00-04f3:3087-touchpad"
-  ```
-- Set your keyboard device name in `code/osd/keyboard` script:
-  ```sh
-  TOUCHPAD_DEVICE="at-translated-set-2-keyboard"
-  ```
+- Clone the repo in `~/Documents/hypaurora`
+- Run link script `cd ~/Documents/hypaurora/ && ./scripts/link.sh`. **Be aware this will overwrite any existing configuration already exists.**
