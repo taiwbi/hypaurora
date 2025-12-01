@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hypaurora Theme Manager
-Manages themes across Ghostty, GTK, Hyprland, and GNOME Shell from a central theme registry.
+Manages themes across Ghostty, GTK, and GNOME Shell from a central theme registry.
 Supports generating themes from wallpaper images.
 Integrates with GNOME settings for dark mode and wallpaper changes.
 """
@@ -487,19 +487,6 @@ class ThemeManager:
         
         return True
     
-    def generate_hyprland(self, theme: Dict[str, Any]) -> Dict[str, str]:
-        """Generate Hyprland theme colors to inject into look.conf."""
-        palette = theme["colors"]["palette"]
-        
-        return {
-            "active_border": f"rgb({palette[4][1:]}) rgb({palette[2][1:]}) 25deg",
-            "inactive_border": f"rgb({palette[8][1:]}) rgb({palette[0][1:]}) 25deg",
-            "group_active": f"rgb({palette[1][1:]}) rgb({palette[5][1:]}) 25deg",
-            "group_inactive": f"rgb({palette[3][1:]}) rgb({palette[8][1:]}) 25deg",
-            "groupbar_active": f"rgb({palette[1][1:]})",
-            "groupbar_inactive": f"rgba({palette[0][1:]}80)",
-        }
-    
     def update_gnome_shell(self, theme: Dict[str, Any]) -> bool:
         """Update GNOME Shell color variables."""
         colors = theme["colors"]
@@ -572,22 +559,6 @@ class ThemeManager:
         
         return updated_content != content
     
-    def apply_hyprland_theme(self, theme: Dict[str, Any]):
-        """Update Hyprland colors directly in look.conf."""
-        look_conf = self.base_dir / "hypr/hyprland/look.conf"
-        colors = self.generate_hyprland(theme)
-        
-        replacements = [
-            (r'col\.active_border\s*=\s*[^\n]+', f'col.active_border = {colors["active_border"]}'),
-            (r'col\.inactive_border\s*=\s*[^\n]+', f'col.inactive_border = {colors["inactive_border"]}'),
-            (r'col\.border_active\s*=\s*[^\n]+', f'col.border_active = {colors["group_active"]}'),
-            (r'col\.border_inactive\s*=\s*[^\n]+', f'col.border_inactive = {colors["group_inactive"]}'),
-            (r'(groupbar\s*\{[^}]*col\.active\s*=\s*)[^\n]+', f'\\1{colors["groupbar_active"]}'),
-            (r'(groupbar\s*\{[^}]*col\.inactive\s*=\s*)[^\n]+', f'\\1{colors["groupbar_inactive"]}'),
-        ]
-        
-        self.update_file_with_regex(look_conf, replacements)
-
     def apply_gtk_theme(self, theme: Dict[str, Any]):
         """Apply GTK theme by setting color scheme and toggling high-contrast."""
         if not GNOME_AVAILABLE:
@@ -727,7 +698,6 @@ class ThemeManager:
         config_updates = [
             ("Ghostty", lambda: self.update_ghostty(theme)),
             ("GTK", lambda: self.update_gtk(theme)),
-            ("Hyprland", lambda: self.apply_hyprland_theme(theme)),
             ("GNOME Shell", lambda: self.install_gnome_shell(theme)),
         ]
         
