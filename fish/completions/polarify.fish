@@ -52,29 +52,22 @@ function __polarify_arg_contains
 end
 
 # --- Subcommands ------------------------------------------------------------
-complete -c polarify -n "__fish_use_subcommand" -a "list" -d "List theme"
-complete -c polarify -n "__fish_use_subcommand" -a "preview" -d "Preview theme"
+complete -c polarify -n "__fish_use_subcommand" -a "list" -d "List all available themes"
+complete -c polarify -n "__fish_use_subcommand" -a "preview" -d "Preview theme colors"
 complete -c polarify -n "__fish_use_subcommand" -a "apply" -d "Apply theme"
+complete -c polarify -n "__fish_use_subcommand" -a "watch-dark-mode" -d "Watch GNOME dark mode and auto-switch themes (GNOME only)"
 
 # --- preview: theme first, then options -------------------------------------
 complete -c polarify -n "__fish_seen_subcommand_from preview; and not __polarify_seen_theme" \
     -a "(__theme_manager_themes)" -d "Theme name"
 
-# (example option for preview, add more if needed)
-complete -c polarify -n "__fish_seen_subcommand_from preview; and __polarify_seen_theme; and not __fish_seen_argument --dry-run" \
-    -l dry-run -d "Show what would be done without previewing"
-
 # --- apply: theme first, then options ---------------------------------------
 complete -c polarify -n "__fish_seen_subcommand_from apply; and not __polarify_seen_theme" \
     -a "(__theme_manager_themes)" -d "Theme name"
 
-# --listen: only for wallpaper, mutually exclusive with --dry-run, no dupes
-complete -c polarify -n "__fish_seen_subcommand_from apply; and __polarify_seen_theme; and __polarify_selected_theme_is wallpaper; and not __polarify_arg_contains --dry-run; and not __fish_seen_argument --listen" \
-    -l listen -d "Watch wallpaper file for changes"
-
-# --dry-run: only if not already given and not with --listen
-complete -c polarify -n "__fish_seen_subcommand_from apply; and __polarify_seen_theme; and not __polarify_arg_contains --listen; and not __fish_seen_argument --dry-run" \
-    -l dry-run -d "Show what would be done without applying"
+# --listen: only for wallpaper, no dupes
+complete -c polarify -n "__fish_seen_subcommand_from apply; and __polarify_seen_theme; and __polarify_selected_theme_is wallpaper; and not __fish_seen_argument --listen" \
+    -l listen -d "Watch wallpaper and auto-apply theme"
 
 # --variant: only once
 complete -c polarify -n "__fish_seen_subcommand_from apply; and __polarify_seen_theme; and not __fish_seen_argument --variant" \
