@@ -6,12 +6,12 @@ font-feature = dlig
 
 font-size = 11
 
-adjust-cell-height = 15
+adjust-cell-height = 16
 adjust-cell-width = 0
 
 # Appearance
-window-width = 120
-window-height = 28
+window-width = 126
+window-height = 24
 window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
