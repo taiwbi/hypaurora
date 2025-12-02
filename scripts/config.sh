@@ -96,6 +96,17 @@ gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', '
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 gsettings set org.gnome.desktop.input-sources per-window 'true'
 
+# Power options
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
+
+gsettings set org.gnome.desktop.session idle-delay 60
+
+gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+gsettings set org.gnome.settings-daemon.plugins.power power-saver-profile-on-low-battery true
+
 # GTK and Apps
 gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first 'true'
 gsettings set org.gnome.nautilus.preferences show-create-link 'true'
