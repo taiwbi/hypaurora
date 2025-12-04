@@ -21,6 +21,8 @@ gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Geist Mono, AzarMehrMonospaced 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'ColorFlow'
+gsettings set org.gnome.desktop.interface cursor-theme "'MacOS-Tahoe-Cursor'"
+gsettings set org.gnome.desktop.interface cursor-size 32
 
 # Keybindings
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"
