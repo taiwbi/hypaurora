@@ -1,77 +1,91 @@
 # Custom transient prompt setup
 function __prompt_compact --description "Minimal prompt form for scrollback"
-    printf "%s " (set_color red)\$ (set_color normal)
+    set -l pink (set_color 'f472b6')
+    set -l bold (set_color --bold)
+    set -l reset (set_color normal)
+    printf "%s " $bold$pink❯$reset
 end
 
 function __prompt_rich --description "Extended prompt form for the current command"
-    # Colors
+    # Modern vibrant color palette (using RGB for richer colors)
     set -l reset (set_color normal)
-    set -l white (set_color white)
-    set -l black (set_color black)
-    set -l dim (set_color brblack)
+    set -l bold (set_color --bold)
+    
+    # Vibrant gradient-inspired colors
+    set -l purple (set_color 'a78bfa')      # Soft purple
+    set -l blue (set_color '60a5fa')        # Sky blue
+    set -l cyan (set_color '22d3ee')        # Bright cyan
+    set -l teal (set_color '2dd4bf')        # Teal
+    set -l emerald (set_color '34d399')     # Emerald green
+    set -l pink (set_color 'f472b6')        # Hot pink
+    set -l orange (set_color 'fb923c')      # Vibrant orange
+    set -l yellow (set_color 'fbbf24')      # Golden yellow
+    set -l red (set_color 'f87171')         # Soft red
+    set -l dim (set_color '6b7280')         # Muted gray
+    
+    # Powerline & Unicode symbols
+    set -l sep ''                          # Right arrow separator
+    set -l git_icon ''                     # Git branch icon
+    set -l folder_icon ''                  # Folder icon
+    set -l user_icon ''                    # User icon
+    set -l prompt_char '❯'                  # Modern prompt character
+    set -l dirty_icon '●'                   # Dirty indicator
+    set -l clean_icon '✓'                   # Clean indicator
 
-    # Custom colors
-    set -l red_bg (set_color -b red)
-    set -l red_fg (set_color red)
-    set -l blue_bg (set_color -b blue)
-    set -l blue_fg (set_color blue)
-    set -l cyan_bg (set_color -b cyan)
-    set -l cyan_fg (set_color cyan)
-    set -l magenta_bg (set_color -b magenta)
-    set -l magenta_fg (set_color magenta)
-    set -l green_bg (set_color -b green)
-    set -l green_fg (set_color green)
-
-    # Separator triangles (Powerline style)
-    set -l sep_right ''  # Right-pointing triangle
-    set -l sep_left ''   # Left-pointing triangle
-
-    # Current directory
+    # Current directory with smart truncation
     set -l dir (basename (pwd))
     if test (pwd) = $HOME
         set dir "~"
+    else if test (string length $dir) -gt 25
+        set dir (string sub -l 22 $dir)"..."
     end
 
-    # Git info
+    # Git info with enhanced status
     set -l git_info ""
     if git rev-parse --git-dir >/dev/null 2>&1
         set -l branch (git symbolic-ref --short HEAD 2>/dev/null; or git rev-parse --short HEAD 2>/dev/null)
         if test -n "$branch"
-            set -l dirty ""
+            # Check for changes
+            set -l status_icon $clean_icon
+            set -l status_color $emerald
+            
             if not git diff --quiet 2>/dev/null; or not git diff --cached --quiet 2>/dev/null
-                set dirty "*"
+                set status_icon $dirty_icon
+                set status_color $orange
             end
-            set git_info "$red_fg $green_fg$branch$dirty$reset"
+            
+            # Check for unpushed commits
+            set -l unpushed ""
+            set -l ahead (git rev-list --count @{upstream}..HEAD 2>/dev/null)
+            if test -n "$ahead" -a "$ahead" -gt 0
+                set unpushed " $cyan↑$ahead"
+            end
+            
+            set git_info " $dim$sep $reset$pink$git_icon $bold$purple$branch $status_color$status_icon$unpushed$reset"
         end
     end
 
-    # Username@hostname
+    # Username@hostname with icon
     set -l user_host "$USER@$hostname"
 
     # Terminal width for responsiveness
     set -l term_width (tput cols 2>/dev/null; or echo 80)
 
-    # Build prompt segments
-    set -l user_segment "$blue_fg$user_host$reset"
-    set -l dir_segment "$magenta_fg$dir$reset"
+    # Build beautiful prompt segments
+    set -l user_segment "$blue$user_icon $bold$cyan$user_host$reset"
+    set -l dir_segment "$dim$sep $reset$teal$folder_icon $bold$emerald$dir$reset"
 
-    # Calculate total length for responsiveness
-    set -l prompt_len (string length -- "$user_segment$dir_segment")
-    if test -n "$git_info"
-        set prompt_len (math $prompt_len + (string length -- $git_info))
-    end
-
-    printf "%s %s " \
-        $user_segment  \
-        $dir_segment
-    if test -n "$git_info"
-        printf $git_info
-    end
-    # If screen is too narrow, put command on new line
+    # First line: user, directory, and git info
+    printf "%s%s%s" \
+        $user_segment \
+        $dir_segment \
+        $git_info
+    
+    # Second line or inline prompt character (responsive)
     if test $term_width -lt 85
-        printf "\n$red_fg\$ $reset"
+        printf "\n$bold$pink$prompt_char$reset "
     else
-        printf " $red_fg\$ $reset"
+        printf " $bold$pink$prompt_char$reset "
     end
 end
 
