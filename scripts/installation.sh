@@ -100,6 +100,6 @@ esac
 
 
 sudo dnf mark user totem-video-thumbnailer evince-previewer
-sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* firefox firefox-*
+sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* firefox firefox-* mediawriter yelp
 
 rm -rf ~/.mozilla/
