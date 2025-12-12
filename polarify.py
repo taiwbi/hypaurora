@@ -6,6 +6,19 @@ Supports generating themes from wallpaper images.
 Integrates with GNOME settings for dark mode and wallpaper changes.
 """
 
+# To prevent git from tracking theme changes you can run:
+#
+# git update-index --skip-worktree gnome-shell-theme/gnome-shell.css
+# git update-index --skip-worktree gtk-4.0/themes/hypaurora.css
+# git update-index --skip-worktree theme-config.json
+# git update-index --skip-worktree gnome-shell-theme/gnome-shell-sass/_colors-override.scss
+# git update-index --skip-worktree ghostty/themes/hypaurora
+
+# To see a list of files that that have the skip-worktree
+#
+# git ls-files -v | grep '^S'
+# git ls-files -v | grep '^S\|^H' # Files with assume-unchanged as well
+
 import json
 import sys
 import time
