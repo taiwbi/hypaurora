@@ -1,5 +1,3 @@
-command = /bin/fish
-
 font-family = "Geist Mono"
 font-family = "AzarMehrMonospaced"
 font-feature = dlig

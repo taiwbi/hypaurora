@@ -25,8 +25,19 @@ if [ -d ~/.bashrc.d ]; then
         fi
     done
 fi
-unset rc
+
+# Load custom bash completions
+COMPLETIONS_DIR="$HOME/Documents/hypaurora/bash/completions"
+if [[ -d "$COMPLETIONS_DIR" ]]; then
+    for completion_file in "$COMPLETIONS_DIR"/*; do
+        if [[ -f "$completion_file" ]]; then
+            source "$completion_file"
+        fi
+    done
+fi
+
 
 set_proxy
-
 bash_greeting
+
+unset rc

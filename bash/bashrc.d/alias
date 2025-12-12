@@ -33,6 +33,7 @@ ariap() {
 
 # PHP/Laravel Aliases
 alias lide-helper='php artisan ide-helper:models --nowrite && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta'
+alias artisan='php artisan'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # Proxy aliases

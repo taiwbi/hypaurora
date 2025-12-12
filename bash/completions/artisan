@@ -1,0 +1,60 @@
+#!/bin/bash
+# Bash completion for Laravel artisan command and Laravel Sail
+
+_artisan_get_commands_with_descriptions() {
+    local prefix="$1"
+    $prefix artisan list --raw 2>/dev/null | grep -vE '^ '
+}
+
+_artisan_get_commands() {
+    local prefix="$1"
+    _artisan_get_commands_with_descriptions "$prefix" | awk '{print $1}'
+}
+
+_artisan() {
+    local cur words cword
+    _init_completion -n : || return
+
+    # Check if artisan file exists in current directory
+    if [[ ! -f "artisan" ]]; then
+        return
+    fi
+
+    # Determine the command prefix and artisan position
+    local prefix="php"
+    local artisan_pos=1
+    
+    # If we're completing for 'sail', adjust the position
+    if [[ "${words[0]}" == "sail" ]]; then
+        prefix="./vendor/bin/sail"
+        artisan_pos=2
+        
+        # If we're at position 1 and it's not 'artisan' yet, suggest 'artisan'
+        if [[ $cword -eq 1 ]]; then
+            mapfile -t COMPREPLY < <(compgen -W "artisan" -- "$cur")
+            return
+        fi
+    fi
+
+    # If we're at the artisan command position
+    if [[ $cword -eq $artisan_pos ]]; then
+        local commands
+        commands=$(_artisan_get_commands "$prefix")
+        mapfile -t COMPREPLY < <(compgen -W "$commands" -- "$cur")
+        __ltrim_colon_completions "$cur"
+        return
+    fi
+
+    # If the previous word was 'help', suggest commands
+    if [[ "${words[$artisan_pos]}" == "help" && $cword -eq $((artisan_pos + 1)) ]]; then
+        local commands
+        commands=$(_artisan_get_commands "$prefix")
+        mapfile -t COMPREPLY < <(compgen -W "$commands" -- "$cur")
+        __ltrim_colon_completions "$cur"
+        return
+    fi
+}
+
+# Register completion for artisan command
+complete -F _artisan artisan
+complete -F _artisan sail

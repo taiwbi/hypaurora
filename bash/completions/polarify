@@ -1,0 +1,131 @@
+#!/bin/bash
+# Bash completion for polarify theme manager
+
+_polarify_get_themes() {
+    local theme_dir="$HOME/Documents/hypaurora/themes"
+    
+    # List JSON theme files
+    if [[ -d "$theme_dir" ]]; then
+        for f in "$theme_dir"/*.json; do
+            if [[ -f "$f" ]]; then
+                basename "$f" .json
+            fi
+        done
+    fi
+    
+    # Always include wallpaper
+    echo "wallpaper"
+}
+
+_polarify_has_subcommand() {
+    local subcommand="$1"
+    local i
+    for ((i=1; i < ${#words[@]}; i++)); do
+        if [[ "${words[i]}" == "$subcommand" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+_polarify_seen_theme() {
+    local theme themes i
+    themes=$(_polarify_get_themes)
+    
+    for ((i=1; i < ${#words[@]}; i++)); do
+        for theme in $themes; do
+            if [[ "${words[i]}" == "$theme" ]]; then
+                return 0
+            fi
+        done
+    done
+    return 1
+}
+
+_polarify_selected_theme_is() {
+    local needle="$1"
+    local i
+    for ((i=1; i < ${#words[@]}; i++)); do
+        if [[ "${words[i]}" == "$needle" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+_polarify_has_option() {
+    local option="$1"
+    local i
+    for ((i=1; i < ${#words[@]}; i++)); do
+        if [[ "${words[i]}" == "$option" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+_polarify() {
+    local cur prev words cword
+    _init_completion || return
+
+    local subcommands="list preview apply watch-dark-mode"
+    local themes
+    themes=$(_polarify_get_themes)
+
+    # First argument: suggest subcommands
+    if [[ $cword -eq 1 ]]; then
+        mapfile -t COMPREPLY < <(compgen -W "$subcommands -h --help" -- "$cur")
+        return
+    fi
+
+    # After 'preview' or 'apply': suggest themes if not yet provided
+    if _polarify_has_subcommand "preview"; then
+        if ! _polarify_seen_theme; then
+            mapfile -t COMPREPLY < <(compgen -W "$themes" -- "$cur")
+            return
+        fi
+    fi
+
+    if _polarify_has_subcommand "apply"; then
+        if ! _polarify_seen_theme; then
+            mapfile -t COMPREPLY < <(compgen -W "$themes" -- "$cur")
+            return
+        fi
+        
+        # If theme is 'wallpaper' and --listen not yet provided
+        if _polarify_selected_theme_is "wallpaper" && ! _polarify_has_option "--listen"; then
+            if [[ "$cur" == -* ]]; then
+                mapfile -t COMPREPLY < <(compgen -W "--listen --variant" -- "$cur")
+            else
+                mapfile -t COMPREPLY < <(compgen -W "--listen --variant" -- "$cur")
+            fi
+            return
+        fi
+        
+        # --variant option for any theme, if not yet provided
+        if ! _polarify_has_option "--variant"; then
+            if [[ "$cur" == -* ]]; then
+                mapfile -t COMPREPLY < <(compgen -W "--variant --listen" -- "$cur")
+            elif [[ "$prev" == "--variant" ]]; then
+                mapfile -t COMPREPLY < <(compgen -W "dark light" -- "$cur")
+            else
+                mapfile -t COMPREPLY < <(compgen -W "--variant --listen" -- "$cur")
+            fi
+            return
+        fi
+        
+        # After --variant, suggest dark/light
+        if [[ "$prev" == "--variant" ]]; then
+            mapfile -t COMPREPLY < <(compgen -W "dark light" -- "$cur")
+            return
+        fi
+    fi
+
+    # Global help option
+    if [[ "$cur" == -* ]]; then
+        mapfile -t COMPREPLY < <(compgen -W "-h --help" -- "$cur")
+    fi
+}
+
+# Register completion for polarify command
+complete -F _polarify polarify
