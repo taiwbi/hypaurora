@@ -3,9 +3,9 @@
   "editor.fontFamily": "'Geist Mono', 'AzarMehrMonospaced'",
   "editor.fontLigatures": "'dlig'",
   "editor.fontWeight": "500",
-  "editor.fontSize": 16.5,
+  "editor.fontSize": 15,
   "editor.letterSpacing": 0,
-  "editor.lineHeight": 31,
+  "editor.lineHeight": 29,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.minimap.enabled": false,
@@ -14,6 +14,17 @@
   "editor.inlineSuggest.enabled": true,
   "editor.cursorSurroundingLines": 6,
   "editor.scrollBeyondLastLine": false,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": ["keyword", "storage", "support", "constant"],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+
   "search.smartCase": true,
 
   "terminal.integrated.fontFamily": "'Geist Mono', 'AzarMehrMonospaced', 'Symbols Nerd Font'",
@@ -30,7 +41,7 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
 
   "workbench.editor.showTabs": "none",
-  "workbench.preferredDarkColorTheme": "Bearded Theme Monokai Stone",
+  "workbench.preferredDarkColorTheme": "Bearded Theme Monokai Black",
   "workbench.preferredLightColorTheme": "Rosé Pine Dawn",
   "workbench.iconTheme": "rose-pine-icons",
   "workbench.activityBar.location": "top",
@@ -142,11 +153,16 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop"
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.wordWrap": "on"
   },
   "latex-workshop.formatting.latex": "latexindent",
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[markdown]": {
+    // "editor.defaultFormatter": "vscode.markdown-language-features",
+    "editor.wordWrap": "on"
   },
 
   /* Spell */
@@ -183,5 +199,6 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
-  }
+  },
+  "cSpell.userWords": ["RBFS", "taglist"]
 }
