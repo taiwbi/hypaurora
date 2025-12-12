@@ -38,6 +38,9 @@ fi
 
 
 set_proxy
-bash_greeting
+
+if [[ -z "$ANTIGRAVITY_AGENT" || "$ANTIGRAVITY_AGENT" != 1 ]]; then
+    bash_greeting
+fi
 
 unset rc
