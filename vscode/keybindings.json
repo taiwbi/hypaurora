@@ -7,7 +7,7 @@
     "key": "ctrl+escape",
     "command": "multiCommand.hideall"
   },
-  /* For vim going between splits */
+  // For vim going between splits
   {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft",
@@ -36,6 +36,17 @@
   {
     "key": "ctrl+shift+i",
     "command": "prettier.forceFormatDocument"
+  },
+  // Accepting inline suggestino with Alt+A
+  {
+    "key": "alt+a",
+    "command": "editor.action.inlineSuggest.commit",
+    "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+  },
+  {
+    "key": "alt+a",
+    "command": "editor.action.inlineSuggest.commit",
+    "when": "inInlineEditsPreviewEditor"
   },
   // Moving between tabs using alt+n in terminal
   {
@@ -88,12 +99,12 @@
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top'"
   },
-  /* Change language mode */
+  // Change language mode
   {
     "key": "ctrl+alt+l",
     "command": "workbench.action.editor.changeLanguageMode"
   },
-  /* Copy file path */
+  // Copy file path
   {
     "key": "ctrl+alt+c",
     "command": "copyFilePath",
@@ -105,7 +116,18 @@
     "when": "editorFocus"
   },
   /* ================ Remove unused mappings ================ */
-  /* Instead: copy terminal selection */
+  // Instead: use Alt+A to accept inline suggestions
+  {
+    "key": "tab",
+    "command": "-editor.action.inlineSuggest.commit",
+    "when": "inInlineEditsPreviewEditor"
+  },
+  {
+    "key": "tab",
+    "command": "-editor.action.inlineSuggest.commit",
+    "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+  },
+  // Instead: copy terminal selection
   {
     "key": "ctrl+shift+c",
     "command": "-windsurf.openCodeMapView"
@@ -114,7 +136,7 @@
     "key": "ctrl+shift+c",
     "command": "-workbench.action.terminal.openNativeConsole"
   },
-  /* Instead: Open git changes */
+  // Instead: Open git changes
   {
     "key": "ctrl+shift+g",
     "command": "-windsurf.generateCodeMap"
@@ -124,7 +146,7 @@
     "command": "-windsurf.generateCodeMapFromContext",
     "when": "codemapsEnabled && editorTextFocus"
   },
-  /* Instead: Copy path of current file */
+  // Instead: Copy path of current file
   {
     "key": "ctrl+alt+c",
     "command": "-mysql.db.active",
@@ -798,5 +820,90 @@
     "key": "ctrl+j",
     "command": "-extension.vim_ctrl+j",
     "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+  },
+  {
+    "key": "alt+a",
+    "command": "-editor.action.accessibilityHelpConfigureAssignedKeybindings",
+    "when": "accessibilityHelpIsShown && accessibleViewHasAssignedKeybindings"
+  },
+  {
+    "key": "alt+a",
+    "command": "editor.action.inlineSuggest.jump",
+    "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+  },
+  {
+    "key": "tab",
+    "command": "-editor.action.inlineSuggest.jump",
+    "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+  },
+  {
+    "key": "alt+a",
+    "command": "insertBestCompletion",
+    "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+  },
+  {
+    "key": "tab",
+    "command": "-insertBestCompletion",
+    "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+  },
+  {
+    "key": "alt+a",
+    "command": "insertNextSuggestion",
+    "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+  },
+  {
+    "key": "tab",
+    "command": "-insertNextSuggestion",
+    "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+  },
+  {
+    "key": "alt+a",
+    "command": "workbench.action.terminal.acceptSelectedSuggestion",
+    "when": "simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible"
+  },
+  {
+    "key": "tab",
+    "command": "-workbench.action.terminal.acceptSelectedSuggestion",
+    "when": "simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible"
+  },
+  {
+    "key": "alt+a",
+    "command": "acceptSelectedSuggestion",
+    "when": "inDebugRepl && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "inDebugRepl && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "alt+a",
+    "command": "antigravity.prioritized.supercompleteAccept",
+    "when": "antigravity.customCompletionShown && editorTextFocus || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible || editorTextFocus && inlineSuggestionVisible && neovim.init && neovim.mode == 'normal' || editorTextFocus && inlineSuggestionVisible && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "tab",
+    "command": "-antigravity.prioritized.supercompleteAccept",
+    "when": "antigravity.customCompletionShown && editorTextFocus || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible || editorTextFocus && inlineSuggestionVisible && neovim.init && neovim.mode == 'normal' || editorTextFocus && inlineSuggestionVisible && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+a",
+    "command": "insertSnippet",
+    "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+  },
+  {
+    "key": "tab",
+    "command": "-insertSnippet",
+    "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+  },
+  {
+    "key": "alt+a",
+    "command": "jumpToNextSnippetPlaceholder",
+    "when": "hasNextTabstop && inSnippetMode && textInputFocus"
+  },
+  {
+    "key": "tab",
+    "command": "-jumpToNextSnippetPlaceholder",
+    "when": "hasNextTabstop && inSnippetMode && textInputFocus"
   }
 ]
