@@ -1,0 +1,23 @@
+#!/bin/bash
+
+bash_greeting() {
+    sleep 0.15
+    if command -v tput > /dev/null && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
+        term_width=$(tput cols)
+        wrap_width=$term_width
+
+        if [ "$TERM" = "xterm-ghostty" ] || [ "$TERM" = "xterm-kitty" ]; then
+            if command -v kitten > /dev/null 2>&1 && [ "$term_width" -gt 40 ]; then
+                position=$((term_width - 21))
+                kitten icat -n --place "20x14@$position"x0 "$HOME/Documents/hypaurora/assets/2B.png"
+                
+                wrap_width=$((term_width - 22))
+            fi
+        fi
+
+        if [ "$term_width" -gt 35 ]; then
+            tput cr
+            shuf -n 1 "$HOME/Documents/hypaurora/assets/2BPraise.txt" | fmt -w "$wrap_width"
+        fi
+    fi
+}

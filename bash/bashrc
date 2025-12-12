@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # .bashrc
 
 # Source global definitions
@@ -26,3 +28,5 @@ fi
 unset rc
 
 set_proxy
+
+bash_greeting
