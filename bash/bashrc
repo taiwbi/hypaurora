@@ -43,4 +43,6 @@ if [[ -z "$ANTIGRAVITY_AGENT" || "$ANTIGRAVITY_AGENT" != 1 ]]; then
     bash_greeting
 fi
 
+# Disable focus reporting
+printf '\e[?1004l'
 unset rc
