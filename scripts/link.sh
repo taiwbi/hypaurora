@@ -45,8 +45,6 @@ ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
 
 rm -rf "$HOME/.bashrc"
 ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
-rm -rf "$HOME/.bashrc.d"
-ln -sf "$PWD/bash/bashrc.d" "$HOME/.bashrc.d"
 
 mkdir -p $HOME/.local/binary/
 

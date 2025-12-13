@@ -18,8 +18,9 @@ export PATH
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
+BASHRC_DIR="$HOME/Documents/hypaurora/bash/bashrc.d"
+if [ -d "$BASHRC_DIR" ]; then
+    for rc in "$BASHRC_DIR"/*; do
         if [ -f "$rc" ]; then
             . "$rc"
         fi
