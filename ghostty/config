@@ -8,8 +8,8 @@ adjust-cell-height = 9
 adjust-cell-width = 0
 
 # Appearance
-window-width = 128
-window-height = 30
+window-width = 115
+window-height = 27
 window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
