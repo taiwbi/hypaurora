@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Replaces a string in all of the files in current directory with a new one
+replace_in_files() {
+    # Check if correct number of arguments
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: replace_in_files OLD_STRING NEW_STRING" >&2
+        return 1
+    fi
+
+    local old_string="$1"
+    local new_string="$2"
+    local changed_count=0
+    
+    local files_to_process
+    if [ -d .git ]; then
+        # Use git ls-files to get tracked files (respects .gitignore)
+        files_to_process=$(git ls-files)
+    else
+        # Fallback to find if not in a git repo
+        files_to_process=$(find . -type f -not -path '*/.*' | sed 's|^\./||')
+    fi
+
+    # Using a for loop like this can have issues with filenames containing spaces,
+    # but it mirrors the structure of the original fish script.
+    for file in $files_to_process; do
+        # Skip if file doesn't exist (in case of deleted files in git)
+        if [ ! -f "$file" ]; then
+            continue
+        fi
+        
+        # Check if file contains the old string
+        # The `--` ensures that the old_string is not treated as an option
+        if grep -q -F -- "$old_string" "$file" 2>/dev/null; then
+            # Perform the replacement using '#' as a separator to avoid issues with '/' in paths
+            # Note: This is a direct port and will have issues if the strings contain '#'.
+            sed -i "s#$old_string#$new_string#g" -- "$file"
+            
+            # Print the changed file path
+            echo "Changed: $file"
+            
+            changed_count=$((changed_count + 1))
+        fi
+    done
+
+    # Print summary
+    echo ""
+    echo "Total files changed: $changed_count"
+}
