@@ -51,6 +51,9 @@ mkdir -p $HOME/.local/binary/
 rm -rf "$HOME/.local/binary/polarify"
 ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 
+rm -rf "$HOME/.local/binary/gim"
+ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
+
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 

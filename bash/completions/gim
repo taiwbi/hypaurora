@@ -1,0 +1,38 @@
+#!/bin/bash
+# Bash completion for gim command
+
+_gim() {
+    local cur prev words cword
+    _init_completion || return
+
+    # Available subcommands
+    local subcommands="command commit"
+    local options="--help -h"
+
+    # If we're at position 1 (first argument after gim)
+    if [[ $cword -eq 1 ]]; then
+        mapfile -t COMPREPLY < <(compgen -W "$subcommands $options" -- "$cur")
+        return
+    fi
+
+    # Handle completion based on the subcommand
+    case "${words[1]}" in
+        command)
+            # For 'gim command', we don't provide specific completions
+            # as it expects a free-form command request string
+            return
+            ;;
+        commit)
+            # For 'gim commit', we don't provide specific completions
+            # as it expects an optional free-form description
+            return
+            ;;
+        --help|-h)
+            # No further completion needed after --help
+            return
+            ;;
+    esac
+}
+
+# Register completion for gim command
+complete -F _gim gim
