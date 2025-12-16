@@ -199,6 +199,5 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "cSpell.userWords": ["RBFS", "taglist"]
+  }
 }
