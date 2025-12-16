@@ -1,0 +1,51 @@
+{
+  "name": "Cyberdreadm Dark",
+  "author": "Mahdi",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#16181a",
+      "foreground": "#ffffff",
+      "cursor": "#5ef1ff",
+      "cursor_text": "#16181a",
+      "selection_bg": "#3c4048",
+      "selection_fg": "#ffffff"
+    },
+    "palette": [
+      "#3c4048",
+      "#ff6e5e",
+      "#5eff6c",
+      "#f1ff5e",
+      "#5ea1ff",
+      "#ff5ef1",
+      "#5ef1ff",
+      "#ffffff",
+      "#7b8496",
+      "#ff6e5e",
+      "#5eff6c",
+      "#f1ff5e",
+      "#5ea1ff",
+      "#ff5ef1",
+      "#5ef1ff",
+      "#ffffff"
+    ],
+    "semantic": {
+      "accent": "#5ea1ff",
+      "accent_fg": "#ffffff",
+      "border": "#5ef1ff",
+      "success": "#5eff6c",
+      "warning": "#f1ff5e",
+      "error": "#ff6e5e"
+    },
+    "ui": {
+      "card": "#1e2124",
+      "card_fg": "#ffffff",
+      "popover": "#1e2124",
+      "popover_fg": "#ffffff",
+      "sidebar": "#16181a",
+      "sidebar_fg": "#7b8496",
+      "headerbar": "#16181a",
+      "headerbar_fg": "#7b8496"
+    }
+  }
+}
