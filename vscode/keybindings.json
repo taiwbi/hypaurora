@@ -7,6 +7,26 @@
     "key": "ctrl+escape",
     "command": "multiCommand.hideall"
   },
+  {
+    "key": "alt+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "alt+b",
+    "command": "antigravity.openAgent",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "alt+b",
+    "command": "antigravity.openAgent",
+    "when": "terminalFocus"
+  },
   // For vim going between splits
   {
     "key": "ctrl+h",
