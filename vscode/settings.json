@@ -17,6 +17,9 @@
   "editor.inlineSuggest.enabled": true,
   "editor.cursorSurroundingLines": 6,
   "editor.scrollBeyondLastLine": false,
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "smooth",
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -42,14 +45,26 @@
   ],
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
 
   "workbench.editor.showTabs": "none",
   "workbench.preferredDarkColorTheme": "Bearded Theme Monokai Black",
   "workbench.preferredLightColorTheme": "Rosé Pine Dawn",
   "workbench.iconTheme": "rose-pine-icons",
-  "workbench.activityBar.location": "top",
+  "workbench.activityBar.location": "hidden",
+  "workbench.list.smoothScrolling": true,
+  "workbench.layoutControl.enabled": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+
+  "breadcrumbs.enabled": false,
 
   "window.autoDetectColorScheme": true,
+  "window.customMenuBarAltFocus": false,
+  "window.menuBarVisibility": "hidden",
+  "window.enableMenuBarMnemonics": false,
+  "window.titleBarStyle": "native",
+  "window.customTitleBarVisibility": "never",
   "zenMode.showTabs": "single",
 
   "files.exclude": {
@@ -167,6 +182,12 @@
     // "editor.defaultFormatter": "vscode.markdown-language-features",
     "editor.wordWrap": "on"
   },
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
 
   /* Spell */
   "cSpell.ignoreRegExpList": ["/[\\u0600-\\u06FF]+/", "/[\\u0400-\\u04FF]+/"], // Ignore Russian and Persian Words
@@ -190,17 +211,9 @@
     "html",
     "user-english-words"
   ],
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "workbench.colorTheme": "Default Dark Modern",
   "cSpell.enabledNotifications": {
     "Maximum Word Length Exceeded": false,
     "Lines too Long": false,
     "Average Word Length too Long": false
-  },
-  "[python]": {
-    "diffEditor.ignoreTrimWhitespace": true
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }
