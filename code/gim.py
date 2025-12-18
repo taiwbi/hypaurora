@@ -8,7 +8,7 @@ from pathlib import Path
 
 # --- Configuration ---
 API_KEY_FILE = Path.home() / ".keys" / "GEMINI"
-MODEL_NAME = "models/gemini-flash-latest"
+MODEL_NAME = "models/gemini-3-flash-preview"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/{MODEL_NAME}:generateContent"
 
 # --- Helper Functions ---
