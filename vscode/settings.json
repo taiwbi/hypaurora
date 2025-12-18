@@ -20,6 +20,7 @@
   "editor.smoothScrolling": true,
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorBlinking": "smooth",
+  "editor.linkedEditing": true,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -32,6 +33,7 @@
   },
 
   "search.smartCase": true,
+  "explorer.confirmDelete": false,
 
   "terminal.integrated.fontFamily": "'Geist Mono', 'AzarMehrMonospaced', 'Symbols Nerd Font'",
   "terminal.integrated.fontWeight": "500",
@@ -49,7 +51,7 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
 
   "workbench.editor.showTabs": "none",
-  "workbench.preferredDarkColorTheme": "Bearded Theme Monokai Black",
+  "workbench.preferredDarkColorTheme": "Neovim Theme",
   "workbench.preferredLightColorTheme": "Rosé Pine Dawn",
   "workbench.iconTheme": "rose-pine-icons",
   "workbench.activityBar.location": "hidden",
@@ -107,6 +109,7 @@
   "intelliphp.inlineSuggestionsEnabled": false,
   "php.codeActions.enabled": false,
   "php.highlight-todo.enable": false,
+  "php.linkedEditing.variables": true,
   "laravel-pint.enable": true,
 
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
