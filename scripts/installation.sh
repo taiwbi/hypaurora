@@ -102,4 +102,20 @@ esac
 sudo dnf mark user totem-video-thumbnailer evince-previewer
 sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* firefox firefox-* mediawriter yelp
 
+# Zen browser
+read -p "Do you want to install Zen Browser now? (Y/n): " answer
+case ${answer:0:1} in
+  y|Y )
+    sudo dnf copr enable sneexy/zen-browser
+    sudo dnf install zen-browser
+  ;;
+  * )
+    echo "I won't install Zen Browser :)"
+  ;;
+esac
+# https://zen-browser.app/mods/906c6915-5677-48ff-9bfc-096a02a72379/
+#
+# zen.theme.content-element-separation 0
+# widget.use-xdg-desktop-portal.file-picker 1
+
 rm -rf ~/.mozilla/
