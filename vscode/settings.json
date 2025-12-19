@@ -3,8 +3,8 @@
   "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
 
   // -> <- => <= == != <= >=
-  "editor.fontFamily": "'Geist Mono', 'AzarMehrMonospaced'",
-  "editor.fontLigatures": "'dlig'",
+  "editor.fontFamily": "'JetBrains Mono', 'AzarMehrMonospaced'",
+  "editor.fontLigatures": "'dlig', 'dlig', 'ss02'",
   "editor.fontWeight": "500",
   "editor.fontSize": 15,
   "editor.letterSpacing": 0,
@@ -35,7 +35,7 @@
   "search.smartCase": true,
   "explorer.confirmDelete": false,
 
-  "terminal.integrated.fontFamily": "'Geist Mono', 'AzarMehrMonospaced', 'Symbols Nerd Font'",
+  "terminal.integrated.fontFamily": "'JetBrains Mono', 'AzarMehrMonospaced', 'Symbols Nerd Font'",
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "terminal.integrated.fontSize": 14,
