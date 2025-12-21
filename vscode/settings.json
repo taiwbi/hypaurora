@@ -21,6 +21,9 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorBlinking": "smooth",
   "editor.linkedEditing": true,
+  "emmet.includeLanguages": {
+    "blade": "html"
+  },
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -53,7 +56,7 @@
   "workbench.editor.showTabs": "none",
   "workbench.preferredDarkColorTheme": "Neovim Theme",
   "workbench.preferredLightColorTheme": "Rosé Pine Dawn",
-  "workbench.iconTheme": "rose-pine-icons",
+  "workbench.iconTheme": "charmed-soft",
   "workbench.activityBar.location": "hidden",
   "workbench.list.smoothScrolling": true,
   "workbench.layoutControl.enabled": false,
@@ -167,6 +170,8 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "html.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

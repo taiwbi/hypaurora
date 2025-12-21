@@ -16,15 +16,10 @@ eamodio.gitlens
 ecmel.vscode-html-css
 editorconfig.editorconfig
 esbenp.prettier-vscode
-formulahendry.auto-close-tag
 formulahendry.auto-rename-tag
-gruntfuggly.todo-tree
 gustavolins05.neovim-theme
-james-yu.latex-workshop
-littensy.charmed-icons
 mikestead.dotenv
-ms-azuretools.vscode-containers
-ms-azuretools.vscode-docker
+mohraiba.active-filename
 ms-python.debugpy
 ms-python.python
 ms-vscode.makefile-tools
