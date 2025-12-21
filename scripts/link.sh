@@ -54,6 +54,10 @@ ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 rm -rf "$HOME/.local/binary/gim"
 ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 
+mkdir -p "$HOME/.local/share/applications"
+ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
+ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
+
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js" 

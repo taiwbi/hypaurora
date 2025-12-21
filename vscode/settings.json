@@ -58,6 +58,7 @@
   "workbench.list.smoothScrolling": true,
   "workbench.layoutControl.enabled": false,
   "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.startupEditor": "welcomePage",
 
   "breadcrumbs.enabled": false,
 
@@ -67,6 +68,7 @@
   "window.enableMenuBarMnemonics": false,
   "window.titleBarStyle": "native",
   "window.customTitleBarVisibility": "never",
+  "window.restoreWindows": "none",
   "zenMode.showTabs": "single",
 
   "files.exclude": {
@@ -84,9 +86,6 @@
     // "**/node_modules/**": true
   },
 
-  "http.proxy": "http://192.168.43.1:10808",
-  "http.proxyStrictSSL": false,
-  "http.noProxy": ["api.deepinfra.com", "fluxui.dev"],
   "keyboard.dispatch": "keyCode",
 
   "git.autofetch": false,
@@ -97,6 +96,7 @@
     "**/ghostty/config": "editorconfig"
   },
 
+  "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
