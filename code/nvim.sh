@@ -42,9 +42,6 @@ function set_proxy {
 
 set_proxy
 
-export DEEPINFRA_KEY=$(cat "/home/mahdi/.keys/DEEPINFRA")
-export GEMINI_KEY=$(cat "/home/mahdi/.keys/GEMINI_mahditaiw")
-export OPENROUTER_KEY=$(cat "$HOME/.keys/OPENROUTER")
 export PHP_CS_FIXER_IGNORE_ENV=true
 
 export PATH="$HOME/.local/bin:$PATH"
