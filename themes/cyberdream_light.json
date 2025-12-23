@@ -1,0 +1,51 @@
+{
+  "name": "Cyberdream Light",
+  "author": "Mahdi",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#ffffff",
+      "foreground": "#16181a",
+      "cursor": "#008c99",
+      "cursor_text": "#ffffff",
+      "selection_bg": "#acacac",
+      "selection_fg": "#16181a"
+    },
+    "palette": [
+      "#acacac",
+      "#d11500",
+      "#008b0c",
+      "#997b00",
+      "#0057d1",
+      "#d100bf",
+      "#008c99",
+      "#16181a",
+      "#7b8496",
+      "#d11500",
+      "#008b0c",
+      "#997b00",
+      "#0057d1",
+      "#d100bf",
+      "#008c99",
+      "#16181a"
+    ],
+    "semantic": {
+      "accent": "#0057d1",
+      "accent_fg": "#ffffff",
+      "border": "#008c99",
+      "success": "#008b0c",
+      "warning": "#997b00",
+      "error": "#d11500"
+    },
+    "ui": {
+      "card": "#eaeaea",
+      "card_fg": "#16181a",
+      "popover": "#eaeaea",
+      "popover_fg": "#16181a",
+      "sidebar": "#ffffff",
+      "sidebar_fg": "#7b8496",
+      "headerbar": "#ffffff",
+      "headerbar_fg": "#7b8496"
+    }
+  }
+}
