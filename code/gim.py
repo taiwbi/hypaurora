@@ -7,6 +7,7 @@ import requests
 from pathlib import Path
 
 # --- Configuration ---
+# Fallback API key file if gemini.sh is not present
 API_KEY_FILE = Path.home() / ".keys" / "GEMINI"
 MODEL_NAME = "models/gemini-3-flash-preview"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/{MODEL_NAME}:generateContent"
@@ -31,7 +32,10 @@ def load_api_key():
         sys.exit(1)
 
 def generate_gemini_response(prompt, user_input="", temperature=0):
-    api_key = load_api_key()
+    if Path(Path.home() / ".keys" / "gemini.sh").exists():
+        api_key = subprocess.run(Path.home() / ".keys" / "gemini.sh", capture_output=True, check=True).stdout.decode().strip()
+    else:
+        api_key = load_api_key()
     
     full_text = f"{prompt}\n{user_input}" if user_input else prompt
     
