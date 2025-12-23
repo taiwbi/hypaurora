@@ -1,0 +1,51 @@
+{
+  "name": "Kanagawa Dragon",
+  "author": "Mahdi",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#181616",
+      "foreground": "#c5c9c5",
+      "cursor": "#c5c9c5",
+      "cursor_text": "#181616",
+      "selection_bg": "#282727",
+      "selection_fg": "#c5c9c5"
+    },
+    "palette": [
+      "#0d0c0c",
+      "#c4746e",
+      "#87a987",
+      "#8a9a7b",
+      "#658594",
+      "#a292a3",
+      "#8ea4a2",
+      "#c5c9c5",
+      "#a6a69c",
+      "#E82424",
+      "#8a9a7b",
+      "#E6C384",
+      "#7FB4CA",
+      "#938AA9",
+      "#7AA89F",
+      "#DCD7BA"
+    ],
+    "semantic": {
+      "accent": "#658594",
+      "accent_fg": "#181616",
+      "border": "#a6a69c",
+      "success": "#87a987",
+      "warning": "#E6C384",
+      "error": "#E82424"
+    },
+    "ui": {
+      "card": "#12120f",
+      "card_fg": "#c5c9c5",
+      "popover": "#12120f",
+      "popover_fg": "#c5c9c5",
+      "sidebar": "#181616",
+      "sidebar_fg": "#a6a69c",
+      "headerbar": "#181616",
+      "headerbar_fg": "#c5c9c5"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Kanagawa Lotus",
+  "author": "Mahdi",
+  "variant": "light",
+  "colors": {
+    "base": {
+      "background": "#F2ECBC",
+      "foreground": "#545464",
+      "cursor": "#43436c",
+      "cursor_text": "#F2ECBC",
+      "selection_bg": "#d7d7d7",
+      "selection_fg": "#545464"
+    },
+    "palette": [
+      "#1F1F28",
+      "#c84053",
+      "#6f894e",
+      "#77713f",
+      "#4e8ca2",
+      "#b35b79",
+      "#597b75",
+      "#545464",
+      "#43436c",
+      "#d7474b",
+      "#6e915f",
+      "#836f4a",
+      "#6693bf",
+      "#b35b79",
+      "#5e857a",
+      "#43436c"
+    ],
+    "semantic": {
+      "accent": "#4e8ca2",
+      "accent_fg": "#F2ECBC",
+      "border": "#938AA9",
+      "success": "#6f894e",
+      "warning": "#77713f",
+      "error": "#c84053"
+    },
+    "ui": {
+      "card": "#e5e9f0",
+      "card_fg": "#545464",
+      "popover": "#e5e9f0",
+      "popover_fg": "#545464",
+      "sidebar": "#F2ECBC",
+      "sidebar_fg": "#43436c",
+      "headerbar": "#F2ECBC",
+      "headerbar_fg": "#545464"
+    }
+  }
+}

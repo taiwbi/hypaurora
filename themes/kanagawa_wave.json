@@ -1,0 +1,51 @@
+{
+  "name": "Kanagawa Wave",
+  "author": "Mahdi",
+  "variant": "dark",
+  "colors": {
+    "base": {
+      "background": "#1F1F28",
+      "foreground": "#DCD7BA",
+      "cursor": "#C8C093",
+      "cursor_text": "#1F1F28",
+      "selection_bg": "#223249",
+      "selection_fg": "#DCD7BA"
+    },
+    "palette": [
+      "#090618",
+      "#C34043",
+      "#76946A",
+      "#C0A36E",
+      "#7E9CD8",
+      "#957FB8",
+      "#6A9589",
+      "#C8C093",
+      "#727169",
+      "#E82424",
+      "#98BB6C",
+      "#E6C384",
+      "#7FB4CA",
+      "#938AA9",
+      "#7AA89F",
+      "#DCD7BA"
+    ],
+    "semantic": {
+      "accent": "#7E9CD8",
+      "accent_fg": "#1F1F28",
+      "border": "#727169",
+      "success": "#76946A",
+      "warning": "#FF9E3B",
+      "error": "#E82424"
+    },
+    "ui": {
+      "card": "#16161D",
+      "card_fg": "#DCD7BA",
+      "popover": "#16161D",
+      "popover_fg": "#DCD7BA",
+      "sidebar": "#1F1F28",
+      "sidebar_fg": "#727169",
+      "headerbar": "#1F1F28",
+      "headerbar_fg": "#DCD7BA"
+    }
+  }
+}
