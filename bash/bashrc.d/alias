@@ -18,8 +18,17 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias mkdir='mkdir -p'
 
+# Colorize output
+alias grep='grep --color'
+alias egrep='egrep --color'
+alias ip='egrep --color'
+alias dir='dir --color'
+alias vdir='vdir --color'
+alias ip='ip --color'
+alias diff='diff --color=always'
+
 # Utility Aliases
-alias ls='ls --group-directories-first -F'
+alias ls='ls --color --group-directories-first -F'
 alias df='df -h'
 alias free='free -h'
 alias aria='aria2c -x 16'
