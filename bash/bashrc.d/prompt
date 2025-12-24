@@ -33,7 +33,7 @@ if [ "$ANTIGRAVITY_AGENT" = "1" ]; then
     # A Simple Prompt for AI Agents
     PS1="$ "
 elif [ -n "$TERMUX_VERSION" ]; then
-    PS1=" $BLUE\W$RESET $YELLOW\$(get_git_branch)$RED\$ $RESET"
+    PS1=" $BLUE\W$RESET$YELLOW\$(get_git_branch)$RED\$ $RESET"
 else
     PS1="[$GREEN\u$RESET@$GREEN\h $BLUE\W$RESET]$YELLOW\$(get_git_branch)$RED\$ $RESET"
 fi
