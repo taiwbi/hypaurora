@@ -14,8 +14,10 @@ if [ "$ANTIGRAVITY_AGENT" = "1" ]; then
 # Check if running in Termux
 elif [ -n "$TERMUX_VERSION" ]; then
     # Termux-specific prompt: only show current directory and git branch
-    PS1="\W\$(get_git_branch)\$ "
+    PS1="\[\033[01;32m\]\W\[\033[00m\]\$(get_git_branch)\$ "
 else
     # Standard prompt for other Linux systems
     PS1="[\u@\h \W]\$(get_git_branch)\$ "
+    # Colored prompt for other Linux systems
+    PS1="\[\033[01;32m\][\u@\h \W]\[\033[00m\]\$(get_git_branch)\$ "
 fi
