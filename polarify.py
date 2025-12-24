@@ -19,6 +19,9 @@ Integrates with GNOME settings for dark mode and wallpaper changes.
 # git ls-files -v | grep '^S'
 # git ls-files -v | grep '^S\|^H' # Files with assume-unchanged as well
 
+# To undo skip work tree:
+# git update-index --no-skip-worktree
+
 import json
 import sys
 import time

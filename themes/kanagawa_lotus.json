@@ -38,9 +38,9 @@
       "error": "#c84053"
     },
     "ui": {
-      "card": "#e5e9f0",
+      "card": "#ede9c5",
       "card_fg": "#545464",
-      "popover": "#e5e9f0",
+      "popover": "#ede9c5",
       "popover_fg": "#545464",
       "sidebar": "#F2ECBC",
       "sidebar_fg": "#43436c",
