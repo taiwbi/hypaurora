@@ -12,7 +12,6 @@ esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 metaphore.kanagawa-vscode-color-theme
 mikestead.dotenv
-mohraiba.active-filename
 ms-python.debugpy
 ms-python.python
 ms-vscode.makefile-tools

@@ -28,6 +28,7 @@
   "editor.selectionHighlight": false,
   "editor.bracketPairColorization.enabled": false,
   "editor.guides.indentation": true,
+  "editor.stickyScroll.enabled": false,
 
   "emmet.includeLanguages": {
     "blade": "html"
@@ -68,13 +69,22 @@
   "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "welcomePage",
   "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorCustomizations": {
+    "[Kanagawa Wave]": {
+      "titleBar.activeBackground": "#1F1F28",
+      "titleBar.inactiveBackground": "#1F1F28"
+    }
+  },
 
-  "breadcrumbs.enabled": false,
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "last",
 
   "window.autoDetectColorScheme": true,
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
   "window.titleBarStyle": "custom",
+  "window.dialogStyle": "custom",
   "window.restoreWindows": "none",
   "window.menuBarVisibility": "toggle",
   "zenMode.showTabs": "single",
@@ -200,6 +210,5 @@
     "Maximum Word Length Exceeded": false,
     "Lines too Long": false,
     "Average Word Length too Long": false
-  },
-  "workbench.activityBar.location": "hidden"
+  }
 }
