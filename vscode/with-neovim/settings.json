@@ -11,24 +11,16 @@
   "editor.lineHeight": 29,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
+  "editor.minimap.enabled": false,
   "editor.inlineSuggest.showToolbar": "always",
   "editor.lineNumbers": "relative",
   "editor.inlineSuggest.enabled": true,
   "editor.cursorSurroundingLines": 6,
   "editor.scrollBeyondLastLine": false,
-  "editor.linkedEditing": true,
-
-  "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "none",
-  "editor.renderControlCharacters": false,
   "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorBlinking": "smooth",
-  "editor.cursorSmoothCaretAnimation": "explicit",
-  "editor.occurrencesHighlight": "singleFile",
-  "editor.selectionHighlight": false,
-  "editor.bracketPairColorization.enabled": false,
-  "editor.guides.indentation": true,
-
+  "editor.linkedEditing": true,
   "emmet.includeLanguages": {
     "blade": "html"
   },
@@ -46,7 +38,6 @@
   "search.smartCase": true,
   "explorer.confirmDelete": false,
 
-  "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.fontFamily": "'JetBrains Mono', 'AzarMehrMonospaced', 'Symbols Nerd Font'",
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
@@ -63,38 +54,26 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
 
   "workbench.editor.showTabs": "none",
-  "workbench.preferredDarkColorTheme": "Kanagawa Wave",
-  "workbench.preferredLightColorTheme": "Kanagawa Lotus",
+  "workbench.preferredDarkColorTheme": "Neovim Theme",
+  "workbench.preferredLightColorTheme": "Rosé Pine Dawn",
+  "workbench.iconTheme": "charmed-soft",
+  "workbench.activityBar.location": "hidden",
   "workbench.list.smoothScrolling": true,
-  "workbench.startupEditor": "welcomePage",
+  "workbench.layoutControl.enabled": false,
   "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.startupEditor": "welcomePage",
 
   "breadcrumbs.enabled": false,
 
   "window.autoDetectColorScheme": true,
   "window.customMenuBarAltFocus": false,
+  "window.menuBarVisibility": "hidden",
   "window.enableMenuBarMnemonics": false,
-  "window.titleBarStyle": "custom",
+  "window.titleBarStyle": "native",
+  "window.customTitleBarVisibility": "never",
   "window.restoreWindows": "none",
-  "window.menuBarVisibility": "toggle",
   "zenMode.showTabs": "single",
 
-  "keyboard.dispatch": "keyCode",
-
-  "git.enabled": true,
-  "git.autorefresh": false,
-  "git.autofetch": false,
-  "git.openRepositoryInParentFolders": "never",
-
-  "files.autoSave": "onWindowChange",
-  "files.watcherExclude": {
-    "**/.git/objects/**": true,
-    "**/node_modules/**": true,
-    "**/vendor/**": true,
-    "**/build/**": true,
-    "**/__pycache__/**": true,
-    "**/.hg/store/**": true
-  },
   "files.exclude": {
     "**/*.aux": true,
     "**/*.fdb_latexmk": true,
@@ -103,7 +82,19 @@
     "**/*.log": true,
     "**/*.out": true,
     "**/*.toc": true
+    // "**/_ide_helper*.php": true,
+    // "**/.php-cs-fixer.cache": true,
+    // "**/.phpstorm.meta.php": true,
+    // "**/vendor/**": true,
+    // "**/node_modules/**": true
   },
+
+  "keyboard.dispatch": "keyCode",
+
+  "git.autofetch": false,
+  "git.openRepositoryInParentFolders": "never",
+
+  "files.autoSave": "onWindowChange",
   "files.associations": {
     "**/ghostty/config": "editorconfig"
   },
@@ -128,7 +119,34 @@
   "errorLens.margin": "6ch",
   "errorLens.messageTemplate": "$severity $message   $count",
 
+  "latex-workshop.latex.outDir": "build",
+
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false,
+
   "json.schemaDownload.enable": true,
+
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "type": "text",
+      "background": "#1d4d06",
+      "foreground": "#dcdcdc"
+    },
+    "FIXME": {
+      "icon": "check",
+      "type": "text",
+      "background": "#4d0f06",
+      "foreground": "#dcdcdc"
+    },
+    "INFO": {
+      "icon": "check",
+      "type": "text",
+      "background": "#064d46",
+      "foreground": "#dcdcdc"
+    }
+  },
+
   "multiCommand.commands": [
     {
       "command": "multiCommand.hideall",
@@ -160,11 +178,16 @@
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.wordWrap": "on"
+  },
+  "latex-workshop.formatting.latex": "latexindent",
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "vscode.markdown-language-features",
+    // "editor.defaultFormatter": "vscode.markdown-language-features",
     "editor.wordWrap": "on"
   },
   "[python]": {
@@ -200,6 +223,5 @@
     "Maximum Word Length Exceeded": false,
     "Lines too Long": false,
     "Average Word Length too Long": false
-  },
-  "workbench.activityBar.location": "hidden"
+  }
 }
