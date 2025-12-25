@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ipinfo() {
     # Get IP info from ip-api.com
     
