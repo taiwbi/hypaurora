@@ -27,6 +27,16 @@ if [ -d "$BASHRC_DIR" ]; then
     done
 fi
 
+# User specific aliases and functions
+FUNCTIONS_DIR="$HOME/Documents/hypaurora/bash/functions"
+if [ -d "$FUNCTIONS_DIR" ]; then
+    for rc in "$FUNCTIONS_DIR"/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+
 # Load custom bash completions
 COMPLETIONS_DIR="$HOME/Documents/hypaurora/bash/completions"
 if [[ -d "$COMPLETIONS_DIR" ]]; then

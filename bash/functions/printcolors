@@ -1,0 +1,8 @@
+#!/bin/bash
+
+printcolors ()
+{
+    for i in {0..15}; do
+        printf "\e[38;5;%dm ▄▄▄▄ • Color %d \e[0m\n" "$i" "$i"
+    done
+}
