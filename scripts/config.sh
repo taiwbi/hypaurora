@@ -17,8 +17,8 @@ fi
 
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Gabarito, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono, AzarMehrMonospaced 11'
+gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans, Vazirmatn 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono, Vazir Code Hack 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'ColorFlow'
 gsettings set org.gnome.desktop.interface cursor-theme "'MacOS-Tahoe-Cursor'"

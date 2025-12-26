@@ -28,10 +28,10 @@ positional arguments:
 
 - ✨ Icon Pack: [Neuwaita](https://github.com/RusticBard/Neuwaita)
 - 🖱️ Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
-- 🅰️ Font Family: [Gabarito](https://fonts.google.com/specimen/Gabarito?lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FCalm)
+- 🅰️ Font Family: [Adwaita Sans](https://gitlab.gnome.org/GNOME/adwaita-fonts)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-- 📜 Persian Monospace Family: [AzarMehrMonospaced](https://github.com/aminabedi68/AzarMehrMonospaced)
+- 💻 Monospace Family: [Adwaita Mono](https://gitlab.gnome.org/GNOME/adwaita-fonts)
+- 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
 
 ## Installation
 

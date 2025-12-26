@@ -1,6 +1,6 @@
-font-family = "JetBrains Mono"
+font-family = "Adwaita Mono"
 font-style = SemiBold
-font-family = "AzarMehrMonospaced"
+font-family = "Vazir Code Hack"
 font-feature = dlig,dlig,ss02
 
 font-size = 11

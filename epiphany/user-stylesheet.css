@@ -21,7 +21,7 @@ label,
 a,
 blockquote {
   font-family:
-    "Gabarito",
+    "Adwaita Sans",
     "Vazirmatn",
     system-ui,
     -apple-system,
@@ -94,7 +94,7 @@ code,
 .ace_editor,
 .ace_editor * {
   font-family:
-    "JetBrains Mono", "AzarMehrMonospaced", "SF Mono", Monaco,
+    "Adwaita Mono", "Vazir Code Hack", "SF Mono", Monaco,
     "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 }
 
