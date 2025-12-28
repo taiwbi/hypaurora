@@ -46,4 +46,4 @@ export PHP_CS_FIXER_IGNORE_ENV=true
 
 export PATH="$HOME/.local/bin:$PATH"
 
-ghostty --gtk-titlebar=false --class="org.nvim.neovide" -e bash -c 'sleep 0.1; nvim "$@"' -- "$@"
+kitty --class="org.nvim.neovide" -e bash -c 'sleep 0.1; nvim "$@"' -- "$@"
