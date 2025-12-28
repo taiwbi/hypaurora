@@ -88,7 +88,7 @@ _polarify() {
 
     if _polarify_has_subcommand "apply"; then
         if ! _polarify_seen_theme; then
-            mapfile -t COMPREPLY < <(compgen -W "$themes" -- "$cur")
+            mapfile -t COMPREPLY < <(compgen -W "$themes adwaita adwaita-dark" -- "$cur")
             return
         fi
         

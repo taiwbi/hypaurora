@@ -295,6 +295,10 @@ class ThemeManager:
         for theme in themes:
             marker = "→" if theme == current else " "
             print(f"  {marker} {theme}")
+        marker = "→" if current == "adwaita" else " "
+        print(f"  {marker} adwaita")
+        marker = "→" if current == "adwaita-dark" else " "
+        print(f"  {marker} adwaita-dark")
         print(f"\nTotal: {len(themes)} themes")
     
     def preview_theme(self, theme_name: str):
@@ -428,6 +432,7 @@ class ThemeManager:
     
     def update_gtk(self, theme: Dict[str, Any]) -> bool:
         """Updates GTK theme CSS content."""
+        self.toggle_gtk_theme(True)
         colors = theme["colors"]
         base = colors["base"]
         semantic = colors["semantic"]
@@ -664,6 +669,115 @@ class ThemeManager:
         
         return True
     
+    def get_adwaita_theme(self, variant: str = "dark") -> Dict[str, Any]:
+        """Generate Adwaita-compatible theme for Ghostty."""
+        is_dark = variant == "dark"
+        
+        if is_dark:
+            background = "#1C1C1F"
+            foreground = "#FFFFFF"
+            cursor = "#FFFFFF"
+            selection_bg = "#FFFFFF"
+            selection_fg = "#1C1C1F"
+            # GNOME Console / Adwaita Dark Palette
+            palette = [
+                "#241F31", "#C01C28", "#2EC27E", "#F5C211", "#1E78E4", "#9841BB", "#0AB9DC", "#C0BFBC",
+                "#5E5C64", "#ED333B", "#57E389", "#F8E45C", "#51A1FF", "#C061CB", "#4FD2FD", "#F6F5F4"
+            ]
+        else:
+            background = "#FFFFFF"
+            foreground = "#000000"
+            cursor = "#000000"
+            selection_bg = "#000000"
+            selection_fg = "#FFFFFF"
+            # Adwaita Light Palette
+            palette = [
+                "#241F31", "#C01C28", "#2EC27E", "#F5C211", "#1E78E4", "#9841BB", "#0AB9DC", "#C0BFBC",
+                "#5E5C64", "#ED333B", "#57E389", "#F8E45C", "#51A1FF", "#C061CB", "#4FD2FD", "#F6F5F4"
+            ]
+
+        return {
+            "name": "Adwaita",
+            "variant": variant,
+            "colors": {
+                "base": {
+                    "background": background,
+                    "foreground": foreground,
+                    "cursor": cursor,
+                    "cursor_text": background if is_dark else "#FFFFFF",
+                    "selection_bg": selection_bg,
+                    "selection_fg": selection_fg
+                },
+                "palette": palette,
+                "semantic": {},
+                "ui": {}
+            }
+        }
+
+    def toggle_gtk_theme(self, enable: bool):
+        """Enable or disable hypaurora theme import in GTK CSS."""
+        gtk_css = self.base_dir / "gtk-4.0/gtk.css"
+        if not gtk_css.exists():
+            return
+
+        with open(gtk_css, 'r') as f:
+            lines = f.readlines()
+        
+        new_lines = []
+        import_line = '@import "./themes/hypaurora.css";\n'
+        found = False
+        
+        for line in lines:
+            if "themes/hypaurora.css" in line:
+                found = True
+                if enable:
+                    if line.strip().startswith("/*") and "*/" in line:
+                         new_lines.append(import_line)
+                    elif line.strip().startswith("@import"):
+                         new_lines.append(line)
+                    else:
+                         new_lines.append(import_line)
+                else:
+                    if line.strip().startswith("@import"):
+                        new_lines.append(f"/* {import_line.strip()} */\n")
+                    else:
+                        new_lines.append(line)
+            else:
+                new_lines.append(line)
+        
+        if not found and enable:
+            new_lines.insert(0, import_line)
+            
+        with open(gtk_css, 'w') as f:
+            f.writelines(new_lines)
+
+    def reset_gnome_shell_theme(self):
+        """Reset GNOME Shell theme to default."""
+        if not self.is_gnome or not GNOME_AVAILABLE:
+            return
+
+        schema_dir = os.path.expanduser(
+            "~/.local/share/gnome-shell/extensions/"
+            "user-theme@gnome-shell-extensions.gcampax.github.com/schemas"
+        )
+        
+        if not os.path.exists(schema_dir):
+            return
+
+        try:
+            # Check if user-theme extension schema exists
+            schema_source = Gio.SettingsSchemaSource.new_from_directory(
+                schema_dir,
+                Gio.SettingsSchemaSource.get_default(),
+                False
+            )
+            schema = schema_source.lookup('org.gnome.shell.extensions.user-theme', False)
+            if schema:
+                settings = Gio.Settings.new_full(schema, None, None)
+                settings.reset('name')
+        except Exception as e:
+            print(f"  ✗ Error resetting GNOME Shell theme: {e}")
+    
     def generate_wallpaper_theme(self, variant: str = None, wallpaper_path: str = None) -> Dict[str, Any]:
         """Generate theme from wallpaper image."""
         if not IMAGING_AVAILABLE:
@@ -705,21 +819,43 @@ class ThemeManager:
         """Apply theme across all applications."""
         if theme_name == "wallpaper":
             theme = self.generate_wallpaper_theme(variant=variant)
+        elif theme_name == "adwaita":
+            theme = self.get_adwaita_theme(variant="light")
+        elif theme_name == "adwaita-dark":
+            theme = self.get_adwaita_theme(variant="dark")
         else:
             theme = self.load_theme(theme_name)
         
         print(f"Applying theme: {theme['name']}")
         print("=" * 50)
 
-        config_updates = [
-            ("Ghostty", lambda: self.update_ghostty(theme)),
-            ("GTK", lambda: self.update_gtk(theme)),
-            ("GNOME Shell", lambda: self.install_gnome_shell(theme)),
-        ]
-        
-        for name, update_fn in config_updates:
-            update_fn()
-            print(f"  ✓ Updated {name}")
+        if theme_name == "adwaita" or theme_name == "adwaita-dark":
+            # Special handling for Adwaita (resetting themes)
+            
+            # 1. Update Ghostty with Adwaita colors
+            self.update_ghostty(theme)
+            print("  ✓ Updated Ghostty (Adwaita)")
+            
+            # 2. Reset GTK (Disable custom theme import)
+            self.toggle_gtk_theme(False)
+            # Apply color scheme (dark/light) and reload
+            self.apply_gtk_theme(theme)
+            print("  ✓ Reset GTK to Adwaita")
+            
+            # 3. Reset GNOME Shell (Use default theme)
+            self.reset_gnome_shell_theme()
+            print("  ✓ Reset GNOME Shell to default")
+            
+        else:
+            config_updates = [
+                ("Ghostty", lambda: self.update_ghostty(theme)),
+                ("GTK", lambda: self.update_gtk(theme)),
+                ("GNOME Shell", lambda: self.install_gnome_shell(theme)),
+            ]
+            
+            for name, update_fn in config_updates:
+                update_fn()
+                print(f"  ✓ Updated {name}")
         
         config = self.load_config()
         config["current_theme"] = theme_name
