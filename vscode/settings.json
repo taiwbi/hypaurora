@@ -64,8 +64,8 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
 
   "workbench.editor.showTabs": "none",
-  "workbench.preferredDarkColorTheme": "Kanagawa Wave",
-  "workbench.preferredLightColorTheme": "Kanagawa Lotus",
+  "workbench.preferredDarkColorTheme": "Adwaita Dark",
+  "workbench.preferredLightColorTheme": "Adwaita Light",
   "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "welcomePage",
   "workbench.editor.editorActionsLocation": "hidden",
@@ -74,6 +74,29 @@
     "[Kanagawa Wave]": {
       "titleBar.activeBackground": "#1F1F28",
       "titleBar.inactiveBackground": "#1F1F28"
+    },
+    "[Adwaita Dark]": {
+      // Modern GNOME 48+ dark bg theme
+      "titleBar.activeBackground": "#222226",
+      "titleBar.inactiveBackground": "#222226",
+      "editor.background": "#1D1D20",
+      "breadcrumb.background": "#1D1D20",
+      "statusBar.background": "#222226",
+      "statusBar.noFolderBackground": "#222226",
+      "sideBar.background": "#222226",
+      "activityBar.background": "#222226",
+      "terminal.background": "#1D1D20",
+      "panel.background": "#222226",
+
+      // accent color
+      "list.activeSelectionBackground": "#3584E48C",
+      "button.background": "#3584E4",
+      "button.border": "#3584E4",
+      "activityBarBadge.background": "#3584E4",
+      "focusBorder": "#3584E4",
+      "inputOption.activeBackground": "#3584E433",
+      "inputOption.activeBorder": "#3584E4",
+      "button.hoverBackground": "#3584E4B3"
     }
   },
 
@@ -134,9 +157,11 @@
   "php.linkedEditing.variables": true,
   "laravel-pint.enable": true,
 
+  "agq.pinnedModels": ["MODEL_PLACEHOLDER_M12"],
+
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
   "errorLens.margin": "6ch",
-  "errorLens.messageTemplate": "$severity $message   $count",
+  "errorLens.messageTemplate": "$message   $count",
 
   "json.schemaDownload.enable": true,
   "multiCommand.commands": [

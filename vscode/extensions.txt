@@ -10,13 +10,14 @@ ecmel.vscode-html-css
 editorconfig.editorconfig
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
-metaphore.kanagawa-vscode-color-theme
+henrikdev.ag-quota
 mikestead.dotenv
 ms-python.debugpy
 ms-python.python
 ms-vscode.makefile-tools
 onecentlin.laravel-blade
 open-southeners.laravel-pint
+piousdeer.adwaita-theme
 ryuta46.multi-command
 shufo.vscode-blade-formatter
 streetsidesoftware.code-spell-checker
