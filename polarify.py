@@ -580,7 +580,7 @@ class ThemeManager:
         
         return updated_content != content
     
-    def apply_gtk_theme(self, theme: Dict[str, Any]):
+    def apply_gtk_theme(self, theme: Dict[str, Any], force_update: bool = True):
         """Apply GTK theme by setting color scheme and toggling high-contrast."""
         if not GNOME_AVAILABLE:
             print("Error: Applying GTK theme requires GNOME python library")
@@ -857,9 +857,7 @@ class ThemeManager:
                 self.reset_gnome_shell_theme()
                 print("  ✓ Reset GNOME Shell to default")
             else:
-                # Just update the color scheme (dark/light) without resetting
-                self.apply_gtk_theme(theme)
-                print("  ✓ Updated GTK color scheme (already using Adwaita)")
+                print("  ✓ Skipped Shell and GTK themes (already using Adwaita)")
             
         else:
             config_updates = [
