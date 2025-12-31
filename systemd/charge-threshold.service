@@ -1,4 +1,4 @@
-# File: /etc/systemd/system/battery-threshold.service
+# File: /etc/systemd/system/charge-threshold.service
 
 [Unit]
 Description=Set the battery charge threshold

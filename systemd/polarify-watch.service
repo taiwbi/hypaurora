@@ -1,0 +1,28 @@
+[Unit]
+Description=Polarify Dark Mode Watcher
+Documentation=https://github.com/taiwbi/hypaurora
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/Documents/hypaurora/polarify.py watch-dark-mode
+Restart=on-failure
+RestartSec=5
+
+# Environment variables for GNOME/GTK
+Environment=DISPLAY=:0
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/Documents/hypaurora
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
