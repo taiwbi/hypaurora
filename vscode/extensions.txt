@@ -10,7 +10,6 @@ ecmel.vscode-html-css
 editorconfig.editorconfig
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
-henrikdev.ag-quota
 mikestead.dotenv
 ms-python.debugpy
 ms-python.python

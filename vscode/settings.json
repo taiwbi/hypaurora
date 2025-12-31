@@ -97,6 +97,29 @@
       "inputOption.activeBackground": "#3584E433",
       "inputOption.activeBorder": "#3584E4",
       "button.hoverBackground": "#3584E4B3"
+    },
+    "[Adwaita Light]": {
+      // Modern GNOME 48+ light bg theme
+      "titleBar.activeBackground": "#FAFAFB",
+      "titleBar.inactiveBackground": "#FAFAFB",
+      "editor.background": "#FFFFFF",
+      "breadcrumb.background": "#FFFFFF",
+      "statusBar.background": "#FAFAFB",
+      "statusBar.noFolderBackground": "#FAFAFB",
+      "sideBar.background": "#F2F2F4",
+      "activityBar.background": "#F2F2F4",
+      "terminal.background": "#FFFFFF",
+      "panel.background": "#F2F2F4",
+
+      // accent color
+      "list.activeSelectionBackground": "#3584E48C",
+      "button.background": "#3584E4",
+      "button.border": "#3584E4",
+      "activityBarBadge.background": "#3584E4",
+      "focusBorder": "#3584E4",
+      "inputOption.activeBackground": "#3584E433",
+      "inputOption.activeBorder": "#3584E4",
+      "button.hoverBackground": "#3584E4B3"
     }
   },
 
@@ -115,7 +138,7 @@
   "keyboard.dispatch": "keyCode",
 
   "git.enabled": true,
-  "git.autorefresh": false,
+  "git.autorefresh": true,
   "git.autofetch": false,
   "git.openRepositoryInParentFolders": "never",
 
