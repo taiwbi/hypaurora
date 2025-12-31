@@ -829,6 +829,15 @@ class ThemeManager:
         print(f"Applying theme: {theme['name']}")
         print("=" * 50)
 
+        # Load current theme to check if we're switching between Adwaita variants
+        config = self.load_config()
+        current_theme = config.get("current_theme", "")
+        
+        # Check if both current and destination are Adwaita variants
+        is_current_adwaita = current_theme in ["adwaita", "adwaita-dark"]
+        is_destination_adwaita = theme_name in ["adwaita", "adwaita-dark"]
+        both_adwaita = is_current_adwaita and is_destination_adwaita
+
         if theme_name == "adwaita" or theme_name == "adwaita-dark":
             # Special handling for Adwaita (resetting themes)
             
@@ -836,15 +845,21 @@ class ThemeManager:
             self.update_ghostty(theme)
             print("  ✓ Updated Ghostty (Adwaita)")
             
-            # 2. Reset GTK (Disable custom theme import)
-            self.toggle_gtk_theme(False)
-            # Apply color scheme (dark/light) and reload
-            self.apply_gtk_theme(theme)
-            print("  ✓ Reset GTK to Adwaita")
-            
-            # 3. Reset GNOME Shell (Use default theme)
-            self.reset_gnome_shell_theme()
-            print("  ✓ Reset GNOME Shell to default")
+            # Only reset GTK and GNOME Shell if not already using Adwaita
+            if not both_adwaita:
+                # 2. Reset GTK (Disable custom theme import)
+                self.toggle_gtk_theme(False)
+                # Apply color scheme (dark/light) and reload
+                self.apply_gtk_theme(theme)
+                print("  ✓ Reset GTK to Adwaita")
+                
+                # 3. Reset GNOME Shell (Use default theme)
+                self.reset_gnome_shell_theme()
+                print("  ✓ Reset GNOME Shell to default")
+            else:
+                # Just update the color scheme (dark/light) without resetting
+                self.apply_gtk_theme(theme)
+                print("  ✓ Updated GTK color scheme (already using Adwaita)")
             
         else:
             config_updates = [
@@ -857,7 +872,6 @@ class ThemeManager:
                 update_fn()
                 print(f"  ✓ Updated {name}")
         
-        config = self.load_config()
         config["current_theme"] = theme_name
         self.save_config(config)
         
