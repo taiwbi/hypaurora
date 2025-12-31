@@ -12,7 +12,8 @@ Integrates with GNOME settings for dark mode and wallpaper changes.
 # git update-index --skip-worktree gtk-4.0/themes/hypaurora.css
 # git update-index --skip-worktree theme-config.json
 # git update-index --skip-worktree gnome-shell-theme/gnome-shell-sass/_colors-override.scss
-# git update-index --skip-worktree ghostty/themes/hypaurora
+# git update-index --skip-worktree ghostty/themes/hypaurora-dark
+# git update-index --skip-worktree ghostty/themes/hypaurora-light
 
 # To see a list of files that that have the skip-worktree
 #
@@ -411,6 +412,8 @@ class ThemeManager:
     def update_ghostty(self, theme: Dict[str, Any]) -> bool:
         """Updates Ghostty theme file."""
         colors = theme["colors"]
+        variant = theme.get("variant", "dark")
+        
         lines = [f"palette = {i}={color}" for i, color in enumerate(colors["palette"])]
         
         base_mappings = {
@@ -425,7 +428,11 @@ class ThemeManager:
         for key, ghostty_key in base_mappings.items():
             lines.append(f"{ghostty_key} = {colors['base'][key]}")
         
-        with open(self.base_dir / "ghostty/themes/hypaurora", 'w') as f:
+        # Determine the theme file path based on variant
+        theme_file = self.base_dir / f"ghostty/themes/hypaurora-{variant}"
+        theme_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(theme_file, 'w') as f:
             f.write("\n".join(lines))
         
         return True
@@ -841,12 +848,12 @@ class ThemeManager:
         if theme_name == "adwaita" or theme_name == "adwaita-dark":
             # Special handling for Adwaita (resetting themes)
             
-            # 1. Update Ghostty with Adwaita colors
-            self.update_ghostty(theme)
-            print("  ✓ Updated Ghostty (Adwaita)")
-            
             # Only reset GTK and GNOME Shell if not already using Adwaita
             if not both_adwaita:
+                # 1. Update Ghostty with Adwaita colors
+                self.update_ghostty(theme)
+                print("  ✓ Updated Ghostty (Adwaita)")
+                
                 # 2. Reset GTK (Disable custom theme import)
                 self.toggle_gtk_theme(False)
                 # Apply color scheme (dark/light) and reload
@@ -857,7 +864,7 @@ class ThemeManager:
                 self.reset_gnome_shell_theme()
                 print("  ✓ Reset GNOME Shell to default")
             else:
-                print("  ✓ Skipped Shell and GTK themes (already using Adwaita)")
+                print("  ✓ Skipped Ghostty, Shell and GTK themes (already using Adwaita)")
             
         else:
             config_updates = [

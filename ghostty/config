@@ -18,4 +18,4 @@ mouse-hide-while-typing = true
 
 # THEME
 window-theme = ghostty
-theme = hypaurora
+theme = light:hypaurora-light,dark:hypaurora-dark
