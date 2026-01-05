@@ -63,6 +63,7 @@ ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
+ln -sf "$PWD/applications/nvim.desktop" "$HOME/.local/share/applications/nvim.desktop"
 
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
