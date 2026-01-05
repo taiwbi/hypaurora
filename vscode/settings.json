@@ -1,10 +1,9 @@
 {
   "antigravity.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
   "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
-
   // -> <- => <= == != <= >=
-  "editor.fontFamily": "'Adwaita Mono', 'Vazir Code Hack'",
-  "editor.fontLigatures": "'dlig', 'dlig', 'ss02'",
+  "editor.fontFamily": "'Monaspace Neon Var', 'Vazir Code Hack'",
+  "editor.fontLigatures": "'calt','ss01','ss02','ss03','ss04','ss05','ss06','ss07','ss08','ss09','ss10",
   "editor.fontWeight": "500",
   "editor.fontSize": 15,
   "editor.letterSpacing": 0,
@@ -17,7 +16,6 @@
   "editor.cursorSurroundingLines": 6,
   "editor.scrollBeyondLastLine": false,
   "editor.linkedEditing": true,
-
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "none",
   "editor.renderControlCharacters": false,
@@ -48,10 +46,10 @@
   "explorer.confirmDelete": false,
 
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontFamily": "'Adwaita Mono', 'Vazir Code Hack', 'Symbols Nerd Font'",
+  "terminal.integrated.fontFamily": "'Monaspace Neon Var', 'Vazir Code Hack', 'Symbols Nerd Font'",
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 15,
   "terminal.integrated.lineHeight": 1.5,
   "terminal.integrated.commandsToSkipShell": [
     "workbench.action.toggleSidebarVisibility",
@@ -62,10 +60,9 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
-
   "workbench.editor.showTabs": "none",
-  "workbench.preferredDarkColorTheme": "Adwaita Dark",
-  "workbench.preferredLightColorTheme": "Adwaita Light",
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "welcomePage",
   "workbench.editor.editorActionsLocation": "hidden",
@@ -87,7 +84,6 @@
       "activityBar.background": "#222226",
       "terminal.background": "#1D1D20",
       "panel.background": "#222226",
-
       // accent color
       "list.activeSelectionBackground": "#3584E48C",
       "button.background": "#3584E4",
@@ -110,7 +106,6 @@
       "activityBar.background": "#F2F2F4",
       "terminal.background": "#FFFFFF",
       "panel.background": "#F2F2F4",
-
       // accent color
       "list.activeSelectionBackground": "#3584E48C",
       "button.background": "#3584E4",
@@ -122,10 +117,8 @@
       "button.hoverBackground": "#3584E4B3"
     }
   },
-
   "breadcrumbs.enabled": true,
   "breadcrumbs.filePath": "last",
-
   "window.autoDetectColorScheme": true,
   "window.customMenuBarAltFocus": false,
   "window.enableMenuBarMnemonics": false,
@@ -134,14 +127,11 @@
   "window.restoreWindows": "none",
   "window.menuBarVisibility": "toggle",
   "zenMode.showTabs": "single",
-
   "keyboard.dispatch": "keyCode",
-
   "git.enabled": true,
   "git.autorefresh": true,
   "git.autofetch": false,
   "git.openRepositoryInParentFolders": "never",
-
   "files.autoSave": "onWindowChange",
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -163,29 +153,23 @@
   "files.associations": {
     "**/ghostty/config": "editorconfig"
   },
-
   "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-
   "database-client.autoSync": true,
   "diffEditor.renderSideBySide": false,
   "diffEditor.maxComputationTime": 0,
   "diffEditor.ignoreTrimWhitespace": false,
-
   "intelliphp.inlineSuggestionsEnabled": false,
   "php.codeActions.enabled": false,
   "php.highlight-todo.enable": false,
   "php.linkedEditing.variables": true,
   "laravel-pint.enable": true,
-
   "agq.pinnedModels": ["MODEL_PLACEHOLDER_M12"],
-
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
   "errorLens.margin": "6ch",
   "errorLens.messageTemplate": "$message   $count",
-
   "json.schemaDownload.enable": true,
   "multiCommand.commands": [
     {
@@ -196,7 +180,6 @@
       ]
     }
   ],
-
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -231,7 +214,6 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-
   /* Spell */
   "cSpell.ignoreRegExpList": ["/[\\u0600-\\u06FF]+/", "/[\\u0400-\\u04FF]+/"], // Ignore Russian and Persian Words
   // My Custom Dictionaries
