@@ -30,7 +30,7 @@ adjust-cell-width = -1
 
 # --- Window ---
 window-width = 140
-window-height = 30
+window-height = 35
 window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
