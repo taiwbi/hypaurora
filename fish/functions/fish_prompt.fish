@@ -1,7 +1,7 @@
 # fish prompt port of the provided Bash prompt
 
 set -g __prompt_last_status 0
-set -g fish_prompt_pwd_dir_length 0
+set -g fish_prompt_pwd_dir_length 1
 set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 
 function __prompt_save_status --on-event fish_postexec
@@ -76,7 +76,7 @@ function fish_prompt
 
     set -l last_status $__prompt_last_status
 
-    set -l cwd (basename (pwd))
+    set -l cwd (prompt_pwd)
     set -l git (__prompt_git)
     set -l venv (__prompt_venv)
 

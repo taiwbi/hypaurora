@@ -53,6 +53,87 @@ __prompt_venv() {
   printf " (%s)" "${VIRTUAL_ENV##*/}"
 }
 
+# --- PWD formatting ---
+__prompt_pwd() {
+    # prints the path according to $bash_prompt_pwd_dir_length
+    # - 0 => full absolute path (no ~ substitution)
+    # - n > 0 => substitute $HOME with ~ and shorten each directory
+    #            component (except the last) to n chars
+
+    local dirlen="$bash_prompt_pwd_dir_length"
+    local pwd path prefix parts joined comp i last out=()
+
+    # validate dirlen is a non-negative integer, fallback to 1
+    if ! [[ "$dirlen" =~ ^[0-9]+$ ]]; then
+        dirlen=1
+    fi
+
+    # get physical path (resolving symlinks)
+    pwd="$(pwd -P)"
+
+    # if dirlen == 0 -> show absolute path (no ~ replacement)
+    if [ "$dirlen" -eq 0 ]; then
+        printf '%s' "$pwd"
+        return
+    fi
+
+    # Determine prefix and the path to split:
+    # - If in $HOME -> prefix '~' and path = rest after $HOME
+    if [ "${pwd#$HOME}" != "$pwd" ]; then
+        prefix='~'
+        path="${pwd#$HOME}"
+        path="${path#/}"   # remove leading slash after ~
+    elif [ "${pwd#/}" != "$pwd" ]; then
+        prefix='/'
+        path="${pwd#/}"
+    else
+        prefix=''
+        path="$pwd"
+    fi
+
+    # split into components
+    IFS='/' read -ra parts <<< "$path"
+    last=$(( ${#parts[@]} - 1 ))
+
+    for i in "${!parts[@]}"; do
+        comp="${parts[i]}"
+        # keep empty components (rare here) as empty string
+        if [ -z "$comp" ]; then
+            out+=( "" )
+            continue
+        fi
+
+        if [ "$i" -eq "$last" ]; then
+            # last component: show full name
+            out+=( "$comp" )
+        else
+            # intermediate components: shorten if longer than dirlen
+            if [ "${#comp}" -le "$dirlen" ]; then
+                out+=( "$comp" )
+            else
+                out+=( "${comp:0:dirlen}" )
+            fi
+        fi
+    done
+
+    # join with '/'
+    joined="$(IFS=/; echo "${out[*]}")"
+
+    # print with correct prefix
+    if [ "$prefix" = "/" ]; then
+        # absolute path not in $HOME
+        printf '/%s' "$joined"
+    elif [ "$prefix" = "~" ]; then
+        if [ -n "$joined" ]; then
+            printf '~/%s' "$joined"
+        else
+            printf '~'
+        fi
+    else
+        printf '%s' "$joined"
+    fi
+}
+
 # --- Detect SSH session ---
 __is_ssh() {
   [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" || -n "$SSH_CONNECTION" ]]
@@ -69,7 +150,7 @@ __prompt_command() {
   fi
 
   local user_host cwd git venv ssh_indicator status_symbol status_color prompt_char
-  cwd="\W"
+  cwd="$(__prompt_pwd)"
   git="$(__prompt_git)"
   venv="$(__prompt_venv)"
 
