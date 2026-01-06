@@ -1,143 +1,116 @@
-# Custom transient prompt setup
-function __prompt_compact --description "Minimal prompt form for scrollback"
-    set -l pink (set_color 'f472b6')
-    set -l bold (set_color --bold)
-    set -l reset (set_color normal)
-    printf "%s " $bold$pink❯$reset
+# fish prompt port of the provided Bash prompt
+
+set -g __prompt_last_status 0
+set -g fish_prompt_pwd_dir_length 0
+set -g VIRTUAL_ENV_DISABLE_PROMPT 1
+
+function __prompt_save_status --on-event fish_postexec
+    set -g __prompt_last_status $status
 end
 
-function __prompt_rich --description "Extended prompt form for the current command"
-    # Modern vibrant color palette (using RGB for richer colors)
-    set -l reset (set_color normal)
-    set -l bold (set_color --bold)
-    
-    # Vibrant gradient-inspired colors
-    set -l purple (set_color 'a78bfa')      # Soft purple
-    set -l blue (set_color '60a5fa')        # Sky blue
-    set -l cyan (set_color '22d3ee')        # Bright cyan
-    set -l teal (set_color '2dd4bf')        # Teal
-    set -l emerald (set_color '34d399')     # Emerald green
-    set -l pink (set_color 'f472b6')        # Hot pink
-    set -l orange (set_color 'fb923c')      # Vibrant orange
-    set -l yellow (set_color 'fbbf24')      # Golden yellow
-    set -l red (set_color 'f87171')         # Soft red
-    set -l dim (set_color '6b7280')         # Muted gray
-    
-    # Powerline & Unicode symbols
-    set -l sep ''                          # Right arrow separator
-    set -l git_icon ''                     # Git branch icon
-    set -l folder_icon ''                  # Folder icon
-    set -l user_icon ''                    # User icon
-    set -l prompt_char '❯'                  # Modern prompt character
-    set -l dirty_icon '●'                   # Dirty indicator
-    set -l clean_icon '✓'                   # Clean indicator
-
-    # Current directory with smart truncation
-    set -l dir (basename (pwd))
-    if test (pwd) = $HOME
-        set dir "~"
-    else if test (string length $dir) -gt 25
-        set dir (string sub -l 22 $dir)"..."
+function __prompt_glyphs --description 'Set prompt glyph variables'
+    set -l mode unicode
+    if set -q PROMPT_GLYPHS
+        set mode $PROMPT_GLYPHS
     end
 
-    # Git info with enhanced status
-    set -l git_info ""
-    if git rev-parse --git-dir >/dev/null 2>&1
-        set -l branch (git symbolic-ref --short HEAD 2>/dev/null; or git rev-parse --short HEAD 2>/dev/null)
-        if test -n "$branch"
-            # Check for changes
-            set -l status_icon $clean_icon
-            set -l status_color $emerald
-            
-            if not git diff --quiet 2>/dev/null; or not git diff --cached --quiet 2>/dev/null
-                set status_icon $dirty_icon
-                set status_color $orange
-            end
-            
-            # Check for unpushed commits
-            set -l unpushed ""
-            set -l ahead (git rev-list --count @{upstream}..HEAD 2>/dev/null)
-            if test -n "$ahead" -a "$ahead" -gt 0
-                set unpushed " $cyan↑$ahead"
-            end
-            
-            set git_info " $dim$sep $reset$pink$git_icon $bold$purple$branch $status_color$status_icon$unpushed$reset"
-        end
-    end
-
-    # Username@hostname with icon
-    set -l user_host "$USER@$hostname"
-
-    # Terminal width for responsiveness
-    set -l term_width (tput cols 2>/dev/null; or echo 80)
-
-    # Build beautiful prompt segments
-    set -l user_segment "$blue$user_icon $bold$cyan$user_host$reset"
-    set -l dir_segment "$dim$sep $reset$teal$folder_icon $bold$emerald$dir$reset"
-
-    # First line: user, directory, and git info
-    printf "%s%s%s" \
-        $user_segment \
-        $dir_segment \
-        $git_info
-    
-    # Second line or inline prompt character (responsive)
-    if test $term_width -lt 85
-        printf "\n$bold$pink$prompt_char$reset "
+    if test "$mode" = "ascii"
+        set -g GLY_OK     "ok"
+        set -g GLY_FAIL   "!!"
+        set -g GLY_BRANCH "git:"
+        set -g GLY_DIRTY  "*"
+        set -g GLY_PROMPT ">"
     else
-        printf " $bold$pink$prompt_char$reset "
+        set -g GLY_OK     "✔"
+        set -g GLY_FAIL   "✘"
+        set -g GLY_BRANCH ""
+        set -g GLY_DIRTY  "●"
+        set -g GLY_PROMPT "❯"
     end
 end
 
-function fish_prompt --description 'Write out the prompt'
-    if test "$TRANSIENT" = transient
-        __prompt_compact
-        echo -en \e\[0J # Clear from cursor to end of screen (handles multi-line prompts)
-        set --global TRANSIENT normal
-        return 0
+function __prompt_git --description 'Print git branch + dirty marker (leading space), or nothing'
+    type -q git; or return 0
+    command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or return 0
+
+    set -l branch (command git symbolic-ref --quiet --short HEAD 2>/dev/null)
+    if test -z "$branch"
+        set branch (command git rev-parse --short HEAD 2>/dev/null)
+    end
+    test -n "$branch"; or return 0
+
+    set -l dirty ""
+
+    command git diff --quiet --ignore-submodules -- 2>/dev/null; or set dirty "$GLY_DIRTY"
+    command git diff --cached --quiet --ignore-submodules -- 2>/dev/null; or set dirty "$GLY_DIRTY"
+
+    set -l untracked (command git ls-files --others --exclude-standard 2>/dev/null | head -n 1)
+    if test -n "$untracked"
+        set dirty "$GLY_DIRTY"
+    end
+
+    echo -n "$GLY_BRANCH $branch$dirty"
+end
+
+function __prompt_venv --description 'Print python venv (leading space), or nothing'
+    set -q VIRTUAL_ENV; or return 0
+    set -l name (basename -- "$VIRTUAL_ENV")
+    echo -n "($name)"
+end
+
+function __is_ssh --description 'Return success if in an SSH session'
+    set -q SSH_CLIENT; and return 0
+    set -q SSH_TTY; and return 0
+    set -q SSH_CONNECTION; and return 0
+    return 1
+end
+
+function fish_prompt
+    # Agent mode: keep it intentionally minimal
+    if test "$ANTIGRAVITY_AGENT" = "1"
+        echo -n '$ '
+        return
+    end
+
+    __prompt_glyphs
+
+    set -l last_status $__prompt_last_status
+
+    set -l cwd (basename (pwd))
+    set -l git (__prompt_git)
+    set -l venv (__prompt_venv)
+
+    set -l ssh_indicator ""
+    if __is_ssh
+        set ssh_indicator "󰛳 ssh "
+    end
+
+    # Status indicator
+    set -l status_symbol ""
+    set -l status_color ""
+    if test $last_status -eq 0
+        set status_symbol "$GLY_OK"
+        set status_color (set_color green)
     else
-        __prompt_rich
+        set status_symbol "$GLY_FAIL $last_status"
+        set status_color (set_color red)
     end
-end
 
-# Key binding handlers for transient behavior
-function __transient_execute
-    commandline --function expand-abbr suppress-autosuggestion
-    if commandline --is-valid || test -z "$(commandline)"
-        if commandline --paging-mode && test -n "$(commandline)"
-            commandline -f accept-autosuggestion
-            return 0
-        end
-        set --global TRANSIENT transient
-        commandline --function repaint execute
-        return 0
+    # Prompt character: root vs user
+    set -l prompt_char "$GLY_PROMPT"
+    if test (id -u) -eq 0
+        set prompt_char "#"
     end
-    commandline -f execute
-end
 
-function __transient_ctrl_c_execute
-    if test "$(commandline --current-buffer)" = ""
-        commandline --function cancel-commandline
-        return 0
-    end
-    set --global TRANSIENT transient
-    commandline --function repaint cancel-commandline kill-inner-line repaint-mode repaint
+    # Normal: two-line prompt
+    # Line 1: status + user@host + cwd + git + venv
+    # Line 2: prompt symbol
+    printf '%s%s%s%s %s%s%s %s%s %s%s %s%s\n%s%s%s ' \
+        (set_color --dim) "$ssh_indicator" \
+        $status_color "$status_symbol" \
+        (set_color green) "$USER@$hostname" (set_color normal) \
+        (set_color blue) "$cwd" \
+        (set_color yellow) "$git" \
+        (set_color magenta) "$venv" \
+        $status_color"$prompt_char" (set_color normal)
 end
-
-function __transient_ctrl_d_execute
-    if test "$(commandline --current-buffer)" != ""
-        return 0
-    end
-    set --global TRANSIENT transient
-    commandline --function repaint exit
-end
-
-# Bindings
-bind --user --mode default \r __transient_execute
-bind --user --mode insert \r __transient_execute
-bind --user --mode default \cj __transient_execute
-bind --user --mode insert \cj __transient_execute
-bind --user --mode default \cd __transient_ctrl_d_execute
-bind --user --mode insert \cd __transient_ctrl_d_execute
-bind --user --mode default \cc __transient_ctrl_c_execute
-bind --user --mode insert \cc __transient_ctrl_c_execute

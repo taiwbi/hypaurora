@@ -20,7 +20,7 @@ alias cp 'cp -i' # Added common one
 alias mkdir 'mkdir -p'
 
 # Utility Aliases
-alias ls 'lsd --group-directories-first' # Requires lsd
+alias ls 'ls --group-directories-first'
 alias df 'df -h'
 alias free 'free -m' # Use -m for megabytes (or -h for human) like original free='free -h'
 alias aria 'aria2c -x 16'

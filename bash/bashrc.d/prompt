@@ -95,13 +95,6 @@ __prompt_command() {
     prompt_char="$GLY_PROMPT"
   fi
 
-  # Termux: shorter, still pretty
-  if [[ -n "$TERMUX_VERSION" ]]; then
-    PS1="${DIM}${ssh_indicator}${status_color}${status_symbol}${RESET}${DIM} ${FG_BLUE}${cwd}${RESET}${FG_YELLOW}${git}${RESET}${FG_MAGENTA}${venv}${RESET}\n${status_color}${prompt_char}${RESET} "
-    return
-  fi
-
-  # Normal: two-line prompt (readable + “beautiful”)
   # Line 1: status + user@host + cwd + git + venv
   # Line 2: prompt symbol
   PS1="${DIM}${ssh_indicator}${status_color}${status_symbol}${RESET}${DIM} ${FG_GREEN}\u@\h${RESET} ${FG_BLUE}${cwd}${RESET}${FG_YELLOW}${git}${RESET}${FG_MAGENTA}${venv}${RESET}\n${status_color}${prompt_char}${RESET} "
