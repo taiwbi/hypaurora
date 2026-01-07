@@ -75,7 +75,7 @@ sudo dnf install morewaita-icon-theme
 sudo dnf install nautilus-python
 
 sudo dnf copr enable scottames/ghostty
-sudo dnf install ghostty kitty kitty-kitten
+sudo dnf install xdg-terminal-exec ghostty kitty kitty-kitten
 
 # TODO: Install lazygit
 
