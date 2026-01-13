@@ -28,7 +28,7 @@ positional arguments:
 
 - ✨ Icon Pack: [Neuwaita](https://github.com/RusticBard/Neuwaita)
 - 🖱️ Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
-- 🅰️ Font Family: [Adwaita Sans](https://gitlab.gnome.org/GNOME/adwaita-fonts)
+- 🅰️ Font Family: [Mona Sans VF](https://github.com/github/mona-sans/)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
 - 💻 Monospace Family: [Monaspace](https://monaspace.githubnext.com/)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
