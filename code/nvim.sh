@@ -46,4 +46,12 @@ export PHP_CS_FIXER_IGNORE_ENV=true
 
 export PATH="$HOME/.local/bin:$PATH"
 
-kitty --class="org.nvim.neovide" -e bash -c 'sleep 0.1; nvim "$@"' -- "$@"
+if [[ "$1" == "kitty" ]]; then
+    shift
+    kitty --class="org.nvim.neovide" -e bash -c "nvim $@"
+elif [[ "$1" == "ghostty" ]]; then
+    shift
+    ghostty --window-decoration=none --class="org.nvim.neovide" -e "nvim" -- "$@"
+else
+    neovide
+fi
