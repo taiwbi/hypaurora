@@ -3,7 +3,7 @@
   "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
 
   // -> <- => <= == != <= >=
-  "editor.fontFamily": "'Monaspace Neon Var', 'Vazir Code Hack'",
+  "editor.fontFamily": "'Monaspace Argon Var', 'Vazir Code Hack'",
   "editor.fontLigatures": "'calt','ss01','ss02','ss03','ss04','ss05','ss06','ss07','ss08','ss09','ss10",
   "editor.fontWeight": "500",
   "editor.fontSize": 15,
@@ -48,7 +48,7 @@
   "explorer.confirmDelete": false,
 
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontFamily": "'Monaspace Neon Var', 'Vazir Code Hack', 'Symbols Nerd Font'",
+  "terminal.integrated.fontFamily": "'Monaspace Argon Var', 'Vazir Code Hack', 'Symbols Nerd Font'",
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "terminal.integrated.fontSize": 15,
