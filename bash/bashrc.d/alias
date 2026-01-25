@@ -27,11 +27,14 @@ alias vdir='vdir --color'
 alias ip='ip --color'
 alias diff='diff --color=always'
 
+# Proxy aliases
+alias disable-proxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY ftp_proxy FTP_PROXY all_proxy ALL_PROXY no_proxy NO_PROXY'
+
 # Utility Aliases
 alias ls='ls --color --group-directories-first -F'
 alias df='df -h'
 alias free='free -h'
-alias aria='aria2c -x 16'
+alias aria='disable-proxy; aria2c -x 16'
 alias sens='sensors; printf "\n\nNvidia GPU temp: %s°C\n" $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)'
 
 # Function equivalent of fish function
@@ -44,9 +47,6 @@ ariap() {
 alias lide-helper='php artisan ide-helper:models --nowrite && php artisan ide-helper:generate && php artisan ide-helper:eloquent && php artisan ide-helper:meta'
 alias artisan='php artisan'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-
-# Proxy aliases
-alias disable-proxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY ftp_proxy FTP_PROXY all_proxy ALL_PROXY no_proxy NO_PROXY'
 
 # IP Aliases
 alias myip='curl --silent http://ip-api.com/json/ | jq'

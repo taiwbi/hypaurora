@@ -19,11 +19,14 @@ alias mv 'mv -i'
 alias cp 'cp -i' # Added common one
 alias mkdir 'mkdir -p'
 
+# Proxy aliases
+alias disable-proxy 'set -e http_proxy; set -e HTTP_PROXY; set -e https_proxy; set -e HTTPS_PROXY; set -e ftp_proxy; set -e FTP_PROXY; set -e all_proxy; set -e ALL_PROXY; set -e no_proxy; set -e NO_PROXY'
+
 # Utility Aliases
 alias ls 'ls --group-directories-first'
 alias df 'df -h'
 alias free 'free -m' # Use -m for megabytes (or -h for human) like original free='free -h'
-alias aria 'aria2c -x 16'
+alias aria 'disable-proxy; aria2c -x 16'
 alias sens 'sensors; and printf "\\r\\rNvidia GPU temp: %s°C\\n" (nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)' # Use printf and ;and
 
 function ariap
@@ -38,10 +41,6 @@ end
 alias artisan 'php artisan'
 alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-helper:generate; and php artisan ide-helper:eloquent; and php artisan ide-helper:meta' # Use ;and
 alias sail 'sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
-
-
-# Proxy aliases
-alias disable-proxy 'set -e http_proxy; set -e HTTP_PROXY; set -e https_proxy; set -e HTTPS_PROXY; set -e ftp_proxy; set -e FTP_PROXY; set -e all_proxy; set -e ALL_PROXY; set -e no_proxy; set -e NO_PROXY'
 
 # IP Aliases
 alias myip 'curl --silent http://ip-api.com/json/ | jq'
