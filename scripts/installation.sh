@@ -113,8 +113,6 @@ case ${answer:0:1} in
     echo "I won't install Zen Browser :)"
   ;;
 esac
-# https://zen-browser.app/mods/906c6915-5677-48ff-9bfc-096a02a72379/
-#
 # zen.theme.content-element-separation 0
 # widget.use-xdg-desktop-portal.file-picker 1
 
