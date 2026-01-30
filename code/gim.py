@@ -13,9 +13,11 @@ API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
 MODEL_NAME = "openai/gpt-oss-20b"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
+
 # --- Helper Functions ---
 def print_error(message):
     print(f"[ERROR] {message}", file=sys.stderr)
+
 
 def check_dependency(command):
     try:
@@ -24,28 +26,29 @@ def check_dependency(command):
         print_error(f"Required command '{command}' not found. Please install it.")
         sys.exit(1)
 
+
 def load_api_key():
     try:
-        with open(API_KEY_FILE, 'r') as f:
+        with open(API_KEY_FILE, "r") as f:
             return f.read().strip()
     except FileNotFoundError:
         print_error(f"API key file not found: {API_KEY_FILE}")
         sys.exit(1)
 
-def generate_openrouter_response(prompt, user_input="", temperature=0):
-    api_key = os.environ.get("OPENROUTER_API_KEY") or load_api_key()
 
-    full_text = f"{prompt}\n{user_input}" if user_input else prompt
+def generate_openrouter_response(prompt, user_input="", temperature=0.0):
+    api_key = os.environ.get("OPENROUTER_API_KEY") or load_api_key()
 
     payload = {
         "model": MODEL_NAME,
         "messages": [
-            {"role": "user", "content": full_text}
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": user_input},
         ],
         "temperature": temperature,
         "top_p": 1,
-        "max_tokens": 8192,
-        "reasoning": {"enabled": True}
+        "max_tokens": 2048,
+        "reasoning": {"enabled": True},
     }
 
     try:
@@ -53,62 +56,63 @@ def generate_openrouter_response(prompt, user_input="", temperature=0):
             API_URL,
             headers={
                 "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             data=json.dumps(payload),
-            timeout=60
+            timeout=60,
         )
         response.raise_for_status()
-        
+
         data = response.json()
-        
+
         if "choices" in data and len(data["choices"]) > 0:
             text = data["choices"][0]["message"].get("content", "")
             return text.strip()
         else:
             print_error("Failed to parse response or response was empty.")
             if "error" in data:
-                print_error(f"API Error: {data['error'].get('message', 'Unknown error')}")
+                print_error(
+                    f"API Error: {data['error'].get('message', 'Unknown error')}"
+                )
             print("Raw API Response:")
             print(json.dumps(data, indent=2))
             sys.exit(1)
-            
+
     except requests.exceptions.RequestException as e:
         print_error(f"API request failed: {e}")
         sys.exit(1)
+
 
 def is_git_repository():
     try:
         subprocess.run(
             ["git", "rev-parse", "--is-inside-work-tree"],
             capture_output=True,
-            check=True
+            check=True,
         )
         return True
     except subprocess.CalledProcessError:
         return False
 
+
 def get_staged_diff():
-    result = subprocess.run(
-        ["git", "diff", "--staged"],
-        capture_output=True,
-        text=True
-    )
+    result = subprocess.run(["git", "diff", "--staged"], capture_output=True, text=True)
     return result.stdout
+
 
 def commit_mode(user_description=""):
     check_dependency("git")
-    
+
     if not is_git_repository():
         print_error("Not inside a git repository.")
         sys.exit(1)
-    
+
     git_diff = get_staged_diff()
-    
+
     if not git_diff:
         print_error("No staged changes found. Stage changes with 'git add' first.")
         sys.exit(1)
-    
+
     commit_prompt = """You are a Git commit message generator.
 Generate a short and concise conventional commit message based on the git diff and user description below.
 
@@ -119,8 +123,6 @@ Generate a short and concise conventional commit message based on the git diff a
 ```
 
 # Commit Types
-
-Each commit type helps categorize changes and makes it easier to understand the purpose of a commit at a glance. This format also enables automatic versioning and changelog generation based on commit types.
 
 - **✨ feat:** Introduces a new feature to the codebase.`.
 - **💥 fix:** Patches a bug in the codebase.`.
@@ -133,42 +135,19 @@ Each commit type helps categorize changes and makes it easier to understand the 
 - **⚡ perf:** Changes that improve performance.`.
 - **🧪 test:** Adding or correcting tests.`.
 
-Keep the emojies when writing commit message.
+Keep the emojies near type in message.
 
 # Scopes
 
-Adds context about where the change happened. These are some examples of scopes you can use:
-
-- **api:** Changes related to API endpoints, controllers, or interface specifications.
-- **auth:** Authentication and authorization related changes.
-- **core:** Core functionality or infrastructure of the application.
-- **ui/ux:** User interface or user experience changes.
-- **db:** Database schema, migrations, or query-related changes.
-- **config:** Configuration files and settings. If the change is related to a specific configuration type (for example configuring a specific application), add the application name as a scope.
-- **deps:** Dependency management changes.
-- **i18n:** Internationalization and localization.
-- **security:** Security-related changes or fixes.
-- **perf:** Performance-specific scope (distinct from the perf commit type).
-- **tests:** Test infrastructure (not test cases themselves).
-- **docs:** Documentation-specific changes.
-- **ci/cd:** Continuous integration and deployment pipeline changes.
-- **utils:** Utility functions or helper code.
-- **models:** Data models or schema definitions.
-- **services:** Service layer functionality.
-- **components:** UI components (commonly used in frontend projects).
-- **store:** State management changes (like Redux).
-- **middleware:** Application middleware changes.
-- **analytics:** Analytics or monitoring related changes.
-- **styles:** CSS, styling, or theming changes.
-- Other scopes are acceptable based on the context of the changes.
+Adds context about where the change happened, like auth, api, ui/ux, db, the name of the app configuration changed, etc...
 
 # Description format
 
-The **description** is a short, concise summary of the change that follows the `<type>[optional scope]:` prefix. It should be written in the **imperative mood**, meaning it should read like an instruction or command, as if saying what the commit will do when applied. Try to keep the description to a maximum of 70 character line if possible.
+The **description** is a short, concise summary of the change that follows the `<type>(scope):` prefix. It should be written in the **imperative mood**, meaning it should read like an instruction or command, as if saying what the commit will do when applied. Keep the description to a maximum of 70 character line.
 
 ## Optional body format
 
-The **body** provides additional context and details about the change in a bullet list format. It should elaborate on **what changed** and **why**, when the commit type and description alone are not sufficient to explain the full impact. It should not just duplicate the point of description and should be avoided if it's not necessary.
+The **body** provides additional context and details about the change in a bullet list format. It should elaborate on **what changed** and **why**, when the commit type and description alone are not sufficient to explain the full impact. It should NOT just duplicate the point of description and should be avoided if it's not necessary.
 
 Guidelines for writing the body:
 
@@ -185,32 +164,28 @@ If your commit introduces a breaking change (i.e., changes that are not backward
 ```
 BREAKING CHANGE: <description>
 ```
+"""
 
-IMPORTANT:
+    user_message = "Here's the git diff:\n\n" + git_diff
 
-Only and ONLY use provided types and formatting guidelines provided here. Do not ever create ideas out of yourself.
-
----
-
-Here's the git diff:
-""" + git_diff
-    
     if user_description:
-        commit_prompt += f"\n\nUser description of changes: {user_description}"
-    
+        user_message += f"\n\nThis is a description of what I've changed and what was my purpose: {user_description}"
+
     print("Generating commit message from staged changes...")
-    commit_message = generate_openrouter_response(commit_prompt, "", 0.3)
-    
+    commit_message = generate_openrouter_response(commit_prompt, user_message, 0.3)
+
     # Remove code fences if present
     commit_message = commit_message.replace("```", "").replace("`", "").strip()
-    
+
     print("-------------------------------------")
     print("Suggested commit message:")
     print(commit_message)
     print("-------------------------------------")
-    
-    confirmation = input("Do you want to commit with this message? (yes/no): ").strip().lower()
-    
+
+    confirmation = (
+        input("Do you want to commit with this message? (yes/no): ").strip().lower()
+    )
+
     if confirmation in ["yes", "y"]:
         print("Committing changes...")
         try:
@@ -221,6 +196,7 @@ Here's the git diff:
     else:
         print("Commit canceled.")
 
+
 def command_mode(user_input):
     predefined_prompt = """You are a helpful assistant expert in Fedora Linux shell commands.
 Given the user's request below, provide ONLY the single, runnable shell command that achieves the task.
@@ -228,18 +204,25 @@ Do not include explanations, code fences (like ```), introductory phrases (like 
 Only if the request is really ambiguous or absolutely cannot be reasonably fulfilled with a single command or a chain of commands together,
 respond with 'Error: Cannot determine a single command for this request.'
 User request:"""
-    
+
     print("Asking OpenRouter...")
-    suggested_command = generate_openrouter_response(predefined_prompt, user_input)
-    
-    if suggested_command == "Error: Cannot determine a single command for this request.":
-        print(f"Gemini: {suggested_command}")
+    suggested_command = generate_openrouter_response(predefined_prompt, user_input, 0.3)
+
+    if (
+        suggested_command
+        == "Error: Cannot determine a single command for this request."
+    ):
+        print(suggested_command)
         return
-    
+
     print(f"$ {suggested_command}")
-    
-    confirmation = input("Do you want to run this command in the current directory? (yes/no): ").strip().lower()
-    
+
+    confirmation = (
+        input("Do you want to run this command in the current directory? (y/n): ")
+        .strip()
+        .lower()
+    )
+
     if confirmation in ["yes", "y"]:
         print("")
         result = subprocess.run(suggested_command, shell=True)
@@ -248,18 +231,24 @@ User request:"""
     else:
         print("Command not executed.")
 
+
 def show_help():
     script_name = Path(sys.argv[0]).name
     print(f"Usage:")
-    print(f"  {script_name} command \"command request\"      Generate a shell command based on your request")
-    print(f"  {script_name} commit [description]           Generate a conventional commit message from staged changes")
+    print(
+        f'  {script_name} command "command request"      Generate a shell command based on your request'
+    )
+    print(
+        f"  {script_name} commit [description]           Generate a conventional commit message from staged changes"
+    )
     print(f"  {script_name} --help                         Show this help message")
+
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] in ["--help", "-h"]:
         show_help()
         sys.exit(0)
-    
+
     if sys.argv[1] == "commit":
         user_description = sys.argv[2] if len(sys.argv) > 2 else ""
         commit_mode(user_description)
@@ -269,6 +258,7 @@ def main():
             sys.exit(0)
         user_input = sys.argv[2]
         command_mode(user_input)
+
 
 if __name__ == "__main__":
     main()
