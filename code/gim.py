@@ -3,14 +3,15 @@
 import sys
 import subprocess
 import json
+import os
 import requests
 from pathlib import Path
 
 # --- Configuration ---
-# Fallback API key file if gemini.sh is not present
-API_KEY_FILE = Path.home() / ".keys" / "GEMINI"
-MODEL_NAME = "models/gemini-3-flash-preview"
-API_URL = f"https://generativelanguage.googleapis.com/v1beta/{MODEL_NAME}:generateContent"
+# Fallback API key file if OPENROUTER_API_KEY is not set
+API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
+MODEL_NAME = "openai/gpt-oss-20b"
+API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # --- Helper Functions ---
 def print_error(message):
@@ -31,42 +32,38 @@ def load_api_key():
         print_error(f"API key file not found: {API_KEY_FILE}")
         sys.exit(1)
 
-def generate_gemini_response(prompt, user_input="", temperature=0):
-    if Path(Path.home() / ".keys" / "gemini.sh").exists():
-        api_key = subprocess.run(Path.home() / ".keys" / "gemini.sh", capture_output=True, check=True).stdout.decode().strip()
-    else:
-        api_key = load_api_key()
-    
+def generate_openrouter_response(prompt, user_input="", temperature=0):
+    api_key = os.environ.get("OPENROUTER_API_KEY") or load_api_key()
+
     full_text = f"{prompt}\n{user_input}" if user_input else prompt
-    
+
     payload = {
-        "contents": [{
-            "parts": [{
-                "text": full_text
-            }]
-        }],
-        "generationConfig": {
-            "temperature": temperature,
-            "topK": 1,
-            "topP": 1,
-            "maxOutputTokens": 8192
-        }
+        "model": MODEL_NAME,
+        "messages": [
+            {"role": "user", "content": full_text}
+        ],
+        "temperature": temperature,
+        "top_p": 1,
+        "max_tokens": 8192,
+        "reasoning": {"enabled": True}
     }
-    
+
     try:
         response = requests.post(
             API_URL,
-            params={"key": api_key},
-            headers={"Content-Type": "application/json"},
-            json=payload,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            },
+            data=json.dumps(payload),
             timeout=60
         )
         response.raise_for_status()
         
         data = response.json()
         
-        if "candidates" in data and len(data["candidates"]) > 0:
-            text = data["candidates"][0]["content"]["parts"][0]["text"]
+        if "choices" in data and len(data["choices"]) > 0:
+            text = data["choices"][0]["message"].get("content", "")
             return text.strip()
         else:
             print_error("Failed to parse response or response was empty.")
@@ -202,7 +199,7 @@ Here's the git diff:
         commit_prompt += f"\n\nUser description of changes: {user_description}"
     
     print("Generating commit message from staged changes...")
-    commit_message = generate_gemini_response(commit_prompt, "", 0.3)
+    commit_message = generate_openrouter_response(commit_prompt, "", 0.3)
     
     # Remove code fences if present
     commit_message = commit_message.replace("```", "").replace("`", "").strip()
@@ -232,8 +229,8 @@ Only if the request is really ambiguous or absolutely cannot be reasonably fulfi
 respond with 'Error: Cannot determine a single command for this request.'
 User request:"""
     
-    print("Asking Gemini...")
-    suggested_command = generate_gemini_response(predefined_prompt, user_input)
+    print("Asking OpenRouter...")
+    suggested_command = generate_openrouter_response(predefined_prompt, user_input)
     
     if suggested_command == "Error: Cannot determine a single command for this request.":
         print(f"Gemini: {suggested_command}")
