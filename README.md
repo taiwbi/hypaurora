@@ -30,7 +30,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Geist Mono](https://vercel.com/font)
+- 💻 Monospace Family: [FantasqueSansMono Nerd Font Mono](https://www.nerdfonts.com/font-downloads)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
 
 ## Installation
