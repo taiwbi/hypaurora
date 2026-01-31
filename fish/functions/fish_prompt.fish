@@ -66,6 +66,9 @@ function __is_ssh --description 'Return success if in an SSH session'
 end
 
 function fish_prompt
+    # disable terminal focus reporting (DEC private mode 1004)
+    printf '\e[?1004l'
+
     # Agent mode: keep it intentionally minimal
     if test "$ANTIGRAVITY_AGENT" = "1"
         echo -n '$ '
