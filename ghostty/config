@@ -1,11 +1,11 @@
 # --- Fonts ---
-font-family = "FantasqueSansMono Nerd Font Mono"
-font-family-italic = "FantasqueSansMono Nerd Font Mono"
+font-family = "Geist Mono"
+font-family-italic = "Geist Mono"
 font-family = "Vazir Code Hack"
 font-style = "Medium"
 font-style-bold = "ExtraBold"
 
-font-size = 13
+font-size = 12
 
 # --- Font Fallbacks ---
 font-family = "Vazir Code Hack"
@@ -25,4 +25,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+theme = light:Catppuccin Latte,dark:Carbonfox
