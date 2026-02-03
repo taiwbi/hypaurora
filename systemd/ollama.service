@@ -1,0 +1,16 @@
+# File: /etc/systemd/system/ollama.service
+
+[Unit]
+Description=Ollama Model Server
+After=network.target
+
+[Service]
+Type=simple
+User=mahdi
+Environment="OLLAMA_MODELS=/home/mahdi/.ollama/"
+ExecStart=/usr/bin/ollama serve
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
