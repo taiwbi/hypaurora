@@ -174,12 +174,12 @@ binds {
     // Note: Niri doesn't have togglesplit equivalent
 
     // Keyboard System tweak keys
-    XF86AudioRaiseVolume { spawn "sh" "-c" "~/Documents/hypaurora/code/osd/volume --raise 5"; }
-    XF86AudioLowerVolume { spawn "sh" "-c" "~/Documents/hypaurora/code/osd/volume --lower 5"; }
-    XF86AudioMute allow-when-locked=true { spawn "sh" "-c" "~/Documents/hypaurora/code/osd/volume --toggle-mute"; }
-    XF86MonBrightnessUp { spawn "sh" "-c" "~/Documents/hypaurora/code/osd/brightness --raise 3"; }
-    XF86MonBrightnessDown { spawn "sh" "-c" "~/Documents/hypaurora/code/osd/brightness --lower 3"; }
-    XF86TouchpadToggle { spawn "sh" "-c" "$HOME/Documents/hypaurora/code/osd/touchpad"; }
+    XF86AudioRaiseVolume { spawn "sh" "-c" "~/.config/niri/script/volume --raise 5"; }
+    XF86AudioLowerVolume { spawn "sh" "-c" "~/.config/niri/script/volume --lower 5"; }
+    XF86AudioMute allow-when-locked=true { spawn "sh" "-c" "~/.config/niri/script/volume --toggle-mute"; }
+    XF86MonBrightnessUp { spawn "sh" "-c" "~/.config/niri/script/brightness --raise 3"; }
+    XF86MonBrightnessDown { spawn "sh" "-c" "~/.config/niri/script/brightness --lower 3"; }
+    // XF86TouchpadToggle { spawn "sh" "-c" "~/.config/niri/script/touchpad"; }
 
     // Take screenshots
     Print { screenshot show-pointer=false; }

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+show_usage() {
+  echo "Usage: $0 --raise PERCENT | --lower PERCENT"
+  echo "  --raise PERCENT    Increase brightness by PERCENT (clamped 1..100)"
+  echo "  --lower PERCENT    Decrease brightness by PERCENT (clamped 1..100)"
+  exit 1
+}
+
+get_brightness() {
+  local max current
+  max="$(brightnessctl max)"
+  current="$(brightnessctl get)"
+  echo $(( current * 100 / max ))
+}
+
+set_brightness_to() {
+  local v="$1"
+  if (( v < 1 )); then v=1; fi
+  if (( v > 100 )); then v=100; fi
+  brightnessctl set "${v}%"
+}
+
+raise_brightness() {
+  local inc="$1"
+  local cur
+  cur="$(get_brightness)"
+  set_brightness_to $(( cur + inc ))
+}
+
+lower_brightness() {
+  local dec="$1"
+  local cur
+  cur="$(get_brightness)"
+  set_brightness_to $(( cur - dec ))
+}
+
+[[ $# -gt 0 ]] || show_usage
+
+case "${1:-}" in
+  --raise)
+    [[ ${2:-} =~ ^[0-9]+$ ]] || show_usage
+    raise_brightness "$2"
+    ;;
+  --lower)
+    [[ ${2:-} =~ ^[0-9]+$ ]] || show_usage
+    lower_brightness "$2"
+    ;;
+  *)
+    show_usage
+    ;;
+esac
