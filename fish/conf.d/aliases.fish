@@ -23,7 +23,7 @@ alias mkdir 'mkdir -p'
 alias disable-proxy 'set -e http_proxy; set -e HTTP_PROXY; set -e https_proxy; set -e HTTPS_PROXY; set -e ftp_proxy; set -e FTP_PROXY; set -e all_proxy; set -e ALL_PROXY; set -e no_proxy; set -e NO_PROXY'
 
 # Utility Aliases
-alias ls 'ls --group-directories-first'
+alias ls 'lsd --group-directories-first -F'
 alias df 'df -h'
 alias free 'free -m' # Use -m for megabytes (or -h for human) like original free='free -h'
 alias aria 'disable-proxy; aria2c -x 16'

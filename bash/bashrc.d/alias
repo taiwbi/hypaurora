@@ -31,7 +31,7 @@ alias diff='diff --color=always'
 alias disable-proxy='unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY ftp_proxy FTP_PROXY all_proxy ALL_PROXY no_proxy NO_PROXY'
 
 # Utility Aliases
-alias ls='ls --color --group-directories-first -F'
+alias ls='lsd --group-directories-first -F'
 alias df='df -h'
 alias free='free -h'
 alias aria='disable-proxy; aria2c -x 16'
