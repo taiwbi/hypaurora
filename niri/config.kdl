@@ -1,6 +1,8 @@
 spawn-at-startup "sh" "-c" "swaybg --mode fill --image ~/.config/background"
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 spawn-at-startup "swayidle" "-C" "~/.config/niri/swayidle"
+spawn-at-startup "waybar"
+spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -13,6 +15,8 @@ environment {
     XDG_CURRENT_DESKTOP "GNOME"
 
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    SSH_AUTH_SOCK "/run/user/1000/keyring"
 
     DISPLAY null
 }
