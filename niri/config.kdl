@@ -100,6 +100,7 @@ binds {
     Mod+backslash { spawn "~/Documents/hypaurora/code/nvim.sh" "kitty"; }
     Mod+X { spawn "nautilus"; }
     Mod+B { spawn "flatpak" "run" "com.brave.Browser" "--new-window"; }
+    Mod+P { spawn "gnome-control-center"; }
 
     Mod+M { spawn "rofi" "-show" "drun"; }
 
