@@ -1,32 +1,32 @@
 // Hypaurora Theme - Auto-generated color overrides
 // This file overrides the default GNOME Shell colors
-$_base_color_dark: #1F1F28;
-$_base_color_light: #DCD7BA;
+$_base_color_dark: #1e1e2e;
+$_base_color_light: #cdd6f4;
 
 // global colors
-$base_color: #1F1F28;
-$bg_color: #1F1F28;
-$fg_color: #DCD7BA;
+$base_color: #1e1e2e;
+$bg_color: #1e1e2e;
+$fg_color: #cdd6f4;
 
 // OSD elements
-$osd_bg_color: #1F1F28;
-$osd_fg_color: #DCD7BA;
+$osd_bg_color: #1e1e2e;
+$osd_fg_color: #cdd6f4;
 
 // system elements (e.g. the overview) that are always dark
-$osd_bg_color: #1F1F28;
-$osd_fg_color: #DCD7BA;
+$osd_bg_color: #1e1e2e;
+$osd_fg_color: #cdd6f4;
 
 // panel colors
-$panel_bg_color: #1F1F28;
-$panel_fg_color: #DCD7BA;
+$panel_bg_color: #313244;
+$panel_fg_color: #cdd6f4;
 
 // card elements
-$card_bg_color: #16161D;
+$card_bg_color: #313244;
 
 // system colors
-$system_base_color: #1F1F28;
+$system_base_color: #1e1e2e;
 $system_bg_color: $system_base_color;
-$system_fg_color: #DCD7BA;
+$system_fg_color: #cdd6f4;
 $system_insensitive_fg_color: mix($system_bg_color, $system_fg_color, 37%);
 $system_overlay_bg_color: mix($system_base_color, $system_fg_color, 90%);
 
@@ -40,11 +40,11 @@ $insensitive_bg_color: mix($bg_color, $base_color, 60%);
 $insensitive_borders_color: mix($borders_color, $base_color, 60%);
 
 // State colors
-$success_color: #76946A;
-$warning_color: #FF9E3B;
-$error_color: #E82424;
-$destructive_color: #E82424;
+$success_color: #a6e3a1;
+$warning_color: #fab387;
+$error_color: #f38ba8;
+$destructive_color: #f38ba8;
 
 // Selection colors
-$selected_bg_color: #223249;
-$selected_fg_color: #DCD7BA;
+$selected_bg_color: #313244;
+$selected_fg_color: #cdd6f4;
