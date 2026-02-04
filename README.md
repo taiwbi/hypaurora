@@ -1,14 +1,12 @@
 # 🌌 Hypaurora
 
-Welcome to my **dotfiles** repository! 🎉 These are my personal configuration files for setting up and customizing the GNOME.
+This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing the GNOME + Niri.
 
-> Hyprland version is in `hypr` branch.
-
-**If you want to use this make sure you clone it in `~/Documents/hypaurora`**
+**If you want to use this make sure you clone it in `~/Documents/hypaurora` and change every `/home/mahdi` to whatever your user's home path is.**
 
 ## 🎨 Theme Management
 
-Hypaurora features a unified theme management system! Change your entire desktop theme with one command:
+Hypaurora features a unified theme management system! (Still not completed with the last changes) Change your entire desktop theme with one command:
 
 ```bash
 usage: polarify [-h] {list,preview,apply,watch-dark-mode} ...
@@ -36,4 +34,5 @@ positional arguments:
 ## Installation
 
 - Clone the repo in `~/Documents/hypaurora`
+- Change every `/home/mahdi` to whatever your user's home path is.
 - Run link script `cd ~/Documents/hypaurora/ && ./scripts/link.sh`. **Be aware this will overwrite any existing configuration already exists.**
