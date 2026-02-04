@@ -16,10 +16,8 @@ environment {
 
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 
-    // SSH_AUTH_SOCK "/run/user/1000/keyring"
-
-    SSH_ASKPASS "/usr/bin/ssh-askpass"
-    SSH_ASKPASS_REQUIRE "prefer"
+    // systemctl --user enable --now gcr-ssh-agent.socket
+    SSH_AUTH_SOCK "/run/user/1000/gcr/ssh"
 
     DISPLAY null
 }
