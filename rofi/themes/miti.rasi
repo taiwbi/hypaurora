@@ -1,6 +1,6 @@
 configuration {
     show-icons: true;
-    icon-theme: "ColorFlow.Agresive.Color";
+    icon-theme: "NeuWaita";
 }
 
 * {
@@ -97,10 +97,11 @@ element selected normal, element selected active {
 }
 
 element-icon {
-    size:           1em;
+    size:           2em;
     vertical-align: 0.5;
 }
 
 element-text {
     text-color: inherit;
+    margin: 9px 0 0;
 }
