@@ -49,6 +49,7 @@ fi
 
 
 set_proxy
+eval "$(starship init bash)"   
 
 if [[ -z "$ANTIGRAVITY_AGENT" || "$ANTIGRAVITY_AGENT" != 1 ]]; then
     bash_greeting

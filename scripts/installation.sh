@@ -61,13 +61,16 @@ sudo dnf install libva-nvidia-driver
 
 sudo dnf install dnf-plugins-core
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers
+sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers fish
 sudo dnf install adw-gtk3-theme celluloid gnome-tweaks
 
 sudo dnf install php php-pecl-xdebug3 composer
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo dnf copr enable atim/starship
+sudo dnf install starship
 
 sudo dnf copr enable trixieua/morewaita-icon-theme
 sudo dnf install morewaita-icon-theme

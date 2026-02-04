@@ -43,6 +43,9 @@ ln -s "$PWD/tmux" "$HOME/.config/"
 rm -rf "$HOME/.config/fish";
 ln -sf "$PWD/fish" "$HOME/.config/fish"
 
+rm -rf "$HOME/.config/starship.toml";
+ln -sf "$PWD/starship.toml" "$HOME/.config/starship.toml"
+
 rm -rf "$HOME/.config/Kvantum";
 ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
 
