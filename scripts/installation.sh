@@ -80,6 +80,19 @@ sudo dnf install nautilus-python
 sudo dnf copr enable scottames/ghostty
 sudo dnf install xdg-terminal-exec ghostty kitty kitty-kitten
 
+
+read -p "Do you want to install niri now? (Y/n): " answer
+case ${answer:0:1} in
+  y|Y )
+    sudo dnf install niri xwayland-satellite \ 
+      swaybg swayidle swaylock \
+      rofi-wayland waybar htop \
+      mpd mpc cava
+  ;;
+  * )
+    echo "I won't install hyprland :)"
+  ;;
+esac
 # TODO: Install lazygit
 
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager org.telegram.desktop \
@@ -104,19 +117,5 @@ esac
 
 sudo dnf mark user totem-video-thumbnailer evince-previewer
 sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* firefox firefox-* mediawriter yelp
-
-# Zen browser
-read -p "Do you want to install Zen Browser now? (Y/n): " answer
-case ${answer:0:1} in
-  y|Y )
-    sudo dnf copr enable sneexy/zen-browser
-    sudo dnf install zen-browser
-  ;;
-  * )
-    echo "I won't install Zen Browser :)"
-  ;;
-esac
-# zen.theme.content-element-separation 0
-# widget.use-xdg-desktop-portal.file-picker 1
 
 rm -rf ~/.mozilla/

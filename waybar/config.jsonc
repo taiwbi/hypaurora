@@ -1,0 +1,65 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 10,
+  "spacing": 16,
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "modules-left": ["cpu", "memory"],
+  "modules-center": ["niri/workspaces"],
+  "modules-right": ["network", "wireplumber", "backlight", "clock"],
+  // Modules
+  "niri/workspaces": {
+    "all-outputs": false,
+    "disable-click": false,
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󰝥",
+      "default": "󰝦",
+    },
+  },
+  "network": {
+    "format": "{icon} {ipaddr}",
+    "tooltip-format": "{ifname}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-disconnected": "󰖪",
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃜", "󰃛", "󰃚"],
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+  },
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {used:0.2f}Gib",
+    "on-click": "ghostty -e htop",
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰻠 {}%",
+    "on-click": "ghostty -e htop",
+  },
+  "clock": {
+    "format": "󱑏 {:%I:%M %p}",
+    "format-alt": "󰙹 {:%A, %B %d, %Y (%R)}",
+    "tooltip-format": "{calendar}",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffffff'><b>{}</b></span>",
+        "days": "<span color='#a6adc8'><b>{}</b></span>",
+        "weeks": "<span color='#bac2de'><b>W{}</b></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b><u>{}</u></b></span>",
+      },
+    },
+  },
+}

@@ -1,0 +1,68 @@
+* {
+    font-family:
+        Iosevka,
+        Symbols Nerd Font;
+    font-size: 15px;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Left modules */
+
+.modules-left {
+    background-color: #9a348e;
+    padding-left: 3px;
+    padding-right: 6px;
+    border-radius: 10px;
+    border: 2px solid #000326;
+}
+
+#cpu {
+    padding-left: 10px;
+}
+
+/* Center Modules */
+
+.modules-center {
+    background-color: #da627d;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    border: 2px solid #000326;
+}
+
+#workspaces button {
+    padding: 1px 4px 0 3px;
+    border-radius: 0;
+    color: #ffffff;
+    outline: none;
+    border: none;
+    transition: all ease 0.3s;
+}
+
+#workspaces button:hover {
+    color: #cba6f7;
+    background-color: transparent;
+}
+
+#workspaces button.urgent {
+    color: #eb4d4b;
+}
+
+/* Right modules */
+.modules-right {
+    background-color: #33658a;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    border: 2px solid #000326;
+}
