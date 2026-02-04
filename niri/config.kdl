@@ -101,6 +101,9 @@ binds {
     Mod+P { spawn "gnome-control-center"; }
 
     Mod+M { spawn "rofi" "-show" "drun"; }
+    
+
+    Super+Z { toggle-overview; }
 
     // Move focus with Mod + vim direction keys
     Mod+H { focus-column-left; }
@@ -153,6 +156,8 @@ binds {
     // Scroll through existing workspaces with Mod + scroll
     Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+    Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+    Mod+Shift+WheelScrollUp cooldown-ms=150 { focus-column-left; }
 
     // Window grouping (Note: Niri uses tabs instead of groups)
     Mod+Alt+A { toggle-column-tabbed-display; }
