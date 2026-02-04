@@ -1,16 +1,38 @@
 # File: /etc/systemd/system/ollama.service
 
 [Unit]
-Description=Ollama Model Server
-After=network.target
+Description=Ollama Service
+After=network-online.target
 
 [Service]
-Type=simple
-User=mahdi
-Environment="OLLAMA_MODELS=/home/mahdi/.ollama/"
-ExecStart=/usr/bin/ollama serve
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
 Restart=always
-RestartSec=5
+RestartSec=3
+Environment="PATH=/home/mahdi/.cargo/bin:/home/mahdi/.npm-global/bin:/home/mahdi/.composer/vendor/bin:/home/mahdi/.local/binary:/home/mahdi/.local/bin:/usr/bin:/usr/local/bin"
+# To connect to the open-webui through the docker
+Environment="OLLAMA_HOST=0.0.0.0:11434"
+# Mount point of another disk to keep Main disk free
+# sudo chown -R ollama:ollama /var/lib/ollama/models
+Environment="OLLAMA_MODELS=/var/lib/ollama/models"
+
+# docker stop open-webui && docker rm open-webui
+#
+# OFFLINE_MODE=true: Disables version checks and prevents automatic model downloads
+# HF_HUB_OFFLINE=1: Blocks all Hugging Face Hub connections, essential for strict offline operation
+# RAG_EMBEDDING_MODEL_AUTO_UPDATE=false, RAG_RERANKING_MODEL_AUTO_UPDATE=false, WHISPER_MODEL_AUTO_UPDATE=false: Prevent automatic updates of RAG, reranking, and Whisper models.
+# BYPASS_EMBEDDING_AND_RETRIEVAL=true: The system completely skips the embedding and retrieval process for documents and web search results
+# docker run -d \
+#        -p 3000:8080 \
+#        -e PORT=8080 \
+#        -e OFFLINE_MODE=true \
+#        -e HF_HUB_OFFLINE=1 \
+#        -e BYPASS_EMBEDDING_AND_RETRIEVAL=true \
+#        --add-host=host.docker.internal:host-gateway \
+#        -v open-webui:/app/backend/data \
+#        --name open-webui --restart always \
+#        ghcr.io/open-webui/open-webui:main
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
