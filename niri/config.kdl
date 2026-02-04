@@ -103,7 +103,8 @@ binds {
     Mod+M { spawn "rofi" "-show" "drun"; }
     
 
-    Super+Z { toggle-overview; }
+    Mod+D { toggle-overview; }
+    Mod+O { toggle-overview; }
 
     // Move focus with Mod + vim direction keys
     Mod+H { focus-column-left; }
