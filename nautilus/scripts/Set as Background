@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+FILE="$(printf '%s\n' "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS")"
+
+DEST="$HOME/.config/background"
+
+cp -f "$FILE" "$DEST"
+
+pkill swaybg || true
+swaybg -i "$DEST" -m fill &
