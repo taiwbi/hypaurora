@@ -3,7 +3,7 @@
   "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
 
   // -> <- => <= == != <= >=
-  "editor.fontFamily": "'Geist Mono', 'Vazir Code Hack'",
+  "editor.fontFamily": "'Iosevka', 'Vazir Code Hack'",
   "editor.fontLigatures": "'dlig', 'dlig', 'ss02'",
   "editor.fontWeight": "500",
   "editor.fontSize": 15,
@@ -38,7 +38,7 @@
   "search.smartCase": true,
   "explorer.confirmDelete": false,
 
-  "terminal.integrated.fontFamily": "'Geist Mono', 'Vazir Code Hack', 'Symbols Nerd Font'",
+  "terminal.integrated.fontFamily": "'Iosevka', 'Vazir Code Hack', 'Symbols Nerd Font'",
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "terminal.integrated.fontSize": 14,

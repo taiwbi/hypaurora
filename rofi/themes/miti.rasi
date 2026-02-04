@@ -13,7 +13,7 @@ configuration {
     fg2:    #a6adc8;
     fg3:    #9399b2;
 
-    font:   "Geist Mono 11";
+    font:   "Iosevka 11";
 
     background-color:   transparent;
     text-color:         @fg0;

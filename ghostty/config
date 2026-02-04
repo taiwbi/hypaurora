@@ -1,9 +1,12 @@
 # --- Fonts ---
-font-family = "Geist Mono"
-font-family-italic = "Geist Mono"
+font-family = "Iosevka"
+font-family-italic = "Iosevka"
 font-family = "Vazir Code Hack"
 font-style = "Medium"
 font-style-bold = "ExtraBold"
+font-style-italic = "Medium Italic"
+font-style-bold-italic = "ExtraBold Italic"
+font-feature = "+calt, +dlig, +PHPX, +JSPT, +CLIK"
 
 font-size = 12
 
@@ -11,7 +14,7 @@ font-size = 12
 font-family = "Vazir Code Hack"
 
 # --- Cell Dimensions ---
-adjust-cell-height = 6
+adjust-cell-height = 7
 
 # --- Window ---
 window-width = 150

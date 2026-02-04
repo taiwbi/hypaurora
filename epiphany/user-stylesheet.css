@@ -94,7 +94,7 @@ code,
 .ace_editor,
 .ace_editor * {
   font-family:
-    "Geist Mono", "Vazir Code Hack", "SF Mono", Monaco,
+    "Iosevka", "Vazir Code Hack", "SF Mono", Monaco,
     "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 
     font-feature-settings:
