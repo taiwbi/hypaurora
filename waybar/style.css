@@ -2,7 +2,8 @@
     font-family:
         Iosevka,
         Symbols Nerd Font;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 window#waybar {
@@ -18,51 +19,76 @@ window#waybar.hidden {
 
 /* Left modules */
 
-.modules-left {
-    background-color: #9a348e;
-    padding-left: 3px;
-    padding-right: 6px;
-    border-radius: 10px;
-    border: 2px solid #000326;
+#cpu {
+    padding: 0 8px;
+    color: #1e1e2e;
+
+    border-radius: 30px;
+    background-color: #b4befe;
 }
 
-#cpu {
-    padding-left: 10px;
+#memory {
+    padding: 0 8px;
+    color: #1e1e2e;
+
+    border-radius: 30px;
+    background-color: #89b4fa;
 }
 
 /* Center Modules */
 
-.modules-center {
-    background-color: #da627d;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
-    border: 2px solid #000326;
+#workspaces {
+    background-color: #94e2d5;
+    padding: 0 8px;
+    border-radius: 30px;
 }
 
 #workspaces button {
     padding: 1px 4px 0 3px;
     border-radius: 0;
-    color: #ffffff;
-    outline: none;
-    border: none;
+    color: #1e1e2e;
     transition: all ease 0.3s;
 }
 
 #workspaces button:hover {
-    color: #cba6f7;
+    color: #94e2d5;
     background-color: transparent;
 }
 
 #workspaces button.urgent {
-    color: #eb4d4b;
+    color: #89dceb;
 }
 
 /* Right modules */
-.modules-right {
-    background-color: #33658a;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 10px;
-    border: 2px solid #000326;
+
+#network {
+    padding: 0 8px;
+    color: #1e1e2e;
+
+    border-radius: 30px;
+    background-color: #a6e3a1;
+}
+
+#wireplumber,
+#backlight {
+    padding: 0 8px;
+    color: #1e1e2e;
+
+    border-radius: 30px;
+}
+
+#wireplumber {
+    background-color: #f9e2af;
+}
+
+#backlight {
+    background-color: #fab387;
+}
+
+#clock {
+    padding: 0 8px;
+    color: #1e1e2e;
+
+    border-radius: 30px;
+    background-color: #eba0ac;
 }

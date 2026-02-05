@@ -2,13 +2,23 @@
   "layer": "top",
   "position": "top",
   "height": 10,
-  "spacing": 16,
+  "spacing": 5,
   "margin-top": 5,
   "margin-left": 5,
   "margin-right": 5,
-  "modules-left": ["cpu", "memory"],
-  "modules-center": ["niri/workspaces"],
-  "modules-right": ["network", "wireplumber", "backlight", "clock"],
+  "modules-left": [
+    "cpu",
+    "memory"
+  ],
+  "modules-center": [
+    "niri/workspaces"
+  ],
+  "modules-right": [
+    "network",
+    "wireplumber",
+    "backlight",
+    "clock"
+  ],
   // Modules
   "niri/workspaces": {
     "all-outputs": false,
@@ -22,17 +32,31 @@
   "network": {
     "format": "{icon} {ipaddr}",
     "tooltip-format": "{ifname}",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "format-disconnected": "󰖪",
   },
   "backlight": {
     "format": "{icon} {percent}%",
-    "format-icons": ["󰃜", "󰃛", "󰃚"],
+    "format-icons": [
+      "󰃜",
+      "󰃛",
+      "󰃚"
+    ],
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁",
-    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾"
+    ],
   },
   "memory": {
     "interval": 5,
