@@ -22,7 +22,6 @@ window#waybar.hidden {
 #cpu {
     padding: 0 8px;
     color: #1e1e2e;
-
     border-radius: 30px;
     background-color: #b4befe;
 }
@@ -30,10 +29,17 @@ window#waybar.hidden {
 #memory {
     padding: 0 8px;
     color: #1e1e2e;
-
     border-radius: 30px;
     background-color: #89b4fa;
 }
+
+#battery {
+    padding: 0 8px;
+    color: #1e1e2e;
+    border-radius: 30px;
+    background-color: #94e2d5;
+}
+
 
 /* Center Modules */
 
@@ -44,7 +50,7 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 1px 4px 0 3px;
+    padding: 1px 1px 0 0;
     border-radius: 0;
     color: #1e1e2e;
     transition: all ease 0.3s;
@@ -64,7 +70,6 @@ window#waybar.hidden {
 #network {
     padding: 0 8px;
     color: #1e1e2e;
-
     border-radius: 30px;
     background-color: #a6e3a1;
 }
@@ -73,7 +78,6 @@ window#waybar.hidden {
 #backlight {
     padding: 0 8px;
     color: #1e1e2e;
-
     border-radius: 30px;
 }
 
@@ -88,7 +92,6 @@ window#waybar.hidden {
 #clock {
     padding: 0 8px;
     color: #1e1e2e;
-
     border-radius: 30px;
     background-color: #eba0ac;
 }

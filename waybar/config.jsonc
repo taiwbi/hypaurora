@@ -8,7 +8,8 @@
   "margin-right": 5,
   "modules-left": [
     "cpu",
-    "memory"
+    "memory",
+    "battery"
   ],
   "modules-center": [
     "niri/workspaces"
@@ -67,6 +68,23 @@
     "interval": 5,
     "format": "󰻠 {}%",
     "on-click": "ghostty -e htop",
+  },
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "max-length": 25,
   },
   "clock": {
     "format": "󱑏 {:%I:%M %p}",
