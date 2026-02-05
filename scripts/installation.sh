@@ -87,7 +87,7 @@ case ${answer:0:1} in
     sudo dnf install niri xwayland-satellite \ 
       swaybg swayidle swaylock SwayNotificationCenter brightnessctl \
       rofi-wayland waybar htop \
-      gnome-keyring seahorse openssh-askpass
+      gnome-keyring seahorse openssh-askpass \
       mpd mpc cava
   ;;
   * )
