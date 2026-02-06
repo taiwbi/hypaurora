@@ -1,83 +1,21 @@
-spawn-at-startup "sh" "-c" "swaybg --mode fill --image ~/.config/background"
-spawn-at-startup "waybar"
-
-spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
-spawn-at-startup "sh" "-c" "swayidle -C ~/.config/niri/swayidle"
-spawn-at-startup "sh" "-c" "swaync --config ~/.config/niri/swaync/config.json --style ~/.config/niri/swaync/style.css"
-
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// ============================================================================
+// NIRI CONFIGURATION - Base for illogical-impulse (ii)
+// ============================================================================
+// Minimal base config - customize to your needs
+// Wiki: https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// ============================================================================
 
 prefer-no-csd
 
-environment {
-    QT_QPA_PLATFORM "wayland"
-    GDMSESSION "GNOME"
-    XDG_SESSION_DESKTOP "GNOME"
-    XDG_CURRENT_DESKTOP "GNOME"
-
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-
-    // systemctl --user enable --now gcr-ssh-agent.socket
-    SSH_AUTH_SOCK "/run/user/1000/gcr/ssh"
-
-    DISPLAY null
+hotkey-overlay {
+    skip-at-startup
 }
 
-cursor {
-    xcursor-theme "MacOS-Tahoe-Cursor"
-    xcursor-size 32
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-    hide-when-typing
-    hide-after-inactive-ms 5000
-}
-
-overview {
-    zoom 0.5
-    backdrop-color "#1F212B"
-
-    workspace-shadow {
-        // off
-        softness 40
-        spread 10
-        offset x=0 y=10
-        color "#00000050"
-    }
-}
-
-input {
-    disable-power-key-handling
-    // Allow focus-follows-mouse when it results in scrolling at most 10% of the screen.
-    focus-follows-mouse max-scroll-amount="40%"
-    
-    mod-key "Super"
-    mod-key-nested "Alt"
-
-    keyboard {
-        xkb {
-            layout "us,ir"
-            options "caps:escape"
-        }
-        track-layout "window"
-    }
-
-    touchpad {
-        accel-profile "flat"
-        accel-speed 0.8
-        scroll-factor 1.0
-        scroll-method "two-finger"
-        natural-scroll
-        tap
-        dwt // disable when typing
-        drag true // tap and drag
-        drag-lock
-    }
-
-    mouse {
-        accel-profile "flat"
-        accel-speed 0.8
-        scroll-factor 1.0
-    }
-}
+// Outputs (example - disabled by default)
+// Run `niri msg outputs` inside a niri session to see connector names and modes.
+// Then edit and uncomment this block to pin a specific monitor layout.
 
 output "eDP-1" {
     // off
@@ -92,23 +30,255 @@ output "eDP-1" {
     // variable-refresh-rate
 }
 
-binds {
-    Mod+Shift+M { quit; }
-    Mod+Alt+W { spawn "sh" "-c" "pkill waybar; sleep 0.3; waybar"; }
+// ============================================================================
+// INPUT
+// ============================================================================
 
+input {
+    keyboard {
+        xkb {
+            layout "us,ir"
+            options "caps:escape"
+        }
+        track-layout "window"
+
+        repeat-delay 250
+        repeat-rate 50
+    }
+    
+    mouse {
+        accel-profile "flat"
+        accel-speed 0.8
+        scroll-factor 1.0
+    }
+
+    touchpad {
+        accel-profile "flat"
+        accel-speed 0.8
+        scroll-factor 1.0
+        scroll-method "two-finger"
+        natural-scroll
+        tap
+        dwt // disable when typing
+        drag true // tap and drag
+        drag-lock
+    }
+
+    mod-key "Super"
+    mod-key-nested "Alt"
+}
+
+// ============================================================================
+// LAYOUT
+// ============================================================================
+
+layout {
+    gaps 12
+    background-color "transparent"
+    center-focused-column "never"
+    
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+    
+    default-column-width { 
+        proportion 1.0
+    }
+    
+    border {
+        off
+        width 4
+        active-color   "#707070"
+        inactive-color "#d0d0d0"
+        urgent-color   "#cc4444"
+    }
+    
+    focus-ring {
+        off
+        width 1
+        active-color   "#808080"
+        inactive-color "#505050"
+    }
+    
+    shadow {
+       // off
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+    
+    struts { }
+}
+
+gestures {
+    hot-corners {
+        // off
+    }
+}
+
+cursor {
+    // xcursor-theme "capitaine-cursors-light"
+    // xcursor-size 24
+    // hide-when-typing
+
+
+    xcursor-theme "MacOS-Tahoe-Cursor"
+    xcursor-size 32
+
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}
+
+overview {
+    zoom 0.75
+}
+
+// ============================================================================
+// WINDOW RULES
+// ============================================================================
+
+window-rule {
+    geometry-corner-radius 16
+    clip-to-geometry true
+}
+
+window-rule { 
+    match is-active=false
+    opacity 0.9
+}
+
+window-rule {
+    match app-id="org.gnome.Shotwell" title="Modify Tags"
+    min-height 400
+}
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+animations {
+    workspace-switch {
+        spring damping-ratio=0.92 stiffness=800 epsilon=0.0001
+    }
+    
+    window-open {
+        spring damping-ratio=0.92 stiffness=900 epsilon=0.0001
+    }
+    
+    window-close {
+        spring damping-ratio=0.95 stiffness=1000 epsilon=0.0001
+    }
+    
+    horizontal-view-movement {
+        spring damping-ratio=0.90 stiffness=800 epsilon=0.0001
+    }
+    
+    window-movement {
+        spring damping-ratio=0.96 stiffness=850 epsilon=0.0001
+    }
+}
+
+// ============================================================================
+// ENVIRONMENT
+// ============================================================================
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+
+    QT_QPA_PLATFORM "wayland"
+    GDMSESSION "GNOME"
+    XDG_SESSION_DESKTOP "GNOME"
+    XDG_CURRENT_DESKTOP "GNOME"
+
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    // systemctl --user enable --now gcr-ssh-agent.socket
+    SSH_AUTH_SOCK "/run/user/1000/gcr/ssh"
+    
+    // Quickshell Python virtual environment
+    ILLOGICAL_IMPULSE_VIRTUAL_ENV "$HOME/.local/state/quickshell/.venv"
+
+    DISPLAY null
+}
+
+// ============================================================================
+// STARTUP
+// ============================================================================
+
+// Import XDG_MENU_PREFIX to systemd for Dolphin file associations (must be first)
+spawn-at-startup "bash" "-c" "systemctl --user import-environment XDG_MENU_PREFIX && kbuildsycoca6"
+
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup "qs" "-c" "ii"
+
+// ============================================================================
+// KEYBINDINGS
+// ============================================================================
+
+binds {
+    // System
+    Mod+Tab repeat=false { toggle-overview; }
+    Mod+Shift+E { quit; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    
+    // ii Window Switcher (Alt+Tab)
+    Alt+Tab { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "next"; }
+    Alt+Shift+Tab { spawn "qs" "-c" "ii" "ipc" "call" "altSwitcher" "previous"; }
+    
+    // ii Overlay
+    Super+G { spawn "qs" "-c" "ii" "ipc" "call" "overlay" "toggle"; }
+
+    // ii Overview (daemon)
+    Mod+M repeat=false { spawn "qs" "-c" "ii" "ipc" "call" "overview" "toggle"; }
+    
+    // ii Clipboard
+    Mod+V { spawn "qs" "-c" "ii" "ipc" "call" "clipboard" "toggle"; }
+    
+    // ii Lock screen
+    Mod+Alt+L allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "lock" "activate"; }
+    
+    // ii Region tools
+    Mod+Shift+S { spawn "qs" "-c" "ii" "ipc" "call" "region" "screenshot"; }
+    Mod+Shift+X { spawn "qs" "-c" "ii" "ipc" "call" "region" "ocr"; }
+    Mod+Shift+A { spawn "qs" "-c" "ii" "ipc" "call" "region" "search"; }
+    
+    // ii Wallpaper selector
+    Ctrl+Alt+T { spawn "qs" "-c" "ii" "ipc" "call" "wallpaperSelector" "toggle"; }
+    
+    // ii Settings
+    Mod+Comma { spawn "qs" "-c" "ii" "ipc" "call" "settings" "open"; }
+    
+    // ii Cheatsheet
+    Mod+Slash { spawn "qs" "-c" "ii" "ipc" "call" "cheatsheet" "toggle"; }
+
+    // Toggle Keyboard Layout
+    Mod+space { spawn "niri" "msg" "action" "switch-layout" "next"; }
+    
+    // Applications
     Mod+Return { spawn "ghostty" "--gtk-titlebar=false"; }
     Mod+backslash { spawn "~/Documents/hypaurora/code/nvim.sh" "kitty"; }
-    Mod+X { spawn "nautilus"; }
+    Mod+E { spawn "nautilus"; }
     Mod+B { spawn "flatpak" "run" "com.brave.Browser" "--new-window"; }
     Mod+P { spawn "gnome-control-center"; }
-
-    Mod+M { spawn "rofi" "-show" "drun"; }
     
+    // Window management
+    Mod+Q repeat=false { spawn "bash" "-c" "$HOME/.config/quickshell/ii/scripts/close-window.sh"; }
+    Mod+D { maximize-column; }
+    Mod+F { fullscreen-window; }
+    Mod+C { toggle-window-floating; }
+    Mod+Z { switch-preset-column-width; }
 
-    Mod+D { toggle-overview; }
-    Mod+O { toggle-overview; }
-
-    // Move focus with Mod + vim direction keys
+    // Focus
+    Mod+Left { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up { focus-window-up; }
+    Mod+Down { focus-window-down; }
     Mod+H { focus-column-left; }
     Mod+J { focus-workspace-down; }
     Mod+K { focus-workspace-up; }
@@ -117,194 +287,80 @@ binds {
     Mod+A { focus-column-left; }
     Mod+S { focus-column-right; }
 
-    // Swap active with Mod Shift + vim direction keys
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+    Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+    Mod+Shift+WheelScrollUp cooldown-ms=150 { focus-column-left; }
+    
+    // Move windows
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up { move-workspace-up; }
+    Mod+Shift+Down { move-workspace-down; }
     Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-workspace-down; }
+    Mod+Shift+K { move-workspace-up; }
     Mod+Shift+L { move-column-right; }
-    Mod+Shift+K { move-window-to-workspace-up; }
-    Mod+Shift+J { move-window-to-workspace-down; }
-
-    Mod+Shift+S { move-column-left; }
-    Mod+Shift+G { move-column-right; }
-    Mod+Shift+F { move-window-to-workspace-down; }
-    Mod+Shift+D { move-window-to-workspace-up; }
-
-    // Resize focus with Mod + CTRL + vim direction keys
-    Mod+Z { switch-preset-column-width; }
-    Mod+Alt+Z { switch-preset-window-height; }
-
-    // Switch workspaces with Mod + [0-9]
+    
+    // Workspaces
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
     Mod+4 { focus-workspace 4; }
     Mod+5 { focus-workspace 5; }
-    Mod+Q { focus-workspace 6; }
-    Mod+W { focus-workspace 7; }
-    Mod+E { focus-workspace 8; }
-    Mod+R { focus-workspace 9; }
-    Mod+T { focus-workspace 10; }
-
-    // Move active window to workspace with Mod + SHIFT + [0-9]
-    Mod+Shift+1 { move-window-to-workspace 1; }
-    Mod+Shift+2 { move-window-to-workspace 2; }
-    Mod+Shift+3 { move-window-to-workspace 3; }
-    Mod+Shift+4 { move-window-to-workspace 4; }
-    Mod+Shift+5 { move-window-to-workspace 5; }
-    Mod+Shift+Q { move-window-to-workspace 6; }
-    Mod+Shift+W { move-window-to-workspace 7; }
-    Mod+Shift+E { move-window-to-workspace 8; }
-    Mod+Shift+R { move-window-to-workspace 9; }
-    Mod+Shift+T { move-window-to-workspace 10; }
-
-    // Scroll through existing workspaces with Mod + scroll
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
-    Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-column-right; }
-    Mod+Shift+WheelScrollUp cooldown-ms=150 { focus-column-left; }
-
-    // Window grouping (Note: Niri uses tabs instead of groups)
-    Mod+Alt+A { toggle-column-tabbed-display; }
-    Mod+Shift+A { consume-window-into-column; }
-    Mod+Alt+G { expel-window-from-column; }
-
-    // Move window with direction keys (Note: Niri doesn't have movewindoworgroup)
-    Mod+Right { move-column-right; }
-    Mod+Left { move-column-left; }
-    Mod+Up { move-window-up; }
-    Mod+Down { move-window-down; }
-
-    // Change window states
-    Mod+V { toggle-window-floating; }
-    Mod+C { close-window; }
-    Mod+F { fullscreen-window; }
-    Mod+Y { center-column; }
-    // Note: Niri doesn't have togglesplit equivalent
-
-    // Keyboard System tweak keys
-    XF86AudioRaiseVolume { spawn "sh" "-c" "~/.config/niri/script/volume --raise 5"; }
-    XF86AudioLowerVolume { spawn "sh" "-c" "~/.config/niri/script/volume --lower 5"; }
-    XF86AudioMute allow-when-locked=true { spawn "sh" "-c" "~/.config/niri/script/volume --toggle-mute"; }
-    XF86MonBrightnessUp { spawn "sh" "-c" "~/.config/niri/script/brightness --raise 3"; }
-    XF86MonBrightnessDown { spawn "sh" "-c" "~/.config/niri/script/brightness --lower 3"; }
-    // XF86TouchpadToggle { spawn "sh" "-c" "~/.config/niri/script/touchpad"; }
-
-    // Take screenshots
-    Print { screenshot show-pointer=false; }
-    Shift+Print { screenshot-screen show-pointer=false; }
-
-    // Lock the screen
-    Mod+Escape { spawn "sh" "-c" "swaylock -C ~/.config/niri/swaylock"; }
-    Mod+space { spawn "niri" "msg" "action" "switch-layout" "next"; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    
+    // Screenshots (native)
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+    
+    // ========================================================================
+    // HARDWARE KEYS - Audio, Brightness, Media
+    // ========================================================================
+    // These use ii IPC so the OSD (On Screen Display) shows feedback
+    
+    // Volume (hardware keys)
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "volumeUp"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "volumeDown"; }
+    XF86AudioMute allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "mute"; }
+    XF86AudioMicMute allow-when-locked=true { spawn "qs" "-c" "ii" "ipc" "call" "audio" "micMute"; }
+    
+    // Brightness (hardware keys)
+    XF86MonBrightnessUp { spawn "qs" "-c" "ii" "ipc" "call" "brightness" "increment"; }
+    XF86MonBrightnessDown { spawn "qs" "-c" "ii" "ipc" "call" "brightness" "decrement"; }
+    
+    // Media playback (hardware keys)
+    XF86AudioPlay { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioPause { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "playPause"; }
+    XF86AudioNext { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "next"; }
+    XF86AudioPrev { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "previous"; }
+    
+    // Keyboard alternatives for media (for keyboards without media keys)
+    Mod+Shift+M { spawn "qs" "-c" "ii" "ipc" "call" "audio" "mute"; }
+    Mod+Shift+P { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "playPause"; }
+    Mod+Shift+N { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "next"; }
+    Mod+Shift+B { spawn "qs" "-c" "ii" "ipc" "call" "mpris" "previous"; }
 }
 
-switch-events {
-    lid-close { spawn "~/Documents/ypaurora/code/lock.sh" "systemctl suspend"; }
-    lid-open { spawn "notify-send" "The laptop lid is open!"; }
-}
-
-layout {
-    gaps 7
-    center-focused-column "on-overflow"
-    always-center-single-column
-    default-column-display "normal"
-    background-color "#003300"
-
-    preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        proportion 1.0
-    }
-
-    default-column-width { proportion 1.0; }
-
-    preset-window-heights {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-        proportion 1.0
-    }
-
-    focus-ring {
-        // off
-        width 2
-        active-gradient from="#80c8ff" to="#bbddff" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-        urgent-gradient from="#800" to="#a33" angle=45 relative-to="workspace-view"
-    }
-
-    border {
-        off
-        width 4
-        active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view" in="srgb-linear"
-        urgent-gradient from="#800" to="#a33" angle=45
-    }
-
-    shadow {
-        on
-        softness 0
-        spread 0
-        offset x=0 y=0
-        draw-behind-window true
-        color "#00000054"
-        inactive-color "#00000029"
-    }
-
-    tab-indicator {
-        // off
-        // hide-when-single-tab
-        place-within-column
-        gap 5
-        width 4
-        length total-proportion=1.0
-        position "right"
-        gaps-between-tabs 2
-        corner-radius 8
-        active-color "red"
-        inactive-color "gray"
-        urgent-color "blue"
-        // active-gradient from="#80c8ff" to="#bbddff" angle=45
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-        // urgent-gradient from="#800" to="#a33" angle=45
-    }
-
-    insert-hint {
-        // off
-        color "#ffc87f80"
-        // gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
-    }
-
-    struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
-    }
-}
-
-window-rule {
-    geometry-corner-radius 8
-    clip-to-geometry true
-    draw-border-with-background false
-}
-
-window-rule {
-    match app-id="org.gnome.Shotwell" title="Modify Tags"
-    min-height 400
-}
-
-// Make fuzzel FLOAT.
+// Layer rules for ii backdrop visibility during Niri overview
 layer-rule {
-    match namespace="^rofi$"
-
-    baba-is-float true
+    match namespace="quickshell:iiBackdrop"
+    place-within-backdrop true
+    opacity 1.0
 }
 
-animations {
-    slowdown 1.0
+layer-rule {
+    match namespace="quickshell:wBackdrop"
+    place-within-backdrop true
+    opacity 1.0
 }
-
-// Animations
-// Gestures
-// Debug Options

@@ -1,5 +1,5 @@
 # --- Fonts ---
-font-family = "Iosevka"
+font-family = "Sono"
 font-family-italic = "Iosevka"
 font-family = "Vazir Code Hack"
 font-style = "Medium"
@@ -14,7 +14,7 @@ font-size = 12
 font-family = "Vazir Code Hack"
 
 # --- Cell Dimensions ---
-adjust-cell-height = 7
+adjust-cell-height = 4
 
 # --- Window ---
 window-width = 150
@@ -28,4 +28,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:hypaurora-light,dark:hypaurora-dark
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha

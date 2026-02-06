@@ -84,11 +84,14 @@ sudo dnf install xdg-terminal-exec ghostty kitty kitty-kitten
 read -p "Do you want to install niri now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
-    sudo dnf install niri xwayland-satellite \ 
-      swaybg swayidle swaylock SwayNotificationCenter brightnessctl \
-      rofi-wayland waybar htop \
+    sudo dnf install niri xwayland-satellite htop \
       gnome-keyring seahorse openssh-askpass \
       mpd mpc cava
+
+    sudo dnf copr enable errornointernet/quickshell
+    sudo dnf copr enable heus-sueh/packages
+    sudo dnf copr enable alternateved/cliphist   
+    sudo dnf install quickshell cliphist grim slurp matugen
   ;;
   * )
     echo "I won't install hyprland :)"

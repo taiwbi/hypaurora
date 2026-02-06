@@ -46,9 +46,6 @@ ln -sf "$PWD/fish" "$HOME/.config/fish"
 rm -rf "$HOME/.config/starship.toml";
 ln -sf "$PWD/starship.toml" "$HOME/.config/starship.toml"
 
-rm -rf "$HOME/.config/Kvantum";
-ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
-
 rm -rf "$HOME/.config/qt6ct";
 ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
 
@@ -65,12 +62,6 @@ ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 
 rm -rf "$HOME/.config/niri"
 ln -sf "$PWD/niri" "$HOME/.config/niri"
-
-rm -rf "$HOME/.config/rofi"
-ln -sf "$PWD/rofi" "$HOME/.config/rofi"
-
-rm -rf "$HOME/.config/waybar"
-ln -sf "$PWD/waybar" "$HOME/.config/waybar"
 
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
