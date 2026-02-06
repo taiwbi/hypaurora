@@ -63,6 +63,9 @@ ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 rm -rf "$HOME/.config/niri"
 ln -sf "$PWD/niri" "$HOME/.config/niri"
 
+rm -rf "$HOME/.config/illogical-impulse"
+ln -sf "$PWD/illogical-impulse" "$HOME/.config/illogical-impulse"
+
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
