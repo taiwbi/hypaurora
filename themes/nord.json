@@ -1,0 +1,51 @@
+{
+    "name": "Nord",
+    "author": "Nord Theme",
+    "variant": "dark",
+    "colors": {
+        "base": {
+            "background": "#2e3440",
+            "foreground": "#eceff4",
+            "cursor": "#d8dee9",
+            "cursor_text": "#2e3440",
+            "selection_bg": "#434c5e",
+            "selection_fg": "#eceff4"
+        },
+        "palette": [
+            "#3b4252",
+            "#bf616a",
+            "#a3be8c",
+            "#ebcb8b",
+            "#5e81ac",
+            "#b48ead",
+            "#88c0d0",
+            "#e5e9f0",
+            "#4c566a",
+            "#bf616a",
+            "#a3be8c",
+            "#ebcb8b",
+            "#81a1c1",
+            "#b48ead",
+            "#8fbcbb",
+            "#eceff4"
+        ],
+        "semantic": {
+            "accent": "#88c0d0",
+            "accent_fg": "#eceff4",
+            "border": "#4c566a",
+            "success": "#a3be8c",
+            "warning": "#ebcb8b",
+            "error": "#bf616a"
+        },
+        "ui": {
+            "card": "#3b4252",
+            "card_fg": "#e5e9f0",
+            "popover": "#3b4252",
+            "popover_fg": "#e5e9f0",
+            "sidebar": "#2e3440",
+            "sidebar_fg": "#d8dee9",
+            "headerbar": "#3b4252",
+            "headerbar_fg": "#d8dee9"
+        }
+    }
+}
