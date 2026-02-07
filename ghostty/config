@@ -1,14 +1,8 @@
 # --- Fonts ---
-font-family = "Sono"
-font-family-italic = "Iosevka"
+font-family = "FantasqueSansMono Nerd Font"
 font-family = "Vazir Code Hack"
-font-style = "Medium"
-font-style-bold = "ExtraBold"
-font-style-italic = "Medium Italic"
-font-style-bold-italic = "ExtraBold Italic"
-font-feature = "+calt, +dlig, +PHPX, +JSPT, +CLIK"
 
-font-size = 12
+font-size = 13
 
 # --- Font Fallbacks ---
 font-family = "Vazir Code Hack"
