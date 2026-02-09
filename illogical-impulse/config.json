@@ -84,7 +84,9 @@
     "favoriteThemes": [
       "catppuccin-mocha",
       "catppuccin-frappe",
-      "catppuccin-latte"
+      "catppuccin-latte",
+      "nord",
+      "angel-light"
     ],
     "globalStyle": "material",
     "globalStyleCornerStyles": {
@@ -115,7 +117,7 @@
       "automatic": true,
       "backgroundTransparency": 0.11,
       "contentTransparency": 0.57,
-      "enable": true
+      "enable": false
     },
     "typography": {
       "mainFont": "Geist",
@@ -269,19 +271,12 @@
       "enabled": false,
       "overlayOpacity": 0.3
     },
-    "borderless": false,
+    "borderless": true,
     "bottom": false,
-    "cornerStyle": 2,
+    "cornerStyle": 0,
     "edgeModulesLayout": {
-      "leftOrder": [
-        "leftSidebarButton",
-        "activeWindow"
-      ],
-      "rightOrder": [
-        "rightSidebarButton",
-        "sysTray",
-        "weather"
-      ]
+      "leftOrder": ["leftSidebarButton", "activeWindow"],
+      "rightOrder": ["rightSidebarButton", "sysTray", "weather"]
     },
     "floatStyleShadow": true,
     "indicators": {
@@ -328,7 +323,7 @@
       "swapWarningThreshold": 85
     },
     "screenList": [],
-    "showBackground": false,
+    "showBackground": true,
     "topLeftIcon": "spark",
     "tray": {
       "filterPassive": true,
@@ -364,18 +359,7 @@
       "alwaysShowNumbers": false,
       "dynamicCount": true,
       "monochromeIcons": true,
-      "numberMap": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10"
-      ],
+      "numberMap": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
       "scrollBehavior": "workspace",
       "scrollSteps": 1,
       "showAppIcons": false,
@@ -410,7 +394,7 @@
     "hoverPreview": true,
     "hoverPreviewDelay": 400,
     "hoverRegionHeight": 2,
-    "hoverToReveal": true,
+    "hoverToReveal": false,
     "iconSize": 35,
     "ignoredAppRegexes": [],
     "maxIndicatorDots": 5,
@@ -418,7 +402,9 @@
     "monochromeIcons": true,
     "pinnedApps": [
       "org.gnome.Nautilus",
-      "brave-browser"
+      "brave-browser",
+      "org.gnome.TextEditor",
+      "org.gnome.Shotwell"
     ],
     "pinnedOnStartup": false,
     "position": "bottom",
@@ -510,7 +496,7 @@
     "blur": {
       "enable": true,
       "extraZoom": 1.1,
-      "radius": 100
+      "radius": 200
     },
     "centerClock": true,
     "launchOnStartup": false,
@@ -559,7 +545,7 @@
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
   },
   "notifications": {
-    "edgeMargin": 4,
+    "edgeMargin": 20,
     "position": "topRight",
     "silent": false,
     "timeout": 3000,
@@ -659,9 +645,7 @@
   },
   "search": {
     "engineBaseUrl": "https://www.google.com/search?q=",
-    "excludedSites": [
-      "quora.com"
-    ],
+    "excludedSites": ["quora.com"],
     "imageSearch": {
       "imageSearchEngineBaseUrl": "https://lens.google.com/uploadbyurl?url=",
       "useCircleSelection": false
@@ -748,13 +732,7 @@
     "reddit": {
       "enable": false,
       "limit": 25,
-      "subreddits": [
-        "unixporn",
-        "linux",
-        "archlinux",
-        "kde",
-        "gnome"
-      ]
+      "subreddits": ["unixporn", "linux", "archlinux", "kde", "gnome"]
     },
     "right": {
       "enabledWidgets": [
@@ -794,10 +772,7 @@
       },
       "crypto": false,
       "crypto_settings": {
-        "coins": [
-          "bitcoin",
-          "ethereum"
-        ],
+        "coins": ["bitcoin", "ethereum"],
         "refreshInterval": 60
       },
       "enable": true,
