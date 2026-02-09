@@ -3,7 +3,6 @@ spawn-at-startup "waybar"
 
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 spawn-at-startup "sh" "-c" "swayidle -C ~/.config/niri/swayidle"
-spawn-at-startup "sh" "-c" "swaync --config ~/.config/niri/swaync/config.json --style ~/.config/niri/swaync/style.css"
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 

@@ -85,7 +85,7 @@ read -p "Do you want to install niri now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf install niri xwayland-satellite \ 
-      swaybg swayidle swaylock SwayNotificationCenter brightnessctl \
+      swaybg swayidle swaylock brightnessctl \
       rofi-wayland waybar htop \
       gnome-keyring seahorse openssh-askpass \
       mpd mpc cava
