@@ -9,7 +9,7 @@ configuration {
     backgroundmessage:     #1e1e2e;   /* message box background */
     backgroundselected:    #74c7ec;   /* selected item background */
 
-    font:   "Iosevka 11";
+    font:   "Geist Mono 11";
     textplaceholder:       #6c7086;   /* placeholder text color */
     textprimary:           #cdd6f4;   /* primary text (e.g., list items) */
     textselected:          #1e1e2e;   /* text color when selected */
