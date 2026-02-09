@@ -96,7 +96,7 @@ binds {
     Mod+Alt+W { spawn "sh" "-c" "pkill waybar; sleep 0.3; waybar"; }
 
     Mod+Return { spawn "ghostty" "--gtk-titlebar=false"; }
-    Mod+backslash { spawn "~/Documents/hypaurora/code/nvim.sh" "kitty"; }
+    Mod+backslash { spawn "~/Documents/hypaurora/code/nvim.sh" "ghostty"; }
     Mod+X { spawn "nautilus"; }
     Mod+B { spawn "flatpak" "run" "com.brave.Browser" "--new-window"; }
     Mod+P { spawn "gnome-control-center"; }
