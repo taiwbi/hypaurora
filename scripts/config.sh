@@ -127,3 +127,16 @@ gsettings set org.gnome.nautilus.preferences click-policy 'single'
 gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 gsettings set org.gnome.Epiphany search-engine-providers "[{'url': <'https://www.google.com/search?q=%s'>, 'bang': <'\!g'>, 'name': <'Google'>}, {'url': <'https://search.brave.com/search?q=%s&source=web&summary=1'>, 'bang': <'\!b'>, 'name': <'Brave'>}]"
 gsettings set org.gnome.Epiphany default-search-engine 'Brave'
+
+
+# === System Preferences ===
+
+echo -e "$header_1 Do you want to lower the swappiness value to 40? Do this if you have 12GB or less RAM."
+read -rp "(y/n)" yn
+
+if [ "$yn" != "y" ]; then
+  echo "vm.swappiness=40" | sudo tee /etc/sysctl.d/99-swappiness.conf
+  sudo sysctl -p /etc/sysctl.d/99-swappiness.conf
+  echo -e "Swappiness changed to 40."
+  exit
+fi
