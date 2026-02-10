@@ -1,6 +1,6 @@
 # 🌌 Hypaurora
 
-This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing the GNOME + Niri.
+This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing the GNOME.
 
 **If you want to use this make sure you clone it in `~/Documents/hypaurora` and change every `/home/mahdi` to whatever your user's home path is.**
 

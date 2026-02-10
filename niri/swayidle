@@ -1,9 +1,0 @@
-
-# Lock after 5 minutes (300 seconds)
-timeout 300 'swaylock -C ~/.config/niri/swaylock'
-
-# Suspend after 20 minutes (1200 seconds)
-timeout 1200 'systemctl suspend'
-
-# Lock immediately before suspend (in case it wasn’t already locked)
-before-sleep 'swaylock -C ~/.config/niri/swaylock'

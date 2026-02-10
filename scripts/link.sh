@@ -60,15 +60,6 @@ ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 rm -rf "$HOME/.local/binary/gim"
 ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 
-rm -rf "$HOME/.config/niri"
-ln -sf "$PWD/niri" "$HOME/.config/niri"
-
-rm -rf "$HOME/.config/rofi"
-ln -sf "$PWD/rofi" "$HOME/.config/rofi"
-
-rm -rf "$HOME/.config/waybar"
-ln -sf "$PWD/waybar" "$HOME/.config/waybar"
-
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"

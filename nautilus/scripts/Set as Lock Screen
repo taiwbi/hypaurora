@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-FILE="$(printf '%s\n' "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS")"
-
-DEST="$HOME/.config/lockscreen"
-
-cp -f "$FILE" "$DEST"

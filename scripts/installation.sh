@@ -80,19 +80,6 @@ sudo dnf install nautilus-python
 sudo dnf copr enable scottames/ghostty
 sudo dnf install xdg-terminal-exec ghostty kitty kitty-kitten
 
-
-read -p "Do you want to install niri now? (Y/n): " answer
-case ${answer:0:1} in
-  y|Y )
-    sudo dnf install niri xwayland-satellite \ 
-      swaybg swayidle swaylock rofi-wayland waybar \
-      brightnessctl \
-      gnome-keyring seahorse openssh-askpass mate-polkit
-  ;;
-  * )
-    echo "I won't install niri :)"
-  ;;
-esac
 # TODO: Install lazygit
 
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager org.telegram.desktop \
@@ -100,19 +87,6 @@ flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionMana
 
 # Install Rust
 sudo dnf install cargo rust rust-src rustfmt
-
-read -p "Do you want to install hyprland now? (Y/n): " answer
-case ${answer:0:1} in
-  y|Y )
-    sudo dnf copr enable solopasha/hyprland
-    sudo dnf install hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-qtutils \
-    eww-git pyprland qgnomeplatform-qt5 qgnomeplatform-qt6 qt5-qtwayland qt6-qtwayland
-    cargo install hyprland-per-window-layout
-  ;;
-  * )
-    echo "I won't install Hyprland :)"
-  ;;
-esac
 
 
 sudo dnf mark user totem-video-thumbnailer evince-previewer
