@@ -92,20 +92,20 @@ output "eDP-1" {
 }
 
 binds {
+    Mod+slash { show-hotkey-overlay; }
+
     Mod+Shift+M { quit; }
-    Mod+Alt+W { spawn "sh" "-c" "pkill waybar; sleep 0.3; waybar"; }
+    Mod+Alt+W hotkey-overlay-title="Restart Waybar" { spawn "sh" "-c" "pkill waybar; sleep 0.3; waybar"; }
 
-    Mod+Return { spawn "ghostty" "--gtk-titlebar=false"; }
-    Mod+backslash { spawn "~/Documents/hypaurora/code/nvim.sh" "ghostty"; }
-    Mod+X { spawn "nautilus"; }
-    Mod+B { spawn "flatpak" "run" "com.brave.Browser" "--new-window"; }
-    Mod+P { spawn "gnome-control-center"; }
+    Mod+Return hotkey-overlay-title="Terminal" { spawn "ghostty" "--gtk-titlebar=false"; }
+    Mod+backslash hotkey-overlay-title=null { spawn "~/Documents/hypaurora/code/nvim.sh" "ghostty"; }
+    Mod+E hotkey-overlay-title="File Manager" { spawn "nautilus"; }
+    Mod+B hotkey-overlay-title="Browser" { spawn "flatpak" "run" "com.brave.Browser" "--new-window"; }
+    Mod+P hotkey-overlay-title="GNOME Settings" { spawn "gnome-control-center"; }
 
-    Mod+M { spawn "rofi" "-show" "drun"; }
+    Mod+M hotkey-overlay-title="Application Launcher" { spawn "rofi" "-show" "drun"; }
     
-
-    Mod+D { toggle-overview; }
-    Mod+O { toggle-overview; }
+    Mod+Tab { toggle-overview; }
 
     // Move focus with Mod + vim direction keys
     Mod+H { focus-column-left; }
@@ -119,17 +119,25 @@ binds {
     // Swap active with Mod Shift + vim direction keys
     Mod+Shift+H { move-column-left; }
     Mod+Shift+L { move-column-right; }
-    Mod+Shift+K { move-window-to-workspace-up; }
-    Mod+Shift+J { move-window-to-workspace-down; }
+    Mod+Shift+K { move-workspace-up; }
+    Mod+Shift+J { move-workspace-down; }
 
-    Mod+Shift+S { move-column-left; }
-    Mod+Shift+G { move-column-right; }
-    Mod+Shift+F { move-window-to-workspace-down; }
-    Mod+Shift+D { move-window-to-workspace-up; }
+    Mod+Left { focus-column-left; }
+    Mod+down { focus-workspace-down; }
+    Mod+Up { focus-workspace-up; }
+    Mod+Right { focus-column-right; }
+
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Down { move-window-to-workspace-down; }
+    Mod+Shift+Up { move-window-to-workspace-up; }
 
     // Resize focus with Mod + CTRL + vim direction keys
     Mod+Z { switch-preset-column-width; }
     Mod+Alt+Z { switch-preset-window-height; }
+    Mod+X { maximize-column; }
+    Mod+Ctrl+Left { consume-or-expel-window-left; }
+    Mod+Ctrl+Right { consume-or-expel-window-right; }
 
     // Switch workspaces with Mod + [0-9]
     Mod+1 { focus-workspace 1; }
@@ -137,11 +145,11 @@ binds {
     Mod+3 { focus-workspace 3; }
     Mod+4 { focus-workspace 4; }
     Mod+5 { focus-workspace 5; }
-    Mod+Q { focus-workspace 6; }
-    Mod+W { focus-workspace 7; }
-    Mod+E { focus-workspace 8; }
-    Mod+R { focus-workspace 9; }
-    Mod+T { focus-workspace 10; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
 
     // Move active window to workspace with Mod + SHIFT + [0-9]
     Mod+Shift+1 { move-window-to-workspace 1; }
@@ -149,11 +157,11 @@ binds {
     Mod+Shift+3 { move-window-to-workspace 3; }
     Mod+Shift+4 { move-window-to-workspace 4; }
     Mod+Shift+5 { move-window-to-workspace 5; }
-    Mod+Shift+Q { move-window-to-workspace 6; }
-    Mod+Shift+W { move-window-to-workspace 7; }
-    Mod+Shift+E { move-window-to-workspace 8; }
-    Mod+Shift+R { move-window-to-workspace 9; }
-    Mod+Shift+T { move-window-to-workspace 10; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    Mod+Shift+0 { move-window-to-workspace 10; }
 
     // Scroll through existing workspaces with Mod + scroll
     Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
@@ -166,15 +174,10 @@ binds {
     Mod+Shift+A { consume-window-into-column; }
     Mod+Alt+G { expel-window-from-column; }
 
-    // Move window with direction keys (Note: Niri doesn't have movewindoworgroup)
-    Mod+Right { move-column-right; }
-    Mod+Left { move-column-left; }
-    Mod+Up { move-window-up; }
-    Mod+Down { move-window-down; }
-
     // Change window states
-    Mod+V { toggle-window-floating; }
-    Mod+C { close-window; }
+    Mod+C { toggle-window-floating; }
+    Mod+Shift+C { switch-focus-between-floating-and-tiling; }
+    Mod+Q { close-window; }
     Mod+F { fullscreen-window; }
     Mod+Y { center-column; }
     // Note: Niri doesn't have togglesplit equivalent
@@ -190,10 +193,13 @@ binds {
     // Take screenshots
     Print { screenshot show-pointer=false; }
     Shift+Print { screenshot-screen show-pointer=false; }
+    
+    Mod+space hotkey-overlay-title="Switch Keyboard Layout" { spawn "niri" "msg" "action" "switch-layout" "next"; }
 
     // Lock the screen
-    Mod+Escape { spawn "sh" "-c" "swaylock -C ~/.config/niri/swaylock"; }
-    Mod+space { spawn "niri" "msg" "action" "switch-layout" "next"; }
+    Mod+Alt+L hotkey-overlay-title="Lock the screen" { spawn "sh" "-c" "swaylock -C ~/.config/niri/swaylock"; }
+    Mod+Alt+S hotkey-overlay-title="Suspend" { spawn "systemctl" "suspend"; }
+    Mod+Alt+P hotkey-overlay-title="Power Off" { spawn "systemctl" "poweroff"; }
 }
 
 switch-events {
