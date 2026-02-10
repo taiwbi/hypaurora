@@ -85,13 +85,12 @@ read -p "Do you want to install niri now? (Y/n): " answer
 case ${answer:0:1} in
   y|Y )
     sudo dnf install niri xwayland-satellite \ 
-      swaybg swayidle swaylock brightnessctl \
-      rofi-wayland waybar htop \
-      gnome-keyring seahorse openssh-askpass \
-      mpd mpc cava
+      swaybg swayidle swaylock rofi-wayland waybar \
+      brightnessctl \
+      gnome-keyring seahorse openssh-askpass mate-polkit
   ;;
   * )
-    echo "I won't install hyprland :)"
+    echo "I won't install niri :)"
   ;;
 esac
 # TODO: Install lazygit
