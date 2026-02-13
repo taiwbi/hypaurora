@@ -1,5 +1,5 @@
 # GRC Aliases (Colorizer) - can move to conf.d/grc.fish
-if command -v grc > /dev/null
+if command -v grc >/dev/null
     set -l GRC (command -v grc) # Use command -v and local scope
     alias colourify "$GRC -es"
     alias blkid 'colourify blkid'

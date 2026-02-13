@@ -14,7 +14,7 @@ function dm --description "Delete a fishmark"
 
     # Use grep -v to filter out the line and overwrite the file
     set -l tmp_file (mktemp)
-    grep -v -E "^$bookmark_name:" "$FISHMARKS_FILE" > "$tmp_file"
+    grep -v -E "^$bookmark_name:" "$FISHMARKS_FILE" >"$tmp_file"
     # Check if grep succeeded before moving
     if test $status -eq 0
         mv "$tmp_file" "$FISHMARKS_FILE"
@@ -23,5 +23,5 @@ function dm --description "Delete a fishmark"
         echo "Error: Failed to filter bookmark file." >&2
         rm -f "$tmp_file" # Clean up temp file on error
         return 1
-    fi
-end
+        fi
+    end

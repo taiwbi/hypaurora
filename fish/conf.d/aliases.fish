@@ -2,7 +2,7 @@
 # Keep simple aliases here or move them to conf.d/
 
 alias fastfetch 'fastfetch --gpu-hide-type integrated'
-alias ff 'fastfetch'
+alias ff fastfetch
 
 alias vi nvim
 alias cl clear
@@ -46,12 +46,12 @@ alias sail 'sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias myip 'curl --silent http://ip-api.com/json/ | jq'
 
 # Conditional Aliases (Example: icat)
-if test "$TERM" = "xterm-ghostty" -o "$TERM" = "xterm-kitty"
+if test "$TERM" = xterm-ghostty -o "$TERM" = xterm-kitty
     if command -v kitten >/dev/null
         alias icat 'kitten icat'
     end
 end
 
-if test "$TERM" = "xterm-kitty"
+if test "$TERM" = xterm-kitty
     alias ssh 'kitten ssh'
 end

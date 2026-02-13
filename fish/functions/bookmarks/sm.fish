@@ -14,6 +14,6 @@ function sm --description "Save current directory as a fishmark"
     end
 
     # Append the new bookmark
-    echo "$bookmark_name:$bookmark_path" >> "$FISHMARKS_FILE"
+    echo "$bookmark_name:$bookmark_path" >>"$FISHMARKS_FILE"
     echo "Added fishmark '$bookmark_name' -> '$bookmark_path'"
 end

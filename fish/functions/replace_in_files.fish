@@ -25,15 +25,15 @@ function replace_in_files
     for file in $files
         # Skip if file doesn't exist (in case of deleted files in git)
         test -f $file; or continue
-        
+
         # Check if file contains the old string
         if grep -q -F -- $old_string $file 2>/dev/null
             # Perform the replacement
             sed -i "s/$old_string/$new_string/g" $file
-            
+
             # Print the changed file path
             echo "Changed: $file"
-            
+
             set changed_count (math $changed_count + 1)
         end
     end

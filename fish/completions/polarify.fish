@@ -52,10 +52,10 @@ function __polarify_arg_contains
 end
 
 # --- Subcommands ------------------------------------------------------------
-complete -c polarify -n "__fish_use_subcommand" -a "list" -d "List all available themes"
-complete -c polarify -n "__fish_use_subcommand" -a "preview" -d "Preview theme colors"
-complete -c polarify -n "__fish_use_subcommand" -a "apply" -d "Apply theme"
-complete -c polarify -n "__fish_use_subcommand" -a "watch-dark-mode" -d "Watch GNOME dark mode and auto-switch themes (GNOME only)"
+complete -c polarify -n __fish_use_subcommand -a list -d "List all available themes"
+complete -c polarify -n __fish_use_subcommand -a preview -d "Preview theme colors"
+complete -c polarify -n __fish_use_subcommand -a apply -d "Apply theme"
+complete -c polarify -n __fish_use_subcommand -a watch-dark-mode -d "Watch GNOME dark mode and auto-switch themes (GNOME only)"
 
 # --- preview: theme first, then options -------------------------------------
 complete -c polarify -n "__fish_seen_subcommand_from preview; and not __polarify_seen_theme" \

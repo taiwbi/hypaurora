@@ -14,9 +14,9 @@ function gm --description "Go to a fishmarked directory"
     end
 
     if not test -d "$bookmark_path"
-         echo "Error: Marked directory '$bookmark_path' no longer exists." >&2
-         # Optionally offer to delete the stale mark here
-         return 1
+        echo "Error: Marked directory '$bookmark_path' no longer exists." >&2
+        # Optionally offer to delete the stale mark here
+        return 1
     end
 
     cd "$bookmark_path"; or return 1 # Use ; or to handle cd errors
