@@ -24,8 +24,8 @@ positional arguments:
 
 ## 🎭 Customization
 
-- ✨ Icon Pack: [Neuwaita](https://github.com/RusticBard/Neuwaita)
-- 🖱️ Cursor Theme: [MacOS Tahoe Cursor](https://www.gnome-look.org/p/2300466)
+- ✨ Icon Pack: [MacTahoe-dark](https://github.com/vinceliuice/MacTahoe-icon-theme)
+- 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
 - 💻 Monospace Family: [Geist Mono](https://vercel.com/font)
