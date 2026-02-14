@@ -12,6 +12,7 @@ function fish_greeting
             if command -v kitten >/dev/null 2>&1; and test $term_width -gt 40
                 set -l position (math $term_width - 21)
                 # Fixed: Removed curly braces around the position variable
+                sleep .1
                 kitten icat -n --place "20x14@$position"x0 "$HOME/Documents/hypaurora/assets/2B.png"
             end
         end
