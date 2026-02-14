@@ -28,7 +28,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Geist Mono](https://vercel.com/font)
+- 💻 Monospace Family: [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
 
 ## Installation

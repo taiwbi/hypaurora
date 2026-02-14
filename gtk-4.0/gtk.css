@@ -1,11 +1,1 @@
-@import "./themes/hypaurora.css";
-
-/* Fix for Monasans font Family */
-label {
-    margin-top: -1px;
-    margin-bottom: -1px;
-}
-
-label.subtitle {
-    font-size: 12.4px;
-}
+/* @import "./themes/hypaurora.css"; */

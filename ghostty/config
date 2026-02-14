@@ -1,11 +1,8 @@
 # --- Fonts ---
-font-family = "Geist Mono"
-font-family-italic = "Geist Mono"
+font-family = "FantasqueSansM Nerd Font"
 font-family = "Vazir Code Hack"
-font-style = "Medium"
-font-style-bold = "ExtraBold"
-font-style-italic = "Medium Italic"
-font-style-bold-italic = "ExtraBold Italic"
+font-style = "Bold"
+font-style-italic = "Bold Italic"
 
 font-size = 11
 
@@ -30,4 +27,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:hypaurora-light,dark:hypaurora-dark
+theme = light:Alabaster,dark:Andromeda
