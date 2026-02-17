@@ -21,7 +21,7 @@ label,
 a,
 blockquote {
   font-family:
-    "Geist",
+    "Zed Sans",
     "Vazirmatn",
     system-ui,
     -apple-system,
@@ -94,7 +94,7 @@ code,
 .ace_editor,
 .ace_editor * {
   font-family:
-    "Fantasque Sans Mono", "Vazir Code Hack", "SF Mono", Monaco,
+    "Zed Mono", "Vazir Code Hack", "SF Mono", Monaco,
     "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 
     font-feature-settings:

@@ -1,8 +1,6 @@
 # --- Fonts ---
-font-family = "FantasqueSansM Nerd Font"
+font-family = "Zed Mono"
 font-family = "Vazir Code Hack"
-font-style = "Bold"
-font-style-italic = "Bold Italic"
 
 font-size = 11
 
@@ -10,10 +8,10 @@ font-size = 11
 font-family = "Vazir Code Hack"
 
 # --- Cell Dimensions ---
-adjust-cell-height = 4
+adjust-cell-height = 5
 
 # --- Window ---
-window-width = 150
+window-width = 190
 window-height = 39
 window-padding-x = 0
 window-padding-y = 0
@@ -27,4 +25,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:Alabaster,dark:Andromeda
+theme = light:Gruvbox Light,dark:Gruvbox Dark Hard
