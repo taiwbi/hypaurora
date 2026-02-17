@@ -61,7 +61,7 @@ sudo dnf install libva-nvidia-driver
 
 sudo dnf install dnf-plugins-core
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers fish
+sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers fish python3-fonttools
 sudo dnf install adw-gtk3-theme celluloid gnome-tweaks
 
 sudo dnf install php php-pecl-xdebug3 composer

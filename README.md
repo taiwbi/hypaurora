@@ -28,7 +28,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [Zed Sans](https://github.com/zed-industries/zed-fonts)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Zed Mono](https://github.com/zed-industries/zed-fonts)
+- 💻 Monospace Family: [Iosevka Extended](https://typeof.net/Iosevka/)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
 
 ## Installation

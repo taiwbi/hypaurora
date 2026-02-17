@@ -1,6 +1,11 @@
 # --- Fonts ---
-font-family = "Zed Mono"
+font-family = "Iosevka"
 font-family = "Vazir Code Hack"
+font-style = "Medium Extended"
+font-style-bold = "Extrabold Extended"
+font-style-italic = "Medium Extended Italic"
+font-style-bold = "Extrabold Extended Italic"
+font-feature = ss16 on, dlig on, calt on, CLIK on, JSPT on, PHPX on,
 
 font-size = 11
 
