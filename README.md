@@ -2,6 +2,10 @@
 
 This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing the GNOME.
 
+> ⚠️ **This is the `playground` branch.**
+> 
+> Daily experiments, font changes, icon swaps, theme chaos.
+
 **If you want to use this make sure you clone it in `~/Documents/hypaurora` and change every `/home/mahdi` to whatever your user's home path is.**
 
 ## 🎨 Theme Management
