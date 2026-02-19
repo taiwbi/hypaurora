@@ -30,4 +30,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:Gruvbox Light,dark:Gruvbox Dark Hard
+theme = light:Kanagawa Lotus,dark:Kanagawa Dragon
