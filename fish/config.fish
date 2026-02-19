@@ -30,8 +30,8 @@ function fish_prompt
 end
 
 function starship_transient_prompt_func
-    set_color green
-    echo -n '❯ '
+    set_color red
+    echo -n '○ '
     set_color normal
 end
 
