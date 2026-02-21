@@ -30,7 +30,7 @@ positional arguments:
 
 - ✨ Icon Pack: [MacTahoe-dark](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
-- 🅰️ Font Family: [Nunito](https://fonts.google.com/specimen/Nunito)
+- 🅰️ Font Family: [BlinkMacSystemFont](https://github.com/aliifam/BlinkMacSystemFont)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
 - 💻 Monospace Family: [Iosevka Extended](https://typeof.net/Iosevka/)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)

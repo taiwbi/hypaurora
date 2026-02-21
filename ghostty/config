@@ -16,8 +16,8 @@ font-family = "Vazir Code Hack"
 adjust-cell-height = 5
 
 # --- Window ---
-window-width = 190
-window-height = 39
+window-width = 140
+window-height = 33
 window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
