@@ -11,16 +11,15 @@ function fish_greeting
             # Display image with kitten icat if conditions met
             if command -v kitten >/dev/null 2>&1; and test $term_width -gt 40
                 set -l position (math $term_width - 21)
-                # Fixed: Removed curly braces around the position variable
-                sleep .1
-                kitten icat -n --place "20x14@$position"x0 "$HOME/Documents/hypaurora/assets/2B.png"
+                set -l image $(find "$HOME/Documents/hypaurora/assets" -type f -name "*.png" | shuf -n 1)
+                sleep .3 # This prevents printing image before ghostty changes the terminal size
+                kitten icat -n --place "20x14@$position"x0 "$image"
             end
         end
 
         # Display praise if terminal is wide enough
         if test $term_width -gt 35
             if test -x "$HOME/.config/fish/functions/praise.fish" # Check execute permission
-                echo ""
                 $HOME/.config/fish/functions/praise.fish
             else
                 echo "Warning: Could not find executable praise.fish, check path/permissions."
