@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 """
-Rename Iosevka Extended TTF internal family name so apps (e.g., Zed) can see it as a real family.
+Rename Dank Mono TTF internal family name so apps (e.g., Zed) can see it as a real family.
 
-Input files expected: Iosevka-Extended*.ttf
-Output: rewritten TTFs with family "Iosevka Extended" and proper subfamily (Regular/Bold/Italic/...).
+Input files expected: Dank Mono*.ttf
+Output: rewritten TTFs with family "Dank Mono" and proper subfamily (Regular/Bold/Italic/...).
 
 Usage:
   python3 rename_iosevka_extended.py \
-    --in-dir ~/.local/share/fonts/Mono/Iosevka \
-    --out-dir ~/.local/share/fonts/Mono/IosevkaExtended
+    --in-dir ~/.local/share/fonts/Mono/Dank Mono \
+    --out-dir ~/.local/share/fonts/Mono/Dank Mono
 
 Then:
   fc-cache -f
   restart Zed
-  set "buffer_font_family": "Iosevka Extended"
+  set "buffer_font_family": "Dank Mono Extended"
 """
 
 from __future__ import annotations
@@ -51,19 +51,19 @@ EXPAND = {
 
 def derive_style_from_filename(ttf_path: Path) -> str:
     """
-    From 'Iosevka-ExtendedBoldItalic.ttf' -> 'Bold Italic'
-    From 'Iosevka-Extended.ttf' -> 'Regular'
+    From 'Dank Mono-ExtendedBoldItalic.ttf' -> 'Bold Italic'
+    From 'Dank Mono-Extended.ttf' -> 'Regular'
     """
     stem = ttf_path.stem  # no extension
-    prefix = "Iosevka-Extended"
+    prefix = "Dank Mono-Extended"
     if stem == prefix:
         return "Regular"
 
     if stem.startswith(prefix):
         tail = stem[len(prefix) :]
     else:
-        # fallback: strip leading "Iosevka-" if present
-        tail = stem.replace("Iosevka-", "", 1)
+        # fallback: strip leading "Dank Mono-" if present
+        tail = stem.replace("Dank Mono-", "", 1)
 
     tail = tail.lstrip("-_ ")
 
@@ -165,15 +165,15 @@ def rename_font(ttf_in: Path, ttf_out: Path, family: str) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
-        "--in-dir", required=True, help="Directory containing Iosevka-Extended*.ttf"
+        "--in-dir", required=True, help="Directory containing Dank Mono-Extended*.ttf"
     )
     ap.add_argument(
         "--out-dir", required=True, help="Output directory for rewritten fonts"
     )
     ap.add_argument(
         "--family",
-        default="Iosevka Extended",
-        help='New family name (default: "Iosevka Extended")',
+        default="Dank Mono Extended",
+        help='New family name (default: "Dank Mono Extended")',
     )
     ap.add_argument(
         "--dry-run",
@@ -190,10 +190,10 @@ def main() -> int:
         print(f"ERROR: in-dir not found or not a directory: {in_dir}", file=sys.stderr)
         return 2
 
-    inputs = sorted(in_dir.glob("Iosevka-Extended*.ttf"))
+    inputs = sorted(in_dir.glob("Dank Mono-Extended*.ttf"))
     if not inputs:
         print(
-            f"ERROR: no files matched {in_dir}/Iosevka-Extended*.ttf", file=sys.stderr
+            f"ERROR: no files matched {in_dir}/Dank Mono-Extended*.ttf", file=sys.stderr
         )
         return 3
 
@@ -208,9 +208,9 @@ def main() -> int:
         style = derive_style_from_filename(ttf_in)
         style_compact = ps_safe(style)
         out_name = (
-            f"IosevkaExtended-{style_compact}.ttf"
+            f"Dank MonoExtended-{style_compact}.ttf"
             if style_compact.lower() != "regular"
-            else "IosevkaExtended-Regular.ttf"
+            else "Dank MonoExtended-Regular.ttf"
         )
         ttf_out = out_dir / out_name
 
@@ -223,7 +223,7 @@ def main() -> int:
 
     if not args.dry_run:
         print("\nDone. Now run:  fc-cache -f")
-        print('Then restart Zed and set:  "buffer_font_family": "Iosevka Extended"')
+        print('Then restart Zed and set:  "buffer_font_family": "Dank Mono Extended"')
 
     return 0
 

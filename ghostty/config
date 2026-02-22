@@ -1,33 +1,28 @@
 # --- Fonts ---
-font-family = "Iosevka"
+font-family = "Dank Mono"
 font-family = "Vazir Code Hack"
-font-style = "Medium Extended"
-font-style-bold = "Extrabold Extended"
-font-style-italic = "Medium Extended Italic"
-font-style-bold = "Extrabold Extended Italic"
-font-feature = ss16 on, dlig on, calt on, CLIK on, JSPT on, PHPX on,
 
-font-size = 11
+font-size = 13
 
 # --- Font Fallbacks ---
 font-family = "Vazir Code Hack"
 
 # --- Cell Dimensions ---
-adjust-cell-height = 5
+adjust-cell-height = 11
 
 # --- Window ---
-window-width = 140
-window-height = 33
+window-width = 130
+window-height = 30
 window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
 
-window-padding-x = 12
-window-padding-y = 12
+window-padding-x = 3
+window-padding-y = 3
 
 # --- Mouse ---
 mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:Kanagawa Lotus,dark:Kanagawa Dragon
+theme = light:Catppuccin Latte,dark:Catppuccin Macchiato
