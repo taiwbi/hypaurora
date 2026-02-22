@@ -1,0 +1,188 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // Global ====================================================
+  {
+    "bindings": {
+      "ctrl-escape": "workspace::CloseAllDocks",
+      "shift shift": "workspace::CloseAllDocks",
+
+      "ctrl-left": "vim::ResizePaneRight",
+      "ctrl-right": "vim::ResizePaneLeft",
+      "ctrl-down": "vim::ResizePaneUp",
+      "ctrl-up": "vim::ResizePaneDown",
+
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+
+      "ctrl-q": "workspace::CloseWindow",
+
+      "ctrl-space": "editor::ShowCompletions",
+    },
+  },
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+    },
+  },
+  // Global except while typing
+  {
+    "context": "!(vim_mode == insert || menu || Picker || BufferSearchBar || Terminal || InlineAssistant)", // Not while typing
+    "bindings": {
+      "space h": "zed::ShowWelcome",
+
+      "|": "pane::SplitRight",
+      "\\": "pane::SplitDown",
+
+      "tab": "vim::GoToTab",
+      "shift-tab": "vim::GoToPreviousTab",
+
+      "space n": "workspace::NewFile",
+      "space c": "pane::CloseActiveItem",
+      "space q": "workspace::CloseWindow",
+
+      "space f a": "command_palette::Toggle",
+      "space f C": "command_palette::Toggle",
+      "space f w": "pane::DeploySearch",
+      "space f W": "pane::DeploySearch", // ! including hidden files
+      "space f n": "notification_panel::ToggleFocus",
+      "space f f": "file_finder::Toggle",
+      "space f p": "projects::OpenRecent",
+      "space f t": "theme_selector::Toggle",
+      "space g b": "git::CheckoutBranch",
+      "space g c": ["task::Spawn", { "task_name": "Git History" }],
+      "space g C": "git::FileHistory",
+      "space g t": "git_panel::ToggleFocus",
+      "space g g": "git_panel::ToggleFocus", // ! Lazygit
+
+      "space e": "vim::ToggleProjectPanelFocus",
+      "space o": "vim::ToggleProjectPanelFocus",
+
+      "space b b": "tab_switcher::Toggle",
+      "space f b": "tab_switcher::Toggle",
+      "space b c": "workspace::CloseInactiveTabsAndPanes",
+      "space b C": "pane::CloseAllItems",
+
+      "space S o": "workspace::Open",
+      "space S f": "projects::OpenRecent",
+      "space S F": "projects::OpenRecent",
+
+      "Space p a": "auto_update::Check",
+
+      "space l i": "lsp_tool::ToggleMenu",
+
+      "space d c": "debugger::Start",
+      "space d p": "debugger::Pause",
+      "space d r": "debugger::Restart",
+      "space d s": "debugger::RunToCursor",
+      "space d q": "debugger::Stop",
+      "space d Q": ["debugger::Stop", "debug_panel::ToggleFocus"],
+      "space d b": "editor::ToggleBreakpoint",
+      // ! space d C Edit Breakpoint Condition
+      "space d B": "debugger::ClearAllBreakpoints",
+      "space d o": "debugger::StepOver",
+      "space d i": "debugger::StepInto",
+      "space d O": "debugger::StepOut",
+      "space d E": "debugger::EvaluateSelectedText",
+      "space d u": "debug_panel::ToggleFocus",
+      "space d h": "editor::Hover",
+
+      "space t h": "terminal_panel::Toggle",
+      "space t l": ["task::Spawn", { "task_name": "Lazygit" }],
+      "space t p": ["task::Spawn", { "task_name": "Python Console" }],
+      "space t a": ["task::Spawn", { "task_name": "Artisan Console" }],
+
+      "space u t": "editor::ToggleTabBar",
+      "space u w": "editor::ToggleSoftWrap",
+      // ! space u Z toggle zen mode
+
+      // AI
+      "space a e": "assistant::InlineAssist",
+      "space a c": "agent::ToggleFocus",
+      "space a i": "agent::AddSelectionToThread",
+    },
+  },
+  // Editor ====================================================
+  // VIM Insert
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j j": "vim::NormalBefore",
+      "j k": "vim::NormalBefore",
+    },
+  },
+  // Not typing in editor (visual, normal, ...)
+  {
+    "context": "Editor && !(vim_mode == insert || menu || Picker || BufferSearchBar || Terminal || InlineAssistant)", // Not while typing
+    "bindings": {
+      "space /": "editor::ToggleComments",
+      "g c o": [
+        "action::Sequence",
+        [
+          // insert comment below
+          "vim::InsertLineBelow",
+          "vim::NormalBefore",
+          "editor::ToggleComments",
+          "vim::InsertEndOfLine",
+        ],
+      ],
+      "g c 0": [
+        "action::Sequence",
+        // insert comment above
+        [
+          "vim::InsertLineAbove",
+          "vim::NormalBefore",
+          "editor::ToggleComments",
+          "vim::InsertEndOfLine",
+        ],
+      ],
+      "space w": "workspace::Save",
+
+      "H": "vim::FirstNonWhitespace",
+      "L": "vim::EndOfLine",
+
+      // Git
+      "space g s": "git::ToggleStaged",
+      "space g S": "git::StageFile",
+      "space g r": "git::Restore",
+      "space g R": "git::RestoreFile",
+
+      // LSP
+      "K": "editor::Hover",
+      "space l f": "editor::Format",
+      "space l S": "outline_panel::ToggleFocus",
+      // "space l G": "", ! Workspace symbols
+      "space l d": "editor::Hover",
+      "g l": "editor::Hover",
+      "space l D": "diagnostics::Deploy",
+      "space l a": "editor::ToggleCodeActions",
+      "space l r": "editor::Rename",
+      "space l s": "outline::Toggle",
+      "gD": "editor::GoToDeclaration",
+      "gd": "editor::GoToDeclaration",
+      "gri": "editor::GoToImplementation",
+      "grr": "editor::FindAllReferences",
+    },
+  },
+  // Terminal ==================================================
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-left": null,
+      "ctrl-right": null,
+      "ctrl-down": "vim::ResizePaneDown",
+      "ctrl-up": "vim::ResizePaneUp",
+    },
+  },
+]

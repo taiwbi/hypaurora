@@ -1,0 +1,211 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // UI and Buffer =============================================
+  "buffer_font_family": "Dank Mono",
+  "buffer_font_fallbacks": ["Vazir Code Hack"],
+  "buffer_font_size": 17,
+  "buffer_line_height": "comfortable",
+
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Macchiato",
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic",
+      },
+      "comment.doc": {
+        "font_style": "italic",
+      },
+    },
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Monospace Icon Theme - Light",
+    "dark": "Monospace Icon Theme - Dark",
+  },
+  "selection_highlight": false,
+  "cursor_blink": true,
+
+  "ui_font_family": ".SystemUIFont",
+  "ui_font_size": 15,
+
+  "vertical_scroll_margin": 6.0,
+  "colorize_brackets": false,
+  "show_whitespaces": "trailing",
+  "indent_guides": {
+    "enabled": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+
+  // Agent =====================================================
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "taiwbi",
+      "model": "qwen2.5-coder:7b",
+      "enable_thinking": false,
+    },
+    "default_profile": "minimal",
+    "default_model": {
+      "provider": "taiwbi",
+      "model": "gemma3:4b",
+    },
+    "inline_alternatives": [
+      // {
+      //   "provider": "openrouter",
+      //   "model": "anthropic/claude-sonnet-4.6",
+      // },
+      // {
+      //   "provider": "ollama",
+      //   "model": "qwen3:1.7b",
+      // },
+    ],
+  },
+  "agent_ui_font_size": 15.0,
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "ollama": {
+      "model": "goekdenizguelmez/JOSIEFIED-Qwen3:4b",
+    },
+    "mode": "eager",
+    "provider": "zed", // supermaven, ollama
+  },
+  "language_models": {
+    "openai_compatible": {
+      "taiwbi": {
+        "api_url": "https://taiwbi.ir/api",
+        "available_models": [
+          {
+            "name": "gpt-oss:20b",
+            "max_tokens": 128000,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 8192,
+            "capabilities": {
+              "tools": true,
+              "chat_completions": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "qwen2.5-coder:7b",
+            "max_tokens": 128000,
+            "max_output_tokens": 8192,
+            "max_completion_tokens": 8192,
+            "capabilities": {
+              "tools": false,
+              "chat_completions": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+  },
+
+  // Terminal ==================================================
+  "terminal": {
+    "font_family": "DankMono Nerd Font Mono",
+    "font_size": 14,
+    "font_features": {
+      "ss16": true,
+      "dlig": true,
+      "calt": true,
+      "CLIK": true,
+      "JSPT": true,
+      "PHPX": true,
+    },
+    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
+    "line_height": "comfortable",
+  },
+  // Behaviour =================================================
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "relative_line_numbers": "enabled",
+  "use_smartcase_search": true,
+  "auto_indent_on_paste": true,
+  "autosave": "on_focus_change",
+  "restore_on_startup": "launchpad",
+  "tab_bar": {
+    "show": false,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": true,
+  },
+  "sticky_scroll": {
+    "enabled": false,
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "git_panel": {
+    "tree_view": true,
+  },
+
+  // LSP and Language Server ===================================
+  "languages": {
+    "PHP": {
+      "formatter": {
+        "external": {
+          "command": "bash",
+          "arguments": [
+            "-c",
+            "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}",
+          ],
+        },
+      },
+      "language_servers": [
+        "phptools",
+        "php_tools",
+        "!intelephense",
+        "!phpactor",
+        "...",
+      ],
+    },
+    "Blade": {
+      "language_servers": [
+        "phptools",
+        "php_tools",
+        "!intelephense",
+        "!phpactor",
+        "...",
+      ],
+    },
+  },
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "php": "html",
+          "blade": "html",
+        },
+        "experimental": {
+          "classRegex": [
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            "class=\\\"([^\\\"]*)\\\"",
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            "class=\\\"([^\\\"]*)\\\"",
+            "@class\\(\\[([^\\]]*)\\]\\)",
+          ],
+        },
+      },
+    },
+  },
+}
