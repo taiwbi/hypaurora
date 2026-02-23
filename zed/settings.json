@@ -15,8 +15,8 @@
 
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Macchiato",
+    "light": "One Light",
+    "dark": "One Dark",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -51,70 +51,35 @@
 
   // Agent =====================================================
   "agent": {
-    "inline_assistant_model": {
-      "provider": "taiwbi",
-      "model": "qwen2.5-coder:7b",
-      "enable_thinking": false,
+    // chat window
+    "default_model": {
+      "provider": "openrouter",
+      "model": "qwen/qwen3-coder-30b-a3b-instruct",
     },
     "default_profile": "minimal",
-    "default_model": {
-      "provider": "taiwbi",
-      "model": "gemma3:4b",
+    // inline assistant
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "qwen/qwen3-coder-30b-a3b-instruct",
+      "enable_thinking": false,
     },
     "inline_alternatives": [
-      // {
-      //   "provider": "openrouter",
-      //   "model": "anthropic/claude-sonnet-4.6",
-      // },
-      // {
-      //   "provider": "ollama",
-      //   "model": "qwen3:1.7b",
-      // },
+      {
+        "provider": "openrouter",
+        "model": "qwen/qwen3-coder-next",
+      },
+      {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5",
+      },
     ],
   },
   "agent_ui_font_size": 15.0,
+  // edit predictions
   "show_edit_predictions": true,
   "edit_predictions": {
-    "ollama": {
-      "model": "goekdenizguelmez/JOSIEFIED-Qwen3:4b",
-    },
     "mode": "eager",
-    "provider": "zed", // supermaven, ollama
-  },
-  "language_models": {
-    "openai_compatible": {
-      "taiwbi": {
-        "api_url": "https://taiwbi.ir/api",
-        "available_models": [
-          {
-            "name": "gpt-oss:20b",
-            "max_tokens": 128000,
-            "max_output_tokens": 8192,
-            "max_completion_tokens": 8192,
-            "capabilities": {
-              "tools": true,
-              "chat_completions": true,
-              "images": false,
-              "parallel_tool_calls": false,
-              "prompt_cache_key": false,
-            },
-          },
-          {
-            "name": "qwen2.5-coder:7b",
-            "max_tokens": 128000,
-            "max_output_tokens": 8192,
-            "max_completion_tokens": 8192,
-            "capabilities": {
-              "tools": false,
-              "chat_completions": true,
-              "images": false,
-              "parallel_tool_calls": false,
-              "prompt_cache_key": false,
-            },
-          },
-        ],
-      },
-    },
+    "provider": "zed",
   },
 
   // Terminal ==================================================
@@ -129,7 +94,7 @@
       "JSPT": true,
       "PHPX": true,
     },
-    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
+    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
     "line_height": "comfortable",
   },
   // Behaviour =================================================
@@ -169,22 +134,10 @@
           ],
         },
       },
-      "language_servers": [
-        "phptools",
-        "php_tools",
-        "!intelephense",
-        "!phpactor",
-        "...",
-      ],
+      "language_servers": ["phptools", "!intelephense", "!phpactor", "..."],
     },
     "Blade": {
-      "language_servers": [
-        "phptools",
-        "php_tools",
-        "!intelephense",
-        "!phpactor",
-        "...",
-      ],
+      "language_servers": ["phptools", "!intelephense", "!phpactor", "..."],
     },
   },
   "lsp": {
@@ -196,9 +149,11 @@
         },
         "experimental": {
           "classRegex": [
+            // php
             "class=\"([^\"]*)\"",
             "class='([^']*)'",
             "class=\\\"([^\\\"]*)\\\"",
+            // blade
             "class=\"([^\"]*)\"",
             "class='([^']*)'",
             "class=\\\"([^\\\"]*)\\\"",
