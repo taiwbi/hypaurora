@@ -94,22 +94,8 @@ code,
 .ace_editor,
 .ace_editor * {
     font-family:
-        "Dank Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "JetBrains Mono NL", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace;
-
-    font-feature-settings:
-        "calt" 1,
-        "ss01" 1,
-        "ss02" 1,
-        "ss03" 1,
-        "ss04" 1,
-        "ss05" 1,
-        "ss06" 1 "ss07" 1,
-        "ss08" 1,
-        "ss09" 1,
-        "ss10" 1;
-
-    font-variant-ligatures: contextual;
 }
 
 /* === === === === === Wallhaven === === === === === */

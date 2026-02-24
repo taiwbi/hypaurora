@@ -8,10 +8,12 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // UI and Buffer =============================================
-  "buffer_font_family": "Dank Mono",
-  "buffer_font_fallbacks": ["Vazir Code Hack"],
-  "buffer_font_size": 17,
+  "buffer_font_family": "JetBrains Mono NL",
+  "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Emoji"],
+  "buffer_font_size": 16,
   "buffer_line_height": "comfortable",
+
+  "diff_view_style": "unified",
 
   "theme": {
     "mode": "system",
@@ -84,16 +86,8 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "DankMono Nerd Font Mono",
+    "font_family": "JetBrains Mono NL",
     "font_size": 14,
-    "font_features": {
-      "ss16": true,
-      "dlig": true,
-      "calt": true,
-      "CLIK": true,
-      "JSPT": true,
-      "PHPX": true,
-    },
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
     "line_height": "comfortable",
   },
