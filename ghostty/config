@@ -1,6 +1,7 @@
 # --- Fonts ---
 font-family = "Jetbrains Mono NL"
 font-family = "Vazir Code Hack"
+font-family = "Symbols Nerd Font Mono"
 
 font-size = 12
 
@@ -17,8 +18,8 @@ window-padding-x = 0
 window-padding-y = 0
 background-opacity = 1
 
-window-padding-x = 3
-window-padding-y = 3
+window-padding-x = 8
+window-padding-y = 8
 
 # --- Mouse ---
 mouse-hide-while-typing = true

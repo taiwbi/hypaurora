@@ -31,7 +31,7 @@ end
 
 function starship_transient_prompt_func
     set_color red
-    echo -n '○ '
+    echo -n '$ '
     set_color normal
 end
 
