@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
-import sys
-import subprocess
 import json
 import os
-import requests
+import subprocess
+import sys
 from pathlib import Path
+
+import requests
 
 # --- Configuration ---
 # Fallback API key file if OPENROUTER_API_KEY is not set
@@ -124,18 +125,16 @@ Generate a short and concise conventional commit message based on the git diff a
 
 # Commit Types
 
-- **✨ feat:** Introduces a new feature to the codebase.`.
-- **💥 fix:** Patches a bug in the codebase.`.
-- **🔨 build:** Changes that affect the build system or external dependencies.`.
-- **🔧 chore:** Regular maintenance tasks that don't modify src or test files.`.
-- **🤖 ci:** Changes to CI configuration files and scripts.`.
-- **📚 docs:** Changes to documentation only.`.
-- **💄 style:** Changes that don't affect code meaning (white-space, formatting, etc.).`.
-- **♻️ refactor:** Code changes that neither fix a bug nor add a feature, just improving the code structure.`.
-- **⚡ perf:** Changes that improve performance.`.
-- **🧪 test:** Adding or correcting tests.`.
-
-Keep the emojies near type in message.
+- **feat:** Introduces a new feature to the codebase.`.
+- **fix:** Patches a bug in the codebase.`.
+- **build:** Changes that affect the build system or external dependencies.`.
+- **chore:** Regular maintenance tasks that don't modify src or test files.`.
+- **ci:** Changes to CI configuration files and scripts.`.
+- **docs:** Changes to documentation only.`.
+- **style:** Changes that don't affect code meaning (white-space, formatting, etc.).`.
+- **refactor:** Code changes that neither fix a bug nor add a feature, just improving the code structure.`.
+- **perf:** Changes that improve performance.`.
+- **test:** Adding or correcting tests.`.
 
 # Scopes
 
@@ -164,6 +163,10 @@ If your commit introduces a breaking change (i.e., changes that are not backward
 ```
 BREAKING CHANGE: <description>
 ```
+
+## Important Guidelines
+
+- DO NOT wrap commit message into grave charactes (`)
 """
 
     user_message = "Here's the git diff:\n\n" + git_diff
