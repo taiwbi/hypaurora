@@ -13,6 +13,8 @@ $python\
 $character"""
 
 add_newline = false
+scan_timeout = 10
+command_timeout = 150
 
 [directory]
 style = "blue"
