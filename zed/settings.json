@@ -53,9 +53,10 @@
 
   // Agent =====================================================
   "agent": {
+    // commit message
     "commit_message_model": {
       "provider": "openrouter",
-      "model": "gpt-oss-20b:free",
+      "model": "qwen/qwen3-coder-next",
     },
     // chat window
     "default_model": {
