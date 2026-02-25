@@ -62,17 +62,17 @@
     // inline assistant
     "inline_assistant_model": {
       "provider": "openrouter",
-      "model": "qwen/qwen3-coder-30b-a3b-instruct",
+      "model": "qwen/qwen3-coder-next",
       "enable_thinking": false,
     },
     "inline_alternatives": [
       {
         "provider": "openrouter",
-        "model": "qwen/qwen3-coder-next",
+        "model": "anthropic/claude-haiku-4.5",
       },
       {
         "provider": "openrouter",
-        "model": "minimax/minimax-m2.5",
+        "model": "openai/gpt-5.1-codex-mini",
       },
     ],
   },
