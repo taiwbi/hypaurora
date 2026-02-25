@@ -12,7 +12,6 @@ function fish_greeting
             if command -v kitten >/dev/null 2>&1; and test $term_width -gt 40
                 set -l position (math $term_width - 21)
                 set -l image $(find "$HOME/Documents/hypaurora/assets" -type f -name "*.png" | shuf -n 1)
-                sleep .3 # This prevents printing image before ghostty changes the terminal size
                 kitten icat -n --place "20x14@$position"x0 "$image"
             end
         end

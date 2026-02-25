@@ -9,8 +9,9 @@ bash_greeting() {
         if [ "$TERM" = "xterm-ghostty" ] || [ "$TERM" = "xterm-kitty" ]; then
             if command -v kitten > /dev/null 2>&1 && [ "$term_width" -gt 40 ]; then
                 position=$((term_width - 21))
-                kitten icat -n --place "20x14@$position"x0 "$HOME/Documents/hypaurora/assets/2B.png"
-                
+                random_image=$(shuf -n 1 -e "$HOME/Documents/hypaurora/assets"/*.png)
+                kitten icat -n --place "20x14@$position"x0 "$random_image"
+
                 wrap_width=$((term_width - 22))
             fi
         fi
