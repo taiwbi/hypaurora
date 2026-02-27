@@ -16,9 +16,9 @@
   "diff_view_style": "unified",
 
   "theme": {
-    "mode": "system",
-    "light": "One Light",
+    "mode": "dark",
     "dark": "One Dark",
+    "light": "One Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -31,9 +31,9 @@
     },
   },
   "icon_theme": {
-    "mode": "system",
-    "light": "Monospace Icon Theme - Light",
+    "mode": "dark",
     "dark": "Monospace Icon Theme - Dark",
+    "light": "Monospace Icon Theme - Light",
   },
   "selection_highlight": false,
   "cursor_blink": true,
