@@ -35,4 +35,6 @@ function starship_transient_prompt_func
     set_color normal
 end
 
+bind alt-backspace backward-kill-word
+
 enable_transience
