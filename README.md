@@ -32,7 +32,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [BlinkMacSystemFont](https://github.com/aliifam/BlinkMacSystemFont)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [JetBrains Mono NL](https://www.jetbrains.com/lp/mono/)
+- 💻 Monospace Family: [Lyth Mono](https://github.com/why-trv/LythMono)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
 
 ## Installation

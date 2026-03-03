@@ -50,14 +50,14 @@ main() {
 
   ui_font="$(choose_font "BlinkMacSystemFont" "Noto Sans")"
   ui_font_spec="${ui_font} 11"
-  mono_font_spec="JetBrains Mono NL 11"
+  mono_font_spec="Lyth Mono"
   doc_font_spec="${ui_font} 11"
   title_font_spec="${ui_font} Bold 11"
 
   # Fonts
   gset org.cinnamon.desktop.interface font-name "${ui_font_spec}"
   gset org.gnome.desktop.interface document-font-name "${doc_font_spec}"
-  gset org.gnome.desktop.interface monospace-font-name "${mono_font_spec}"
+  gset org.gnome.desktop.interface monospace-font-name "${mono_font_spec}, Symbols Nerd Font 11"
   gset org.cinnamon.desktop.wm.preferences titlebar-font "${title_font_spec}"
 
   # Mouse
@@ -80,6 +80,11 @@ main() {
   gset org.cinnamon.desktop.session idle-delay "900"
   gset org.cinnamon.desktop.screensaver lock-delay "15"
   gset org.cinnamon.desktop.screensaver lock-enabled "true"
+
+  # Screen Saver
+  gset org.cinnamon.desktop.screensaver font-time "${ui_font} Ultra-Bold 64"
+  gset org.cinnamon.desktop.screensaver show-album-art false
+  gset org.cinnamon.desktop.screensaver default-message "This world isn't good, just bare it to the end."
 
   # Keyboard layouts
   gset org.gnome.libgnomekbd.keyboard layouts "['us', 'ir']"

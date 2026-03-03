@@ -6,9 +6,11 @@
 // To see all of Zed's default settings without changing your
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
+//
+// != == === <= >= --> <-- ==> <==
 {
   // UI and Buffer =============================================
-  "buffer_font_family": "JetBrains Mono NL",
+  "buffer_font_family": "Lyth Mono",
   "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Emoji"],
   "buffer_font_size": 16,
   "buffer_line_height": "comfortable",
@@ -91,7 +93,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "JetBrains Mono NL",
+    "font_family": "Lyth Mono",
     "font_size": 14,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
     "line_height": "comfortable",
