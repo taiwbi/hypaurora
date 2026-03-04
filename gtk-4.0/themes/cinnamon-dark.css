@@ -62,6 +62,10 @@ window {
     border-radius: 8px 8px 0 0;
 }
 
+window.maximized {
+    border-radius: 0;
+}
+
 /* Window Controls */
 
 windowcontrols button {
@@ -82,7 +86,7 @@ windowcontrols button.close image {
 headerbar {
     background: @headerbar_bg_color;
     border-bottom: 1px solid @card_shade_color;
-    margin-top: -4px;
+    margin-top: 0; /* changed */
 }
 
 /* Boxed lists */
@@ -96,8 +100,52 @@ list row {
     padding: 0;
 }
 
+listview row,
+listview row sidebar-row {
+    padding: 0;
+}
+
+listview row:selected,
+listview row:selected sidebar-row {
+    background: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
 /* Progress Bars */
 
 levelbar * {
     border-radius: 0;
+}
+
+/* =================== */
+
+/* Fractal */
+
+listview row room:hover {
+    background: none;
+}
+
+listview row room {
+    padding: 0;
+}
+
+listview row:selected room {
+    background: @accent_bg_color;
+    color: @accent_fg_color;
+}
+
+row event-row.room-history-row {
+    border-radius: 0;
+    margin-top: 0;
+}
+
+/* Celluloid */
+
+headerbar.floating-header,
+button.osd.raised,
+box.control-box {
+    background: transparent;
+    border: none;
+    background: transparent;
+    border: none;
 }
