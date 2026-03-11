@@ -11,6 +11,7 @@
 {
   // UI and Buffer =============================================
   "buffer_font_family": "Lyth Mono",
+  "buffer_font_weight": 500,
   "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Emoji"],
   "buffer_font_size": 16,
   "buffer_line_height": "comfortable",
@@ -18,7 +19,7 @@
   "diff_view_style": "unified",
 
   "theme": {
-    "mode": "dark",
+    "mode": "system",
     "dark": "One Dark",
     "light": "One Light",
   },
@@ -33,7 +34,7 @@
     },
   },
   "icon_theme": {
-    "mode": "dark",
+    "mode": "system",
     "dark": "Monospace Icon Theme - Dark",
     "light": "Monospace Icon Theme - Light",
   },
