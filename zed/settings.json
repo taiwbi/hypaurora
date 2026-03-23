@@ -20,8 +20,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "One Dark",
-    "light": "One Light",
+    "dark": "Ayu Mirage",
+    "light": "Ayu Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -41,8 +41,8 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": ".SystemUIFont",
-  "ui_font_size": 15,
+  "ui_font_family": "IRANYekanMobile",
+  "ui_font_size": 16,
 
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
@@ -84,7 +84,7 @@
       },
     ],
   },
-  "agent_ui_font_size": 15.0,
+  "agent_ui_font_size": 16.0,
   // edit predictions
   "show_edit_predictions": true,
   "edit_predictions": {
