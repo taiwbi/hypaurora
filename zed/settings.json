@@ -10,7 +10,7 @@
 // != == === <= >= --> <-- ==> <==
 {
   // UI and Buffer =============================================
-  "buffer_font_family": "Lyth Mono",
+  "buffer_font_family": "IBM Plex Mono",
   "buffer_font_weight": 500,
   "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Emoji"],
   "buffer_font_size": 16,
@@ -94,8 +94,8 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Lyth Mono",
-    "font_size": 14,
+    "font_family": "IBM Plex Mono",
+    "font_size": 16,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
     "line_height": "comfortable",
   },

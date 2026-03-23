@@ -18,7 +18,7 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
 gsettings set org.gnome.desktop.interface font-name 'BlinkMacSystemFont, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Lyth Mono, Vazir Code Hack, Symbols Nerd Font 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'IBM Plex Mono Medium, Symbols Nerd Font 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'MacTahoe'
 gsettings set org.gnome.desktop.interface cursor-theme "'MacTahoe'"
