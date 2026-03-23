@@ -148,6 +148,7 @@
         ],
       ],
       "space w": "workspace::Save",
+      "space W": "workspace::SaveWithoutFormat",
 
       "H": "vim::FirstNonWhitespace",
       "L": "vim::EndOfLine",
