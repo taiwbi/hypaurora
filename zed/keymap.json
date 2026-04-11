@@ -52,6 +52,9 @@
       "space c": "pane::CloseActiveItem",
       "space q": "workspace::CloseWindow",
 
+      "space r r": "workspace::CopyRelativePath",
+      "space r a": "workspace::CopyPath",
+
       "space f a": "command_palette::Toggle",
       "space f C": "command_palette::Toggle",
       "space f w": "pane::DeploySearch",
