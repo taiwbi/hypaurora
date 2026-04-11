@@ -10,10 +10,10 @@
 // != == === <= >= --> <-- ==> <==
 {
   // UI and Buffer =============================================
-  "buffer_font_family": "IBM Plex Mono",
+  "buffer_font_family": "Fantasque Sans Mono",
   "buffer_font_weight": 500,
   "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Emoji"],
-  "buffer_font_size": 16,
+  "buffer_font_size": 15,
   "buffer_line_height": "comfortable",
 
   "diff_view_style": "unified",
@@ -42,7 +42,7 @@
   "cursor_blink": true,
 
   "ui_font_family": "IRANYekanMobile",
-  "ui_font_size": 16,
+  "ui_font_size": 15,
 
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
@@ -84,18 +84,24 @@
       },
     ],
   },
-  "agent_ui_font_size": 16.0,
+  "agent_ui_font_size": 15.0,
   // edit predictions
   "show_edit_predictions": true,
   "edit_predictions": {
+    "open_ai_compatible_api": {
+      "max_output_tokens": 128,
+      "model": "qwen/qwen2.5-coder-7b-instruct",
+      "api_url": "https://openrouter.ai/api/v1",
+      "prompt_format": "qwen",
+    },
     "mode": "eager",
     "provider": "zed",
   },
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "IBM Plex Mono",
-    "font_size": 16,
+    "font_family": "FantasqueSansM Nerd Font",
+    "font_size": 14,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
     "line_height": "comfortable",
   },
