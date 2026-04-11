@@ -8,7 +8,7 @@ reset_fg="\033[0m"
 header_0="$red⦿  $green⦿  $yellow⦿ $reset_fg"
 
 echo -e "$header_0 Are you sure? $red THIS WILL OVERWRITE YOUR PREVIOUS GSETTINGS CONFIGURATIONS.$reset_fg"
-read -rp "(y/n)" yn
+read -rp "(y/n) " yn
 
 if [ "$yn" != "y" ]; then
   echo -e "Ok, I won't ruin your configs :)"
@@ -137,9 +137,10 @@ gsettings set org.gnome.Ptyxis default-rows 30
 # === System Preferences ===
 
 echo -e "$header_1 Do you want to lower the swappiness value to 40? Do this if you have 12GB or less RAM."
-read -rp "(y/n)" yn
+read -rp "(y/n) " yn
 
-if [ "$yn" != "y" ]; then
+if [ "$yn" == "y" ]; then
+  echo "Changing swappiness to 40"
   echo "vm.swappiness=40" | sudo tee /etc/sysctl.d/99-swappiness.conf
   sudo sysctl -p /etc/sysctl.d/99-swappiness.conf
   echo -e "Swappiness changed to 40."
