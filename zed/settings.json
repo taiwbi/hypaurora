@@ -88,6 +88,12 @@
   // edit predictions
   "show_edit_predictions": true,
   "edit_predictions": {
+    "open_ai_compatible_api": {
+      "max_output_tokens": 128,
+      "model": "qwen/qwen2.5-coder-7b-instruct",
+      "api_url": "https://openrouter.ai/api/v1",
+      "prompt_format": "qwen",
+    },
     "mode": "eager",
     "provider": "zed",
   },
