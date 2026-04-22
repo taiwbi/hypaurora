@@ -59,7 +59,6 @@
       "space f C": "command_palette::Toggle",
       "space f w": "pane::DeploySearch",
       "space f W": "pane::DeploySearch", // ! including hidden files
-      "space f n": "notification_panel::ToggleFocus",
       "space f f": "file_finder::Toggle",
       "space f p": "projects::OpenRecent",
       "space f t": "theme_selector::Toggle",
