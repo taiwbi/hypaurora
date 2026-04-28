@@ -55,6 +55,11 @@
   },
 
   // Agent =====================================================
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+  },
   "agent": {
     // commit message
     "commit_message_model": {
