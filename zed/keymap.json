@@ -12,11 +12,6 @@
       "ctrl-escape": "workspace::CloseAllDocks",
       "shift shift": "workspace::CloseAllDocks",
 
-      "ctrl-left": "vim::ResizePaneRight",
-      "ctrl-right": "vim::ResizePaneLeft",
-      "ctrl-down": "vim::ResizePaneUp",
-      "ctrl-up": "vim::ResizePaneDown",
-
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-j": "workspace::ActivatePaneDown",
@@ -38,7 +33,16 @@
   },
   // Global except while typing
   {
-    "context": "!(vim_mode == insert || menu || Picker || BufferSearchBar || Terminal || InlineAssistant)", // Not while typing
+    "context": "!(vim_mode == insert || Picker || BufferSearchBar || InlineAssistant || ProjectSearchBar)",
+    "bindings": {
+      "ctrl-left": "vim::ResizePaneRight",
+      "ctrl-right": "vim::ResizePaneLeft",
+      "ctrl-down": "vim::ResizePaneUp",
+      "ctrl-up": "vim::ResizePaneDown",
+    },
+  },
+  {
+    "context": "!(vim_mode == insert || menu || Picker || BufferSearchBar || Terminal || InlineAssistant || ProjectSearchBar)", // Not while typing
     "bindings": {
       "space h": "zed::ShowWelcome",
 
@@ -126,7 +130,7 @@
   },
   // Not typing in editor (visual, normal, ...)
   {
-    "context": "Editor && !(vim_mode == insert || menu || Picker || BufferSearchBar || Terminal || InlineAssistant)", // Not while typing
+    "context": "Editor && !(vim_mode == insert || menu || Picker || BufferSearchBar || Terminal || InlineAssistant || ProjectSearchBar)", // Not while typing
     "bindings": {
       "space /": "editor::ToggleComments",
       "g c o": [
