@@ -56,6 +56,16 @@
     "show": "never",
   },
 
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+
   // Agent =====================================================
   "agent_servers": {
     "codex-acp": {
@@ -64,6 +74,7 @@
   },
   "agent": {
     // commit message
+    "dock": "right",
     "commit_message_model": {
       "provider": "openrouter",
       "model": "qwen/qwen3-coder-next",
@@ -135,6 +146,7 @@
     "line_numbers": true,
   },
   "git_panel": {
+    "dock": "left",
     "tree_view": true,
   },
 
