@@ -60,6 +60,9 @@ ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 rm -rf "$HOME/.local/binary/gim"
 ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 
+rm -rf "$HOME/.local/share/org.gnome.Ptyxis/palettes"
+ln -sf "$PWD/ptyxis-palettes" "$HOME/.local/share/org.gnome.Ptyxis/palettes"
+
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
