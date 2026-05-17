@@ -60,9 +60,6 @@ ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 rm -rf "$HOME/.local/binary/gim"
 ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
 
-rm -rf "$HOME/.config/zed"
-ln -sf "$PWD/zed" "$HOME/.config/zed"
-
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
