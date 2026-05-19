@@ -4,9 +4,10 @@
 alias fastfetch 'fastfetch --gpu-hide-type integrated'
 alias ff fastfetch
 
-alias vi nvim
-alias cvi 'nvim --clean'
-alias nvim 'commanddoesnotexists' # Trying to make myself used to vi command
+alias vi 'command nvim'
+alias v 'command nvim'
+alias cvi 'command nvim --clean'
+alias nvim 'echo "Use vi :)"'
 alias cl clear
 alias cd.. 'cd ..'
 alias .. 'cd ..'
