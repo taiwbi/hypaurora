@@ -32,7 +32,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [Yekan Bakh](https://fontiran.com/)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: Cartograph CF
+- 💻 Monospace Family: JetBrains Mono
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://github.com/rastikerdar/vazir-code-font)
 
 ## Installation
