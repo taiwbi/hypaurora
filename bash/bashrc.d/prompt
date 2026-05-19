@@ -1,0 +1,133 @@
+# Native bash prompt
+#
+# Layout:
+#   [user] dir  git_icon branch  git_status  $ COMMAND        run_time
+# When the terminal is narrower than 50 columns it splits into two lines.
+
+# ---- helpers --------------------------------------------------------------
+
+# Shorten the working directory: /home/mahdi/Documents/Projects/x -> ~/D/P/x
+_prompt_pwd() {
+    local path="${PWD/#$HOME/\~}" prefix=''
+    [[ $path == /* ]] && prefix='/'
+    path=${path#/}
+    local IFS='/'
+    local parts=($path)
+    local n=${#parts[@]} out='' i p
+    for (( i = 0; i < n; i++ )); do
+        p=${parts[i]}
+        if (( i == n - 1 )); then
+            out+=$p
+        elif [[ $p == .* ]]; then
+            out+="${p:0:2}/"
+        else
+            out+="${p:0:1}/"
+        fi
+    done
+    printf '%s%s' "$prefix" "$out"
+}
+
+# Emit the git segment (PS1-ready, escapes wrapped in \[ \]). Silent if there
+# is no git command or the current directory is not a repository.
+_prompt_git() {
+    command -v git >/dev/null 2>&1 || return
+    local branch
+    branch=$(git symbolic-ref --short -q HEAD 2>/dev/null) \
+        || branch=$(git rev-parse --short HEAD 2>/dev/null) \
+        || return
+
+    local info staged=0 modified=0 untracked=0 ahead=0 behind=0 line
+    info=$(git status --porcelain --branch 2>/dev/null)
+    while IFS= read -r line; do
+        case $line in
+            '## '*)
+                [[ $line =~ ahead\ ([0-9]+) ]]  && ahead=${BASH_REMATCH[1]}
+                [[ $line =~ behind\ ([0-9]+) ]] && behind=${BASH_REMATCH[1]}
+                ;;
+            '??'*) untracked=1 ;;
+            '')    ;;
+            *)
+                [[ ${line:0:1} != ' ' && ${line:0:1} != '?' ]] && staged=1
+                [[ ${line:1:1} != ' ' ]] && modified=1
+                ;;
+        esac
+    done <<< "$info"
+
+    local st=''
+    (( ahead > 0 ))  && st+="⇡$ahead"
+    (( behind > 0 )) && st+="⇣$behind"
+    (( staged ))     && st+='+'
+    (( modified ))   && st+='!'
+    (( untracked ))  && st+='?'
+
+    local out=" \[\e[32m\] $branch\[\e[0m\]"
+    [[ -n $st ]] && out+=" \[\e[92m\]$st\[\e[0m\]"
+    printf '%s' "$out"
+}
+
+# ---- timing ---------------------------------------------------------------
+
+# Runs before each command; records the start time once per command line.
+_prompt_preexec() {
+    [[ -n $COMP_LINE ]] && return          # ignore completion
+    [[ -n $_prompt_preexec_done ]] && return
+    _prompt_preexec_done=1
+    _prompt_timer=${EPOCHREALTIME/[.,]/}
+}
+
+# ---- prompt ---------------------------------------------------------------
+
+_prompt_render() {
+    local exit=$?
+    local cols=${COLUMNS:-80}
+
+    # Previous command duration (skipped on the very first prompt).
+    local rt='' rtcode=32
+    if [[ -z $_prompt_first ]]; then
+        _prompt_first=1
+    elif [[ -n $_prompt_timer && -n $EPOCHREALTIME ]]; then
+        local now=${EPOCHREALTIME/[.,]/}
+        local elapsed=$(( (now - _prompt_timer) / 1000 ))
+        (( elapsed < 0 )) && elapsed=0
+        (( exit != 0 )) && rtcode=31
+    fi
+
+    # Username: only for root (red) or over SSH (user@host).
+    local user=''
+    if (( EUID == 0 )); then
+        user='\[\e[31m\]\u\[\e[0m\] '
+    elif [[ -n $SSH_CONNECTION || -n $SSH_TTY || -n $SSH_CLIENT ]]; then
+        user='\u@\h '
+    fi
+
+    local dir="\[\e[94m\]$(_prompt_pwd)\[\e[0m\]"
+    local git; git=$(_prompt_git)
+    local line1="${user}${dir}${git}"
+
+    # Separator: space (one line) or newline (narrow terminal).
+    local sep=' '
+    (( cols < 50 )) && sep='\n'
+
+    # Run time, pinned to the right edge of the command line. The whole
+    # save/move/print/restore sequence has zero net cursor movement, so it is
+    # wrapped in a single \[ \] pair to keep readline's width accounting right.
+    local rtseg=''
+    if [[ -n $rt ]]; then
+        local col=$(( cols - ${#rt} + 1 ))
+        (( col < 1 )) && col=1
+        rtseg="\[\e7\e[${col}G\e[${rtcode}m${rt}\e[0m\e8\]"
+    fi
+
+    PS1="${line1}${sep}$ ${rtseg}"
+
+    # Re-arm the timer last, so the DEBUG trap that fires for the next
+    # command line is the one recorded — not the git calls run above.
+    # Clearing the guard must come after the timer for the same reason.
+    _prompt_timer=
+    _prompt_preexec_done=
+}
+
+shopt -s checkwinsize
+shopt -u promptvars
+trap '_prompt_preexec' DEBUG
+PROMPT_COMMAND='_prompt_render'

@@ -18,23 +18,4 @@ end
 # --- Configuration Options ---
 set -g fish_features '!'bracketed-paste
 
-# --- Startship ---
-starship init fish | source
-
-# Disable focus reporting
-functions -c fish_prompt __starship_fish_prompt
-
-function fish_prompt
-    printf '\e[?1004l'
-    __starship_fish_prompt $argv
-end
-
-function starship_transient_prompt_func
-    set_color red
-    echo -n '$ '
-    set_color normal
-end
-
 bind alt-backspace backward-kill-word
-
-enable_transience
