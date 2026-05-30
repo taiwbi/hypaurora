@@ -3,8 +3,49 @@ gui:
   # Default size for focused window. Can be changed from within Lazygit with '+'
   # and '_' (but this won't change the default).
   # One of: 'normal' (default) | 'half' | 'full'
-  screenMode: full
+  screenMode: half
 
   # Window border style.
   # One of 'rounded' (default) | 'single' | 'double' | 'hidden' | 'bold'
-  border: hidden
+  border: single
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#c4b28a" # dragon waveRed/dragonGreen accent
+      - bold
+    inactiveBorderColor:
+      - "#54546d" # dragon sumiInk4 (muted border)
+    optionsTextColor:
+      - "#7e9cd8" # dragon crystalBlue
+    selectedLineBgColor:
+      - "#2d4f67" # dragon waveBlue2 (selection bg)
+    selectedRangeBgColor:
+      - "#2d4f67"
+    cherryPickedCommitBgColor:
+      - "#49443c" # dragon dragonGreen dim
+    cherryPickedCommitFgColor:
+      - "#c4b28a" # dragon dragonYellow
+    unstagedChangesColor:
+      - "#c34043" # dragon autumnRed
+    defaultFgColor:
+      - "#c5c9c5" # dragon fujiWhite
+
+    # activeBorderColor:
+    #   - "#6f894e"   # lotus lotusGreen
+    #   - bold
+    # inactiveBorderColor:
+    #   - "#8a8980"   # lotus lotusGray2
+    # optionsTextColor:
+    #   - "#4d699b"   # lotus lotusBlue
+    # selectedLineBgColor:
+    #   - "#c9cbd1"   # lotus lotusInk2 (light selection)
+    # selectedRangeBgColor:
+    #   - "#c9cbd1"
+    # cherryPickedCommitBgColor:
+    #   - "#d7e3d8"   # lotus lotusGreen dim
+    # cherryPickedCommitFgColor:
+    #   - "#6f894e"   # lotus lotusGreen
+    # unstagedChangesColor:
+    #   - "#c84053"   # lotus lotusRed
+    # defaultFgColor:
+    #   - "#545464"   # lotus lotusInk1
