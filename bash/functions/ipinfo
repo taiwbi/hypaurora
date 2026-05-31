@@ -9,5 +9,5 @@ ipinfo() {
         return 1
     fi
     
-    curl --silent --fail "http://ip-api.com/json/$1" | jq
+    curl --silent -H "Authorization: Bearer $(cat $HOME/.keys/IPINFO)" "https://api.ipinfo.io/lite/$1"
 }

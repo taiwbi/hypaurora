@@ -46,7 +46,7 @@ alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-h
 alias sail 'sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # IP Aliases
-alias myip 'curl --silent http://ip-api.com/json/ | jq'
+alias myip 'curl --silent -H "Authorization: Bearer $(cat $HOME/.keys/IPINFO)" "https://api.ipinfo.io/lite/me"'
 
 # Conditional Aliases (Example: icat)
 if test "$TERM" = xterm-ghostty -o "$TERM" = xterm-kitty
