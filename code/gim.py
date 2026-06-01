@@ -118,7 +118,7 @@ def commit_mode(user_description=""):
 Generate a short and concise conventional commit message based on the git diff and user description below.
 
 ```
-<type>(scope): <description>
+<type>(scope): #issue_number <description>
 [optional body]
 [optional footer(s)]
 ```
