@@ -61,6 +61,8 @@ rm -rf "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 ln -sf "$PWD/ptyxis-palettes" "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 
 mkdir -p "$HOME/.local/share/applications"
+ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
+ln -sf "$PWD/applications/pycharm.desktop" "$HOME/.local/share/applications/pycharm.desktop"
 ln -sf "$PWD/applications/phpstorm.desktop" "$HOME/.local/share/applications/phpstorm.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
 ln -sf "$PWD/applications/nvim.desktop" "$HOME/.local/share/applications/nvim.desktop"

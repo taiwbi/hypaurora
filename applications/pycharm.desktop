@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm
+Comment=JetBrains PyCharm IDE
+Exec=/home/mahdi/.local/opt/PyCharm/bin/pycharm %f
+Icon=com.jetbrains.PyCharm-Professional
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm
+Categories=Development;IDE;
+MimeType=text/plain;
