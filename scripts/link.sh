@@ -73,6 +73,10 @@ if [ -d "$HOME/.local/share/epiphany" ]; then
   ln -sf "$PWD/epiphany/user-stylesheet.css" "$HOME/.local/share/epiphany/user-stylesheet.css"
 fi
 
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
+# Check if directory doesn't exists or is empty
+if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+fi
 
 echo -e ""
