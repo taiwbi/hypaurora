@@ -28,11 +28,11 @@ positional arguments:
 
 ## 🎭 Customization
 
-- ✨ Icon Pack: [MacTahoe-dark](https://github.com/vinceliuice/MacTahoe-icon-theme)
+- ✨ Icon Pack: [Neuwaita](https://github.com/RusticBard/Neuwaita)
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
-- 🅰️ Font Family: [Yekan Bakh](https://fontiran.com/)
+- 🅰️ Font Family: [Mona Sans](https://github.com/github/mona-sans)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: mononoki
+- 💻 Monospace Family: [MonaSans Mono](https://github.com/github/mona-sans)
 - 📜 Persian Monospace Family: AzarMehrMonospaced
 
 ## Installation

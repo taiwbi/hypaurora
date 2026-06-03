@@ -21,7 +21,7 @@ label,
 a,
 blockquote {
     font-family:
-        "Yekan Bakh",
+        "Mona Sans",
         system-ui,
         -apple-system,
         "Segoe UI",
@@ -93,7 +93,7 @@ code,
 .ace_editor,
 .ace_editor * {
     font-family:
-        "mononoki", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code",
+        "Mona Sans Mono", "AzarMehrMonospaced", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace;
 }
 

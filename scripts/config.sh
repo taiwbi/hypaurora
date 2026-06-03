@@ -17,8 +17,8 @@ fi
 
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
-gsettings set org.gnome.desktop.interface font-name 'Yekan Bakh 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'mononoki Semibold, AzarMehrMonospaced, Symbols Nerd Font 12' # 11 on 720p
+gsettings set org.gnome.desktop.interface font-name 'Mona Sans 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Mona Sans Mono, AzarMehrMonospaced, Symbols Nerd Font 12' # 11 on 720p
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'Neuwaita'
 gsettings set org.gnome.desktop.interface cursor-theme "MacTahoe"
