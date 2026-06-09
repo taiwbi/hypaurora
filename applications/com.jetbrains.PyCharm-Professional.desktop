@@ -1,0 +1,14 @@
+# This desktop entry opens Pycharm Professional, installed via Flatpak like a normal app running on system.
+# Without sandboxing, updates can be handled using flatpak while the app works normally.
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm Professional Edition
+GenericName=The intelligent Python IDE
+Exec=/var/lib/flatpak/app/com.jetbrains.PyCharm-Professional/current/active/files/extra/bin/pycharm %f
+Icon=com.jetbrains.PyCharm-Professional
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-pycharm-professional
+Categories=Development;IDE;
+MimeType=text/plain;

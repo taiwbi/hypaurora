@@ -1,0 +1,14 @@
+# This desktop entry opens PhpStorm, installed via Flatpak like a normal app running on system.
+# Without sandboxing, updates can be handled using flatpak while the app works normally.
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PhpStorm
+Comment=A smart IDE for PHP and Web
+Exec=/var/lib/flatpak/app/com.jetbrains.PhpStorm/current/active/files/extra/bin/phpstorm %f
+Icon=com.jetbrains.PhpStorm
+Terminal=false
+StartupNotify=true
+StartupWMClass=com.jetbrains.PhpStorm
+Categories=Development;IDE;
+MimeType=text/plain;
