@@ -34,9 +34,6 @@ ln -s "$PWD/ghostty" "$HOME/.config/"
 rm -rf "$HOME/.config/lazygit";
 ln -s "$PWD/lazygit" "$HOME/.config/"
 
-rm -rf "$HOME/.config/tmux";
-ln -s "$PWD/tmux" "$HOME/.config/"
-
 rm -rf "$HOME/.config/fish";
 ln -sf "$PWD/fish" "$HOME/.config/fish"
 
@@ -71,12 +68,6 @@ if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js"
   ln -sf "$PWD/epiphany/user-stylesheet.css" "$HOME/.local/share/epiphany/user-stylesheet.css"
-fi
-
-
-# Check if directory doesn't exists or is empty
-if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 fi
 
 echo -e ""
