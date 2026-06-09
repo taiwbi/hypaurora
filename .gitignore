@@ -1,6 +1,4 @@
-.vscode/
-.cursor/
-.cursorrules/
+.idea/
 gtk-3.0/bookmarks
 hypr/*card
 alchemy/.idea
