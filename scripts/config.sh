@@ -24,6 +24,8 @@ gsettings set org.gnome.desktop.interface icon-theme 'Neuwaita'
 gsettings set org.gnome.desktop.interface cursor-theme "MacTahoe"
 gsettings set org.gnome.desktop.interface cursor-size 28
 
+gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true # Why the hell would this be false on Linux!!?
+
 # Keybindings
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"
 gsettings set org.gnome.shell.keybindings switch-to-application-2 "@as []"
