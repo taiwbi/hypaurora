@@ -17,7 +17,7 @@ fi
 
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
-gsettings set org.gnome.desktop.interface font-name 'Mona Sans 11'
+gsettings set org.gnome.desktop.interface font-name 'Mona Sans, Vazirmatn 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Monaspace Neon, AzarMehrMonospaced, Symbols Nerd Font 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'Neuwaita'
