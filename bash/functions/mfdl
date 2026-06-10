@@ -1,0 +1,19 @@
+mfdl() {
+    if [[ $# -eq 0 ]]; then
+        echo "Usage: mfdl <mediafire_url>"
+        return 1
+    fi
+
+    local url="$1"
+
+    local direct_url
+    direct_url=$(curl -s "$url" | grep -Eo 'https://download[0-9]*\.mediafire\.com/[^"]+' | head -1)
+
+    if [[ -z "$direct_url" ]]; then
+        echo "Error: Could not extract download link from $url"
+        return 1
+    fi
+
+    echo "Downloading: $direct_url"
+    aria "$direct_url"
+}
