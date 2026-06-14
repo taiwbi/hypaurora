@@ -43,8 +43,8 @@
 #WHEEL_RIGHT   seek 10          # seek 10 seconds forward
 
 ## Seek units are in seconds, but note that these are limited by keyframes
-RIGHT seek  2                          # seek 2 seconds forward
-LEFT  seek -2                          # seek 2 seconds backward
+RIGHT seek  24                          # seek 2 seconds forward
+LEFT  seek -12                          # seek 2 seconds backward
 #UP    seek  60                         # seek 1 minute forward
 #DOWN  seek -60                         # seek 1 minute backward
 # Do smaller, always exact (non-keyframe-limited), seeks with shift.
