@@ -3,7 +3,7 @@
 # Place this file in: ~/.config/ghostty/themes/
 # Then set in your Ghostty config: theme = JetBrains Islands Dark
 
-background = #1E1F22
+background = #191A1C
 foreground = #BCBEC4
 
 cursor-color          = #BCBEC4
