@@ -9,6 +9,6 @@ Exec=/var/lib/flatpak/app/com.jetbrains.PhpStorm/current/active/files/extra/bin/
 Icon=com.jetbrains.PhpStorm
 Terminal=false
 StartupNotify=true
-StartupWMClass=com.jetbrains.PhpStorm
+StartupWMClass=jetbrains-phpstorm
 Categories=Development;IDE;
 MimeType=text/plain;

@@ -9,6 +9,6 @@ Exec=/var/lib/flatpak/app/com.jetbrains.PyCharm-Professional/current/active/file
 Icon=com.jetbrains.PyCharm-Professional
 Terminal=false
 StartupNotify=true
-StartupWMClass=jetbrains-pycharm-professional
+StartupWMClass=jetbrains-pycharm
 Categories=Development;IDE;
 MimeType=text/plain;
