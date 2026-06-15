@@ -48,10 +48,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 if [[ "$1" == "kitty" ]]; then
     shift
-    kitty --class="org.nvim.neovide" -e bash -c "nvim $@"
+    kitty --class="org.nvim.neovide" -e bash -c "/home/mahdi/.local/binary/nvim.appimage $@"
 elif [[ "$1" == "ghostty" ]]; then
     shift
-    ghostty --window-decoration=none --class="org.nvim.neovide" -e "nvim" -- "$@"
+    ghostty --window-decoration=none --class="org.nvim.neovide" -e "/home/mahdi/.local/binary/nvim.appimage" -- "$@"
 else
     neovide
 fi
