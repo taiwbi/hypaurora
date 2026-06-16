@@ -4,9 +4,9 @@
 alias fastfetch 'fastfetch --gpu-hide-type integrated'
 alias ff fastfetch
 
-alias vi 'command nvim'
-alias v 'command nvim'
-alias cvi 'command nvim --clean'
+alias vi '~/.local/binary/nvim.appimage'
+alias v '~/.local/binary/nvim.appimage'
+alias cvi '~/.local/binary/nvim.appimage --clean'
 alias nvim 'echo "Use vi :)"'
 alias cl clear
 alias cd.. 'cd ..'
