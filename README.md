@@ -32,7 +32,7 @@ positional arguments:
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [Mona Sans](https://github.com/github/mona-sans)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Elephant](https://github.com/taiwbi/Elephant)
+- 💻 Monospace Family: ComicShannsMono Nerd Font
 - 📜 Persian Monospace Family: AzarMehrMonospaced
 
 ## Installation

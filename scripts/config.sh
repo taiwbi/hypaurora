@@ -18,7 +18,7 @@ fi
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
 gsettings set org.gnome.desktop.interface font-name 'Mona Sans, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Elephant, AzarMehrMonospaced, Symbols Nerd Font 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'ComicShannsMono Nerd Font, AzarMehrMonospaced, Symbols Nerd Font 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
 gsettings set org.gnome.desktop.interface icon-theme 'Neuwaita'
 gsettings set org.gnome.desktop.interface cursor-theme "MacTahoe"
@@ -73,11 +73,11 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
   "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'ghostty'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'kitty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name 'Coder Editor'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command '/home/mahdi/Documents/hypaurora/code/nvim.sh ghostty'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command '/home/mahdi/Documents/hypaurora/code/nvim.sh kitty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding '<Super>backslash'
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'Brave'
