@@ -51,8 +51,8 @@ mkdir -p $HOME/.local/binary/
 rm -rf "$HOME/.local/binary/polarify"
 ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
 
-rm -rf "$HOME/.local/binary/gim"
-ln -sf "$PWD/code/gim.py" "$HOME/.local/binary/gim"
+rm -rf "$HOME/.local/binary/zora"
+ln -sf "$PWD/code/zora.py" "$HOME/.local/binary/zora"
 
 rm -rf "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 ln -sf "$PWD/ptyxis-palettes" "$HOME/.local/share/org.gnome.Ptyxis/palettes"
