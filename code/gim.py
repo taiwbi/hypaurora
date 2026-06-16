@@ -11,7 +11,7 @@ import requests
 # --- Configuration ---
 # Fallback API key file if OPENROUTER_API_KEY is not set
 API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
-MODEL_NAME = "google/gemma-4-26b-a4b-it"
+MODEL_NAME = "deepseek/deepseek-v4-flash"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -52,7 +52,7 @@ def generate_openrouter_response(prompt, user_input="", temperature=0.0):
         "provider": {
             "sort": "price",
         },
-        "reasoning": {"enabled": True, "effort": "minimal"},
+        "reasoning": {"enabled": True, "effort": "high"},
     }
 
     try:
@@ -211,12 +211,12 @@ Only if the request is really ambiguous or absolutely cannot be reasonably fulfi
 respond with 'Error: Cannot determine a single command for this request.'
 User request:"""
 
-    print("Asking OpenRouter...")
+    print(f"Asking {MODEL_NAME}...")
     suggested_command = generate_openrouter_response(predefined_prompt, user_input, 0.3)
 
     if (
-            suggested_command
-            == "Error: Cannot determine a single command for this request."
+        suggested_command
+        == "Error: Cannot determine a single command for this request."
     ):
         print(suggested_command)
         return
