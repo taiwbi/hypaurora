@@ -1,5 +1,5 @@
 # --- Fonts ---
-font-family = "ComicShannsMono Nerd Font"
+font-family = "Elephant"
 font-family = "AzarMehrMonospaced"
 font-family = "Symbols Nerd Font Mono"
 
@@ -13,8 +13,8 @@ window-width = 95
 window-height = 25
 background-opacity = 1
 
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 8
+window-padding-y = 8
 
 # --- Mouse ---
 mouse-hide-while-typing = true
