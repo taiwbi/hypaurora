@@ -3,7 +3,7 @@ font-family = "Elephant"
 font-family = "AzarMehrMonospaced"
 font-family = "Symbols Nerd Font Mono"
 
-font-size = 12
+font-size = 11
 
 # --- Cell Dimensions ---
 adjust-cell-height = 6
@@ -21,4 +21,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Catppuccin Macchiato, light:Catppuccin Latte
+theme = dark:nordic, light:Neobones Light
