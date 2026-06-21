@@ -155,7 +155,7 @@ AGS_ASTAL_PKGS=(
 TOOLS_PKGS=(
   rofi rofi-wayland waybar eww-git
   cliphist grim slurp matugen brightnessctl
-  kitty alacritty fastfetch htop cava mpd mpc
+  alacritty fastfetch htop cava mpd mpc
   openssh-askpass mpv vlc blueman ModemManager
 )
 
