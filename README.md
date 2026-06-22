@@ -33,7 +33,7 @@ positional arguments:
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
 - 💻 Monospace Family: [Geist Mono](https://vercel.com/font)
-- 📜 Persian Monospace Family: AzarMehrMonospaced
+- 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font/)
 
 ## Installation
 
