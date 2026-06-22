@@ -30,9 +30,9 @@ positional arguments:
 
 - ✨ Icon Pack: [Neuwaita](https://github.com/RusticBard/Neuwaita)
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
-- 🅰️ Font Family: [Mona Sans](https://github.com/github/mona-sans)
+- 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Elephant](http://github.com/taiwbi/Elephant)
+- 💻 Monospace Family: [Geist Mono](https://vercel.com/font)
 - 📜 Persian Monospace Family: AzarMehrMonospaced
 
 ## Installation
