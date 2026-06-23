@@ -4,5 +4,6 @@ function ipinfo --description "Get IP info from ipinfo.io"
         echo "Usage: ipinfo <IP_ADDRESS>" >&2
         return 1
     end
-    curl --silent -H "Authorization: Bearer $(cat $HOME/.keys/IPINFO)" "https://api.ipinfo.io/lite/$argv[1]"
+
+    curl --silent "https://ipapi.co/$argv[1]/json/" | jq
 end
