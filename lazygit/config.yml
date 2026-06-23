@@ -1,3 +1,8 @@
+# Config relating to the Lazygit CLI
+os:
+  edit: "vi {{filename}}"
+  editAtLine: "vi {{filename}} +{{line}}"
+
 # Config relating to the Lazygit UI
 gui:
   # Default size for focused window. Can be changed from within Lazygit with '+'
@@ -29,6 +34,7 @@ gui:
       - "#c34043" # dragon autumnRed
     defaultFgColor:
       - "#c5c9c5" # dragon fujiWhite
+
 
     # activeBorderColor:
     #   - "#6f894e"   # lotus lotusGreen
