@@ -51,7 +51,7 @@ if [[ "$1" == "kitty" ]]; then
     kitty --class="org.nvim.neovide" -e bash -c "/home/mahdi/.local/binary/nvim.appimage $@"
 elif [[ "$1" == "ghostty" ]]; then
     shift
-    ghostty --window-decoration=none --class="org.nvim.neovide" -e /bin/bash -c "sleep .1 && /home/mahdi/.local/binary/nvim.appimage" -- "$@"
+    ghostty --gtk-titlebar=false --class="org.nvim.neovide" -e /bin/bash -c "sleep .1 && /home/mahdi/.local/binary/nvim.appimage" -- "$@"
 else
     neovide
 fi
