@@ -1,7 +1,7 @@
-# Native bash prompt
+# Native bash prompt with Powerline effects
 #
 # Layout:
-#   [user] dir  git_icon branch  git_status  $ COMMAND        run_time
+#   [user] dir  branch  ❯ COMMAND
 # When the terminal is narrower than 50 columns it splits into two lines.
 
 # ---- helpers --------------------------------------------------------------
@@ -27,14 +27,18 @@ _prompt_pwd() {
     printf '%s%s' "$prefix" "$out"
 }
 
-# Emit the git segment (PS1-ready, escapes wrapped in \[ \]). Silent if there
-# is no git command or the current directory is not a repository.
+# Emit the git segment. Silent if there is no git command or the current
+# directory is not a repository.
+# Returns exit code:
+#   0: Clean git repository
+#   1: Dirty git repository
+#   2: Not a git repository
 _prompt_git() {
-    command -v git >/dev/null 2>&1 || return
+    command -v git >/dev/null 2>&1 || return 2
     local branch
     branch=$(git symbolic-ref --short -q HEAD 2>/dev/null) \
         || branch=$(git rev-parse --short HEAD 2>/dev/null) \
-        || return
+        || return 2
 
     local info staged=0 modified=0 untracked=0 ahead=0 behind=0 line
     info=$(git status --porcelain --branch 2>/dev/null)
@@ -60,19 +64,15 @@ _prompt_git() {
     (( modified ))   && st+='!'
     (( untracked ))  && st+='?'
 
-    local out=" \[\e[32m\] $branch\[\e[0m\]"
-    [[ -n $st ]] && out+=" \[\e[92m\]$st\[\e[0m\]"
+    local out=" $branch"
+    [[ -n $st ]] && out+=" $st"
     printf '%s' "$out"
-}
 
-# ---- timing ---------------------------------------------------------------
-
-# Runs before each command; records the start time once per command line.
-_prompt_preexec() {
-    [[ -n $COMP_LINE ]] && return          # ignore completion
-    [[ -n $_prompt_preexec_done ]] && return
-    _prompt_preexec_done=1
-    _prompt_timer=${EPOCHREALTIME/[.,]/}
+    if (( staged || modified || untracked )); then
+        return 1
+    else
+        return 0
+    fi
 }
 
 # ---- prompt ---------------------------------------------------------------
@@ -81,53 +81,141 @@ _prompt_render() {
     local exit=$?
     local cols=${COLUMNS:-80}
 
-    # Previous command duration (skipped on the very first prompt).
-    local rt='' rtcode=32
-    if [[ -z $_prompt_first ]]; then
-        _prompt_first=1
-    elif [[ -n $_prompt_timer && -n $EPOCHREALTIME ]]; then
-        local now=${EPOCHREALTIME/[.,]/}
-        local elapsed=$(( (now - _prompt_timer) / 1000 ))
-        (( elapsed < 0 )) && elapsed=0
-        (( exit != 0 )) && rtcode=31
-    fi
+    # Colors (Standard ANSI color codes to support terminal themes)
+    local BG_USER_ROOT=41
+    local FG_USER_ROOT=31
+
+    local BG_USER_SSH=45
+    local FG_USER_SSH=35
+
+    local BG_DIR=44
+    local FG_DIR_CODE=34
+    local FG_DIR_TEXT=97
+
+    local BG_GIT_CLEAN=42
+    local FG_GIT_CLEAN_CODE=32
+    local FG_GIT_CLEAN_TEXT=30
+
+    local BG_GIT_DIRTY=43
+    local FG_GIT_DIRTY_CODE=33
+    local FG_GIT_DIRTY_TEXT=30
 
     # Username: only for root (red) or over SSH (user@host).
-    local user=''
+    local user_seg=''
+    local user_bg=''
+    local user_fg=''
     if (( EUID == 0 )); then
-        user='\[\e[31m\]\u\[\e[0m\] '
+        user_seg=" \u "
+        user_bg=$BG_USER_ROOT
+        user_fg=$FG_USER_ROOT
     elif [[ -n $SSH_CONNECTION || -n $SSH_TTY || -n $SSH_CLIENT ]]; then
-        user='\u@\h '
+        user_seg=" \u@\h "
+        user_bg=$BG_USER_SSH
+        user_fg=$FG_USER_SSH
     fi
 
-    local dir="\[\e[94m\]$(_prompt_pwd)\[\e[0m\]"
-    local git; git=$(_prompt_git)
-    local line1="${user}${dir}${git}"
+    local dir_seg=" $(_prompt_pwd) "
+    local dir_bg=$BG_DIR
+
+    local git_seg=''
+    local git_bg=''
+    local git_fg=''
+    local git_fg_text=''
+    local git_info
+    git_info=$(_prompt_git)
+    local git_status=$?
+    if (( git_status == 0 )); then
+        git_seg=" $git_info "
+        git_bg=$BG_GIT_CLEAN
+        git_fg=$FG_GIT_CLEAN_CODE
+        git_fg_text=$FG_GIT_CLEAN_TEXT
+    elif (( git_status == 1 )); then
+        git_seg=" $git_info "
+        git_bg=$BG_GIT_DIRTY
+        git_fg=$FG_GIT_DIRTY_CODE
+        git_fg_text=$FG_GIT_DIRTY_TEXT
+    fi
+
+    # Assemble line 1 with powerline transitions
+    local line1=''
+    if [[ -n $user_seg ]]; then
+        # Segment 1: User
+        line1+="\[\e[${user_bg};97m\]${user_seg}"
+        # Transition: User -> Dir
+        line1+="\[\e[${dir_bg};${user_fg}m\]\[\e[${FG_DIR_TEXT}m\]"
+    else
+        # Start directly with Dir
+        line1+="\[\e[${dir_bg};${FG_DIR_TEXT}m\]"
+    fi
+
+    # Segment 2: Dir
+    line1+="${dir_seg}"
+
+    if [[ -n $git_seg ]]; then
+        # Transition: Dir -> Git
+        line1+="\[\e[${git_bg};${FG_DIR_CODE}m\]\[\e[${git_fg_text}m\]"
+        # Segment 3: Git
+        line1+="${git_seg}"
+        # End Git -> Default
+        line1+="\[\e[49;${git_fg}m\]\[\e[0m\]"
+    else
+        # End Dir -> Default
+        line1+="\[\e[49;${FG_DIR_CODE}m\]\[\e[0m\]"
+    fi
+
+    # Prompt symbol: ❯ colored green on success, red on failure
+    local symbol='❯'
+    (( EUID == 0 )) && symbol='#'
+    local prompt_color="\[\e[32m\]"
+    (( exit != 0 )) && prompt_color="\[\e[31m\]"
+    local prompt_char="${prompt_color}${symbol}\[\e[0m\]"
 
     # Separator: space (one line) or newline (narrow terminal).
     local sep=' '
-    (( cols < 50 )) && sep='\n'
-
-    # Run time, pinned to the right edge of the command line. The whole
-    # save/move/print/restore sequence has zero net cursor movement, so it is
-    # wrapped in a single \[ \] pair to keep readline's width accounting right.
-    local rtseg=''
-    if [[ -n $rt ]]; then
-        local col=$(( cols - ${#rt} + 1 ))
-        (( col < 1 )) && col=1
-        rtseg="\[\e7\e[${col}G\e[${rtcode}m${rt}\e[0m\e8\]"
+    _prompt_last_height=1
+    if (( cols < 50 )); then
+        sep='\n'
+        _prompt_last_height=2
     fi
 
-    PS1="${line1}${sep}$ ${rtseg}"
+    PS1="${line1}${sep}${prompt_char} "
+}
 
-    # Re-arm the timer last, so the DEBUG trap that fires for the next
-    # command line is the one recorded — not the git calls run above.
-    # Clearing the guard must come after the timer for the same reason.
-    _prompt_timer=
-    _prompt_preexec_done=
+# Transient prompt logic
+_transient_pre() {
+    _prompt_last_command=$READLINE_LINE
+}
+
+_prompt_debug_trap() {
+    if [[ -n $_prompt_last_command ]]; then
+        local exit=$?
+        local symbol='❯'
+        (( EUID == 0 )) && symbol='#'
+        local prompt_color="\e[32m"
+        (( exit != 0 )) && prompt_color="\e[31m"
+        
+        if (( _prompt_last_height == 2 )); then
+            # Move up 2 lines, clear top line
+            printf "\e[2A\r\e[2K" >&2
+            # Move down 1 line, clear command line, print transient prompt + command
+            printf "\e[1B\r\e[2K %b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
+        else
+            # Move up 1 line, clear line, print transient prompt + command, and move down
+            printf "\e[1A\r\e[2K %b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
+        fi
+        
+        _prompt_last_command=
+    fi
 }
 
 shopt -s checkwinsize
 shopt -u promptvars
-trap '_prompt_preexec' DEBUG
 PROMPT_COMMAND='_prompt_render'
+
+if [[ $- == *i* ]]; then
+    bind -x '"\e\C-e": _transient_pre'
+    bind '"\e\C-j": accept-line'
+    bind '"\C-m": "\e\C-e\e\C-j"'
+    bind '"\C-j": "\e\C-e\e\C-j"'
+    trap '_prompt_debug_trap' DEBUG
+fi

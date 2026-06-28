@@ -1,12 +1,16 @@
 # Emit the git segment. Silent if there is no git command or the current
 # directory is not a repository.
+# Returns exit code:
+#   0: Clean repository
+#   1: Dirty repository
+#   2: Not a repository
 function _prompt_git
-    command -q git; or return
+    command -q git; or return 2
     set -l branch (git symbolic-ref --short -q HEAD 2>/dev/null)
     if test -z "$branch"
         set branch (git rev-parse --short HEAD 2>/dev/null)
     end
-    test -z "$branch"; and return
+    test -z "$branch"; and return 2
 
     set -l ahead 0
     set -l behind 0
@@ -40,8 +44,15 @@ function _prompt_git
     test "$modified" -eq 1; and set st "$st!"
     test "$untracked" -eq 1; and set st "$st?"
 
-    echo -n ' '(set_color green)' '"$branch"(set_color normal)
+    set -l out " $branch"
     if test -n "$st"
-        echo -n ' '(set_color brgreen)"$st"(set_color normal)
+        set out "$out $st"
+    end
+    echo -n "$out"
+
+    if test "$staged" -eq 1; or test "$modified" -eq 1; or test "$untracked" -eq 1
+        return 1
+    else
+        return 0
     end
 end
