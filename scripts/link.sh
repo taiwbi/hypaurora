@@ -46,7 +46,14 @@ ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
 rm -rf "$HOME/.bashrc"
 ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
 
-mkdir -p $HOME/.local/binary/
+rm -rf "$HOME/.config/zed/keymap.json"
+rm -rf "$HOME/.config/zed/settings.json"
+rm -rf "$HOME/.config/zed/tasks.json"
+cp -f "$PWD/zed/keymap.json" "$HOME/.config/zed/keymap.json"
+cp -f "$PWD/zed/settings.json" "$HOME/.config/zed/settings.json"
+cp -f "$PWD/zed/tasks.json" "$HOME/.config/zed/tasks.json"
+
+mkdir -p "$HOME/.local/binary/"
 
 rm -rf "$HOME/.local/binary/polarify"
 ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
