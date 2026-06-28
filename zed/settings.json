@@ -208,5 +208,6 @@
         },
       },
     },
+    "phptools": { "initialization_options": { "0": "" } },
   },
 }
