@@ -31,6 +31,12 @@
       "d": "project_panel::Delete",
     },
   },
+  {
+    "context": "GitPanel && !editing",
+    "bindings": {
+      "g space": "git::ViewFile",
+    },
+  },
   // Global except while typing
   {
     "context": "!(vim_mode == insert || Picker || BufferSearchBar || InlineAssistant || ProjectSearchBar)",
