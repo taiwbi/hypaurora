@@ -23,8 +23,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Snazzy Theme",
-    "light": "Ayu Light",
+    "dark": "Oxocarbon Dark (IBM Carbon)",
+    "light": "Oxocarbon Light (IBM Carbon)",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -163,9 +163,10 @@
     "html": true,
     "dockerfile": true,
     "git-firefly": true,
+    "blueprint": true,
     // icons and themes
     "monospace-icon-theme": true,
-    "snazzy": true,
+    "oxocarbon": true,
   },
 
   // LSP and Language Server ===================================
