@@ -1,7 +1,7 @@
-# Native bash prompt with Powerline effects
+# Native bash prompt
 #
 # Layout:
-#   [user] dir  branch  ❯ COMMAND
+#   [user] dir branch $ COMMAND
 # When the terminal is narrower than 50 columns it splits into two lines.
 
 # ---- helpers --------------------------------------------------------------
@@ -81,90 +81,37 @@ _prompt_render() {
     local exit=$?
     local cols=${COLUMNS:-80}
 
-    # Colors (Standard ANSI color codes to support terminal themes)
-    local BG_USER_ROOT=41
-    local FG_USER_ROOT=31
+    # Foreground colors (Standard ANSI color codes to support terminal themes)
+    local FG_USER_ROOT='31'
+    local FG_USER_SSH='35'
+    local FG_DIR='34'
+    local FG_GIT_CLEAN='32'
+    local FG_GIT_DIRTY='33'
 
-    local BG_USER_SSH=45
-    local FG_USER_SSH=35
+    local prompt_text=''
 
-    local BG_DIR=44
-    local FG_DIR_CODE=34
-    local FG_DIR_TEXT=97
-
-    local BG_GIT_CLEAN=42
-    local FG_GIT_CLEAN_CODE=32
-    local FG_GIT_CLEAN_TEXT=30
-
-    local BG_GIT_DIRTY=43
-    local FG_GIT_DIRTY_CODE=33
-    local FG_GIT_DIRTY_TEXT=30
-
-    # Username: only for root (red) or over SSH (user@host).
-    local user_seg=''
-    local user_bg=''
-    local user_fg=''
+    # Segment 1: User (only for root or over SSH)
     if (( EUID == 0 )); then
-        user_seg=" \u "
-        user_bg=$BG_USER_ROOT
-        user_fg=$FG_USER_ROOT
+        prompt_text+="\[\e[${FG_USER_ROOT}m\]\u\[\e[0m\] "
     elif [[ -n $SSH_CONNECTION || -n $SSH_TTY || -n $SSH_CLIENT ]]; then
-        user_seg=" \u@\h "
-        user_bg=$BG_USER_SSH
-        user_fg=$FG_USER_SSH
+        prompt_text+="\[\e[${FG_USER_SSH}m\]\u@\h\[\e[0m\] "
     fi
 
-    local dir_seg=" $(_prompt_pwd) "
-    local dir_bg=$BG_DIR
+    # Segment 2: Directory
+    prompt_text+="\[\e[${FG_DIR}m\]$(_prompt_pwd)\[\e[0m\]"
 
-    local git_seg=''
-    local git_bg=''
-    local git_fg=''
-    local git_fg_text=''
+    # Segment 3: Git
     local git_info
     git_info=$(_prompt_git)
     local git_status=$?
     if (( git_status == 0 )); then
-        git_seg=" $git_info "
-        git_bg=$BG_GIT_CLEAN
-        git_fg=$FG_GIT_CLEAN_CODE
-        git_fg_text=$FG_GIT_CLEAN_TEXT
+        prompt_text+=" \[\e[${FG_GIT_CLEAN}m\]${git_info}\[\e[0m\]"
     elif (( git_status == 1 )); then
-        git_seg=" $git_info "
-        git_bg=$BG_GIT_DIRTY
-        git_fg=$FG_GIT_DIRTY_CODE
-        git_fg_text=$FG_GIT_DIRTY_TEXT
+        prompt_text+=" \[\e[${FG_GIT_DIRTY}m\]${git_info}\[\e[0m\]"
     fi
 
-    # Assemble line 1 with powerline transitions
-    local line1=''
-    if [[ -n $user_seg ]]; then
-        # Segment 1: User
-        line1+="\[\e[${user_bg};97m\]${user_seg}"
-        # Transition: User -> Dir
-        line1+="\[\e[${dir_bg};${user_fg}m\]\[\e[${FG_DIR_TEXT}m\]"
-    else
-        # Start directly with Dir
-        line1+="\[\e[${dir_bg};${FG_DIR_TEXT}m\]"
-    fi
-
-    # Segment 2: Dir
-    line1+="${dir_seg}"
-
-    if [[ -n $git_seg ]]; then
-        # Transition: Dir -> Git
-        line1+="\[\e[${git_bg};${FG_DIR_CODE}m\]\[\e[${git_fg_text}m\]"
-        # Segment 3: Git
-        line1+="${git_seg}"
-        # End Git -> Default
-        line1+="\[\e[49;${git_fg}m\]\[\e[0m\]"
-    else
-        # End Dir -> Default
-        line1+="\[\e[49;${FG_DIR_CODE}m\]\[\e[0m\]"
-    fi
-
-    # Prompt symbol: ❯ colored green on success, red on failure
-    local symbol='❯'
+    # Prompt symbol: $ colored green on success, red on failure
+    local symbol='$'
     (( EUID == 0 )) && symbol='#'
     local prompt_color="\[\e[32m\]"
     (( exit != 0 )) && prompt_color="\[\e[31m\]"
@@ -178,7 +125,7 @@ _prompt_render() {
         _prompt_last_height=2
     fi
 
-    PS1="${line1}${sep}${prompt_char} "
+    PS1="${prompt_text}${sep}${prompt_char} "
 }
 
 # Transient prompt logic
@@ -189,7 +136,7 @@ _transient_pre() {
 _prompt_debug_trap() {
     if [[ -n $_prompt_last_command ]]; then
         local exit=$?
-        local symbol='❯'
+        local symbol='$'
         (( EUID == 0 )) && symbol='#'
         local prompt_color="\e[32m"
         (( exit != 0 )) && prompt_color="\e[31m"
@@ -198,10 +145,10 @@ _prompt_debug_trap() {
             # Move up 2 lines, clear top line
             printf "\e[2A\r\e[2K" >&2
             # Move down 1 line, clear command line, print transient prompt + command
-            printf "\e[1B\r\e[2K %b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
+            printf "\e[1B\r\e[2K%b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
         else
             # Move up 1 line, clear line, print transient prompt + command, and move down
-            printf "\e[1A\r\e[2K %b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
+            printf "\e[1A\r\e[2K%b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
         fi
         
         _prompt_last_command=

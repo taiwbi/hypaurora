@@ -1,4 +1,4 @@
-# Native fish prompt with Powerline effects
+# Native fish prompt
 function fish_prompt
     set -g _prompt_last_status $status
     printf '\e[?1004l'      # disable terminal focus reporting
@@ -7,7 +7,8 @@ function fish_prompt
 
     # Transient prompt handling
     if set -q _transient
-        set -l symbol '❯'
+        set -e _transient
+        set -l symbol '$'
         if test (id -u) -eq 0
             set symbol '#'
         end
@@ -15,76 +16,40 @@ function fish_prompt
         if test $_prompt_last_status -ne 0
             set prompt_color (set_color red)
         end
-        echo -n " "$prompt_color$symbol$reset" "
+        echo -n $prompt_color$symbol$reset" "
         return
     end
 
     # Colors (using standard color names to support terminal themes)
-    set -l BG_USER_ROOT red
-    set -l BG_USER_SSH magenta
-    set -l BG_DIR blue
-    set -l BG_GIT_CLEAN green
-    set -l BG_GIT_DIRTY yellow
+    set -l color_user_root red
+    set -l color_user_ssh magenta
+    set -l color_dir blue
+    set -l color_git_clean green
+    set -l color_git_dirty yellow
 
-    # Segment 1: User (if root or SSH)
-    set -l user_seg ''
-    set -l user_bg ''
+    set -l prompt_text ''
+
+    # Segment 1: User (only if root or SSH)
     if test (id -u) -eq 0
-        set user_seg " "(whoami)" "
-        set user_bg $BG_USER_ROOT
+        set prompt_text (set_color $color_user_root)(whoami)$reset" "
     else if set -q SSH_CONNECTION; or set -q SSH_TTY; or set -q SSH_CLIENT
-        set user_seg " "(whoami)"@"(prompt_hostname)" "
-        set user_bg $BG_USER_SSH
+        set prompt_text (set_color $color_user_ssh)(whoami)"@"(prompt_hostname)$reset" "
     end
 
     # Segment 2: Directory
-    set -l dir_seg " "(_prompt_pwd)" "
-    set -l dir_bg $BG_DIR
+    set prompt_text "$prompt_text"(set_color $color_dir)(_prompt_pwd)$reset
 
     # Segment 3: Git
-    set -l git_seg ''
-    set -l git_bg ''
     set -l git_info (_prompt_git)
     set -l git_status $status
     if test $git_status -eq 0
-        set git_seg " $git_info "
-        set git_bg $BG_GIT_CLEAN
+        set prompt_text "$prompt_text" (set_color $color_git_clean)$git_info$reset
     else if test $git_status -eq 1
-        set git_seg " $git_info "
-        set git_bg $BG_GIT_DIRTY
+        set prompt_text "$prompt_text" (set_color $color_git_dirty)$git_info$reset
     end
 
-    # Assemble line 1 with powerline transitions
-    set -l line ''
-    if test -n "$user_seg"
-        # Segment 1: User
-        set line "$line"(set_color -b $user_bg white)"$user_seg"
-        # Transition: User -> Dir
-        set line "$line"(set_color -b $dir_bg $user_bg)""(set_color -b $dir_bg white)
-    else
-        # Start directly with Dir
-        set line "$line"(set_color -b $dir_bg white)
-    end
-
-    # Segment 2: Dir
-    set line "$line""$dir_seg"
-
-    if test -n "$git_seg"
-        # Transition: Dir -> Git
-        # Green and Yellow backgrounds contrast best with black text
-        set -l git_fg_text black
-        set line "$line"(set_color -b $git_bg $dir_bg)""(set_color -b $git_bg $git_fg_text)
-        # Segment 3: Git
-        set line "$line""$git_seg"
-        # End Git -> Default
-        set line "$line"(set_color normal)(set_color $git_bg)""$reset
-    else
-        # End Dir -> Default
-        set line "$line"(set_color normal)(set_color $dir_bg)""$reset
-    end
-
-    # Prompt symbol: ❯ colored green on success, red on failure
-    set -l symbol '❯'
+    # Prompt symbol: $ colored green on success, red on failure
+    set -l symbol '$'
     if test (id -u) -eq 0
         set symbol '#'
     end
@@ -96,9 +61,9 @@ function fish_prompt
 
     # Print prompt
     if test "$COLUMNS" -lt 50
-        printf '%s\n%s ' "$line" "$prompt_char"
+        printf '%s\n%s ' "$prompt_text" "$prompt_char"
     else
-        printf '%s %s ' "$line" "$prompt_char"
+        printf '%s %s ' "$prompt_text" "$prompt_char"
     end
 
     set -g _prompt_ran 1
@@ -106,6 +71,11 @@ end
 
 # Transient prompt logic
 function transient_execute
+    if commandline --paging-mode
+        commandline -f execute
+        return
+    end
+
     set -g _transient 1
     commandline -f repaint
     commandline -f execute
