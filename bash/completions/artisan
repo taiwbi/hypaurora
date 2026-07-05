@@ -25,13 +25,23 @@ _artisan() {
     local artisan_pos=1
     
     # If we're completing for 'sail', adjust the position
-    if [[ "${words[0]}" == "sail" ]]; then
-        prefix="./vendor/bin/sail"
-        artisan_pos=2
+    if [[ "${words[0]}" == "sail" || "${words[0]}" == *"/sail" ]]; then
+        if [[ -f "./vendor/bin/sail" ]]; then
+            prefix="./vendor/bin/sail"
+        else
+            prefix="${words[0]}"
+        fi
         
-        # If we're at position 1 and it's not 'artisan' yet, suggest 'artisan'
+        if [[ "${words[1]}" == "artisan" || "${words[1]}" == "debug" ]]; then
+            artisan_pos=2
+        else
+            artisan_pos=999
+        fi
+        
+        # If we're at position 1, suggest all sail subcommands
         if [[ $cword -eq 1 ]]; then
-            mapfile -t COMPREPLY < <(compgen -W "artisan" -- "$cur")
+            local sail_commands="up stop restart ps artisan php composer node npm npx pnpm pnpx yarn bun bunx mysql mariadb psql mongodb redis valkey debug test phpunit pest pint dusk dusk:fails shell bash root-shell root-bash tinker share open bin run build"
+            mapfile -t COMPREPLY < <(compgen -W "$sail_commands" -- "$cur")
             return
         fi
     fi
@@ -58,3 +68,4 @@ _artisan() {
 # Register completion for artisan command
 complete -F _artisan artisan
 complete -F _artisan sail
+complete -F _artisan ./vendor/bin/sail

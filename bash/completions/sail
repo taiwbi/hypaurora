@@ -1,0 +1,6 @@
+#!/bin/bash
+# Bash completion for Laravel Sail, delegating to artisan completion
+
+if [[ -f "$(dirname "${BASH_SOURCE[0]}")/artisan" ]]; then
+    source "$(dirname "${BASH_SOURCE[0]}")/artisan"
+fi

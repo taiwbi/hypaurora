@@ -9,5 +9,7 @@ function __fish_artisan_commands
     __fish_artisan_commands_with_descriptions | cut -f 1
 end
 
-complete -c artisan -f -n 'test -f artisan; and __fish_use_subcommand' -a '(__fish_artisan_commands_with_descriptions)'
-complete -c artisan -f -n 'test -f artisan; and __fish_seen_subcommand_from help' -a '(__fish_artisan_commands)'
+for cmd in artisan ./artisan
+    complete -c $cmd -f -n 'test -f artisan; and __fish_use_subcommand' -a '(__fish_artisan_commands_with_descriptions)'
+    complete -c $cmd -f -n 'test -f artisan; and __fish_seen_subcommand_from help' -a '(__fish_artisan_commands)'
+end
