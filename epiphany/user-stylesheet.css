@@ -1,3 +1,5 @@
+/* Matching Regex:^https?://(?!([^/]+\.)?(rondnumber\.com|ronders\.ir|taiwbi\.ir))[^/]+/.* */
+
 /* Apply system UI font to all text elements while preserving icons */
 html,
 body,
@@ -54,7 +56,11 @@ mat-icon,
 .material-icons-sharp,
 .material-icons-two-tone,
 .material-symbols-outlined {
-    font-family: "Material Symbols Rounded Filled" !important;
+    font-family: "Google Symbols", "Material Symbols Rounded Filled" !important;
+}
+
+mat-icon[data-mat-icon-namespace="lumi-symbols"] {
+    font-family: "Luminous Symbols" !important;
 }
 
 [class^="fa-"]:before,
@@ -89,13 +95,66 @@ samp *,
 .code *,
 .monospace,
 .monospace *,
+.text-mono,
+.text-mono *,
 pre,
 code,
 .ace_editor,
-.ace_editor * {
+.ace_editor *,
+.chakra-form-control .chakra-text,
+.cm-editor,
+.cm-editor *,
+#wordsWrapper #words .word letter {
     font-family:
         "Geist Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
-        "Roboto Mono", Consolas, "Courier New", monospace;
+        "Roboto Mono", Consolas, "Courier New", monospace !important;
+}
+
+/* === === === === === Claude === === === === === */
+
+:root {
+    --font-claude-response:
+        "Anthropic Serif", "Aria[NoEng]", "Anthropic Serif Fallback Georgia",
+        "Anthropic Serif Fallback Times", "Anthropic Serif Fallback DejaVu",
+        "Anthropic Serif Fallback Noto", Georgia, "Arial Hebrew",
+        "Noto Sans Hebrew", "Times New Roman", Times, "PingFang SC",
+        "Microsoft YaHei", "Noto Sans CJK SC", "PingFang TC",
+        "Microsoft JhengHei", "Noto Sans CJK TC", "Hiragino Sans", "Yu Gothic",
+        Meiryo, "Noto Sans CJK JP", "Apple SD Gothic Neo", "Malgun Gothic",
+        "Noto Sans CJK KR", serif !important;
+    --font-claude-ui:
+        "Anthropic Sans", "Aria[NoEng]", system-ui, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+}
+
+.claude .font-claude-response,
+.claude .font-claude-response-body,
+.claude .font-claude-response *,
+.claude .font-claude-response-body * {
+    font-family: var(--font-claude-response) !important;
+}
+
+.claude .font-ui,
+.claude .font-base,
+.claude .font-ui *,
+.claude .font-base * {
+    font-family: var(--font-claude-ui) !important;
+}
+
+.claude .katex {
+    font:
+        1.21em "KaTeX_Main",
+        "Times New Roman",
+        serif !important;
+}
+
+.claude .cds-root[data-font] {
+    font-family: var(--cds-font-sans) !important;
+}
+
+.claude .cds-root[data-font] span[data-cds="Icon"],
+.claude .cds-root[data-font] span[data-cds="Icon"] * {
+    font-family: var(--font-anthropicons, Anthropicons-Variable) !important;
 }
 
 /* === === === === === Wallhaven === === === === === */
