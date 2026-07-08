@@ -64,6 +64,8 @@ ln -sf "$PWD/code/zora.py" "$HOME/.local/binary/zora"
 rm -rf "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 ln -sf "$PWD/ptyxis-palettes" "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 
+
+# rm -rf ~/.claude ~/.claude.json ~/.claude.json.backup
 mkdir -p "$HOME/.claude"
 ln -sf "$PWD/claude/settings.json" "$HOME/.claude/settings.json"
 ln -sf "$PWD/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
