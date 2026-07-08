@@ -64,6 +64,10 @@ ln -sf "$PWD/code/zora.py" "$HOME/.local/binary/zora"
 rm -rf "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 ln -sf "$PWD/ptyxis-palettes" "$HOME/.local/share/org.gnome.Ptyxis/palettes"
 
+mkdir -p "$HOME/.claude"
+ln -sf "$PWD/claude/settings.json" "$HOME/.claude/settings.json"
+ln -sf "$PWD/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+
 mkdir -p "$HOME/.local/share/applications"
 ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
 ln -sf "$PWD/applications/com.jetbrains.PyCharm-Professional.desktop" "$HOME/.local/share/applications/com.jetbrains.PyCharm-Professional.desktop"
