@@ -16,8 +16,8 @@ font-size = 12
 adjust-cell-height = 6
 
 # --- Window ---
-window-width = 110
-window-height = 30
+window-width = 120
+window-height = 27
 background-opacity = 1
 
 window-padding-x = 8
