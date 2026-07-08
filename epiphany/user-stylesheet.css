@@ -106,7 +106,7 @@ code,
 .cm-editor *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Geist Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "Iosevka", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 

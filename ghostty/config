@@ -1,7 +1,11 @@
 # --- Fonts ---
-font-family = "Geist Mono"
+font-family = "Iosevka"
 font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
+font-feature = "+ss05"
+font-feature = "CLIK"
+font-feature = "JSPT"
+font-feature = "PHPX"
 
 font-style = Medium
 font-style-bold = ExtraBold
