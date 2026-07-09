@@ -129,15 +129,15 @@ code,
 
 .claude .font-claude-response,
 .claude .font-claude-response-body,
-.claude .font-claude-response *:not(code),
-.claude .font-claude-response-body *:not(code) {
+.claude .font-claude-response *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *),
+.claude .font-claude-response-body *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *) {
     font-family: var(--font-claude-response) !important;
 }
 
 .claude .font-ui,
 .claude .font-base,
-.claude .font-ui,
-.claude .font-base {
+.claude .font-ui *,
+.claude .font-base * {
     font-family: var(--font-claude-ui) !important;
 }
 
