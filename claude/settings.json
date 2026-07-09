@@ -4,5 +4,6 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "effortLevel": "high",
+  "theme": "auto",
   "skipAutoPermissionPrompt": true
 }
