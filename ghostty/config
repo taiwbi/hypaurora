@@ -1,5 +1,5 @@
 # --- Fonts ---
-font-family = "Iosevka"
+font-family = "Geist Mono"
 font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
 font-feature = "+ss05"
@@ -16,7 +16,7 @@ font-size = 12
 adjust-cell-height = 6
 
 # --- Window ---
-window-width = 120
+window-width = 100
 window-height = 27
 background-opacity = 1
 
