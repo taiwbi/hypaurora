@@ -5,5 +5,5 @@ function ipinfo --description "Get IP info from ipinfo.io"
         return 1
     end
 
-    curl --silent "https://ipapi.co/$argv[1]/json/" | jq
+    curl --silent "https://api.ipinfo.io/lite/$argv[1]?token=$(cat $HOME/.keys/IPINFO)"
 end

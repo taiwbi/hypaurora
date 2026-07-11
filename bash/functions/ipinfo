@@ -9,5 +9,5 @@ ipinfo() {
         return 1
     fi
     
-    curl --silent "https://ipapi.co/$1/json/" | jq
+    curl --silent "https://api.ipinfo.io/lite/$1?token=$(cat $HOME/.keys/IPINFO)"
 }

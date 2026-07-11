@@ -51,7 +51,7 @@ alias artisan='php artisan'
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # IP Aliases
-alias myip='curl --silent https://ipapi.co/json | jq'
+alias myip='curl --silent "https://api.ipinfo.io/lite/me?token=$(cat $HOME/.keys/IPINFO)"'
 
 # Conditional Aliases (Example: icat)
 if [[ "$TERM" == "xterm-ghostty" || "$TERM" == "xterm-kitty" ]]; then
