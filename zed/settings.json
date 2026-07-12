@@ -9,6 +9,7 @@
 //
 // != == === <= >= --> <-- ==> <==
 {
+  "cli_default_open_behavior": "existing_window",
   "auto_update": false,
   "auto_update_extensions": {},
 
@@ -24,8 +25,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Oxocarbon Dark (IBM Carbon)",
-    "light": "Oxocarbon Light (IBM Carbon)",
+    "dark": "Gruvbox Dark",
+    "light": "Gruvbox Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -170,7 +171,7 @@
     "blueprint": true,
     // icons and themes
     "monospace-icon-theme": true,
-    "oxocarbon": true,
+    "gruvbox-ish": true,
   },
 
   // LSP and Language Server ===================================

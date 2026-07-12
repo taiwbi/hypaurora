@@ -29,4 +29,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Oxocarbon, light:Oxocarbon Light
+theme = dark:Gruvbox Dark, light:Gruvbox Light
