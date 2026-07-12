@@ -80,13 +80,16 @@ sudo dnf install xdg-terminal-exec ghostty kitty-kitten
 # TODO: Install lazygit
 
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager org.telegram.desktop \
-  com.github.finefindus.eyedropper io.bassi.Amberol com.brave.Browser
+  com.github.finefindus.eyedropper io.bassi.Amberol
 
 # Install Rust
 sudo dnf install cargo rust rust-src rustfmt
 
 
 sudo dnf mark user totem-video-thumbnailer evince-previewer
-sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* firefox firefox-* mediawriter yelp
+sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* mediawriter yelp
+
+echo "$header_3 To have GNOME like signle tab experience, in firefox, turn on gnomeTheme.hideSingleTab in about:config"
+echo "To hide youtube shorts, add the following to uBlock Origin's custom filters: https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
 
 rm -rf ~/.mozilla/
