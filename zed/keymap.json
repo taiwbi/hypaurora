@@ -55,6 +55,9 @@
       "|": "pane::SplitRight",
       "\\": "pane::SplitDown",
 
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }],
+
       "tab": "vim::GoToTab",
       "shift-tab": "vim::GoToPreviousTab",
 
@@ -164,6 +167,7 @@
 
       "H": "vim::FirstNonWhitespace",
       "L": "vim::EndOfLine",
+      "Y": "vim::YankToEndOfLine",
 
       // Git
       "space g s": "git::ToggleStaged",
