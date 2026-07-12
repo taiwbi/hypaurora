@@ -169,6 +169,7 @@
     "dockerfile": true,
     "git-firefly": true,
     "blueprint": true,
+    "fish": true,
     // icons and themes
     "monospace-icon-theme": true,
     "gruvbox-ish": true,
