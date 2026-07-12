@@ -76,6 +76,8 @@ ln -sf "$PWD/applications/com.jetbrains.PyCharm-Professional.desktop" "$HOME/.lo
 ln -sf "$PWD/applications/com.jetbrains.PhpStorm.desktop" "$HOME/.local/share/applications/com.jetbrains.PhpStorm.desktop"
 ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
 ln -sf "$PWD/applications/nvim.desktop" "$HOME/.local/share/applications/nvim.desktop"
+rm -f "$HOME/.local/share/applications/dev.zed.Zed.desktop"
+ln -sf "$PWD/applications/dev.zed.Zed.desktop" "$HOME/.local/share/applications/dev.zed.Zed.desktop"
 
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
