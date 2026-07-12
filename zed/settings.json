@@ -84,31 +84,22 @@
     // chat window
     "default_model": {
       "provider": "openrouter",
-      "model": "qwen/qwen3-coder-plus",
+      "model": "anthropic/claude-haiku-4.5",
     },
     "default_profile": "minimal",
 
     // inline assistant
     "inline_assistant_model": {
       "provider": "openrouter",
-      "model": "qwen/qwen3-coder-plus",
+      "model": "x-ai/grok-4.5",
       "enable_thinking": false,
     },
-    "inline_alternatives": [
-      {
-        "provider": "openrouter",
-        "model": "anthropic/claude-haiku-4.5",
-      },
-      {
-        "provider": "openrouter",
-        "model": "openai/gpt-5.4-mini",
-      },
-    ],
+    "inline_alternatives": [],
 
     // commit message
     "commit_message_model": {
       "provider": "openrouter",
-      "model": "qwen/qwen3-coder-plus",
+      "model": "minimax/minimax-m3",
     },
     "commit_message_instructions": "Format:\n<type>(scope): #issue_number <description>\n\n<body>\n\n[optional footer]\n\n# Commit Types\n- feat (new feature)\n- fix (bug patch)\n- build (build system/dependencies)\n- chore (maintenance)\n- ci (CI configuration)\n- docs (documentation)\n- style (formatting)\n- refactor (structure)\n- perf (performance)\n- test (adding/fixing tests)\n\n# Component Rules\n1. Scope: Add brackets context showing where the change happened (e.g., auth, api, ui, db).\n2.Only write issue number if it's provided in the context\n3. Description: A short, imperative mood summary (add not added), max 70 characters.\n4. Body: A detailed bulleted list explaining exactly *what* changed, *why* it changed, and the motivation or impact. \n   - Must use a dash (-) for bullets.\n   - Must be written in the imperative, present tense.\n   - Separate from the description by one blank line.\n   - Wrap lines at roughly 70 characters.\n5. Footer (Optional): Use only for breaking changes using the format: BREAKING CHANGE: <description>",
   },
