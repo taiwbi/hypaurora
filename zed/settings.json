@@ -91,7 +91,7 @@
     // inline assistant
     "inline_assistant_model": {
       "provider": "openrouter",
-      "model": "x-ai/grok-4.5",
+      "model": "minimax/minimax-m3",
       "enable_thinking": false,
     },
     "inline_alternatives": [],
