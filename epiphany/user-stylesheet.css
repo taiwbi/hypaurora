@@ -104,6 +104,14 @@ code,
 .chakra-form-control .chakra-text,
 .cm-editor,
 .cm-editor *,
+.blob-code,
+.blob-code *,
+.code-block__code,
+.code-block__code *,
+.react-blob-print-hide,
+.react-blob-print-hide *,
+.react-code-text,
+.react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
         "Geist Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
@@ -121,7 +129,7 @@ code,
         "Microsoft YaHei", "Noto Sans CJK SC", "PingFang TC",
         "Microsoft JhengHei", "Noto Sans CJK TC", "Hiragino Sans", "Yu Gothic",
         Meiryo, "Noto Sans CJK JP", "Apple SD Gothic Neo", "Malgun Gothic",
-        "Noto Sans CJK KR", serif !important;
+        "Noto Sans CJK KR", serif;
     --font-claude-ui:
         "Anthropic Sans", "Aria[NoEng]", system-ui, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif;
@@ -129,15 +137,22 @@ code,
 
 .claude .font-claude-response,
 .claude .font-claude-response-body,
-.claude .font-claude-response *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *),
-.claude .font-claude-response-body *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *) {
+.claude .font-claude-response *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *):not(.code-block__code):not(.code-block__code *),
+.claude .font-claude-response-body *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *):not(.code-block__code):not(.code-block__code *) {
     font-family: var(--font-claude-response) !important;
+}
+
+.claude .font-display,
+.claude .font-display * {
+  font-family: var(--font-ui-serif) !important;
 }
 
 .claude .font-ui,
 .claude .font-base,
-.claude .font-ui *,
-.claude .font-base * {
+.claude .font-ui *:not(code):not(code *),
+.claude .font-base *:not(.code-block__code):not(.code-block__code *),
+.claude [data-cds="Icon"],
+.claude [style*="font-family: var(--font-anthropicons)"] {
     font-family: var(--font-claude-ui) !important;
 }
 
@@ -155,6 +170,13 @@ code,
 .claude .cds-root[data-font] span[data-cds="Icon"],
 .claude .cds-root[data-font] span[data-cds="Icon"] * {
     font-family: var(--font-anthropicons, Anthropicons-Variable) !important;
+}
+
+.claude .tiptap pre,
+.claude .tiptap code,
+.claude .tiptap pre *,
+.claude .tiptap code * {
+    font-family: "Geist Mono" !important;
 }
 
 /* === === === === === Wallhaven === === === === === */
