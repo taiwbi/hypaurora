@@ -1,4 +1,4 @@
-/* Matching Regex:^https?://(?!([^/]+\.)?(rondnumber\.com|ronders\.ir|taiwbi\.ir))[^/]+/.* */
+/* Matching Regex:^https?://(?!([^/]+\.)?(localhost|127.0.0.1|rondnumber\.com|ronders\.ir|taiwbi\.ir))[^/]+/.* */
 
 /* Apply system UI font to all text elements while preserving icons */
 html,
