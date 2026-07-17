@@ -6,6 +6,7 @@ import Osd from "./window/Osd"
 import Launcher from "./window/Launcher"
 import Notifications from "./window/Notifications"
 import ControlCenterPopup from "./window/ControlCenterPopup"
+import TimePopup from "./window/TimePopup"
 import { showBrightness, showKeyboardBrightness, showKeyboardLayout, showTouchpad, showVolume } from "./lib/osd"
 import { toggleLauncher, showLauncher, hideLauncher } from "./lib/launcher"
 
@@ -90,5 +91,6 @@ app.start({
     Launcher()
     Notifications()
     ControlCenterPopup()
+    TimePopup()
   },
 })

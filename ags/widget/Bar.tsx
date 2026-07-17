@@ -8,6 +8,7 @@ import VolumeWidget from "./VolumeWidget";
 import BatteryWidget from "./BatteryWidget";
 import NetworkWidget from "./NetworkWidget";
 import { toggleControlCenter } from "../lib/controlcenter";
+import { toggleTimePopup } from "../window/TimePopup";
 
 
 function SystemTray() {
@@ -43,7 +44,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <Workspaces />
         </box>
         <box $type="center" halign={Gtk.Align.CENTER} spacing={16}>
-          <ClockWidget />
+          <button cssName="clock-button" onClicked={toggleTimePopup}>
+            <ClockWidget />
+          </button>
           <MediaWidget />
         </box>
         <box $type="end" halign={Gtk.Align.END}>

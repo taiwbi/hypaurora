@@ -517,6 +517,116 @@ popup-backdrop {
   background: transparent;
 }
 
+// Clock button in the bar
+clock-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+}
+
+// Time & notification history popup
+time-popup {
+  background: transparent;
+
+  time-popup-content {
+    background: $bg-color;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 8px;
+    min-width: 360px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  }
+
+  time-big {
+    font-size: 42px;
+    font-weight: 700;
+  }
+
+  date-line {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  history-header {
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  section-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  clear-button {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  history-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  notification-title {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  notification-body {
+    font-size: 12px;
+    opacity: 0.85;
+  }
+
+  notification-app {
+    font-size: 10px;
+    opacity: 0.6;
+  }
+
+  notification-close {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 0;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .notification-action {
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px 8px;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+  }
+
+  history-empty {
+    padding: 16px 0;
+    opacity: 0.6;
+  }
+}
+
 // Control Center Popup
 control-center {
   background: transparent;

@@ -24,6 +24,10 @@ const notifd = Notifd.get_default()
 
 export const [notifications, setNotifications] = createState<NotificationItem[]>([])
 
+// Notifications that timed out on screen without any user interaction.
+// Manually closed or action-handled notifications never end up here.
+export const [notificationHistory, setNotificationHistory] = createState<NotificationItem[]>([])
+
 const autoDismissTimers = new Map<number, ReturnType<typeof setTimeout>>()
 const closeAnimationTimers = new Map<number, ReturnType<typeof setTimeout>>()
 
@@ -84,32 +88,32 @@ function clearAutoDismiss(id: number) {
     }
 }
 
-function scheduleAutoDismiss(notification: AstalNotification, hasActions: boolean) {
-    const id = Number(notification.get_id?.() ?? -1)
+const AUTO_HIDE_TIMEOUT = 20000
+
+// After 20s without user interaction the toast is hidden and moved to history
+// (the notification is NOT dismissed on the daemon, so actions keep working).
+function scheduleAutoHide(id: number) {
     if (id < 0) return
-
-    const resident = Boolean(notification.get_resident?.())
-    if (resident || hasActions) return
-
-    const expireTimeout = notification.get_expire_timeout?.()
-    const timeout = typeof expireTimeout === "number" && expireTimeout >= 0
-        ? expireTimeout
-        : 15000
-
-    if (timeout <= 0) return
 
     clearAutoDismiss(id)
 
     const timer = setTimeout(() => {
         autoDismissTimers.delete(id)
-        try {
-            notification.dismiss?.()
-        } catch (_) {
-            // noop
-        }
-    }, timeout)
+        archiveNotification(id)
+    }, AUTO_HIDE_TIMEOUT)
 
     autoDismissTimers.set(id, timer)
+}
+
+function archiveNotification(id: number) {
+    const entry = notifications.get().find((n) => n.id === id)
+    if (!entry) return
+
+    setNotificationHistory((existing) => [
+        { ...entry, closing: false },
+        ...existing.filter((e) => e.id !== id),
+    ])
+    removeNotification(id)
 }
 
 function upsertNotification(notification: Notifd.Notification) {
@@ -123,7 +127,7 @@ function upsertNotification(notification: Notifd.Notification) {
         return [item, ...rest].sort((a, b) => b.time - a.time)
     })
 
-    scheduleAutoDismiss(item.notification, item.actions.length > 0)
+    scheduleAutoHide(item.id)
 }
 
 function clearCloseAnimationTimer(id: number) {
@@ -163,12 +167,43 @@ export function dismissNotification(id: number) {
 
 export function invokeNotificationAction(id: number, actionId: string) {
     const entry = notifications.get().find((n) => n.id === id)
+        ?? notificationHistory.get().find((n) => n.id === id)
     if (!entry) return
 
     try {
         entry.notification.invoke?.(actionId)
     } catch (_) {
         // noop
+    }
+
+    // The notification has been dealt with: drop it everywhere
+    setNotificationHistory((existing) => existing.filter((e) => e.id !== id))
+    try {
+        entry.notification.dismiss?.()
+    } catch (_) {
+        // noop
+    }
+}
+
+export function removeFromHistory(id: number) {
+    const entry = notificationHistory.get().find((n) => n.id === id)
+    setNotificationHistory((existing) => existing.filter((e) => e.id !== id))
+    try {
+        entry?.notification?.dismiss?.()
+    } catch (_) {
+        // noop
+    }
+}
+
+export function clearHistory() {
+    const entries = notificationHistory.get()
+    setNotificationHistory([])
+    for (const entry of entries) {
+        try {
+            entry.notification.dismiss?.()
+        } catch (_) {
+            // noop
+        }
     }
 }
 
@@ -180,6 +215,7 @@ notifd.connect("notified", (_: unknown, id: number) => {
 
 notifd.connect("resolved", (_: unknown, id: number) => {
     removeNotification(id)
+    setNotificationHistory((existing) => existing.filter((e) => e.id !== id))
 })
 
 const unresolved = notifd.get_notifications?.()
