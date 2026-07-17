@@ -231,7 +231,7 @@ hl.config({
 		kb_layout = "us,ir",
 		kb_variant = "",
 		kb_model = "",
-		kb_options = "caps:escape,grp:win_space_toggle",
+		kb_options = "caps:escape",
 		kb_rules = "",
 
 		follow_mouse = 1,
@@ -286,6 +286,7 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 hl.bind(mainMod .. " + ALT + M", hl.dsp.exit())
+hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(os.getenv("HOME") .. '/Documents/hypaurora/code/osd/keyboard'))
 
 -- Migrated from hypr-old/keybind.conf
 hl.bind(
