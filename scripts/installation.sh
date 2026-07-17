@@ -122,6 +122,11 @@ meson setup build
 sudo meson install -C build
 popd >/dev/null
 
+pushd "$BUILD_DIR/astal/lib/network" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
 git clone https://github.com/aylur/ags.git "$BUILD_DIR/ags"
 
 pushd "$BUILD_DIR/ags" >/dev/null

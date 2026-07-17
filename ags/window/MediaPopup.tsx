@@ -206,26 +206,41 @@ export default function MediaPopup() {
             name="media-popup"
             cssName="media-popup"
             visible={mediaPopupVisible}
-            anchor={Astal.WindowAnchor.TOP}
+            anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT | Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.LEFT}
             layer={Astal.Layer.OVERLAY}
             exclusivity={Astal.Exclusivity.NORMAL}
             keymode={Astal.Keymode.NONE}
             application={app}
         >
-            <With value={currentPlayer}>
-                {(player) => (
-                    <box cssName="media-popup-content" orientation={Gtk.Orientation.VERTICAL} spacing={16}>
-                        {player ? (
-                            <>
-                                <MediaInfo player={player} />
-                                <MediaControls player={player} />
-                            </>
-                        ) : (
-                            <label label="No media playing" cssName="no-media" />
+            <Gtk.Overlay>
+                {/* Full-screen backdrop: clicking anywhere outside the popup closes it */}
+                <box
+                    cssName="popup-backdrop"
+                    hexpand
+                    vexpand
+                    $={(self: Gtk.Box) => {
+                        const gesture = new Gtk.GestureClick()
+                        gesture.connect("released", () => setMediaPopupVisible(false))
+                        self.add_controller(gesture)
+                    }}
+                />
+                <box $type="overlay" halign={Gtk.Align.CENTER} valign={Gtk.Align.START}>
+                    <With value={currentPlayer}>
+                        {(player) => (
+                            <box cssName="media-popup-content" orientation={Gtk.Orientation.VERTICAL} spacing={16}>
+                                {player ? (
+                                    <>
+                                        <MediaInfo player={player} />
+                                        <MediaControls player={player} />
+                                    </>
+                                ) : (
+                                    <label label="No media playing" cssName="no-media" />
+                                )}
+                            </box>
                         )}
-                    </box>
-                )}
-            </With>
+                    </With>
+                </box>
+            </Gtk.Overlay>
         </window>
     )
 }

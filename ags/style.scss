@@ -512,6 +512,11 @@ notifications {
   }
 }
 
+// Transparent click-catcher behind popups (click anywhere outside to close)
+popup-backdrop {
+  background: transparent;
+}
+
 // Control Center Popup
 control-center {
   background: transparent;
@@ -520,12 +525,175 @@ control-center {
     padding: 15px 15px 24px 24px;
   }
 
-  control-center-content {
+  control-center-frame {
     background: $bg-color;
     border-radius: 16px;
-    padding: 24px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
     min-width: 380px;
+  }
+
+  // Keep Adwaita's navigation view/pages from painting their own background
+  navigation-view,
+  navigation-view > * {
+    background: transparent;
+  }
+
+  control-center-content,
+  subpage {
+    background: transparent;
+    padding: 24px;
+    min-width: 380px;
+  }
+
+  // Subpage header (back button, title, switches)
+  page-header {
+    padding-bottom: 4px;
+  }
+
+  page-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  header-button {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 50%;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    transition: background 150ms ease;
+
+    image {
+      color: $fg-color;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  // WiFi page
+  wifi-list-scroll {
+    min-height: 120px;
+  }
+
+  wifi-row {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 12px;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background: rgba(255, 255, 255, 0.12);
+
+      wifi-ssid {
+        font-weight: 700;
+      }
+    }
+  }
+
+  wifi-ssid {
+    font-size: 13px;
+  }
+
+  wifi-lock {
+    opacity: 0.6;
+  }
+
+  wifi-password-box {
+    padding: 8px 4px;
+
+    entry,
+    text {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: $fg-color;
+      padding: 6px 8px;
+    }
+  }
+
+  wifi-error {
+    font-size: 11px;
+    color: #f38ba8;
+  }
+
+  wifi-connect-button {
+    background: $accent-color;
+    color: $bg-color;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: 600;
+  }
+
+  wifi-disabled-label {
+    padding: 16px 0;
+    opacity: 0.6;
+  }
+
+  // Microphone page
+  section-label {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.7;
+    padding-top: 4px;
+  }
+
+  // Proxy page
+  proxy-row {
+    padding: 2px 0;
+  }
+
+  proxy-protocol {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  proxy-entry,
+  proxy-entry text {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border: none;
+    color: $fg-color;
+    padding: 6px 8px;
+    caret-color: $fg-color;
+  }
+
+  proxy-save-button {
+    background: $accent-color;
+    color: $bg-color;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  // User profile + power buttons row
+  profile-row {
+    padding-bottom: 8px;
+  }
+
+  user-profile {
+    avatar {
+      border-radius: 50%;
+    }
+  }
+
+  user-name {
+    font-size: 14px;
+    font-weight: 600;
   }
 
   // Power Buttons
