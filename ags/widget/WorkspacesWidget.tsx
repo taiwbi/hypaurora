@@ -71,7 +71,7 @@ export default function WorkspacesWidget() {
                         clients.subscribe(updateVisibility)
                         focusedWorkspace.subscribe(updateVisibility)
                     }}
-                    onClicked={() => hyprland.dispatch("workspace", id.toString())}
+                    onClicked={() => hyprland.dispatch(`hl.dsp.focus({workspace="${id}"})`, "")}
                 >
                     <box cssName="workspace-dot" spacing={4} valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER} widthRequest={10} heightRequest={10}
                         $={(workspaceDot: Gtk.Box) => {
