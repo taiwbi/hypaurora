@@ -43,6 +43,16 @@ ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
 rm -rf "$HOME/.config/qt6ct";
 ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
 
+rm -rf "$HOME/.config/hypr";
+ln -sf "$PWD/hypr" "$HOME/.config/hypr"
+
+rm -rf "$HOME/.config/ags";
+ln -sf "$PWD/ags" "$HOME/.config/ags"
+glib-compile-schemas "$HOME/.config/ags/schemas"
+
+rm -rf "$HOME/.local/share/nautilus/scripts";
+ln -sf "$PWD/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
+
 rm -rf "$HOME/.bashrc"
 ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
 
