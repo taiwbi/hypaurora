@@ -1,7 +1,22 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
-$fg-color: #{"@window_fg_color"};
-$bg-color: #{"@window_bg_color"};
-$accent-color: #{"@accent_color"};
+// Gruvbox Dark palette — https://github.com/morhetz/gruvbox
+$gb-bg0: #282828;
+$gb-bg1: #3c3836;
+$gb-bg2: #504945;
+$gb-bg3: #665c54;
+$gb-fg0: #fbf1c7;
+$gb-fg1: #ebdbb2;
+$gb-red: #fb4934;
+$gb-green: #b8bb26;
+$gb-yellow: #fabd2f;
+$gb-blue: #83a598;
+$gb-purple: #d3869b;
+$gb-aqua: #8ec07c;
+$gb-orange: #fe8019;
+$gb-gray: #928374;
+
+$fg-color: $gb-fg1;
+$bg-color: $gb-bg0;
+$accent-color: $gb-orange;
 
 @keyframes toast-in {
   from {
@@ -31,19 +46,41 @@ Bar#bar {
   background: transparent;
   color: $fg-color;
   font-size: 13px;
-  background: $bg-color;
-  padding: 0;
-
-  &.floating {
-    padding: 5px 5px 0 5px;
-    background: transparent;
-  }
+  padding: 3px 6px 0 6px;
 
   bar-content {
-    background: $bg-color;
+    background: transparent;
+    padding: 0;
+  }
+
+  bar-section-left,
+  bar-section-center,
+  bar-section-right {
     border-radius: 12px;
-    padding: 2px 4px;
+    padding: 2px 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  bar-section-left {
+    background: rgba(60, 56, 54, 0.75); // $gb-bg1, dimmed
+  }
+
+  bar-section-center {
+    background: rgba(80, 73, 69, 0.75); // $gb-bg2, dimmed
+    transition: background 200ms ease;
+
+    &:hover {
+      background: rgba(102, 92, 84, 0.85); // $gb-bg3, dimmed
+    }
+  }
+
+  bar-section-right {
+    background: rgba(60, 56, 54, 0.75); // $gb-bg1, dimmed
+    transition: background 200ms ease;
+
+    &:hover {
+      background: rgba(80, 73, 69, 0.85); // $gb-bg2, dimmed
+    }
   }
 
   // Workspaces
@@ -117,18 +154,6 @@ Bar#bar {
   // Media
   media {
     padding: 4px 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    transition: all 200ms ease;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.02);
-    }
-
-    &:active {
-      transform: scale(0.98);
-    }
 
     media-icon {
       font-size: 14px;
@@ -144,29 +169,19 @@ Bar#bar {
 
   // System Tray
   system-tray {
+    background: transparent;
+    border: none;
     padding: 0;
 
-    button,
     box {
       background: transparent;
       border: none;
       min-width: 24px;
       min-height: 24px;
-      border-radius: 6px;
-      transition: all 200ms ease;
       padding: 0 8px;
 
       label {
         font-size: 16px;
-      }
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: scale(1.05);
-      }
-
-      &:active {
-        transform: scale(0.95);
       }
     }
   }
@@ -243,11 +258,6 @@ media-popup {
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
-        transform: scale(1.05);
-      }
-
-      &:active {
-        transform: scale(0.95);
       }
 
       &.play-pause {
@@ -522,11 +532,6 @@ clock-button {
   background: transparent;
   border: none;
   padding: 0;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-  }
 }
 
 // Time & notification history popup
@@ -730,7 +735,7 @@ control-center {
 
   wifi-error {
     font-size: 11px;
-    color: #f38ba8;
+    color: $gb-red;
   }
 
   wifi-connect-button {
@@ -826,11 +831,6 @@ control-center {
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
-      transform: scale(1.05);
-    }
-
-    &:active {
-      transform: scale(0.95);
     }
   }
 

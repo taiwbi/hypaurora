@@ -40,16 +40,16 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       application={app}
     >
       <centerbox cssName="bar-content">
-        <box $type="start" halign={Gtk.Align.START}>
+        <box $type="start" cssName="bar-section-left" halign={Gtk.Align.START}>
           <Workspaces />
         </box>
-        <box $type="center" halign={Gtk.Align.CENTER} spacing={16}>
+        <box $type="center" cssName="bar-section-center" halign={Gtk.Align.CENTER} spacing={16}>
           <button cssName="clock-button" onClicked={toggleTimePopup}>
             <ClockWidget />
           </button>
           <MediaWidget />
         </box>
-        <box $type="end" halign={Gtk.Align.END}>
+        <box $type="end" cssName="bar-section-right" halign={Gtk.Align.END}>
           <SystemTray />
         </box>
       </centerbox>
