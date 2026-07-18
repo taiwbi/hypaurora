@@ -295,7 +295,7 @@ hl.bind(
 )
 
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd(codeEditor))
+hl.bind(mainMod .. " + backslash", hl.dsp.exec_cmd(codeEditor))
 hl.bind(mainMod .. " + ALT + Z", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/binary/neovide"))
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.exec_cmd("nautilus -q"))
