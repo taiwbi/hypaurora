@@ -73,7 +73,10 @@
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
-        "model": "haiku"
+        "fast": "off",
+        "mode": "acceptEdits",
+        "effort": "medium",
+        "model": "sonnet"
       },
       "type": "registry",
     },
@@ -157,10 +160,13 @@
     "php": true,
     "blade": true,
     "html": true,
+    "scss": true,
     "dockerfile": true,
     "git-firefly": true,
     "blueprint": true,
     "fish": true,
+    "toml": true,
+    "lua": true,
     // icons and themes
     "monospace-icon-theme": true,
     "gruvbox-ish": true,
@@ -181,7 +187,7 @@
       "language_servers": ["phptools", "!intelephense", "!phpactor", "..."],
     },
     "Blade": {
-      "language_servers": ["phptools", "!intelephense", "!phpactor", "..."],
+      "language_servers": ["phptools", "tailwind-language-server", "!intelephense", "!phpactor", "..."],
     },
   },
   "lsp": {
