@@ -95,7 +95,8 @@ sudo dnf install -y xdg-desktop-portal-gtk
 sudo dnf install -y \
   npm meson ninja golang-bin vala valadoc gobject-introspection-devel wayland-protocols-devel \
   gtk3-devel gtk-layer-shell-devel \
-  gtk4-devel gtk4-layer-shell-devel
+  gtk4-devel gtk4-layer-shell-devel \
+  json-glib-devel libsoup3-devel wireplumber-devel libnma-devel
 
 # Build and install astal + ags in an isolated temp directory so the repo
 # checkout is not left with build artifacts.
@@ -123,6 +124,53 @@ sudo meson install -C build
 popd >/dev/null
 
 pushd "$BUILD_DIR/astal/lib/network" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+pushd "$BUILD_DIR/astal/lib/hyprland" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/apps" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/mpris" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/quarrel" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/wireplumber" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/battery" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/network" >/dev/null
+meson setup build
+sudo meson install -C build
+popd >/dev/null
+
+
+pushd "$BUILD_DIR/astal/lib/notifd" >/dev/null
 meson setup build
 sudo meson install -C build
 popd >/dev/null
