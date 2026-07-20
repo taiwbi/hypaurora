@@ -53,5 +53,5 @@ elif [[ "$1" == "ghostty" ]]; then
     shift
     ghostty --gtk-titlebar=false --class="org.nvim.neovide" -e /bin/bash -c "sleep .1 && /home/mahdi/.local/binary/nvim.appimage" -- "$@"
 else
-    neovide --wayland_app_id "org.nvim.neovide" --neovim-bin "$HOME/.local/binary/nvim.appimage"
+    "$HOME/.local/binary/neovide" --wayland_app_id "org.nvim.neovide" --neovim-bin "$HOME/.local/binary/nvim.appimage"
 fi
