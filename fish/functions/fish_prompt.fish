@@ -85,7 +85,7 @@ end
 function transient_execute
     # Never show transient prompt on an empty command line
     set -l cmdline_text (string join \n -- (commandline))
-    if test -z (string trim -- $cmdline_text)
+    if test -z "(string trim -- $cmdline_text)"
         commandline -f execute
         return
     end

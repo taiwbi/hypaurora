@@ -25,8 +25,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Gruvbox Dark",
-    "light": "Gruvbox Light",
+    "dark": "Min Dark (Solid)",
+    "light": "Min Light (Solid)",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -40,8 +40,8 @@
   },
   "icon_theme": {
     "mode": "system",
-    "dark": "Monospace Icon Theme - Dark",
-    "light": "Monospace Icon Theme - Light",
+    "dark": "Soft Charmed Icons",
+    "light": "Light Charmed Icons",
   },
   "selection_highlight": false,
   "cursor_blink": true,
@@ -168,8 +168,7 @@
     "toml": true,
     "lua": true,
     // icons and themes
-    "monospace-icon-theme": true,
-    "gruvbox-ish": true,
+    "min-teme": true,
   },
 
   // LSP and Language Server ===================================
@@ -184,10 +183,10 @@
           ],
         },
       },
-      "language_servers": ["phptools", "!intelephense", "!phpactor", "..."],
+      "language_servers": ["!phpantom", "phptools", "!intelephense", "!phpactor", "..."],
     },
     "Blade": {
-      "language_servers": ["phptools", "tailwind-language-server", "!intelephense", "!phpactor", "..."],
+      "language_servers": ["!phpantom", "phptools", "tailwindcss-language-server", "!intelephense", "!phpactor", "..."],
     },
   },
   "lsp": {
