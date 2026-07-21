@@ -196,7 +196,6 @@ hl.curve("test", { type = "bezier", points = { { 0, 1 }, { 0, 1 } } })
 
 hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "easeOutExpo", style = "fade" })
 hl.animation({ leaf = "windows", enabled = true, speed = 4, bezier = "easeInElastic", style = "popin 80%" })
-hl.animation({ leaf = "layers", enabled = true, speed = 4, bezier = "easeOutExpo", style = "popin 90%" })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 -- hypr-old only configures dwindle (general.layout = dwindle); master/scrolling
