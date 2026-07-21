@@ -86,57 +86,6 @@ flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionMana
 # Install Rust
 sudo dnf install cargo rust rust-src rustfmt
 
-# Install hypr
-sudo dnf copr enable -y lionheartp/Hyprland
-sudo dnf install -y hyprland hyprlock hypridle hyprpaper hyprsunset hyprland-plugins hyprland-guiutils
-sudo dnf install -y xdg-desktop-portal-gtk
-
-# Install AGS build dependencies
-sudo dnf install -y \
-  npm meson ninja golang-bin vala valadoc gobject-introspection-devel wayland-protocols-devel \
-  gtk3-devel gtk-layer-shell-devel \
-  gtk4-devel gtk4-layer-shell-devel
-
-# Build and install astal + ags in an isolated temp directory so the repo
-# checkout is not left with build artifacts.
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BUILD_DIR="$(mktemp -d -t hypaurora-ags-build.XXXXXX)"
-trap 'rm -rf "$BUILD_DIR"' EXIT
-
-echo "Building astal + ags in $BUILD_DIR"
-
-git clone https://github.com/aylur/astal.git "$BUILD_DIR/astal"
-
-pushd "$BUILD_DIR/astal/lib/astal/io" >/dev/null
-meson setup build
-sudo meson install -C build
-popd >/dev/null
-
-pushd "$BUILD_DIR/astal/lib/astal/gtk3" >/dev/null
-meson setup build
-sudo meson install -C build
-popd >/dev/null
-
-pushd "$BUILD_DIR/astal/lib/astal/gtk4" >/dev/null
-meson setup build
-sudo meson install -C build
-popd >/dev/null
-
-pushd "$BUILD_DIR/astal/lib/network" >/dev/null
-meson setup build
-sudo meson install -C build
-popd >/dev/null
-
-git clone https://github.com/aylur/ags.git "$BUILD_DIR/ags"
-
-pushd "$BUILD_DIR/ags" >/dev/null
-npm install
-meson setup build
-sudo meson install -C build
-popd >/dev/null
-
-sudo ldconfig
-
 # Finish setting up this repo's AGS config (the actual shell, not the ags
 # CLI/framework built above).
 pushd "$REPO_DIR/ags" >/dev/null
