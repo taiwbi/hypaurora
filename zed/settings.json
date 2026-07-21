@@ -183,10 +183,10 @@
           ],
         },
       },
-      "language_servers": ["phptools", "!intelephense", "!phpactor", "..."],
+      "language_servers": ["!phpantom", "phptools", "!intelephense", "!phpactor", "..."],
     },
     "Blade": {
-      "language_servers": ["phptools", "tailwindcss-language-server", "!intelephense", "!phpactor", "..."],
+      "language_servers": ["!phpantom", "phptools", "tailwindcss-language-server", "!intelephense", "!phpactor", "..."],
     },
   },
   "lsp": {
