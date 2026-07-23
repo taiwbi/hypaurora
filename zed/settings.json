@@ -14,11 +14,11 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "Geist Mono",
+  "buffer_font_family": "Hack",
   "buffer_font_weight": 500,
   "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Color Emoji", "Noto Emoji"],
   "buffer_font_size": 17,
-  "buffer_font_features": {"ss02": true, "ss03": true, "ss06": true, "ss09": true, "ss11": true},
+  "buffer_font_features": {},
   "buffer_line_height": "comfortable",
 
   "diff_view_style": "unified",
@@ -46,7 +46,7 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": "Yekan Bakh",
+  "ui_font_family": "Hack",
   "ui_font_size": 16,
 
   "vertical_scroll_margin": 6.0,
@@ -122,7 +122,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Geist Mono",
+    "font_family": "Hack",
     "font_size": 14,
     "font_weight": 500,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
