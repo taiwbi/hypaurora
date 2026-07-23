@@ -65,9 +65,6 @@ cp -f "$PWD/zed/tasks.json" "$HOME/.config/zed/tasks.json"
 
 mkdir -p "$HOME/.local/binary/"
 
-rm -rf "$HOME/.local/binary/polarify"
-ln -sf "$PWD/polarify.py" "$HOME/.local/binary/polarify"
-
 rm -rf "$HOME/.local/binary/zora"
 ln -sf "$PWD/code/zora.py" "$HOME/.local/binary/zora"
 

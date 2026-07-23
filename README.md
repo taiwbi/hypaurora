@@ -1,30 +1,12 @@
 # 🌌 Hypaurora
 
-This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing the GNOME.
+This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing GNOME.
 
 > ⚠️ **This is the `playground` branch.**
 >
 > Daily experiments, font changes, icon swaps, theme chaos.
 
 **If you want to use this make sure you clone it in `~/Documents/hypaurora` and change every `/home/mahdi` to whatever your user's home path is.**
-
-## 🎨 Theme Management
-
-Hypaurora features a unified theme management system! (Still not completed with the last changes) Change your entire desktop theme with one command:
-
-```bash
-usage: polarify [-h] {list,preview,apply,watch-dark-mode} ...
-
-Hypaurora Theme Manager
-
-positional arguments:
-  {list,preview,apply,watch-dark-mode}
-                        Commands
-    list                List all available themes
-    preview             Preview theme colors
-    apply               Apply theme
-    watch-dark-mode     Watch GNOME dark mode and auto-switch themes (GNOME only)
-```
 
 ## 🎭 Customization
 
