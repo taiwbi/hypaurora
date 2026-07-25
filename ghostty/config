@@ -10,19 +10,19 @@ font-style-bold = ExtraBold
 font-size = 12
 
 # --- Cell Dimensions ---
-adjust-cell-height = 6
+adjust-cell-height = 10
 
 # --- Window ---
 window-width = 100
 window-height = 27
 background-opacity = 1
 
-window-padding-x = 8
-window-padding-y = 8
+window-padding-x = 5
+window-padding-y = 5
 
 # --- Mouse ---
 mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Gruvbox Dark, light:Gruvbox Light
+theme = dark:min, light:Gruvbox Light
