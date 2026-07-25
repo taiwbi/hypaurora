@@ -48,10 +48,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 if [[ "$1" == "kitty" ]]; then
     shift
-    kitty --class="org.nvim.neovide" -e bash -c "/home/mahdi/.local/binary/nvim.appimage $@"
+    kitty --class="org.nvim.neovide" -e bash -c "nvim $@"
 elif [[ "$1" == "ghostty" ]]; then
     shift
-    ghostty --gtk-titlebar=false --class="org.nvim.neovide" -e /bin/bash -c "sleep .1 && /home/mahdi/.local/binary/nvim.appimage" -- "$@"
+    ghostty --gtk-titlebar=false --class="org.nvim.neovide" -e /bin/bash -c "sleep .1 && nvim" -- "$@"
 else
-    "$HOME/.local/binary/neovide" --wayland_app_id "org.nvim.neovide" --neovim-bin "$HOME/.local/binary/nvim.appimage"
+    "$HOME/.local/binary/neovide" --wayland_app_id "org.nvim.neovide" --neovim-bin "nvim"
 fi
