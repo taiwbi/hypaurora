@@ -8,7 +8,7 @@ reset_fg="\033[0m"
 header_0="$red⦿  $green⦿  $yellow⦿ $reset_fg"
 
 echo -e "$header_0 Are you sure? $red THIS WILL REMOVE ALL OF YOUR PREVIOUS CONFIGURATIONS.$reset_fg"
-read -rp "(y/n)" yn
+read -rp "(y/n) " yn
 
 if [ "$yn" != "y" ]; then
   echo -e "Ok, I won't ruin your configs :)"
@@ -45,10 +45,6 @@ ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
 
 rm -rf "$HOME/.config/hypr";
 ln -sf "$PWD/hypr" "$HOME/.config/hypr"
-
-rm -rf "$HOME/.config/ags";
-ln -sf "$PWD/ags" "$HOME/.config/ags"
-glib-compile-schemas "$HOME/.config/ags/schemas"
 
 rm -rf "$HOME/.local/share/nautilus/scripts";
 ln -sf "$PWD/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
