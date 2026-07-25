@@ -19,7 +19,7 @@ fi
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
 gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Hack, Vazir Code Hack 11'
-gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
+gsettings set org.gnome.desktop.interface document-font-name 'Lusitana, Aria 11'
 gsettings set org.gnome.desktop.interface cursor-size 28
 
 # Keybindings
