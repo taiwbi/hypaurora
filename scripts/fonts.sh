@@ -24,11 +24,17 @@ fonts=(
   "vazirmatn|https://github.com/rastikerdar/vazirmatn/releases/download/v33.003/vazirmatn-v33.003.zip"
   "vazir-code|https://github.com/rastikerdar/vazir-code-font/releases/download/v1.1.2/vazir-code-font-v1.1.2.zip"
   "lusitana|https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/Lusitana-Regular.ttf,https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/Lusitana-Bold.ttf"
+  "nerd-fonts-symbols|https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/NerdFontsSymbolsOnly.zip"
 )
 
 install_font() {
   local name="$1" url="$2"
   local dest_dir="$fonts_dir/$name"
+
+  if [ -d "$dest_dir" ] && find "$dest_dir" -type f -name "*.ttf" -print -quit | grep -q .; then
+    echo -e "$header_2 $name already installed, skipping"
+    return
+  fi
 
   echo -e "$header_2 Downloading $name"
   echo -e "$header_2 Installing $name to $dest_dir"
