@@ -6,6 +6,15 @@
 
 # ---- helpers --------------------------------------------------------------
 
+# Strip characters that could trigger prompt expansion (command/parameter
+# substitution, backslash escapes) if untrusted text (e.g. a malicious git
+# branch name or directory name) ends up embedded in PS1.
+_prompt_sanitize() {
+    local s=${1//$'\\'/}
+    s=${s//\$/}
+    printf '%s' "${s//\`/}"
+}
+
 # Shorten the working directory: /home/mahdi/Documents/Projects/x -> ~/D/P/x
 _prompt_pwd() {
     local path="${PWD/#$HOME/\~}" prefix=''
@@ -24,7 +33,7 @@ _prompt_pwd() {
             out+="${p:0:1}/"
         fi
     done
-    printf '%s%s' "$prefix" "$out"
+    printf '%s%s' "$prefix" "$(_prompt_sanitize "$out")"
 }
 
 # Emit the git segment. Silent if there is no git command or the current
@@ -39,6 +48,7 @@ _prompt_git() {
     branch=$(git symbolic-ref --short -q HEAD 2>/dev/null) \
         || branch=$(git rev-parse --short HEAD 2>/dev/null) \
         || return 2
+    branch=$(_prompt_sanitize "$branch")
 
     local info staged=0 modified=0 untracked=0 ahead=0 behind=0 line
     info=$(git status --porcelain --branch 2>/dev/null)
@@ -156,7 +166,10 @@ _prompt_debug_trap() {
 }
 
 shopt -s checkwinsize
-shopt -u promptvars
+# promptvars stays enabled (bash default) so shell integrations like
+# ghostty's can append a live ${ ...; } hook to PS0. The git branch and
+# cwd segments are sanitized via _prompt_sanitize before hitting PS1, so
+# this doesn't reopen the untrusted-branch-name injection vector.
 PROMPT_COMMAND='_prompt_render'
 
 if [[ $- == *i* ]]; then
