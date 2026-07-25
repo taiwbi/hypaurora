@@ -1,5 +1,6 @@
 #!/bin/bash
-set -euo pipefail
+
+# Hypaurora installation script — CachyOS (Arch) edition.
 
 red="\033[31m"
 green="\033[32m"
@@ -10,93 +11,87 @@ header_1="\n$red◉ $green◉ $yellow◉$reset_fg"
 header_2="\n$red◉ $reset_fg"
 header_3="\n$green◉ $reset_fg"
 
-echo "$header_1 Enabling needed repositories"
+install() {
+  sudo pacman -S --needed --noconfirm "$@"
+}
 
-## RPMFUSION
+echo -e "$header_1 Updating the system"
 
-sleep 5
-sudo dnf update -y
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
-sudo dnf update @core
-sudo dnf update -y
+sudo pacman -Syu --noconfirm
 
-## NVIDIA
+echo -e "$header_1 Checking the NVIDIA driver"
 
-sudo dnf update -y # and reboot if you are not on the latest kernel
-sudo dnf install akmod-nvidia -y
-sudo dnf install xorg-x11-drv-nvidia-cuda -y #optional for cuda/nvdec/nvenc support
-echo "$header_2 Waiting 5 minutes for NVIDIA to be build"
-sleep 300 # Wait 5 minutes for kmod get build
+nvidia_branch=$(pacman -Qqs '^nvidia.*-dkms$|^nvidia-open' | head -n1)
 nvidia_version=$(modinfo -F version nvidia 2>/dev/null)
+
 if [[ $nvidia_version =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]]; then
-    echo "$header_3 Valid NVIDIA driver version: $nvidia_version"
+  echo -e "$header_3 Valid NVIDIA driver version: $nvidia_version (${nvidia_branch:-unknown package})"
 else
-    echo "$header_2 Couldn't detect NVIDIA driver. Waiting another 5 minutes"
-    sleep 300
+  echo -e "$header_2 Couldn't detect a loaded NVIDIA driver."
+  echo -e "$header_2 Run 'sudo chwd -a' to let CachyOS pick the right driver, then reboot."
 fi
-sudo dnf mark user akmod-nvidia # To prevent autoremove to consider akmod-nvidia as unneeded
-sudo dnf install xorg-x11-drv-nvidia-power -y
-sudo systemctl enable nvidia-{suspend,resume,hibernate}
-sudo dnf install vulkan -y
-sudo dnf install xorg-x11-drv-nvidia-cuda-libs -y
-sudo dnf install nvidia-vaapi-driver libva-utils vdpauinfo -y
 
-# TODO: xorg-x11-drv-nvidia-libs.i686
-# check vdpauinfo output and vainfo https://rpmfusion.org/Howto/NVIDIA?highlight=%28%5CbCategoryHowto%5Cb%29
-# lsmod |grep nouveau
-# INSTALL CUDA
+# VA-API / VDPAU / Vulkan diagnostics + the Intel side of the hybrid setup.
+# libva-nvidia-driver, nvidia-prime and intel-media-driver are part of the
+# CachyOS defaults, --needed keeps this a no-op when they already are.
+# install libva-utils vdpauinfo vulkan-tools mesa-utils
+# install intel-media-driver libva-nvidia-driver nvidia-prime
 
-echo -e "$header_2 This script does not install CUDA driver and does not enable Secure Boot. If you need it checkout https://rpmfusion.org/Howto/"
+# echo -e "$header_2 Verify the hybrid setup with: vainfo, vdpauinfo, vulkaninfo --summary,"
+# echo -e "  prime-run glxinfo | grep 'OpenGL renderer' and lsmod | grep nouveau"
+# echo -e "$header_2 This script does not install CUDA and does not enable Secure Boot."
+# echo -e "  For CUDA: sudo pacman -S cuda cuda-tools (matching branch: opencl-nvidia*)"
 
 ## Multimedia
 
-sudo dnf swap ffmpeg-free ffmpeg --allowerasing
-sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-sudo dnf install @sound-and-video
-sudo dnf update @sound-and-video
-sudo dnf install intel-media-driver
-sudo dnf install libva-nvidia-driver
+# CachyOS already ships ffmpeg, the full GStreamer stack and libdvdcss, so
+# there is no ffmpeg-free swap and no RPM Fusion equivalent to deal with.
+# echo -e "$header_1 Installing multimedia bits"
+#
+# install ffmpeg ffmpegthumbnailer libdvdcss
+# install gst-libav gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly \
+#   gst-plugin-va gst-plugin-gtk4 gst-plugin-pipewire
 
-# Install software
+## Command line tools
 
-sudo dnf install dnf-plugins-core
+echo -e "$header_1 Installing command line tools"
 
-sudo dnf install ripgrep nodejs npm wl-clipboard socat neovim aria2c python-pip grc lsd fzf papers fish python3-fonttools
-sudo dnf install adw-gtk3-theme celluloid gnome-tweaks
+install ripgrep nodejs npm wl-clipboard socat neovim aria2 python-pip grc lsd fzf \
+  fish python-fonttools tmux lazygit jq unzip
 
-sudo dnf install php php-pecl-xdebug3 composer
-sudo dnf -y install dnf-plugins-core
-sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+## Desktop
 
-sudo dnf copr enable trixieua/morewaita-icon-theme
-sudo dnf install morewaita-icon-theme
+echo -e "$header_1 Installing desktop applications and theming"
 
-sudo dnf install nautilus-python
+install adw-gtk-theme nautilus-python gnome-browser-connector
+install ghostty
+install epiphany zed
 
-sudo dnf copr enable scottames/ghostty
-sudo dnf install xdg-terminal-exec ghostty kitty-kitten
+install extension-manager telegram-desktop eyedropper amberol
 
-# TODO: Install lazygit
+install ttf-nunito
 
-flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager org.telegram.desktop \
-  com.github.finefindus.eyedropper io.bassi.Amberol
+## Development
 
-# Install Rust
-sudo dnf install cargo rust rust-src rustfmt
+echo -e "$header_1 Installing development tools"
 
-# Finish setting up this repo's AGS config (the actual shell, not the ags
-# CLI/framework built above).
-pushd "$REPO_DIR/ags" >/dev/null
-npm install
-glib-compile-schemas schemas/
-popd >/dev/null
+install rust rust-src rust-analyzer
 
-sudo dnf mark user totem-video-thumbnailer evince-previewer
-sudo dnf remove rhythmbox totem evinc gnome-shell-extension-* mediawriter yelp
+install docker docker-compose docker-buildx
+sudo systemctl enable --now docker.socket
+sudo usermod -aG docker "$USER"
+echo -e "$header_2 Log out and back in for the 'docker' group to take effect."
 
-echo "$header_3 To have GNOME like signle tab experience, in firefox, turn on gnomeTheme.hideSingleTab in about:config"
-echo "To hide youtube shorts, add the following to uBlock Origin's custom filters: https://raw.githubusercontent.com/gijsdev/ublock-hide-yt-shorts/master/list.txt"
+## Cleanup
+
+echo -e "$header_1 Removing the defaults I don't use"
+
+# showtime/decibels are the GNOME 49+ replacements for totem/rhythmbox,
+# evince is superseded by papers. These are prompted, not --noconfirm.
+for pkg in shelly ptyxis alacritty gnome-extension meld vim; do
+  pacman -Qq "$pkg" &>/dev/null && sudo pacman -Rns "$pkg"
+done
 
 rm -rf ~/.mozilla/
+
+echo -e "$header_3 Done. Reboot before running config.sh if the driver was reinstalled."

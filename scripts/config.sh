@@ -16,15 +16,11 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
+gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
 gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Hack, Vazir Code Hack, Symbols Nerd Font 12'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Hack, Vazir Code Hack 11'
 gsettings set org.gnome.desktop.interface document-font-name 'Addington CF, Aria 11'
-gsettings set org.gnome.desktop.interface icon-theme 'Neuwaita'
-gsettings set org.gnome.desktop.interface cursor-theme "MacTahoe"
 gsettings set org.gnome.desktop.interface cursor-size 28
-
-gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true # Why the hell would this be false on Linux!!?
 
 # Keybindings
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "@as []"
@@ -42,25 +38,25 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "[]"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "[]"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "[]"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "[]"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>q']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Super>w']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Super>e']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>r']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>t']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "[]"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "[]"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "[]"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "[]"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "[]"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Super>q']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>w']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>e']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>r']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Shift><Super>t']"
 
-gsettings set org.gnome.desktop.wm.keybindings close "['<Super>q']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super>c']"
 
-gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>c']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>y']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 
 gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts '[]'
@@ -72,16 +68,16 @@ current=$(gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keyb
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
   "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Ghostty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'ghostty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name 'Coder Editor'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "$HOME/Documents/hypaurora/code/zed.sh"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name 'Zed Editor'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command 'zed'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding '<Super>backslash'
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'Brave'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'flatpak run com.brave.Browser --new-window'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'brave --new-window'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding '<Super>b'
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name 'Reset Background'
@@ -112,11 +108,11 @@ gsettings set org.gnome.desktop.input-sources per-window 'true'
 
 # Power options
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 900
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 1500
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
 
-gsettings set org.gnome.desktop.session idle-delay 180
+gsettings set org.gnome.desktop.session idle-delay 60
 
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
 gsettings set org.gnome.settings-daemon.plugins.power power-saver-profile-on-low-battery true
@@ -130,21 +126,3 @@ gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 gsettings set org.gnome.Epiphany search-engine-providers "[{'url': <'https://www.google.com/search?q=%s'>, 'bang': <'\!g'>, 'name': <'Google'>}, {'url': <'https://search.brave.com/search?q=%s&source=web&summary=1'>, 'bang': <'\!b'>, 'name': <'Brave'>}]"
 gsettings set org.gnome.Epiphany default-search-engine 'Brave'
 
-gsettings set org.gnome.Ptyxis restore-session false
-gsettings set org.gnome.Ptyxis restore-window-size false
-gsettings set org.gnome.Ptyxis default-columns 110
-gsettings set org.gnome.Ptyxis default-rows 30
-
-
-# === System Preferences ===
-
-echo -e "$header_1 Do you want to lower the swappiness value to 40? Do this if you have 12GB or less RAM."
-read -rp "(y/n) " yn
-
-if [ "$yn" == "y" ]; then
-  echo "Changing swappiness to 40"
-  echo "vm.swappiness=40" | sudo tee /etc/sysctl.d/99-swappiness.conf
-  sudo sysctl -p /etc/sysctl.d/99-swappiness.conf
-  echo -e "Swappiness changed to 40."
-  exit
-fi
