@@ -56,7 +56,7 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Shift><S
 
 gsettings set org.gnome.desktop.wm.keybindings close "['<Super>q']"
 
-gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>y']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>c']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 
 gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts '[]'
