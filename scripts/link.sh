@@ -73,15 +73,6 @@ mkdir -p "$HOME/.claude"
 ln -sf "$PWD/claude/settings.json" "$HOME/.claude/settings.json"
 ln -sf "$PWD/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
 
-mkdir -p "$HOME/.local/share/applications"
-ln -sf "$PWD/applications/antigravity.desktop" "$HOME/.local/share/applications/antigravity.desktop"
-ln -sf "$PWD/applications/com.jetbrains.PyCharm-Professional.desktop" "$HOME/.local/share/applications/com.jetbrains.PyCharm-Professional.desktop"
-ln -sf "$PWD/applications/com.jetbrains.PhpStorm.desktop" "$HOME/.local/share/applications/com.jetbrains.PhpStorm.desktop"
-ln -sf "$PWD/applications/neovide.desktop" "$HOME/.local/share/applications/neovide.desktop"
-ln -sf "$PWD/applications/nvim.desktop" "$HOME/.local/share/applications/nvim.desktop"
-rm -f "$HOME/.local/share/applications/dev.zed.Zed.desktop"
-ln -sf "$PWD/applications/dev.zed.Zed.desktop" "$HOME/.local/share/applications/dev.zed.Zed.desktop"
-
 if [ -d "$HOME/.local/share/epiphany" ]; then
   rm -f "$HOME/.local/share/epiphany/user-*";
   ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js"
