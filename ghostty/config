@@ -2,7 +2,6 @@
 font-family = "Hack"
 font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
-font-feature = "+ss01"
 
 font-style = Medium
 font-style-bold = ExtraBold
