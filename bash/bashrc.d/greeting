@@ -10,7 +10,7 @@ bash_greeting() {
             if command -v kitten > /dev/null 2>&1 && [ "$term_width" -gt 40 ]; then
                 position=$((term_width - 21))
                 random_image=$(shuf -n 1 -e "$HOME/Documents/hypaurora/assets"/*.png)
-                kitten icat -n --place "20x14@$position"x0 "$random_image"
+                kitten icat -n --place "25x8@$position"x0 "$random_image"
 
                 wrap_width=$((term_width - 22))
             fi
