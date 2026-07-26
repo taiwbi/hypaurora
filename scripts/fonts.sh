@@ -51,7 +51,9 @@ install_font() {
     return
   fi
 
-  local archive="$tmp_dir/$name.${url##*.}"
+  local ext="${url##*.}"
+  [[ "$url" == *.tar.xz ]] && ext="tar.xz"
+  local archive="$tmp_dir/$name.$ext"
   local extract_dir="$tmp_dir/$name"
 
   curl -sL -o "$archive" "$url"
