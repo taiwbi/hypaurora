@@ -56,7 +56,7 @@ fi
 
 echo -e "$header_1 Installing command line tools"
 
-install ripgrep nodejs npm wl-clipboard socat neovim aria2 python-pip grc lsd fzf \
+install ripgrep nodejs npm wl-clipboard socat neovim aria2 python-pip grc fzf \
   fish python-fonttools tmux lazygit jq unzip
 
 ## Desktop
@@ -92,6 +92,6 @@ for pkg in shelly ptyxis alacritty gnome-extension meld vim; do
   pacman -Qq "$pkg" &>/dev/null && sudo pacman -Rns "$pkg"
 done
 
-rm -rf ~/.mozilla/
+# Install Chaotic AUR
 
 echo -e "$header_3 Done. Reboot before running config.sh if the driver was reinstalled."
