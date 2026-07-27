@@ -56,7 +56,7 @@ fi
 
 echo -e "$header_1 Installing command line tools"
 
-install ripgrep nodejs npm wl-clipboard socat neovim aria2 python-pip grc fzf \
+install ripgrep nodejs npm wl-clipboard socat neovim aria2 python-pip fzf \
   fish python-fonttools tmux lazygit jq unzip
 
 ## Desktop

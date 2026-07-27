@@ -22,6 +22,18 @@ alias mv 'mv -i'
 alias cp 'cp -i' # Added common one
 alias mkdir 'mkdir -p'
 
+# Colorize output (only for commands with native color support)
+alias ls 'ls --color=always --group-directories-first -F'
+alias dir 'dir --color=always'
+alias vdir 'vdir --color=always'
+alias grep 'grep --color=always'
+alias egrep 'egrep --color=always'
+alias fgrep 'fgrep --color=always'
+alias diff 'diff --color=always'
+alias ip 'ip -c=always'
+alias gcc 'gcc -fdiagnostics-color=always'
+alias g++ 'g++ -fdiagnostics-color=always'
+
 # Proxy aliases
 alias disable-proxy 'set -e http_proxy; set -e HTTP_PROXY; set -e https_proxy; set -e HTTPS_PROXY; set -e ftp_proxy; set -e FTP_PROXY; set -e all_proxy; set -e ALL_PROXY; set -e no_proxy; set -e NO_PROXY'
 
