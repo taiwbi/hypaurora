@@ -40,8 +40,8 @@
   },
   "icon_theme": {
     "mode": "system",
-    "dark": "Soft Charmed Icons",
-    "light": "Light Charmed Icons",
+    "dark": "Zed (Default)",
+    "light": "Zed (Default)",
   },
   "selection_highlight": false,
   "cursor_blink": true,
@@ -168,7 +168,7 @@
     "toml": true,
     "lua": true,
     // icons and themes
-    "min-teme": true,
+    "min-theme": true,
   },
 
   // LSP and Language Server ===================================
