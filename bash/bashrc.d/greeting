@@ -1,7 +1,6 @@
 #!/bin/bash
 
 bash_greeting() {
-    clear
     if command -v tput > /dev/null && [ -n "$TERM" ] && [ "$TERM" != "dumb" ]; then
         term_width=$(tput cols)
         wrap_width=$term_width
