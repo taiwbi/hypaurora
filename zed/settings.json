@@ -16,7 +16,7 @@
   // UI and Buffer =============================================
   "buffer_font_family": "Hack",
   "buffer_font_weight": 500,
-  "buffer_font_fallbacks": ["Vazir Code Hack", "Noto Color Emoji", "Noto Emoji"],
+  "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 17,
   "buffer_font_features": {},
   "buffer_line_height": "comfortable",
@@ -125,7 +125,7 @@
     "font_family": "Hack",
     "font_size": 14,
     "font_weight": 500,
-    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font", "Noto Emoji"],
+    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
     "line_height": "comfortable",
   },
 
