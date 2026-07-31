@@ -12,5 +12,5 @@ This is my **dotfiles** repository! 🎉 My personal configuration files for set
 - 🖱️ Cursor Theme: [MacTahoe](https://github.com/vinceliuice/MacTahoe-icon-theme)
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Hack](https://github.com/source-foundry/Hack/)
+- 💻 Monospace Family: [0xProto](https://github.com/0xType/0xProto)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font/)

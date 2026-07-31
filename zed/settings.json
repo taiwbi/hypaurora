@@ -14,10 +14,10 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "Hack",
+  "buffer_font_family": "0xProto",
   "buffer_font_weight": 500,
-  "buffer_font_fallbacks": ["Vazir Code Hack"],
-  "buffer_font_size": 17,
+  "buffer_font_fallbacks": ["Vazir Code 0xProto"],
+  "buffer_font_size": 18,
   "buffer_font_features": {},
   "buffer_line_height": "comfortable",
 
@@ -46,7 +46,7 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": "Hack",
+  "ui_font_family": "0xProto",
   "ui_font_size": 16,
 
   "vertical_scroll_margin": 6.0,
@@ -119,10 +119,10 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Hack",
-    "font_size": 14,
+    "font_family": "0xProto",
+    "font_size": 16,
     "font_weight": 500,
-    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
+    "font_fallbacks": ["Vazir Code 0xProto", "Symbols Nerd Font"],
     "line_height": "comfortable",
   },
 
