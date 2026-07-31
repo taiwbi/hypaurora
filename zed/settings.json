@@ -165,7 +165,8 @@
     "toml": true,
     "lua": true,
     // icons and themes
-    "min-theme": true,
+    "uno-flat": true,
+    "nstlgy-dark": true,
   },
 
   // LSP and Language Server ===================================
