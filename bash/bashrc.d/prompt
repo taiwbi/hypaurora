@@ -140,27 +140,48 @@ _prompt_render() {
 
 # Transient prompt logic
 _transient_pre() {
-    _prompt_last_command=$READLINE_LINE
+    if [[ -n $_prompt_last_command ]]; then
+        _prompt_last_command+=$'\n'"$READLINE_LINE"
+    else
+        _prompt_last_command=$READLINE_LINE
+    fi
 }
 
 _prompt_debug_trap() {
+    local exit=$?
+
+    # A continued command invokes the bind -x callback once per submitted
+    # line. Do not mistake that callback for the command about to execute.
+    [[ $BASH_COMMAND == _transient_pre ]] && return
+
     if [[ -n $_prompt_last_command ]]; then
-        local exit=$?
         local symbol='$'
         (( EUID == 0 )) && symbol='#'
         local prompt_color="\e[32m"
         (( exit != 0 )) && prompt_color="\e[31m"
-        
-        if (( _prompt_last_height == 2 )); then
-            # Move up 2 lines, clear top line
-            printf "\e[2A\r\e[2K" >&2
-            # Move down 1 line, clear command line, print transient prompt + command
-            printf "\e[1B\r\e[2K%b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
-        else
-            # Move up 1 line, clear line, print transient prompt + command, and move down
-            printf "\e[1A\r\e[2K%b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
+
+        # After Readline accepts the input, the cursor is one row below its
+        # last line. Include every explicit continuation line when moving back
+        # to the start; otherwise only the final line is erased and the first
+        # line of a multiline command is left behind.
+        local command_lines=1 remaining=$_prompt_last_command
+        while [[ $remaining == *$'\n'* ]]; do
+            (( command_lines++ ))
+            remaining=${remaining#*$'\n'}
+        done
+
+        local prompt_height=${_prompt_last_height:-1}
+        local cursor_up=$(( prompt_height + command_lines - 1 ))
+        printf "\e[%dA\r" "$cursor_up" >&2
+
+        if (( prompt_height == 2 )); then
+            # Keep the transient prompt on the original command row.
+            printf "\e[2K\e[1B\r" >&2
         fi
-        
+
+        # Clear all of the old command rows before redrawing the saved input.
+        printf "\e[J%b%s\e[0m %s\n" "${prompt_color}" "${symbol}" "${_prompt_last_command}" >&2
+
         _prompt_last_command=
     fi
 }
