@@ -1,6 +1,6 @@
 # --- Fonts ---
-font-family = "0xProto"
-font-family = "Vazir Code 0xProto"
+font-family = "Hack"
+font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
 
 font-style = Medium
