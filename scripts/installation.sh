@@ -66,6 +66,7 @@ echo -e "$header_1 Installing desktop applications and theming"
 install adw-gtk-theme nautilus-python gnome-browser-connector
 install ghostty
 install epiphany zed
+install brave-origin-bin
 
 install extension-manager telegram-desktop eyedropper amberol
 
@@ -86,12 +87,12 @@ echo -e "$header_2 Log out and back in for the 'docker' group to take effect."
 
 echo -e "$header_1 Removing the defaults I don't use"
 
-# showtime/decibels are the GNOME 49+ replacements for totem/rhythmbox,
-# evince is superseded by papers. These are prompted, not --noconfirm.
-for pkg in shelly ptyxis alacritty gnome-extension meld vim; do
+for pkg in shelly ptyxis alacritty gnome-extension meld vim firefox; do
   pacman -Qq "$pkg" &>/dev/null && sudo pacman -Rns "$pkg"
 done
 
-# Install Chaotic AUR
+rm -rf .cache/mozilla/ .config/mozilla/
+
+# TODO: Install Chaotic AUR
 
 echo -e "$header_3 Done. Reboot before running config.sh if the driver was reinstalled."
