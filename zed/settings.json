@@ -14,7 +14,7 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "Hack",
+  "buffer_font_family": "Geist Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 18,
@@ -119,7 +119,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Hack",
+    "font_family": "Geist Mono",
     "font_size": 16,
     "font_weight": 500,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
