@@ -122,7 +122,7 @@ Generate a short and concise conventional commit message based on the git diff a
 
 ```
 <type>(scope): #issue_number <description>
-[optional body]
+[body]
 [optional footer(s)]
 ```
 
@@ -149,7 +149,7 @@ The **description** is a short, concise summary of the change that follows the `
 
 ## Optional body format
 
-The **body** provides additional context and details about the change in a bullet list format. It should elaborate on **what changed** and **why**, when the commit type and description alone are not sufficient to explain the full impact. It should NOT just duplicate the point of description and should be avoided if it's not necessary.
+The **body** provides additional context and details about the change in a small paragraph, each line wrapped at 70 characters at max. It should elaborate on **what changed** and **why** in non-technical way, when the commit type and description alone are not sufficient to explain the full impact. It should NOT just duplicate the point of description.
 
 Guidelines for writing the body:
 
