@@ -65,7 +65,7 @@ echo -e "$header_1 Installing desktop applications and theming"
 
 install adw-gtk-theme nautilus-python gnome-browser-connector
 install ghostty
-install epiphany zed
+install epiphany zed neovide
 install brave-origin-bin
 
 install extension-manager telegram-desktop eyedropper amberol
