@@ -17,7 +17,7 @@
   "buffer_font_family": "Geist Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
-  "buffer_font_size": 18,
+  "buffer_font_size": 16,
   "buffer_font_features": {},
   "buffer_line_height": "comfortable",
 
@@ -47,7 +47,7 @@
   "cursor_blink": true,
 
   "ui_font_family": "Geist Mono",
-  "ui_font_size": 16,
+  "ui_font_size": 14,
 
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
@@ -103,7 +103,7 @@
     },
     "commit_message_instructions": "Format:\n<type>(scope): #issue_number <description>\n\n<body>\n\n[optional footer]\n\n# Commit Types\n- feat (new feature)\n- fix (bug patch)\n- build (build system/dependencies)\n- chore (maintenance)\n- ci (CI configuration)\n- docs (documentation)\n- style (formatting)\n- refactor (structure)\n- perf (performance)\n- test (adding/fixing tests)\n\n# Component Rules\n1. Scope: Add brackets context showing where the change happened (e.g., auth, api, ui, db).\n2.Only write issue number if it's provided in the context\n3. Description: A short, imperative mood summary (add not added), max 70 characters.\n4. Body: A detailed bulleted list explaining exactly *what* changed, *why* it changed, and the motivation or impact. \n   - Must use a dash (-) for bullets.\n   - Must be written in the imperative, present tense.\n   - Separate from the description by one blank line.\n   - Wrap lines at roughly 70 characters.\n5. Footer (Optional): Use only for breaking changes using the format: BREAKING CHANGE: <description>",
   },
-  "agent_ui_font_size": 16.0,
+  "agent_ui_font_size": 14.0,
   // edit predictions
   "show_edit_predictions": true,
   "edit_predictions": {
@@ -120,7 +120,7 @@
   // Terminal ==================================================
   "terminal": {
     "font_family": "Geist Mono",
-    "font_size": 16,
+    "font_size": 14,
     "font_weight": 500,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
     "line_height": "comfortable",
