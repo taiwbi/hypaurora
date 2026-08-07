@@ -27,6 +27,9 @@ fonts=(
   "nerd-fonts-symbols|https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/NerdFontsSymbolsOnly.zip"
   "0xProto|https://github.com/0xType/0xProto/releases/download/2.502/0xProto_2_502.zip"
 )
+manal_fonts=(
+  "Aria|For Persian and Arabic serif texts"
+)
 
 install_font() {
   local name="$1" url="$2"
@@ -78,5 +81,12 @@ done
 
 echo -e "$header_1 Refreshing font cache"
 fc-cache -f "$fonts_dir"
+
+
+echo -e "$header_1 You still need to install the following fonts manually:"
+
+for entry in "${manal_fonts[@]}"; do
+  echo "${entry%%|*} -> ${entry#*|}"
+done
 
 echo -e "$header_3 Done."
