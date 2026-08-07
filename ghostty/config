@@ -21,4 +21,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Catppuccin Frappe, light:Catppuccin Latte
+theme = dark:dancheong-mist, light:dancheong-dawn

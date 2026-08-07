@@ -1,0 +1,27 @@
+# Dancheong Storm — Ghostty theme
+# Ported from art220/dancheong.nvim.
+# ANSI palette uses the exact :terminal colors shipped by the Neovim theme.
+
+background = #0e1015
+foreground = #dfe1ea
+cursor-color = #dc9420
+cursor-text = #0e1015
+selection-background = #29344d
+selection-foreground = #dfe1ea
+
+palette = 0=#1d212c
+palette = 1=#eb877d
+palette = 2=#59b66f
+palette = 3=#dc9420
+palette = 4=#6ca8dd
+palette = 5=#b496da
+palette = 6=#47b3aa
+palette = 7=#dfe1ea
+palette = 8=#646c82
+palette = 9=#ef9f97
+palette = 10=#79c48a
+palette = 11=#e4a948
+palette = 12=#89b9e4
+palette = 13=#c2a9e0
+palette = 14=#68c3bb
+palette = 15=#eaecf1

@@ -1,0 +1,27 @@
+# Dancheong Mist — Ghostty theme
+# Ported from art220/dancheong.nvim.
+# ANSI palette uses the exact :terminal colors shipped by the Neovim theme.
+
+background = #20242d
+foreground = #bbbfd2
+cursor-color = #5b9893
+cursor-text = #20242d
+selection-background = #384256
+selection-foreground = #bbbfd2
+
+palette = 0=#2f3440
+palette = 1=#c77871
+palette = 2=#619a6e
+palette = 3=#af8744
+palette = 4=#6692b9
+palette = 5=#9c83b9
+palette = 6=#5b9893
+palette = 7=#bbbfd2
+palette = 8=#727a92
+palette = 9=#d39690
+palette = 10=#81b08b
+palette = 11=#c3a066
+palette = 12=#86a9c8
+palette = 13=#b19dc8
+palette = 14=#78afab
+palette = 15=#bbbfd2

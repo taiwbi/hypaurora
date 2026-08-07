@@ -1,0 +1,27 @@
+# Dancheong Night — Ghostty theme
+# Ported from art220/dancheong.nvim.
+# ANSI palette uses the exact :terminal colors shipped by the Neovim theme.
+
+background = #16181f
+foreground = #d8dae5
+cursor-color = #e5b567
+cursor-text = #16181f
+selection-background = #2e3951
+selection-foreground = #d8dae5
+
+palette = 0=#232733
+palette = 1=#e05a4e
+palette = 2=#5fb573
+palette = 3=#e5b567
+palette = 4=#5c9cd6
+palette = 5=#a582d0
+palette = 6=#4fb5ad
+palette = 7=#d8dae5
+palette = 8=#5e657b
+palette = 9=#eb7f75
+palette = 10=#7fcc92
+palette = 11=#f0cc8f
+palette = 12=#82b5e5
+palette = 13=#bda0dd
+palette = 14=#74ccc5
+palette = 15=#f0f1f7
