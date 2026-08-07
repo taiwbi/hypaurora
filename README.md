@@ -12,5 +12,5 @@ This is my **dotfiles** repository! 🎉 My personal configuration files for set
 - 🖱️ Cursor Theme: [Adwaita](https://gitlab.gnome.org/GNOME/adwaita-icon-theme)
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Geist Mono](https://vercel.com/font)
+- 💻 Monospace Family: [CommitMono](https://commitmono.com/)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font/)

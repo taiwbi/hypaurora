@@ -26,6 +26,7 @@ fonts=(
   "lusitana|https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/Lusitana-Regular.ttf,https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/Lusitana-Bold.ttf"
   "nerd-fonts-symbols|https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/NerdFontsSymbolsOnly.zip"
   "0xProto|https://github.com/0xType/0xProto/releases/download/2.502/0xProto_2_502.zip"
+  "commit-mono|https://github.com/eigilnikolajsen/commit-mono/releases/download/v1.143/CommitMono-1.143.zip"
 )
 manal_fonts=(
   "Aria|For Persian and Arabic serif texts"
