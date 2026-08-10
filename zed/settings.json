@@ -14,7 +14,7 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "CommitMono",
+  "buffer_font_family": "Geist Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16,
@@ -46,7 +46,7 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": "CommitMono",
+  "ui_font_family": "Geist Mono",
   "ui_font_size": 14,
 
   "vertical_scroll_margin": 6.0,
@@ -119,7 +119,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "CommitMono",
+    "font_family": "Geist Mono",
     "font_size": 14,
     "font_weight": 500,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
