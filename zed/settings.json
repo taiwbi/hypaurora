@@ -120,8 +120,8 @@
   // Terminal ==================================================
   "terminal": {
     "font_family": "Geist Mono",
-    "font_size": 14,
-    "font_weight": 500,
+    "font_size": 15,
+    "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
     "line_height": "comfortable",
   },
