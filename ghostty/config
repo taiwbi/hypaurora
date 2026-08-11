@@ -5,11 +5,6 @@ font-family = "Symbols Nerd Font Mono"
 
 font-size = 13
 
-font-style = "Medium"
-font-style-italic = "Medium Italic"
-font-style-bold = "ExtraBold"
-font-style-bold-italic = "ExtraBold Italic"
-
 font-feature = "+ss02", "+ss03", "+ss06", "+ss09", "+ss11"
 
 # --- Cell Dimensions ---
