@@ -18,7 +18,13 @@
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16,
-  "buffer_font_features": {"ss02": true, "ss03": true, "ss06": true, "ss09": true, "ss11": true},
+  "buffer_font_features": {
+    "ss02": true,
+    "ss03": true,
+    "ss06": true,
+    "ss09": true,
+    "ss11": true,
+  },
   "buffer_line_height": "comfortable",
 
   "diff_view_style": "unified",
@@ -73,9 +79,9 @@
   "agent_servers": {
     "codex-acp": {
       "default_config_options": {
-        "model": "gpt-5.6-terra"
+        "model": "gpt-5.6-terra",
       },
-      "type": "registry"
+      "type": "registry",
     },
   },
   "agent": {
@@ -134,6 +140,7 @@
   "auto_indent_on_paste": true,
   "autosave": "on_focus_change",
   "restore_on_startup": "launchpad",
+  "format_on_save": "on",
   "tab_bar": {
     "show": false,
   },
@@ -181,10 +188,23 @@
           ],
         },
       },
-      "language_servers": ["!phpantom", "phptools", "!intelephense", "!phpactor", "..."],
+      "language_servers": [
+        "!phpantom",
+        "phptools",
+        "!intelephense",
+        "!phpactor",
+        "...",
+      ],
     },
     "Blade": {
-      "language_servers": ["!phpantom", "phptools", "tailwindcss-language-server", "!intelephense", "!phpactor", "..."],
+      "language_servers": [
+        "!phpantom",
+        "phptools",
+        "tailwindcss-language-server",
+        "!intelephense",
+        "!phpactor",
+        "...",
+      ],
     },
   },
   "lsp": {
