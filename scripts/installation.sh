@@ -76,7 +76,13 @@ install ttf-nunito
 
 echo -e "$header_1 Installing development tools"
 
+# Rust
 install rust rust-src rust-analyzer
+# PHP
+install php composer
+
+sudo mkdir -p /etc/php/conf.d
+echo 'extension=iconv' | sudo tee /etc/php/conf.d/iconv.ini
 
 install docker docker-compose docker-buildx
 sudo systemctl enable --now docker.socket

@@ -2,7 +2,7 @@
 
 # --- Environment Variables ---
 
-fish_add_path $HOME/.local/bin $HOME/.local/binary
+fish_add_path $HOME/.local/bin $HOME/.local/binary $HOME/.config/composer/vendor/bin
 fish_add_path ~/.cargo/bin
 
 # --- Automatic Proxy Setup (from setup.sh) ---

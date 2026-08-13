@@ -8,7 +8,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-user_dirs=("$HOME/.local/bin" "$HOME/bin" "$HOME/.local/binary" "$HOME/.npm-global/bin")
+user_dirs=("$HOME/.local/bin" "$HOME/bin" "$HOME/.local/binary" "$HOME/.npm-global/bin $HOME/.config/composer/vendor/bin")
 for dir in "${user_dirs[@]}"; do
     [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]] && PATH="$dir:$PATH"
 done
