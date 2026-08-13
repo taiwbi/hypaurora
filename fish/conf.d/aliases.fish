@@ -53,7 +53,8 @@ end
 
 # PHP/Laravel Aliases
 alias artisan 'php artisan'
-alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-helper:generate; and php artisan ide-helper:eloquent; and php artisan ide-helper:meta' # Use ;and
+alias ide-helper 'php artisan ide-helper:models --nowrite; and php artisan ide-helper:generate; and php artisan ide-helper:eloquent; and php artisan ide-helper:meta'
+alias side-helper 'sail artisan ide-helper:models --nowrite; and sail artisan ide-helper:generate; and sail artisan ide-helper:eloquent; and sail artisan ide-helper:meta'
 alias sail 'sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # IP Aliases
