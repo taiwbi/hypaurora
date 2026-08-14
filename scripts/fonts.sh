@@ -27,6 +27,8 @@ fonts=(
   "nerd-fonts-symbols|https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/NerdFontsSymbolsOnly.zip"
   "0xProto|https://github.com/0xType/0xProto/releases/download/2.502/0xProto_2_502.zip"
   "commit-mono|https://github.com/eigilnikolajsen/commit-mono/releases/download/v1.143/CommitMono-1.143.zip"
+  "iosevka|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-SGr-Iosevka-34.8.0.zip"
+  "monaspace|https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-static-v1.400.zip"
 )
 manal_fonts=(
   "Aria|For Persian and Arabic serif texts"
@@ -36,7 +38,7 @@ install_font() {
   local name="$1" url="$2"
   local dest_dir="$fonts_dir/$name"
 
-  if [ -d "$dest_dir" ] && find "$dest_dir" -type f -name "*.ttf" -print -quit | grep -q .; then
+  if [ -d "$dest_dir" ] && find "$dest_dir" -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.ttc" \) -print -quit | grep -q .; then
     echo -e "$header_2 $name already installed, skipping"
     return
   fi
@@ -51,7 +53,10 @@ install_font() {
   if [[ "$url" == *.ttf ]] || [[ "$url" == *.ttf,* ]]; then
     IFS=',' read -ra ttf_urls <<< "$url"
     for ttf_url in "${ttf_urls[@]}"; do
-      curl -sL -o "$dest_dir/${ttf_url##*/}" "$ttf_url"
+      if ! curl -fsSL -o "$dest_dir/${ttf_url##*/}" "$ttf_url"; then
+        echo -e "$header_2 Failed to download $name" >&2
+        return 1
+      fi
     done
     return
   fi
@@ -61,7 +66,7 @@ install_font() {
   local archive="$tmp_dir/$name.$ext"
   local extract_dir="$tmp_dir/$name"
 
-  curl -sL -o "$archive" "$url"
+  curl -fsSL -o "$archive" "$url"
 
   mkdir -p "$extract_dir"
   case "$archive" in
@@ -69,16 +74,27 @@ install_font() {
     *.zip) unzip -qo "$archive" -d "$extract_dir" ;;
   esac
 
-  find "$extract_dir" -type f -name "*.ttf" -exec cp -f {} "$dest_dir/" \;
+  find "$extract_dir" -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.ttc" \) -exec cp -f {} "$dest_dir/" \;
+
+  if ! find "$dest_dir" -type f \( -iname "*.ttf" -o -iname "*.otf" -o -iname "*.ttc" \) -print -quit | grep -q .; then
+    echo -e "$header_2 Failed to find font files for $name in the downloaded archive" >&2
+    return 1
+  fi
 }
 
 echo -e "$header_1 Installing fonts to $fonts_dir"
 
 mkdir -p "$fonts_dir"
 
+failed=0
 for entry in "${fonts[@]}"; do
-  install_font "${entry%%|*}" "${entry#*|}"
+  install_font "${entry%%|*}" "${entry#*|}" || failed=1
 done
+
+if (( failed )); then
+  echo -e "$header_2 One or more fonts could not be installed" >&2
+  exit 1
+fi
 
 echo -e "$header_1 Refreshing font cache"
 fc-cache -f "$fonts_dir"
