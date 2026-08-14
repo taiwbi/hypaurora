@@ -23,7 +23,7 @@ label,
 a,
 blockquote {
     font-family:
-        "Geist",
+        "Aporetic Sans",
         "Vazirmatn",
         system-ui,
         -apple-system,
@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Geist Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "Aporetic Sans Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
@@ -176,7 +176,7 @@ code,
 .claude .tiptap code,
 .claude .tiptap pre *,
 .claude .tiptap code * {
-    font-family: "Geist Mono" !important;
+    font-family: "Aporetic Sans Mono" !important;
 }
 
 /* === === === === === Wallhaven === === === === === */
