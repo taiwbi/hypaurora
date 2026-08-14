@@ -15,6 +15,13 @@ _prompt_sanitize() {
     printf '%s' "${s//\`/}"
 }
 
+# Return the number of terminal cells occupied by a string. Readline wraps
+# based on cells rather than bytes, so this is more accurate for non-ASCII
+# command lines and prompt segments than Bash's ${#value}.
+_prompt_display_width() {
+    printf '%s' "$1" | wc -L
+}
+
 # Shorten the working directory: /home/mahdi/Documents/Projects/x -> ~/D/P/x
 _prompt_pwd() {
     local path="${PWD/#$HOME/\~}" prefix=''
@@ -98,17 +105,21 @@ _prompt_render() {
     local FG_GIT_CLEAN='32'
     local FG_GIT_DIRTY='33'
 
-    local prompt_text=''
+    local prompt_text='' prompt_visible=''
 
     # Segment 1: User (only for root or over SSH)
     if (( EUID == 0 )); then
         prompt_text+="\[\e[${FG_USER_ROOT}m\]\u\[\e[0m\] "
+        prompt_visible+="${USER:-root} "
     elif [[ -n $SSH_CONNECTION || -n $SSH_TTY || -n $SSH_CLIENT ]]; then
         prompt_text+="\[\e[${FG_USER_SSH}m\]\u@\h\[\e[0m\] "
+        prompt_visible+="${USER:-$(id -un)}@${HOSTNAME%%.*} "
     fi
 
     # Segment 2: Directory
-    prompt_text+="\[\e[${FG_DIR}m\]$(_prompt_pwd)\[\e[0m\]"
+    local prompt_pwd=$(_prompt_pwd)
+    prompt_text+="\[\e[${FG_DIR}m\]${prompt_pwd}\[\e[0m\]"
+    prompt_visible+="$prompt_pwd"
 
     # Segment 3: Git
     local git_info
@@ -116,8 +127,10 @@ _prompt_render() {
     local git_status=$?
     if (( git_status == 0 )); then
         prompt_text+=" \[\e[${FG_GIT_CLEAN}m\]${git_info}\[\e[0m\]"
+        prompt_visible+=" ${git_info}"
     elif (( git_status == 1 )); then
         prompt_text+=" \[\e[${FG_GIT_DIRTY}m\]${git_info}\[\e[0m\]"
+        prompt_visible+=" ${git_info}"
     fi
 
     # Prompt symbol: $ colored green on success, red on failure
@@ -133,6 +146,11 @@ _prompt_render() {
     if (( cols < 50 )); then
         sep='\n'
         _prompt_last_height=2
+        # The command starts after the transient prompt's "$ " line.
+        _prompt_last_line_width=2
+    else
+        # The command starts after: prompt text + separator + "$ " (or "# ").
+        _prompt_last_line_width=$(( $(_prompt_display_width "$prompt_visible") + 3 ))
     fi
 
     PS1="${prompt_text}${sep}${prompt_char} "
@@ -161,17 +179,39 @@ _prompt_debug_trap() {
         (( exit != 0 )) && prompt_color="\e[31m"
 
         # After Readline accepts the input, the cursor is one row below its
-        # last line. Include every explicit continuation line when moving back
-        # to the start; otherwise only the final line is erased and the first
-        # line of a multiline command is left behind.
-        local command_lines=1 remaining=$_prompt_last_command
-        while [[ $remaining == *$'\n'* ]]; do
-            (( command_lines++ ))
-            remaining=${remaining#*$'\n'}
+        # last line. Count display rows, not just newlines: a long command can
+        # occupy multiple terminal rows without containing a newline.
+        local cols=${COLUMNS:-80}
+        (( cols > 0 )) || cols=80
+        local command_rows=0 line line_width line_rows line_cells had_newline
+        local first_line=1 remaining=$_prompt_last_command
+        while :; do
+            had_newline=0
+            if [[ $remaining == *$'\n'* ]]; then
+                line=${remaining%%$'\n'*}
+                remaining=${remaining#*$'\n'}
+                had_newline=1
+            else
+                line=$remaining
+            fi
+
+            line_cells=$(_prompt_display_width "$line")
+            if (( first_line )); then
+                line_width=$(( _prompt_last_line_width + line_cells ))
+                first_line=0
+            else
+                # Bash's default PS2 is "> ".
+                line_width=$(( 2 + line_cells ))
+            fi
+            line_rows=$(( (line_width + cols - 1) / cols ))
+            (( line_rows > 0 )) || line_rows=1
+            (( command_rows += line_rows ))
+
+            (( had_newline )) || break
         done
 
         local prompt_height=${_prompt_last_height:-1}
-        local cursor_up=$(( prompt_height + command_lines - 1 ))
+        local cursor_up=$(( prompt_height + command_rows - 1 ))
         printf "\e[%dA\r" "$cursor_up" >&2
 
         if (( prompt_height == 2 )); then
