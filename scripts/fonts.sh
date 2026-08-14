@@ -24,10 +24,14 @@ fonts=(
   "vazirmatn|https://github.com/rastikerdar/vazirmatn/releases/download/v33.003/vazirmatn-v33.003.zip"
   "vazir-code|https://github.com/rastikerdar/vazir-code-font/releases/download/v1.1.2/vazir-code-font-v1.1.2.zip"
   "lusitana|https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/Lusitana-Regular.ttf,https://raw.githubusercontent.com/google/fonts/main/ofl/lusitana/Lusitana-Bold.ttf"
+  "aporetic-sans|https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans/TTF/aporetic-sans-normalbolditalic.ttf,https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans/TTF/aporetic-sans-normalboldupright.ttf,https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans/TTF/aporetic-sans-normalregularitalic.ttf,https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans/TTF/aporetic-sans-normalregularupright.ttf"
+  "aporetic-sans-mono|https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans-mono/TTF/aporetic-sans-mono-normalbolditalic.ttf,https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans-mono/TTF/aporetic-sans-mono-normalboldupright.ttf,https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans-mono/TTF/aporetic-sans-mono-normalregularitalic.ttf,https://raw.githubusercontent.com/protesilaos/aporetic/main/aporetic-sans-mono/TTF/aporetic-sans-mono-normalregularupright.ttf"
   "nerd-fonts-symbols|https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/NerdFontsSymbolsOnly.zip"
   "0xProto|https://github.com/0xType/0xProto/releases/download/2.502/0xProto_2_502.zip"
   "commit-mono|https://github.com/eigilnikolajsen/commit-mono/releases/download/v1.143/CommitMono-1.143.zip"
   "iosevka|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-SGr-Iosevka-34.8.0.zip"
+  "iosevka-term|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-SGr-IosevkaTerm-34.8.0.zip"
+  "iosevka-aile|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-IosevkaAile-34.8.0.zip"
   "monaspace|https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-static-v1.400.zip"
 )
 manal_fonts=(
@@ -48,8 +52,8 @@ install_font() {
   rm -rf "$dest_dir"
   mkdir -p "$dest_dir"
 
-  # Lusitana (and other Google Fonts entries without a GitHub release
-  # archive) are listed as comma-separated raw .ttf urls instead.
+  # Fonts without a release archive are listed as comma-separated raw .ttf
+  # URLs instead (including fonts stored in a GitHub repository directory).
   if [[ "$url" == *.ttf ]] || [[ "$url" == *.ttf,* ]]; then
     IFS=',' read -ra ttf_urls <<< "$url"
     for ttf_url in "${ttf_urls[@]}"; do
