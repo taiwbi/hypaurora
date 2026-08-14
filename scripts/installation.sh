@@ -2,6 +2,8 @@
 
 # Hypaurora installation script — CachyOS (Arch) edition.
 
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
 red="\033[31m"
 green="\033[32m"
 yellow="\033[33m"
@@ -51,6 +53,9 @@ fi
 # install ffmpeg ffmpegthumbnailer libdvdcss
 # install gst-libav gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly \
 #   gst-plugin-va gst-plugin-gtk4 gst-plugin-pipewire
+
+echo -e "$header_2 Enabling MKV thumbnails in Nautilus"
+"$script_dir/thumbnailers.sh"
 
 ## Command line tools
 
