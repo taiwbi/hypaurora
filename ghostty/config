@@ -5,8 +5,6 @@ font-family = "Symbols Nerd Font Mono"
 
 font-size = 12
 
-font-feature = "+ss02", "+ss03", "+ss06", "+ss09", "+ss11"
-
 # --- Cell Dimensions ---
 adjust-cell-height = 10
 
