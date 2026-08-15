@@ -17,8 +17,8 @@ fi
 
 # Interface
 gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
-gsettings set org.gnome.desktop.interface font-name 'Aporetic Sans, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Aporetic Sans Mono, Vazir Code Hack 12'
+gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans, Vazirmatn 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Adwaita Mono, Vazir Code Hack 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Lusitana, Aria 11'
 gsettings set org.gnome.desktop.interface cursor-size 28
 

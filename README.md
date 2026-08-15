@@ -10,7 +10,7 @@ This is my **dotfiles** repository! 🎉 My personal configuration files for set
 
 - ✨ Icon Pack: [Neuwaita](https://github.com/RusticBard/Neuwaita)
 - 🖱️ Cursor Theme: [Adwaita](https://gitlab.gnome.org/GNOME/adwaita-icon-theme)
-- 🅰️ Font Family: [Aporetic Sans](https://github.com/protesilaos/aporetic)
+- 🅰️ Font Family: [Adwaita Sans](https://gitlab.gnome.org/GNOME/adwaita-fonts)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Aporetic Sans Mono](https://github.com/protesilaos/aporetic)
+- 💻 Monospace Family: [Adwaita Mono](https://gitlab.gnome.org/GNOME/adwaita-fonts)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font)
