@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Adwaita Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "Elephant", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
@@ -176,7 +176,7 @@ code,
 .claude .tiptap code,
 .claude .tiptap pre *,
 .claude .tiptap code * {
-    font-family: "Adwaita Mono" !important;
+    font-family: "Elephant" !important;
 }
 
 /* === === === === === Wallhaven === === === === === */
