@@ -32,6 +32,7 @@ fonts=(
   "iosevka|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-SGr-Iosevka-34.8.0.zip"
   "iosevka-term|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-SGr-IosevkaTerm-34.8.0.zip"
   "iosevka-aile|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-IosevkaAile-34.8.0.zip"
+  "elephant|https://github.com/taiwbi/elephant/releases/download/34.8.0/Elephant-34.8.0.zip"
   "monaspace|https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-static-v1.400.zip"
 )
 manal_fonts=(
