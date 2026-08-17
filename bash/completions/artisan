@@ -23,6 +23,17 @@ _artisan() {
     # Determine the command prefix and artisan position
     local prefix="php"
     local artisan_pos=1
+
+    # When Artisan is invoked through PHP, the command is one word later.
+    # Keep this check before the Sail handling so `php` itself does not get
+    # Artisan commands as completions.
+    if [[ "${words[0]}" == "php" ]]; then
+        if [[ "${words[1]}" == "artisan" ]]; then
+            artisan_pos=2
+        else
+            return
+        fi
+    fi
     
     # If we're completing for 'sail', adjust the position
     if [[ "${words[0]}" == "sail" || "${words[0]}" == *"/sail" ]]; then
@@ -67,5 +78,6 @@ _artisan() {
 
 # Register completion for artisan command
 complete -F _artisan artisan
+complete -F _artisan -o bashdefault php
 complete -F _artisan sail
 complete -F _artisan ./vendor/bin/sail
