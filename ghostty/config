@@ -1,5 +1,5 @@
 # --- Fonts ---
-font-family = "Elephant"
+font-family = "Hack"
 font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
 
@@ -9,15 +9,15 @@ font-style="Medium"
 font-style-bold="Extrabold"
 
 # --- Cell Dimensions ---
-adjust-cell-height = 8
+adjust-cell-height = 9
 
 # --- Window ---
 window-width = 115
 window-height = 27
 background-opacity = 1
 
-window-padding-x = 5
-window-padding-y = 5
+window-padding-x = 25
+window-padding-y = 25
 
 # --- Mouse ---
 mouse-hide-while-typing = true
