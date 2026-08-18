@@ -114,9 +114,9 @@ gsettings set org.gnome.desktop.input-sources per-window 'true'
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'suspend'
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-timeout 300
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'suspend'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 600
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 1800
 
-gsettings set org.gnome.desktop.session idle-delay 60
+gsettings set org.gnome.desktop.session idle-delay 300
 
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
 gsettings set org.gnome.settings-daemon.plugins.power power-saver-profile-on-low-battery true
