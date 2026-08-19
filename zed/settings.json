@@ -24,7 +24,7 @@
 
   "theme": {
     "mode": "system",
-    "dark": "One Dark",
+    "dark": "Vague",
     "light": "One Light",
   },
   "experimental.theme_overrides": {
@@ -45,7 +45,7 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": "Adwaita Sans",
+  "ui_font_family": "Hack",
   "ui_font_size": 14,
 
   "vertical_scroll_margin": 6.0,
@@ -131,7 +131,7 @@
   "relative_line_numbers": "enabled",
   "use_smartcase_search": true,
   "auto_indent_on_paste": true,
-  "autosave": "on_focus_change",
+  "autosave": "on_window_change",
   "restore_on_startup": "launchpad",
   "format_on_save": "on",
   "tab_bar": {
@@ -165,7 +165,7 @@
     "toml": true,
     "lua": true,
     // icons and themes
-    "nstlgy-dark": true,
+    "vague": true,
   },
 
   // LSP and Language Server ===================================
