@@ -8,6 +8,8 @@ alias vi 'command nvim'
 alias v 'command nvim'
 alias cvi 'command nvim --clean'
 alias nvim 'echo "Use vi :)"'
+alias cc 'claude'
+alias cx 'codex'
 alias cl clear
 alias cd.. 'cd ..'
 alias .. 'cd ..'
