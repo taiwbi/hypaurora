@@ -16,8 +16,8 @@ window-width = 115
 window-height = 27
 background-opacity = 1
 
-window-padding-x = 25
-window-padding-y = 25
+window-padding-x = 10
+window-padding-y = 10
 
 # --- Mouse ---
 mouse-hide-while-typing = true
