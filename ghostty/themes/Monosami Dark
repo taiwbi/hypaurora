@@ -1,0 +1,65 @@
+# Monosami Dark
+# Ported from:
+# https://github.com/borngraced/monosami
+
+background = #1c1c1c
+foreground = #bcbcbc
+
+cursor-color = #8a8a8a
+cursor-text = #1c1c1c
+
+selection-background = #3d3d3d
+selection-foreground = #bcbcbc
+
+# black
+palette = 0=#1c1c1c
+
+# red
+# Zed: #7f7f7f4d composited over #1c1c1c
+palette = 1=#3a3a3a
+
+# green
+# Zed: #7f7f7f4d composited over #1c1c1c
+palette = 2=#3a3a3a
+
+# yellow
+palette = 3=#666666
+
+# blue
+# Zed: #7f7f7f4d composited over #1c1c1c
+palette = 4=#3a3a3a
+
+# magenta
+# Zed: #7f7f7f4d composited over #1c1c1c
+palette = 5=#3a3a3a
+
+# cyan
+# Zed: #7f7f7f4d composited over #1c1c1c
+palette = 6=#3a3a3a
+
+# white
+palette = 7=#ffffff
+
+# bright black
+palette = 8=#bcbcbc
+
+# bright red
+palette = 9=#3a3a3a
+
+# bright green
+palette = 10=#666666
+
+# bright yellow
+palette = 11=#3a3a3a
+
+# bright blue
+palette = 12=#3a3a3a
+
+# bright magenta
+palette = 13=#3a3a3a
+
+# bright cyan
+palette = 14=#3a3a3a
+
+# bright white
+palette = 15=#bcbcbc

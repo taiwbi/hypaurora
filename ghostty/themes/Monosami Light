@@ -1,0 +1,60 @@
+# Monosami Light
+# Ported from:
+# https://github.com/borngraced/monosami
+
+background = #e4e4e4
+foreground = #606060
+
+cursor-color = #808080
+cursor-text = #e4e4e4
+
+selection-background = #bcbcbc
+selection-foreground = #262626
+
+# black
+palette = 0=#262626
+
+# red
+palette = 1=#666666
+
+# green
+palette = 2=#4e4e4e
+
+# yellow
+palette = 3=#9e9e9e
+
+# blue
+palette = 4=#444444
+
+# magenta
+palette = 5=#808080
+
+# cyan
+palette = 6=#8a8a8a
+
+# white
+palette = 7=#b2b2b2
+
+# bright black
+palette = 8=#4e4e4e
+
+# bright red
+palette = 9=#949494
+
+# bright green
+palette = 10=#767676
+
+# bright yellow
+palette = 11=#b2b2b2
+
+# bright blue
+palette = 12=#606060
+
+# bright magenta
+palette = 13=#a8a8a8
+
+# bright cyan
+palette = 14=#bcbcbc
+
+# bright white
+palette = 15=#f7f7f7

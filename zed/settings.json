@@ -24,8 +24,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Vague",
-    "light": "One Light",
+    "dark": "Monosami Dark",
+    "light": "Monosami Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -165,7 +165,7 @@
     "toml": true,
     "lua": true,
     // icons and themes
-    "vague": true,
+    "monosami": true,
   },
 
   // LSP and Language Server ===================================
