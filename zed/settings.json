@@ -24,8 +24,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Monosami Dark",
-    "light": "Monosami Light",
+    "dark": "Porcelain Dark",
+    "light": "Porcelain Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
