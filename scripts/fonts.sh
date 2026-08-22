@@ -34,6 +34,8 @@ fonts=(
   "iosevka-aile|https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTC-IosevkaAile-34.8.0.zip"
   "elephant|https://github.com/taiwbi/elephant/releases/download/34.8.0/Elephant-34.8.0.zip"
   "monaspace|https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-static-v1.400.zip"
+  "zed-mono|https://github.com/taiwbi/zed-fonts/releases/download/v34.8.0-3/Zed-Mono-v34.8.0-3.zip"
+  "zed-sans|https://github.com/taiwbi/zed-fonts/releases/download/v34.8.0-3/Zed-Sans-v34.8.0-3.zip"
 )
 manal_fonts=(
   "Aria|For Persian and Arabic serif texts"
