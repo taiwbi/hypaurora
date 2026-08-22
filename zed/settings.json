@@ -68,6 +68,10 @@
     "dock": "left",
   },
 
+  "title_bar": {
+    "show_worktree_name": false,
+  },
+
   // Agent =====================================================
   "agent_servers": {
     "codex-acp": {
