@@ -65,7 +65,7 @@
     "dock": "right",
   },
   "collaboration_panel": {
-    "dock": "right",
+    "dock": "left",
   },
 
   // Agent =====================================================
@@ -78,6 +78,7 @@
     },
   },
   "agent": {
+    "sidebar_side": "right",
     "dock": "right",
 
     // chat window
