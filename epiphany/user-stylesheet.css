@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Zed Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "JetBrais Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
@@ -176,7 +176,7 @@ code,
 .claude .tiptap code,
 .claude .tiptap pre *,
 .claude .tiptap code * {
-    font-family: "Zed Mono" !important;
+    font-family: "JetBrais Mono" !important;
 }
 
 /* === === === === === Wallhaven === === === === === */
