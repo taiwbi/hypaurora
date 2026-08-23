@@ -36,6 +36,7 @@ fonts=(
   "monaspace|https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-static-v1.400.zip"
   "zed-mono|https://github.com/taiwbi/zed-fonts/releases/download/v34.8.0-3/Zed-Mono-v34.8.0-3.zip"
   "zed-sans|https://github.com/taiwbi/zed-fonts/releases/download/v34.8.0-3/Zed-Sans-v34.8.0-3.zip"
+  "jetbrains-mono|https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip"
 )
 manal_fonts=(
   "Aria|For Persian and Arabic serif texts"
