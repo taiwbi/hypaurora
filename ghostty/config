@@ -1,5 +1,5 @@
 # --- Fonts ---
-font-family = "JetBrais Mono"
+font-family = "JetBrains Mono"
 font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
 
@@ -7,9 +7,6 @@ font-style = "Medium"
 font-style-bold = "ExtraBold"
 
 font-size = 13
-
-font-style="Medium"
-font-style-bold="Extrabold"
 
 # --- Cell Dimensions ---
 adjust-cell-height = 9
@@ -27,4 +24,4 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Porcelain Dark, light:Porcelain Light
+theme = dark:Vague, light:Porcelain Light
