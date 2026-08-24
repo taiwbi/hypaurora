@@ -6,10 +6,10 @@ font-family = "Symbols Nerd Font Mono"
 font-style = "Medium"
 font-style-bold = "ExtraBold"
 
-font-size = 13
+font-size = 12
 
 # --- Cell Dimensions ---
-adjust-cell-height = 9
+adjust-cell-height = 5
 
 # --- Window ---
 window-width = 115
