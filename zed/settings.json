@@ -12,18 +12,19 @@
   "cli_default_open_behavior": "existing_window",
   "auto_update": false,
   "auto_update_extensions": {},
+
   // UI and Buffer =============================================
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_weight": 400,
-  "buffer_font_fallbacks": [
-    "Vazir Code Hack"
-  ],
+  "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 17,
   "buffer_line_height": "comfortable",
+
   "diff_view_style": "unified",
+
   "theme": {
     "mode": "system",
-    "dark": "Porcelain Dark",
+    "dark": "Vague",
     "light": "Porcelain Light",
   },
   "experimental.theme_overrides": {
@@ -43,8 +44,10 @@
   },
   "selection_highlight": false,
   "cursor_blink": true,
+
   "ui_font_family": "Adwaita Mono",
   "ui_font_size": 14,
+
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
   "show_whitespaces": "trailing",
@@ -54,6 +57,7 @@
   "minimap": {
     "show": "never",
   },
+
   "project_panel": {
     "dock": "left",
   },
@@ -63,9 +67,11 @@
   "collaboration_panel": {
     "dock": "left",
   },
+
   "title_bar": {
     "show_worktree_name": false,
   },
+
   // Agent =====================================================
   "agent_servers": {
     "codex-acp": {
@@ -78,12 +84,14 @@
   "agent": {
     "sidebar_side": "right",
     "dock": "right",
+
     // chat window
     "default_model": {
       "provider": "openrouter",
       "model": "anthropic/claude-haiku-4.5",
     },
     "default_profile": "minimal",
+
     // inline assistant
     "inline_assistant_model": {
       "provider": "openrouter",
@@ -91,6 +99,7 @@
       "enable_thinking": false,
     },
     "inline_alternatives": [],
+
     // commit message
     "commit_message_model": {
       "provider": "openrouter",
@@ -111,17 +120,16 @@
     "mode": "eager",
     "provider": "zed",
   },
+
   // Terminal ==================================================
   "terminal": {
     "font_family": "JetBrains Mono",
     "font_size": 15,
     "font_weight": 400,
-    "font_fallbacks": [
-      "Vazir Code Hack",
-      "Symbols Nerd Font"
-    ],
+    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
     "line_height": "comfortable",
   },
+
   // Behaviour =================================================
   "vim_mode": true,
   "base_keymap": "VSCode",
@@ -148,6 +156,7 @@
     "dock": "left",
     "tree_view": true,
   },
+
   "auto_install_extensions": {
     // languages
     "php": true,
@@ -163,6 +172,7 @@
     // icons and themes
     "monosami": true,
   },
+
   // LSP and Language Server ===================================
   "languages": {
     "PHP": {
@@ -216,10 +226,6 @@
         },
       },
     },
-    "phptools": {
-      "initialization_options": {
-        "0": ""
-      }
-    },
+    "phptools": { "initialization_options": { "0": "" } },
   },
 }
