@@ -118,6 +118,12 @@ code,
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
+html.dark.chatgpt,
+html.dark.chatgpt :not(:where(.light, .light *)) {
+    --main-surface-primary: #1c1c1c !important;
+    --sidebar-surface-primary: #1c1c1c !important;
+}
+
 /* === === === === === Claude === === === === === */
 
 :root {
