@@ -1,19 +1,9 @@
-# --- 2B Picture and Praise ---
+# --- 2B Praise ---
 
 function fish_greeting
     # Check if tput exists, stdout is a terminal, TERM is set and not 'dumb'
     if command -v tput >/dev/null; and set -q TERM; and test "$TERM" != dumb
         set -l term_width (tput cols) # -l for local scope
-
-        # Check terminal type
-        if test "$TERM" = xterm-ghostty -o "$TERM" = xterm-kitty
-            # Display image with kitten icat if conditions met
-            if command -v kitten >/dev/null 2>&1; and test $term_width -gt 40
-                set -l position (math $term_width - 21)
-                set -l image $(find "$HOME/Documents/hypaurora/assets" -type f -name "*.png" | shuf -n 1)
-                kitten icat -n --place "25x8@$position"x0 "$image"
-            end
-        end
 
         # Display praise if terminal is wide enough
         if test $term_width -gt 35

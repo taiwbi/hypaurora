@@ -5,16 +5,6 @@ bash_greeting() {
         term_width=$(tput cols)
         wrap_width=$term_width
 
-        if [ "$TERM" = "xterm-ghostty" ] || [ "$TERM" = "xterm-kitty" ]; then
-            if command -v kitten > /dev/null 2>&1 && [ "$term_width" -gt 40 ]; then
-                position=$((term_width - 21))
-                random_image=$(shuf -n 1 -e "$HOME/Documents/hypaurora/assets"/*.png)
-                kitten icat -n --place "25x8@$position"x0 "$random_image"
-
-                wrap_width=$((term_width - 22))
-            fi
-        fi
-
         if [ "$term_width" -gt 35 ]; then
             tput cr
             shuf -n 1 "$HOME/Documents/hypaurora/assets/2BPraise.txt" | fmt -w "$wrap_width"
