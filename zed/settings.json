@@ -14,7 +14,7 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_family": "Dank Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16,
@@ -123,7 +123,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "JetBrains Mono",
+    "font_family": "Dank Mono",
     "font_size": 15,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
