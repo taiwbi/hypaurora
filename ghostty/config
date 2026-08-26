@@ -4,7 +4,9 @@ font-family = "Vazir Code Hack"
 font-family = "Symbols Nerd Font Mono"
 
 font-style = "Bold"
-font-style-bold = "Bold"
+font-style-bold = "ExtraBold"
+font-style-italic = "ItalicBold"
+font-style-bold-italic = "ItalicExtraBold"
 
 font-size = 13
 
