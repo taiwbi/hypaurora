@@ -60,7 +60,7 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super>c']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 
 gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts '[]'
-gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>Escape']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super>minus']"
 
 # Custom Keybindings
 current=$(gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings)
