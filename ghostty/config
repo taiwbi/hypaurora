@@ -26,4 +26,9 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Vague, light:Porcelain Light
+theme = dark:Catppuccin Mocha, light:Catppuccin Latte
+
+# --- Keybindings ---
+keybind = ctrl+shift+equal=increase_font_size:1
+keybind = ctrl+shift+minus=decrease_font_size:1
+keybind = ctrl+shift+digit_0=reset_font_size
