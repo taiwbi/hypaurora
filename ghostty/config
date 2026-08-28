@@ -1,17 +1,17 @@
 # --- Fonts ---
 font-family = "Dank Mono"
 font-family = "Vazir Code Hack"
-font-family = "Symbols Nerd Font Mono"
+font-family = "BetterIcons"
 
 font-style = "Bold"
 font-style-bold = "ExtraBold"
 font-style-italic = "ItalicBold"
 font-style-bold-italic = "ItalicExtraBold"
 
-font-size = 13
+font-size = 14
 
 # --- Cell Dimensions ---
-adjust-cell-height = 12
+adjust-cell-height = 17
 
 # --- Window ---
 window-width = 120
