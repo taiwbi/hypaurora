@@ -85,6 +85,9 @@ echo -e "$header_1 Installing development tools"
 install rust rust-src rust-analyzer
 # PHP
 install php composer
+mkdir -p ~/.local/npm
+npm config set prefix ~/.local/npm
+npm install -g devsense-php-ls
 
 sudo mkdir -p /etc/php/conf.d
 echo 'extension=iconv' | sudo tee /etc/php/conf.d/iconv.ini

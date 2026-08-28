@@ -44,7 +44,7 @@ set_proxy
 
 export PHP_CS_FIXER_IGNORE_ENV=true
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/npm/bin:$PATH"
 
 if [[ "$1" == "kitty" ]]; then
     shift
