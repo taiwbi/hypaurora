@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Dank Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "JetBrains Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
@@ -182,7 +182,7 @@ html.dark.chatgpt :not(:where(.light, .light *)) {
 .claude .tiptap code,
 .claude .tiptap pre *,
 .claude .tiptap code * {
-    font-family: "Dank Mono" !important;
+    font-family: "JetBrains Mono" !important;
 }
 
 /* === === === === === Wallhaven === === === === === */

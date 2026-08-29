@@ -1,21 +1,17 @@
 # --- Fonts ---
-font-family = "Dank Mono"
+font-family = "JetBrains Mono"
 font-family = "BetterIcons"
 font-family = "Vazir Code Hack"
 
-font-style = "Bold"
-font-style-bold = "ExtraBold"
-font-style-italic = "ItalicBold"
-font-style-bold-italic = "ItalicExtraBold"
 
-font-size = 14
+font-size = 13
 
 # --- Cell Dimensions ---
 adjust-cell-height = 17
 
 # --- Window ---
-window-width = 120
-window-height = 25
+window-width = 130
+window-height = 22
 background-opacity = 1
 
 window-padding-x = 10
