@@ -11,7 +11,7 @@ import requests
 # --- Configuration ---
 # Fallback API key file if OPENROUTER_API_KEY is not set
 API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
-MODEL_NAME = "openai/gpt-5.6-luna"
+MODEL_NAME = "z-ai/glm-5.3"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -52,7 +52,7 @@ def generate_openrouter_response(prompt, user_input="", temperature=0.0):
         "provider": {
             "sort": "price",
         },
-        "reasoning": {"enabled": True, "effort": "high"},
+        "reasoning": {"enabled": True, "effort": "low"},
     }
 
     try:
