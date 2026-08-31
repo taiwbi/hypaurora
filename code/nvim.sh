@@ -51,7 +51,7 @@ if [[ "$1" == "kitty" ]]; then
     kitty --class="neovide" -e bash -c "nvim $@"
 elif [[ "$1" == "ghostty" ]]; then
     shift
-    ghostty --gtk-titlebar=false --class="neovide" \
+    ghostty --gtk-titlebar=false --class="org.nvim.neovide" \
         --window-padding-x=0 --window-padding-y=0 \
         -e /bin/bash -c "sleep .1 && nvim" -- "$@"
 else
