@@ -22,7 +22,7 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = dark:Catppuccin Frappe, light:Catppuccin Latte
+theme = dark:Catppuccin Mocha, light:Catppuccin Latte
 
 # --- Keybindings ---
 keybind = ctrl+shift+equal=increase_font_size:1
