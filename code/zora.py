@@ -12,6 +12,7 @@ import requests
 # Fallback API key file if OPENROUTER_API_KEY is not set
 API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
 MODEL_NAME = "z-ai/glm-5.3"
+COMMIT_MODEL_NAME = "z-ai/glm-5.3-flash"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -37,11 +38,13 @@ def load_api_key():
         sys.exit(1)
 
 
-def generate_openrouter_response(prompt, user_input="", temperature=0.0):
-    api_key = os.environ.get("OPENROUTER_API_KEY") or load_api_key()
+def generate_openrouter_response(
+    prompt, user_input="", temperature=0.0, model_name=MODEL_NAME
+):
+    api_key = load_api_key()
 
     payload = {
-        "model": MODEL_NAME,
+        "model": model_name,
         "messages": [
             {"role": "system", "content": prompt},
             {"role": "user", "content": user_input},
@@ -178,7 +181,9 @@ BREAKING CHANGE: <description>
         user_message += f"\n\nThis is a description of what I've changed and what was my purpose: {user_description}"
 
     print("Generating commit message from staged changes...")
-    commit_message = generate_openrouter_response(commit_prompt, user_message, 0.3)
+    commit_message = generate_openrouter_response(
+        commit_prompt, user_message, 0.3, COMMIT_MODEL_NAME
+    )
 
     # Remove code fences if present
     commit_message = commit_message.replace("```", "").replace("`", "").strip()
