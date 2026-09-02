@@ -188,19 +188,16 @@ BREAKING CHANGE: <description>
     print(commit_message)
     print("-------------------------------------")
 
-    confirmation = (
-        input("Do you want to commit with this message? (yes/no): ").strip().lower()
+    input(
+        "Do you want to commit with this message? " "(Enter to confirm/Ctrl+C to abort)"
     )
 
-    if confirmation in ["yes", "y"]:
-        print("Committing changes...")
-        try:
-            subprocess.run(["git", "commit", "-m", commit_message], check=True)
-            print("Changes committed successfully.")
-        except subprocess.CalledProcessError as e:
-            print(f"Commit failed with exit code {e.returncode}.")
-    else:
-        print("Commit canceled.")
+    print("Committing changes...")
+    try:
+        subprocess.run(["git", "commit", "-m", commit_message], check=True)
+        print("Changes committed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Commit failed with exit code {e.returncode}.")
 
 
 def command_mode(user_input):
