@@ -69,7 +69,7 @@ install ripgrep nodejs npm wl-clipboard socat neovim aria2 python-pip fzf \
 echo -e "$header_1 Installing desktop applications and theming"
 
 install adw-gtk-theme nautilus-python gnome-browser-connector
-install ghostty
+install ghostty kitty
 install epiphany zed neovide
 install brave-origin-bin
 
