@@ -114,7 +114,7 @@ hl.config({
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
 		force_default_wallpaper = 0,
-		focus_on_activate = true,
+		focus_on_activate = false,
 		middle_click_paste = false,
 		animate_manual_resizes = true,
 		animate_mouse_windowdragging = true,
