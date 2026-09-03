@@ -123,7 +123,8 @@ hl.config({
 		repeat_delay = 300,
 		follow_mouse = 1,
 		float_switch_override_focus = 1,
-		sensitivity = 0.6,
+		sensitivity = 1,
+		accel_profile = "flat",
 		touchpad = {
 			natural_scroll = true,
 			tap_to_click = true,
