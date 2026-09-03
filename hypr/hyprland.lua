@@ -275,6 +275,7 @@ hl.bind(main_mod .. " + SHIFT + ESCAPE", exec("hyprshutdown"), { description = "
 hl.bind(main_mod .. " + Q", hl.dsp.window.close(), { description = "Close focused window" })
 hl.bind(main_mod .. " + SHIFT + Q", hl.dsp.window.kill(), { description = "Force-close focused window" })
 hl.bind(main_mod .. " + V", hl.dsp.window.float({ action = "toggle" }), { description = "Toggle floating" })
+hl.bind(main_mod .. " + C", hl.dsp.window.center(), { description = "Center focused window" })
 hl.bind(main_mod .. " + G", hl.dsp.group.toggle(), { description = "Toggle focused window group" })
 hl.bind(main_mod .. " + ALT + G", hl.dsp.window.move({ out_of_group = true }), {
 	description = "Move focused window out of group",
