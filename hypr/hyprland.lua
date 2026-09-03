@@ -243,6 +243,16 @@ hl.bind(main_mod .. " + A", exec(launcher), { description = "Open application la
 hl.bind(main_mod .. " + X", exec(file_manager), { description = "Open Nautilus" })
 hl.bind(main_mod .. " + B", exec(browser), { description = "Open browser" })
 hl.bind(main_mod .. " + BACKSLASH", exec(neovide), { description = "Open Neovide" })
+hl.bind(
+	main_mod .. " + GRAVE",
+	exec('"$HOME/Documents/hypaurora/code/rescue-background.sh" rescue'),
+	{ description = "Use rescue background" }
+)
+hl.bind(
+	main_mod .. " + SHIFT + GRAVE",
+	exec('"$HOME/Documents/hypaurora/code/rescue-background.sh" restore'),
+	{ description = "Restore original background" }
+)
 hl.bind(main_mod .. " + P", exec("uwsm app -- gnome-control-center"), { description = "Open GNOME settings" })
 hl.bind(main_mod .. " + ESCAPE", exec("hyprlock"), { description = "Lock screen" })
 hl.bind(main_mod .. " + ALT + M", exec("hyprshutdown"), { description = "Log out" })
