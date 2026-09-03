@@ -261,8 +261,8 @@ hl.bind(main_mod .. " + ESCAPE", exec("hyprlock"), { description = "Lock screen"
 hl.bind(main_mod .. " + ALT + M", exec("hyprshutdown"), { description = "Log out" })
 hl.bind(main_mod .. " + SHIFT + ESCAPE", exec("hyprshutdown"), { description = "Log out" })
 -- Layout and window actions.
-hl.bind(main_mod .. " + Q", hl.dsp.window.close(), { description = "Close focused window" })
-hl.bind(main_mod .. " + SHIFT + Q", hl.dsp.window.kill(), { description = "Force-close focused window" })
+hl.bind(main_mod .. " + z", hl.dsp.window.close(), { description = "Close focused window" })
+hl.bind(main_mod .. " + SHIFT + z", hl.dsp.window.kill(), { description = "Force-close focused window" })
 hl.bind(main_mod .. " + V", hl.dsp.window.float({ action = "toggle" }), { description = "Toggle floating" })
 hl.bind(main_mod .. " + C", hl.dsp.window.center(), { description = "Center focused window" })
 hl.bind(main_mod .. " + G", hl.dsp.group.toggle(), { description = "Toggle focused window group" })
@@ -308,11 +308,11 @@ for _, binding in ipairs({
 	{ "3", 3 },
 	{ "4", 4 },
 	{ "5", 5 },
-	{ "6", 6 },
-	{ "7", 7 },
-	{ "8", 8 },
-	{ "9", 9 },
-	{ "0", 10 },
+	{ "Q", 6 },
+	{ "W", 7 },
+	{ "E", 8 },
+	{ "R", 9 },
+	{ "T", 10 },
 }) do
 	local key = binding[1]
 	local workspace = binding[2]
