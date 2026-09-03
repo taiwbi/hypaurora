@@ -57,6 +57,20 @@ hl.config({
 		},
 	},
 
+	-- Groups use the border as their only visual indicator; keep the group bar
+	-- disabled so grouped windows retain the normal tiled layout appearance.
+	group = {
+		col = {
+			border_active = "rgb(fab387)",
+			border_inactive = "rgba(fab387aa)",
+			border_locked_active = "rgb(fab387)",
+			border_locked_inactive = "rgba(fab387aa)",
+		},
+		groupbar = {
+			enabled = false,
+		},
+	},
+
 	decoration = {
 		rounding = 14,
 		active_opacity = 1.0,
@@ -261,6 +275,10 @@ hl.bind(main_mod .. " + SHIFT + ESCAPE", exec("hyprshutdown"), { description = "
 hl.bind(main_mod .. " + Q", hl.dsp.window.close(), { description = "Close focused window" })
 hl.bind(main_mod .. " + SHIFT + Q", hl.dsp.window.kill(), { description = "Force-close focused window" })
 hl.bind(main_mod .. " + V", hl.dsp.window.float({ action = "toggle" }), { description = "Toggle floating" })
+hl.bind(main_mod .. " + G", hl.dsp.group.toggle(), { description = "Toggle focused window group" })
+hl.bind(main_mod .. " + ALT + G", hl.dsp.window.move({ out_of_group = true }), {
+	description = "Move focused window out of group",
+})
 hl.bind(main_mod .. " + I", hl.dsp.layout("togglesplit"), { description = "Toggle split direction" })
 hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen(), { description = "Toggle fullscreen" })
 hl.bind(main_mod .. " + S", hl.dsp.workspace.toggle_special("magic"), { description = "Toggle scratchpad" })
@@ -274,6 +292,17 @@ for _, direction in ipairs({
 	focus(direction)
 	move(direction)
 	resize(direction)
+end
+
+for _, direction in ipairs({
+	{ key = "H", value = "l", name = "left" },
+	{ key = "L", value = "r", name = "right" },
+	{ key = "K", value = "u", name = "up" },
+	{ key = "J", value = "d", name = "down" },
+}) do
+	hl.bind(main_mod .. " + ALT + " .. direction.key, hl.dsp.window.move({ into_group = direction.value }), {
+		description = "Move focused window into group on the " .. direction.name,
+	})
 end
 
 -- Keyboard layout switching is intentionally a compositor dispatch. The
@@ -311,6 +340,8 @@ hl.bind(main_mod .. " + SHIFT + TAB", hl.dsp.window.move({ workspace = "special:
 	description = "Move window to scratchpad",
 })
 hl.bind(main_mod .. " + TAB", hl.dsp.focus({ workspace = "previous" }), { description = "Previous workspace" })
+hl.bind("ALT + TAB", hl.dsp.group.next(), { description = "Next window in group" })
+hl.bind("ALT + SHIFT + TAB", hl.dsp.group.prev(), { description = "Previous window in group" })
 hl.bind(main_mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(main_mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
