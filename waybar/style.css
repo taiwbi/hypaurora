@@ -68,7 +68,7 @@ window#waybar > box {
 
 #workspaces button {
   margin: 3px 1px;
-  padding: 0 9px;
+  padding: 0 2px;
   color: @overlay0;
   background: transparent;
   border-radius: 8px;
