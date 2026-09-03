@@ -1,0 +1,13 @@
+[Unit]
+Description=Hypaurora Waybar
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/waybar -c %h/.config/waybar/config.jsonc -s %h/.config/waybar/style.css
+Restart=on-failure
+RestartSec=2
+Environment=GDK_BACKEND=wayland
+
+[Install]
+WantedBy=graphical-session.target

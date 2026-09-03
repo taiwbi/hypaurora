@@ -1,0 +1,153 @@
+/* Hypaurora — Catppuccin Mocha glass bar */
+
+@define-color base #11111b;
+@define-color mantle #181825;
+@define-color crust #11111b;
+@define-color text #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color overlay0 #6c7086;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color mauve #cba6f7;
+@define-color pink #f5c2e7;
+@define-color teal #94e2d5;
+@define-color green #a6e3a1;
+@define-color yellow #f9e2af;
+@define-color red #f38ba8;
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrains Mono", "Vazirmatn", monospace;
+  font-size: 13px;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+window#waybar>box {
+  margin: 6px 8px 0;
+  background: transparent;
+  border-radius: 14px;
+}
+
+#custom-launcher,
+#workspaces,
+#window,
+#clock,
+#custom-keyboard,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#tray {
+  margin: 4px 2px;
+  padding: 0 11px;
+  background: alpha(@mantle, 0.92);
+  border: 1px solid alpha(@surface0, 0.65);
+  border-radius: 10px;
+}
+
+#custom-launcher {
+  padding: 0 14px;
+  color: @mauve;
+  font-size: 18px;
+  background: linear-gradient(135deg, alpha(@mauve, 0.18), alpha(@blue, 0.1));
+}
+
+#workspaces {
+  padding: 0 4px;
+  background: alpha(@mantle, 0.72);
+}
+
+#workspaces button {
+  margin: 3px 1px;
+  padding: 0 9px;
+  color: @overlay0;
+  background: transparent;
+  border-radius: 8px;
+  transition: all 160ms ease;
+}
+
+#workspaces button.active {
+  color: @base;
+  background: linear-gradient(135deg, @mauve, @blue);
+  box-shadow: 0 0 12px alpha(@mauve, 0.35);
+}
+
+#workspaces button.urgent {
+  color: @base;
+  background: @red;
+}
+
+#workspaces button:hover {
+  color: @text;
+  background: @surface0;
+}
+
+#window {
+  min-width: 120px;
+  color: @subtext0;
+}
+
+#clock {
+  padding-left: 16px;
+  padding-right: 16px;
+  color: @pink;
+  background: linear-gradient(135deg, alpha(@pink, 0.13), alpha(@mauve, 0.1));
+}
+
+#custom-keyboard {
+  color: @lavender;
+}
+
+#cpu {
+  color: @yellow;
+}
+
+#memory {
+  color: @mauve;
+}
+
+#network {
+  color: @blue;
+}
+
+#pulseaudio {
+  color: @teal;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#battery.charging {
+  color: @teal;
+}
+
+#tray {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+tooltip {
+  padding: 8px 10px;
+  color: @text;
+  background: @base;
+  border: 1px solid @surface1;
+  border-radius: 10px;
+}

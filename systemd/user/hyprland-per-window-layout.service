@@ -1,0 +1,12 @@
+[Unit]
+Description=Per-window keyboard layout memory
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.cargo/bin/hyprland-per-window-layout
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

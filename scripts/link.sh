@@ -1,85 +1,93 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-red="\033[31m"
-green="\033[32m"
-yellow="\033[33m"
-reset_fg="\033[0m"
+# Link Hypaurora configuration into the user profile.
+# Existing files and directories are moved to a timestamped backup rather
+# than deleted. Run with --yes from installation.sh or interactively by hand.
 
-header_0="$red⦿  $green⦿  $yellow⦿ $reset_fg"
+set -Eeuo pipefail
 
-echo -e "$header_0 Are you sure? $red THIS WILL REMOVE ALL OF YOUR PREVIOUS CONFIGURATIONS.$reset_fg"
-read -rp "(y/n) " yn
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+repo_root="$(cd -- "$script_dir/.." && pwd -P)"
+backup_root="$HOME/.local/state/hypaurora/backups/$(date +%Y%m%d-%H%M%S)"
 
-if [ "$yn" != "y" ]; then
-  echo -e "Ok, I won't ruin your configs :)"
-  exit
+info() { printf '\033[1;34m[ hypaurora ]\033[0m %s\n' "$*"; }
+warn() { printf '\033[1;33m[ warning ]\033[0m %s\n' "$*" >&2; }
+
+confirm=0
+if [[ "${1:-}" == "--yes" ]]; then
+    confirm=1
 fi
 
-
-rm -rf "$HOME/.config/fontconfig";
-ln -s "$PWD/fontconfig" "$HOME/.config/"
-
-rm -rf "$HOME/.config/mpv";
-ln -s "$PWD/mpv" "$HOME/.config/"
-
-rm -rf "$HOME/.config/gtk-3.0";
-ln -s "$PWD/gtk-3.0" "$HOME/.config/"
-
-rm -rf "$HOME/.config/gtk-4.0";
-ln -s "$PWD/gtk-4.0" "$HOME/.config/"
-
-rm -rf "$HOME/.config/ghostty";
-ln -s "$PWD/ghostty" "$HOME/.config/"
-
-rm -rf "$HOME/.config/kitty";
-ln -s "$PWD/kitty" "$HOME/.config/"
-
-rm -rf "$HOME/.config/lazygit";
-ln -s "$PWD/lazygit" "$HOME/.config/"
-
-rm -rf "$HOME/.config/fish";
-ln -sf "$PWD/fish" "$HOME/.config/fish"
-
-rm -rf "$HOME/.config/Kvantum";
-ln -sf "$PWD/kvantum" "$HOME/.config/Kvantum"
-
-rm -rf "$HOME/.config/qt6ct";
-ln -sf "$PWD/qt" "$HOME/.config/qt6ct"
-
-rm -rf "$HOME/.config/hypr";
-ln -sf "$PWD/hypr" "$HOME/.config/hypr"
-
-rm -rf "$HOME/.local/share/nautilus/scripts";
-ln -sf "$PWD/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
-
-rm -rf "$HOME/.bashrc"
-ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
-
-rm -rf "$HOME/.config/zed/keymap.json"
-rm -rf "$HOME/.config/zed/settings.json"
-rm -rf "$HOME/.config/zed/tasks.json"
-cp -f "$PWD/zed/keymap.json" "$HOME/.config/zed/keymap.json"
-cp -f "$PWD/zed/settings.json" "$HOME/.config/zed/settings.json"
-cp -f "$PWD/zed/tasks.json" "$HOME/.config/zed/tasks.json"
-
-mkdir -p "$HOME/.local/binary/"
-
-rm -rf "$HOME/.local/binary/zora"
-ln -sf "$PWD/code/zora.py" "$HOME/.local/binary/zora"
-
-rm -rf "$HOME/.local/share/org.gnome.Ptyxis/palettes"
-ln -sf "$PWD/ptyxis-palettes" "$HOME/.local/share/org.gnome.Ptyxis/palettes"
-
-
-# rm -rf ~/.claude ~/.claude.json ~/.claude.json.backup
-mkdir -p "$HOME/.claude"
-ln -sf "$PWD/claude/settings.json" "$HOME/.claude/settings.json"
-ln -sf "$PWD/claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
-
-if [ -d "$HOME/.local/share/epiphany" ]; then
-  rm -f "$HOME/.local/share/epiphany/user-*";
-  ln -sf "$PWD/epiphany/user-javascript.js" "$HOME/.local/share/epiphany/user-javascript.js"
-  ln -sf "$PWD/epiphany/user-stylesheet.css" "$HOME/.local/share/epiphany/user-stylesheet.css"
+if (( ! confirm )); then
+    read -r -p "Link Hypaurora configuration? Existing targets will be backed up first [y/N] " answer
+    [[ "$answer" =~ ^[Yy]$ ]] || { info "Nothing changed."; exit 0; }
 fi
 
-echo -e ""
+safe_backup_name() {
+    local target="$1"
+    local relative="${target#"$HOME/"}"
+    printf '%s' "${relative//\//__}"
+}
+
+link_path() {
+    local source="$1"
+    local target="$2"
+    local resolved
+
+    [[ -e "$source" || -L "$source" ]] || { warn "Skipping missing source: $source"; return 0; }
+    source="$(realpath -e -- "$source")"
+    mkdir -p -- "$(dirname -- "$target")"
+
+    if [[ -L "$target" ]]; then
+        resolved="$(readlink -f -- "$target" || true)"
+        if [[ "$resolved" == "$source" ]]; then
+            info "Already linked: $target"
+            return 0
+        fi
+        unlink -- "$target"
+    elif [[ -e "$target" ]]; then
+        mkdir -p -- "$backup_root"
+        local backup="$backup_root/$(safe_backup_name "$target")"
+        mv -- "$target" "$backup"
+        info "Backed up $target to $backup"
+    fi
+
+    ln -s -- "$source" "$target"
+    info "Linked $target"
+}
+
+# Main desktop configuration.
+link_path "$repo_root/hypr" "$HOME/.config/hypr"
+link_path "$repo_root/waybar" "$HOME/.config/waybar"
+link_path "$repo_root/kitty" "$HOME/.config/kitty"
+link_path "$repo_root/xdg-desktop-portal/hyprland-portals.conf" "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
+link_path "$repo_root/xdg-desktop-portal/portals/nautilus.portal" "$HOME/.local/share/xdg-desktop-portal/portals/nautilus.portal"
+link_path "$repo_root/hyprpolkitagent/hyprpolkitagent.conf" "$HOME/.config/hyprpolkitagent/hyprpolkitagent.conf"
+
+# Systemd user units are linked individually so unrelated user units survive.
+for unit in "$repo_root/systemd/user"/*.service; do
+    [[ -e "$unit" ]] || continue
+    link_path "$unit" "$HOME/.config/systemd/user/$(basename -- "$unit")"
+done
+
+# Existing repository configuration kept from the GNOME setup.
+for directory in \
+    bash fish fontconfig ghostty gtk-3.0 gtk-4.0 lazygit mpv qt; do
+    if [[ -e "$repo_root/$directory" ]]; then
+        link_path "$repo_root/$directory" "$HOME/.config/$directory"
+    fi
+done
+
+if [[ -e "$repo_root/nautilus/scripts" ]]; then
+    link_path "$repo_root/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
+fi
+
+if [[ -e "$repo_root/bash/bashrc" ]]; then
+    link_path "$repo_root/bash/bashrc" "$HOME/.bashrc"
+fi
+
+if command -v systemctl >/dev/null 2>&1; then
+    systemctl --user daemon-reload || warn "Could not reload the user systemd manager in this session."
+fi
+
+info "Configuration links are ready. Backups are kept under $HOME/.local/state/hypaurora/backups."

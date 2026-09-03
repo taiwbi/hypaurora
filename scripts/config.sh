@@ -16,7 +16,7 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface gtk-theme "'adw-gtk3'"
+gsettings set org.gnome.desktop.interface gtk-theme 'Colloid-Dark-Catppuccin'
 gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans, Vazirmatn 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono, Vazir Code Hack 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Lusitana, Aria 11'
@@ -129,4 +129,3 @@ gsettings set org.gnome.nautilus.preferences click-policy 'single'
 gsettings set org.gnome.Epiphany restore-session-policy 'crashed'
 gsettings set org.gnome.Epiphany search-engine-providers "[{'url': <'https://www.google.com/search?q=%s'>, 'bang': <'\!g'>, 'name': <'Google'>}, {'url': <'https://search.brave.com/search?q=%s&source=web&summary=1'>, 'bang': <'\!b'>, 'name': <'Brave'>}]"
 gsettings set org.gnome.Epiphany default-search-engine 'Brave'
-
