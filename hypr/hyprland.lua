@@ -257,7 +257,7 @@ hl.bind(
 	{ description = "Restore original background" }
 )
 hl.bind(main_mod .. " + P", exec("uwsm app -- gnome-control-center"), { description = "Open GNOME settings" })
-hl.bind(main_mod .. " + ESCAPE", exec("hyprlock"), { description = "Lock screen" })
+hl.bind(main_mod .. " + ESCAPE", exec("hyprctl switchxkblayout current 0; hyprlock"), { description = "Lock screen" })
 hl.bind(main_mod .. " + ALT + M", exec("hyprshutdown"), { description = "Log out" })
 hl.bind(main_mod .. " + SHIFT + ESCAPE", exec("hyprshutdown"), { description = "Log out" })
 -- Layout and window actions.
@@ -300,6 +300,7 @@ end
 -- each application/window.
 hl.bind(main_mod .. " + SPACE", exec("hyprctl switchxkblayout current next"), {
 	description = "Switch between US and Persian layout",
+	locked = true,
 })
 
 for _, binding in ipairs({
