@@ -88,7 +88,7 @@ install_repo_packages \
     kitty gnome-control-center nautilus python-gobject gvfs file-roller gnome-keyring gcr-4 polkit \
     adw-gtk-theme adwaita-icon-theme gsettings-desktop-schemas qt6ct kvantum qt6-wayland \
     pipewire pipewire-audio pipewire-pulse wireplumber \
-    grim slurp wl-clipboard xcur2png brightnessctl jq libnotify nm-connection-editor \
+    grim slurp wl-clipboard xcur2png brightnessctl jq socat libnotify nm-connection-editor \
     networkmanager xdg-utils xdg-user-dirs ttf-jetbrains-mono-nerd
 
 info "Installing the packaged Bibata cursor source..."
@@ -117,6 +117,7 @@ fi
 
 systemctl --user daemon-reload || true
 enable_user_unit waybar.service
+enable_user_unit waybar-autohide.service
 enable_user_unit hyprlauncher.service
 enable_user_unit hyprland-per-window-layout.service
 enable_user_unit hyprpaper.service

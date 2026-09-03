@@ -1,0 +1,13 @@
+[Unit]
+Description=Hide Waybar on occupied Hyprland workspaces
+PartOf=graphical-session.target
+Wants=waybar.service
+After=graphical-session.target waybar.service
+
+[Service]
+ExecStart=%h/.local/bin/hypaurora-waybar-autohide
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

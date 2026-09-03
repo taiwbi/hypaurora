@@ -7,6 +7,9 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "reload_style_on_change": true,
+  "start_hidden": true,
+  "on-sigusr1": "hide",
+  "on-sigusr2": "show",
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces",
