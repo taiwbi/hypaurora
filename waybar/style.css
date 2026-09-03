@@ -30,7 +30,7 @@ window#waybar {
   color: @text;
 }
 
-window#waybar>box {
+window#waybar > box {
   margin: 6px 8px 0;
   background: transparent;
   border-radius: 14px;
@@ -96,11 +96,20 @@ window#waybar>box {
   color: @subtext0;
 }
 
+/* Leave no placeholder when the workspace has no open windows. */
+window#waybar.empty #window {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
 #clock {
   padding-left: 16px;
   padding-right: 16px;
-  color: @pink;
-  background: linear-gradient(135deg, alpha(@pink, 0.13), alpha(@mauve, 0.1));
+  color: @mantle;
+  background: linear-gradient(135deg, alpha(@pink, 0.8), alpha(@mauve, 0.75));
 }
 
 #custom-keyboard {
