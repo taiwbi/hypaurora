@@ -63,6 +63,7 @@ link_path "$repo_root/kitty" "$HOME/.config/kitty"
 link_path "$repo_root/xdg-desktop-portal/hyprland-portals.conf" "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
 link_path "$repo_root/xdg-desktop-portal/portals/nautilus.portal" "$HOME/.local/share/xdg-desktop-portal/portals/nautilus.portal"
 link_path "$repo_root/hyprpolkitagent/hyprpolkitagent.conf" "$HOME/.config/hyprpolkitagent/hyprpolkitagent.conf"
+link_path "$repo_root/uwsm/env-hyprland" "$HOME/.config/uwsm/env-hyprland"
 
 # Systemd user units are linked individually so unrelated user units survive.
 for unit in "$repo_root/systemd/user"/*.service; do

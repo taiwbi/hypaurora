@@ -17,6 +17,11 @@ polkit agent. Keyboard layouts are `us,ir`; `Super+Space`
 switches them, while `hyprland-per-window-layout` remembers the layout per
 window.
 
+The session also enables GCR's systemd SSH agent. It uses one agent for the
+whole graphical session and shows a graphical passphrase dialog the first time
+an encrypted key is used. The dialog can save the passphrase in the GNOME
+login keyring with its automatic-unlock checkbox.
+
 Install and link it on CachyOS with:
 
 ```bash
@@ -33,9 +38,10 @@ Existing targets are moved to
 `~/.local/state/hypaurora/backups/<timestamp>/` before they are replaced.
 
 Choose **Hyprland (uwsm-managed)** in the display manager after installation.
-Waybar, Hyprlauncher, the Rust layout helper, Hyprpaper, Hypridle, and
-hyprpolkitagent are enabled as systemd user services. Portal daemons remain
-systemd/D-Bus activated; they are not launched from the compositor config.
+Waybar, Hyprlauncher, the Rust layout helper, Hyprpaper, Hypridle,
+hyprpolkitagent, GNOME Keyring, and the GCR SSH agent are enabled as systemd
+user services. Portal daemons remain systemd/D-Bus activated; they are not
+launched from the compositor config.
 
 ### Portal routing
 

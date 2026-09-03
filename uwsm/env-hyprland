@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Session-wide GCR SSH agent for the UWSM-managed Hyprland session.
+# gcr-ssh-agent.socket owns this socket and unlocks matching ~/.ssh/*.pub
+# keys with the graphical GCR prompt when they are first used.
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gcr/ssh"

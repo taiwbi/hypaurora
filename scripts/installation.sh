@@ -85,7 +85,7 @@ install_repo_packages \
 
 info "Installing Kitty, Nautilus, GNOME integration, and desktop utilities..."
 install_repo_packages \
-    kitty gnome-control-center nautilus gvfs file-roller gnome-keyring polkit \
+    kitty gnome-control-center nautilus gvfs file-roller gnome-keyring gcr-4 polkit \
     adw-gtk-theme adwaita-icon-theme gsettings-desktop-schemas qt6ct kvantum qt6-wayland \
     pipewire pipewire-audio pipewire-pulse wireplumber \
     grim slurp wl-clipboard xcur2png brightnessctl jq libnotify nm-connection-editor \
@@ -122,6 +122,8 @@ enable_user_unit hyprland-per-window-layout.service
 enable_user_unit hyprpaper.service
 enable_user_unit hypridle.service
 enable_user_unit hyprpolkitagent.service
+enable_user_unit gnome-keyring-daemon.service
+enable_user_unit gcr-ssh-agent.socket
 
 info "Installation complete. Select 'Hyprland (uwsm-managed)' at the login screen."
 info "After entering Hyprland, inspect services with: systemctl --user --failed"
