@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.hypaurora.NautilusPortal
+SystemdService=hypaurora-nautilus-portal.service

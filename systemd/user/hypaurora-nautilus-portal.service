@@ -1,0 +1,12 @@
+[Unit]
+Description=Hypaurora Nautilus file chooser portal bridge
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=dbus
+BusName=org.hypaurora.NautilusPortal
+ExecStart=/usr/bin/python3 %h/.local/bin/hypaurora-nautilus-portal
+Restart=on-failure
+RestartSec=1
+

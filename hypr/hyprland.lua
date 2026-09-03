@@ -11,7 +11,9 @@ local browser = "uwsm app -- brave-origin --new-window"
 local neovide = 'uwsm app -- "$HOME/Documents/hypaurora/code/nvim.sh"'
 local launcher = "hyprlauncher"
 
--- Environment consumed by GTK, Qt, portals, cursors, and applications.
+-- Environment for applications spawned directly by Hyprland. The same
+-- values live in uwsm/env-hyprland so systemd/D-Bus-activated applications
+-- receive them before the compositor starts.
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
@@ -237,19 +239,6 @@ local function resize(direction)
 		})
 	)
 end
-
--- Launch systemd-managed services and make the compositor environment visible
--- to D-Bus activation. This deliberately does not start polkit or portal
--- daemons by hand: their packaged user services own those processes.
-hl.on("hyprland.start", function()
-	hl.exec_cmd(
-		"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE HYPRLAND_INSTANCE_SIGNATURE"
-	)
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme Colloid-Dark-Catppuccin")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 24")
-end)
 
 -- Core applications.
 hl.bind(main_mod .. " + RETURN", exec(terminal), { description = "Open terminal" })

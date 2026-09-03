@@ -40,17 +40,20 @@ Existing targets are moved to
 Choose **Hyprland (uwsm-managed)** in the display manager after installation.
 Waybar, Hyprlauncher, the Rust layout helper, Hyprpaper, Hypridle,
 hyprpolkitagent, GNOME Keyring, and the GCR SSH agent are enabled as systemd
-user services. Portal daemons remain systemd/D-Bus activated; they are not
-launched from the compositor config.
+user services. Portal daemons and the Nautilus chooser bridge are started
+through systemd/D-Bus activation; they are not launched from the compositor
+config.
 
 ### Portal routing
 
-The session-specific portal configuration keeps GNOME as the preferred
-backend for GNOME-compatible features, routes screen capture and remote
-desktop interfaces through `xdg-desktop-portal-hyprland`, and explicitly routes
-FileChooser through Nautilus. The small `nautilus.portal` descriptor is needed
-because Nautilus provides the FileChooser implementation as its own D-Bus
-service; the GTK portal remains the fallback.
+The session-specific portal configuration uses the GTK backend for ordinary
+interfaces, routes FileChooser through the Nautilus bridge, routes screen
+capture, remote desktop, global shortcuts, and input capture through
+`xdg-desktop-portal-hyprland`, and keeps GNOME Keyring for secrets. The bridge
+answers the portal frontend's startup probe immediately and forwards chooser
+requests to Nautilus after the frontend is ready; this avoids the GTK4/Nautilus
+startup cycle present in current portal releases while preserving Nautilus as
+the visible file chooser.
 
 The wallpaper path is intentionally kept compatible with the old setup:
 `~/.config/background`. The installer warns if that file is missing.

@@ -4,3 +4,24 @@
 # gcr-ssh-agent.socket owns this socket and unlocks matching ~/.ssh/*.pub
 # keys with the graphical GCR prompt when they are first used.
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gcr/ssh"
+
+# Keep the complete graphical environment in UWSM.  Hyprland's hl.env() is
+# enough for processes spawned by the compositor, but portal and application
+# services activated by systemd/D-Bus inherit the systemd user environment
+# instead.
+export XDG_CURRENT_DESKTOP='Hyprland'
+export XDG_SESSION_DESKTOP='Hyprland'
+export XDG_SESSION_TYPE='wayland'
+export XDG_MENU_PREFIX='arch-'
+export GDK_BACKEND='wayland,x11,*'
+export CLUTTER_BACKEND='wayland'
+export SDL_VIDEODRIVER='wayland'
+export QT_QPA_PLATFORM='wayland;xcb'
+export QT_QPA_PLATFORMTHEME='qt6ct'
+export QT_WAYLAND_DISABLE_WINDOWDECORATION='1'
+export GTK_USE_PORTAL='1'
+export GTK_THEME='Colloid-Dark-Catppuccin'
+export XCURSOR_THEME='Bibata-Modern-Classic'
+export XCURSOR_SIZE='24'
+export HYPRCURSOR_THEME='Bibata-Modern-Classic'
+export HYPRCURSOR_SIZE='24'

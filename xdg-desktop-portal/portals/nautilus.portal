@@ -1,4 +1,4 @@
 [portal]
-DBusName=org.gnome.Nautilus
+DBusName=org.hypaurora.NautilusPortal
 Interfaces=org.freedesktop.impl.portal.FileChooser
 UseIn=Hyprland;

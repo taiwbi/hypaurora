@@ -85,7 +85,7 @@ install_repo_packages \
 
 info "Installing Kitty, Nautilus, GNOME integration, and desktop utilities..."
 install_repo_packages \
-    kitty gnome-control-center nautilus gvfs file-roller gnome-keyring gcr-4 polkit \
+    kitty gnome-control-center nautilus python-gobject gvfs file-roller gnome-keyring gcr-4 polkit \
     adw-gtk-theme adwaita-icon-theme gsettings-desktop-schemas qt6ct kvantum qt6-wayland \
     pipewire pipewire-audio pipewire-pulse wireplumber \
     grim slurp wl-clipboard xcur2png brightnessctl jq libnotify nm-connection-editor \
