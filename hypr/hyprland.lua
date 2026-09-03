@@ -8,7 +8,7 @@ local main_mod = "SUPER"
 local terminal = "uwsm app -- kitty"
 local file_manager = "uwsm app -- nautilus --new-window"
 local browser = "uwsm app -- brave-origin --new-window"
-local neovide = 'uwsm app -- "$HOME/Documents/hypaurora/code/nvim.sh" kitty'
+local neovide = 'uwsm app -- "$HOME/Documents/hypaurora/code/nvim.sh"'
 local launcher = "hyprlauncher"
 
 -- Environment for applications spawned directly by Hyprland. The same
