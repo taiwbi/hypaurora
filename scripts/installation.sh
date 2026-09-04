@@ -91,6 +91,9 @@ install_repo_packages \
     grim slurp wl-clipboard xcur2png brightnessctl jq socat libnotify nm-connection-editor \
     networkmanager xdg-utils xdg-user-dirs ttf-jetbrains-mono-nerd
 
+info "Installing KDE Connect with the GStreamer multimedia backend..."
+install_repo_packages kdeconnect cachyos-extra-v3/qt6-multimedia-gstreamer
+
 info "Installing the packaged Bibata cursor source..."
 install_repo_packages bibata-cursor-theme
 
