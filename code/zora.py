@@ -146,6 +146,10 @@ Generate a short and concise conventional commit message based on the git diff a
 
 Adds context about where the change happened, like auth, api, ui/ux, db, the name of the app configuration changed, etc...
 
+## issue_number
+
+Number of the issue on github. Should only by included when it's provided.
+
 # Description format
 
 The **description** is a short, concise summary of the change that follows the `<type>(scope):` prefix. It should be written in the **imperative mood**, meaning it should read like an instruction or command, as if saying what the commit will do when applied. Keep the description to a maximum of 70 character line.
