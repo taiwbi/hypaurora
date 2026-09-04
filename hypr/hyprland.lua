@@ -212,6 +212,18 @@ hl.window_rule({
 	center = true,
 })
 
+-- KDE Connect's transfer progress window is a transient status popup.
+hl.window_rule({
+	name = "kdeconnect-transfer-progress",
+	match = {
+		class = "^(org.kde.kdeconnect.daemon)$",
+		title = "^Sending to .* — KDE Connect Daemon$",
+	},
+	float = true,
+	size = "300 90",
+	move = { "monitor_w-window_w", "monitor_h-window_h" },
+})
+
 hl.window_rule({
 	name = "suppress-maximize",
 	match = { class = ".*" },
