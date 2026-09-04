@@ -315,7 +315,6 @@ for _, binding in ipairs({
 	{ "E", 8 },
 	{ "R", 9 },
 	{ "T", 10 },
-	{ "O", 11 },
 }) do
 	local key = binding[1]
 	local workspace = binding[2]
@@ -332,7 +331,14 @@ end
 hl.bind(main_mod .. " + SHIFT + TAB", hl.dsp.window.move({ workspace = "special:magic" }), {
 	description = "Move window to scratchpad",
 })
-hl.bind(main_mod .. " + TAB", hl.dsp.focus({ workspace = "previous" }), { description = "Previous workspace" })
+hl.bind(main_mod .. " + TAB", function()
+	local active_workspace = hl.get_active_workspace()
+	if active_workspace ~= nil and active_workspace.id == 15 then
+		hl.dispatch(hl.dsp.focus({ workspace = "previous" }))
+	else
+		hl.dispatch(hl.dsp.focus({ workspace = 15 }))
+	end
+end, { description = "Show Desktop" })
 hl.bind("ALT + TAB", hl.dsp.group.next(), { description = "Next window in group" })
 hl.bind("ALT + SHIFT + TAB", hl.dsp.group.prev(), { description = "Previous window in group" })
 hl.bind(main_mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
