@@ -10,6 +10,7 @@ local file_manager = "uwsm app -- nautilus --new-window"
 local browser = "uwsm app -- brave-origin --new-window"
 local neovide = 'uwsm app -- "$HOME/Documents/hypaurora/code/nvim.sh"'
 local launcher = "hyprlauncher"
+local power_menu = '"$HOME/.local/bin/hypaurora-power-menu"'
 
 -- Environment for applications spawned directly by Hyprland. The same
 -- values live in uwsm/env-hyprland so systemd/D-Bus-activated applications
@@ -258,8 +259,8 @@ hl.bind(
 )
 hl.bind(main_mod .. " + P", exec("uwsm app -- gnome-control-center"), { description = "Open GNOME settings" })
 hl.bind(main_mod .. " + ESCAPE", exec("hyprctl switchxkblayout current 0; hyprlock"), { description = "Lock screen" })
-hl.bind(main_mod .. " + ALT + M", exec("hyprshutdown"), { description = "Log out" })
-hl.bind(main_mod .. " + SHIFT + ESCAPE", exec("hyprshutdown"), { description = "Log out" })
+hl.bind(main_mod .. " + ALT + M", exec(power_menu), { description = "Open power menu" })
+hl.bind(main_mod .. " + SHIFT + ESCAPE", exec(power_menu), { description = "Open power menu" })
 -- Layout and window actions.
 hl.bind(main_mod .. " + z", hl.dsp.window.close(), { description = "Close focused window" })
 hl.bind(main_mod .. " + SHIFT + z", hl.dsp.window.kill(), { description = "Force-close focused window" })
@@ -314,6 +315,7 @@ for _, binding in ipairs({
 	{ "E", 8 },
 	{ "R", 9 },
 	{ "T", 10 },
+	{ "O", 11 },
 }) do
 	local key = binding[1]
 	local workspace = binding[2]

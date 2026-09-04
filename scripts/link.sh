@@ -66,6 +66,7 @@ link_path "$repo_root/hyprpolkitagent/hyprpolkitagent.conf" "$HOME/.config/hyprp
 link_path "$repo_root/uwsm/env-hyprland" "$HOME/.config/uwsm/env-hyprland"
 link_path "$repo_root/scripts/nautilus-portal-proxy.py" "$HOME/.local/bin/hypaurora-nautilus-portal"
 link_path "$repo_root/scripts/waybar-autohide.sh" "$HOME/.local/bin/hypaurora-waybar-autohide"
+link_path "$repo_root/code/power-menu.sh" "$HOME/.local/bin/hypaurora-power-menu"
 
 # Systemd user units are linked individually so unrelated user units survive.
 for unit in "$repo_root/systemd/user"/*.service; do
