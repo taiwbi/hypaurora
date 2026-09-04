@@ -59,6 +59,3 @@ fi
 # Disable focus reporting
 printf '\e[?1004l'
 unset rc
-
-# Rely on ghostty to handle the terminal
-unset PS0

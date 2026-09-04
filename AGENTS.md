@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-Hypaurora is a personal Linux dotfiles repository, not a compiled application. Desktop configuration is grouped by consumer: `hypr/`, `waybar/`, `kitty/`, `ghostty/`, `gtk-3.0/`, `gtk-4.0/`, `qt/`, `mpv/`, `fish/`, and `bash/`. Session integration lives in `systemd/user/`, `dbus-1/`, `xdg-desktop-portal/`, `uwsm/`, and `hyprpolkitagent/`. Reusable automation is in `scripts/` and `code/`; themes and other static resources are in `assets/` and application-specific theme directories. `README.md` documents the CachyOS/Hyprland setup.
+Hypaurora is a personal Linux dotfiles repository, not a compiled application. Desktop configuration is grouped by consumer: `hypr/`, `waybar/`, `kitty/`, `gtk-3.0/`, `gtk-4.0/`, `qt/`, `mpv/`, `fish/`, and `bash/`. Session integration lives in `systemd/user/`, `dbus-1/`, `xdg-desktop-portal/`, `uwsm/`, and `hyprpolkitagent/`. Reusable automation is in `scripts/` and `code/`; themes and other static resources are in `assets/` and application-specific theme directories. `README.md` documents the CachyOS/Hyprland setup.
 
 ## Build, Test, and Development Commands
 

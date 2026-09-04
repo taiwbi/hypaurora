@@ -90,7 +90,7 @@ done
 
 # Existing repository configuration kept from the GNOME setup.
 for directory in \
-    bash fish fontconfig ghostty gtk-3.0 gtk-4.0 lazygit mpv qt; do
+    bash fish fontconfig gtk-3.0 gtk-4.0 lazygit mpv qt; do
     if [[ -e "$repo_root/$directory" ]]; then
         link_path "$repo_root/$directory" "$HOME/.config/$directory"
     fi
