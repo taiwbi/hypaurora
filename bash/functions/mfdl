@@ -5,9 +5,13 @@ mfdl() {
     fi
 
     local url="$1"
-
     local direct_url
-    direct_url=$(curl -s "$url" | grep -Eo 'https://download[0-9]*\.mediafire\.com/[^"]+' | head -1)
+
+    direct_url=$(
+        curl -sL "$url" |
+        grep --color=never -Eo 'https://download[0-9]*\.mediafire\.com/[^"]+' |
+        head -1
+    )
 
     if [[ -z "$direct_url" ]]; then
         echo "Error: Could not extract download link from $url"
