@@ -184,7 +184,7 @@ hl.animation({ leaf = "windows", enabled = true, speed = 4.5, bezier = "hypauror
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.5, bezier = "hypauroraEase", style = "popin 85%" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 3.5, bezier = "hypauroraEase", style = "popin 85%" })
 hl.animation({ leaf = "fade", enabled = true, speed = 4, bezier = "hypauroraEase" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "hypauroraEase", style = "fade" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "hypauroraEase", style = "slide" })
 
 -- Keep common dialogs centered without turning normal application windows
 -- into floating windows. Nautilus remains tiled; its chooser dialogs float.
