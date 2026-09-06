@@ -11,8 +11,8 @@ import requests
 # --- Configuration ---
 # Fallback API key file if OPENROUTER_API_KEY is not set
 API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
-MODEL_NAME = "z-ai/glm-5.3"
-COMMIT_MODEL_NAME = "z-ai/glm-5.3-flash"
+MODEL_NAME = "openai/gpt-5.6-terra"
+COMMIT_MODEL_NAME = "openai/gpt-5.6-luna"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
