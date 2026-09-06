@@ -21,5 +21,5 @@ polkit agent.
 - 🖱️ Cursor Theme: [Bibata](https://github.com/ful1e5/Bibata_Cursor), converted to Hyprcursor by the installer
 - 🅰️ Font Family: [Adwaita Sans](https://gitlab.gnome.org/GNOME/adwaita-fonts)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+- 💻 Monospace Family: [Geist Mono](https://vercel.com/font?type=mono)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font)
