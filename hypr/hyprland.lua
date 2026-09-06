@@ -185,6 +185,7 @@ hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.5, bezier = "hypaur
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 3.5, bezier = "hypauroraEase", style = "popin 85%" })
 hl.animation({ leaf = "fade", enabled = true, speed = 4, bezier = "hypauroraEase" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2, bezier = "hypauroraEase", style = "slide" })
+hl.animation({ leaf = "fadeSwitch", enabled = false })
 
 -- Keep common dialogs centered without turning normal application windows
 -- into floating windows. Nautilus remains tiled; its chooser dialogs float.
@@ -390,3 +391,38 @@ hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 hl.workspace_rule({ workspace = "special:magic", gaps_in = 8, gaps_out = 12 })
+
+-- Maximize single window
+
+-- Exactly one tiled area on the workspace
+hl.workspace_rule({
+	workspace = "w[tv1]s[false]",
+	gaps_out = 0,
+	gaps_in = 0,
+})
+
+-- One fullscreen-equivalent tiled area
+hl.workspace_rule({
+	workspace = "f[1]s[false]",
+	gaps_out = 0,
+	gaps_in = 0,
+})
+
+-- Remove border + rounding from that single tiled area
+hl.window_rule({
+	match = {
+		float = false,
+		workspace = "w[tv1]s[false]",
+	},
+	border_size = 0,
+	rounding = 0,
+})
+
+hl.window_rule({
+	match = {
+		float = false,
+		workspace = "f[1]s[false]",
+	},
+	border_size = 0,
+	rounding = 0,
+})
