@@ -40,6 +40,7 @@ window#waybar > box {
 #workspaces,
 #window,
 #clock,
+#custom-date,
 #custom-keyboard,
 #cpu,
 #memory,
@@ -105,7 +106,8 @@ window#waybar.empty #window {
   background: transparent;
 }
 
-#clock {
+#clock,
+#custom-date {
   padding-left: 16px;
   padding-right: 16px;
   color: @mantle;
