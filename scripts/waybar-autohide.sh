@@ -43,6 +43,9 @@ while [[ ! -S "$hyprland_socket" ]]; do
     sleep 1
 done
 
+# Waybar's user-signal handlers are registered shortly after its process
+sleep 1
+
 sync_waybar_visibility || true
 
 # Any Hyprland event may affect the active workspace or its clients. Recheck

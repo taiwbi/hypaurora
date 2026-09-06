@@ -3,7 +3,7 @@
   "position": "top",
   "height": 42,
   "spacing": 0,
-  "exclusive": true,
+  "exclusive": false,
   "passthrough": false,
   "gtk-layer-shell": true,
   "reload_style_on_change": true,
