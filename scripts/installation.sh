@@ -97,9 +97,6 @@ install_repo_packages kdeconnect cachyos-extra-v3/qt6-multimedia-gstreamer
 info "Installing the packaged Bibata cursor source..."
 install_repo_packages bibata-cursor-theme
 
-info "Installing the Catppuccin GTK theme from the configured Chaotic-AUR repository..."
-install_repo_packages colloid-catppuccin-gtk-theme-git
-
 info "Installing Rust and the per-window keyboard layout helper..."
 install_repo_packages rust rust-src rust-analyzer
 command -v cargo >/dev/null || die "cargo was not provided by the installed rust package."

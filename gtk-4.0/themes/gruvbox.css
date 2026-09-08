@@ -1,0 +1,58 @@
+/* Hypaurora — Gruvbox dark GTK colors */
+
+@define-color accent_bg_color #fabd2f;
+@define-color accent_fg_color #282828;
+@define-color accent_color #fabd2f;
+
+@define-color destructive_bg_color #fb4934;
+@define-color destructive_fg_color #282828;
+@define-color destructive_color #fb4934;
+
+@define-color success_bg_color #b8bb26;
+@define-color success_fg_color #282828;
+@define-color success_color #b8bb26;
+
+@define-color warning_bg_color #fe8019;
+@define-color warning_fg_color #282828;
+@define-color warning_color #fe8019;
+
+@define-color error_bg_color #fb4934;
+@define-color error_fg_color #282828;
+@define-color error_color #fb4934;
+
+@define-color window_bg_color #282828;
+@define-color window_fg_color #ebdbb2;
+
+@define-color view_bg_color #282828;
+@define-color view_fg_color #ebdbb2;
+
+@define-color headerbar_bg_color #282828;
+@define-color headerbar_fg_color #ebdbb2;
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_shade_color #1d2021;
+
+@define-color card_bg_color #3c3836;
+@define-color card_fg_color #ebdbb2;
+@define-color card_shade_color #3c3836;
+
+@define-color popover_bg_color #504945;
+@define-color popover_fg_color #ebdbb2;
+
+@define-color sidebar_backdrop_color #1d2021;
+@define-color sidebar_bg_color #1d2021;
+@define-color sidebar_fg_color #ebdbb2;
+
+/* Target the selected row in GTK navigation sidebars. */
+.navigation-sidebar row:selected {
+    background-color: #fabd2f;
+    color: #282828;
+}
+
+.navigation-sidebar row:selected .sidebar-label {
+    color: #282828;
+}
+
+/* Keep hover feedback subtle for non-selected rows. */
+.navigation-sidebar row:hover:not(:selected) {
+    background-color: #fabd2f33;
+}

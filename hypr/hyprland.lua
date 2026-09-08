@@ -26,7 +26,6 @@ hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 hl.env("GTK_USE_PORTAL", "1")
-hl.env("GTK_THEME", "Colloid-Dark-Catppuccin")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Classic")
@@ -55,8 +54,8 @@ hl.config({
 		allow_tearing = false,
 		layout = "dwindle",
 		col = {
-			active_border = { colors = { "rgb(cba6f7)", "rgb(89b4fa)" }, angle = 45 },
-			inactive_border = "rgba(45475aaa)",
+			active_border = { colors = { "rgb(fabd2f)", "rgb(fe8019)" }, angle = 45 },
+			inactive_border = "rgba(928374aa)",
 		},
 	},
 
@@ -64,10 +63,10 @@ hl.config({
 	-- disabled so grouped windows retain the normal tiled layout appearance.
 	group = {
 		col = {
-			border_active = "rgb(fab387)",
-			border_inactive = "rgba(fab387aa)",
-			border_locked_active = "rgb(fab387)",
-			border_locked_inactive = "rgba(fab387aa)",
+			border_active = "rgb(fe8019)",
+			border_inactive = "rgba(fe8019aa)",
+			border_locked_active = "rgb(fe8019)",
+			border_locked_inactive = "rgba(fe8019aa)",
 		},
 		groupbar = {
 			enabled = false,
@@ -83,7 +82,7 @@ hl.config({
 			enabled = true,
 			range = 24,
 			render_power = 3,
-			color = "rgba(00000055)",
+			color = "rgba(1d202155)",
 		},
 		blur = {
 			enabled = true,
@@ -128,7 +127,7 @@ hl.config({
 	cursor = {
 		hide_on_key_press = true,
 		inactive_timeout = 4,
-		no_hardware_cursors = 2,
+		no_hardware_cursors = 1,
 		enable_hyprcursor = true,
 	},
 
@@ -140,7 +139,7 @@ hl.config({
 		repeat_delay = 300,
 		follow_mouse = 1,
 		float_switch_override_focus = 1,
-		sensitivity = 1,
+		sensitivity = 0.6,
 		accel_profile = "flat",
 		touchpad = {
 			natural_scroll = true,

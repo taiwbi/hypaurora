@@ -17,7 +17,7 @@ polkit agent.
 
 ## 🎭 Customization
 
-- ✨ Desktop Theme: [Catppuccin Mocha](https://github.com/catppuccin/catppuccin)
+- ✨ Desktop Theme: Gruvbox Dark
 - 🖱️ Cursor Theme: [Bibata](https://github.com/ful1e5/Bibata_Cursor), converted to Hyprcursor by the installer
 - 🅰️ Font Family: [Adwaita Sans](https://gitlab.gnome.org/GNOME/adwaita-fonts)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
