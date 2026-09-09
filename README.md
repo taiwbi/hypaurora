@@ -8,7 +8,7 @@ This is my **dotfiles** repository! 🎉 My personal configuration files for set
 
 ## GNOME desktop
 
-This repository contains a CachyOS GNOME setup with Kitty, Nautilus, GNOME
+This repository contains a CachyOS GNOME setup with Ghostty, Nautilus, GNOME
 desktop integration, and application-specific configuration.
 
 ## 🎭 Customization

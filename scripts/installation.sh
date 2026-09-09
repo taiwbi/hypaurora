@@ -2,7 +2,7 @@
 
 # Hypaurora installer — CachyOS only.
 #
-# Installs the GNOME integration, Kitty, and desktop utilities used by this
+# Installs the GNOME integration, ghostyy, and desktop utilities used by this
 # repository. Configuration linking is performed at the end with recoverable
 # backups; use SKIP_LINK=1 to install packages without linking this repository.
 
@@ -29,9 +29,9 @@ install_repo_packages() {
 info "Updating CachyOS packages..."
 sudo pacman -Syu --noconfirm
 
-info "Installing Kitty, Nautilus, GNOME integration, and desktop utilities..."
+info "Installing ghostty, Nautilus, GNOME integration, and desktop utilities..."
 install_repo_packages \
-    base-devel git kitty gnome-control-center nautilus python-gobject gvfs file-roller gnome-keyring gcr-4 polkit \
+    base-devel git ghostty gnome-control-center nautilus python-gobject gvfs file-roller gnome-keyring gcr-4 polkit \
     adw-gtk-theme adwaita-icon-theme gsettings-desktop-schemas qt6ct kvantum qt6-wayland \
     xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome \
     pipewire pipewire-audio pipewire-pulse wireplumber \

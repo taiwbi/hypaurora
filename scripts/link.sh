@@ -57,7 +57,7 @@ link_path() {
 }
 
 # Application configuration.
-link_path "$repo_root/kitty" "$HOME/.config/kitty"
+link_path "$repo_root/ghostty" "$HOME/.config/ghostty"
 
 # Existing repository configuration kept from the GNOME setup.
 for directory in \

@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-Hypaurora is a personal Linux dotfiles repository, not a compiled application. Desktop configuration is grouped by consumer: `kitty/`, `gtk-3.0/`, `gtk-4.0/`, `qt/`, `mpv/`, `fish/`, and `bash/`. Reusable automation is in `scripts/` and `code/`; themes and other static resources are in `assets/` and application-specific theme directories. `README.md` documents the CachyOS GNOME setup.
+Hypaurora is a personal Linux dotfiles repository, not a compiled application. Desktop configuration is grouped by consumer: `ghostty/`, `gtk-3.0/`, `gtk-4.0/`, `qt/`, `mpv/`, `fish/`, and `bash/`. Reusable automation is in `scripts/` and `code/`; themes and other static resources are in `assets/` and application-specific theme directories. `README.md` documents the CachyOS GNOME setup.
 
 ## Build, Test, and Development Commands
 
@@ -29,4 +29,4 @@ For configuration-only changes, test the affected application or service after l
 
 ## Commit & Pull Request Guidelines
 
-Recent history uses Conventional Commit-style subjects such as `feat(gnome): ...`, `fix(portals): ...`, and `chore(kitty): ...`. Keep commits focused and explain user-visible behavior. PRs should describe affected configurations, target CachyOS/GNOME assumptions, validation performed, backup or migration concerns, and include screenshots for visual/theme changes. Do not commit secrets, machine-specific credentials, generated caches, or personal absolute paths.
+Recent history uses Conventional Commit-style subjects such as `feat(gnome): ...`, `fix(portals): ...`, and `chore(ghostty): ...`. Keep commits focused and explain user-visible behavior. PRs should describe affected configurations, target CachyOS/GNOME assumptions, validation performed, backup or migration concerns, and include screenshots for visual/theme changes. Do not commit secrets, machine-specific credentials, generated caches, or personal absolute paths.

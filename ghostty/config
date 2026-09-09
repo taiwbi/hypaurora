@@ -1,0 +1,42 @@
+# --- Fonts ---
+font-family = Geist Mono
+font-family = BetterIcons
+font-family = Vazir Code Hack
+font-size = 13
+
+font-style = "Medium"
+font-style-bold = "ExtraBold"
+
+# --- Cell dimensions ---
+adjust-cell-height = 11
+
+# --- Window ---
+window-width = 120
+window-height = 22
+window-padding-x = 10
+window-padding-y = 10
+background-opacity = 1
+
+# --- Mouse ---
+mouse-hide-while-typing = true
+
+# --- Theme ---
+window-theme = ghostty
+theme = light:Gruvbox Light, dark:Gruvbox Dark
+
+# --- Keybindings ---
+keybind = ctrl+shift+t=new_tab
+
+keybind = ctrl+shift+equal=increase_font_size:1
+keybind = ctrl+shift+minus=decrease_font_size:1
+keybind = ctrl+shift+digit_0=reset_font_size
+
+keybind = alt+1=goto_tab:1
+keybind = alt+2=goto_tab:2
+keybind = alt+3=goto_tab:3
+keybind = alt+4=goto_tab:4
+keybind = alt+5=goto_tab:5
+keybind = alt+6=goto_tab:6
+keybind = alt+7=goto_tab:7
+keybind = alt+8=goto_tab:8
+keybind = alt+9=goto_tab:9
