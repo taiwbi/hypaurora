@@ -401,7 +401,7 @@ hl.workspace_rule({ workspace = "special:magic", gaps_in = 8, gaps_out = 12 })
 -- Exactly one tiled area on the workspace
 hl.workspace_rule({
 	workspace = "w[tv1]s[false]",
-	gaps_out = 4,
+	gaps_out = 0,
 	gaps_in = 0,
 })
 
