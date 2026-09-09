@@ -1,4 +1,0 @@
-[portal]
-DBusName=org.hypaurora.NautilusPortal
-Interfaces=org.freedesktop.impl.portal.FileChooser
-UseIn=Hyprland;

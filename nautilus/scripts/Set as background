@@ -5,7 +5,6 @@ set -euo pipefail
 readonly OUTPUT_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/background"
 readonly TARGET_WIDTH=1920
 readonly TARGET_HEIGHT=1080
-readonly WALLPAPER_MANAGER="hyprpaper"
 
 # Color codes for output
 readonly RED='\033[0;31m'
@@ -107,37 +106,18 @@ process_image() {
     fi
 }
 
-# Restart wallpaper manager
-restart_wallpaper_manager() {
-    local manager="$1"
+set_gnome_background() {
+    local image="$1"
+    local image_uri
 
-    if pgrep -x "$manager" >/dev/null; then
-        log_info "Stopping $manager..."
-        if killall "$manager" 2>/dev/null; then
-            # Wait for process to terminate
-            local timeout=5
-            while pgrep -x "$manager" >/dev/null && ((timeout > 0)); do
-                sleep 0.2
-                ((timeout--))
-            done
-
-            if pgrep -x "$manager" >/dev/null; then
-                log_warn "$manager did not terminate gracefully, forcing..."
-                killall -9 "$manager" 2>/dev/null || true
-            fi
-        fi
-    fi
-
-    # Start wallpaper manager
-    log_info "Starting $manager..."
-    if command -v "$manager" &>/dev/null; then
-        nohup "$manager" &>/dev/null &
-        disown
-        log_info "$manager started successfully"
-    else
-        log_error "$manager not found in PATH"
+    command -v gsettings &>/dev/null || {
+        log_error "gsettings is required to set the GNOME background"
         return 1
-    fi
+    }
+
+    image_uri="file://$(realpath -- "$image")"
+    gsettings set org.gnome.desktop.background picture-uri "$image_uri"
+    gsettings set org.gnome.desktop.background picture-uri-dark "$image_uri"
 }
 
 # Main function
@@ -163,11 +143,7 @@ main() {
         exit 1
     fi
 
-    # Restart wallpaper manager
-    if ! restart_wallpaper_manager "$WALLPAPER_MANAGER"; then
-        log_warn "Failed to restart $WALLPAPER_MANAGER, but image was processed successfully"
-        exit 0
-    fi
+    set_gnome_background "$OUTPUT_FILE"
 
     log_info "Wallpaper updated successfully!"
     notify_user "Wallpaper Updated" "Background image has been changed."

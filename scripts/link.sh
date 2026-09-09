@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Link Hypaurora configuration into the user profile.
+# Link repository configuration into the user profile.
 # Existing files and directories are moved to a timestamped backup rather
 # than deleted. Run with --yes from installation.sh or interactively by hand.
 
@@ -56,37 +56,8 @@ link_path() {
     info "Linked $target"
 }
 
-# Main desktop configuration.
-link_path "$repo_root/hypr" "$HOME/.config/hypr"
-link_path "$repo_root/waybar" "$HOME/.config/waybar"
+# Application configuration.
 link_path "$repo_root/kitty" "$HOME/.config/kitty"
-link_path "$repo_root/xdg-desktop-portal/hyprland-portals.conf" "$HOME/.config/xdg-desktop-portal/hyprland-portals.conf"
-link_path "$repo_root/xdg-desktop-portal/portals/nautilus.portal" "$HOME/.local/share/xdg-desktop-portal/portals/nautilus.portal"
-link_path "$repo_root/hyprpolkitagent/hyprpolkitagent.conf" "$HOME/.config/hyprpolkitagent/hyprpolkitagent.conf"
-link_path "$repo_root/uwsm/env-hyprland" "$HOME/.config/uwsm/env-hyprland"
-link_path "$repo_root/scripts/nautilus-portal-proxy.py" "$HOME/.local/bin/hypaurora-nautilus-portal"
-link_path "$repo_root/scripts/waybar-autohide.sh" "$HOME/.local/bin/hypaurora-waybar-autohide"
-link_path "$repo_root/code/power-menu.sh" "$HOME/.local/bin/hypaurora-power-menu"
-
-# Systemd user units are linked individually so unrelated user units survive.
-for unit in "$repo_root/systemd/user"/*.service; do
-    [[ -e "$unit" ]] || continue
-    link_path "$unit" "$HOME/.config/systemd/user/$(basename -- "$unit")"
-done
-
-# Systemd drop-ins are linked as directories so packaged units can receive
-# session-specific ordering without being replaced wholesale.
-for dropin in "$repo_root/systemd/user"/*.service.d; do
-    [[ -d "$dropin" ]] || continue
-    link_path "$dropin" "$HOME/.config/systemd/user/$(basename -- "$dropin")"
-done
-
-# D-Bus activation descriptors are kept in the per-user data directory so the
-# Nautilus portal bridge can be activated by xdg-desktop-portal on demand.
-for service in "$repo_root/dbus-1/services"/*.service; do
-    [[ -e "$service" ]] || continue
-    link_path "$service" "$HOME/.local/share/dbus-1/services/$(basename -- "$service")"
-done
 
 # Existing repository configuration kept from the GNOME setup.
 for directory in \

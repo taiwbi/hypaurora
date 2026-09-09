@@ -14,10 +14,12 @@ set_background() {
 	local background="$1"
 
 	[[ -f "$background" ]] || die "background does not exist: $background"
-	command -v hyprctl >/dev/null 2>&1 || die "hyprctl was not found in PATH"
+	command -v gsettings >/dev/null 2>&1 || die "gsettings was not found in PATH"
+	local background_uri
+	background_uri="$(printf 'file://%s' "$background")"
 
-	hyprctl hyprpaper wallpaper ",${background},cover" >/dev/null || \
-		die "could not change the Hyprpaper wallpaper"
+	gsettings set org.gnome.desktop.background picture-uri "$background_uri"
+	gsettings set org.gnome.desktop.background picture-uri-dark "$background_uri"
 }
 
 notify() {
