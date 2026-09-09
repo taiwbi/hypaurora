@@ -401,14 +401,7 @@ hl.workspace_rule({ workspace = "special:magic", gaps_in = 8, gaps_out = 12 })
 -- Exactly one tiled area on the workspace
 hl.workspace_rule({
 	workspace = "w[tv1]s[false]",
-	gaps_out = 0,
-	gaps_in = 0,
-})
-
--- One fullscreen-equivalent tiled area
-hl.workspace_rule({
-	workspace = "f[1]s[false]",
-	gaps_out = 0,
+	gaps_out = 4,
 	gaps_in = 0,
 })
 
@@ -419,14 +412,5 @@ hl.window_rule({
 		workspace = "w[tv1]s[false]",
 	},
 	border_size = 0,
-	rounding = 0,
-})
-
-hl.window_rule({
-	match = {
-		float = false,
-		workspace = "f[1]s[false]",
-	},
-	border_size = 0,
-	rounding = 0,
+	rounding = 2,
 })
