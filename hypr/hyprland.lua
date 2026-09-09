@@ -285,7 +285,11 @@ hl.bind(main_mod .. " + ALT + G", hl.dsp.window.move({ out_of_group = true }), {
 hl.bind(main_mod .. " + I", hl.dsp.layout("togglesplit"), { description = "Toggle split direction" })
 hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen(), { description = "Toggle fullscreen" })
 hl.bind(main_mod .. " + S", hl.dsp.workspace.toggle_special("magic"), { description = "Toggle scratchpad" })
-hl.bind(main_mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }), { description = "Move window to workspace ", })
+hl.bind(
+	main_mod .. " + SHIFT + S",
+	hl.dsp.window.move({ workspace = "special:magic" }),
+	{ description = "Move window to workspace " }
+)
 
 for _, direction in ipairs({
 	{ key = "H", value = "left", x = -40, y = 0 },
