@@ -16,7 +16,7 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans, Vazirmatn 11'
+gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Geist Mono, Vazir Code Hack 12'
 gsettings set org.gnome.desktop.interface document-font-name 'Lusitana, Aria 11'
 gsettings set org.gnome.desktop.interface cursor-size 28
