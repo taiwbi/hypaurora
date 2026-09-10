@@ -120,8 +120,12 @@ code,
 
 html.dark.chatgpt,
 html.dark.chatgpt :not(:where(.light, .light *)) {
-    --main-surface-primary: #1c1c1c !important;
-    --sidebar-surface-primary: #1c1c1c !important;
+    --bg-primary: #282828 !important;
+    --main-surface-primary: #282828 !important;
+    --sidebar-surface-primary: #282828 !important;
+}
+html.dark.chatgpt #page-header {
+    background-color: var(--main-surface-primary) !important;
 }
 
 /* === === === === === Claude === === === === === */
