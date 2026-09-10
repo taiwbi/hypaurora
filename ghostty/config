@@ -12,7 +12,7 @@ adjust-cell-height = 11
 
 # --- Window ---
 window-width = 120
-window-height = 22
+window-height = 28
 window-padding-x = 10
 window-padding-y = 10
 background-opacity = 1

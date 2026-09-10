@@ -31,7 +31,7 @@ sudo pacman -Syu --noconfirm
 
 info "Installing ghostty, Nautilus, GNOME integration, and desktop utilities..."
 install_repo_packages \
-    base-devel git ghostty gnome-control-center nautilus python-gobject gvfs file-roller gnome-keyring gcr-4 polkit \
+    base-devel git ghostty ghostty-nautilus gnome-control-center nautilus python-gobject gvfs file-roller gnome-keyring gcr-4 polkit \
     adw-gtk-theme adwaita-icon-theme gsettings-desktop-schemas qt6ct kvantum qt6-wayland \
     xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome \
     pipewire pipewire-audio pipewire-pulse wireplumber \
