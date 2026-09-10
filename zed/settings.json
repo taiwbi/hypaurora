@@ -1,0 +1,231 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+//
+// != == === <= >= --> <-- ==> <==
+{
+  "cli_default_open_behavior": "existing_window",
+  "auto_update": false,
+  "auto_update_extensions": {},
+
+  // UI and Buffer =============================================
+  "buffer_font_family": "Geist Mono",
+  "buffer_font_weight": 400,
+  "buffer_font_fallbacks": ["Vazir Code Hack"],
+  "buffer_font_size": 16,
+  "buffer_line_height": "comfortable",
+
+  "diff_view_style": "unified",
+
+  "theme": {
+    "mode": "system",
+    "dark": "Gruvbox Dark",
+    "light": "Gruvbox Light Soft",
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic",
+      },
+      "comment.doc": {
+        "font_style": "italic",
+      },
+    },
+  },
+  "icon_theme": {
+    "mode": "system",
+    "dark": "Zed (Default)",
+    "light": "Zed (Default)",
+  },
+  "selection_highlight": false,
+  "cursor_blink": true,
+
+  "ui_font_family": "Geist",
+  "ui_font_size": 14,
+
+  "vertical_scroll_margin": 6.0,
+  "colorize_brackets": false,
+  "show_whitespaces": "trailing",
+  "indent_guides": {
+    "enabled": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+
+  "title_bar": {
+    "show_worktree_name": false,
+  },
+
+  // Agent =====================================================
+  "agent_servers": {
+    "codex-acp": {
+      "default_config_options": {
+        "model": "gpt-5.6-terra",
+      },
+      "type": "registry",
+    },
+  },
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+
+    // chat window
+    "default_model": {
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-4.5",
+    },
+    "default_profile": "minimal",
+
+    // inline assistant
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3",
+      "enable_thinking": false,
+    },
+    "inline_alternatives": [],
+
+    // commit message
+    "commit_message_model": {
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3",
+    },
+    "commit_message_instructions": "Generate a short and concise conventional commit message based on the git diff and user description below.\n\n```\n<type>(scope): #issue_number <description>\n[body]\n[optional footer(s)]\n```\n\n# Commit Types\n\n- **feat:** Introduces a new feature to the codebase.`.\n- **fix:** Patches a bug in the codebase.`.\n- **build:** Changes that affect the build system or external dependencies.`.\n- **chore:** Regular maintenance tasks that don't modify src or test files.`.\n- **ci:** Changes to CI configuration files and scripts.`.\n- **docs:** Changes to documentation only.`.\n- **style:** Changes that don't affect code meaning (white-space, formatting, etc.).`.\n- **refactor:** Code changes that neither fix a bug nor add a feature, just improving the code structure.`.\n- **perf:** Changes that improve performance.`.\n- **test:** Adding or correcting tests.`.\n\n# Scopes\n\nAdds context about where the change happened, like auth, api, ui/ux, db, the name of the app configuration changed, etc...\n\n## issue_number\n\nNumber of the issue on github. Should only by included when it's provided.\n\n# Description format\n\nThe **description** is a short, concise summary of the change that follows the `<type>(scope):` prefix. It should be written in the **imperative mood**, meaning it should read like an instruction or command, as if saying what the commit will do when applied. Keep the description to a maximum of 70 character line.\n\n## Optional body format\n\nThe **body** provides additional context and details about the change in a small paragraph, each line wrapped at 70 characters at max. It should elaborate on **what changed** and **why** in non-technical way, when the commit type and description alone are not sufficient to explain the full impact. It should NOT just duplicate the point of description.\n\nGuidelines for writing the body:\n\n- Use the **imperative**, **present tense**: \"change\" not \"changed\" or \"changes\".\n- Leave one blank line between the description and the body.\n- Wrap lines at approximately 70 characters for readability.\n- Include motivation for the change and contrast it with previous behavior if necessary.\n- Use dash points for bullet lists when writing the body.\n\n## Optional footer format\n\nIf your commit introduces a breaking change (i.e., changes that are not backward compatible), use the following format in the footer:\n\n```\nBREAKING CHANGE: <description>\n```\n\n## Important Guidelines\n\n- DO NOT wrap commit message into grave charactes (`)",
+  },
+  "agent_ui_font_size": 16.0,
+  // edit predictions
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "open_ai_compatible_api": {
+      "max_output_tokens": 128,
+      "model": "qwen/qwen2.5-coder-7b-instruct",
+      "api_url": "https://openrouter.ai/api/v1",
+      "prompt_format": "qwen",
+    },
+    "mode": "eager",
+    "provider": "zed",
+  },
+
+  // Terminal ==================================================
+  "terminal": {
+    "font_family": "Geist Mono",
+    "font_size": 15,
+    "font_weight": 400,
+    "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
+    "line_height": "comfortable",
+  },
+
+  // Behaviour =================================================
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "relative_line_numbers": "enabled",
+  "use_smartcase_search": true,
+  "auto_indent_on_paste": true,
+  "autosave": "on_window_change",
+  "restore_on_startup": "launchpad",
+  "format_on_save": "on",
+  "tab_bar": {
+    "show": false,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": true,
+  },
+  "sticky_scroll": {
+    "enabled": false,
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true,
+  },
+
+  "auto_install_extensions": {
+    // languages
+    "php": true,
+    "blade": true,
+    "html": true,
+    "scss": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "blueprint": true,
+    "fish": true,
+    "toml": true,
+    "lua": true,
+    // icons and themes
+    "monosami": true,
+  },
+
+  // LSP and Language Server ===================================
+  "languages": {
+    "PHP": {
+      "formatter": {
+        "external": {
+          "command": "bash",
+          "arguments": [
+            "-c",
+            "cat > {buffer_path} && ./vendor/bin/pint --quiet {buffer_path} && cat {buffer_path}",
+          ],
+        },
+      },
+      "language_servers": [
+        "!phpantom",
+        "phptools",
+        "!intelephense",
+        "!phpactor",
+        "...",
+      ],
+    },
+    "Blade": {
+      "language_servers": [
+        "!phpantom",
+        "phptools",
+        "tailwindcss-language-server",
+        "!intelephense",
+        "!phpactor",
+        "...",
+      ],
+    },
+  },
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "php": "html",
+          "blade": "html",
+        },
+        "experimental": {
+          "classRegex": [
+            // php
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            "class=\\\"([^\\\"]*)\\\"",
+            // blade
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            "class=\\\"([^\\\"]*)\\\"",
+            "@class\\(\\[([^\\]]*)\\]\\)",
+          ],
+        },
+      },
+    },
+    "phptools": { "initialization_options": { "0": "" } },
+  },
+}
