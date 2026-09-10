@@ -36,7 +36,8 @@ install_repo_packages \
     xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome \
     pipewire pipewire-audio pipewire-pulse wireplumber \
     grim slurp wl-clipboard xcur2png brightnessctl jq socat libnotify nm-connection-editor \
-    networkmanager xdg-utils xdg-user-dirs ttf-jetbrains-mono-nerd
+    networkmanager xdg-utils xdg-user-dirs ttf-jetbrains-mono-nerd \
+    neovim neovide zed
 
 info "Installing the packaged Bibata cursor source..."
 install_repo_packages bibata-cursor-theme
