@@ -67,10 +67,6 @@ for directory in \
     fi
 done
 
-if [[ -e "$repo_root/nautilus/scripts" ]]; then
-    link_path "$repo_root/nautilus/scripts" "$HOME/.local/share/nautilus/scripts"
-fi
-
 if [[ -e "$repo_root/bash/bashrc" ]]; then
     link_path "$repo_root/bash/bashrc" "$HOME/.bashrc"
 fi
