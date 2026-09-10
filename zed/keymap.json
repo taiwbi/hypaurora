@@ -76,7 +76,7 @@
       "space f p": "projects::OpenRecent",
       "space f t": "theme_selector::Toggle",
       "space g b": "git::CheckoutBranch",
-      "space g c": ["task::Spawn", { "task_name": "Git History" }],
+      "space g c": "git_graph::Open",
       "space g C": "git::FileHistory",
       "space g t": "git_panel::ToggleFocus",
       "space g g": "git_panel::ToggleFocus", // ! Lazygit
@@ -114,7 +114,6 @@
       "space d h": "editor::Hover",
 
       "space t h": "terminal_panel::Toggle",
-      "space t l": ["task::Spawn", { "task_name": "Lazygit" }],
       "space t p": ["task::Spawn", { "task_name": "Python Console" }],
       "space t a": ["task::Spawn", { "task_name": "Artisan Console" }],
 
