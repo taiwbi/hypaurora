@@ -212,6 +212,7 @@
     "fish": true,
     "toml": true,
     "lua": true,
+    "sql": true,
     // icons and themes
     "monosami": true,
   },
