@@ -74,6 +74,12 @@
 
   // Agent =====================================================
   "agent_servers": {
+    "antigravity-acp": {
+      "default_config_options": {
+        "model": "gemini-3.8-flash-high",
+      },
+      "type": "registry",
+    },
     "codex-acp": {
       "default_config_options": {
         "model": "gpt-5.6-luna",
