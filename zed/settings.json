@@ -18,7 +18,9 @@
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16,
-  "buffer_line_height": "comfortable",
+  "buffer_line_height": {
+    "custom": 2.0,
+  },
 
   "diff_view_style": "unified",
 
