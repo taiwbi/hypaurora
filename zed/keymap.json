@@ -173,6 +173,7 @@
       "space g S": "git::StageFile",
       "space g r": "git::Restore",
       "space g R": "git::RestoreFile",
+      "space g d": "git::OpenFileDiff",
 
       // LSP
       "K": "editor::Hover",
