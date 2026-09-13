@@ -1,0 +1,37 @@
+palette = 0=#121212
+palette = 8=#6B6B6B
+
+# red
+palette = 1=#821A1A
+palette = 9=#A33A3A
+
+# green
+palette = 2=#569F7A
+palette = 10=#7AB896
+
+# yellow
+palette = 3=#8E700B
+palette = 11=#B8963A
+
+# blue
+palette = 4=#699B9B
+palette = 12=#8FB5B5
+
+# magenta
+palette = 5=#6B6B6B
+palette = 13=#121212
+
+# cyan
+palette = 6=#699B9B
+palette = 14=#8FB5B5
+
+# white
+palette = 7=#B0B0B0
+palette = 15=#F3F2EB
+
+background = #F3F2EB
+foreground = #121212
+cursor-color = #121212
+cursor-text = #F3F2EB
+selection-background = #C4C1B0
+selection-foreground = #121212

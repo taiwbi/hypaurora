@@ -22,7 +22,7 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:Gruvbox Light, dark:Gruvbox Dark
+theme = light:Monosami Light, dark:Monosami Dark
 
 # --- Keybindings ---
 keybind = ctrl+shift+t=new_tab

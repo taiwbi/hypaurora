@@ -26,8 +26,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Gruvbox Dark",
-    "light": "Gruvbox Light Soft",
+    "dark": "Monosami Dark",
+    "light": "Monosami Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
