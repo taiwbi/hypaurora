@@ -219,8 +219,6 @@
     "toml": true,
     "lua": true,
     "sql": true,
-    // icons and themes
-    "monosami": true,
   },
 
   // LSP and Language Server ===================================
