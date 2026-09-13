@@ -2,28 +2,28 @@ palette = 0=#1c1c1c
 palette = 8=#bcbcbc
 
 # red
-palette = 1=#7f7f7f
-palette = 9=#7f7f7f
+palette = 1=#B49AA0
+palette = 9=#C2ADB1
 
 # green
-palette = 2=#7f7f7f
-palette = 10=#666666
+palette = 2=#9DAA9A
+palette = 10=#B0B9AF
 
 # yellow
-palette = 3=#666666
-palette = 11=#7f7f7f
+palette = 3=#B7A58B
+palette = 11=#C7B9A3
 
 # blue
-palette = 4=#7f7f7f
-palette = 12=#7f7f7f
+palette = 4=#8FA3A0
+palette = 12=#AABAB8
 
 # magenta
-palette = 5=#7f7f7f
-palette = 13=#7f7f7f
+palette = 5=#AAA7B1
+palette = 13=#BDB9C4
 
 # cyan
-palette = 6=#7f7f7f
-palette = 14=#7f7f7f
+palette = 6=#8FA3A0
+palette = 14=#AABAB8
 
 # white
 palette = 7=#ffffff
