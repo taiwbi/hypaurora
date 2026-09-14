@@ -58,6 +58,7 @@ link_path() {
 
 # Application configuration.
 link_path "$repo_root/ghostty" "$HOME/.config/ghostty"
+link_path "$repo_root/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
 
 # Existing repository configuration kept from the GNOME setup.
 for directory in \
