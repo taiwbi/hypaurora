@@ -26,8 +26,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Monosami Dark",
-    "light": "Monosami Light",
+    "dark": "Monosami Ink",
+    "light": "Monosami Ink Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -78,19 +78,24 @@
   "agent_servers": {
     "opencode": {
       "default_config_options": {
-        "model": "opencode/muse-spark-1.3-contributor-free"
+        "model": "opencode/muse-spark-1.3-contributor-free",
       },
-      "type": "registry"
+      "type": "registry",
     },
     "antigravity-acp": {
       "default_config_options": {
+        "mode": "yolo",
         "model": "gemini-3.8-flash-high",
       },
       "type": "registry",
     },
     "codex-acp": {
       "default_config_options": {
-        "model": "gpt-5.6-luna",
+        "collaboration_mode": "plan",
+        "fast-mode": false,
+        "mode": "agent-full-access",
+        "reasoning_effort": "high",
+        "model": "gpt-5.6-sol",
       },
       "type": "registry",
     },
@@ -120,6 +125,33 @@
       "model": "openai/gpt-5.6-luna",
     },
     "commit_message_instructions": "Generate a short and concise conventional commit message based on the git diff and user description below.\n\n```\n<type>(scope): #issue_number <description>\n[body]\n[optional footer(s)]\n```\n\n# Commit Types\n\n- **feat:** Introduces a new feature to the codebase.`.\n- **fix:** Patches a bug in the codebase.`.\n- **build:** Changes that affect the build system or external dependencies.`.\n- **chore:** Regular maintenance tasks that don't modify src or test files.`.\n- **ci:** Changes to CI configuration files and scripts.`.\n- **docs:** Changes to documentation only.`.\n- **style:** Changes that don't affect code meaning (white-space, formatting, etc.).`.\n- **refactor:** Code changes that neither fix a bug nor add a feature, just improving the code structure.`.\n- **perf:** Changes that improve performance.`.\n- **test:** Adding or correcting tests.`.\n\n# Scopes\n\nAdds context about where the change happened, like auth, api, ui/ux, db, the name of the app configuration changed, etc...\n\n## issue_number\n\nNumber of the issue on github. Should only by included when it's provided.\n\n# Description format\n\nThe **description** is a short, concise summary of the change that follows the `<type>(scope):` prefix. It should be written in the **imperative mood**, meaning it should read like an instruction or command, as if saying what the commit will do when applied. Keep the description to a maximum of 70 character line.\n\n## Optional body format\n\nThe **body** provides additional context and details about the change in a small paragraph, each line wrapped at 70 characters at max. It should elaborate on **what changed** and **why** in non-technical way, when the commit type and description alone are not sufficient to explain the full impact. It should NOT just duplicate the point of description.\n\nGuidelines for writing the body:\n\n- Use the **imperative**, **present tense**: \"change\" not \"changed\" or \"changes\".\n- Leave one blank line between the description and the body.\n- Wrap lines at approximately 70 characters for readability.\n- Include motivation for the change and contrast it with previous behavior if necessary.\n- Use dash points for bullet lists when writing the body.\n\n## Optional footer format\n\nIf your commit introduces a breaking change (i.e., changes that are not backward compatible), use the following format in the footer:\n\n```\nBREAKING CHANGE: <description>\n```\n\n## Important Guidelines\n\n- DO NOT wrap commit message into grave charactes (`)",
+
+    // Block
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "confirm",
+          "always_deny": [
+            { "pattern": "^git\\s+push\\b" },
+            { "pattern": "^git\\s+push\\b" },
+            { "pattern": "^docker\\s+(rm|system\\s+prune)\\b" },
+            { "pattern": "^kubectl\\s+delete\\b" },
+            { "pattern": "(^|\\s)(?:\\./)?vendor/bin/(?:pest|phpunit)\\b" },
+            { "pattern": "(^|\\s)(?:php\\s+)?artisan\\s+test\\b" },
+            {
+              "pattern": "(^|\\s)(?:\\./)?(?:vendor/bin/)?sail\\s+artisan\\s+test\\b",
+            },
+            { "pattern": "(^|\\s)composer\\s+(?:test|tests)\\b" },
+            { "pattern": "(^|\\s)(?:\\./)?vendor/bin/paratest\\b" },
+            { "pattern": "(^|\\s)(?:\\./)?vendor/bin/(?:pest|phpunit)\\b" },
+            { "pattern": "(^|\\s)(?:php\\s+)?artisan\\s+test\\b" },
+            {
+              "pattern": "(^|\\s)(?:\\./)?(?:vendor/bin/)?sail\\s+artisan\\s+test\\b",
+            },
+          ],
+        },
+      },
+    },
   },
   "agent_ui_font_size": 16.0,
   "language_models": {
@@ -284,6 +316,8 @@
         },
       },
     },
-    "phptools": { "initialization_options": { "0": "" } },
+    "phptools": {
+      "initialization_options": { "0": "" },
+    },
   },
 }
