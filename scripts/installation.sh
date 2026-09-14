@@ -6,6 +6,18 @@
 # repository. Configuration linking is performed at the end with recoverable
 # backups; use SKIP_LINK=1 to install packages without linking this repository.
 
+enable_php_sqlite_extensions() {
+    local php_ini="/etc/php/php.ini"
+
+    [[ -f "$php_ini" ]] || die "PHP configuration was not found at $php_ini."
+
+    # Arch's php-sqlite package supplies the modules; PHP still requires them
+    # to be enabled explicitly in php.ini.
+    sudo sed -i -E \
+        's|^[[:space:]]*;[[:space:]]*(extension[[:space:]]*=[[:space:]]*(pdo_sqlite|sqlite3)([[:space:]]*(;.*)?)?)|\1|' \
+        "$php_ini"
+}
+
 set -Eeuo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
@@ -41,6 +53,14 @@ install_repo_packages \
 
 info "Installing the packaged Bibata cursor source..."
 install_repo_packages bibata-cursor-theme
+
+info "Installing PHP, Composer, and SQLite support..."
+install_repo_packages php composer php-sqlite sqlite
+
+info "Enabling PHP SQLite extensions..."
+enable_php_sqlite_extensions
+php -m | grep -qx 'pdo_sqlite' || die "PHP pdo_sqlite extension could not be enabled."
+php -m | grep -qx 'sqlite3' || die "PHP sqlite3 extension could not be enabled."
 
 mkdir -p "$HOME/Pictures/Screenshots"
 
