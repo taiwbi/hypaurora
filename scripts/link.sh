@@ -63,6 +63,7 @@ link_path "$repo_root/opencode/opencode.json" "$HOME/.config/opencode/opencode.j
 # Custom scripts
 link_path "$repo_root/code/cx-usage.py" "$HOME/.local/bin/cx-usage"
 link_path "$repo_root/code/html-class-wrapper.py" "$HOME/.local/bin/html-class-wrapper"
+link_path "$repo_root/code/format-blades.sh" "$HOME/.local/bin/format-blades"
 
 # Existing repository configuration kept from the GNOME setup.
 for directory in \
