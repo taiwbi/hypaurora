@@ -285,17 +285,7 @@
       "formatter": [
         {
           "external": {
-            "command": "blade-formatter",
-            "arguments": [
-              "--stdin",
-              "--sort-tailwindcss-classes",
-              "--indent-inner-html",
-            ],
-          },
-        },
-        {
-          "external": {
-            "command": "html-class-wrapper",
+            "command": "blade-safe-formatter",
             "arguments": [],
           },
         },

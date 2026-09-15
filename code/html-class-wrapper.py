@@ -5,38 +5,62 @@ import sys
 
 MAX_LENGTH = 120
 
-text = sys.stdin.read()
-out = []
+CLASS = re.compile(r"""(?<![\w:.-])class\s*=\s*(["'])(.*?)\1""")
+DYNAMIC = re.compile(r"{{|{!!|<\?|@[A-Za-z_]")
 
-for line in text.splitlines():
-    match = re.search(r'class="([^"]*)"', line)
 
-    if not match:
-        out.append(line)
-        continue
+def format_text(text):
+    out = []
 
-    indent = re.match(r"^\s*", line).group()
-    classes = match.group(1).split()
+    for raw in text.splitlines(keepends=True):
+        line = raw.rstrip("\r\n")
+        ending = raw[len(line):]
+        matches = list(CLASS.finditer(line))
 
-    prefix = line[: match.start(1)]
-    suffix = line[match.end(1) :]
+        # Leave template code, multiline attributes, and ambiguous
+        # lines with multiple class attributes alone.
+        if (
+            len(line) <= MAX_LENGTH
+            or len(matches) != 1
+            or DYNAMIC.search(line)
+        ):
+            out.append(raw)
+            continue
 
-    current = prefix
-    continuation = indent + "    "
+        match = matches[0]
+        classes = match.group(2).split()
 
-    wrapped = []
+        if not classes:
+            out.append(raw)
+            continue
 
-    for cls in classes:
-        first = current == prefix or current == continuation
-        candidate = current + ("" if first else " ") + cls
+        prefix = line[:match.start(2)]
+        suffix = line[match.end(2):]
+        continuation = re.match(r"^[ \t]*", line).group() + "    "
 
-        if len(candidate) > MAX_LENGTH and not first:
-            wrapped.append(current)
-            current = continuation + cls
-        else:
-            current = candidate
+        wrapped = []
+        current = prefix
+        has_class = False
 
-    wrapped.append(current + suffix)
-    out.extend(wrapped)
+        for index, cls in enumerate(classes):
+            candidate = current + (" " if has_class else "") + cls
 
-sys.stdout.write("\n".join(out))
+            # Include the closing quote and remaining HTML when
+            # checking the final class.
+            tail = suffix if index == len(classes) - 1 else ""
+
+            if has_class and len(candidate + tail) > MAX_LENGTH:
+                wrapped.append(current)
+                current = continuation + cls
+            else:
+                current = candidate
+
+            has_class = True
+
+        wrapped.append(current + suffix)
+        out.append((ending or "\n").join(wrapped) + ending)
+
+    return "".join(out)
+
+
+sys.stdout.write(format_text(sys.stdin.read()))
