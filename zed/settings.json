@@ -112,6 +112,7 @@
     "default_profile": "minimal",
 
     "expand_terminal_card": false,
+    "thinking_display": "always_collapsed",
 
     // inline assistant
     "inline_assistant_model": {
