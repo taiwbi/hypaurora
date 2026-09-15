@@ -61,7 +61,8 @@ link_path "$repo_root/ghostty" "$HOME/.config/ghostty"
 link_path "$repo_root/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
 
 # Custom scripts
-link_path "$repo_root/code/cx-usage" "$HOME/.local/bin/cx-usage"
+link_path "$repo_root/code/cx-usage.py" "$HOME/.local/bin/cx-usage"
+link_path "$repo_root/code/html-class-wrapper.py" "$HOME/.local/bin/html-class-wrapper"
 
 # Existing repository configuration kept from the GNOME setup.
 for directory in \

@@ -282,16 +282,24 @@
         "!phpactor",
         "...",
       ],
-      "formatter": {
-        "external": {
-          "command": "blade-formatter",
-          "arguments": [
-            "--stdin",
-            "--sort-tailwindcss-classes",
-            "--indent-inner-html",
-          ],
+      "formatter": [
+        {
+          "external": {
+            "command": "blade-formatter",
+            "arguments": [
+              "--stdin",
+              "--sort-tailwindcss-classes",
+              "--indent-inner-html",
+            ],
+          },
         },
-      },
+        {
+          "external": {
+            "command": "html-class-wrapper",
+            "arguments": [],
+          },
+        },
+      ],
     },
   },
   "lsp": {
