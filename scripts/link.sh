@@ -60,6 +60,9 @@ link_path() {
 link_path "$repo_root/ghostty" "$HOME/.config/ghostty"
 link_path "$repo_root/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
 
+# Custom scripts
+link_path "$repo_root/code/cx-usage" "$HOME/.local/bin/cx-usage"
+
 # Existing repository configuration kept from the GNOME setup.
 for directory in \
     bash fish fontconfig gtk-3.0 gtk-4.0 lazygit mpv qt; do
