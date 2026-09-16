@@ -1,0 +1,35 @@
+/* Gruvbox Light Soft */
+@define-color accent_bg_color #076678;
+@define-color accent_fg_color #fbf1c7;
+@define-color accent_color #076678;
+@define-color destructive_bg_color #9d0006;
+@define-color destructive_fg_color #fbf1c7;
+@define-color destructive_color #9d0006;
+@define-color success_bg_color #79740e;
+@define-color success_fg_color #fbf1c7;
+@define-color success_color #79740e;
+@define-color warning_bg_color #b57614;
+@define-color warning_fg_color #282828;
+@define-color warning_color #b57614;
+@define-color error_bg_color #9d0006;
+@define-color error_fg_color #fbf1c7;
+@define-color error_color #9d0006;
+@define-color window_bg_color #f2e5bc;
+@define-color window_fg_color #3c3836;
+@define-color view_bg_color #f2e5bc;
+@define-color view_fg_color #3c3836;
+@define-color headerbar_bg_color #f2e5bc;
+@define-color headerbar_fg_color #3c3836;
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_shade_color #f2e5bc;
+@define-color card_bg_color #ebdbb2;
+@define-color card_fg_color #3c3836;
+@define-color card_shade_color #ebdbb2;
+@define-color popover_bg_color #ebdbb2;
+@define-color popover_fg_color #3c3836;
+@define-color sidebar_backdrop_color #ebdbb2;
+@define-color sidebar_bg_color #ebdbb2;
+@define-color sidebar_fg_color #3c3836;
+.navigation-sidebar row:selected { background-color: @accent_bg_color; color: @accent_fg_color; }
+.navigation-sidebar row:selected .sidebar-label { color: @accent_fg_color; }
+.navigation-sidebar row:hover:not(:selected) { background-color: #d5c4a1; }
