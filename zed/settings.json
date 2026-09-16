@@ -26,8 +26,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Monosami Dark",
-    "light": "Monosami Light",
+    "dark": "Gruvbox Dark",
+    "light": "Gruvbox Light Soft",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -92,10 +92,10 @@
     "codex-acp": {
       "default_config_options": {
         "collaboration_mode": "default",
-        "fast-mode": true,
+        "fast-mode": false,
         "mode": "agent-full-access",
-        "reasoning_effort": "high",
-        "model": "gpt-5.6-luna",
+        "reasoning_effort": "medium",
+        "model": "gpt-5.6-terra",
       },
       "type": "registry",
     },
@@ -238,6 +238,8 @@
     "line_numbers": true,
   },
   "git_panel": {
+    "group_by": "none",
+    "sort_by": "path",
     "dock": "left",
     "tree_view": true,
   },
