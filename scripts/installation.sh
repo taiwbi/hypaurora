@@ -62,6 +62,9 @@ enable_php_sqlite_extensions
 php -m | grep -qx 'pdo_sqlite' || die "PHP pdo_sqlite extension could not be enabled."
 php -m | grep -qx 'sqlite3' || die "PHP sqlite3 extension could not be enabled."
 
+info "Installing hypaurora dependencies..."
+install_repo_packages python-rich
+
 mkdir -p "$HOME/Pictures/Screenshots"
 
 if [[ "${SKIP_LINK:-0}" != "1" ]]; then
