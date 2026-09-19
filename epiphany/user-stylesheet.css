@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Geist Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "Elephant", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
@@ -186,7 +186,7 @@ html.dark.chatgpt #page-header {
 .claude .tiptap code,
 .claude .tiptap pre *,
 .claude .tiptap code * {
-    font-family: "Geist Mono" !important;
+    font-family: "Elephant" !important;
 }
 
 /* === === === === === Wallhaven === === === === === */

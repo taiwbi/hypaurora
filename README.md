@@ -15,5 +15,5 @@ desktop integration, and application-specific configuration.
 
 - 🅰️ Font Family: [Geist](https://vercel.com/font)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Geist Mono](https://vercel.com/font?type=mono)
+- 💻 Monospace Family: [Elephant](https://github.com/taiwbi/elephant)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font)
