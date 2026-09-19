@@ -1,0 +1,29 @@
+model = "gpt-5.6-luna"
+model_reasoning_effort = "high"
+service_tier = "fast"
+plan_mode_reasoning_effort = "xhigh"
+approvals_reviewer = "auto_review"
+
+[tui]
+status_line = [
+  "model-with-reasoning",
+  "current-dir",
+  "git-branch",
+  "context-remaining",
+  "used-tokens",
+  "five-hour-limit",
+  "weekly-limit"
+]
+status_line_use_colors = true
+
+terminal_title = [
+  "activity",
+  "project",
+  "git-branch",
+  "thread-name",
+  "task-progress"
+]
+
+alternate_screen = "always"
+animations = true
+theme = "gruvbox-dark"
