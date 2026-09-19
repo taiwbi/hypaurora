@@ -10,7 +10,13 @@
   {
     "bindings": {
       "ctrl-escape": "workspace::CloseAllDocks",
-      "shift shift": "workspace::CloseAllDocks",
+      "shift shift": [
+        "action::Sequence",
+        [
+          "workspace::CloseAllDocks",
+          "multi_workspace::CloseWorkspaceSidebar",
+        ],
+      ],
 
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
