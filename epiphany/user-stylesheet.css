@@ -128,67 +128,6 @@ html.dark.chatgpt #page-header {
     background-color: var(--main-surface-primary) !important;
 }
 
-/* === === === === === Claude === === === === === */
-
-:root {
-    --font-claude-response:
-        "Anthropic Serif", "Aria[NoEng]", "Anthropic Serif Fallback Georgia",
-        "Anthropic Serif Fallback Times", "Anthropic Serif Fallback DejaVu",
-        "Anthropic Serif Fallback Noto", Georgia, "Arial Hebrew",
-        "Noto Sans Hebrew", "Times New Roman", Times, "PingFang SC",
-        "Microsoft YaHei", "Noto Sans CJK SC", "PingFang TC", "Microsoft JhengHei",
-        "Noto Sans CJK TC", "Hiragino Sans", "Yu Gothic", Meiryo,
-        "Noto Sans CJK JP", "Apple SD Gothic Neo", "Malgun Gothic",
-        "Noto Sans CJK KR", serif;
-    --font-claude-ui:
-        "Anthropic Sans", "Aria[NoEng]", system-ui, "Segoe UI", Roboto, Helvetica,
-        Arial, sans-serif;
-}
-
-.claude .font-claude-response,
-.claude .font-claude-response-body,
-.claude .font-claude-response *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *):not(.code-block__code):not(.code-block__code *),
-.claude .font-claude-response-body *:not(code):not(pre):not(code *):not(pre *):not(.claude .font-claude-response .font-base):not(.claude .font-claude-response .font-ui):not(.claude .font-claude-response .font-base *):not(.claude .font-claude-response .font-ui *):not(.code-block__code):not(.code-block__code *) {
-    font-family: var(--font-claude-response) !important;
-}
-
-.claude .font-display,
-.claude .font-display * {
-    font-family: var(--font-ui-serif) !important;
-}
-
-.claude .font-ui,
-.claude .font-base,
-.claude .font-ui *:not(code):not(code *),
-.claude .font-base *:not(.code-block__code):not(.code-block__code *),
-.claude [data-cds="Icon"],
-.claude [style*="font-family: var(--font-anthropicons)"] {
-    font-family: var(--font-claude-ui) !important;
-}
-
-.claude .katex {
-    font:
-        1.21em "KaTeX_Main",
-        "Times New Roman",
-        serif !important;
-}
-
-.claude .cds-root[data-font] {
-    font-family: var(--cds-font-sans) !important;
-}
-
-.claude .cds-root[data-font] span[data-cds="Icon"],
-.claude .cds-root[data-font] span[data-cds="Icon"] * {
-    font-family: var(--font-anthropicons, Anthropicons-Variable) !important;
-}
-
-.claude .tiptap pre,
-.claude .tiptap code,
-.claude .tiptap pre *,
-.claude .tiptap code * {
-    font-family: "Elephant" !important;
-}
-
 /* === === === === === Wallhaven === === === === === */
 .wallhaven figure.thumb,
 .wallhaven figure.thumb img {
