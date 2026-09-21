@@ -21,6 +21,8 @@ background-opacity = 1
 mouse-hide-while-typing = true
 
 # --- Theme ---
+cursor-style = underline
+shell-integration-features = no-cursor
 window-theme = ghostty
 theme = light:Gruvbox Light, dark:Jellybeans
 
