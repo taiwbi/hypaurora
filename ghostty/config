@@ -24,7 +24,7 @@ mouse-hide-while-typing = true
 cursor-style = underline
 shell-integration-features = no-cursor
 window-theme = ghostty
-theme = light:Gruvbox Light, dark:Jellybeans
+theme = light:Catppuccin Latte, dark:Catppuccin Mocha
 
 # --- Keybindings ---
 keybind = ctrl+shift+t=new_tab
