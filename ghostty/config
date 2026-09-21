@@ -1,18 +1,18 @@
 # --- Fonts ---
-font-family = Elephant
+font-family = Geist Mono
 font-family = BetterIcons
 font-family = Vazir Code Hack
-font-size = 13.5
+font-size = 12
 
 font-style = "Medium"
 font-style-bold = "ExtraBold"
 
 # --- Cell dimensions ---
-adjust-cell-height = 11
+adjust-cell-height = 18
 
 # --- Window ---
 window-width = 120
-window-height = 28
+window-height = 23
 window-padding-x = 10
 window-padding-y = 10
 background-opacity = 1
@@ -22,7 +22,7 @@ mouse-hide-while-typing = true
 
 # --- Theme ---
 window-theme = ghostty
-theme = light:Gruvbox Light, dark:Gruvbox Dark
+theme = light:Gruvbox Light, dark:Jellybeans
 
 # --- Keybindings ---
 keybind = ctrl+shift+t=new_tab
