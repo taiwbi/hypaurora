@@ -118,13 +118,15 @@ code,
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
-html.dark.chatgpt,
-html.dark.chatgpt :not(:where(.light, .light *)) {
+html.chatgpt[data-theme="dark"],
+html.chatgpt[data-theme="dark"] :not(:where(.light, .light *)) {
     --bg-primary: #282828 !important;
     --main-surface-primary: #282828 !important;
     --sidebar-surface-primary: #282828 !important;
+    --color-surface: #282828 !important;
+    --color-surface-secondary: #282828 !important;
 }
-html.dark.chatgpt #page-header {
+html.chatgpt[data-theme="dark"] #page-header {
     background-color: var(--main-surface-primary) !important;
 }
 
