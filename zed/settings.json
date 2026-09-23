@@ -17,7 +17,7 @@
   "buffer_font_family": "Geist Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
-  "buffer_font_size": 17,
+  "buffer_font_size": 17.0,
   "buffer_line_height": "comfortable",
 
   "diff_view_style": "unified",
@@ -46,7 +46,7 @@
   "cursor_blink": true,
 
   "ui_font_family": "Geist Pixel",
-  "ui_font_size": 15,
+  "ui_font_size": 15.0,
 
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
@@ -155,7 +155,7 @@
     },
   },
   "agent_ui_font_size": 16.0,
-  "agent_buffer_font_size": 16,
+  "agent_buffer_font_size": 15.0,
   "language_models": {
     "open_router": {
       "api_url": "https://openrouter.ai/api/v1",
