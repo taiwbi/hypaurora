@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
 import hashlib
+import argparse
 import re
 import subprocess
 import sys
 import uuid
+from pathlib import Path
 
 # Recognize quoted PHP strings inside Blade/PHP expressions.
 STRING = r"""(?:'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")"""
@@ -120,14 +122,41 @@ def format_once(source):
 
 
 def main():
-    text = sys.stdin.buffer.read().decode("utf-8")
+    parser = argparse.ArgumentParser(
+        description="Safely format Blade markup read from standard input."
+    )
+    parser.add_argument(
+        "--stdin",
+        action="store_true",
+        help="read the template from standard input and write the result to standard output",
+    )
+    parser.add_argument(
+        "--write",
+        metavar="FILE",
+        help="format FILE in place",
+    )
+    args = parser.parse_args()
+
+    if args.write and args.stdin:
+        parser.error("--stdin and --write are opposite modes; use only one")
+
+    source_path = Path(args.write) if args.write else None
+    text = (
+        source_path.read_bytes().decode("utf-8")
+        if source_path
+        else sys.stdin.buffer.read().decode("utf-8")
+    )
     seen = {text}
 
     for _ in range(8):
         formatted = format_once(text)
 
         if formatted == text:
-            sys.stdout.buffer.write(formatted.encode("utf-8"))
+            output = formatted.encode("utf-8")
+            if source_path:
+                source_path.write_bytes(output)
+            else:
+                sys.stdout.buffer.write(output)
             return
 
         if formatted in seen:
