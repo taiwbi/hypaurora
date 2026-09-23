@@ -18,9 +18,7 @@
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 17,
-  "buffer_line_height": {
-    "custom": 2.0,
-  },
+  "buffer_line_height": "comfortable",
 
   "diff_view_style": "unified",
 
@@ -47,8 +45,8 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": "Geist Mono",
-  "ui_font_size": 16,
+  "ui_font_family": "Geist Pixel",
+  "ui_font_size": 15,
 
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
