@@ -1,0 +1,9 @@
+prefix_rule(pattern=["git", "commit"], decision="deny")
+
+prefix_rule(
+    pattern=[
+        ["sail", "./vendor/bin/sail", "vendor/bin/sail"],
+        ["exec", "artisan", "php", "composer", "npm", "test", "pint", "phpunit"],
+    ],
+    decision="allow",
+)
