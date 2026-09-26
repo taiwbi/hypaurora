@@ -1,0 +1,26 @@
+# Rich Vesper terminal colors, adapted from the Zed theme:
+# https://github.com/zezic/rich-vesper-zed/blob/main/themes/rich-vesper-dark.json
+
+palette = 0=#101010
+palette = 1=#f5a191
+palette = 2=#90b99f
+palette = 3=#e6b99d
+palette = 4=#aca1cf
+palette = 5=#e29eca
+palette = 6=#ea83a5
+palette = 7=#A0A0A0
+palette = 8=#7E7E7E
+palette = 9=#ff8080
+palette = 10=#99FFE4
+palette = 11=#FFC799
+palette = 12=#b9aeda
+palette = 13=#ecaad6
+palette = 14=#f591b2
+palette = 15=#ffffff
+
+background = #101010
+foreground = #FFFFFF
+cursor-color = #FFC799
+cursor-text = #101010
+selection-background = #343434
+selection-foreground = #ffffff
