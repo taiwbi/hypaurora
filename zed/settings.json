@@ -24,7 +24,7 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Gruvbox Dark",
+    "dark": "Rich Vesper",
     "light": "Gruvbox Light Soft",
   },
   "experimental.theme_overrides": {
@@ -255,6 +255,8 @@
     "toml": true,
     "lua": true,
     "sql": true,
+    // themes
+    "rich-vesper": true,
   },
 
   // LSP and Language Server ===================================
