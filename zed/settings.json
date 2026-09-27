@@ -99,8 +99,8 @@
     },
   },
   "agent": {
-    "sidebar_side": "right",
-    "dock": "right",
+    "sidebar_side": "left",
+    "dock": "left",
 
     // chat window
     "default_model": {
