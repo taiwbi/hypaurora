@@ -8,7 +8,7 @@ font-style = "Medium"
 font-style-bold = "ExtraBold"
 
 # --- Cell dimensions ---
-adjust-cell-height = 7
+adjust-cell-height = 8
 
 # --- Window ---
 window-width = 120
