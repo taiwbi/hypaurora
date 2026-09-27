@@ -31,7 +31,7 @@ except ImportError:
     sys.exit("Install the TUI dependency: python -m pip install rich")
 
 
-# USD per million tokens, standard API processing, checked 2026-09-26.
+# USD per million tokens, standard API processing, checked 2026-09-27.
 # https://developers.openai.com/api/docs/pricing
 PRICES = {
     "gpt-6-astra": (10.0, 1.0, 12.5, 50.0),
@@ -42,6 +42,7 @@ PRICES = {
     "gpt-5.6-luna": (0.2, 0.02, 0.25, 1.2),
     "gpt-5.4-mini": (0.75, 0.075, 0.9375, 4.5),
 }
+FAST_MODELS = {model for model in PRICES if model.startswith(("gpt-6-", "gpt-5.6-"))}
 
 
 @dataclass(frozen=True)
@@ -52,6 +53,7 @@ class Usage:
     cached: int
     write: int
     output: int
+    service_tier: str = "default"
 
     @property
     def cost(self) -> float | None:
@@ -61,21 +63,24 @@ class Usage:
         ordinary = max(0, self.input - self.cached - self.write)
         multiplier = 2 if self.model.startswith(("gpt-6-", "gpt-5.6-")) and self.input > 272_000 else 1
         output_multiplier = 1.5 if multiplier == 2 else 1
-        return (ordinary * rates[0] * multiplier
-                + self.cached * rates[1] * multiplier
-                + self.write * rates[2] * multiplier
-                + self.output * rates[3] * output_multiplier) / 1_000_000
+        # Codex rollouts use "priority" for Fast mode on older models.
+        fast_multiplier = (2 if self.service_tier in ("fast", "priority")
+                           and self.model in FAST_MODELS else 1)
+        return fast_multiplier * (ordinary * rates[0] * multiplier
+                                  + self.cached * rates[1] * multiplier
+                                  + self.write * rates[2] * multiplier
+                                  + self.output * rates[3] * output_multiplier) / 1_000_000
 
 
 def timestamp(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def usage_from(raw: dict, at: datetime, model: str) -> Usage:
+def usage_from(raw: dict, at: datetime, model: str, service_tier: str = "default") -> Usage:
     def amount(key: str) -> int:
         return max(0, int(raw.get(key) or 0))
     return Usage(at, model, amount("input_tokens"), amount("cached_input_tokens"),
-                 amount("cache_write_input_tokens"), amount("output_tokens"))
+                 amount("cache_write_input_tokens"), amount("output_tokens"), service_tier)
 
 
 def read_rollout(path: Path) -> tuple[list[Usage], list[tuple[datetime, dict]]]:
@@ -83,6 +88,7 @@ def read_rollout(path: Path) -> tuple[list[Usage], list[tuple[datetime, dict]]]:
     fallback: list[Usage] = []
     limits = []
     model = "unknown"
+    service_tier = "default"
     previous = {key: 0 for key in ("input_tokens", "cached_input_tokens",
                                     "cache_write_input_tokens", "output_tokens")}
     try:
@@ -100,20 +106,26 @@ def read_rollout(path: Path) -> tuple[list[Usage], list[tuple[datetime, dict]]]:
                 elif kind == "token_usage_record":
                     raw = payload.get("usage")
                     if isinstance(raw, dict):
-                        records.append(usage_from(raw, at, model))
-                elif kind == "event_msg" and payload.get("type") == "token_count":
-                    if isinstance(payload.get("rate_limits"), dict):
-                        limits.append((at, payload["rate_limits"]))
-                    info = payload.get("info") or {}
-                    total = info.get("total_token_usage")
-                    if isinstance(total, dict):
-                        keys = previous.keys()
-                        current = {key: max(0, int(total.get(key) or 0)) for key in keys}
-                        # A counter reset can occur within a rollout. Treat it as a new baseline.
-                        delta = {key: current[key] - previous[key] if current[key] >= previous[key]
-                                 else current[key] for key in keys}
-                        previous = current
-                        fallback.append(usage_from(delta, at, model))
+                        records.append(usage_from(raw, at, model, service_tier))
+                elif kind == "event_msg":
+                    if payload.get("type") == "thread_settings_applied":
+                        settings = payload.get("thread_settings") or {}
+                        if (isinstance(settings, dict)
+                                and settings.get("service_tier") in ("default", "fast", "priority")):
+                            service_tier = settings["service_tier"]
+                    elif payload.get("type") == "token_count":
+                        if isinstance(payload.get("rate_limits"), dict):
+                            limits.append((at, payload["rate_limits"]))
+                        info = payload.get("info") or {}
+                        total = info.get("total_token_usage")
+                        if isinstance(total, dict):
+                            keys = previous.keys()
+                            current = {key: max(0, int(total.get(key) or 0)) for key in keys}
+                            # A counter reset can occur within a rollout. Treat it as a new baseline.
+                            delta = {key: current[key] - previous[key] if current[key] >= previous[key]
+                                     else current[key] for key in keys}
+                            previous = current
+                            fallback.append(usage_from(delta, at, model, service_tier))
     except (OSError, UnicodeError):
         pass
     # Newer rollouts contain both records and cumulative token_count events.
