@@ -62,9 +62,10 @@
     "dock": "left",
   },
   "outline_panel": {
-    "dock": "right",
+    "dock": "left",
   },
   "collaboration_panel": {
+    "button": false,
     "dock": "left",
   },
 
@@ -88,6 +89,17 @@
       "type": "registry",
     },
     "codex-acp": {
+      "favorite_config_option_values": {
+        "reasoning_effort": [
+          "high",
+          "medium",
+          "xhigh"
+        ],
+        "model": [
+          "gpt-6-sol",
+          "gpt-6-luna"
+        ]
+      },
       "default_config_options": {
         "collaboration_mode": "default",
         "fast-mode": false,
