@@ -8,12 +8,14 @@ import bisect
 import json
 import os
 import select
+import signal
 import sys
 import termios
+import time
 import tty
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -118,18 +120,42 @@ def read_rollout(path: Path) -> tuple[list[Usage], list[tuple[datetime, dict]]]:
     return (records if records else fallback), limits
 
 
-def load_data(root: Path) -> tuple[list[Usage], dict[str, tuple[datetime, dict]],
-                                   list[tuple[datetime, dict]], int]:
-    all_usage: list[Usage] = []
-    latest: dict[str, tuple[datetime, dict]] = {}
-    history: list[tuple[datetime, dict]] = []
-    seen = 0
-    for base in (root / "sessions", root / "archived_sessions"):
-        if not base.exists():
-            continue
-        for path in base.rglob("*.jsonl"):
-            seen += 1
-            records, limits = read_rollout(path)
+class RolloutStore:
+    def __init__(self, root: Path) -> None:
+        self.root = root
+        self.files: dict[Path, tuple[int, int, list[Usage], list[tuple[datetime, dict]]]] = {}
+        self.snapshot: tuple[list[Usage], dict[str, tuple[datetime, dict]],
+                             list[tuple[datetime, dict]], int] | None = None
+
+    def load(self) -> tuple[list[Usage], dict[str, tuple[datetime, dict]],
+                            list[tuple[datetime, dict]], int]:
+        paths: set[Path] = set()
+        changed = self.snapshot is None
+        for base in (self.root / "sessions", self.root / "archived_sessions"):
+            if not base.exists():
+                continue
+            for path in base.rglob("*.jsonl"):
+                paths.add(path)
+                try:
+                    stat = path.stat()
+                except OSError:
+                    continue
+                cached = self.files.get(path)
+                if cached is None or cached[:2] != (stat.st_mtime_ns, stat.st_size):
+                    records, limits = read_rollout(path)
+                    self.files[path] = (stat.st_mtime_ns, stat.st_size, records, limits)
+                    changed = True
+        if paths != self.files.keys():
+            changed = True
+            self.files = {path: value for path, value in self.files.items() if path in paths}
+        if not changed:
+            assert self.snapshot is not None
+            return self.snapshot
+
+        all_usage: list[Usage] = []
+        latest: dict[str, tuple[datetime, dict]] = {}
+        history: list[tuple[datetime, dict]] = []
+        for _, _, records, limits in self.files.values():
             all_usage.extend(records)
             for at, rate in limits:
                 limit_id = str(rate.get("limit_id") or "codex")
@@ -137,7 +163,8 @@ def load_data(root: Path) -> tuple[list[Usage], dict[str, tuple[datetime, dict]]
                     history.append((at, rate))
                 if limit_id not in latest or at > latest[limit_id][0]:
                     latest[limit_id] = (at, rate)
-    return all_usage, latest, history, seen
+        self.snapshot = all_usage, latest, history, len(paths)
+        return self.snapshot
 
 
 def money(value: float) -> str:
@@ -153,9 +180,16 @@ def compact(value: int) -> str:
 
 
 def summary(rows: list[Usage]) -> tuple[float, int, int, int, int, int]:
-    return (sum(item.cost or 0 for item in rows), sum(x.input for x in rows),
-            sum(x.cached for x in rows), sum(x.write for x in rows),
-            sum(x.output for x in rows), sum(x.cost is None for x in rows))
+    total, inp, cached, writes, out, unknown = 0.0, 0, 0, 0, 0, 0
+    for row in rows:
+        cost = row.cost
+        total += cost or 0
+        inp += row.input
+        cached += row.cached
+        writes += row.write
+        out += row.output
+        unknown += cost is None
+    return total, inp, cached, writes, out, unknown
 
 
 def window_card(title: str, rows: list[Usage], limit: dict | None,
@@ -201,12 +235,22 @@ def period_key(at: datetime, kind: str, zone: ZoneInfo):
     return d.replace(day=1)
 
 
-def period_table(rows: list[Usage], kind: str, zone: ZoneInfo,
-                 offset: int, page_size: int) -> tuple[Table, int]:
-    buckets: dict = defaultdict(list)
+def calendar_periods(rows: list[Usage], kind: str, zone: ZoneInfo) -> list[tuple[date, tuple]]:
+    buckets: dict = defaultdict(lambda: [0.0, 0, 0, 0, 0, 0])
     for row in rows:
-        buckets[period_key(row.at, kind, zone)].append(row)
-    keys = sorted(buckets, reverse=True)
+        total = buckets[period_key(row.at, kind, zone)]
+        cost = row.cost
+        total[0] += cost or 0
+        total[1] += row.input
+        total[2] += row.cached
+        total[3] += row.write
+        total[4] += row.output
+        total[5] += cost is None
+    return [(key, tuple(buckets[key])) for key in sorted(buckets, reverse=True)]
+
+
+def period_table(periods: list[tuple], kind: str,
+                 offset: int, page_size: int) -> tuple[Table, int]:
     table = Table(expand=True, box=None, header_style="bold magenta", show_edge=False,
                   row_styles=["", "dim"])
     table.add_column(kind.title(), ratio=2)
@@ -214,18 +258,17 @@ def period_table(rows: list[Usage], kind: str, zone: ZoneInfo,
     table.add_column("Input", justify="right")
     table.add_column("Cached", justify="right")
     table.add_column("Output", justify="right")
-    for key in keys[offset:offset + page_size]:
-        total, inp, cached, _, out, unknown = summary(buckets[key])
+    for key, (total, inp, cached, _, out, unknown) in periods[offset:offset + page_size]:
         label = key.strftime("%Y-%m-%d") if kind != "month" else key.strftime("%Y-%m")
         table.add_row(label + (" *" if unknown else ""), money(total), compact(inp),
                       compact(cached), compact(out))
-    if not keys:
+    if not periods:
         table.add_row("No local usage", "—", "—", "—", "—")
-    return table, max(0, len(keys) - page_size)
+    return table, max(0, len(periods) - page_size)
 
 
-def capacity_table(rows: list[Usage], history: list[tuple[datetime, dict]],
-                   kind: str, zone: ZoneInfo, offset: int, page_size: int) -> tuple[Table, int]:
+def capacity_periods(rows: list[Usage], history: list[tuple[datetime, dict]],
+                     kind: str, zone: ZoneInfo) -> tuple[list[tuple], float]:
     """Show a proxy for quota size, inferred from local spend per percent used."""
     field = "primary" if kind == "limit5" else "secondary"
     minutes = 300 if kind == "limit5" else 10080
@@ -243,11 +286,12 @@ def capacity_table(rows: list[Usage], history: list[tuple[datetime, dict]],
             groups.append([])
         groups[-1].append(item)
 
-    priced = sorted((row for row in rows if row.cost is not None), key=lambda row: row.at)
-    dates = [row.at for row in priced]
+    priced = sorted(((row.at, cost) for row in rows
+                     if (cost := row.cost) is not None), key=lambda item: item[0])
+    dates = [at for at, _ in priced]
     running = [0.0]
-    for row in priced:
-        running.append(running[-1] + (row.cost or 0))
+    for _, cost in priced:
+        running.append(running[-1] + cost)
 
     periods = []
     for group in groups:
@@ -262,8 +306,19 @@ def capacity_table(rows: list[Usage], history: list[tuple[datetime, dict]],
         start = reset - timedelta(minutes=minutes)
         periods.append((start.astimezone(zone), gained, capacity))
     periods.reverse()
-
     max_capacity = max((p[2] for p in periods if p[2] is not None), default=0)
+    prior = None
+    with_prior = []
+    for at, gained, cap in reversed(periods):
+        with_prior.append((at, gained, cap, prior))
+        if cap is not None:
+            prior = cap
+    with_prior.reverse()
+    return with_prior, max_capacity
+
+
+def capacity_table(periods: list[tuple], max_capacity: float, kind: str,
+                   offset: int, page_size: int) -> tuple[Table, int]:
     table = Table(expand=True, box=None, header_style="bold magenta",
                   row_styles=["", "dim"])
     table.add_column("Codex window", min_width=15)
@@ -272,8 +327,7 @@ def capacity_table(rows: list[Usage], history: list[tuple[datetime, dict]],
     table.add_column("Observed", justify="right", min_width=10)
     table.add_column("vs prior", justify="right", min_width=9)
     for index in range(offset, min(len(periods), offset + page_size)):
-        at, gained, cap = periods[index]
-        prior = next((older[2] for older in periods[index + 1:] if older[2] is not None), None)
+        at, gained, cap, prior = periods[index]
         label = at.strftime("%y-%m-%d %H:%M") if kind == "limit5" else at.strftime("%y-%m-%d")
         if cap is None:
             table.add_row(label, "—", "", f"{gained:.0f} pp", "—")
@@ -287,34 +341,60 @@ def capacity_table(rows: list[Usage], history: list[tuple[datetime, dict]],
     return table, max(0, len(periods) - page_size)
 
 
-def build(rows: list[Usage], latest: dict, history: list[tuple[datetime, dict]],
-          files: int, zone: ZoneInfo,
-          kind: str, offset: int, page_size: int, width: int = 80) -> tuple[Group, int]:
-    now = datetime.now(timezone.utc)
-    codex = latest.get("codex", (None, {}))[1]
-    cards = []
-    for name, field, minutes in (("LAST 5H · CODEX", "primary", 300),
-                                 ("WEEKLY · CODEX", "secondary", 10080)):
-        limit = codex.get(field)
-        if (limit and limit.get("resets_at") and limit.get("window_minutes")
-                and int(limit["resets_at"]) > now.timestamp()):
-            end = datetime.fromtimestamp(int(limit["resets_at"]), timezone.utc)
-            start = end - timedelta(minutes=int(limit["window_minutes"]))
-            note = f"Window {start.astimezone(zone):%d %b %H:%M} → {end.astimezone(zone):%d %b %H:%M}"
-            current = [x for x in rows if start <= x.at < end]
-        else:
-            start = now - timedelta(minutes=minutes)
-            current = [x for x in rows if start <= x.at <= now]
-            note = "Approximate rolling window; no Codex reset data"
-            limit = None
-        cards.append(window_card(name, current, limit, zone, note, width < 112))
+class Dashboard:
+    def __init__(self, snapshot: tuple, zone: ZoneInfo) -> None:
+        self.rows, self.latest, self.history, self.files = snapshot
+        self.zone = zone
+        self.calendar: dict[str, list[tuple]] = {}
+        self.capacity: dict[str, tuple[list[tuple], float]] = {}
+        self.cards_cache: dict[bool, list[Panel]] = {}
+
+    def periods(self, kind: str) -> list[tuple]:
+        if kind in ("limit5", "limit7"):
+            if kind not in self.capacity:
+                self.capacity[kind] = capacity_periods(
+                    self.rows, self.history, kind, self.zone)
+            return self.capacity[kind][0]
+        if kind not in self.calendar:
+            self.calendar[kind] = calendar_periods(self.rows, kind, self.zone)
+        return self.calendar[kind]
+
+    def cards(self, small: bool) -> list[Panel]:
+        if small in self.cards_cache:
+            return self.cards_cache[small]
+        now = datetime.now(timezone.utc)
+        codex = self.latest.get("codex", (None, {}))[1]
+        cards = []
+        for name, field, minutes in (("LAST 5H · CODEX", "primary", 300),
+                                     ("WEEKLY · CODEX", "secondary", 10080)):
+            limit = codex.get(field)
+            if (limit and limit.get("resets_at") and limit.get("window_minutes")
+                    and int(limit["resets_at"]) > now.timestamp()):
+                end = datetime.fromtimestamp(int(limit["resets_at"]), timezone.utc)
+                start = end - timedelta(minutes=int(limit["window_minutes"]))
+                note = f"Window {start.astimezone(self.zone):%d %b %H:%M} → {end.astimezone(self.zone):%d %b %H:%M}"
+                current = [x for x in self.rows if start <= x.at < end]
+            else:
+                start = now - timedelta(minutes=minutes)
+                current = [x for x in self.rows if start <= x.at <= now]
+                note = "Approximate rolling window; no Codex reset data"
+                limit = None
+            cards.append(window_card(name, current, limit, self.zone, note, small))
+        self.cards_cache[small] = cards
+        return cards
+
+
+def build(data: Dashboard, kind: str, offset: int,
+          page_size: int, width: int = 80) -> tuple[Group, int]:
+    periods = data.periods(kind)
     if kind in ("limit5", "limit7"):
-        table, max_offset = capacity_table(rows, history, kind, zone, offset, page_size)
+        table, max_offset = capacity_table(periods, data.capacity[kind][1], kind,
+                                           offset, page_size)
         title = "5-HOUR" if kind == "limit5" else "WEEKLY"
         table_title = f"{title} ALLOWANCE CAPACITY TREND · API-USD PROXY"
         subtitle = "Proxy uses priced local usage / allowance % change; ≥20 pp required"
     else:
-        table, max_offset = period_table(rows, kind, zone, offset, page_size)
+        table, max_offset = period_table(periods, kind, offset, page_size)
         table_title = f"CALENDAR {kind.upper()}S"
         subtitle = "Weeks start Monday · local timezone"
     nav = Text.from_markup("[bold]d/w/m[/] calendar  ·  [bold]5/7[/] limit trend  ·  "
@@ -322,13 +402,13 @@ def build(rows: list[Usage], latest: dict, history: list[tuple[datetime, dict]],
     footer_note = ("Trend can shift with model mix or missing local usage; not an exact limit" 
                    if kind in ("limit5", "limit7") else
                    "API price estimate, not ChatGPT charges · * contains unpriced models")
-    footer = Text(f"{files} local rollouts · {len(rows)} usage records · {zone.key} · "
+    footer = Text(f"{data.files} local rollouts · {len(data.rows)} usage records · {data.zone.key} · "
                   + footer_note,
                   style="dim")
     return Group(
         Panel(Text("CODEX USAGE", style="bold bright_white", justify="center"),
               border_style="bright_magenta"),
-        Columns(cards, equal=True, expand=True),
+        Columns(data.cards(width < 112), equal=True, expand=True),
         Panel(table, title=f"{table_title}  ·  {offset + 1}–{min(offset + page_size, max_offset + page_size)}",
               subtitle=subtitle, border_style="magenta"),
         Panel(Group(nav, footer), border_style="dim"),
@@ -352,41 +432,84 @@ def main() -> int:
     if not args.codex_home.is_dir():
         parser.error(f"Codex home does not exist: {args.codex_home}")
     console = Console()
-    rows, latest, history, files = load_data(args.codex_home)
+    store = RolloutStore(args.codex_home)
+    snapshot = store.load()
+    data = Dashboard(snapshot, zone)
     kind, offset = "day", 0
     page_size = max(5, min(14, console.size.height - 22))
     if not sys.stdin.isatty() or not sys.stdout.isatty():
-        view, _ = build(rows, latest, history, files, zone, kind, offset, page_size,
-                        console.size.width)
+        view, _ = build(data, kind, offset, page_size, console.size.width)
         console.print(view)
         return 0
     original = termios.tcgetattr(sys.stdin.fileno())
+    resize_read, resize_write = os.pipe2(os.O_NONBLOCK | os.O_CLOEXEC)
+    previous_wakeup = signal.set_wakeup_fd(resize_write)
+    previous_handler = signal.signal(signal.SIGWINCH, lambda *_: None)
     try:
         tty.setcbreak(sys.stdin.fileno())
         with Live(console=console, screen=True, auto_refresh=False) as live:
+            next_refresh = time.monotonic() + args.refresh
+            resize_due = 0.0
+            dirty = True
+            max_offset = 0
             while True:
-                page_size = max(3, min(14, console.size.height - 21))
-                view, max_offset = build(rows, latest, history, files, zone, kind, offset,
-                                         page_size, console.size.width)
-                live.update(view, refresh=True)
-                ready, _, _ = select.select([sys.stdin], [], [], args.refresh)
-                if not ready:
-                    rows, latest, history, files = load_data(args.codex_home)
-                    continue
-                key = sys.stdin.read(1).lower()
-                if key == "q":
-                    break
-                if key in "dwm57":
-                    kind = {"d": "day", "w": "week", "m": "month",
-                            "5": "limit5", "7": "limit7"}[key]
-                    offset = 0
-                elif key == "j":
-                    offset = min(max_offset, offset + 1)
-                elif key == "k":
-                    offset = max(0, offset - 1)
-                elif key == "r":
-                    rows, latest, history, files = load_data(args.codex_home)
+                now = time.monotonic()
+                if dirty and now >= resize_due:
+                    size = console.size
+                    page_size = max(3, min(14, size.height - 21))
+                    offset = min(offset, max(0, len(data.periods(kind)) - page_size))
+                    view, max_offset = build(data, kind, offset, page_size, size.width)
+                    live.update(view, refresh=True)
+                    dirty = False
+                wake_at = min(next_refresh, resize_due) if dirty else next_refresh
+                ready, _, _ = select.select(
+                    [sys.stdin, resize_read], [], [],
+                    max(0, wake_at - time.monotonic()))
+                if resize_read in ready:
+                    try:
+                        os.read(resize_read, 4096)
+                    except BlockingIOError:
+                        pass
+                    resize_due = time.monotonic() + 0.05
+                    dirty = True
+                if sys.stdin in ready:
+                    key = sys.stdin.read(1).lower()
+                    if key == "q":
+                        break
+                    if key in "dwm57":
+                        new_kind = {"d": "day", "w": "week", "m": "month",
+                                    "5": "limit5", "7": "limit7"}[key]
+                        if new_kind != kind:
+                            kind, offset = new_kind, 0
+                            dirty = True
+                    elif key == "j" and offset < max_offset:
+                        offset += 1
+                        dirty = True
+                    elif key == "k" and offset:
+                        offset -= 1
+                        dirty = True
+                    elif key == "r":
+                        new_snapshot = store.load()
+                        if new_snapshot is not snapshot:
+                            snapshot = new_snapshot
+                            data = Dashboard(snapshot, zone)
+                        else:
+                            data.cards_cache.clear()
+                        dirty = True
+                if time.monotonic() >= next_refresh:
+                    new_snapshot = store.load()
+                    if new_snapshot is not snapshot:
+                        snapshot = new_snapshot
+                        data = Dashboard(snapshot, zone)
+                    else:
+                        data.cards_cache.clear()
+                    next_refresh = time.monotonic() + args.refresh
+                    dirty = True
     finally:
+        signal.signal(signal.SIGWINCH, previous_handler)
+        signal.set_wakeup_fd(previous_wakeup)
+        os.close(resize_read)
+        os.close(resize_write)
         termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, original)
     return 0
 
