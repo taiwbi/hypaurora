@@ -9,6 +9,7 @@ import json
 import os
 import select
 import signal
+import subprocess
 import sys
 import termios
 import time
@@ -18,18 +19,6 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
-
-try:
-    from rich.align import Align
-    from rich.columns import Columns
-    from rich.console import Console, Group
-    from rich.live import Live
-    from rich.panel import Panel
-    from rich.table import Table
-    from rich.text import Text
-except ImportError:
-    sys.exit("Install the TUI dependency: python -m pip install rich")
-
 
 # USD per million tokens, standard API processing, checked 2026-09-27.
 # https://developers.openai.com/api/docs/pricing
@@ -43,6 +32,116 @@ PRICES = {
     "gpt-5.4-mini": (0.75, 0.075, 0.9375, 4.5),
 }
 FAST_MODELS = {model for model in PRICES if model.startswith(("gpt-6-", "gpt-5.6-"))}
+
+
+def fetch_rate_limits(codex_home: Path) -> dict:
+    """Ask the Codex app server for live limits without scanning rollout files."""
+    env = os.environ.copy()
+    env["CODEX_HOME"] = str(codex_home.expanduser().resolve())
+    server = None
+    failure = None
+    stderr = ""
+    try:
+        server = subprocess.Popen(
+            ["codex", "app-server", "--listen", "stdio://"],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            bufsize=0, env=env)
+        buffer = bytearray()
+
+        def receive(request_id: int) -> dict:
+            deadline = time.monotonic() + 20
+            while True:
+                while b"\n" in buffer:
+                    line, _, rest = buffer.partition(b"\n")
+                    buffer[:] = rest
+                    try:
+                        message = json.loads(line)
+                    except ValueError:
+                        continue
+                    if message.get("id") == request_id:
+                        return message
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise TimeoutError("timed out waiting for app-server response")
+                ready, _, _ = select.select([server.stdout], [], [], remaining)
+                if not ready:
+                    raise TimeoutError("timed out waiting for app-server response")
+                chunk = os.read(server.stdout.fileno(), 4096)
+                if not chunk:
+                    raise RuntimeError("app-server closed its output before replying")
+                buffer.extend(chunk)
+
+        def send(message: dict) -> None:
+            assert server is not None and server.stdin is not None
+            server.stdin.write((json.dumps(message) + "\n").encode())
+            server.stdin.flush()
+
+        send({"id": 1, "method": "initialize", "params": {
+            "clientInfo": {"name": "cx-usage", "version": "1.0.0"}}})
+        initialized = receive(1)
+        if "error" in initialized:
+            raise RuntimeError(initialized["error"].get("message", initialized["error"]))
+        send({"method": "initialized", "params": {}})
+        send({"id": 2, "method": "account/rateLimits/read", "params": {
+            "excludeResetCreditDetails": True}})
+        response = receive(2)
+    except (OSError, RuntimeError, TimeoutError, subprocess.SubprocessError) as exc:
+        failure = exc
+        response = None
+    finally:
+        if server is not None:
+            if server.stdin and not server.stdin.closed:
+                server.stdin.close()
+            try:
+                server.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                server.terminate()
+                try:
+                    server.wait(timeout=2)
+                except subprocess.TimeoutExpired:
+                    server.kill()
+                    server.wait()
+            if server.stderr:
+                stderr = server.stderr.read().decode(errors="replace").strip()
+            if server.stdout:
+                server.stdout.close()
+            if server.stderr:
+                server.stderr.close()
+    if failure is not None:
+        detail = f" ({stderr})" if stderr else ""
+        raise RuntimeError(f"could not query Codex rate limits: {failure}{detail}") from failure
+    if "error" in response:
+        error = response["error"]
+        raise RuntimeError(f"could not query Codex rate limits: {error.get('message', error)}")
+    return response.get("result") or {}
+
+
+def print_short_limits(snapshot: dict) -> None:
+    limits = snapshot.get("rateLimitsByLimitId") or {}
+    codex = limits.get("codex") or snapshot.get("rateLimits") or {}
+    windows = [("5H", 300, codex.get("primary")),
+               ("Weekly", 10080, codex.get("secondary"))]
+    by_duration = {int(window["windowDurationMins"]): window
+                   for key in ("primary", "secondary")
+                   if isinstance((window := codex.get(key)), dict)
+                   and window.get("windowDurationMins") is not None}
+    for label, minutes, window in windows:
+        window = by_duration.get(minutes, window)
+        if not isinstance(window, dict):
+            print(f"{label}: unavailable")
+            continue
+        line = f"{label}: {int(window.get('usedPercent') or 0)}% used"
+        reset = window.get("resetsAt")
+        if reset:
+            remaining = max(0, int(reset) - int(time.time()))
+            hours, seconds = divmod(remaining, 3600)
+            mins = seconds // 60
+            if label == "5H":
+                line += f" · resets in {hours}h {mins:02d}m"
+            else:
+                days, hours = divmod(hours, 24)
+                line += f" · resets in {days}d {hours}h"
+        print(line)
 
 
 @dataclass(frozen=True)
@@ -429,13 +528,32 @@ def build(data: Dashboard, kind: str, offset: int,
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--short", action="store_true",
+                        help="print only live 5-hour and weekly limits")
     parser.add_argument("--codex-home", type=Path,
                         default=Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")))
     parser.add_argument("--timezone", help="IANA timezone; defaults to system local timezone")
     parser.add_argument("--refresh", type=float, default=30, metavar="SECONDS")
     args = parser.parse_args()
+    if args.short:
+        try:
+            print_short_limits(fetch_rate_limits(args.codex_home))
+        except RuntimeError as exc:
+            print(exc, file=sys.stderr)
+            return 1
+        return 0
     if args.refresh <= 0:
         parser.error("--refresh must be positive")
+    try:
+        from rich.align import Align
+        from rich.columns import Columns
+        from rich.console import Console, Group
+        from rich.live import Live
+        from rich.panel import Panel
+        from rich.table import Table
+        from rich.text import Text
+    except ImportError:
+        sys.exit("Install the TUI dependency: python -m pip install rich")
     try:
         zone = ZoneInfo(args.timezone) if args.timezone else ZoneInfo(os.environ.get("TZ") or
                        (Path("/etc/localtime").resolve().as_posix().split("/zoneinfo/")[-1]))
