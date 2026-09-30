@@ -21,7 +21,7 @@ background-opacity = 1
 mouse-hide-while-typing = true
 
 # --- Theme ---
-cursor-style = underline
+cursor-style = block
 shell-integration-features = no-cursor
 window-theme = ghostty
 theme = light:Catppuccin Latte, dark:Rich Vesper
