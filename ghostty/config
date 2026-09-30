@@ -1,5 +1,5 @@
 # --- Fonts ---
-font-family = Maple Mono
+font-family = Geist Mono
 font-family = BetterIcons
 font-family = Vazir Code Hack
 font-size = 12
@@ -24,7 +24,7 @@ mouse-hide-while-typing = true
 cursor-style = block
 shell-integration-features = no-cursor
 window-theme = ghostty
-theme = light:Catppuccin Latte, dark:Rich Vesper
+theme = light:Catppuccin Latte, dark:Catppuccin Mocha
 
 # --- Keybindings ---
 keybind = ctrl+shift+t=new_tab

@@ -14,7 +14,7 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "Maple Mono",
+  "buffer_font_family": "Geist Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16.0,
@@ -104,10 +104,10 @@
       },
       "default_config_options": {
         "collaboration_mode": "default",
-        "fast-mode": true,
+        "fast-mode": false,
         "mode": "agent-full-access",
         "reasoning_effort": "high",
-        "model": "gpt-6-luna",
+        "model": "gpt-6-sol",
       },
       "type": "registry",
     },
@@ -220,7 +220,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Maple Mono",
+    "font_family": "Geist Mono",
     "font_size": 17,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
