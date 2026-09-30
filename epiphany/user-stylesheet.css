@@ -120,11 +120,11 @@ code,
 
 html.chatgpt[data-theme="dark"],
 html.chatgpt[data-theme="dark"] :not(:where(.light, .light *)) {
-    --bg-primary: #282828 !important;
-    --main-surface-primary: #282828 !important;
-    --sidebar-surface-primary: #282828 !important;
-    --color-surface: #282828 !important;
-    --color-surface-secondary: #282828 !important;
+    --bg-primary: #101010 !important;
+    --main-surface-primary: #101010 !important;
+    --sidebar-surface-primary: #101010 !important;
+    --color-surface: #101010 !important;
+    --color-surface-secondary: #101010 !important;
 }
 html.chatgpt[data-theme="dark"] #page-header {
     background-color: var(--main-surface-primary) !important;
