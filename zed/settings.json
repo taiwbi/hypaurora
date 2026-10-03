@@ -19,14 +19,14 @@
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16.0,
   "buffer_line_height": {
-    "custom": 1.8
+    "custom": 1.8,
   },
 
   "diff_view_style": "unified",
 
   "theme": {
     "mode": "system",
-    "dark": "Rich Vesper",
+    "dark": "Gruvbox Dark Hard",
     "light": "Gruvbox Light Soft",
   },
   "experimental.theme_overrides": {
@@ -92,15 +92,8 @@
     },
     "codex-acp": {
       "favorite_config_option_values": {
-        "reasoning_effort": [
-          "high",
-          "medium",
-          "xhigh"
-        ],
-        "model": [
-          "gpt-6-sol",
-          "gpt-6-luna"
-        ]
+        "reasoning_effort": ["high", "medium", "xhigh"],
+        "model": ["gpt-6-sol", "gpt-6-luna"],
       },
       "default_config_options": {
         "collaboration_mode": "default",
