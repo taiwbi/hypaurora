@@ -106,7 +106,9 @@
     },
   },
   "agent": {
-    "sidebar_side": "left",
+    "threads_sidebar": {
+      "position": "left",
+    },
     "dock": "left",
 
     // chat window
