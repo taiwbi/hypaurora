@@ -544,6 +544,8 @@ def main() -> int:
         return 0
     if args.refresh <= 0:
         parser.error("--refresh must be positive")
+    # Share lazily loaded Rich classes with the dashboard rendering helpers.
+    global Align, Columns, Group, Panel, Table, Text
     try:
         from rich.align import Align
         from rich.columns import Columns
