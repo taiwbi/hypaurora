@@ -22,8 +22,10 @@ from zoneinfo import ZoneInfo
 
 # USD per million tokens, standard API processing, checked 2026-09-27.
 # https://developers.openai.com/api/docs/pricing
+# GPT-6.1 Sol checked 2026-10-04: https://developers.openai.com/api/docs/models/gpt-6.1-sol
 PRICES = {
     "gpt-6-astra": (10.0, 1.0, 12.5, 50.0),
+    "gpt-6.1-sol": (2.0, 0.1, 2.5, 10.0),
     "gpt-6-sol": (2.0, 0.2, 2.5, 10.0),
     "gpt-6-luna": (0.1, 0.01, 0.125, 0.5),
     "gpt-5.6-sol": (4.0, 0.4, 5.0, 20.0),
@@ -31,7 +33,7 @@ PRICES = {
     "gpt-5.6-luna": (0.2, 0.02, 0.25, 1.2),
     "gpt-5.4-mini": (0.75, 0.075, 0.9375, 4.5),
 }
-FAST_MODELS = {model for model in PRICES if model.startswith(("gpt-6-", "gpt-5.6-"))}
+FAST_MODELS = {model for model in PRICES if model.startswith(("gpt-6-", "gpt-6.1-", "gpt-5.6-"))}
 
 
 def fetch_rate_limits(codex_home: Path) -> dict:
@@ -160,7 +162,7 @@ class Usage:
         if rates is None:
             return None
         ordinary = max(0, self.input - self.cached - self.write)
-        multiplier = 2 if self.model.startswith(("gpt-6-", "gpt-5.6-")) and self.input > 272_000 else 1
+        multiplier = 2 if self.model.startswith(("gpt-6-", "gpt-6.1-", "gpt-5.6-")) and self.input > 272_000 else 1
         output_multiplier = 1.5 if multiplier == 2 else 1
         # Codex rollouts use "priority" for Fast mode on older models.
         fast_multiplier = (2 if self.service_tier in ("fast", "priority")
@@ -412,7 +414,7 @@ def capacity_periods(rows: list[Usage], history: list[tuple[datetime, dict]],
         start_index = bisect.bisect_right(dates, first[1])
         end_index = bisect.bisect_right(dates, last[1])
         spent = running[end_index] - running[start_index]
-        capacity = spent * 100 / gained if gained >= 20 and spent > 0 else None
+        capacity = spent * 100 / gained if gained > 5 and spent > 0 else None
         reset = datetime.fromtimestamp(max(item[0] for item in group), timezone.utc)
         start = reset - timedelta(minutes=minutes)
         periods.append((start.astimezone(zone), gained, capacity))
@@ -503,7 +505,7 @@ def build(data: Dashboard, kind: str, offset: int,
                                            offset, page_size)
         title = "5-HOUR" if kind == "limit5" else "WEEKLY"
         table_title = f"{title} ALLOWANCE CAPACITY TREND · API-USD PROXY"
-        subtitle = "Proxy uses priced local usage / allowance % change; ≥20 pp required"
+        subtitle = "Proxy uses priced local usage / allowance % change; >5 pp required"
     else:
         table, max_offset = period_table(periods, kind, offset, page_size)
         table_title = f"CALENDAR {kind.upper()}S"
