@@ -265,6 +265,9 @@
     "toml": true,
     "lua": true,
     "sql": true,
+    "log": true,
+    // Productivity
+    "emmet": true,
     // themes
     "rich-vesper": true,
   },
