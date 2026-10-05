@@ -93,14 +93,14 @@
     "codex-acp": {
       "favorite_config_option_values": {
         "reasoning_effort": ["high", "medium", "xhigh"],
-        "model": ["gpt-6-sol", "gpt-6-luna"],
+        "model": ["gpt-6-luna", "gpt-6.1-sol"],
       },
       "default_config_options": {
         "collaboration_mode": "default",
         "fast-mode": false,
         "mode": "agent-full-access",
-        "reasoning_effort": "high",
-        "model": "gpt-6-sol",
+        "reasoning_effort": "medium",
+        "model": "gpt-6.1-sol",
       },
       "type": "registry",
     },
