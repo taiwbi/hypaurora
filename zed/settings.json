@@ -17,9 +17,9 @@
   "buffer_font_family": "Geist Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
-  "buffer_font_size": 17.0,
+  "buffer_font_size": 16.0,
   "buffer_line_height": {
-    "custom": 1.8,
+    "custom": 2.0,
   },
 
   "diff_view_style": "unified",
@@ -48,7 +48,7 @@
   "cursor_blink": true,
 
   "ui_font_family": "Geist Pixel",
-  "ui_font_size": 16.0,
+  "ui_font_size": 15.0,
 
   "vertical_scroll_margin": 6.0,
   "colorize_brackets": false,
@@ -163,8 +163,9 @@
       },
     },
   },
-  "agent_ui_font_size": 16.0,
-  "agent_buffer_font_size": 17.0,
+  "agent_buffer_font_family": "Geist Mono",
+  "agent_ui_font_size": 15.0,
+  "agent_buffer_font_size": 16.0,
   "language_models": {
     "open_router": {
       "api_url": "https://openrouter.ai/api/v1",
@@ -216,7 +217,7 @@
   // Terminal ==================================================
   "terminal": {
     "font_family": "Geist Mono",
-    "font_size": 17,
+    "font_size": 16,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
     "line_height": "comfortable",

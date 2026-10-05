@@ -38,6 +38,7 @@ fonts=(
   "zed-sans|https://github.com/taiwbi/zed-fonts/releases/download/v34.8.0-3/Zed-Sans-v34.8.0-3.zip"
   "jetbrains-mono|https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip"
   "maple-mono|https://github.com/subframe7536/maple-font/releases/download/v7.9/MapleMono-TTF.zip"
+  "martian-mono|https://github.com/evilmartians/mono/releases/download/v1.1.0/martian-mono-1.1.0-ttf.zip"
 )
 manal_fonts=(
   "Aria|For Persian and Arabic serif texts"
