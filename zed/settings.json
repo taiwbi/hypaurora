@@ -334,6 +334,25 @@
       },
     },
     "phptools": {
+      "binary": {
+        "arguments": ["--composerNodes", "true", "-parallelism", "1"], // My work's PC is a baked potato :(
+      },
+      "settings": {
+        "php": {
+          "problems": {
+            "scope": "opened",
+          },
+          "files": {
+            "exclude": [
+              "**/.git/**",
+              "**/node_modules/**",
+              "**/storage/**",
+              "**/bootstrap/cache/**",
+              "**/public/build/**",
+            ],
+          },
+        },
+      },
       "initialization_options": { "0": "BEA8011826TGS8g74Ss4PLaUPnRuAgT" },
     },
   },
