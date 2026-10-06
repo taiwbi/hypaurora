@@ -14,7 +14,7 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "Geist Mono",
+  "buffer_font_family": "Buena Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16.0,
@@ -163,7 +163,7 @@
       },
     },
   },
-  "agent_buffer_font_family": "Geist Mono",
+  "agent_buffer_font_family": "Buena Mono",
   "agent_ui_font_size": 15.0,
   "agent_buffer_font_size": 16.0,
   "language_models": {
@@ -216,7 +216,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Geist Mono",
+    "font_family": "Buena Mono",
     "font_size": 16,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
