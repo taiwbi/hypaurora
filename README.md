@@ -1,6 +1,6 @@
 # 🌌 Hypaurora
 
-This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing GNOME.
+This is my **dotfiles** repository! 🎉 My personal configuration files for setting up and customizing GNOME and XFCE.
 
 > ⚠️ **This is the `playground` branch.**
 >
@@ -10,6 +10,20 @@ This is my **dotfiles** repository! 🎉 My personal configuration files for set
 
 This repository contains a CachyOS GNOME setup with Ghostty, Nautilus, GNOME
 desktop integration, and application-specific configuration.
+
+## XFCE desktop
+
+The CachyOS XFCE setup includes my keyboard shortcuts, ten workspaces, panels,
+mouse settings, elementary cursors, Flat Remix icons, and Skeuos GTK/window
+themes. Preview the installation with:
+
+```bash
+./scripts/installation-xfce.sh --dry-run
+```
+
+Log out of XFCE and run `./scripts/installation-xfce.sh --lightdm` from a TTY
+to install everything and select LightDM for the next boot. See
+[the XFCE instructions](xfce/README.md) for options, theme variants, and backups.
 
 ## 🎭 Customization
 
