@@ -183,6 +183,7 @@ if (( ! config_only )); then
 fi
 
 "${configure[@]}" --backup-dir "$backup_root"
+xfconf-query -c xfwm4 -p /general/easy_click -s Super
 
 if (( enable_lightdm )); then
     [[ -f /usr/share/xsessions/xfce.desktop ]] || die "The XFCE session is not installed."
