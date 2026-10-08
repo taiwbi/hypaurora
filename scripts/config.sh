@@ -16,8 +16,8 @@ if [ "$yn" != "y" ]; then
 fi
 
 # Interface
-gsettings set org.gnome.desktop.interface font-name 'Geist, Vazirmatn 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Buena Mono, Vazir Code Hack 13'
+gsettings set org.gnome.desktop.interface font-name 'Noto Sans, Vazirmatn 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Noto Sans Mono, Vazir Code Hack 13'
 gsettings set org.gnome.desktop.interface document-font-name 'Lusitana, Aria 11'
 gsettings set org.gnome.desktop.interface cursor-size 28
 

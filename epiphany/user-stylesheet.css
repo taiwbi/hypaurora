@@ -23,7 +23,7 @@ label,
 a,
 blockquote {
     font-family:
-        "Geist",
+        "Noto Sans",
         "Vazirmatn",
         system-ui,
         -apple-system,
@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Buena Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "Noto Sans Mono", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 

@@ -13,7 +13,7 @@ desktop integration, and application-specific configuration.
 
 ## 🎭 Customization
 
-- 🅰️ Font Family: [Geist](https://vercel.com/font)
+- 🅰️ Font Family: [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [Buena Mono](https://github.com/buenagames/buena-mono)
+- 💻 Monospace Family: [Noto Sans Mono](https://vercel.com/font)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font)
