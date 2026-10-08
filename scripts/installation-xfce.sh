@@ -33,6 +33,8 @@ Existing configurations and replaced themes are backed up first.
 
 Theme overrides: XFCE_GTK_THEME, XFCE_WM_THEME, XFCE_ICON_THEME.
 Defaults: Skeuos-Blue-Dark, Skeuos-Blue-Dark-XFWM, Flat-Remix-Blue-Dark.
+Panel override: XFCE_PANEL_PACKAGE=xfce4-panel-compiz or xfce4-panel.
+Keeps an installed panel; on a new machine prefers Compiz if available.
 EOF
 }
 
@@ -60,8 +62,41 @@ command -v python3 >/dev/null || die "python3 is required (sudo pacman -S python
 command -v pgrep >/dev/null || die "pgrep from procps-ng is required."
 configure=(python3 "$repo_root/xfce/configure.py" --gtk-theme "$gtk_theme" --wm-theme "$wm_theme" --icon-theme "$icon_theme")
 
-packages=(xfce4 xfce4-goodies lightdm lightdm-gtk-greeter networkmanager
-    nm-connection-editor xdotool xorg-xinput zed elementary-icon-theme python git)
+packages=(xfce4-goodies lightdm lightdm-gtk-greeter networkmanager
+    nm-connection-editor xdotool xorg-xinput xorg-setxkbmap zed elementary-icon-theme python git)
+if (( ! config_only )); then
+    command -v pacman >/dev/null || die "pacman is required."
+    panel_package="${XFCE_PANEL_PACKAGE:-}"
+    if [[ -z "$panel_package" ]]; then
+        if pacman -Qq xfce4-panel-compiz >/dev/null 2>&1; then
+            panel_package=xfce4-panel-compiz
+        elif pacman -Qq xfce4-panel >/dev/null 2>&1; then
+            panel_package=xfce4-panel
+        elif pacman -Si xfce4-panel-compiz >/dev/null 2>&1; then
+            panel_package=xfce4-panel-compiz
+        else
+            panel_package=xfce4-panel
+        fi
+    fi
+    case "$panel_package" in
+        xfce4-panel|xfce4-panel-compiz) ;;
+        *) die "XFCE_PANEL_PACKAGE must be xfce4-panel or xfce4-panel-compiz." ;;
+    esac
+    pacman -Si "$panel_package" >/dev/null 2>&1 || die "Package $panel_package is unavailable in enabled repositories. Enable its repository or use --config-only with existing packages."
+
+    # The xfce4 group can contain both mutually exclusive panel packages.
+    # Expand it explicitly so pacman never selects the other panel variant.
+    group_packages="$(pacman -Sgq xfce4)" || die "Cannot read the xfce4 package group."
+    [[ -n "$group_packages" ]] || die "The xfce4 package group is empty."
+    while IFS= read -r package; do
+        case "$package" in
+            xfce4-panel|xfce4-panel-compiz) continue ;;
+        esac
+        packages+=("$package")
+    done < <(printf '%s\n' "$group_packages" | sort -u)
+    packages+=("$panel_package")
+    info "Selected panel package: $panel_package"
+fi
 pacman_options=(--needed)
 if (( non_interactive )); then
     pacman_options+=(--noconfirm)

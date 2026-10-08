@@ -15,10 +15,24 @@ Run these commands from the repository, as your normal user:
 
 The installer performs a full CachyOS package upgrade, installs `xfce4`,
 `xfce4-goodies`, LightDM and its GTK greeter, NetworkManager,
-`nm-connection-editor`, `xdotool`, `xorg-xinput`, Zed, elementary icons/cursors,
-Python, and Git. NetworkManager is enabled for boot. Theme files are fetched
+`nm-connection-editor`, `xdotool`, `xorg-xinput`, `xorg-setxkbmap`, Zed,
+elementary icons/cursors, Python, and Git. NetworkManager is enabled for boot.
+Theme files are fetched
 from pinned upstream commits using Git sparse checkout and installed under
 `/usr/share/themes` and `/usr/share/icons`; no AUR helper is required.
+
+The `xfce4` package group is expanded explicitly to select only one panel
+variant. An installed `xfce4-panel-compiz` or `xfce4-panel` is retained. On a
+fresh machine, the installer prefers `xfce4-panel-compiz` when it is available
+in the enabled repositories, otherwise it uses `xfce4-panel`. To explicitly
+replicate the Compiz panel on a new machine, use:
+
+```bash
+XFCE_PANEL_PACKAGE=xfce4-panel-compiz ./scripts/installation-xfce.sh --lightdm
+```
+
+The selected panel must be available in an enabled package repository. The
+installer does not configure additional repositories.
 
 `--lightdm` selects LightDM and the XFCE session for the next boot, replacing
 any previous display-manager selection. It does not stop the current session.
@@ -31,9 +45,9 @@ dependencies are already installed. All options can be combined, including
 `--dry-run --config-only`. `--help` lists the options.
 
 XFCE must be logged out when applying settings. The installer refuses to copy
-settings while your `xfce4-session`, `xfce4-panel`, or `xfconfd` is running,
-because a live daemon can overwrite the imported XML. A dry run is safe inside
-the desktop. Configurations are copied rather than symlinked, so changing
+settings while your `xfce4-session` is running. Panel and settings-daemon
+processes alone do not block installation at the login screen. A dry run is
+safe inside the desktop. Configurations are copied rather than symlinked, so changing
 settings in XFCE does not write into the repository. Rerunning the installer
 reapplies these snapshots and makes a new backup.
 
@@ -59,24 +73,32 @@ that honor GTK theme settings; applications with their own styling may differ.
 
 ## Included settings
 
+XFCE Terminal uses a Skeuos Blue Dark-inspired ANSI palette with the theme's
+dark background (`#23252e`), light foreground (`#eeeeec`), and blue cursor and
+selection (`#2777ff`). Other terminal preferences, including fonts, are retained.
+The palette remains dark when choosing another GTK theme.
+
+Caps Lock acts as an additional Escape key. An XFCE-only autostart entry reapplies
+the XKB option at each login without changing the layout or layout-switch shortcut.
 English (US) and Persian layouts use Super+Space to switch. Windows open in
 the center with the smart placement threshold at 100%. There are ten workspaces
 and no desktop icons.
 
-| Shortcut | Action |
-| --- | --- |
-| Super+A | Application finder |
-| Super+Return | XFCE terminal |
-| Super+Backslash | Zed (`zeditor`) |
-| Super+C | Center the active window |
-| Super+S | Close window |
-| Super+Up | Maximize window |
-| Super+H | Hide window |
-| Super+F | Toggle fullscreen |
-| Super+D | Show desktop |
-| Super+1…5 | Switch to workspaces 1…5 |
-| Super+Q/W/E/R/T | Switch to workspaces 6/7/8/9/10 |
-| Add Shift to workspace shortcuts | Move window to that workspace |
+| Shortcut                         | Action                          |
+| -------------------------------- | ------------------------------- |
+| Super+A                          | Application finder              |
+| Super+Return                     | XFCE terminal                   |
+| Super+Escape                     | Lock the session (`xflock4`)     |
+| Super+Backslash                  | Zed (`zeditor`)                 |
+| Super+C                          | Center the active window        |
+| Super+S                          | Close window                    |
+| Super+Up                         | Maximize window                 |
+| Super+H                          | Hide window                     |
+| Super+F                          | Toggle fullscreen               |
+| Super+D                          | Show desktop                    |
+| Super+1…5                        | Switch to workspaces 1…5        |
+| Super+Q/W/E/R/T                  | Switch to workspaces 6/7/8/9/10 |
+| Add Shift to workspace shortcuts | Move window to that workspace   |
 
 The top panel is copied from the current setup: application menu without a
 title, window buttons without titles or a handle, an expanding transparent
@@ -111,7 +133,7 @@ are respected.
 Each run prints its backup directory, normally
 `~/.local/state/hypaurora/backups/xfce-TIMESTAMP-SUFFIX`. It contains the prior
 `xfce4/` configuration, previous managed helpers under `bin/`, the previous
-managed autostart file under `autostart/`, and any replaced system themes under
+managed autostart files under `autostart/`, and any replaced system themes under
 `themes/`. With `--lightdm`, it also records the previous display-manager
 symlink destination and backs up an existing Hypaurora LightDM drop-in.
 
@@ -119,7 +141,9 @@ To restore settings, log out of XFCE, move the installed
 `${XDG_CONFIG_HOME:-$HOME/.config}/xfce4` directory aside, and copy the backup's
 `xfce4/` directory into its place. Restore the backed-up helpers/autostart file
 if present, or remove the newly installed managed helpers/autostart entry if
-they did not exist before. System themes can be restored with sudo from
+they did not exist before. The managed keyboard entry is
+`autostart/hypaurora-xfce-keyboard.desktop`; remove it to stop remapping Caps Lock
+at future logins. System themes can be restored with sudo from
 `themes/`. To restore a previous display manager, enable its service with
 `sudo systemctl enable --force SERVICE` using the recorded destination; restore
 the saved LightDM drop-in or remove `50-hypaurora.conf` if it was newly created.

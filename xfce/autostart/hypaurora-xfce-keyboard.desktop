@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Hypaurora XFCE keyboard settings
+Comment=Make Caps Lock an additional Escape key
+Exec=setxkbmap -option caps:escape
+OnlyShowIn=XFCE;
+Terminal=false
+X-XFCE-Autostart-Phase=Applications

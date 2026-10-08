@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<channel name="xfce4-terminal" version="1.0">
+  <!-- Skeuos Blue Dark background, foreground, and blue accent. -->
+  <property name="color-use-theme" type="bool" value="false" />
+  <property name="color-background" type="string" value="#23252e" />
+  <property name="color-background-vary" type="bool" value="false" />
+  <property name="color-foreground" type="string" value="#eeeeec" />
+  <property name="color-cursor-use-default" type="bool" value="false" />
+  <property name="color-cursor" type="string" value="#2777ff" />
+  <property name="color-cursor-foreground" type="string" value="#eeeeec" />
+  <property name="color-selection-use-default" type="bool" value="false" />
+  <property name="color-selection" type="string" value="#ffffff" />
+  <property name="color-selection-background" type="string" value="#2777ff" />
+  <property name="color-bold-use-default" type="bool" value="true" />
+  <property name="color-palette" type="string" value="#23252e;#e06c75;#98c379;#e5c07b;#2777ff;#c678dd;#56b6c2;#d3d7cf;#626978;#ff808b;#b2db93;#ffdc95;#75a7ff;#dda0ef;#80d4df;#eeeeec" />
+</channel>

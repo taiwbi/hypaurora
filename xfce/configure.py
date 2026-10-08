@@ -14,11 +14,13 @@ import xml.etree.ElementTree as ET
 
 SOURCE = Path(__file__).resolve().parent
 CHANNEL_PATH = Path("xfconf/xfce-perchannel-xml")
-MERGE_CHANNELS = {"xsettings", "xfce4-desktop", "xfce4-power-manager"}
+MERGE_CHANNELS = {
+    "xsettings", "xfce4-desktop", "xfce4-power-manager", "xfce4-terminal",
+}
 
 
 def check_session():
-    for process in ("xfce4-session", "xfconfd", "xfce4-panel"):
+    for process in ("xfce4-session",):
         result = subprocess.run(
             ["pgrep", "-u", str(os.getuid()), "-x", process],
             stdout=subprocess.DEVNULL, check=False,
@@ -134,6 +136,9 @@ def main():
     )
     writes.append((config_home / "autostart/hypaurora-xfce-pointers.desktop",
                    autostart.encode(), 0o644))
+    for source in sorted((SOURCE / "autostart").glob("*.desktop")):
+        writes.append((config_home / "autostart" / source.name,
+                       source.read_bytes(), 0o644))
     for path, _, _ in writes:
         for parent in path.parents:
             if parent == home:
