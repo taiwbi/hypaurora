@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=NetworkManager Applet
+Comment=Manage network connections
+Exec=nm-applet
+OnlyShowIn=XFCE;
+Terminal=false
+X-XFCE-Autostart-Phase=Applications

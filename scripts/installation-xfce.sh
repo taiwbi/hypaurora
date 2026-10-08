@@ -63,7 +63,7 @@ command -v pgrep >/dev/null || die "pgrep from procps-ng is required."
 configure=(python3 "$repo_root/xfce/configure.py" --gtk-theme "$gtk_theme" --wm-theme "$wm_theme" --icon-theme "$icon_theme")
 
 packages=(xfce4-goodies lightdm lightdm-gtk-greeter networkmanager
-    nm-connection-editor xdotool xorg-xinput xorg-setxkbmap zed elementary-icon-theme python git)
+    network-manager-applet nm-connection-editor xdotool xorg-xinput xorg-setxkbmap zed elementary-icon-theme python git)
 if (( ! config_only )); then
     command -v pacman >/dev/null || die "pacman is required."
     panel_package="${XFCE_PANEL_PACKAGE:-}"

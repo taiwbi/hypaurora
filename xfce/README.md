@@ -15,7 +15,7 @@ Run these commands from the repository, as your normal user:
 
 The installer performs a full CachyOS package upgrade, installs `xfce4`,
 `xfce4-goodies`, LightDM and its GTK greeter, NetworkManager,
-`nm-connection-editor`, `xdotool`, `xorg-xinput`, `xorg-setxkbmap`, Zed,
+`network-manager-applet`, `nm-connection-editor`, `xdotool`, `xorg-xinput`, `xorg-setxkbmap`, Zed,
 elementary icons/cursors, Python, and Git. NetworkManager is enabled for boot.
 Theme files are fetched
 from pinned upstream commits using Git sparse checkout and installed under
@@ -102,17 +102,15 @@ and no desktop icons.
 
 The top panel is copied from the current setup: application menu without a
 title, window buttons without titles or a handle, an expanding transparent
-separator, workspace switcher with two rows, Wavelan, power manager without a
-label, system tray with 17-pixel icons, time-only clock in Sans 10, and the
+separator, workspace switcher with two rows, power manager without a label,
+system tray with 17-pixel icons, time-only clock in Sans 10, and the
 actions menu titled “Power”, separated by transparent separators. The existing
 bottom launcher panel is also included: desktop, terminal, file manager,
 browser, appfinder, and home directory menu.
 
-The installer chooses a local wireless interface, preferring one that is up.
-Wavelan hides when offline or hardware is missing, displays its icon without
-the signal bar or quality colors, and launches `nm-connection-editor`. If the
-wireless hardware changes later, rerun `--config-only` while logged out, or
-choose the new interface in Wavelan preferences.
+The NetworkManager applet starts automatically at XFCE login and places its
+network status icon in the system tray. Use the icon to view and manage
+available network connections.
 
 An XFCE-only login helper detects each libinput mouse/touchpad by its local
 device name, selects flat acceleration where supported, and sets XFCE's

@@ -17,7 +17,6 @@
         <value type="int" value="3" />
         <value type="int" value="4" />
         <value type="int" value="25" />
-        <value type="int" value="21" />
         <value type="int" value="24" />
         <value type="int" value="20" />
         <value type="int" value="5" />
@@ -117,7 +116,6 @@
       <property name="style" type="uint" value="0" />
     </property>
     <property name="plugin-20" type="string" value="power-manager-plugin" />
-    <property name="plugin-21" type="string" value="wavelan" />
     <property name="plugin-24" type="string" value="separator">
       <property name="style" type="uint" value="0" />
     </property>

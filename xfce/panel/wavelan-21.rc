@@ -1,7 +1,0 @@
-Interface=@WIFI_INTERFACE@
-Autohide=true
-AutohideMissing=true
-SignalColors=false
-ShowIcon=true
-ShowBar=false
-Command=nm-connection-editor
