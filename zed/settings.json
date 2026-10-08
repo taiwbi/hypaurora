@@ -132,7 +132,7 @@
     // commit message
     "commit_message_model": {
       "provider": "openrouter",
-      "model": "openai/gpt-6-luna",
+      "model": "qwen/qwen3.8-27b",
     },
     "commit_message_instructions": "Generate a short and concise conventional commit message based on the git diff and user description below.\n\n```\n<type>(scope): #issue_number <description>\n[body]\n[optional footer(s)]\n```\n\n# Commit Types\n\n- **feat:** Introduces a new feature to the codebase.`.\n- **fix:** Patches a bug in the codebase.`.\n- **build:** Changes that affect the build system or external dependencies.`.\n- **chore:** Regular maintenance tasks that don't modify src or test files.`.\n- **ci:** Changes to CI configuration files and scripts.`.\n- **docs:** Changes to documentation only.`.\n- **style:** Changes that don't affect code meaning (white-space, formatting, etc.).`.\n- **refactor:** Code changes that neither fix a bug nor add a feature, just improving the code structure.`.\n- **perf:** Changes that improve performance.`.\n- **test:** Adding or correcting tests.`.\n\n# Scopes\n\nAdds context about where the change happened, like auth, api, ui/ux, db, the name of the app configuration changed, etc...\n\n## issue_number\n\nNumber of the issue on github. Should only by included when it's provided.\n\n# Description format\n\nThe **description** is a short, concise summary of the change that follows the `<type>(scope):` prefix. It should be written in the **imperative mood**, meaning it should read like an instruction or command, as if saying what the commit will do when applied. Keep the description to a maximum of 70 character line.\n\n## Optional body format\n\nThe **body** provides additional context and details about the change in a small paragraph, each line wrapped at 70 characters at max. It should elaborate on **what changed** and **why** in non-technical way, when the commit type and description alone are not sufficient to explain the full impact. It should NOT just duplicate the point of description.\n\nGuidelines for writing the body:\n\n- Use the **imperative**, **present tense**: \"change\" not \"changed\" or \"changes\".\n- Leave one blank line between the description and the body.\n- Wrap lines at approximately 70 characters for readability.\n- Include motivation for the change and contrast it with previous behavior if necessary.\n- Use dash points for bullet lists when writing the body.\n\n## Optional footer format\n\nIf your commit introduces a breaking change (i.e., changes that are not backward compatible), use the following format in the footer:\n\n```\nBREAKING CHANGE: <description>\n```\n\n## Important Guidelines\n\n- DO NOT wrap commit message into grave charactes (`)",
 
@@ -206,12 +206,12 @@
   "edit_predictions": {
     "open_ai_compatible_api": {
       "max_output_tokens": 128,
-      "model": "qwen/qwen2.5-coder-7b-instruct",
+      "model": "qwen/qwen3-coder-30b-a3b-instruct",
       "api_url": "https://openrouter.ai/api/v1",
       "prompt_format": "qwen",
     },
     "mode": "eager",
-    "provider": "zed",
+    "provider": "open_ai_compatible_api",
   },
 
   // Terminal ==================================================

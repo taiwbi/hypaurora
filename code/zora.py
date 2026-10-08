@@ -11,8 +11,8 @@ import requests
 # --- Configuration ---
 # Fallback API key file if OPENROUTER_API_KEY is not set
 API_KEY_FILE = Path.home() / ".keys" / "OPENROUTER"
-MODEL_NAME = "openai/gpt-6-sol"
-COMMIT_MODEL_NAME = "openai/gpt-6-luna"
+MODEL_NAME = "openai/gpt-6.1-sol"
+COMMIT_MODEL_NAME = "deepseek/deepseek-v4.1-flash"
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
