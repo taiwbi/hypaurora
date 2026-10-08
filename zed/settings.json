@@ -26,8 +26,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Gruvbox Dark Hard",
-    "light": "Gruvbox Light Soft",
+    "dark": "Spiceflow Dark",
+    "light": "Spiceflow Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -269,7 +269,7 @@
     // Productivity
     "emmet": true,
     // themes
-    "rich-vesper": true,
+    "spiceflow-theme": true,
   },
 
   // LSP and Language Server ===================================
