@@ -1,5 +1,5 @@
 # Basic aliases
-alias fastfetch='fastfetch --gpu-hide-type integrated'
+alias fastfetch='env -u NO_COLOR fastfetch'
 alias ff='fastfetch'
 
 alias vi='command nvim'

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "data",
+    "source": "⠀⠀⠀⠀⠀⠀⢀⣠⠔⠊⢉⣱⡤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⣀⠴⠚⠉⡀⣄⠦⠃⡡⡔⠞⢋⣲⡄⡀⠀⠀⠀⠀⠀\n⡤⠒⠉⠀⠀⢀⡰⡞⣬⠦⠓⡁⡔⠎⢃⡡⡔⠞⠃⠢⣄⠀⠀\n⡇⠁⠂⠄⡐⠃⠁⠀⢀⣢⣳⡵⠞⠂⠃⠁⣀⣤⣶⣿⣿⠀⠀\n⡇⠀⠷⡯⠀⠁⠢⢌⡈⠁⠀⠀⣀⣤⣶⣿⣿⣿⣿⣿⣿⠀⠀\n⡇⠷⣦⣄⡀⠀⠐⡠⡈⠑⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀\n⡧⣀⢰⡽⠃⠀⣤⣀⠁⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀\n⣯⡜⠈⡃⠀⠀⠘⣹⠣⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀\n⡇⠁⠈⠁⡀⠀⠀⣩⣀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀\n⠧⣀⠀⠀⠛⠷⡆⠀⠀⡊⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀\n⠀⠀⠉⠂⢤⡀⠀⠀⠀⢑⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀\n⠀⠀⠀⠀⠈⣿⣷⣦⢄⡈⣿⣿⣿⡉⠛⠀⠉⠋⠈⢿⣿⣿⣆\n⠀⠀⠀⠀⠀⠈⠙⠁⠀⠻⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠙⠿⠟\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⢿⡿⠂⠀⠀⠀⠀⠀⠀⠀",
+    "padding": {
+      "right": 4
+    }
+  },
+  "display": {
+    "separator": " ",
+    "key": {
+      "type": "string",
+      "width": 20
+    },
+    "color": {
+      "keys": "cyan",
+      "title": "magenta",
+      "separator": "light_black"
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    {
+      "type": "os",
+      "key": "OS",
+      "format": "{#green}{pretty-name}{#}"
+    },
+    {
+      "type": "kernel",
+      "key": "Kernel",
+      "format": "{#blue}{release}{#}  {#light_black}{arch}{#}"
+    },
+    {
+      "type": "uptime",
+      "key": "Uptime",
+      "format": "{#yellow}{formatted}{#}"
+    },
+    {
+      "type": "de",
+      "key": "Desktop",
+      "format": "{#magenta}{pretty-name}{#} {version}"
+    },
+    {
+      "type": "display",
+      "key": "Display",
+      "format": "{#cyan}{width} × {height}{#}"
+    },
+    "separator",
+    {
+      "type": "cpu",
+      "key": "Processor",
+      "format": "{name}  {#yellow}{cores-physical}C/{cores-logical}T{#}  {#magenta}@ {freq-max}{#}"
+    },
+    {
+      "type": "gpu",
+      "key": "Graphics",
+      "hideType": "integrated",
+      "format": "{#blue}{vendor}{#} {name}  {#light_black}◈ discrete{#}"
+    },
+    {
+      "type": "memory",
+      "key": "Memory",
+      "percent": {
+        "type": 3
+      },
+      "format": "{used} / {total}  {#green}{percentage-bar}{#}  {#yellow}{percentage}{#}"
+    }
+  ]
+}

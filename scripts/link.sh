@@ -58,6 +58,7 @@ link_path() {
 
 # Application configuration.
 link_path "$repo_root/ghostty" "$HOME/.config/ghostty"
+link_path "$repo_root/fastfetch" "$HOME/.config/fastfetch"
 link_path "$repo_root/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
 
 # Custom scripts
