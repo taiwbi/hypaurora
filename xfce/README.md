@@ -91,6 +91,8 @@ and no desktop icons.
 | Super+Escape                     | Lock the session (`xflock4`)     |
 | Super+Backslash                  | Zed (`zeditor`)                 |
 | Super+C                          | Center the active window        |
+| Super+X                          | Show the rescue wallpaper      |
+| Super+Alt+X                      | Restore the previous wallpaper |
 | Super+S                          | Close window                    |
 | Super+Up                         | Maximize window                 |
 | Super+H                          | Hide window                     |
@@ -118,6 +120,13 @@ acceleration slider value to 8 (libinput speed 0.6). It preserves other device
 preferences. For a pointer connected after login, run
 `~/.local/bin/hypaurora-xfce-pointers` once or log in again. The center helper
 uses the full X screen dimensions, matching the original script.
+
+The wallpaper shortcuts save the current XFCE backdrop properties on first use,
+apply `/home/mahdi/Pictures/rescue.jpg` across displays and workspaces, and
+restore the saved settings with Super+Alt+X. The state file lives under
+`${XDG_STATE_HOME:-$HOME/.local/state}/hypaurora/`.
+An XFCE autostart listener also applies the rescue image while the screen is
+locked and restores the backdrop that was active immediately before locking.
 
 Monitor layouts, device names, external wallpaper paths, tray history, and
 session caches are excluded from the snapshots. Existing wallpaper, GTK font,

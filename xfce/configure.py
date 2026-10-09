@@ -97,6 +97,8 @@ def main():
     replacements = {
         "@HOME@": str(home),
         "@CENTER_COMMAND@": '"' + str(bin_dir / "hypaurora-center-window") + '"',
+        "@WALLPAPER_RESCUE_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-wallpaper") + '" rescue',
+        "@WALLPAPER_RESTORE_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-wallpaper") + '" restore',
         "@GTK_THEME@": args.gtk_theme,
         "@WM_THEME@": args.wm_theme,
         "@ICON_THEME@": args.icon_theme,
@@ -123,7 +125,8 @@ def main():
             )
             writes.append((destination / source.relative_to(SOURCE), data, 0o644))
     for name, source in (("hypaurora-center-window", "center-window.sh"),
-                         ("hypaurora-xfce-pointers", "pointers.py")):
+                         ("hypaurora-xfce-pointers", "pointers.py"),
+                         ("hypaurora-xfce-wallpaper", "wallpaper.py")):
         writes.append((bin_dir / name, (SOURCE / source).read_bytes(), 0o755))
     # Desktop Entry quoting requires backslashes to be escaped twice.
     executable = str(bin_dir / "hypaurora-xfce-pointers")
@@ -139,6 +142,16 @@ def main():
     for source in sorted((SOURCE / "autostart").glob("*.desktop")):
         writes.append((config_home / "autostart" / source.name,
                        source.read_bytes(), 0o644))
+    writes.append((bin_dir / "hypaurora-xfce-wallpaper-lock-watch",
+                   (SOURCE / "wallpaper-lock-watch.sh").read_bytes(), 0o755))
+    autostart = (
+        "[Desktop Entry]\nType=Application\nName=Hypaurora XFCE lock wallpaper\n"
+        f'Exec="{bin_dir / "hypaurora-xfce-wallpaper-lock-watch"}"\n'
+        "OnlyShowIn=XFCE;\nTerminal=false\n"
+        "X-XFCE-Autostart-Phase=Applications\n"
+    )
+    writes.append((config_home / "autostart/hypaurora-xfce-wallpaper-lock.desktop",
+                   autostart.encode(), 0o644))
     for path, _, _ in writes:
         for parent in path.parents:
             if parent == home:

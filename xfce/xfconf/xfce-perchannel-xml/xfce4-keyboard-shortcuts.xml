@@ -30,6 +30,8 @@
       <property name="&lt;Super&gt;Return" type="string" value="xfce4-terminal" />
       <property name="&lt;Super&gt;backslash" type="string" value="zeditor" />
       <property name="&lt;Super&gt;c" type="string" value="@CENTER_COMMAND@" />
+      <property name="&lt;Super&gt;x" type="string" value="@WALLPAPER_RESCUE_COMMAND@" />
+      <property name="&lt;Alt&gt;&lt;Super&gt;x" type="string" value="@WALLPAPER_RESTORE_COMMAND@" />
     </property>
   </property>
   <property name="xfwm4" type="empty">
