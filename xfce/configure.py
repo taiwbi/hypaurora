@@ -99,6 +99,7 @@ def main():
         "@CENTER_COMMAND@": '"' + str(bin_dir / "hypaurora-center-window") + '"',
         "@WALLPAPER_RESCUE_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-wallpaper") + '" rescue',
         "@WALLPAPER_RESTORE_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-wallpaper") + '" restore',
+        "@TOGGLE_LAYOUT_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-toggle-layout") + '"',
         "@GTK_THEME@": args.gtk_theme,
         "@WM_THEME@": args.wm_theme,
         "@ICON_THEME@": args.icon_theme,
@@ -126,7 +127,8 @@ def main():
             writes.append((destination / source.relative_to(SOURCE), data, 0o644))
     for name, source in (("hypaurora-center-window", "center-window.sh"),
                          ("hypaurora-xfce-pointers", "pointers.py"),
-                         ("hypaurora-xfce-wallpaper", "wallpaper.py")):
+                         ("hypaurora-xfce-wallpaper", "wallpaper.py"),
+                         ("hypaurora-xfce-toggle-layout", "toggle-layout.py")):
         writes.append((bin_dir / name, (SOURCE / source).read_bytes(), 0o755))
     # Desktop Entry quoting requires backslashes to be escaped twice.
     executable = str(bin_dir / "hypaurora-xfce-pointers")

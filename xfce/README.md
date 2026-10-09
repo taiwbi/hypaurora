@@ -78,11 +78,15 @@ dark background (`#23252e`), light foreground (`#eeeeec`), and blue cursor and
 selection (`#2777ff`). Other terminal preferences, including fonts, are retained.
 The palette remains dark when choosing another GTK theme.
 
-Caps Lock acts as an additional Escape key. An XFCE-only autostart entry reapplies
-the XKB option at each login without changing the layout or layout-switch shortcut.
-English (US) and Persian layouts use Super+Space to switch. Windows open in
-the center with the smart placement threshold at 100%. There are ten workspaces
-and no desktop icons.
+Caps Lock acts as an additional Escape key. Shift+Space inserts a Persian
+zero-width non-joiner (ZWNJ) through the Persian layout's built-in mapping.
+Super+Space switches between English (US) and Persian through an XFCE keyboard
+shortcut, while Alt+Shift also switches layouts through XKB. The Super+Space
+helper changes the active XKB group directly, keeping Shift+Space available
+for ZWNJ. An XFCE-only autostart entry reapplies the layout and keyboard options
+at each login.
+Windows open in the center with the smart placement threshold at 100%. There
+are ten workspaces and no desktop icons.
 
 | Shortcut                         | Action                          |
 | -------------------------------- | ------------------------------- |

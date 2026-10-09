@@ -2,7 +2,7 @@
 Type=Application
 Name=Hypaurora XFCE keyboard settings
 Comment=Make Caps Lock an additional Escape key
-Exec=setxkbmap -option caps:escape
+Exec=setxkbmap -layout us,ir -option '' -option grp:alt_shift_toggle -option caps:escape
 OnlyShowIn=XFCE;
 Terminal=false
 X-XFCE-Autostart-Phase=Applications

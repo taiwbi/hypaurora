@@ -17,6 +17,7 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;f" type="string" value="thunar" />
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4" />
       <property name="&lt;Super&gt;Escape" type="string" value="xflock4" />
+      <property name="&lt;Super&gt;space" type="string" value="@TOGGLE_LAYOUT_COMMAND@" />
       <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu" />
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal" />
       <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager" />
