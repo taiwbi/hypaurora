@@ -91,7 +91,7 @@ are ten workspaces and no desktop icons.
 | Shortcut                         | Action                          |
 | -------------------------------- | ------------------------------- |
 | Super+A                          | Application finder              |
-| Super+Return                     | XFCE terminal                   |
+| Super+Return                     | Kitty terminal                  |
 | Super+Escape                     | Lock the session (`xflock4`)     |
 | Super+Backslash                  | Zed (`zeditor`)                 |
 | Super+C                          | Center the active window        |
@@ -111,7 +111,7 @@ title, window buttons without titles or a handle, an expanding transparent
 separator, workspace switcher with two rows, power manager without a label,
 system tray with 17-pixel icons, time-only clock in Sans 10, and the
 actions menu titled “Power”, separated by transparent separators. The existing
-bottom launcher panel is also included: desktop, terminal, file manager,
+bottom launcher panel is also included: desktop, Kitty terminal, file manager,
 browser, appfinder, and home directory menu.
 
 The NetworkManager applet starts automatically at XFCE login and places its
