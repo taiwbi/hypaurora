@@ -18,6 +18,7 @@
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["Vazir Code Hack"],
   "buffer_font_size": 16.0,
+  "text_rendering_mode": "grayscale",
   "buffer_line_height": {
     "custom": 2.0,
   },
