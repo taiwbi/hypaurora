@@ -13,7 +13,8 @@ replace `BetterIcons` in `kitty.conf` with `Symbols Nerd Font Mono` (installed b
 `scripts/fonts.sh`). That changes the icon appearance from Ghostty.
 
 The light theme copies the repository's custom Gruvbox Light Soft palette.
-The dark theme copies Ghostty's bundled Gruvbox Dark Hard palette. Kitty loads
+The dark theme uses the OldWorld default palette, adapted from
+[`oldworld.nvim`](https://github.com/dgox16/oldworld.nvim). Kitty loads
 the sibling `light-theme.auto.conf` and `dark-theme.auto.conf` files automatically
 when the desktop reports its light/dark preference. Dark Hard is the fallback
 when no preference is reported; `no-preference-theme.auto.conf` links to that
