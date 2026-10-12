@@ -1,11 +1,11 @@
 # Kitty
 
-Kitty counterpart of [`ghostty/config`](../ghostty/config), with Noto Sans Mono
+Kitty counterpart of [`ghostty/config`](../ghostty/config), with CommitMono
 at 13 pt, 10 additional pixels of cell height, a 120 × 27 initial grid,
 10 pt horizontal and 5 pt vertical padding, an opaque background, a block
 cursor, and the same configured shortcuts.
 
-Requires Kitty 0.38 or newer and the font families **Noto Sans Mono**,
+Requires Kitty 0.38 or newer and the font families **CommitMono**,
 **BetterIcons**, and **Vazir Code Hack**, matching Ghostty. BetterIcons contains
 the Nerd Fonts icons; its private-use glyphs are explicitly mapped so an
 unpatched text font works. To use standard monochrome Nerd Font icons instead,
