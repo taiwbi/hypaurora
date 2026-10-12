@@ -118,6 +118,15 @@ The NetworkManager applet starts automatically at XFCE login and places its
 network status icon in the system tray. Use the icon to view and manage
 available network connections.
 
+The GTK3 eye-break reminder starts at XFCE login. Every 20 minutes it asks you
+to look away from the monitor for 90 seconds. You can postpone twice, with a
+three-minute delay each time; the next prompt starts the break without a
+postpone button. During the break, it lowers each connected monitor to 20% of
+its available brightness range and restores its previous level after 90
+seconds. It uses an XRandR `Backlight` control when exposed by the monitor;
+otherwise it sets the XRandR output brightness to 20%. Its dialogs use GTK3
+and follow the active XFCE theme.
+
 An XFCE-only login helper detects each libinput mouse/touchpad by its local
 device name, selects flat acceleration where supported, and sets XFCE's
 acceleration slider value to 8 (libinput speed 0.6). It preserves other device
@@ -144,9 +153,10 @@ are respected.
 Each run prints its backup directory, normally
 `~/.local/state/hypaurora/backups/xfce-TIMESTAMP-SUFFIX`. It contains the prior
 `xfce4/` configuration, previous managed helpers under `bin/`, the previous
-managed autostart files under `autostart/`, and any replaced system themes under
-`themes/`. With `--lightdm`, it also records the previous display-manager
-symlink destination and backs up an existing Hypaurora LightDM drop-in.
+managed autostart files under `autostart/` (including the eye-break reminder),
+and any replaced system themes under `themes/`. With `--lightdm`, it also
+records the previous display-manager symlink destination and backs up an
+existing Hypaurora LightDM drop-in.
 
 To restore settings, log out of XFCE, move the installed
 `${XDG_CONFIG_HOME:-$HOME/.config}/xfce4` directory aside, and copy the backup's

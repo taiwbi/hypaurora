@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Hypaurora XFCE eye break reminder
+Comment=Remind me to look away from the monitor every 20 minutes
+Exec=@BREAK_REMINDER_COMMAND@
+OnlyShowIn=XFCE;
+Terminal=false
+X-XFCE-Autostart-Phase=Applications

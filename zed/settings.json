@@ -25,7 +25,7 @@
   "diff_view_style": "unified",
 
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "dark": "Spiceflow Dark",
     "light": "Spiceflow Light",
   },
@@ -40,7 +40,7 @@
     },
   },
   "icon_theme": {
-    "mode": "system",
+    "mode": "dark",
     "dark": "Zed (Default)",
     "light": "Zed (Default)",
   },

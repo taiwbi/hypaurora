@@ -99,6 +99,7 @@ def main():
         "@CENTER_COMMAND@": '"' + str(bin_dir / "hypaurora-center-window") + '"',
         "@WALLPAPER_RESCUE_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-wallpaper") + '" rescue',
         "@WALLPAPER_RESTORE_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-wallpaper") + '" restore',
+        "@BREAK_REMINDER_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-break-reminder") + '"',
         "@TOGGLE_LAYOUT_COMMAND@": '"' + str(bin_dir / "hypaurora-xfce-toggle-layout") + '"',
         "@GTK_THEME@": args.gtk_theme,
         "@WM_THEME@": args.wm_theme,
@@ -128,7 +129,8 @@ def main():
     for name, source in (("hypaurora-center-window", "center-window.sh"),
                          ("hypaurora-xfce-pointers", "pointers.py"),
                          ("hypaurora-xfce-wallpaper", "wallpaper.py"),
-                         ("hypaurora-xfce-toggle-layout", "toggle-layout.py")):
+                         ("hypaurora-xfce-toggle-layout", "toggle-layout.py"),
+                         ("hypaurora-xfce-break-reminder", "break-reminder.py")):
         writes.append((bin_dir / name, (SOURCE / source).read_bytes(), 0o755))
     # Desktop Entry quoting requires backslashes to be escaped twice.
     executable = str(bin_dir / "hypaurora-xfce-pointers")
@@ -142,8 +144,11 @@ def main():
     writes.append((config_home / "autostart/hypaurora-xfce-pointers.desktop",
                    autostart.encode(), 0o644))
     for source in sorted((SOURCE / "autostart").glob("*.desktop")):
+        data = source.read_bytes()
+        for token, replacement in replacements.items():
+            data = data.replace(token.encode(), replacement.encode())
         writes.append((config_home / "autostart" / source.name,
-                       source.read_bytes(), 0o644))
+                       data, 0o644))
     writes.append((bin_dir / "hypaurora-xfce-wallpaper-lock-watch",
                    (SOURCE / "wallpaper-lock-watch.sh").read_bytes(), 0o755))
     autostart = (
