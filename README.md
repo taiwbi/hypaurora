@@ -29,5 +29,5 @@ to install everything and select LightDM for the next boot. See
 
 - 🅰️ Font Family: [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
 - ✍️ Persian Font Family: [Vazirmatn](https://rastikerdar.github.io/vazirmatn/en)
-- 💻 Monospace Family: [CommitMono](https://commitmono.com/)
+- 💻 Monospace Family: [Geist Mono](https://vercel.com/font?type=mono)
 - 📜 Persian Monospace Family: [Vazir Code Hack](https://rastikerdar.github.io/vazir-code-font)
