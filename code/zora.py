@@ -39,7 +39,11 @@ def load_api_key():
 
 
 def generate_openrouter_response(
-    prompt, user_input="", temperature=0.0, model_name=MODEL_NAME
+    prompt,
+    user_input="",
+    temperature=0.0,
+    model_name=MODEL_NAME,
+    provider_sort="price",
 ):
     api_key = load_api_key()
 
@@ -53,7 +57,7 @@ def generate_openrouter_response(
         "top_p": 1,
         "max_tokens": 2048,
         "provider": {
-            "sort": "price",
+            "sort": provider_sort,
         },
         "reasoning": {"enabled": True, "effort": "low"},
     }
@@ -186,7 +190,11 @@ BREAKING CHANGE: <description>
 
     print("Generating commit message from staged changes...")
     commit_message = generate_openrouter_response(
-        commit_prompt, user_message, 0.3, COMMIT_MODEL_NAME
+        commit_prompt,
+        user_message,
+        0.3,
+        COMMIT_MODEL_NAME,
+        provider_sort="throughput",
     )
 
     # Remove code fences if present
