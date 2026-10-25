@@ -276,3 +276,9 @@ window
   > border {
   background: transparent;
 }
+
+/* Kitty GTK Wrapper */
+
+.kitty-window {
+  background: transparent;
+}
