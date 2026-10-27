@@ -48,7 +48,7 @@ export PATH="$HOME/.local/bin:$HOME/.local/npm/bin:$HOME/.cargo/bin:$HOME/.confi
 
 if [[ "$1" == "kitty" ]]; then
     shift
-    kitty --class="neovide" -e bash -c "nvim $@"
+    $HOME/.local/binary/kitty/bin/kitty -o linux_use_gtk_window=no -o background_opacity=1 --class="neovide" -e bash -c "nvim $@"
 elif [[ "$1" == "ghostty" ]]; then
     shift
     ghostty --gtk-titlebar=false --class="org.nvim.neovide" \
