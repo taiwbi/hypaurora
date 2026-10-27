@@ -43,6 +43,10 @@
       "format": "{#magenta}{pretty-name}{#} {version}"
     },
     {
+      "type": "terminal",
+      "key": "Terminal"
+    },
+    {
       "type": "display",
       "key": "Display",
       "format": "{#cyan}{width} × {height}{#}"
