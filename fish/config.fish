@@ -21,3 +21,13 @@ end
 set -g fish_features '!'bracketed-paste
 
 bind alt-backspace backward-kill-word
+
+# Initialize after other PATH changes so nvm's Node takes precedence.
+if not set -q NVM_DIR; or test -z "$NVM_DIR"
+    set -gx NVM_DIR "$HOME/.nvm"
+else
+    set -gx NVM_DIR "$NVM_DIR"
+end
+if test -s "$NVM_DIR/nvm.sh"
+    __hypaurora_nvm init
+end
