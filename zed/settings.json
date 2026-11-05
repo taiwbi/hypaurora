@@ -27,8 +27,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Monosami Dark",
-    "light": "Monosami Light",
+    "dark": "Zedokai Darker (Filter Spectrum)",
+    "light": "Zedokai Light (Filter Sun)",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -97,11 +97,11 @@
         "model": ["gpt-6-luna", "gpt-6.1-sol", "gpt-6.1-terra"],
       },
       "default_config_options": {
-        "collaboration_mode": "default",
-        "fast-mode": false,
+        "collaboration_mode": "plan",
+        "fast-mode": true,
         "mode": "agent-full-access",
         "reasoning_effort": "medium",
-        "model": "gpt-6.1-sol",
+        "model": "gpt-6-luna",
       },
       "type": "registry",
     },
@@ -273,7 +273,7 @@
     // Productivity
     "emmet": true,
     // themes
-    "monosami": true,
+    "zedokai": true,
   },
 
   // LSP and Language Server ===================================
