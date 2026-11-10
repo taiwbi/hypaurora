@@ -41,6 +41,7 @@ fonts=(
   "martian-mono|https://github.com/evilmartians/mono/releases/download/v1.1.0/martian-mono-1.1.0-ttf.zip"
   "buena-mono|https://github.com/buenagames/buena-mono/releases/download/1.239/buena-mono-1.239.zip"
   "ioskeley-mono|https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono.zip"
+  "serious-shanns|https://kabeech.github.io/serious-shanns/SeriousShanns/SeriousShanns.zip"
 )
 manal_fonts=(
   "Aria|For Persian and Arabic serif texts"

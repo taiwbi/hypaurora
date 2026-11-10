@@ -14,10 +14,11 @@
   "auto_update_extensions": {},
 
   // UI and Buffer =============================================
-  "buffer_font_family": "Buena Mono",
+  // متن فارسی برای تست نحوه نمایش یک متن فارسی و فونت آن در ادیتور
+  "buffer_font_family": "Serious Shanns",
   "buffer_font_weight": 400,
-  "buffer_font_fallbacks": ["Vazir Code Hack"],
-  "buffer_font_size": 16,
+  "buffer_font_fallbacks": ["AzarMehrMonospaced"],
+  "buffer_font_size": 17,
   "text_rendering_mode": "grayscale",
   "buffer_line_height": {
     "custom": 1.8,
@@ -166,7 +167,7 @@
   },
   "agent_buffer_font_family": "Buena Mono",
   "agent_ui_font_size": 16.0,
-  "agent_buffer_font_size": 14.0,
+  "agent_buffer_font_size": 16.0,
   "language_models": {
     "open_router": {
       "api_url": "https://openrouter.ai/api/v1",
@@ -220,8 +221,8 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Buena Mono",
-    "font_size": 15,
+    "font_family": "Serious Shanns",
+    "font_size": 16,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
     "line_height": "comfortable",
