@@ -15,10 +15,10 @@
 
   // UI and Buffer =============================================
   // متن فارسی برای تست نحوه نمایش یک متن فارسی و فونت آن در ادیتور
-  "buffer_font_family": "Serious Shanns",
+  "buffer_font_family": "JetBrains Mono",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["AzarMehrMonospaced"],
-  "buffer_font_size": 17,
+  "buffer_font_size": 16,
   "text_rendering_mode": "grayscale",
   "buffer_line_height": {
     "custom": 1.8,
@@ -165,7 +165,7 @@
       },
     },
   },
-  "agent_buffer_font_family": "Buena Mono",
+  "agent_buffer_font_family": "JetBrains Mono",
   "agent_ui_font_size": 16.0,
   "agent_buffer_font_size": 16.0,
   "language_models": {
@@ -221,7 +221,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Serious Shanns",
+    "font_family": "JetBrains Mono",
     "font_size": 16,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
