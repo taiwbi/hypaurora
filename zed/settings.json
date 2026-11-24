@@ -28,8 +28,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Zedokai Darker (Filter Spectrum)",
-    "light": "Zedokai Light (Filter Sun)",
+    "dark": "Catppuccin Macchiato",
+    "light": "Catppuccin Latte",
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -274,7 +274,7 @@
     // Productivity
     "emmet": true,
     // themes
-    "zedokai": true,
+    "catpuccin": true,
   },
 
   // LSP and Language Server ===================================
