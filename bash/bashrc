@@ -72,3 +72,5 @@ if [[ -s "$NVM_DIR/nvm.sh" ]]; then
         . "$NVM_DIR/bash_completion"
     fi
 fi
+
+export PATH="/home/mahdi/.pun/bin:$PATH"

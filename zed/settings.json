@@ -15,7 +15,7 @@
 
   // UI and Buffer =============================================
   // متن فارسی برای تست نحوه نمایش یک متن فارسی و فونت آن در ادیتور
-  "buffer_font_family": "Buena Mono",
+  "buffer_font_family": "Source Code Pro",
   "buffer_font_weight": 400,
   "buffer_font_fallbacks": ["AzarMehrMonospaced"],
   "buffer_font_size": 16,
@@ -49,7 +49,7 @@
   "selection_highlight": false,
   "cursor_blink": true,
 
-  "ui_font_family": "Buena Mono",
+  "ui_font_family": "Source Code Pro",
   "ui_font_size": 15.0,
 
   "vertical_scroll_margin": 6.0,
@@ -87,6 +87,7 @@
     },
     "antigravity-acp": {
       "default_config_options": {
+        "thinking_level": "high",
         "mode": "yolo",
         "model": "gemini-3.8-flash-high",
       },
@@ -95,14 +96,14 @@
     "codex-acp": {
       "favorite_config_option_values": {
         "reasoning_effort": ["high", "medium", "xhigh"],
-        "model": ["gpt-6-luna", "gpt-6.1-sol", "gpt-6.1-terra"],
+        "model": ["gpt-6-luna", "gpt-6.1-terra", "gpt-6.2-sol"],
       },
       "default_config_options": {
-        "collaboration_mode": "plan",
-        "fast-mode": true,
+        "collaboration_mode": "default",
+        "fast-mode": false,
         "mode": "agent-full-access",
-        "reasoning_effort": "medium",
-        "model": "gpt-6-luna",
+        "reasoning_effort": "high",
+        "model": "gpt-6.2-sol",
       },
       "type": "registry",
     },
@@ -165,7 +166,7 @@
       },
     },
   },
-  "agent_buffer_font_family": "Buena Mono",
+  "agent_buffer_font_family": "Source Code Pro",
   "agent_ui_font_size": 16.0,
   "agent_buffer_font_size": 16.0,
   "language_models": {
@@ -221,7 +222,7 @@
 
   // Terminal ==================================================
   "terminal": {
-    "font_family": "Buena Mono",
+    "font_family": "Source Code Pro",
     "font_size": 16,
     "font_weight": 400,
     "font_fallbacks": ["Vazir Code Hack", "Symbols Nerd Font"],
