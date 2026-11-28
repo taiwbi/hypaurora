@@ -28,8 +28,8 @@
 
   "theme": {
     "mode": "system",
-    "dark": "Catppuccin Macchiato",
-    "light": "Catppuccin Latte",
+    "dark": "One Dark",
+    "light": "One Light",
   },
   "experimental.theme_overrides": {
     "syntax": {
