@@ -114,7 +114,7 @@ code,
 .react-code-text *,
 #wordsWrapper #words .word letter {
     font-family:
-        "Source Code Pro", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
+        "Lilex", "Vazir Code Hack", "SF Mono", Monaco, "Cascadia Code",
         "Roboto Mono", Consolas, "Courier New", monospace !important;
 }
 
